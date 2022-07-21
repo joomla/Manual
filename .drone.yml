@@ -1,0 +1,36 @@
+---
+kind: pipeline
+name: default
+
+clone:
+
+steps:
+  - name: build
+    image: node:18-bullseye-slim
+    commands:
+      - npm install
+      - npm run build
+
+  - name: deployment
+    image: debian:stable-slim
+    depends_on:
+      - build
+    environment:
+      REMOTE_PRIVATE_KEY:
+        from_secret: REMOTE_PRIVATE_KEY
+    commands:
+      - apt update && apt install -y rclone openssh-client
+      - mkdir -p ~/.ssh
+      - eval $(ssh-agent -s)
+      - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+      - echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/id_rsa
+      - chmod 600 ~/.ssh/id_rsa
+      - ssh-add
+      - rclone config create server sftp host $developer_host user $sftp_user remote server:/home/$sftp_user/public_html/ port 22
+      - rclone -v sync build server:.
+
+---
+kind: signature
+hmac: c581a8722e77d43570aaa21df8999a48720b250e671c3c7bb156d3be70060768
+
+...
