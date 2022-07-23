@@ -25,8 +25,18 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl:
-            'https://github.com/joomla/manual/tree/main/',
+          editUrl: 'https://github.com/joomla/manual/tree/main/',
+          /*lastVersion: '4.3',*/
+          versions: {
+            'current': {
+              label: 'v4.3.x (upcoming)',
+              banner: 'unreleased'
+            },
+            /*'4.3': {
+              label: 'v4.3.x (latest)',
+            }*/
+          },
+          /*onlyIncludeVersions: ['current', '4.3'], */
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -60,6 +70,45 @@ const config = {
             href: 'https://framework.joomla.org',
             label: 'Framework',
             position: 'left',
+          },
+          {
+            href: 'https://docs.joomla.org',
+            label: 'Using the CMS',
+            position: 'left',
+          },
+          {
+            type: 'docsVersionDropdown',
+            position: 'right',
+            dropdownItemsBefore: [
+              {
+                type: 'html',
+                className: 'dropdown-current-versions',
+                value: '<b>Current releases</b>',
+              },
+            ],
+            dropdownItemsAfter: [
+              {
+                type: 'html',
+                value: '<hr class="dropdown-separator">',
+              },
+              {
+                type: 'html',
+                className: 'dropdown-archived-versions',
+                value: '<b>Archived versions</b>',
+              },
+              {
+                href: 'https://docs.joomla.org/Category:Joomla!_3.0',
+                label: '2.5.x',
+              },
+              {
+                type: 'html',
+                value: '<hr class="dropdown-separator">',
+              },
+              {
+                to: '/versions',
+                label: 'All versions',
+              },
+            ],
           },
           {
             href: 'https://github.com/joomla/manual',
