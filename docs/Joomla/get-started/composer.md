@@ -1,3 +1,3 @@
-Component development
+Composer
 =======================
-How to develop a component for Joomla
+This is the content for Composer
