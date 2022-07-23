@@ -47,9 +47,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'index',
+            docId: 'Joomla/index',
             position: 'left',
-            label: 'Manual',
+            label: 'Joomla!',
           },
           {
             href: 'https://github.com/joomla/manual',
