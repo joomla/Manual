@@ -1,3 +1,3 @@
-GIT
+Composer
 =======================
-This is the content for GIT
+This is the content for Composer
