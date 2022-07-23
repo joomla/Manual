@@ -1,2 +1,2 @@
-The empty Documentation
-=======================
+Please remove me and link to "Get started"
+==========================================
