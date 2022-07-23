@@ -71,6 +71,60 @@ const config = {
       footer: {
         style: 'dark',
         copyright: 'The content is available under the <a href="https://docs.joomla.org/JEDL">Joomla! EDL</a> license, unless otherwise stated.',
+        links: [
+          {
+            title: 'Docs',
+            items: [
+              {
+                label: 'Style Guide',
+                to: 'docs/',
+              },
+              {
+                label: 'Second Doc',
+                to: 'docs/doc2/',
+              },
+            ],
+          },
+          {
+            title: 'Community',
+            items: [
+              {
+                label: 'Community Portal',
+                href: 'https://community.joomla.org/',
+              },
+              {
+                label: 'Twitter',
+                href: 'https://twitter.com/joomla',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'Blog',
+                to: 'https://community.joomla.org/blogs.html',
+              },
+              {
+                label: 'Magazine',
+                to: 'https://magazine.joomla.org/',
+              },
+            ],
+          },
+          {
+            title: 'Legal',
+            items: [
+              {
+                label: 'Privacy',
+                to: 'docs/Legal/privacy',
+              },
+              {
+                label: 'Terms',
+                to: 'docs/Legal/terms',
+              },
+            ],
+          },
+        ],
       },
       prism: {
         theme: lightCodeTheme,
