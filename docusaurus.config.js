@@ -39,7 +39,7 @@ const config = {
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Programmers Documentation',
+        title: 'Joomla!',
         logo: {
           alt: 'Joomla Logo',
           src: 'img/joomla_logo_small.png',
@@ -49,7 +49,17 @@ const config = {
             type: 'doc',
             docId: 'Joomla/index',
             position: 'left',
-            label: 'Joomla!',
+            label: 'Documentation',
+          },
+          {
+            href: 'https://api.joomla.org',
+            label: 'API',
+            position: 'left',
+          },
+          {
+            href: 'https://framework.joomla.org',
+            label: 'Framework',
+            position: 'left',
           },
           {
             href: 'https://github.com/joomla/manual',
