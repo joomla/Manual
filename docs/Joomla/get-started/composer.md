@@ -1,3 +1,3 @@
-GIT
+Component development
 =======================
-This is the content for GIT
+How to develop a component for Joomla
