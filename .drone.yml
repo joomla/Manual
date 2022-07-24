@@ -31,9 +31,12 @@ steps:
       - ssh-add
       - rclone config create server sftp host $developer_host user $sftp_user port 22
       - rclone -v sync build server:public_html
+    when:
+      branch:
+        - main
 
 ---
 kind: signature
-hmac: c70c88470b45a1c1fc9aef1d98c685115d7ddf693223c22839ef25c485d46f07
+hmac: e6468d58ea392aa80b1b56fb50e5d2774fc255844c55bdb8073b05ac7b4e8859
 
 ...
