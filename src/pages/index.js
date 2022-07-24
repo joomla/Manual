@@ -9,7 +9,7 @@ import styles from './index.module.css';
 const quickaccess = [
   {
     title: <>Get started</>,
-    href: "/docs/Joomla",
+    href: "/docs",
     imageUrl: "img/updated.svg", // path to image with respect to staic dir
     description: (
       <>
@@ -19,7 +19,7 @@ const quickaccess = [
   },
   {
     title: <>Components</>,
-    href: "/docs/Joomla",
+    href: "/docs",
     imageUrl: "img/fast.svg", // path to image with respect to staic dir
     description: (
       <>There are many articles, tutorials, references and FAQs which focus on component development. If this is your first time developing a component for Joomla, you should start with the Absolute Basics of How a Component Functions. If needed, you can visualise the control flow of a component with these diagrams.</>
@@ -27,7 +27,7 @@ const quickaccess = [
   },
   {
     title: <>Plugins</>,
-    href: "/docs/Joomla",
+    href: "/docs",
     imageUrl: "img/automated.svg", // path to image with respect to staic dir
     description: (
       <>

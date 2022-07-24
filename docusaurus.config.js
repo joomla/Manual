@@ -59,7 +59,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'Joomla/index',
+            docId: 'get-started/index',
             position: 'left',
             label: 'Documentation',
           },
@@ -128,7 +128,7 @@ const config = {
             items: [
               {
                 label: 'Style Guide',
-                to: 'docs/Joomla/get-started/codestyle',
+                to: 'docs/get-started/codestyle',
               },
             ],
           },
