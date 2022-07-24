@@ -8,6 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Joomla! Programmers Documentation',
   tagline: 'Documentation for the Joomla! Programmers',
+  organizationName: 'joomla',
+  projectName: 'joomla-cms',
   url: 'https://manual.joomla.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
