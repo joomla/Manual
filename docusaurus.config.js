@@ -128,11 +128,7 @@ const config = {
             items: [
               {
                 label: 'Style Guide',
-                to: 'docs/',
-              },
-              {
-                label: 'Second Doc',
-                to: 'docs/doc2/',
+                to: 'docs/Joomla/get-started/codestyle',
               },
             ],
           },
@@ -167,11 +163,11 @@ const config = {
             items: [
               {
                 label: 'Privacy',
-                to: 'docs/Legal/privacy',
+                to: 'https://www.joomla.org/privacy-policy.html',
               },
               {
                 label: 'Terms',
-                to: 'docs/Legal/terms',
+                to: 'https://tm.joomla.org',
               },
             ],
           },
