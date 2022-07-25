@@ -3,6 +3,6 @@ Manifest File
 This section explains how to write manifest files
 :::caution TODO
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help makeing it more useful.
+This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help making it more useful.
 
 :::

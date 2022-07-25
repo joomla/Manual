@@ -8,6 +8,6 @@ All the deprecated features than have now been removed and any backward incompat
 There should be an explanation of how to mitigate the removals / changes.
 :::caution TODO
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help makeing it more useful.
+This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help making it more useful.
 
 :::

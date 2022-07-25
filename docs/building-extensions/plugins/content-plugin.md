@@ -6,3 +6,8 @@ With events as for example:
 
     onContentPrepare
     onContentAfterTitle ...  tbc
+:::caution TODO
+
+This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help making it more useful.
+
+:::
