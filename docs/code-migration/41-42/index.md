@@ -5,6 +5,6 @@ If you follow from the version of your current code until the version you want t
 should come across all the changes you need to make.
 :::caution TODO
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help making it more useful.
+This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
 :::
