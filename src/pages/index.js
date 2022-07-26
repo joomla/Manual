@@ -9,7 +9,7 @@ import styles from './index.module.css';
 const quickaccess = [
   {
     title: <>Get started</>,
-    href: "/docs",
+    href: "/docs/get-started",
     imageUrl: "img/updated.svg", // path to image with respect to static dir
     description: (
       <>
@@ -19,7 +19,7 @@ const quickaccess = [
   },
   {
     title: <>Components</>,
-    href: "/docs",
+    href: "/docs/building-extensions/component",
     imageUrl: "img/fast.svg", // path to image with respect to static dir
     description: (
       <>There are many articles, tutorials, references and FAQs which focus on component development. If this is your first time developing a component for Joomla, you should start with the Absolute Basics of How a Component Functions. If needed, you can visualise the control flow of a component with these diagrams.</>
@@ -27,7 +27,7 @@ const quickaccess = [
   },
   {
     title: <>Plugins</>,
-    href: "/docs",
+    href: "/docs/building-extensions/plugins/",
     imageUrl: "img/automated.svg", // path to image with respect to static dir
     description: (
       <>
@@ -72,7 +72,7 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`Get started with the ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
