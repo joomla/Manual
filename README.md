@@ -40,9 +40,9 @@ Please use the following placeholder for unfinished sections of a document.
 
 ```
 :::note TODO
- 
-This section is missing, please use the **Edit this Page** link at the bottom of this page to add this secion.
- 
+
+This section is missing, please use the **Edit this Page** link at the bottom of this page to add this section.
+
 :::
 ```
 

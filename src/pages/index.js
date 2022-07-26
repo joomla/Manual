@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
-import useBaseUrl from "@docusaurus/useBaseUrl"; // gives link after concating website url and path
+import useBaseUrl from "@docusaurus/useBaseUrl"; // gives link after concatenating website url and path
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 
@@ -10,17 +10,17 @@ const quickaccess = [
   {
     title: <>Get started</>,
     href: "/docs",
-    imageUrl: "img/updated.svg", // path to image with respect to staic dir
+    imageUrl: "img/updated.svg", // path to image with respect to static dir
     description: (
       <>
-        There are several ways of setting up your workstation in for Joomla! development. Some suggestions can be found at Setting up your workstation for Joomla development.
+        There are several ways of setting up your workstation for Joomla! development. Some suggestions can be found at Setting up your workstation for Joomla development.
       </>
     ),
   },
   {
     title: <>Components</>,
     href: "/docs",
-    imageUrl: "img/fast.svg", // path to image with respect to staic dir
+    imageUrl: "img/fast.svg", // path to image with respect to static dir
     description: (
       <>There are many articles, tutorials, references and FAQs which focus on component development. If this is your first time developing a component for Joomla, you should start with the Absolute Basics of How a Component Functions. If needed, you can visualise the control flow of a component with these diagrams.</>
     ),
@@ -28,7 +28,7 @@ const quickaccess = [
   {
     title: <>Plugins</>,
     href: "/docs",
-    imageUrl: "img/automated.svg", // path to image with respect to staic dir
+    imageUrl: "img/automated.svg", // path to image with respect to static dir
     description: (
       <>
         The following articles will help familiarise you with Joomla! plugins. They are a good starting point to understanding and then developing plugins.

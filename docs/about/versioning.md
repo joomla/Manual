@@ -4,7 +4,7 @@ Versioning the documentation
 The documentation should reflect the current releases of Joomla!. For each minor version we will have a tagged version in the documentation and update the version dropdown in this documentation.
 
 ## Command to run
-When we release a new minor Joomla! version, the documentation will be freezed and the version will be tagged. Use
+When we release a new minor Joomla! version, the documentation will be frozen and the version will be tagged. Use
 
 ```bash npm2yarn
 npm run docusaurus docs:version 4.3.0
