@@ -61,7 +61,7 @@ function HomepageHeader() {
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
         <div className="indexCtas">
-          <a className="button button--secondary" href="/docs/Joomla">Get Started</a>
+          <a className="button button--secondary" href="/docs/get-started/">Get Started</a>
         </div>
       </div>
     </div>
