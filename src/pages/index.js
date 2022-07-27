@@ -41,9 +41,9 @@ const quickaccess = [
 // Feature component
 function Quickaccess({ iconName, title, href, description }) {
   return (
-    <div className={clsx("col col--4", styles.quickaccess)}>
+    <div className={clsx("col col--4 padding-vert--md", styles.quickaccess)}>
       {iconName && (
-        <div className="text--center">
+        <div className="line-bottom line-bottom--pri margin-bottom--md">
           {iconName}
         </div>
       )}

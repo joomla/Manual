@@ -37,3 +37,7 @@
   height: 100%;
   content: "";
 }
+
+.quickaccess h2 a:hover {
+  text-decoration: none;
+}

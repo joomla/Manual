@@ -43,3 +43,11 @@
   fill: var(--ifm-color-primary);
   font-size: 3rem;
 }
+
+.line-bottom {
+  border-bottom: 2px solid currentColor;
+}
+
+.line-bottom--pri {
+  color: var(--ifm-color-primary);
+}
