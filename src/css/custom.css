@@ -38,3 +38,8 @@
   --ifm-button-size-multiplier: 1.6;
   margin-top: 24px;
 }
+
+.icon--3x {
+  fill: var(--ifm-color-primary);
+  font-size: 3rem;
+}
