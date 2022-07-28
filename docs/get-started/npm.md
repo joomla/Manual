@@ -1,3 +1,6 @@
+---
+sidebar_position: 3
+---
 NPM
 =======================
 This is the content for NPM

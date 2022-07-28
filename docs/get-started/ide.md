@@ -1,3 +1,6 @@
+---
+sidebar_position: 4
+---
 IDE
 =======================
 This is the content for IDE

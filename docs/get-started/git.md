@@ -1,3 +1,6 @@
+---
+sidebar_position: 1
+---
 GIT
 =======================
 This is the content for GIT
