@@ -6,26 +6,31 @@ Get Started
 ===============
 ## Welcome to the Joomla Developers Manual
 The purpose of this guide is to give developers an upto date guide showing best practice in
-writing and maintaining Joomla code.
-The guide is written using Docusaurus, a system that can allow all users of Joomla to 
-contribute
-to the documentation. 
-We will run through the tools and process required to set you up with the ability to add
-to this guide and also get the most out of the guide as a developer.
+writing and maintaining Joomla extensions.
+It also offers a migration path for extensions from older Joomla! versions to the latest standard.
+We will run through the tools and process required to set up a local development environment with
+the ability to get the most out of the guide as a developer.
 
-## Markdown
+## Quick start
+- @TODO
 
-The Joomla Developers Manual is written using Markdown language.
+## Community
+- Check the latest state od the Joomla CMS code at [GitHub](https://github.com/joomla/joomla-cms)
+- Find the latest version at [Joomla.org](https://joomla.org)
+- Join our [Mattermost-Community](https://joomlacommunity.cloud.mattermost.com/)
+- Read the [End-User documentation](https://docs.joomla.org)
+- Join our [forum](https://forum.joomla.org)
+
+## Contribute to this documentation
+
+The Joomla Developers Manual is written using Docusaurus, a system that can allow all users of Joomla to
+contribute to the documentation using Markdown language.
+
 A good place to start if new to Markdown is the Markdown Guide
 https://www.markdownguide.org/
 
-
-
-This is the content for the get started file
-Get Started will detail the build process, so using Git
-Then using composer.
-Next we run NPM,
-and finally we use an IDE
+The documentation is maintained via GitHub where you can anytime create/edit/delete content to improve the content
+of the documentation. Click the **Edit this Page** link at the bottom of this page to contribute via a Pull Request.
 
 :::caution TODO
 
