@@ -1,3 +1,6 @@
+---
+sidebar_position: 5
+---
 Coding Style Guide
 =======================
 This is the content for Coding Standards used in Joomla
