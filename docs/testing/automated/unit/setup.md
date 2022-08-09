@@ -15,12 +15,12 @@ You need a set of tools to have a good testing setup. Tools you should have:
 * database (mysql 5.6+, mariaDB 10.1+, postgres 11.0+)
 * PHP (good to have different versions and the ability to switch)
 * Composer, [Installation instructions here](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-macos)
-* Webserver (apache 2.4+, nginx 1.18+)
+* Webserver (apache 2.4+, nginx 1.18+) - **optional**
 * Editor (PhpStorm, Visual Studio Code)
 
 :::note
 
-This is the same toolset you need for unit testing
+This is pretty much the same toolset you need for system testing
 
 :::
 
@@ -34,40 +34,36 @@ Now as you have all tools installed you can clone the [joomla-cms repository](ht
 2. Go into a directory on you workstation.
 3. clone the joomla-cms repository: ```git clone https://github.com/joomla/joomla-cms.git``` another option here is to fork the joomla-cms repo and then clone your fork. We recommend the 2nd way because then you can make changes and Pull Request directly.
 4. Go into the joomla-cms directory
-5. If you have installed valet, run ```valet link```
+5. **Optional** - If you have installed valet, run ```valet link```
 5. Run ```composer install```
 6. Run ```npm ci```
-7. Create a ```cypress.env.json``` file. This file allows to overwrite config setting from ```cypress.config.js```
+7. Copy ```phpunit.xml.dist``` file to ```phpunit.xml```. This file allows config setting for phpunit.
 
- Here is a example ```cypress.env.json```
+ Here is a example ```phpunit.xml```
 
- ```json
- {
-  "sitename": "Joomla CMS Test Local",
-  "name": "jane doe",
-  "email": "admin@example.com",
-  "username": "local-admin",
-  "password": "joomla-17082005",
-  "db_type": "MySQLi",
-  "db_host": "localhost",
-  "db_name": "test_joomla",
-  "db_user": "root",
-  "db_password": "password",
-  "db_prefix": "jos_"
- }
+ ```xml
+ <?xml version="1.0" encoding="UTF-8"?>
+    <phpunit bootstrap="tests/Unit/bootstrap.php" colors="false">
+	    <testsuites>
+		    <testsuite name="Unit">
+			    <directory suffix="Test.php">./tests/Unit/Libraries</directory>
+		    </testsuite>
+		    <testsuite name="Integration">
+			    <directory suffix="Test.php">./tests/Integration/Libraries</directory>
+		    </testsuite>
+	    </testsuites>
+        <php>
+            <const name="JTEST_DB_ENGINE" value="mysqli" />
+            <const name="JTEST_DB_HOST" value="mysql" />
+            <const name="JTEST_DB_NAME" value="test_joomla" />
+            <const name="JTEST_DB_USER" value="root" />
+            <const name="JTEST_DB_PASSWORD" value="password" />
+        </php>
+    </phpunit>
  ```
- You don't need all settings, just look what you have to change for your local environment compared to ```cypress.config.js```   
 
-8. Run ```cypress open --e2e --browser=chrome --config baseUrl=http://joomla-cms.test```
+8. Run ```phpunit --testdox```
  
- This will open two windows, one you can ignore and one to run the tests
-
-
- ![Cypress Window 1](./assets/cypress-window1.jpg)
-
- In the following window you can select test and let them run. You need to install first.
-
- ![Cypress Window 2](./assets/cypress-window2.jpg)
 
 
 ## Windows
