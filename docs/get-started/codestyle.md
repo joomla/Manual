@@ -4,8 +4,8 @@ sidebar_position: 5
 Coding Style Guide
 =======================
 
-Since Joomla version 4.2 Joomla is using the [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standard. You can enable the coding standard in your IDE to get hints when you're violating the rules or can use an auto fix, too.
-We recommend that you follow this standard also when developing your own extensions to stay compatible always with core and that you don't have to switch when working with core.
+Since Joomla version 4.2, Joomla uses the [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standard. You can enable this coding standard in your IDE and get hints if you're not following the coding standard or use an auto fix, too.
+We recommend that you follow this standard when developing your own extensions to stay compatible with core and to ensure your code will hopefully work with future versions.
 
 ## Install code style checker
 :::caution TODO
@@ -13,7 +13,7 @@ Copy from https://docs.joomla.org/Joomla_CodeSniffer and update to the new versi
 :::
 
 ## Use integrated checker
-The Joomla core system is shipping a so called "code sniffer" and a "code fixer" to check for code standard violations and to fix most (but sometimes not all) of them. This only works if you're using the full developer version from GitHub, not when you're working with a installation zip package.
+If you download the full developer version from GitHub of Joomla (not the downloadable installation zip package), you will find a so called "code sniffer", to check for coding standard violations, and a "code fixer" to fix most (but, sometimes, not all) of them. 
 
 To run the code sniffer/fixer you need to start a terminal, navigate to your Joomla root folder (the folder where your Joomla is installed) and run one of the following commands (don't forget the "."):
 
