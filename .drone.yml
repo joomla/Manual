@@ -34,9 +34,13 @@ steps:
     when:
       branch:
         - main
+      status:
+        - success
+      event:
+        - push
 
 ---
 kind: signature
-hmac: e6468d58ea392aa80b1b56fb50e5d2774fc255844c55bdb8073b05ac7b4e8859
+hmac: 348c8ac11879e5515a5b167c9af1a7d6bba2f3bd66408a291f4f9f6ff27d8204
 
 ...
