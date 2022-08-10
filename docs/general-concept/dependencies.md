@@ -1,11 +1,5 @@
 Dependencies
 ============
-Description of dependency injection in Joomla
-:::caution TODO
-
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
-
-:::
 
 ## Introduction
 
@@ -149,7 +143,7 @@ example a component must implement the
 GitHub](https://github.com/joomla/joomla-cms/blob/4.0-dev/libraries/src/Extension/ComponentInterface.php)).  
 For full information on implementing this in your extension, we
 recommend reading [Developing an MVC
-Component](S:MyLanguage/J4.x:Developing_an_MVC_Component "wikilink")
+Component](https://docs.joomla.org/S:MyLanguage/J4.x:Developing_an_MVC_Component "wikilink")
 
 ### Using a component container in another extension
 
