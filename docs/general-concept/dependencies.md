@@ -12,7 +12,7 @@ support the goals of dependency injection. For example Symfony
 [introduced the concept
 in 2009](http://fabien.potencier.org/do-you-need-a-dependency-injection-container.html).
 
-There's a variety of reasons why now is the right time to introduce
+There's a variety of reasons why it is the right time to introduce
 these into Joomla 4:
 
 1.  **Testing** - one of the themes of Joomla 3 has been buggy releases.
@@ -34,17 +34,17 @@ replacement.
 
 So for example in your Controllers in the CMS instead of substituting
 
-``` php
+```php
 \Joomla\CMS\Factory::getDocument()
 ```
 
 consider using
 
-``` php
+```php
 $this->app->getDocument()
 ```
 
-. This uses the injected application and therefore allows for easier
+This uses the injected application and therefore allows for easier
 testing.
 
 ### Creating an object in a container
@@ -52,7 +52,7 @@ testing.
 To place something in the Global DIC the most simple way is to pass in
 an anonymous function. An example for a logger is below
 
-``` php
+```php
 // Assuming we have an instance of a Joomla Container
 $container->share(
     LoggerInterface::class,
@@ -81,7 +81,7 @@ parameter.
 Let's now look at a more complicated
 example:
 
-``` php
+```php
 $container->alias('AmazingApiRouter', Joomla\CMS\Router\ApiRouter::class)
     ->share(
     \Joomla\CMS\Router\ApiRouter::class,
@@ -99,7 +99,7 @@ and we've also created an alias for the ApiRouter. That means whilst the
 container recognises that if it needs to build an ApiRouter instance it
 can do that. But in our code to keep things simple we can also run
 
-``` php
+```php
 Factory::getContainer()->get('AmazingApiRouter')
 ```
 
@@ -114,17 +114,24 @@ more complicated - all of them follow this base idea.
 Providers in Joomla are a way of registering a dependency into a service
 container. To do this create a class that implements
 
-``` php
+```php
 Joomla\DI\ServiceProviderInterface
 ```
 
-. This gives you a register method which contains the container. You can
+This gives you a register method which contains the container. You can
 then use the share method again to add any number of objects into the
 container. You can then register this into the container with the
-\`\\Joomla\\DI\\Container::registerServiceProvider\` method in the
+`\\Joomla\\DI\\Container::registerServiceProvider` method in the
 container. You can see where we register all the core service providers
 [here in the \\Joomla\\CMS\\Factory::createContainer
 method](https://github.com/joomla/joomla-cms/blob/4.0-dev/libraries/src/Factory.php#L570-L594)
+
+:::caution TODO
+
+Linking code directly to github for Joomla gets outdated really quickly since the branch we reference changes regulary.
+We need to find a better way to keep this links uptodate
+
+:::
 
 ## Component Containers
 
@@ -133,36 +140,43 @@ administrator section of Joomla). However this container is not exposed.
 It's just there to get the system dependencies and allow a class to
 represent your extension. This class is the Extension class and at a
 minimum must implement the relevant extensions type interface. For
-example a component must implement the
+example a component must implement the `\Joomla\CMS\Extension\ComponentInterface`
+(found on [GitHub](https://github.com/joomla/joomla-cms/blob/4.2-dev/libraries/src/Extension/ComponentInterface.php)).  
 
-``` php
-\Joomla\CMS\Extension\ComponentInterface
-```
+:::caution TODO
 
-(found on [here on
-GitHub](https://github.com/joomla/joomla-cms/blob/4.0-dev/libraries/src/Extension/ComponentInterface.php)).  
-For full information on implementing this in your extension, we
-recommend reading [Developing an MVC
-Component](https://docs.joomla.org/S:MyLanguage/J4.x:Developing_an_MVC_Component "wikilink")
+Linking code directly to github for Joomla gets outdated really quickly since the branch we reference changes regulary.
+We need to find a better way to keep this links uptodate
+
+:::
+
+For full information on implementing this in your extension, we recommend reading
+[Developing an MVC Component](https://docs.joomla.org/S:MyLanguage/J4.x:Developing_an_MVC_Component "wikilink")
+
+
+:::caution TODO
+
+Linking to docs.joomla.org should only be used for enduser documentation.
+
+:::
+
 
 ### Using a component container in another extension
 
 You can easily grab the container of another extension through the
-CMSApplication object. For
-example
+CMSApplication object. For example
 
-``` php
+```php
 Factory::getApplication()->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Site');
 ```
 
-Will get the com\_content container, get the MVC Factory and get the
+Will get the com_content container, get the MVC Factory and get the
 ArticlesModel from the frontend of Joomla. And this will work in any
 extension in frontend, backend or the API of Joomla (unlike the old
-LegacyModel::getInstance() method)
+`LegacyModel::getInstance()` method)
 
 ## Read More
 
 There's a great example in the Joomla Framework docs on why Dependency
 Injection is good for your Application and how DIC's help structure it.
-[Read it
-here](https://github.com/joomla-framework/di/blob/2.0-dev/docs/why-dependency-injection.md)
+[Read it here](https://github.com/joomla-framework/di/blob/2.0-dev/docs/why-dependency-injection.md)
