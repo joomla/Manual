@@ -33,6 +33,8 @@ steps:
       - if [ -z "$${DRONE_PULL_REQUEST}" ]; then export TARGET=public_html; else export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}; fi
       - rclone --dry-run -v sync build server:$TARGET
     when:
+      branch:
+        main
       status:
         - success
       event:
