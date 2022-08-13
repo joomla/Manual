@@ -22,6 +22,8 @@ steps:
         from_secret: developer_host
       sftp_user:
         from_secret: sftp_user
+      GITHUB_TOKEN:
+        from_secret: github_token
     commands:
       - mkdir -p ~/.ssh
       - eval $(ssh-agent -s)
