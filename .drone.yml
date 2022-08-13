@@ -31,7 +31,7 @@ steps:
       - ssh-add
       - rclone config create server sftp host $developer_host user $sftp_user port 22
       - if [ -z "$${DRONE_PULL_REQUEST}" ]; then export TARGET=public_html; else export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}; fi
-      - rclone --dry-run -v sync build server:$TARGET
+      - rclone -v sync build server:$TARGET
       - chmod +x test.sh
       - if [ ! -z "$${DRONE_PULL_REQUEST}" ]; then ./test.sh "Preview" "Generated preview for this pull request" "http://$${TARGET}" ; fi;
 
