@@ -30,7 +30,7 @@ steps:
       - chmod 600 ~/.ssh/id_rsa
       - ssh-add
       - rclone config create server sftp host $developer_host user $sftp_user port 22
-      - [ -z "$${DRONE_PULL_REQUEST}" ] && export TARGET=public_html || export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}
+      - "[ -z "$${DRONE_PULL_REQUEST}" ] && export TARGET=public_html || export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}"
       - rclone --dry-run -v sync build server:$TARGET
     when:
       branch:
