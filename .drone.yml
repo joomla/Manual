@@ -32,8 +32,6 @@ steps:
       - rclone config create server sftp host $developer_host user $sftp_user port 22
       - rclone --dry-run -v sync build server:$TARGET
     when:
-      branch:
-        - main
       status:
         - success
       event:
