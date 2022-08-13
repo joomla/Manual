@@ -5,6 +5,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl"; // gives link after concatenati
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import * as IconName from 'react-icons/bs';
+import * as FaIconName from 'react-icons/fa'; // Bootstrap does not have any accessibility icons.
 
 
 import styles from './index.module.css';
@@ -37,11 +38,21 @@ const quickaccess = [
       </>
     ),
   },
+  {
+    title: <>Accessibility</>,
+    href: "/docs/accessibility/",
+    iconName: <FaIconName.FaUniversalAccess className="icon--3x" />,
+    description: (
+        <>
+          Accessibility is a priority for Joomla across its CMS, front- and back-end templates, and community extensions. Explore Joomla’s accessible UI library and best practices.
+        </>
+    ),
+  },
 ];
 // Feature component
 function Quickaccess({ iconName, title, href, description }) {
   return (
-    <div className={clsx("col col--4 padding-vert--md", styles.quickaccess)}>
+    <div className={clsx("col col--3 padding-vert--md", styles.quickaccess)}>
       {iconName && (
         <div className="line-bottom line-bottom--pri margin-bottom--md">
           {iconName}
