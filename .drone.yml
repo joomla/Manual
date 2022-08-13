@@ -22,6 +22,8 @@ steps:
         from_secret: developer_host
       sftp_user:
         from_secret: sftp_user
+      GITHUB_TOKEN:
+        from_secret: github_token
     commands:
       - mkdir -p ~/.ssh
       - eval $(ssh-agent -s)
@@ -30,11 +32,13 @@ steps:
       - chmod 600 ~/.ssh/id_rsa
       - ssh-add
       - rclone config create server sftp host $developer_host user $sftp_user port 22
-      - "[ -z "$${DRONE_PULL_REQUEST}" ] && export TARGET=public_html || export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}"
-      - rclone --dry-run -v sync build server:$TARGET
+      - if [ -z "$${DRONE_PULL_REQUEST}" ]; then export TARGET=public_html; else export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}; fi
+      - rclone -v sync build server:$TARGET
+      - chmod +x test.sh
+      - if [ ! -z "$${DRONE_PULL_REQUEST}" ]; then /bin/add_github_status.sh "Preview" "Generated preview for this pull request" "http://pr-$${DRONE_PULL_REQUEST}.manual.joomlacode.org" ; fi;
     when:
       branch:
-        - main
+        main
       status:
         - success
       event:
@@ -43,6 +47,6 @@ steps:
 
 ---
 kind: signature
-hmac: 348c8ac11879e5515a5b167c9af1a7d6bba2f3bd66408a291f4f9f6ff27d8204
+hmac: 3d1303abd175ffda3aec141c6ea71d541f50f3c3e0752a68330fde5560386a58
 
 ...

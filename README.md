@@ -30,7 +30,11 @@ $ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
+### Preview for pull request
 
+As part of the documentation validation we create a subdomain for previewing your pull request.
+The Link will be added to the "checks" section in the pull request as "preview". The url used
+is http://pr-[prnumber].manual.joomlacode.org
 
 ## How to use
 
