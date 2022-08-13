@@ -5,16 +5,16 @@ name: default
 clone:
 
 steps:
-#  - name: build
-#    image: node:18-bullseye-slim
-#    commands:
-#      - npm install
-#      - npm run build
+  - name: build
+    image: node:18-bullseye-slim
+    commands:
+      - npm install
+      - npm run build
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
-#    depends_on:
-#     - build
+    depends_on:
+     - build
     environment:
       REMOTE_PRIVATE_KEY:
         from_secret: REMOTE_PRIVATE_KEY
