@@ -150,11 +150,11 @@ const config = {
             items: [
               {
                 label: 'Blog',
-                to: 'https://community.joomla.org/blogs.html',
+                href: 'https://community.joomla.org/blogs.html',
               },
               {
                 label: 'Magazine',
-                to: 'https://magazine.joomla.org/',
+                href: 'https://magazine.joomla.org/',
               },
             ],
           },
@@ -163,11 +163,11 @@ const config = {
             items: [
               {
                 label: 'Privacy',
-                to: 'https://www.joomla.org/privacy-policy.html',
+                href: 'https://www.joomla.org/privacy-policy.html',
               },
               {
                 label: 'Terms',
-                to: 'https://tm.joomla.org',
+                href: 'https://tm.joomla.org',
               },
             ],
           },
