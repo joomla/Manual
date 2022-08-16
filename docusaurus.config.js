@@ -127,7 +127,7 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Style Guide',
+                label: 'Coding Standards',
                 to: 'docs/get-started/codestyle',
               },
             ],
