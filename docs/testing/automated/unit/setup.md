@@ -20,7 +20,7 @@ You need a set of tools to have a good testing setup. Tools you should have:
 
 :::note
 
-This is pretty much the same toolset you need for system testing
+This is pretty much the same toolset you need for system testing. Listed version numbers relfect the current state of the time writing.
 
 :::
 
