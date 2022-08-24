@@ -20,7 +20,7 @@ You need a set of tools to have a good testing setup. Tools you should have:
 
 :::note
 
-This is the same toolset you need for unit testing
+This is pretty much the same toolset you need for unit testing
 
 :::
 
@@ -58,7 +58,7 @@ Now as you have all tools installed you can clone the [joomla-cms repository](ht
  ```
  You don't need all settings, just look what you have to change for your local environment compared to ```cypress.config.js```   
 
-8. Run ```cypress open --e2e --browser=chrome --config baseUrl=http://joomla-cms.test```
+8. Run ```npx cypress open --e2e --browser=chrome --config baseUrl=http://joomla-cms.test```
  
  This will open two windows, one you can ignore and one to run the tests
 
