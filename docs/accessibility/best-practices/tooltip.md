@@ -15,6 +15,7 @@ If serveral tooltips are on a page, every toolpip must have an own ID. Other wis
 <div role="tooltip" id="tip_<?php echo $i; ?>">
     <?php echo Text::_('Text to display what icon-eye means in this context'); ?>
 </div>
+```
 
 ### Common Mistakes
 - Missing ID. 
