@@ -10,7 +10,7 @@ If serveral tooltips are on a page, every toolpip must have an own ID. Other wis
 
 #`<div class=".." tabindex="0" aria-describedby="tip_<?php echo $i; ?>">
     <span class="icon-eye">
-<div>
+</div>
 <div role="tooltip" id="tip_<?php echo $i; ?>">
     <?php echo Text::_('Text to display what icon-eye means in this context'); ?>
 </div>`
