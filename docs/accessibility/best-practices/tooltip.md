@@ -8,13 +8,12 @@ import TabItem from '@theme/TabItem';
 Tooltips are useful elements. They allow presenting information with an icon or a short text and adding additional longer description when the users hovers the icon or text. 
 If serveral tooltips are on a page, every toolpip must have an own ID. Other wise a screenreader cannot identify which tooltip gives Information to which element.
 
-### Best Practices 
-'<div class=".." tabindex="0" aria-describedby="tip_<?php echo $i; ?>">
+#`<div class=".." tabindex="0" aria-describedby="tip_<?php echo $i; ?>">
     <span class="icon-eye">
 <div>
 <div role="tooltip" id="tip_<?php echo $i; ?>">
     <?php echo Text::_('Text to display what icon-eye means in this context'); ?>
-</div>'
+</div>`
 
 ### Common Mistakes
 - Missing ID. 
