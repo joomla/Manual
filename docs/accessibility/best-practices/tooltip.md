@@ -1,9 +1,9 @@
-Code Snippets
-=============
+Tooltip
+=======
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
-## Tooltip
+## Overview
 
 Tooltips are useful elements. They allow presenting information with an icon or a short text and adding additional informationn when the users hovers the icon or text. 
 If serveral tooltips are on a page, every toolpip must have an own ID. Other wise a screenreader cannot identify which tooltip gives Information to which element.
