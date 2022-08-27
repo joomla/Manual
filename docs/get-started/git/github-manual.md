@@ -157,11 +157,3 @@ http://pr-[prnumber].manual.joomlacode.org
 
 Where the `[prnumber]` can be obtained from the Pull Requests list (just a number - no brackets).
 
-## References
-
-The following articles are from docs.joomla.org:
-
-- [Git Branching Quickstart](https://docs.joomla.org/Git_branching_quickstart)
-- [Working with git and github](https://docs.joomla.org/Working_with_git_and_github)
-- [Git for Testers and Trackers](https://docs.joomla.org/Git_for_Testers_and_Trackers)
-- [Setting up Eclipse PDT 2020 and Git for Pulls](https://docs.joomla.org/Setting_up_Eclipse_PDT_2020_and_Git_for_Pulls)
