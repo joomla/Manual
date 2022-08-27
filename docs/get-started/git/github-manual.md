@@ -11,7 +11,7 @@ This page is unfinished, but Cliff is working on it.
 
 ## Getting Started
 
-GitHub is a web site that offers repository hosting. Private repos are charged a commercial fee but public repos, such as Joomla, are hosted free of charge. As the name implies, GitHub is based on using Git for repo management. If you want to contribute to Joomla development you need a GitHub account. It only takes a few moments to create one so Give it a try: [GitHub](https://github.com/). You just need your email address to start. Try it out with the source of the this documentation.
+GitHub is a web site that offers repository hosting. Private repos are charged a commercial fee but public repos, such as Joomla, are hosted free of charge. As the name implies, GitHub is based on using Git for repo management. If you want to contribute to Joomla development you need a GitHub account. It only takes a few moments to create one so Give it a try: [GitHub](https://github.com/). You just need your email address to start. You could try it out by contributing content for this documentation.
 
 ## Fork joomla/Manual on GitHub
 
@@ -25,7 +25,7 @@ That will make a complete copy of the Manual repo as it exists at this time in y
 
 For local testing of any web site content you will need to install Apache, MySQL, PHP and phpMyAdmin on your laptop or desktop computer. This collection of separate software items is often referred to as a stack. You may see the words LAMP, MAMP, WAMP or XAMP - the first character indicating Linux, Mac, Windows, or All three. Stack installation is covered elsewhere. 
 
-The local Apache web server uses a specific folder for individual web sites. For example, on a Mac it may be /Users/username/Sites. You may have many sites for testing and developing different projects, each in a separate subfolder. The clone process will createe a folder within your current folder so first open a terminal window and switch to your sites folder:
+Your local Apache web server uses a specific folder for individual web sites. For example, on a Mac it may be /Users/username/Sites. You may have many sites for testing and developing different projects, each in a separate subfolder. The clone process will create a folder within your current folder so first open a terminal window and switch to your sites folder:
 
 ```
 cd ~/Sites
@@ -95,9 +95,10 @@ There are several different ways to keep your repo up to date with the original 
 If you would like to contribute to the Joomla Programmers Manual you need to progress through the following stages:
 
 - **Create and Checkout a branch** in your local repo. This is very important! It will contain a record of the changes you propose to make to the original.
-- **Commit and Push** your changes to your remote GitHub repo.
-- **Make a Pull request** in your remote repo to ask for your branch to be included in the main branch.
-- **Checkout your main branch** and make no more changes for now.
+- **Make Changes** by adding or changing folders or files, and adding images.
+- **Commit** your changes to your local repo.
+- **Push** your changes from your local repo to your remote GitHub repo.
+- **Make a Pull request** in your remote repo to ask for your branch to be **merged** into the main branch.
 
 ### Create and Checkout a branch
 
@@ -107,6 +108,15 @@ In the terminal window, make sure you are in the root of your site, then:
 * git checkout mypatch1
 
 where mypatch1 should be some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose, for example `cffixgit`.
+
+You may wish to list the branches in your repo:
+
+```
+git branch --list
+* cefgit
+  main
+```
+That is a reminder that the main branch is named `main` rather than `master`.
 
 ## Time for an IDE?
 
@@ -127,8 +137,23 @@ If it works without error you are ready to make a pull request.
 
 ### Commit and Push
 
-...
+Easy with an IDE. In VSCode:
+- select the `+` button in the Changes list to commit the changes to the local repository. 
+- Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
 
 ### Make a Pull Request
 
-...
+Login to your account on GitHub and select your own Manual repo. In the `Code` section select the branch you wish to commit from the `Switch branches` drop-down list (marked with the branch icon). Click the `Contribute` button and then the `Open Pull Request` button.
+
+After making a pull request some automatic checks are carried out. All being well after a few minutes you will see this result:
+
+![Pull test result](git-manual-pull-checks-passed.png)
+
+You can then test the pull request on the live site with the following url:
+
+```
+http://pr-[prnumber].manual.joomlacode.org
+```
+
+Where the `[prnumber]` can be obtained from the Pull Requests list (just a number - no brackets).
+

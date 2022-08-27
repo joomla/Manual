@@ -17,7 +17,7 @@ git init .
 
 which should result in confirmation that an empty Git repository has been created in a hidden folder named .git (folders starting with a period(.) are usually left out of listings so you don't see them, hence hidden). 
 
-You may also use a remote repository on another computer, which is where GitHub comes in. That will be covered in a separate article.
+You may also use a remote repository on another computer, which is where GitHub comes in. That will be covered in separate articles.
 
 Create some content with a text editor and save it in the source folder, the one containing the .git repo (the word repo is often used as a short form of repository). In this article this markdown document, aptly named git.md, is used as an example document. Confirm what you have with a list command:
 
@@ -78,8 +78,7 @@ git branch --list
   master
 * myfix
 ```
-
-So now I can go ahead and make changes to the myfix branch without affecting the existing content of the master branch. If I decide to use the changes I need to commit them and then either merge the myfix branch into my master branch or ask my collaborator to merge my myfix branch into his master branch.
+The list shows that there are now two branches and the * indicates that the myfix branch is checked out as the current branch. I can now go ahead and make changes to the myfix branch without affecting the existing content of the master branch. If I decide to use the changes I need to commit them and then either merge the myfix branch into my master branch or ask my collaborator to merge my myfix branch into his master branch.
 
 When the branch is finished with, by being merged or abandoned, it can be deleted.
 
@@ -87,7 +86,7 @@ When the branch is finished with, by being merged or abandoned, it can be delete
 
 Git has many more commands and options. Mostly you don't need to know them because your IDE handles them for you with Menu items. If you want to look up what a menu item does try this source:
 
-(Git Documentation)[https://git-scm.com/doc]
+[Git Documentation](https://git-scm.com/doc)
 
 If you have been experimenting, remember you can delete the repo (.git) and you will be left with your source files as you see them in your editor.
 

@@ -107,8 +107,7 @@ If you would like to contribute to the Joomla CMS you need to progress through t
 - **Create and Checkout a branch** in your local repo. This is very important! It will contain a record of the changes you propose to make to the original.
 - **Make and Test Changes** and don't forget to check that your code conforms to the Joomla coding standards.
 - **Commit and Push** your changes to your remote GitHub repo.
-- **Make a Pull request** in your remote repo to ask for your branch to be included in the main branch.
-- **Checkout your main branch** and make no more changes for now.
+- **Make a Pull request** in your remote repo to ask for your branch to be merged into the main branch.
 
 ### Create and Checkout a branch
 
@@ -132,10 +131,36 @@ npm ci
 ```
 If you site works without error you are ready to make a pull request.
 
+### Commit and Push
+
+Easy with an IDE. In VSCode:
+- select the `+` button in the Changes list to commit the changes to the local repository. 
+- Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
+
 ### Make a pull request
 
-...
+Login to your account on GitHub and select your own joomla-cms repo. In the `Code` section select the branch you wish to commit from the `Switch branches` drop-down list (marked with the branch icon). Click the `Contribute` button and then the `Open Pull Request` button.
+
+After making a pull request some automatic checks are carried out. All being well after a few minutes you will see this result:
+
+ToDo
+
+### Remote Testing
+
+Your pull request will go into a testing phase where the Joomla developers can examine your code and test it to see if it works and whether it stops anything else from working. Even if it works, others may regard the proposed change or method of implementation as inappropriate and decline to merge your pull request into the main code. Do not take umbrage! It happens all the time, even to the experts. Just move on to something else.
 
 ## Github workflow
+
+In git you may have multiple remote repositories. You defined one remote repository when you cloned your own remote repo. You may also add the original repo to your list of remote repos. Example:
+
+```
+git remote -v show
+Manual	https://github.com/ceford/Manual (fetch)
+Manual	https://github.com/ceford/Manual (push)
+origin	https://github.com/joomla/Manual.git (fetch)
+origin	https://github.com/joomla/Manual.git (push)
+```
+
+This allows you keep your own fork and clone up to date from your local computer. You just need to pull and merge the original source into your local clone and then push your local clone to your remote fork. The following diagram illustrates the process:
 
 <img alt="Github work flow joomla.png" src="https://docs.joomla.org/images/a/a4/Github_work_flow_joomla.png" decoding="async" data-file-width="1101" data-file-height="798" width="1101" height="798"/>

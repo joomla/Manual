@@ -8,4 +8,4 @@ From Wikipedia: [Git](https://en.wikipedia.org/wiki/Git) is free and open source
 
 Git is available for all modern platforms. It is mostly associated with managing code such as PHP, Java or Python but it can be used to manage any line-based text such as this documentation written in Markdown format. Git can be used from the command line although most users rely on an Integrated Development Environment (IDE) to compose and run git commands. 
 
-To learn more, start with the Git Basics page and then move on the cited Github Examples.
+To learn more, start with the Git Basics page and then move on to the cited Github based examples.
