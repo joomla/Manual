@@ -5,16 +5,25 @@ import TabItem from '@theme/TabItem';
 
 ## Tooltip
 
-Tooltips are useful elements. They allow presenting information with an icon or a short text and adding additional longer description when the users hovers the icon or text. 
+Tooltips are useful elements. They allow presenting information with an icon or a short text and adding additional informationn when the users hovers the icon or text. 
 If serveral tooltips are on a page, every toolpip must have an own ID. Other wise a screenreader cannot identify which tooltip gives Information to which element.
 
-```html
-<div class=".." tabindex="0" aria-describedby="tip_<?php echo $i; ?>">
-    <span class="icon-eye">
+## Code Snippet 
+
+```PHPx title="Example Tooltip from com_menus, view menus "
+<span class=".." aria-describedby="tip-unpublish<?php echo $i; ?>">
+    <?php echo $item->count_published; ?>
+</span>
+<div role="tooltip" id="tip-unpublish<?php echo $i; ?>">
+   <?php echo Text::_('COM_MENUS_COUNT_UNPUBLISHED_ITEMS'); ?>
 </div>
-<div role="tooltip" id="tip_<?php echo $i; ?>">
-    <?php echo Text::_('Text to display what icon-eye means in this context'); ?>
-</div>
+```
+
+```PHPx title="Example Tooltip frontend -  edit icon for an article"
+<a href=".." aria-describedby="editarticle-<?php echo $id; ?>">
+    <span class="icon-edit" aria-hidden="true"></span>Edit
+    <div role="tooltip" id="editarticle-<?php echo $id; ?>">Published Article</div>
+</a>       
 ```
 
 ### Common Mistakes
