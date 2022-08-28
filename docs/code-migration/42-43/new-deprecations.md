@@ -32,7 +32,7 @@ The section above should be moved to the deprecation strategy.
 
 :::
 
-Planned to be removed in Joomla! 6.0 alias added to the combat plugin.
+Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
 
 * administrator/components/com_banners/helpers/banners.php
 * administrator/components/com_categories/helpers/categories.php
@@ -64,109 +64,99 @@ Planned to be removed in Joomla! 6.0
 ##### BannersHelper
 
 File: administrator/components/com_banners/helpers/banners.php  
-Replacement: \Joomla\Component\Banners\Administrator\Helper\BannersHelper
+Replacement: \Joomla\Component\Banners\Administrator\Helper\BannersHelper  
 
 ##### CategoriesHelper
 
 File: administrator/components/com_categories/helpers/categories.php  
-Replacement: \Joomla\Component\Categories\Administrator\Helper\CategoriesHelper
+Replacement: \Joomla\Component\Categories\Administrator\Helper\CategoriesHelper  
 
 ##### ContactHelper
 
-File: administrator/components/com_contact/helpers/contact.php
-Replacement: \Joomla\Component\Contact\Administrator\Helper\ContactHelper
+File: administrator/components/com_contact/helpers/contact.php  
+Replacement: \Joomla\Component\Contact\Administrator\Helper\ContactHelper  
 
 ##### ContentHelper
 
-File: administrator/components/com_content/helpers/content.php
-Replacement: \Joomla\Component\Content\Administrator\Helper\ContentHelper
+File: administrator/components/com_content/helpers/content.php  
+Replacement: \Joomla\Component\Content\Administrator\Helper\ContentHelper  
 
 ##### ContenthistoryHelper
 
-File: administrator/components/com_contenthistory/helpers/contenthistory.php
-Replacement: \Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper
+File: administrator/components/com_contenthistory/helpers/contenthistory.php  
+Replacement: \Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper  
 
 ##### FieldsHelper
 
-File: administrator/components/com_fields/helpers/fields.php
-Replacement: \Joomla\Component\Fields\Administrator\Helper\FieldsHelper
+File: administrator/components/com_fields/helpers/fields.php  
+Replacement: \Joomla\Component\Fields\Administrator\Helper\FieldsHelper  
 
 ##### InstallerHelper
 
-File: administrator/components/com_installer/helpers/installer.php
-Replacement: \Joomla\Component\Installer\Administrator\Helper\InstallerHelper
+File: administrator/components/com_installer/helpers/installer.php  
+Replacement: \Joomla\Component\Installer\Administrator\Helper\InstallerHelper  
 
 ##### MenusHelper
 
-File: administrator/components/com_menus/helpers/menus.php
-Replacement: \Joomla\Component\Menus\Administrator\Helper\MenusHelper
+File: administrator/components/com_menus/helpers/menus.php  
+Replacement: \Joomla\Component\Menus\Administrator\Helper\MenusHelper  
 
 ##### ModulesHelper
 
-File: administrator/components/com_modules/helpers/modules.php
-Replacement: \Joomla\Component\Modules\Administrator\Helper\ModulesHelper
+File: administrator/components/com_modules/helpers/modules.php  
+Replacement: \Joomla\Component\Modules\Administrator\Helper\ModulesHelper  
 
 ##### NewsfeedsHelper
 
-File: administrator/components/com_newsfeeds/helpers/newsfeeds.php
-Replacement: \Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper
+File: administrator/components/com_newsfeeds/helpers/newsfeeds.php  
+Replacement: \Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper  
 
 ##### PluginsHelper
 
-File: administrator/components/com_plugins/helpers/plugins.php
-Replacement: \Joomla\Component\Plugins\Administrator\Helper\PluginsHelper
+File: administrator/components/com_plugins/helpers/plugins.php  
+Replacement: \Joomla\Component\Plugins\Administrator\Helper\PluginsHelper  
 
 ##### RedirectHelper
 
-File: administrator/components/com_redirect/helpers/redirect.php
-Replacement: \Joomla\Component\Redirect\Administrator\Helper\RedirectHelper
+File: administrator/components/com_redirect/helpers/redirect.php  
+Replacement: \Joomla\Component\Redirect\Administrator\Helper\RedirectHelper  
 
 ##### TemplateHelper
 
-File: administrator/components/com_templates/helpers/template.php
-Replacement: \Joomla\Component\Templates\Administrator\Helper\TemplateHelper
+File: administrator/components/com_templates/helpers/template.php  
+Replacement: \Joomla\Component\Templates\Administrator\Helper\TemplateHelper  
 
 ##### TemplatesHelper
 
-File: administrator/components/com_templates/helpers/templates.php
-Replacement: \Joomla\Component\Templates\Administrator\Helper\TemplatesHelper
+File: administrator/components/com_templates/helpers/templates.php  
+Replacement: \Joomla\Component\Templates\Administrator\Helper\TemplatesHelper  
 
 ##### UsersHelperDebug
 
-File: administrator/components/com_users/helpers/debug.php
-Replacement: Joomla\Component\Users\Administrator\Helper\DebugHelper\UsersHelperDebug
+File: administrator/components/com_users/helpers/debug.php  
+Replacement: Joomla\Component\Users\Administrator\Helper\DebugHelper\UsersHelperDebug  
 
 ##### UsersHelper
 
-File: administrator/components/com_users/helpers/users.php
-Replacement: \Joomla\Component\Users\Administrator\Helper\UsersHelper
+File: administrator/components/com_users/helpers/users.php  
+Replacement: \Joomla\Component\Users\Administrator\Helper\UsersHelper  
 
 ##### ContactHelperRoute
 
-File: components/com_contact/helpers/route.php
-Replacement: Joomla\Component\Contact\Site\Helper\RouteHelper
+File: components/com_contact/helpers/route.php  
+Replacement: Joomla\Component\Contact\Site\Helper\RouteHelper  
 
 ##### FinderHelperRoute
 
-File: components/com_finder/helpers/route.php
-Replacement: Joomla\Component\Finder\Site\Helper\RouteHelper
+File: components/com_finder/helpers/route.php  
+Replacement: Joomla\Component\Finder\Site\Helper\RouteHelper  
 
 ##### NewsfeedsHelperRoute
 
-File: components/com_newsfeeds/helpers/route.php
-Replacement: Joomla\Component\Newsfeeds\Site\Helper\RouteHelper
+File: components/com_newsfeeds/helpers/route.php  
+Replacement: Joomla\Component\Newsfeeds\Site\Helper\RouteHelper  
 
 ##### TagsHelperRoute
 
-File: components/com_tags/helpers/route.php
-Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper
-
-##### 
-
-File: 
-Replacement: 
-
-##### 
-
-File: 
-Replacement: 
+File: components/com_tags/helpers/route.php  
+Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper  
