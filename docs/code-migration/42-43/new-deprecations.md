@@ -160,3 +160,27 @@ Replacement: Joomla\Component\Newsfeeds\Site\Helper\RouteHelper
 
 File: components/com_tags/helpers/route.php  
 Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper  
+
+# Method deprecations
+
+Planned to be removed in Joomla! 6.0
+
+##### ArticlesLatestHelper static getList(Registry $params, ArticlesModel $model)
+
+File: modules/mod_articles_latest/src/Helper/ArticlesLatestHelper.php
+Replacement: $this->getArticles(Registry $params, SiteApplication $app)
+Example:
+```php
+// Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
+$articles = $this->getHelperFactory()->getHelper('ArticlesLatestHelper')->getArticles($data['params'], $this->getApplication());
+```
+
+##### ArticlesNewsHelper static getList(Registry $params, ArticlesModel $model)
+
+File: modules/mod_articles_news/src/Helper/ArticlesNewsHelper.php
+Replacement: $this->getArticles(Registry $params, SiteApplication $app)
+Example:
+```php
+// Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
+$articles = $this->getHelperFactory()->getHelper('ArticlesNewsHelper')->getArticles($data['params'], $this->getApplication());
+```
