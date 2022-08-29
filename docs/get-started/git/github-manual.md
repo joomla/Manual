@@ -3,12 +3,6 @@ sidebar_position: 3
 title: "GitHub Example 1: This Manual"
 ---
 
-:::caution TODO
-
-This page is unfinished, but Cliff is working on it.
-
-:::
-
 ## Getting Started
 
 GitHub is a web site that offers repository hosting. Private repos are charged a commercial fee but public repos, such as Joomla, are hosted free of charge. As the name implies, GitHub is based on using Git for repo management. If you want to contribute to Joomla development you need a GitHub account. It only takes a few moments to create one so Give it a try: [GitHub](https://github.com/). You just need your email address to start. You could try it out by contributing content for this documentation.
@@ -104,16 +98,16 @@ If you would like to contribute to the Joomla Programmers Manual you need to pro
 
 In the terminal window, make sure you are in the root of your site, then:
 
-* git branch mypatch1
-* git checkout mypatch1
+* git branch ceffixgit
+* git checkout ceffixgit
 
-where mypatch1 should be some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose, for example `cffixgit`.
+where ceffixgit is some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose: `ceffixgit`.
 
 You may wish to list the branches in your repo:
 
 ```
 git branch --list
-* cefgit
+* ceffixgit
   main
 ```
 That is a reminder that the main branch is named `main` rather than `master`.
@@ -138,6 +132,7 @@ If it works without error you are ready to make a pull request.
 ### Commit and Push
 
 Easy with an IDE. In VSCode:
+- Select the Source Control icon at the left.
 - select the `+` button in the Changes list to commit the changes to the local repository. 
 - Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
 
@@ -157,3 +152,35 @@ http://pr-[prnumber].manual.joomlacode.org
 
 Where the `[prnumber]` can be obtained from the Pull Requests list (just a number - no brackets).
 
+### After commit
+
+If all seems in order, the team who maintain the documentation repo will **commit** your changes to become incorporated into the `main` branch of the original repo. At that point you can delete your branch. From the command line first switch to your local main branch:
+
+```
+git checkout main
+```
+
+If you have the folder you are working on open in an IDE you will notice that all of the changes you made will seem to have disappeared. That is because git has replaced the source code stored in the previous branch with the source code stored in the main branch.
+
+You can delete the branch that has been committed now or you can leave it until later. Don't make any more changes to it!
+
+```
+git branch --delete ceffixgit
+```
+
+## Keeping up to date
+
+Tomorrow, next week, next month, you may want to contribute some more documentation. But in the meantime the original `main` branch of the documentation may have changed with contributions from others. Those contributions may even have changed your last contribution. So before starting anything new you need to bring your local copy of the original repo up to date. 
+
+First go to your GitHub account and open your fork of this Manual: username/Manual. Then click the `Sync fork` button. That should bring your fork up to date.
+
+Then in your terminal window, change to the folder containing your local clone of your remote fork and issue the git pull command:
+
+ ```
+ cd ~/Sites/Manual
+ git pull
+ ```
+
+ That is exactly the same as **Bringing up to date** above.
+
+ You are now ready for your next contribution, for which you need a new branch.
