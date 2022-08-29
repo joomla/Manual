@@ -133,7 +133,9 @@ If it works without error you are ready to make a pull request.
 
 Easy with an IDE. In VSCode:
 - Select the Source Control icon at the left.
-- select the `+` button in the Changes list to commit the changes to the local repository. 
+- Add a Commit message: a very brief statement of what changed in this commit.
+- Either select the `+` button in the Changes list to stage the changes.
+- Or select the `Commit` button to commit the changes to the local repository. 
 - Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
 
 ### Make a Pull Request
