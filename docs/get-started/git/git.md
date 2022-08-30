@@ -18,5 +18,6 @@ The following articles are from docs.joomla.org:
 - [Working with git and github](https://docs.joomla.org/Working_with_git_and_github)
 - [Git for Testers and Trackers](https://docs.joomla.org/Git_for_Testers_and_Trackers)
 - [Setting up Eclipse PDT 2020 and Git for Pulls](https://docs.joomla.org/Setting_up_Eclipse_PDT_2020_and_Git_for_Pulls)
+- [My first pull request to Joomla! on Github](https://docs.joomla.org/My_first_pull_request_to_Joomla!_on_Github)
 
-They may be deleted when the new documentation is considered *mature*.
+These references may be deleted when the new documentation is considered *mature*.
