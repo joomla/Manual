@@ -54,7 +54,7 @@ If you want to address different views of your component, expand the menuy by a 
 	</params>
 </menu>
 <submenu>
-	<menu link="option=com_weblinks" view="links"
+	<menu link="option=com_example" view="examples"
 		alt="10 good examples">COM_EXAMPLE_EXAMPLES</menu>
 	<menu link="option=com_categories&amp;extension=com_example"
 		view="categories" alt="Example Categories">COM_EXAMPLE_CATEGORIES</menu>
@@ -63,26 +63,9 @@ If you want to address different views of your component, expand the menuy by a 
 </submenu>
 ```
 
- # Quicktask Icon 
-
-You can add a quicktask icon (+) to your submenu item, enabling your users to add an items with a single click. T achieve this, add your submenu items params fot the quicktask link.
-Note: all & must be escaped to &amp; for the file to be valid XML and be parsed by the installer
-
-``` HTMLx title="Quicktask icon"
-<submenu>
-	<menu link="option=com_example&amp;view=examples">
-		COM_EXAMPLE_MENU_EXAMPLE
-		<params>
-			<menu-quicktask-title>>COM_EXAMPLE_QUICKTASK_TITLE</menu-quicktask-title>
-			<menu-quicktask>index.php?option=com_example&amp;view=example&amp;layout=edit</menu-quicktask>
-		</params>
-	</menu>
-</submenu>`
-```
-
 # Submenu Module on your Dashboard
 
-Your dashboard is empty now and waits for modules to be filled in. If you want to add your submenu, you have to
+Your dashboard is empty and waits for modules to be filled in. If you want to add your submenu, you have to
 - add a folder presets to your component
 - write a preset for your module
 - add the presets folder to your .xml file
@@ -112,8 +95,6 @@ In a folder 'presets' write a preset file, name it example.php.
 			type="component"
 			element="com_example"
 			link="index.php?option=com_example&amp;view=examples"
-			quicktask="index.php?option=com_example&amp;task=examplet.add"
-			quicktask-title="COM_WICKEDEVENT_MENUS_NEW_EVENT"
 		/>
 
 		<menuitem
