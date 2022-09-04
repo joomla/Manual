@@ -1,7 +1,7 @@
 It is common usage to insert a link into the component menu for direct access to your own component.
 This is done in the manifest file: 
 
-```HTMLx title="Menu item Component in example.xml "
+```xml title="Menu item Component in example.xml "
     <administration>
 	    <menu>COM_EXAMPLE</menu>
 	
