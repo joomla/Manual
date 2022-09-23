@@ -23,7 +23,7 @@ That will make a complete copy of the joomla-cms repo as it exists at this time 
 
 ## Clone your Github fork locally
 
-The local Apache web server uses a specific folder for individual web sites. For example, on a Mac it may be /Users/username/Sites. You may have many sites for testing and developing different projects, each in a separate subfolder. The clone process will createe a folder within your current folder so first open a terminal window and switch to your sites folder:
+The local Apache web server uses a specific folder for individual web sites. For example, on a Mac it may be /Users/username/Sites. You may have many sites for testing and developing different projects, each in a separate subfolder. The clone process will create a folder within your current folder so first open a terminal window and switch to your sites folder:
 
 ```
 cd ~/Sites
