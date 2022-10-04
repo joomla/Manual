@@ -27,7 +27,9 @@ First we define some variables that we use in all our cURL requests:
 // Before passing the HTTP METHOD to CURL
 $curl  = curl_init();
 $url   = 'http://example.com/api/index.php/v1';
-$token = 'abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz1234567890abcdefghijklmnopqrstuvwxyz12';
+
+//Mitigate leaking api key by using environment variables retrieved using $_SERVER["X_JOOMLA_TOKEN"] superglobal in cli SAPI.
+$token = $_SERVER["X_JOOMLA_TOKEN"] ?? ''; // if token is not set assign it empty string
 ```
 
 ### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
@@ -36,11 +38,11 @@ $categoryId = 2; // Joomla's default "Uncategorized" Category
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles',
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING       => '',
+		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
-		CURLOPT_TIMEOUT        => 0,
+		CURLOPT_TIMEOUT        => 30,
 		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'POST',
 		CURLOPT_POSTFIELDS     => [
 			'id'          => 0,
@@ -52,8 +54,9 @@ curl_setopt_array($curl, [
 			'metakey'     => '',
 		],
 		CURLOPT_HTTPHEADER     => [
+			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
-			'Authorization: Bearer ' . $token
+			sprintf('X-Joomla-Token: %s', trim($token)),
 		],
 	]
 );
@@ -69,15 +72,16 @@ $categoryId = 2; // Joomla's default "Uncategorized" Category
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles?filter[category_id]=' . $categoryId,
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING       => '',
+		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
-		CURLOPT_TIMEOUT        => 0,
+		CURLOPT_TIMEOUT        => 30,
 		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'GET',
 		CURLOPT_HTTPHEADER     => [
+			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
-			'Authorization: Bearer ' . $token
+			sprintf('X-Joomla-Token: %s', trim($token)),
 		],
 	]
 );
@@ -93,15 +97,16 @@ $articleId = 1; // The Article ID of a specific Article
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles/' . $articleId,
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING       => '',
+		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
-		CURLOPT_TIMEOUT        => 0,
+		CURLOPT_TIMEOUT        => 30,
 		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'GET',
 		CURLOPT_HTTPHEADER     => [
+			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
-			'Authorization: Bearer ' . $token
+			sprintf('X-Joomla-Token: %s', trim($token)),
 		],
 	]
 );
@@ -117,11 +122,11 @@ $articleId = 1; // The Article ID of a specific Article
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles/' . $articleId,
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING       => '',
+		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
-		CURLOPT_TIMEOUT        => 0,
+		CURLOPT_TIMEOUT        => 30,
 		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'PATCH',
 		CURLOPT_POSTFIELDS     => [
 			'id'          => $articleId,
@@ -129,9 +134,10 @@ curl_setopt_array($curl, [
 			'articletext' => 'Use the HTTP POST method at the /content/articles endpoint.'
 		],
 		CURLOPT_HTTPHEADER     => [
+			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
-			'Authorization: Bearer ' . $token
-		]
+			sprintf('X-Joomla-Token: %s', trim($token)),
+		],
 	]
 );
 
@@ -146,16 +152,17 @@ $articleId = 1; // The Article ID of a specific Article
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles/' . $articleId,
 		CURLOPT_RETURNTRANSFER => true,
-		CURLOPT_ENCODING       => '',
+		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
-		CURLOPT_TIMEOUT        => 0,
+		CURLOPT_TIMEOUT        => 30,
 		CURLOPT_FOLLOWLOCATION => true,
-		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_1_1,
+		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'DELETE',
 		CURLOPT_HTTPHEADER     => [
+			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
-			'Authorization: Bearer ' . $token
-		]
+			sprintf('X-Joomla-Token: %s', trim($token)),
+		],
 	]
 );
 
