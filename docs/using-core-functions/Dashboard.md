@@ -37,7 +37,7 @@ Joomla provides now a dashboard for your component. You can add modules here usi
 
 Give your dashboard a name and an icon. Add this to your manifest file:
 
-```HTMLx title="Dashpoard title and icon"
+```xml title="Dashpoard title and icon"
     <dashboards>
 		<dashboard title="COM_EXAMPLE" icon="icon-calendar">COM_EXAMPLE_DASHBOARD_NAME</dashboard>
 	</dashboards>
