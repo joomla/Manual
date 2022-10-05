@@ -3,7 +3,7 @@ Quicktask Link and Icon
 
 In general, a component has has one or more links to its views.They are defined in the manifest file and is added int othe menu during installation.
 
-```HTMLx title="A link to your component "
+```xml title="A link to your component "
 <administration>
 	<menu img="class:calendar">
 		COM_EXAMPLE
