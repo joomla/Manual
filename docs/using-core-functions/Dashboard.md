@@ -110,7 +110,7 @@ In a folder 'presets' write a preset file, name it example.php.
 
 ## Manifest file
 
-``` HTMLx title="New folder in example.xml
+```xml title="New folder in example.xml
 	<administration>
 
     [..]
