@@ -35,6 +35,19 @@ $token = $_SERVER["X_JOOMLA_TOKEN"] ?? ''; // if token is not set assign it empt
 ### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
+
+$data = [
+'title'       => 'How to add an article to Joomla via the API?',
+'alias'       => 'how-to-add-article-via-joomla-api',
+'articletext' => 'I have no idea...',
+'catid'       => $categoryId,
+'language'    => '*',
+'metadesc'    => '',
+'metakey'     => '',
+];
+
+$dataString = json_encode($data);
+
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles',
 		CURLOPT_RETURNTRANSFER => true,
@@ -44,18 +57,11 @@ curl_setopt_array($curl, [
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'POST',
-		CURLOPT_POSTFIELDS     => [
-			'id'          => 0,
-			'title'       => 'How to add an article to Joomla via the API?',
-			'articletext' => 'I have no idea...',
-			'catid'       => $categoryId,
-			'language'    => '*',
-			'metadesc'    => '',
-			'metakey'     => '',
-		],
+		CURLOPT_POSTFIELDS     => $dataString,
 		CURLOPT_HTTPHEADER     => [
 			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
+			'Content-Length: ' . mb_strlen($dataString),
 			sprintf('X-Joomla-Token: %s', trim($token)),
 		],
 	]
@@ -119,6 +125,15 @@ echo $response;
 ### PATCH - Modify a specific Article
 ```php
 $articleId = 1; // The Article ID of a specific Article
+
+$data = [
+'id'          => $articleId,
+'title'       => 'How to add an article via the Joomla 4 API?',
+'articletext' => 'Use the HTTP POST method at the /content/articles endpoint.',
+];
+
+$dataString = json_encode($data);
+
 curl_setopt_array($curl, [
 		CURLOPT_URL            => $url . '/content/articles/' . $articleId,
 		CURLOPT_RETURNTRANSFER => true,
@@ -128,14 +143,11 @@ curl_setopt_array($curl, [
 		CURLOPT_FOLLOWLOCATION => true,
 		CURLOPT_HTTP_VERSION   => CURL_HTTP_VERSION_2TLS,
 		CURLOPT_CUSTOMREQUEST  => 'PATCH',
-		CURLOPT_POSTFIELDS     => [
-			'id'          => $articleId,
-			'title'       => 'How to add an article via the Joomla 4 API?',
-			'articletext' => 'Use the HTTP POST method at the /content/articles endpoint.'
-		],
+		CURLOPT_POSTFIELDS     => $dataString,
 		CURLOPT_HTTPHEADER     => [
 			'Accept: application/vnd.api+json',
 			'Content-Type: application/json',
+			'Content-Length: ' . mb_strlen($dataString),
 			sprintf('X-Joomla-Token: %s', trim($token)),
 		],
 	]
