@@ -32,6 +32,9 @@ $url   = 'https://example.org/api/index.php/v1';
 $uri  = new Uri($url);
 
 // Put your Joomla! Api token in a safe place, for example a password manager or a vault storing secrets
+// We should not use environment variables to store secrets. 
+// Here is why: https://www.trendmicro.com/en_us/research/22/h/analyzing-hidden-danger-of-environment-variables-for-keeping-secrets.html
+
 $token = '';
 ```
 
@@ -209,6 +212,8 @@ $curl  = curl_init();
 $url   = 'https://example.org/api/index.php/v1';
 
 // Put your Joomla! Api token in a safe place, for example a password manager or a vault storing secrets
+// We should not use environment variables to store secrets. 
+// Here is why: https://www.trendmicro.com/en_us/research/22/h/analyzing-hidden-danger-of-environment-variables-for-keeping-secrets.html
 $token = '';
 ```
 
