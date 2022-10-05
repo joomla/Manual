@@ -20,7 +20,7 @@ Your menu link is added in the manfest file during installation.
 
 A quicktask link and icon are added as params to a menu item.
 
-``` HTMLx title="Qicktask Link and icon"
+```xml title="Qicktask Link and icon"
 	<menu link="option=com_example&amp;view=examples">
 		COM_EXAMPLE_MENU_EXAMPLE
 		<params>
