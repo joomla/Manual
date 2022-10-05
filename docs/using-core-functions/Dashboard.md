@@ -19,7 +19,7 @@ The param < dashboard >
 - The dashboard icon will click through to display modules assigned to the cpanel-example administrator module position
 - The title and icon defined in the XML file will be used as the header and icon at the top of the component's dashboard page.
 
-```HTMLx title="Dashboard Link "
+```xml title="Dashboard Link "
 <administration>
 	<menu img="class:calendar">
 		COM_EXAMPLE
