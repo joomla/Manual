@@ -76,7 +76,7 @@ echo $response;
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
 curl_setopt_array($curl, [
-		CURLOPT_URL            => $url . '/content/articles?filter[category_id]=' . $categoryId,
+		CURLOPT_URL            => $url . '/content/articles?filter[category]=' . $categoryId,
 		CURLOPT_RETURNTRANSFER => true,
 		CURLOPT_ENCODING       => 'utf-8',
 		CURLOPT_MAXREDIRS      => 10,
