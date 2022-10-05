@@ -77,7 +77,7 @@ Presets are already used in the core, see examples the component com_menu.
 
 In a folder 'presets' write a preset file, name it example.php. 
 
-``` HTMLx title="presets/example.xml"
+```xml title="presets/example.xml"
 <?xml version="1.0"?>
 <menu
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
