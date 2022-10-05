@@ -35,7 +35,7 @@ A quicktask link and icon are added as params to a menu item.
 
 This example shows a complete menu with dashboard, submenu and a quicktask.
 
-```
+```xml
 		<menu img="class:calendar">
 			COM_EXAMPLE
 			<params>
