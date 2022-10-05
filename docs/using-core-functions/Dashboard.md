@@ -136,7 +136,7 @@ We suppose here that you have a install script in your component. If not, please
 
 You add your preset in the dashboard of your component with a single line of code during installation: 
 
-``` HTMLx title="installation script"
+```xml title="installation script"
     // Add menu module to dashboard 
     $this->addDashboardMenu('example', 'example');
 ```
