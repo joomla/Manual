@@ -1,4 +1,4 @@
-# Useridefined Hide Table Columns
+# User-defined Hide Table Columns
 All the core components have a button that lets the user decide which columns of a table to display.
 
 ## Adding Hide Table Columns to your component
@@ -17,7 +17,6 @@ Note the line ending. Your final code will look similar to this example
 $wa = $this->document->getWebAssetManager();
 $wa->useScript('table.columns')
     ->useScript('multiselect');```
-
 
 ### Not using WebAssetManager (yet)
 Add the following code anywhere in the php block at the top of your `tmpl` file.
