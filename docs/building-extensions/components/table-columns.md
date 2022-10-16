@@ -6,23 +6,34 @@ Adding this functionality to your own component is very simple and is usually a 
 
 ### Check if you are you using WebAssetManager
 Look for this line of code in the php block at the top of your `tmpl` file.
-```$wa = $this->document->getWebAssetManager();```
+```
+$wa = $this->document->getWebAssetManager();
+```
 
 ### Already using WebAssetManager
 Add the following line to your existing code.
-```useScript('table.columns')```
+
+```
+useScript('table.columns')
+```
 
 Note the line ending. Your final code will look similar to this example
-```/** @var \Joomla\CMS\WebAsset\WebAssetManager $wa */
+
+```
+/** @var \Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = $this->document->getWebAssetManager();
 $wa->useScript('table.columns')
-    ->useScript('multiselect');```
+    ->useScript('multiselect');
+```
 
 ### Not using WebAssetManager (yet)
 Add the following code anywhere in the php block at the top of your `tmpl` file.
-```/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+
+```
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = $this->document->getWebAssetManager();
-$wa->useScript('table.columns');```
+$wa->useScript('table.columns');
+```
 
 ### Note
 Your table will need to be a valid html table with a `<thead>` and each column a `<th>`.
