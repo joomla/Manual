@@ -184,3 +184,38 @@ Example:
 // Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
 $articles = $this->getHelperFactory()->getHelper('ArticlesNewsHelper')->getArticles($data['params'], $this->getApplication());
 ```
+
+#### CMSObject legacy traits
+
+File: libraries/src/Object/CMSObject.php
+Replacement: The CMSObject should be replaced by stdclass or \Joomla\Registry\Registry
+Example:
+```php
+$data = new \stdClass();
+// Or
+$data = (object) ['foo' => 1, 'bar' => 2];
+```
+
+File: libraries/src/Object/LegacyErrorHandlingTrait.php
+Replacement: The `setError` and `getError` functions should not be used anymore and an exception should be thrown.
+Example:
+```php
+throw new \Exception(...);
+```
+
+File: libraries/src/Object/LegacyPropertyManagementTrait.php
+Replacement: Dynamic properties should not be used anymore in regard to the deprecated [dynamic properties change in PHP 8.2](https://wiki.php.net/rfc/deprecate_dynamic_properties). Properties should be declared in the class and proper getter and setters be used.
+Example:
+```php
+class MyDataObject {
+    private $foo;
+    
+    public function getFoo() {
+        return $foo;
+    }
+    
+    public function setFoo($foo) {
+        $this->foo = $foo;
+    }
+}
+```
