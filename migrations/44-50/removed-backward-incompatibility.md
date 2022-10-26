@@ -24,3 +24,6 @@ class MyModel extends ListModel {
   }
 }
 ```
+
+### CSS removals
+The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
