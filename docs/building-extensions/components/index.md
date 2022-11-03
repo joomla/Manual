@@ -1,11 +1,10 @@
----
-sidebar_position: 5
----
-Building Extensions
-===================
-This is the content for tutorials how to build extensions
+Components
+============
+This is the content for Component Development
 :::caution TODO
 
 This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
 :::
+
+
