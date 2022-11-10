@@ -57,6 +57,9 @@ Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
 * components/com_tags/helpers/route.php
 
 
+* libraries/src/Image/Image.php
+
+
 # Class deprecations
 
 Planned to be removed in Joomla! 6.0
@@ -183,4 +186,19 @@ Example:
 ```php
 // Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
 $articles = $this->getHelperFactory()->getHelper('ArticlesNewsHelper')->getArticles($data['params'], $this->getApplication());
+```
+
+##### Image createThumbs($thumbSizes, $creationMethod = self::SCALE_INSIDE, $thumbsFolder = null)
+
+File: libraries/src/Image/Image.php
+Replacement: createThumbnails($thumbSizes, $creationMethod = self::SCALE_INSIDE, $thumbsFolder = null, $useOriginalName = false)
+Example:
+```php
+// when $useOriginalName is set to false, the filename follows the format {filename}_{width}x{height}.{ext}
+$image = new Image($path);
+try {
+    $image->createThumbnails([$width . 'x' . $height], $image::SCALE_INSIDE, null, true);
+} catch (\Exception $e) {
+    return false;
+}
 ```
