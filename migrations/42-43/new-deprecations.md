@@ -56,6 +56,12 @@ Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
 * components/com_newsfeeds/helpers/route.php
 * components/com_tags/helpers/route.php
 
+# Classes made final
+
+##### \Joomla\CMS\Log\DelegatingPsrLogger
+File: libraries/src/Log/DelegatingPsrLogger.php
+
+Class becomes final and marked internal, therefore it cannot be overridden ([reasoning](https://github.com/joomla/joomla-cms/pull/39134#issuecomment-1316841537)).
 
 # Class deprecations
 
