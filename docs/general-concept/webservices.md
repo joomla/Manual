@@ -140,7 +140,8 @@ $articleId = 1; // The Article ID of a specific Article
 $data = [
 'id'          => $articleId,
 'title'       => 'How to add an article via the Joomla 4 API?',
-'articletext' => 'Use the HTTP POST method at the /content/articles endpoint.',
+'introtext' => 'When using PATCH, articletext MUST be splitted in two parts or use at least just introtext in order to work properly',
+'fulltext' => 'MORE CONTENT if you wish',
 ];
 
 $dataString = json_encode($data);
@@ -324,7 +325,8 @@ $articleId = 1; // The Article ID of a specific Article
 $data = [
 'id'          => $articleId,
 'title'       => 'How to add an article via the Joomla 4 API?',
-'articletext' => 'Use the HTTP POST method at the /content/articles endpoint.',
+'introtext' => 'When using PATCH, articletext MUST be splitted in two parts or use at least just introtext in order to work properly',
+'fulltext' => 'MORE CONTENT if you wish',
 ];
 
 $dataString = json_encode($data);
