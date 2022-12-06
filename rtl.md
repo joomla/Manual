@@ -25,6 +25,6 @@ In this situation you can use the same tool as Joomla to convert the css for you
 
 ## Further Information
 1. [RTLCSS](https://rtlcss.com/) - Framework for converting Left-To-Right (LTR) Cascading Style Sheets(CSS) to Right-To-Left (RTL)
-2.[RTL Styling 101](https://rtlstyling.com/) - An extensive guide on how to style for RTL in CSS
+2. [RTL Styling 101](https://rtlstyling.com/) - An extensive guide on how to style for RTL in CSS
 
 
