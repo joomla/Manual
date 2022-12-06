@@ -11,7 +11,7 @@ Any changes in best practice.
 Support Namespace for Templates
 -------------------------------
 
-Starting with Joomla! 4.3 it's possible to set a namespace for the tempalte. This
+Starting with Joomla! 4.3 it's possible to set a namespace for the template. This
 namespace is used for autoloading helper classes located in the folder provided
 in the path attribute of the manifest xml file.
 
