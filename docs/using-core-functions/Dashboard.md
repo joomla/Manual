@@ -11,10 +11,10 @@ This is done in the manifest file:
 Add a dashboard to your component:
 ==================================
 
-A parameter < dashboard > expands the menu entry with link to a dashboard for your component. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name. 
+A parameter <dashboard> expands the menu entry with link to a dashboard for your component. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name. 
 my-example or example are correct, my_example, Com-MY_EXAMPLE are wrong.
 
-The param < dashboard > 
+The param <dashboard> 
 - will make a dashboard icon appear next to the administrator menu item for the component
 - The dashboard icon will click through to display modules assigned to the cpanel-example administrator module position
 - The title and icon defined in the XML file will be used as the header and icon at the top of the component's dashboard page.
