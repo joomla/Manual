@@ -1,3 +1,5 @@
+Dashboard
+=======================
 It is common usage to insert a link into the component menu for direct access to your own component.
 This is done in the manifest file: 
 
@@ -11,7 +13,7 @@ This is done in the manifest file:
 Add a dashboard to your component:
 ==================================
 
-A parameter < dashboard > expands the menu entry with link to a dashboard for your component. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name. 
+A parameter < dashboard > expands the menu entry with link to a dashboard for your component. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name.
 my-example or example are correct, my_example, Com-MY_EXAMPLE are wrong.
 
 The param < dashboard > 

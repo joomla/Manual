@@ -1,3 +1,6 @@
+Hide Table Columns
+=======================
+
 # User-defined Hide Table Columns
 All the core components have a button that lets the user decide which columns of a table to display.
 
