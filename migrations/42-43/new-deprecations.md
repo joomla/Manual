@@ -167,6 +167,12 @@ Replacement: Joomla\Component\Newsfeeds\Site\Helper\RouteHelper
 File: components/com_tags/helpers/route.php  
 Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper  
 
+
+# Language strings
+
+File: administrator/language/en-GB/com_users.ini  
+Strings: COM_USERS_MAIL_PLEASE_FILL_IN_THE_FORM_CORRECTLY, COM_USERS_MAIL_PLEASE_FILL_IN_THE_MESSAGE, COM_USERS_MAIL_PLEASE_FILL_IN_THE_SUBJECT, COM_USERS_MAIL_PLEASE_SELECT_A_GROUP
+
 # Method deprecations
 
 Planned to be removed in Joomla! 6.0
