@@ -18,7 +18,7 @@ In 6.0 `Joomla\CMS\Extension\PluginInterface` will no longer extend `Joomla\Even
 In 6.0 passing an instance of `Joomla\Event\DispatcherInterface` as first argument to `Joomla\CMS\Plugin\CMSPlugin::__construct()` will not be supported. An instance of `Joomla\Event\DispatcherInterface` must be passed to `Joomla\CMS\Plugin\CMSPlugin::registerListeners()` instead.
 
 ### Joomla\CMS\Plugin\CMSPlugin::registerLegacyListener() and Joomla\CMS\Plugin\CMSPlugin::registerListeners() deprecated
-`Joomla\CMS\Plugin\CMSPlugin::registerLegacyListener()` and `Joomla\CMS\Plugin\CMSPlugin::registerListener()` methods are deprecated and will be removed in 6.0.
+`Joomla\CMS\Plugin\CMSPlugin::registerLegacyListener()` and `Joomla\CMS\Plugin\CMSPlugin::registerListener()` methods are deprecated and will be removed in 6.0. Listeners must be registered with the event dispatcher in the `registerListeners()` method.
 
 ### Joomla\CMS\Plugin\PluginHelper::importPlugin() signature change
 In 6.0 fourth argument of `Joomla\CMS\Plugin\PluginHelper::importPlugin()` will no longer be optional and will require an instance of `Joomla\Event\DispatcherInterface`. Therefore, preceeding arguments will become mandatory. Method calls must be updated accordingly, for example:
