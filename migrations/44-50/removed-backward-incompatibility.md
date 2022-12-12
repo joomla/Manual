@@ -37,3 +37,19 @@ class MyModel extends ListModel {
 
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
+
+### Joomla\CMS\Extension\PluginInterface::registerListeners() signature change
+`Joomla\CMS\Extension\PluginInterface::registerListeners()` method signature has been changed to accept an instance of `Joomla\Event\DispatcherInterface`. The argument is made optional to allow plugin developers easily support both 4.0 and 5.0. It will become mandatory in 6.0.
+
+The signature in implementations must be changed accordingly:
+```php
+class MyPlugin implements \Joomla\CMS\Extension\PluginInterface
+{
+  public function registerListeners(?\Joomla\Event\DispatcherInterface $dispatcher = null)
+  {
+    // Register listeners with the event dispatcher.
+  }
+}
+```
+### Joomla\CMS\Plugin\PluginHelper::import() arguments no longer optional
+`Joomla\CMS\Plugin\PluginHelper::import()` arguments are now mandatory. Third argument is no longer nullable and requires an instance of `Joomla\Event\DispatcherInterface`.
