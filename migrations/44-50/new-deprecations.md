@@ -21,8 +21,11 @@ In 6.0 passing an instance of `Joomla\Event\DispatcherInterface` as the first ar
 `Joomla\CMS\Plugin\CMSPlugin::registerLegacyListener()` and `Joomla\CMS\Plugin\CMSPlugin::registerListener()` methods are deprecated and will be removed in 6.0. Listeners must be registered with the event dispatcher in the `registerListeners()` method.
 
 ### Joomla\CMS\Plugin\PluginHelper::importPlugin() signature change
-In 6.0 the fourth argument of `Joomla\CMS\Plugin\PluginHelper::importPlugin()` will no longer be optional and will require an instance of `Joomla\Event\DispatcherInterface`. Therefore, preceeding arguments will become mandatory. Method calls must be updated accordingly, for example:
+In 6.0 the fourth argument of `Joomla\CMS\Plugin\PluginHelper::importPlugin()` will no longer be optional and will require an instance of `Joomla\Event\DispatcherInterface`. Therefore, preceding arguments will become mandatory. Method calls must be updated accordingly, for example:
 
 ```php
 Joomla\CMS\Plugin\PluginHelper::importPlugin('system', null, true, $dispatcher);
 ```
+
+### Joomla\CMS\Plugin\PluginHelper::import() signature change
+In 6.0 the third argument of `Joomla\CMS\Plugin\PluginHelper::import()` will not longer be optional and will require an instance of `Joomla\Event\DispatcherInterface`. Therefore, preceding arguments will become mandatory.

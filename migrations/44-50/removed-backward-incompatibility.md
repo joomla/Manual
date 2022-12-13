@@ -51,5 +51,3 @@ class MyPlugin implements \Joomla\CMS\Extension\PluginInterface
   }
 }
 ```
-### Joomla\CMS\Plugin\PluginHelper::import() arguments no longer optional
-`Joomla\CMS\Plugin\PluginHelper::import()` arguments are now mandatory. The third argument is no longer nullable and requires an instance of `Joomla\Event\DispatcherInterface`.
