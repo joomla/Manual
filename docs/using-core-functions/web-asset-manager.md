@@ -35,7 +35,7 @@ This has a structure of having a schema definition (for validation), name, versi
       "uri": "com_example/beer.css",
       "dependencies": [
         "bar"
-      ],
+      ]
     },
     {
       "name": "beer",
