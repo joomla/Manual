@@ -1,7 +1,7 @@
 Quicktask Link and Icon
 =======================
 
-In general, a component has has one or more links to its views.They are defined in the manifest file and is added int othe menu during installation.
+In general, a component has has one or more links to its views.They are defined in the manifest file and is added into the menu during installation.
 
 ```xml title="A link to your component "
 <administration>
@@ -12,7 +12,7 @@ In general, a component has has one or more links to its views.They are defined 
 	[..]
 </administration>
 ```
-Sometimes it is useful to add so called <strong>quicktask link</strong> which enables an action calling fromthe menuy without first visiting the Overview.
+Sometimes it is useful to add so called <strong>quicktask link</strong> which enables an action calling from the menu without first visiting the Overview.
 You can see this for Joomla core components, for example articles in com_content, here the quicktask is the plus icon and lets you add a new article in a single click.
 Your menu link is added in the manfest file during installation.
 
