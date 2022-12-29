@@ -54,6 +54,9 @@ to be continued
 * administrator/components/com_plugins/src/Model/PluginModel.php
 * administrator/components/com_templates/src/Model/StyleModel.php
 
+##### Return Types
+All return types have been updated to match the PHP 8.1 return type signatures added. This address any class utilising the ArrayAccess interface, the Datetime interface and the JsonSerializable interface. If you extend from any of the affected classes and require compatibility with both Joomla 4.x and 5.x you should add the `#[\ReturnTypeWillChange]` annotation to your code.
+
 
 :::caution TODO
 
