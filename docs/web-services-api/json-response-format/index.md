@@ -57,19 +57,6 @@ class PlgWebservicesVapi extends CMSPlugin
     }
 
     /**
-     *
-     * @param \Joomla\CMS\Application\ApiApplication $app
-     *
-     * TODO: Delete this method after merged https://github.com/joomla/joomla-cms/pull/39498
-     */
-    public function onAfterApiRoute($app): void
-    {
-        if ($app->input->getCmd('option') === 'com_vapi') {
-            $app->input->set('format', 'json');
-        }
-    }
-
-    /**
      * Creates routes map for CRUD
      *
      * @param   ApiRouter   &$router        The API Routing object
@@ -123,8 +110,6 @@ Let hightlight some things you should kown about this plugin:
         -   `'component'  => 'com_vapi'` The associated component
         -   `'public' => $publicGets` Need be true if you have a route that you want it to be accessible by unauthenticated users, like how we did. False otherwise.
         -   `'format' => ['application/json']` Here is where is defined that our application will handle a json format response. Without this, Joomla will use the default JSON-API.
-
--   **onAfterApiRoute method:** Soon you will not need this method. All the information of why we using it, is in the link [Improve option handling and fix format handling in the API](https://github.com/joomla/joomla-cms/pull/39498)
 
 Before jump to our component code, remember the plugin need have the **vapi.xml** manifest file. Will be a standar manifest, nothing new to add. You can follow any manifest inside the webservices plugins group.
 
