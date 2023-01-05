@@ -202,6 +202,8 @@ class ModuleController extends \Joomla\CMS\MVC\Controller\BaseController
 
 Notice the namespace of the controller. You can change it for your own custom namespace your component already have. You should change **Vapi** who is the name I using in this component, and the prefix **Carlitorweb**, the rest _by conventions_ is better let it as that (but you can change all to fit your needs).
 
+Also, the JSON-API from the Joomla core extends the controllers from `Joomla\CMS\MVC\Controller\ApiController`. The need in our case is get a JSON response, and for that extends from `\Joomla\CMS\MVC\Controller\BaseController`.
+
 We also declared 2 propeties, one will be used for tell Joomla the view file we expect to use and the other is for set the module params for model the data we will send in the API response.
 
 Now let see the methods who will be involve in the class:
@@ -753,6 +755,8 @@ class JsonView extends BaseJsonView
     }
 }
 ```
+
+-   `JsonView`: This is important. The name need be as this, since Joomla will look for this class name. Also, the Joomla core JSON-API extends the view from `Joomla\CMS\MVC\View\JsonApiView`, as the goal of this tutorial is get a JSON response, need be from `\Joomla\CMS\MVC\View\JsonView`.
 
 -   `setOutput()`: Using the `$this->getModel()` method we get access to the models we set in the controller, one by default and another where is needed the name as key reference in the \Joomla\CMS\MVC\View\AbstractView::\_models array.
 
