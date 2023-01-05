@@ -13,7 +13,7 @@ Joomla by default will return a [JSON API](https://jsonapi.org/) Responses when 
 -   How create a extension.
     This tutorial assumes that you know how to create an extension in Joomla 4. _Keep in mind that at least a plugin and a component are necessary. But do not worry, this component can be very basic, in fact, it will not even need have any Model, it only required that the dashboard view in the administration works correctly_. This will be enough for your API to work.
 
-![Basic Component Dashboard View](/img/web-services-api/json-response/basic_dashboard_view.png 'Component Dashboard View')
+![Basic Component Dashboard View](./assets/basic_dashboard_view.png 'Component Dashboard View')
 
 The necessity for a basic backend part comes from the fact that the XML manifest, the configuration (config.xml) and the permissions (access.xml) files are present only in the backend directory of the component. The XML manifest is necessary for a component to be able to be installed, updated and uninstalled. Moreover, Joomla always creates a backend menu item for the component, meaning that the component must have a backend part with a default view even if it's just to display a message that there is nothing to do with this component in the backend.
 
@@ -417,30 +417,30 @@ Let see if the controller propertie $moduleParams is getting the expected result
 
 Again, using your favorite API client, make a request to the route [yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/{id of your module}. You will see something like this:
 
-```log
+```json
 object(Joomla\Registry\Registry)#938 (3) {
-["data":protected]=>
-object(stdClass)#1090 (44) {
-["mode"]=>
-string(6) "normal"
-["show_on_article_page"]=>
-int(1)
-["count"]=>
-int(0)
-["show_front"]=>
-string(4) "only"
-["category_filtering_type"]=>
-int(1)
-["catid"]=>
-array(5) {
-[0]=>
-int(2)
-[1]=>
-int(8)
-[2]=>
-int(9)
-[3]=>
-int(10)
+    ["data":protected]=>
+        object(stdClass)#1090 (44) {
+            ["mode"]=>
+                string(6) "normal"
+            ["show_on_article_page"]=>
+                int(1)
+            ["count"]=>
+                int(0)
+            ["show_front"]=>
+                string(4) "only"
+            ["category_filtering_type"]=>
+                int(1)
+            ["catid"]=>
+                array(5) {
+                    [0]=>
+                        int(2)
+                    [1]=>
+                        int(8)
+                    [2]=>
+                        int(9)
+                    [3]=>
+                        int(10)
 .....
 ```
 
