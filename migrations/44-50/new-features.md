@@ -2,7 +2,8 @@
 sidebar_position: 1
 ---
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.New features
+New features
+
 ===============
 All the new features that have been added to this version.
 Any changes in best practice.
