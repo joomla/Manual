@@ -1,0 +1,73 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+<TabItem value="http" label="HTTP">
+
+```bash title="Get Single Banner"
+  GET /api/v1/banners/{banner_id} HTTP/1.1
+  Authorization: Bearer {api_key}
+  Host: www.mysite.com
+```
+
+</TabItem>
+<TabItem value="php" label="PHP (Joomla Framework)">
+
+```php title="Get Single Banner"
+  use Joomla\Http\HttpFactory;
+  use Joomla\Uri\Uri;
+
+  $http = (new HttpFactory())->getAvailableDriver();
+  $url  = 'http://www.mysite.com/api/v1/{banner_id}';
+  $uri  = new Uri($url);
+
+  $token = {api_key};
+
+  $headers = [
+    'Accept: application/vnd.api+json',
+    'Content-Type: application/json',
+    sprintf('X-Joomla-Token: %s', trim($token)),
+  ];
+
+  $timeout = 30;
+
+  $uri->setPath(sprintf('banners/%d', {banner_id});
+
+  $response = $http->request('GET', $uri, null, $headers, $timeout);
+
+  echo $response->body;
+```
+
+</TabItem>
+<TabItem value="bash" label="Curl">
+
+```bash title="Get Single Banner"
+curl -X GET \
+  'http://www.mysite.com/api/v1/banners/{banner_id}' \
+  --header 'Authorization: Bearer {api_key}'
+```
+
+</TabItem>
+<TabItem value="js" label="Javascript">
+
+```js title="Get Single Banner"
+let headersList = {
+    Authorization: 'Bearer {api_key}',
+};
+
+let response = await fetch('http://www.mysite.com/api/v1/banners/{banner_id}', {
+    method: 'GET',
+    headers: headersList,
+});
+
+let data = await response.json();
+console.log(data);
+```
+
+</TabItem>
+</Tabs>
+
+| Parameter   | Type     | Description                             |
+| :---------- | :------- | :-------------------------------------- |
+| `api_key`   | `string` | **Required**. Your Bearer token API key |
+| `banner_id` | `int`    | **Required**. The ID of the Banner      |

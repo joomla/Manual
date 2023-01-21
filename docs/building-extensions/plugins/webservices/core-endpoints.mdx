@@ -1,0 +1,59 @@
+import * as Extensions from './_index.mdx';
+
+# Webservices API Endpoints
+
+This page lists the endpoints available in Joomla.
+
+<details>
+  <summary>To know</summary>
+  <div>
+    <h3>Authentication Required</h3>
+    <p>Every endpoint requires authentication unless is designated as public. For security in Joomla 4, we make the default API Application require a Super User account because the API Application is brand new. This of course, may get relaxed as the API stabilizes and is well tested in the community.</p>
+
+  </div>
+  <div>
+    <h3>Authentication Types</h3>
+    <p>Two types of authentication plugins are currently supported:</p>
+    <ul>
+        <li>
+            <strong>API Authentication - Web Services Basic Auth plugin:</strong> Using user credentials and password. <em>This is not the recommended one to use, so we will not consume the API using this method</em>
+        </li>
+        <li>
+            <strong>API Authentication - Web Services Joomla Token plugin:</strong> A more secure token authentication using a Bearer token. In this case you need active too the plugin <em>User - Joomla API Token</em>
+        </li>
+    </ul>
+    <p>A detailed explanation about why one is more secure than the other, can be found in the <a href="https://github.com/joomla/joomla-cms/pull/27021" target="_blanck">pull request</a>.</p>
+    <p><strong>For more information about the Specification of the Joomla Web Services API, please visit the <a href="https://docs.joomla.org/Joomla_Api_Specification" target="_blanck">Joomla API Specification</a></strong></p>
+  </div>
+</details>
+
+## Useful Resources
+
+A number of complimentary resources have been created to introduce Joomla Web services and assist you with learning how to implement Web services on your project.
+
+-   [Web Services General Concepts](/docs/general-concept/webservices.md)
+-   [Postman collection of Joomla Web services API calls by Alexandre Elise](https://github.com/alexandreelise/j4x-api-collection)
+-   [Youtube: Joomla 4 tutorial: Using the Web services API with Eoin Oliver](https://www.youtube.com/watch?v=lT9qodsvfZg)
+-   [Joomla Community Magazine: Joomla Web services API 101 by Patrick Jackson](https://magazine.joomla.org/all-issues/august-2020/joomla-web-services-api-101-tokens,-testing-and-a-taste-test)
+
+## Endpoints
+
+:::info URL path
+
+Every URL needs to be prepended with the Joomla host before the path (e.g. instead of `/api/index.php/v1/article` you need `https://example.com/api/index.php/v1/article`)
+
+:::
+
+:::info URL properties
+
+Any names of properties in curly brackets {} indicate the property is a variable that should be substituted.
+
+:::
+
+### Component Banners
+
+<Extensions.Banners.default />
+
+---
+
+<Extensions.Banner.default />
