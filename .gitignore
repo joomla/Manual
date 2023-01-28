@@ -35,3 +35,8 @@ Desktop.ini
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Get automatically generated
+/docs/using-core-functions/webservices/*.info.mdx
+/docs/using-core-functions/webservices/*.api.mdx
+/docs/using-core-functions/webservices/sidebar.js

@@ -9,6 +9,7 @@ steps:
     image: node:18-bullseye-slim
     commands:
       - npm install
+      - npx docusaurus gen-api-docs all
       - npm run build
 
   - name: deployment
