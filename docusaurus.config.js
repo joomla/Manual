@@ -28,6 +28,8 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
+          docLayoutComponent: "@theme/DocPage",
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi-docs
           /*lastVersion: '4.3',*/
           versions: {
             'current': {
@@ -214,7 +216,24 @@ const config = {
         showLastUpdateTime: true,
       }),
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "apiDocs",
+        docsPluginId: "classic",
+        config: {
+          joomla: {
+            specPath: "docs/using-core-functions/webservices/assets/webservices-openapi.yaml",
+            outputDir: "docs/using-core-functions/webservices",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          }
+        }
+      },
+    ],
   ],
+  themes: ["docusaurus-theme-openapi-docs"], // Allows use of @theme/ApiItem and other components
 };
 
 module.exports = config;
