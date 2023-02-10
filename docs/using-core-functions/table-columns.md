@@ -43,5 +43,5 @@ $wa->useScript('table.columns');
 ### Notes
 Your table will need to be a valid html table with a `<thead>` and each column a `<th>`.
 
-If you have multiple tables on the page and you want to prevent the plugin loading on one of those tables then you can add the class "columns-order-ignore" to the table.
+If you have multiple tables on the page and you want to prevent the script loading on one of those tables then you can add the class "columns-order-ignore" to the table.
 
