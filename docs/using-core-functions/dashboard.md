@@ -69,7 +69,7 @@ If you want to address different views of your component, expand the menu with a
 
 Your dashboard is empty and waits for modules to be filled in. If you want to add your submenu, you have to
 - add a folder presets to your component
-- write a preset for your module
+- create a preset for your module
 - add the presets folder to your .xml file
 - expand your install script
 
@@ -77,7 +77,7 @@ Presets are already used in the core, see examples the component com_menu.
 
 ## The menu preset
 
-In a folder 'presets' write a preset file, name it example.php. 
+In a folder 'presets' create a preset file, name it example.xml. 
 
 ```xml title="presets/example.xml"
 <?xml version="1.0"?>
