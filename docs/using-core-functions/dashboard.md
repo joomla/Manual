@@ -46,7 +46,7 @@ Give your dashboard a name and an icon. Add this to your manifest file:
 ```
 
 ## Submenu
-If you want to address different views of your component, expand the menuy by a submenu.  
+If you want to address different views of your component, expand the menu with a submenu.  
 
 ```xml title="Submenu items"
 <menu img="class:folder">
