@@ -1,5 +1,5 @@
-Plugins
-=======
+Installation
+============
 Plugins are in Plugin Groups and listen to different events.
 :::caution TODO
 
