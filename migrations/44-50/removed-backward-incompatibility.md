@@ -37,3 +37,41 @@ class MyModel extends ListModel {
 
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
+
+
+### Return Types
+All return types have been updated to match the PHP 8.1 return type signatures. This addresses any class utilising the ArrayAccess, Datetime or the JsonSerializable interfaces. If you extend from any of the affected classes and require compatibility with both Joomla 4.x and 5.x you should add the `#[\ReturnTypeWillChange]` annotation to your code.
+
+#### administrator/components/com_users/src/DataShape/DataShapeObject.php
+
+```php
+public function __isset(...)      --> public function __isset(...): bool
+public function offsetExists(...) --> public function offsetExists(...): bool
+public function offsetGet(...)    --> public function offsetGet(...): mixed
+public function offsetSet(...)    --> public function offsetSet(...): void
+public function offsetUnset(...)  --> public function offsetUnset(...): void
+```
+
+#### libraries/src/Date/Date.php
+
+```php
+public function format(...)      --> public function format(...): string
+public function setTimezone(...) --> public function setTimezone(...): \Datetime
+```
+
+#### libraries/src/Document/JsonapiDocument.php
+
+```php
+public function jsonSerialize(...) --> public function jsonSerialize(...): mixed
+```
+
+#### libraries/src/Feed/Feed.php
+
+```php
+public function count(...)        --> public function count(...): int
+public function offsetExists(...) --> public function offsetExists(...): bool
+public function offsetGet(...)    --> public function offsetGet(...): mixed
+public function offsetSet(...)    --> public function offsetSet(...): void
+public function offsetUnset(...)  --> public function offsetUnset(...): void
+```
+
