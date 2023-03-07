@@ -167,14 +167,6 @@ Replacement: Joomla\Component\Newsfeeds\Site\Helper\RouteHelper
 File: components/com_tags/helpers/route.php  
 Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper  
 
-# Language strings
-
-File: administrator/language/en-GB/com_joomlaupdate.ini  
-Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICEMBSTRINGOVERLOAD
-
-File: installation/language/en-GB/joomla.ini  
-Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICE_MBSTRING_OVERLOAD_OFF
-
 # Method deprecations
 
 Planned to be removed in Joomla! 6.0
