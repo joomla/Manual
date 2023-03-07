@@ -5,7 +5,8 @@ sidebar_position: 2
 New deprecations
 ===============
 All the new deprecations that should be aware of and what you should now be using instead.
+:::caution TODO
 
-### libraries/src/Filesystem/Path.php:clean()
-- PR: https://github.com/joomla/joomla-cms/pull/38511
-- Description: Null should not be passed to the clean function, only strings are allowed. This function will throw an exception in version 6.
+This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
+
+:::
