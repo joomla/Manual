@@ -10,3 +10,22 @@ All the new deprecations that should be aware of and what you should now be usin
 This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
 :::
+
+#### Workflow rquires database and application
+
+File: libraries/src/Workflow/Workflow.php
+Replacement: The application and database will be mandatory
+Example:
+```php
+$workflow = new Workflow($extension, $app, $db);
+```
+
+File: libraries/src/MVC/Model/WorkflowBehaviorTrait.php
+Replacement: The trait requires a getDatabase function which is provided by the Joomla\Database\DatabaseAwareTrait trait so it is recommended to use both traits together. If you are using the workflow trait in a model, then the database trait is already available.
+Example:
+```php
+class Foo {
+  use MVC/Model/WorkflowBehaviorTrait;
+  use Joomla\Database\DatabaseAwareTrait;
+}
+```
