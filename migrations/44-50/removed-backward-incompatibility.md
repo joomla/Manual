@@ -35,5 +35,9 @@ class MyModel extends ListModel {
 }
 ```
 
+### Drop -es5.js files
+- PR: https://github.com/joomla/joomla-cms/pull/39618
+- Descriptions: The build tools won't produce es5 files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed. The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributiong anymore `IE11` compatible scripts!
+.
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
