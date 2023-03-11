@@ -22,6 +22,17 @@ If you are using your own logger, you want to preserve compatibility with Joomla
 
 If you only need to maintain compatibilty with PSR-3 to use an logger external to your component, such as Joomla's logger, you can still typehint against `\Psr\Log\LoggerInterface`. Please note that the external logger you are using must be compatible with PSR-3 version 1 on Joomla 4 and PSR-3 version 3 on Joomla 5. If you are providing a third party, external logger yourself you may need to include two versions of the logger with your extension and only load the correct one for each Joomla version.
 
+### Framework Update
+
+Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes.
+
+:::caution TODO
+
+Add Link to framework breaking changes
+
+:::
+
+
 ### Database must be injected in constructor model
 - PR: https://github.com/joomla/joomla-cms/pull/38511
 - Description: The database instance in the model should be injected through the `$this->setDatabase()` or the deprecated function `$this->setDbo()`  configuration in the constructor to make it available in the base class. Like that it is ensured that calls to `$this->getDatabase()` and the deprecated function `$this->getDbo()` will point to the same instance.
