@@ -13,17 +13,17 @@ This is done in the manifest file:
 Add a dashboard to your component:
 ==================================
 
-A parameter < dashboard > expands the menu entry with link to a dashboard for your component. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name.
+A parameter "dashboard" expands the menu entry to your component with a link to a dashboard. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name.
 my-example or example are correct, my_example, Com-MY_EXAMPLE are wrong.
 
-The param < dashboard > 
+The param dashboard
 - will make a dashboard icon appear next to the administrator menu item for the component
 - The dashboard icon will click through to display modules assigned to the cpanel-example administrator module position
 - The title and icon defined in the XML file will be used as the header and icon at the top of the component's dashboard page.
 
 ```xml title="Dashboard Link "
 <administration>
-	<menu img="class:calendar">
+	<menu>>
 		COM_EXAMPLE
 		<params>
 			<dashboard>example</dashboard>
@@ -41,7 +41,7 @@ Give your dashboard a name and an icon. Add this to your manifest file:
 
 ```xml title="Dashboard title and icon"
     <dashboards>
-		<dashboard title="COM_EXAMPLE" icon="icon-calendar">COM_EXAMPLE_DASHBOARD_NAME</dashboard>
+		<dashboard title="COM_EXAMPLE" icon="icon-calendar">example</dashboard>
 	</dashboards>
 ```
 
@@ -49,19 +49,17 @@ Give your dashboard a name and an icon. Add this to your manifest file:
 If you want to address different views of your component, expand the menu with a submenu.  
 
 ```xml title="Submenu items"
-<menu img="class:folder">
+<menu>
 	COM_EXAMPLE
 	<params>
 		<dashboard>example</dashboard>
 	</params>
 </menu>
 <submenu>
-	<menu link="option=com_example" view="examples"
-		alt="10 good examples">COM_EXAMPLE_EXAMPLES</menu>
-	<menu link="option=com_categories&amp;extension=com_example"
-		view="categories" alt="Example Categories">COM_EXAMPLE_CATEGORIES</menu>
-	<menu link="option=com_fields&amp;view=fields&ap;mp;context=com_example_example">COM_EXAMPLE_FIELDS</menu>
-	<menu link="option=com_fields&amp;view=groups&amp;context=com_example_example">>COM_EXAMPLE_FIELDGROUPS</menu>
+	<menu link="option=com_example" view="examples">COM_EXAMPLE_MENU</menu>
+	<menu link="option=com_categories&amp;extension=com_example" view="categories">COM_EXAMPLE_ENU_CATEGORIES</menu>
+	<menu link="option=com_fields&amp;view=fields&ap;mp;context=com_example.example">COM_EXAMPLE_MENU_FIELDS</menu>
+	<menu link="option=com_fields&amp;view=groups&amp;context=com_example.example">COM_EXAMPLE_MENU_FIELD_GROUPS</menu>
 </submenu>
 ```
 
@@ -93,14 +91,14 @@ In a folder 'presets' create a preset file, name it example.xml.
 		dashboard="example"
 		>
 		<menuitem
-			title="COM_EXAMPLE_EXAMPLE"
+			title="COM_EXAMPLE_MENU"
 			type="component"
 			element="com_example"
 			link="index.php?option=com_example&amp;view=examples"
 		/>
 
 		<menuitem
-			title="COM_EXAMPLE_CATEGORY"
+			title="COM_EXAMPLE_MENU_CATEGORIES"
 			type="component"
 			element="com_categories"
 			link="index.php?option=com_categories&amp;view=categories&amp;extension=com_example"
@@ -127,7 +125,7 @@ In a folder 'presets' create a preset file, name it example.xml.
             <folder>tmpl</folder>
             <filename>access.xml</filename>
             <filename>config.xml</filename>
-			<filename>eaxmple.xml</filename>
+			<filename>example.xml</filename>
 		</files>
 	</administration>
 ```
