@@ -14,4 +14,4 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 #### The aid property of the User class is deprecated
 
 File: libraries/src/User/User.php
-Replacement: No replacement as the user roles are defined through an access level
+Replacement: The $aid property will be removed with no replacement as the user roles are defined through an access level.
