@@ -20,36 +20,36 @@ The CMS Filesystem package can be found in libraries/src/Filesystem and will be 
 
 In most cases you only have to change the namespace from `Joomla\CMS\Filesystem\*` to `Joomla\Filesystem\*`. To properly handle error cases, you will have to go through your code and catch the exceptions where necessary.  
 
-* File: `libraries/src/Filesystem/File.php`<br>
-  Class: `Joomla\CMS\Filesystem\File`<br>
+* File: `libraries/src/Filesystem/File.php`<br/>
+  Class: `Joomla\CMS\Filesystem\File`<br/>
   Replacement: `Joomla\Filesystem\File`
 
-* File: `libraries/src/Filesystem/FilesystemHelper.php`<br>
-  Class: `Joomla\CMS\Filesystem\FilesystemHelper`<br>
+* File: `libraries/src/Filesystem/FilesystemHelper.php`<br/>
+  Class: `Joomla\CMS\Filesystem\FilesystemHelper`<br/>
   Replacement: `Joomla\Filesystem\Helper`
 
-* File: `libraries/src/Filesystem/Folder.php`<br>
-  Class: `Joomla\CMS\Filesystem\Folder`<br>
+* File: `libraries/src/Filesystem/Folder.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Folder`<br/>
   Replacement: `Joomla\Filesystem\Folder`
 
-* File: `libraries/src/Filesystem/Patcher.php`<br>
-  Class: `Joomla\CMS\Filesystem\Patcher`<br>
+* File: `libraries/src/Filesystem/Patcher.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Patcher`<br/>
   Replacement: `Joomla\Filesystem\Patcher`
 
-* File: `libraries/src/Filesystem/Path.php`<br>
-  Class: `Joomla\CMS\Filesystem\Path`<br>
+* File: `libraries/src/Filesystem/Path.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Path`<br/>
   Replacement: `Joomla\Filesystem\Path`
 
-* File: `libraries/src/Filesystem/Stream.php`<br>
-  Class: `Joomla\CMS\Filesystem\Stream`<br>
+* File: `libraries/src/Filesystem/Stream.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Stream`<br/>
   Replacement: `Joomla\Filesystem\Stream`
 
-* File: `libraries/src/Filesystem/Streams/StreamString.php`<br>
-  Class: `Joomla\CMS\Filesystem\Streams\StreamString`<br>
+* File: `libraries/src/Filesystem/Streams/StreamString.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Streams\StreamString`<br/>
   Replacement: `Joomla\Filesystem\Stream\StringWrapper`
 
-* File: `libraries/src/Filesystem/Support/StringController.php`<br>
-  Class: `Joomla\CMS\Filesystem\Support/StringController`<br>
+* File: `libraries/src/Filesystem/Support/StringController.php`<br/>
+  Class: `Joomla\CMS\Filesystem\Support/StringController`<br/>
   Replacement: `Joomla\Filesystem\Support\StringController`
 
 
