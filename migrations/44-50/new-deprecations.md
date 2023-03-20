@@ -10,3 +10,9 @@ All the new deprecations that should be aware of and what you should now be usin
 This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
 :::
+
+
+#### The item_associations property of the WebApplication class is deprecated
+
+File: libraries/src/Application/WebApplication.php
+Replacement: The $item_associations property will be removed with no replacement as it is not used in core anymore.
