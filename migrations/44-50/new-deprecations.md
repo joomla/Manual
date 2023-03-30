@@ -20,4 +20,4 @@ Replacement: The $item_associations property will be removed with no replacement
 #### Privacy plugin app property is deprecated
 
 File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
-Replacement: The `$this->app` property is deprecated in the privacy plugins. Instead of use `$this->getApplication()` when the plugin is converted to service providers.
+Replacement: The `$this->db` property is deprecated in the privacy plugins. Instead of use `$this->getDatabase()` when the plugin is converted to service providers.
