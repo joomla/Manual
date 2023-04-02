@@ -38,9 +38,9 @@ Following example assume you already know  how to create Joomla plugin.
 
 ### Let's create a simple [Honeypot](https://en.wikipedia.org/wiki/Honeypot_(computing)) captcha.
 
-For start create a plugin under `captcha/honeypot/` folder, call it `honeypot`, assume namespace is `JoomlaExample\Plugin\Captcha\Honeypot`.
+For start create a plugin under `plugins/captcha/honeypot/` folder, call it `honeypot`, assume namespace is `JoomlaExample\Plugin\Captcha\Honeypot`.
 
-Then create a Honeypot captcha provider, which will live under `captcha/honeypot/src/Provider/HoneypotCaptchaProvider.php`.
+Then create a Honeypot captcha provider, which will live under `plugins/captcha/honeypot/src/Provider/HoneypotCaptchaProvider.php`.
 
 ```php
 namespace JoomlaExample\Plugin\Captcha\Honeypot\Provider;
@@ -116,6 +116,7 @@ Register the provider in the system with a plugin and event:
 ```php
 namespace JoomlaExample\Plugin\Captcha\Honeypot\Extension;
 
+use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 use JoomlaExample\Plugin\Captcha\Honeypot\Provider\HoneypotCaptchaProvider;
 
