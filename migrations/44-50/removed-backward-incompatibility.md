@@ -49,6 +49,21 @@ class MyModel extends ListModel {
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
 
+### Javascript removals
+The following Javascript assets were removed [via PR #40302](https://github.com/joomla/joomla-cms/pull/40302):
+- `/media/com_templates/js/admin-template-compare.js`
+Not used anymore by the core since version 4.3.0, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
+
+- `/media/com_users/js/admin-users-mail.js`
+Not used anymore by the core since version 4.3.0, [see PR #39374](https://github.com/joomla/joomla-cms/pull/39374).
+
+This includes also the `-es5.js` files and the minified and gzipped files and the corresponding entries in `joomla.asset.json` files.
+
+The files have been kept in Joomla 4 for b/c with layout overrides.
+
+To fix these layout overrides for Joomla 5, change your layout override in the same way as the corresponding core layout has been changed by the PR mentioned in the list above for each Javascript asset.
+
+Eg for the template manager's side-by-side comparison view, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
 
 ### Return Types
 All return types have been updated to match the PHP 8.1 return type signatures. This addresses any class utilising the ArrayAccess, Datetime or the JsonSerializable interfaces. If you extend from any of the affected classes and require compatibility with both Joomla 4.x and 5.x you should add the `#[\ReturnTypeWillChange]` annotation to your code.
