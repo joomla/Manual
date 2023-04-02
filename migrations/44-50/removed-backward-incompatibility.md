@@ -51,11 +51,9 @@ The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joom
 
 ### Javascript removals
 The following Javascript assets were removed [via PR #40302](https://github.com/joomla/joomla-cms/pull/40302):
-- `/media/com_templates/js/admin-template-compare.js`
-Not used anymore by the core since version 4.3.0, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
+- `/media/com_templates/js/admin-template-compare.js` - Not used anymore by the core since version 4.3.0, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
 
-- `/media/com_users/js/admin-users-mail.js`
-Not used anymore by the core since version 4.3.0, [see PR #39374](https://github.com/joomla/joomla-cms/pull/39374).
+- `/media/com_users/js/admin-users-mail.js` - Not used anymore by the core since version 4.3.0, [see PR #39374](https://github.com/joomla/joomla-cms/pull/39374).
 
 This includes also the `-es5.js` files and the minified and gzipped files and the corresponding entries in `joomla.asset.json` files.
 
