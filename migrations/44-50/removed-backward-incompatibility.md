@@ -37,3 +37,22 @@ class MyModel extends ListModel {
 
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
+
+### Language strings
+File: administrator/language/en-GB/com_media.ini 
+Strings: COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_DESC, COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_LABEL
+
+File: administrator/language/en-GB/com_users.ini 
+Strings: COM_USERS_MAIL_PASSWORD_RESET_TITLE, COM_USERS_MAIL_PLEASE_FILL_IN_THE_MESSAGE, COM_USERS_MAIL_PLEASE_FILL_IN_THE_SUBJECT, COM_USERS_MAIL_PLEASE_SELECT_A_GROUP
+
+File: administrator/language/en-GB/joomla.ini 
+Strings: JFIELD_ALT_MODULE_LAYOUT_DESC, JFIELD_ASSET_ID_DESC, JFIELD_ASSET_ID_LABEL
+
+File: api/language/en-GB/joomla.ini 
+Strings: FIELD_ALT_MODULE_LAYOUT_DESC, JFIELD_ASSET_ID_DESC, JFIELD_ASSET_ID_LABEL
+
+File: installation/language/en-GB/joomla.ini
+Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICE_MBSTRING_OVERLOAD_OFF
+
+File: language/en-GB/com_media.ini 
+Strings: COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_DESC, COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_LABEL
