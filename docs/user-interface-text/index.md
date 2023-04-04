@@ -1,10 +1,27 @@
-# Joomla User Interface Text Guidelines
-A repository for the en-GB style guide of Joomla! language strings.
+# User Interface Text Guidelines
+The official language of Joomla is en-GB and this guide is intended to assist anyone writing language strings in en-GB (British English). This guide should not be translated but may help serve as a starting point for Translation Teams to localise and produce their own guide.
 
-## Meta Information
-The documentation in this repository is optimised for display in the [user interface text guidelines section](https://developer.joomla.org/en-gb-user-interface-text-guidelines.html) of the Joomla! Developer Network. When formatting and proposing changes to this documentation, please keep the following in mind:
+## Purpose
+* Establish official style guidelines for writing en-GB strings.
+* Ensure consistency throughout Joomla.
+* Traditional rules of grammar do not always apply to the web. See [Break Grammar Rules on Websites for Clarity](http://www.nngroup.com/articles/break-grammar-rules/).
+* See [NNG on American vs British english for the web](http://www.nngroup.com/articles/american-vs-british-english-for-web/).
 
-- Heading levels should start at `<h3>`
-- The document title does NOT need to be included in the document, these are displayed as the page heading based on the Joomla component configuration and would result in duplicated titles if included
-- Because the GitHub Markdown parser interprets line breaks as `<br>` tags, arbitrary line breaks to keep lines from becoming too long should not be used
-- Links to documents in this manual should be formatted for use on the Joomla! Developer Network, such as `[a link to the punctuation page](/en-gb-user-interface-text-guidelines/punctuation.html)`
+## Target audience
+* Primary: Developers writing en-GB strings.
+* Secondary: Translation teams.
+
+## Uses
+* Primary: Basis for all en-GB strings.
+* Secondary: Assist non native en-GB developers writing language strings in en-GB.
+* Tertiary: Provide guidelines for translation teams to localise.
+
+## Notes
+### Avoid over-communication
+Be explicit wherever necessary but don't explain the obvious. On the web scanning is the norm and too much text weakens the effectiveness of the message - it does not enhance it.
+
+
+
+
+
+

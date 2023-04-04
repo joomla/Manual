@@ -1,3 +1,4 @@
+# Words to Watch
 **This is a 'living document' that can be updated as needed over time.**
 
 Words to Watch (W2W) are words commonly misspelled or which may have variations that depend on the Joomla! style guide choices.
@@ -87,8 +88,8 @@ Words to Watch (W2W) are words commonly misspelled or which may have variations 
 | proofread                                   | proof-read                       | proofed                                                                                                                                                                                                                                                                   |
 |reCAPTCHA                                    | recaptcha Recaptcha ReCaptcha ReCAPTCHA| This is the name of a specific product/service from google so should be spelt exactly this way. It is never capitalised even at the beginning of a sentence.|
 | receive                                     | recieve                          | Use i before e except after c.                                                                                                                                                                                                                                            |
-| RSS                                         | rss                              | Always capitalise except when used as a file extension or in code     |                                                                                                                         
-| SEF                                         | Sef sef                          | Always capitalise |            
+| RSS                                         | rss                              | Always capitalise except when used as a file extension or in code     |
+| SEF                                         | Sef sef                          | Always capitalise |
 | semicolon                                   | semi colon semi-colon            | One Word |
 | separate                                    | seperate                         | Spell with -par- in the middle.                                                                                                                                                                                                                                           |
 |shall| |Do not use. A better word is will. This will be displayed not this shall be displayed|
@@ -107,14 +108,14 @@ Words to Watch (W2W) are words commonly misspelled or which may have variations 
 | URL                                         | Url url                          | Capitalise except when used in code.                                                                                                                                                                                                                                      |
 | User                                        | user                             | When referring to a specific Joomla! User always capitalise first letter                                                                                                                                                                                                  |
 | user group                                  | usergroup User Group             | Two words lower case|
-| Username                                    | user name                        | One word. You login with the Username NOT the login name |  
+| Username                                    | user name                        | One word. You login with the Username NOT the login name |
 | UTF-8                                       | utf-8 utf8                       | Always uppercase and hyphenated|
 | vCard                                       | VCard vcard Vcard                | Always spelt vCard even at the beginning of a sentence or in a label.|
 | web                                         | Web                              | Lower case                                                                                                                                                                                                                  |
 | Web link Web Link                           | weblink web-link                 | Two words unhyphenated. Capitalise the words when discussing the Component variant - Web Link Manager.                                                                                                                                                                    |
 | Web services                                | webservices                      | Two words with the first word capitalised. When used in a title, label or button then the normal rules apply and both are capitalised. |
 | website                                     | web site Web Site Web site       | One word not capitalised                                                                                                       |
-| whitelist                                       | white list                  | one word not two |                          
+| whitelist                                       | white list                  | one word not two |
 | wi-fi                                       | WIFI wifi WI-FI                  | Lower case and hyphenated.                                                                                                                                                                                                                                                |
 | Word                                        | word                             | When referring to a Word document this should always be capitalised as it is a trademark                                                                                                                                                                                  |
 | World Wide Web (WWW)                        | Worldwide Web                    | Capitalise, as it is a proper noun. Three separate words. Capitalise the abbreviation (except in URL’s)                                                                                                                                                                   |
