@@ -11,7 +11,7 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 
 :::
 
-#### Workflow rquires database and application
+#### Workflow requires database and application
 
 File: libraries/src/Workflow/Workflow.php
 Replacement: The application and database will be mandatory
@@ -29,3 +29,8 @@ class Foo {
   use Joomla\Database\DatabaseAwareTrait;
 }
 ```
+
+#### ModuleHelper::moduleCache is deprecated
+
+File: libraries/src/Helper/ModuleHelper.php
+Replacement: The static `moduleCache` function in the `ModuleHelper` class is is deprecated. Instead of use `$this->loadFromCache()` in the module dispatcher class which is inherited from the `AbstractModuleDispatcher` class. The only difference is that the cache params should be passed as Registry and not plain object anymore.

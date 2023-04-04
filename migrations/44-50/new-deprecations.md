@@ -21,8 +21,3 @@ Replacement: The $item_associations property will be removed with no replacement
 
 File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
 Replacement: The `$this->db` property is deprecated in the privacy plugins. Instead of use `$this->getDatabase()` when the plugin is converted to service providers.
-
-#### ModuleHelper::moduleCache is deprecated
-
-File: libraries/src/Helper/ModuleHelper.php
-Replacement: The static `moduleCache` function in the `ModuleHelper` class is is deprecated. Instead of use `$this->loadFromCache()` in the module dispatcher class which is inherited from the `AbstractModuleDispatcher` class. The only difference is that the cache params should be passed as Registry and not plain object anymore.
