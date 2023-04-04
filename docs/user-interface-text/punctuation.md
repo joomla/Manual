@@ -85,5 +85,3 @@ A slash (/) should not have spaces around it eg show/hide not show / hide
 
 ## Spaces
 Use only one space after a full stop, not 2.
-
-

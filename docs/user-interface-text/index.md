@@ -19,9 +19,3 @@ The official language of Joomla is en-GB and this guide is intended to assist an
 ## Notes
 ### Avoid over-communication
 Be explicit wherever necessary but don't explain the obvious. On the web scanning is the norm and too much text weakens the effectiveness of the message - it does not enhance it.
-
-
-
-
-
-

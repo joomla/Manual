@@ -9,6 +9,6 @@ Sentence case is preferable but use capitalisation for:
 
 Do not capitalise joining words and words of three characters or less such as and, to, for.
 
-#### Examples
+## Examples
 * Show Intro Text
 * Position of Article Info
