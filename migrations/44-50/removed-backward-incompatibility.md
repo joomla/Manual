@@ -86,3 +86,6 @@ public function offsetSet(...)    --> public function offsetSet(...): void
 public function offsetUnset(...)  --> public function offsetUnset(...): void
 ```
 
+### Menus controller resync function got removed
+- PR: https://github.com/joomla/joomla-cms/pull/40336
+- Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
