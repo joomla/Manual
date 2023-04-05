@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Words to Watch
 **This is a 'living document' that can be updated as needed over time.**
 
