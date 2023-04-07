@@ -25,7 +25,7 @@ Event attributes:
 /** 
  * @var Joomla\CMS\Captcha\CaptchaRegistry $subject 
  */
-$subject = $event['subject'];
+$subject = $event->getSubject();
 ```
 
 ## Creating a captcha plugin
@@ -143,10 +143,7 @@ final class HoneypotCaptcha extends CMSPlugin implements SubscriberInterface
      */
     public function onCaptchaSetup(CaptchaSetupEvent $event)
     {
-       /** @var CaptchaRegistry $subject */
-       $subject = $event['subject'];
-    
-       $subject->add(new HoneypotCaptchaProvider());
+       $event->getSubject()->add(new HoneypotCaptchaProvider());
     }
 }
 ```
