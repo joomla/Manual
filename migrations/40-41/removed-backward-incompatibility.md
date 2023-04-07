@@ -8,13 +8,6 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 
 :::
 
-
-# Removed and backward incompatibility
-
-Most of the code deprecated in Joomla! 3.x has been removed. Some Deprecations
-have been moved to the [combat plugin](combat-plugin.md).
-There should be an explanation of how to mitigate the removals / changes.
-
 ## Removed files
 
 The following files hasn't been removed to prevent code which directly include
