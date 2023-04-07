@@ -31,11 +31,11 @@ Event attributes:
  * @var integer  $asset            Optional id of Asset, for access check
  * @var integer  $author           Optional id of Author, for access check
  */
-$subject    = $event['subject'];
-$disabled   = $event['disabledButtons'];
-$editorType = $event['editorType'];
-$asset      = $event['asset'];
-$author     = $event['author'];
+$subject    = $event->getSubject();
+$disabled   = $event->getDisabledButtons();
+$editorType = $event->getEditorType();
+$asset      = $event->getAsset();
+$author     = $event->getAuthor();
 ```
 
 ## Creating an editor button (xtd) plugin
@@ -53,7 +53,6 @@ Then set up buttons in `onEditorButtonsSetup` event handler.
 namespace JoomlaExample\Plugin\EditorsXtd\Example\Extension;
 
 use Joomla\CMS\Editor\Button\Button;
-use Joomla\CMS\Editor\Button\ButtonsRegistry;
 use Joomla\CMS\Event\Editor\EditorButtonsSetupEvent;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
@@ -76,9 +75,8 @@ final class Example extends CMSPlugin implements SubscriberInterface
      */
     public function onEditorButtonsSetup(EditorButtonsSetupEvent $event)
     {
-        /** @var ButtonsRegistry $subject */
-        $subject  = $event['subject'];
-        $disabled = $event['disabledButtons'];
+        $subject  = $event->getSubject();
+        $disabled = $event->getDisabledButtons();
 
         if (!\in_array('example-beer', $disabled)) {
             $button1 = new Button('example-beer', [
@@ -96,7 +94,7 @@ final class Example extends CMSPlugin implements SubscriberInterface
             // Register script with our custom action
             $this->getApplication()->getDocument()->getWebAssetManager()
                 ->registerScript(
-                    'editors-xtd.example-cat',
+                    'editor-button.example-cat',
                     'plg_editors_xtd_example/example-cat.js',
                     [],
                     ['type' => 'module'],
