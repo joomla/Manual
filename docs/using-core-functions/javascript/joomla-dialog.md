@@ -28,11 +28,32 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 - `height` (string) An optional height for the popup, any valid CSS value.
 - `popupTemplate` (string|HTMLTemplateElement) A template for the popup.
 - `preferredParent` (string|HTMLElement) The element where to attach the dialog, for cases when no parentElement exist, see show(). This allows to keep the dialog in the same branch of DOM as the popupContent.
-- `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exists). Example:
+- `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exists).
+
+Any property can be set as instance property or in class constructor. This two is equal:
+
 ```javascript
-  [{label: 'Yes', onClick: () => popup.destroy()},
-  {label: 'No', onClick: () => popup.destroy(), className: 'btn btn-danger'},
-  {label: 'Click me', onClick: () => popup.destroy(), location: 'header'}]
+// Proprty in class constructor
+const dialog = new JoomlaDialog({
+  textHeader: 'The header',
+  popupContent: '<p class="p-3">Popup content text</p>',
+});
+dialog.show();
+
+// Proprty in to class instance
+const dialog = new JoomlaDialog();
+dialog.textHeader = 'The header';
+dialog.popupContent = '<p class="p-3">Popup content text</p>';
+dialog.show();
+```
+
+Buttons example:
+```javascript
+dialog.popupButtons = [
+  { label: 'Yes', onClick: () => dialog.destroy() },
+  { label: 'No', onClick: () => dialog.destroy(), className: 'btn btn-outline-danger ms-2' },
+  {label: 'Click me', onClick: () => dialog.destroy(), location: 'header'}
+];
 ```
 
 ## Methods
@@ -102,33 +123,6 @@ dialog.show();
 
 ```
 
-Any property can be set as instance property or in class constructor. This two is equal:
-
-```javascript
-// Proprty in class constructor
-const dialog = new JoomlaDialog({
-  textHeader: 'The header',
-  popupContent: '<p class="p-3">Popup content text</p>',
-});
-
-// Proprty in to class instance
-const dialog = new JoomlaDialog();
-dialog.textHeader = 'The header';
-dialog.popupContent = '<p class="p-3">Popup content text</p>';
-```
-
-Other options:
-```javascript
-// Optional sizing:
-dialog.width = '80vw';
-dialog.height = '80vh';
-
-// Definig your own buttons:
-dialog.popupButtons = [
-  { label: 'Yes', onClick: () => dialog.destroy() },
-  { label: 'No', onClick: () => dialog.destroy(), className: 'btn btn-outline-danger ms-2' },
-];
-```
 
 ### Alert and Confirm usage:
 ```javascript
