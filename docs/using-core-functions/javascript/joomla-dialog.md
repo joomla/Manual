@@ -15,6 +15,58 @@ Joomla Dialog allows to display dialogs with following content:
 Provides helper methods for replacement `alert()` and `confirm()` dialogs.
 Provides helper to bind page button/anchor to show the popup, for basic stuff, without extra js needed.
 
+## Properties
+
+- `popupType` (string) The popup type, supported: `inline`, `iframe`, `image`, `ajax`.
+- `src` (string) Source path for iframe, image, ajax.
+- `popupContent` (string|HTMLElement|HTMLTemplateElement) Content for inline type popup.
+- `cancelable` (boolean) Whether popup can be closed by `Esc` button.
+- `textClose` (string) An optional text for close button. Applied when no Buttons provided.
+- `textHeader` (string) An optional text for header.
+- `iconHeader` (string) An optional Class names for header icon.
+- `width` (string) An optional limit for the popup width, any valid CSS value.
+- `height` (string) An optional height for the popup, any valid CSS value.
+- `popupTemplate` (string|HTMLTemplateElement) A template for the popup.
+- `preferredParent` (string|HTMLElement) The element where to attach the dialog, for cases when no parentElement exist, see show(). This allows to keep the dialog in the same branch of DOM as the popupContent.
+- `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exists). Example:
+```javascript
+  [{label: 'Yes', onClick: () => popup.destroy()},
+  {label: 'No', onClick: () => popup.destroy(), className: 'btn btn-danger'},
+  {label: 'Click me', onClick: () => popup.destroy(), location: 'header'}]
+```
+
+## Methods
+
+- `show()` Show the dialog. Will append dialog to DOM when it was not appended before.
+- `close()` Close the dialog.
+- `destroy()` Destroys the dialog.
+- `getBody()` Return the dialog body element.
+- `getBodyContent()` Return content element. Will return `popupContent` for inline and ajax types, `HTMLIframeElement` for iframe type, and `HTMLImageElement` for image type.
+- `getHeader()` Return Header part of the dialog, when available.
+- `getFooter()` Return Footer part of the dialog, when available.
+
+## Events
+
+- `joomla-dialog:open` Fired when dialog is opened.
+- `joomla-dialog:close` Fired when dialog is closed.
+- `joomla-dialog:load` Fired when content is finished loading.
+
+```javascript
+const dialog = new JoomlaDialog({
+  popupContent: '<p class="p-3">Popup content text</p>',
+});
+dialog.addEventListener('joomla-dialog:open', () => {
+    console.log('Dialog is opened!');
+});
+dialog.addEventListener('joomla-dialog:close', () => {
+    console.log('Dialog is closed!');
+});
+dialog.addEventListener('joomla-dialog:load', () => {
+    console.log('Dialog content is loaded!');
+});
+dialog.show();
+```
+
 ## Usage examples
 
 ```javascript
