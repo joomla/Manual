@@ -68,8 +68,8 @@ dialog.popupButtons = [
 
 ### Static methods
 
-- `JoomlaDialog.alert()` Show a text dialog, with one "okay" button. Returns Promise, that resolves when User closes dialog.
-- `JoomlaDialog.confirm()` Show a text dialog, with "Yes/No" buttons. Returns Promise, that resolves when User click one of buttons, with result `true` or `false`.
+- `JoomlaDialog.alert(text)` Show a text dialog, with one "okay" button. Returns Promise, that resolves when User closes dialog.
+- `JoomlaDialog.confirm(text)` Show a text dialog, with "Yes/No" buttons. Returns Promise, that resolves when User click one of buttons, with result `true` or `false`.
 
 ## Events
 
