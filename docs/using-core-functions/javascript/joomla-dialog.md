@@ -52,7 +52,7 @@ Buttons example:
 dialog.popupButtons = [
   { label: 'Yes', onClick: () => dialog.destroy() },
   { label: 'No', onClick: () => dialog.destroy(), className: 'btn btn-outline-danger ms-2' },
-  {label: 'Click me', onClick: () => dialog.destroy(), location: 'header'}
+  { label: 'Click me', onClick: () => dialog.destroy(), location: 'header' },
 ];
 ```
 
@@ -65,6 +65,11 @@ dialog.popupButtons = [
 - `getBodyContent()` Return content element. Will return `popupContent` for inline and ajax types, `HTMLIframeElement` for iframe type, and `HTMLImageElement` for image type.
 - `getHeader()` Return Header part of the dialog, when available.
 - `getFooter()` Return Footer part of the dialog, when available.
+
+### Static methods
+
+- `JoomlaDialog.alert()` Show a text dialog, with one "okay" button. Returns Promise, that resolves when User closes dialog.
+- `JoomlaDialog.confirm()` Show a text dialog, with "Yes/No" buttons. Returns Promise, that resolves when User click one of buttons, with result `true` or `false`.
 
 ## Events
 
