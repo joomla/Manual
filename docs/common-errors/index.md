@@ -8,12 +8,12 @@ Some frequently asked questions on Error messages and how to resolve them.
 
 As a developer you somtimes will be stuck in your code. 
 If it happens to you, also have a look on https://joomla.stackexchange.com/ - a huge collection of valuable knowledge. 
-Here we collect some frequently aske questions. 
+Here we collect some frequently asked questions. 
 
 Class [..] not found
 --------------------
 
-You need to understand the namespace concept as described in sction General Concepts (work in progress)
+You need to understand the namespace concept as described in section General Concepts (work in progress)
 Then check:
 - Is the namespace defined in your manifest file? 
 - Has every class in your extension the correct namespace?
