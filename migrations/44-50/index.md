@@ -11,7 +11,7 @@ to support you should come across all the changes you need to make.
 # Combatibility Plugin
 
 Most of the code deprecated in Joomla! 3.x has been removed. Some deprecations have been moved
-to the [Combatibility Plugin](combat-plugin.md).
+to the [Compatibility Plugin](compat-plugin.md).
 
 
 :::caution TODO
