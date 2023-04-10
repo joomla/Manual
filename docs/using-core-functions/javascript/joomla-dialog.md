@@ -3,7 +3,7 @@ Joomla Dialog (popup) script
 
 Joomla Dialog script provides a functionality wich allows to display various Dialogs (popup) windows. 
 
-To enable it on the page, enable it with [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('dialog')`.
+To enable it on the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('dialog')`.
 
 Joomla Dialog allows to display dialogs with following content:
 
