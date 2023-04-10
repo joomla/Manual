@@ -143,7 +143,7 @@ final class HoneypotCaptcha extends CMSPlugin implements SubscriberInterface
      */
     public function onCaptchaSetup(CaptchaSetupEvent $event)
     {
-       $event->getSubject()->add(new HoneypotCaptchaProvider());
+       $event->getCaptchaRegistry()->add(new HoneypotCaptchaProvider());
     }
 }
 ```
