@@ -25,7 +25,7 @@ Event attributes:
 /** 
  * @var Joomla\CMS\Captcha\CaptchaRegistry $subject 
  */
-$subject = $event->getSubject();
+$subject = $event->getCaptchaRegistry();
 ```
 
 ## Creating a captcha plugin
