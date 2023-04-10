@@ -31,7 +31,7 @@ Event attributes:
  * @var integer  $asset            Optional id of Asset, for access check
  * @var integer  $author           Optional id of Author, for access check
  */
-$subject    = $event->getSubject();
+$subject    = $event->getButtonsRegistry();
 $disabled   = $event->getDisabledButtons();
 $editorType = $event->getEditorType();
 $asset      = $event->getAsset();
@@ -75,7 +75,7 @@ final class Example extends CMSPlugin implements SubscriberInterface
      */
     public function onEditorButtonsSetup(EditorButtonsSetupEvent $event)
     {
-        $subject  = $event->getSubject();
+        $subject  = $event->getButtonsRegistry();
         $disabled = $event->getDisabledButtons();
 
         if (!\in_array('example-beer', $disabled)) {

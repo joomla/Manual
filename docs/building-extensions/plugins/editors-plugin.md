@@ -27,7 +27,7 @@ Event attributes:
 /** 
  * @var Joomla\CMS\Editor\EditorsRegistry $subject 
  */
-$subject = $event->getSubject();
+$subject = $event->getEditorsRegistry();
 ```
 
 ## Creating an editor plugin
@@ -169,7 +169,7 @@ final class ExampleEditor extends CMSPlugin implements SubscriberInterface
      */
     public function onEditorSetup(EditorSetupEvent $event)
     {
-        $event->getSubject()->add(new ExampleEditorProvider($this->params, $this->getApplication(), $this->getDispatcher()));
+        $event->getEditorsRegistry()->add(new ExampleEditorProvider($this->params, $this->getApplication(), $this->getDispatcher()));
     }
 }
 ```
