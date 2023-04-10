@@ -3,12 +3,15 @@ Joomla core.js
 
 Provides a global `Joomla` object and a core functionality for client side: options storage, translations, etc.
 
+To enable it on the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('core')`.
+
 ## Client side options
 
 Joomla provides a generic way to share script options between server side and client side.
 To share your script option from php to javascript, add them:
 
 ```php
+$doc = Joomla\CMS\Factory::getApplication()->getDocument();
 $doc->addScriptOptions('my_extension_options', ['foo' => 'bar']);
 ```
 
@@ -22,9 +25,9 @@ console.log(Joomla.getOptions('my_extension_options'));
 
 To add translation to your script, add needed strings in a layout:
 ```php
-Text::script('LANG_CONSTANT1');
-Text::script('LANG_CONSTANT2');
-Text::script('LANG_CONSTANT3');
+Joomla\CMS\Language\Text::script('LANG_CONSTANT1');
+Joomla\CMS\Language\Text::script('LANG_CONSTANT2');
+Joomla\CMS\Language\Text::script('LANG_CONSTANT3');
 ```
 
 Use in your script:
@@ -41,6 +44,7 @@ console.log(Joomla.Text('LANG_CONSTANT3', 'Default string3'));
 `Joomla.sanitizeHtml()` method sanitize untrusted HTML string. And should be used anytime when rendering HTML that comes from dynamic variables, translations etc.
 
 ```javascript
+const myElement = document.createElement('div');
 myElement.innerHTML = Joomla.sanitizeHtml(Joomla.Text('LANG_CONSTANT1', '<p>Default string1</p>'));
 ```
 
