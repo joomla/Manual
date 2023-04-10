@@ -4,6 +4,8 @@ Joomla Editors script
 `Joomla.Editor` and `Joomla.EditorButton` provides an API for client side integration for different Editors scripts while keeping cross-extension communication.
 This is allowing other Joomla extensions interact with editor and its content.
 
+To enable it on the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('editors')`.
+
 The API consist with following elements:
  - `JoomlaEditorDecorator` - provides a common interface for editors to follow.
  - `Joomla.Editor` - responsible for editor registration, and retrieving of Active one.
