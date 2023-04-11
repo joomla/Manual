@@ -29,3 +29,12 @@ class Foo {
   use Joomla\Database\DatabaseAwareTrait;
 }
 ```
+
+#### JPATH_PLATFORM variable is deprecated
+
+File: libraries/bootstrap.php
+Replacement: The variable `JPATH_PLATFORM` should not be used anymore to check if the CMS is correctly initialized, use `_JEXEC` instead.
+Example:
+```php
+defined('_JEXEC') or die;
+```
