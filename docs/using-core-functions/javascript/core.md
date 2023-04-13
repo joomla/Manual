@@ -51,7 +51,7 @@ myElement.innerHTML = Joomla.sanitizeHtml(Joomla.Text('LANG_CONSTANT1', '<p>Defa
 ## Joomla ajax request
 
 For basic stuff like simple `GET` requests it is recommended to use browser native [`fetch()`](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) method. 
-However, when need something more complex, like Upload with progress, or queue requests, Joomla provide `Joomla.request()` method. Wich is a wrapper around [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
+However, when need something more complex, like Upload with progress, or queue requests, Joomla provide `Joomla.request()` method. Which is a wrapper around [`XMLHttpRequest`](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest)
 
 ### `Joomla.request()` 
 
@@ -60,7 +60,7 @@ Options:
 - `url: ''` Request URL
 - `method: 'GET'` Request method `GET` (default), `POST` etc.
 - `data` Data to be sent, see https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send.
-- `promise: false` Whether return a Promise instance.  When is `true` then next options is ignored: `perform`, `onSuccess`, `onError`, `onComplete`.
+- `promise: false` Whether return a Promise instance.  When is `true` then next options are ignored: `perform`, `onSuccess`, `onError`, `onComplete`.
 - `perform: true` Perform the request immediately or return `XMLHttpRequest` instance and perform it later.
 - `headers: {}` Object of custom headers, eg `{'X-Foo': 'Bar', 'X-Bar': 'Foo'}`.
 - `onBefore:  (xhr) => {}` Callback on before the request
