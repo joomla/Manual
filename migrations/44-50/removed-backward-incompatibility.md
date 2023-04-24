@@ -39,6 +39,9 @@ class MyModel extends ListModel {
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
 
 ### Language strings
+File: administrator/language/en-GB/com_admin.ini
+Strings: COM_ADMIN_A11Y_SETTINGS_FIELDSET_LABEL, COM_ADMIN_A11Y_SETTINGS_FIELD_CONTRAST, COM_ADMIN_A11Y_SETTINGS_FIELD_FONTSIZE, COM_ADMIN_A11Y_SETTINGS_FIELD_HIGHLIGHT, COM_ADMIN_A11Y_SETTINGS_FIELD_MONOCHROME
+
 File: administrator/language/en-GB/com_media.ini 
 Strings: COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_DESC, COM_MEDIA_FIELD_ILLEGAL_MIME_TYPES_LABEL
 
