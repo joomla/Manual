@@ -21,3 +21,8 @@ Replacement: The $item_associations property will be removed with no replacement
 
 File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
 Replacement: The `$this->db` property is deprecated in the privacy plugins. Instead of use `$this->getDatabase()` when the plugin is converted to service providers.
+
+#### countMenuChildren in HtmlDocument is deprecated
+
+File: libraries/src/Document/HtmlDocument.php
+Replacement: Load the active menu item directly from the application and count the children with the php `count` function.
