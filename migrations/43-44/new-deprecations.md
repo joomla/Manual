@@ -11,7 +11,7 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 
 :::
 
-#### Workflow rquires database and application
+#### Workflow requires database and application
 
 File: libraries/src/Workflow/Workflow.php
 Replacement: The application and database will be mandatory
@@ -28,4 +28,13 @@ class Foo {
   use MVC/Model/WorkflowBehaviorTrait;
   use Joomla\Database\DatabaseAwareTrait;
 }
+```
+
+#### countMenuChildren in HtmlDocument is deprecated
+
+File: libraries/src/Document/HtmlDocument.php
+Replacement: Load the active menu item directly from the application and count the children with the php `count` function.
+Example:
+```php
+$app->getMenu()->getActive() ? count($app->getMenu()->getActive()->getChildren()) : 0;
 ```
