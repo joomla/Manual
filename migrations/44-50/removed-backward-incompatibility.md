@@ -37,3 +37,7 @@ class MyModel extends ListModel {
 
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
+
+### Change ordered lists in com_content links to unordered lists
+The links in com_content > category > blog-links.php and com_content > featured > default-links.php use `<ul></ul>` instead of `<ol></ol>`.
+Changes made [via PR #40629](https://github.com/joomla/joomla-cms/pull/40629) 
