@@ -21,3 +21,8 @@ Replacement: The $item_associations property will be removed with no replacement
 
 File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
 Replacement: The `$this->db` property is deprecated in the privacy plugins. Instead of use `$this->getDatabase()` when the plugin is converted to service providers.
+
+#### com_search-specific methods in Language are deprecated
+
+File: libraries/src/Language/Language.php
+Replacement: com_search will not be supported in Joomla 6.0 anymore and there is no replacement for these methods.
