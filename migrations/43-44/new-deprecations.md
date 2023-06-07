@@ -38,3 +38,8 @@ Example:
 ```php
 $app->getMenu()->getActive() ? count($app->getMenu()->getActive()->getChildren()) : 0;
 ```
+
+#### com_search-specific methods in Language are deprecated
+
+File: libraries/src/Language/Language.php
+Replacement: com_search will not be supported in Joomla 6.0 anymore and there is no replacement for these methods.
