@@ -86,6 +86,16 @@ public function offsetSet(...)    --> public function offsetSet(...): void
 public function offsetUnset(...)  --> public function offsetUnset(...): void
 ```
 
+#### libraries/src/Language/Language.php
+
+\Joomla\CMS\Language\Language extends now from \Joomla\Language\Language
+
+Duplicated code which is extended from the framework has been removed
+
+```php
+public function debugFile(...) --> public function debugFile(string $filename): int
+```
+
 ### Menus controller resync function got removed
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
