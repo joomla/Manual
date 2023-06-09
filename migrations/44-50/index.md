@@ -14,7 +14,9 @@ Most of the code deprecated in Joomla! 3.x has been removed. Some deprecations h
 to the [Compatibility Plugin](compat-plugin.md).
 
 # Replacement of Factory::getUser
-`Factory::getUser()` is deprecated since Joomla 4.0. To replace it, models, views and tables can implement the `CurrentUserInterface` and then is the currently logged in user available through `$this->getCurrentUser()`. In 5.0 are all the template files (default.php) changed from `Factory::getUser()` to `$this->getCurrentUser()`.
+`Factory::getUser()` is deprecated since Joomla 4.0. To replace it, models, views, form fields and tables can implement the `CurrentUserInterface` and then is the currently logged in user available through `$this->getCurrentUser()`.
+
+In 5.0 are all the template files (default.php) changed from `Factory::getUser()` to `$this->getCurrentUser()`.
 
 
 :::caution TODO
