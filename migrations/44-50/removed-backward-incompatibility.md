@@ -24,13 +24,11 @@ If you only need to maintain compatibilty with PSR-3 to use an logger external t
 
 ### Framework Update
 
-Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes.
+Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes:
 
-:::caution TODO
-
-Add Link to framework breaking changes
-
-:::
+- Dependency Container:  
+  PR: https://github.com/joomla-framework/di/pull/48
+  Description: It is possible to override services in child containers. This allows to override protected services, like the form factory one, in the containers of an extension when they are booted.
 
 
 ### Database must be injected in constructor model
