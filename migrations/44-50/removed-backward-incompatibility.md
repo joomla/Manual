@@ -97,3 +97,7 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 ### Menus controller resync function got removed
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
+
+### Demo task plugin got removed
+- PR: https://github.com/joomla/joomla-cms/pull/40147
+- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
