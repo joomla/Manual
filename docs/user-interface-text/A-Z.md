@@ -60,9 +60,9 @@ Example
 * 1 GB+, display 3.8 GB (only one decimal place)
 
 ## Geography and regions
-Use lower case for north, south, east and west, except when they're part of a name or recognised region. So, 'the south-west' (compass direction), but 'the South West' (administrative region).
-Use lower case for: the north, the south of England, the south-west, north-east Scotland, south Wales, the west, western Europe, the far east, south-east Asia.
-Use upper case for: East End, West End (London), Middle East, Central America, South America, Latin America.
+Use lower case for north, south, east and west, except when they're part of a name or recognised region. So, 'the south-west' (compass direction), but 'the South West' (administrative region).  
+Use lower case for: the north, the south of England, the south-west, north-east Scotland, south Wales, the west, western Europe, the far east, south-east Asia.  
+Use upper case for: East End, West End (London), Middle East, Central America, South America, Latin America.  
 
 ## Maths
 * Use a minus sign for negative numbers with no space: –6
