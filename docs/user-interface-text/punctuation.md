@@ -26,11 +26,11 @@ You can use bullet points to make text easier to read. Make sure that:
 Use numbered steps instead of bullet points to guide a user through a process. You don't need an introductory line and you can use links and downloads (with appropriate markup) in steps. Each step ends in a full stop because each step should be a complete sentence.
 
 ## eg, etc and ie
-Don't use full stops after or between these notations.
+Don't use full stops after or between these notations.  
 User testing has shown that some people are not familiar with abbreviations such as eg, so consider your audience before abbreviating.
 
 ## Ellipsis
-An ellipsis a special character that resembles a set of three periods ( ... ) indicating an omission. In html this is represented by &hellip. There should be a single space on either side. Unless it is at the end of a string where there is no space or period after.
+An ellipsis a special character that resembles a set of three periods ( ... ) indicating an omission. In html this is represented by &hellip. There should be a single space on either side. Unless it is at the end of a string where there is no space or period after.  
 Example
 * Read more ...
 * Create some text ... add some pictures.
@@ -78,7 +78,7 @@ We don't use the Oxford comma so the final item in a list before the 'and' does 
 Use `&quot; &#34;  &#x22;` at the beginning and end.
 
 ### Single quotes
-Use either `&#39; &#x27;` at the beginning and end.
+Use either `&#39; &#x27;` at the beginning and end.  
 Use single quotes:
 * in headlines
 * for unusual terms
