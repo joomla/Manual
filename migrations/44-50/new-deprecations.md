@@ -19,7 +19,7 @@ Replacement: The $item_associations property will be removed with no replacement
 #### Model states are not anymore of type CMSObject
 
 File: libraries/src/MVC/Model/StateBehaviorTrait.php
-Replacement: Direct property access to the state object of the model should be replaced with a get/set function call
+Replacement: Direct property access to the state object of the model should be replaced with a get/set function call. The state object is now a `Registry` which contains all the convenient functions a store should provide.
 Example:
 ```php
 // Write to the state
