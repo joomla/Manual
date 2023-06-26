@@ -103,4 +103,17 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 - Description: The demo task plugin got removed as it was intended for demonstration purposes only.
 
 ### User changes
-- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+- PR: https://github.com/joomla/joomla-cms/pull/41048
+- Description: Removed message "Cannot load user X", for removed users.  
+  
+### Plugin constructor doesn't contain the assignment operator
+- PR: https://github.com/joomla/joomla-cms/pull/40746
+- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
+```php
+public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
+{
+	parent::__construct($dispatcher, $config);
+
+	// Assign the extra arguments to internal variables
+}
+```
