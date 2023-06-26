@@ -104,3 +104,19 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 
 ### User changes
 - Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+
+### Some core classes are not anymore of type CMSObject
+
+PR: https://github.com/joomla/joomla-cms/pull/40999
+Files:
+- libraries/src/Categories/CategoryNode.php
+- libraries/src/Changelog/Changelog.php
+- libraries/src/Filesystem/Stream.php
+- libraries/src/Installer/InstallerExtension.php
+- libraries/src/MVC/Model/BaseModel.php
+- libraries/src/MVC/View/AbstractView.php
+- libraries/src/Table/Table.php
+- libraries/src/Updater/Update.php
+- libraries/src/User/User.php
+
+Description: These classes do not extend anymore from `CMSObject`, but are including the `LegacyErrorHandlingTrait` and `LegacyPropertyManagementTrait` legacy traits as the `CMSObject` does too. Like that does the functionality not change. Keep in mind that the functions of these traits are deprecated and exceptions should be thrown or proper getter and setters should be created.
