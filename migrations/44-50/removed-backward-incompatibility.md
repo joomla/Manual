@@ -101,3 +101,6 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 ### Demo task plugin got removed
 - PR: https://github.com/joomla/joomla-cms/pull/40147
 - Description: The demo task plugin got removed as it was intended for demonstration purposes only.
+
+### User changes
+- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
