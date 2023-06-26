@@ -58,7 +58,7 @@ defined('_JEXEC') or die;
 File: libraries/src/String/PunycodeHelper.php
 Replacement: The function throws a deprecated message when a `NULL` email address is passed to the function.
 
-#### The aid property of the User class is deprecated
+#### ModuleHelper::moduleCache is deprecated
 
-File: libraries/src/User/User.php
-Replacement: The $aid property will be removed with no replacement as the user roles are defined through an access level.
+File: libraries/src/Helper/ModuleHelper.php
+Replacement: The static `moduleCache` function in the `ModuleHelper` class is is deprecated. Instead of use `$this->loadFromCache()` in the module dispatcher class which is inherited from the `AbstractModuleDispatcher` class. The only difference is that the cache params should be passed as Registry and not plain object anymore.
