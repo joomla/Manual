@@ -21,3 +21,16 @@ Replacement: The $item_associations property will be removed with no replacement
 
 File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
 Replacement: The `$this->db` property is deprecated in the privacy plugins. Instead of use `$this->getDatabase()` when the plugin is converted to service providers.
+
+#### Model states are not anymore of type CMSObject
+
+File: libraries/src/MVC/Model/StateBehaviorTrait.php
+Replacement: Direct property access to the state object of the model should be replaced with a get/set function call. The state object is now a `Registry` which contains all the convenient functions a store should provide.
+Example:
+```php
+// Write to the state
+$model->getState()->set('foo', 'bar);
+
+// Access the state
+$data = $model->getState()->get('foo');
+```
