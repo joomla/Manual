@@ -52,3 +52,8 @@ Example:
 ```php
 defined('_JEXEC') or die;
 ```
+
+#### The function emailToPunycode in the PunycodeHelper class is not accepting null values
+
+File: libraries/src/String/PunycodeHelper.php
+Replacement: The function throws a deprecated message when a `NULL` email address is passed to the function.
