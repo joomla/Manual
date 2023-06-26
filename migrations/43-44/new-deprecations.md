@@ -57,3 +57,8 @@ defined('_JEXEC') or die;
 
 File: libraries/src/String/PunycodeHelper.php
 Replacement: The function throws a deprecated message when a `NULL` email address is passed to the function.
+
+#### The aid property of the User class is deprecated
+
+File: libraries/src/User/User.php
+Replacement: The $aid property will be removed with no replacement as the user roles are defined through an access level.
