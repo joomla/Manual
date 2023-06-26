@@ -44,8 +44,16 @@ $app->getMenu()->getActive() ? count($app->getMenu()->getActive()->getChildren()
 File: libraries/src/Language/Language.php
 Replacement: com_search will not be supported in Joomla 6.0 anymore and there is no replacement for these methods.
 
+#### JPATH_PLATFORM variable is deprecated
+
+File: libraries/bootstrap.php
+Replacement: The variable `JPATH_PLATFORM` should not be used anymore to check if the CMS is correctly initialized, use `_JEXEC` instead.
+Example:
+```php
+defined('_JEXEC') or die;
+```
+
 #### The function emailToPunycode in the PunycodeHelper class is not accepting null values
 
 File: libraries/src/String/PunycodeHelper.php
 Replacement: The function throws a deprecated message when a `NULL` email address is passed to the function.
-
