@@ -26,8 +26,8 @@ You can use bullet points to make text easier to read. Make sure that:
 Use numbered steps instead of bullet points to guide a user through a process. You don't need an introductory line and you can use links and downloads (with appropriate markup) in steps. Each step ends in a full stop because each step should be a complete sentence.
 
 ## eg, etc and ie
-Don't use full stops after or between these notations.
-User testing has shown that some people are not familiar with abbreviations such as eg, so consider your audience before abbreviating.
+* Don't use full stops after or between these notations.
+* User testing has shown that some people are not familiar with abbreviations such as eg, so consider your audience before abbreviating.
 
 ## Ellipsis
 An ellipsis a special character that resembles a set of three periods ( ... ) indicating an omission. In html this is represented by &hellip. There should be a single space on either side. Unless it is at the end of a string where there is no space or period after.
@@ -54,7 +54,7 @@ Don't hyphenate:
 * reorder
 * reopen
 
-If in doubt, don't use a hyphen
+If in doubt, don't use a hyphen.
 
 ## ie
 * See eg, etc and ie
@@ -79,13 +79,14 @@ Use `&quot; &#34;  &#x22;` at the beginning and end.
 
 ### Single quotes
 Use either `&#39; &#x27;` at the beginning and end.
+
 Use single quotes:
 * in headlines
 * for unusual terms
 * when referring to words or publications, for example: Download the manual 'Understanding ACL' (PDF, 360KB)'
 
 ## Slashes
-A slash (/) should not have spaces around it eg show/hide not show / hide
+A slash (/) should not have spaces around it eg show/hide not show / hide.
 
 ## Spaces
 Use only one space after a full stop, not 2.
