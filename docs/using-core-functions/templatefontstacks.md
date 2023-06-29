@@ -14,7 +14,7 @@ To ensure that the selected font is displayed to all visitors a font stack is us
 The font displayed may not be 100% identical for all visitors but any differences are minimal. When weighed against the performance limitations imposed by using web fonts the benefits usually outweigh any potential differences.
 
 ## Selecting a Font Stack
-When selecting a *Font Scheme* in the Cassioeia template style you now have an option to select *System Fonts*. Once selected you are then able to select from a range of *Font Stacks* for both the Heading and the Body.
+When selecting a **Font Scheme** in the Cassioeia template style you now have an option to select **System Fonts**. Once selected you are then able to select from a range of **Font Stacks** for both the Heading and the Body.
 
 ## Is there a demo of the Font Stack
 You can test all the available Font Stacks at the [Modern Fonts web site](https://modernfontstacks.com/#font-stacks)
