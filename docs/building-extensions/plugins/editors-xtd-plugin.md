@@ -114,9 +114,12 @@ final class Example extends CMSPlugin implements SubscriberInterface
 ```
 
 Now create a JavaScript to make `insert-cat` action to work.
-Create a JavaScript file under `media/plg_editors_xtd_example/js/example-cat.js`, and register handler for `insert-cat` action in `Joomla.EditorButton`
+Create a JavaScript file under `media/plg_editors_xtd_example/js/example-cat.js`, and register handler for `insert-cat` action in `JoomlaEditorButton`
 
 ```javascript
+// Import required components
+import { JoomlaEditorButton } from 'editor-api';
+
 // Insert 🐈 on cursor
 JoomlaEditorButton.registerAction('insert-cat', (editor, options) => {
   editor.replaceSelection('🐈');

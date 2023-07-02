@@ -214,6 +214,9 @@ public function display(string $name, string $content = '', array $attributes = 
 The script should register editor instance, and provide a basic methods, for set/get value and replace selection, etc.
 
 ```javascript
+// Import required components
+import { JoomlaEditor, JoomlaEditorDecorator } from 'editor-api';
+
 /**
  * EditorExample Decorator wich implements required methods per Editor instance.
  * Joomla will use this to share it betwen Extension, to interact with a main Editor instance.
@@ -268,13 +271,13 @@ class JoomlaEditorExample extends HTMLElement {
         
         // Register the Decorator in Joomla.Editor
         const jEditor = new EditorExampleDecorator(this, 'example', this.input.id);
-        Joomla.Editor.register(jEditor);
+        JoomlaEditor.register(jEditor);
 
         // Find out when editor is interacted
         // The script should tell to joomla when editor or one of Editor buttons (XTD) is interacted
         if (!this.interactionCallback) {
             this.interactionCallback = () => {                 
-                Joomla.Editor.setActive(this.input.id);
+                JoomlaEditor.setActive(this.input.id);
             };
         }
         this.addEventListener('click', this.interactionCallback);        
@@ -283,7 +286,7 @@ class JoomlaEditorExample extends HTMLElement {
     // Element removed from DOM
     disconnectedCallback() {
         // Unregister editor and unbind all events
-        Joomla.Editor.unregister(this.input.id);
+        JoomlaEditor.unregister(this.input.id);
         this.removeEventListener('click', this.interactionCallback);
     }    
 }
