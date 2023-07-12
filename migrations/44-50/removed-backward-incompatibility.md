@@ -120,3 +120,19 @@ Files:
 - libraries/src/User/User.php
 
 Description: These classes do not extend anymore from `CMSObject`, but are including the `LegacyErrorHandlingTrait` and `LegacyPropertyManagementTrait` legacy traits as the `CMSObject` does too. Like that does the functionality not change. Keep in mind that the functions of these traits are deprecated and exceptions should be thrown or proper getter and setters should be created.
+
+### DIC Service Provider Changes
+PR: https://github.com/joomla/joomla-cms/pull/36499
+
+The input object is now available in the DIC. You should NOT use it directly in your extensions and should continue to
+get the input via the application object.
+
+\Joomla\CMS\Factory::$application is no longer sometimes set inside the Application's DIC provider but instead is now
+reliably set inside the includes/app.php file of each Application. It is not expected for this change to affect
+extension developers as there are no extension hooks this early in the Joomla Application lifecycle.
+
+### Session Object Changes
+In the unusual case of creating a full custom session object of `\Joomla\CMS\Session\Storage\JoomlaStorage` the
+cookie domain and cookie path should now be set in the options object when creating the class. They will not be fetched
+from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
+session created by the CMS in the application this is not expected to have a practical effect on end users.
