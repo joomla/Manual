@@ -141,6 +141,8 @@ session created by the CMS in the application this is not expected to have a pra
 
 #### Codemirror plugin
 
+PR: https://github.com/joomla/joomla-cms/pull/41070
+
 Codemirror script has been update to 6-th version. New version are based on ES modules. 
 Any customisation and javascript code written for Codemirror 5 is incompatible with Codemirror 6.
 
