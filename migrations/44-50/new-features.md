@@ -24,4 +24,4 @@ For backwards compatibility, the state class supports direct property access tho
 
 Support of [ESM importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) 
 provides a possibility to keep the code modular, flexible and allows to use existing ES modules with minimum recompilation. 
-For more detail about how to register your module in to `importmap` look for [Working with ESM importmap](/docs/using-core-functions/web-asset-manager.md#working-with-esm-importmap) in Web Asset Manager.
+For more detail about how to register your module in to `importmap` look for [Working with ESM importmap](/docs/using-core-functions/web-asset-manager#working-with-esm-importmap) in Web Asset Manager.
