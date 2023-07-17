@@ -24,13 +24,11 @@ If you only need to maintain compatibilty with PSR-3 to use an logger external t
 
 ### Framework Update
 
-Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes.
+Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes:
 
-:::caution TODO
-
-Add Link to framework breaking changes
-
-:::
+- Dependency Container:  
+  PR: https://github.com/joomla-framework/di/pull/48
+  Description: It is possible to override services in child containers. This allows to override protected services, like the form factory one, in the containers of an extension when they are booted.
 
 
 ### Database must be injected in constructor model
@@ -86,6 +84,55 @@ public function offsetSet(...)    --> public function offsetSet(...): void
 public function offsetUnset(...)  --> public function offsetUnset(...): void
 ```
 
+#### libraries/src/Language/Language.php
+
+\Joomla\CMS\Language\Language extends now from \Joomla\Language\Language
+
+Duplicated code which is extended from the framework has been removed
+
+```php
+public function debugFile(...) --> public function debugFile(string $filename): int
+```
+
 ### Menus controller resync function got removed
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
+
+### Demo task plugin got removed
+- PR: https://github.com/joomla/joomla-cms/pull/40147
+- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
+
+### User changes
+- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+
+### Some core classes are not anymore of type CMSObject
+
+PR: https://github.com/joomla/joomla-cms/pull/40999
+Files:
+- libraries/src/Categories/CategoryNode.php
+- libraries/src/Changelog/Changelog.php
+- libraries/src/Filesystem/Stream.php
+- libraries/src/Installer/InstallerExtension.php
+- libraries/src/MVC/Model/BaseModel.php
+- libraries/src/MVC/View/AbstractView.php
+- libraries/src/Table/Table.php
+- libraries/src/Updater/Update.php
+- libraries/src/User/User.php
+
+Description: These classes do not extend anymore from `CMSObject`, but are including the `LegacyErrorHandlingTrait` and `LegacyPropertyManagementTrait` legacy traits as the `CMSObject` does too. Like that does the functionality not change. Keep in mind that the functions of these traits are deprecated and exceptions should be thrown or proper getter and setters should be created.
+
+### DIC Service Provider Changes
+PR: https://github.com/joomla/joomla-cms/pull/36499
+
+The input object is now available in the DIC. You should NOT use it directly in your extensions and should continue to
+get the input via the application object.
+
+\Joomla\CMS\Factory::$application is no longer sometimes set inside the Application's DIC provider but instead is now
+reliably set inside the includes/app.php file of each Application. It is not expected for this change to affect
+extension developers as there are no extension hooks this early in the Joomla Application lifecycle.
+
+### Session Object Changes
+In the unusual case of creating a full custom session object of `\Joomla\CMS\Session\Storage\JoomlaStorage` the
+cookie domain and cookie path should now be set in the options object when creating the class. They will not be fetched
+from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
+session created by the CMS in the application this is not expected to have a practical effect on end users.
