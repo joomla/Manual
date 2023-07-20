@@ -12,7 +12,8 @@ We will run through the tools and process required to set up a local development
 the ability to get the most out of the guide as a developer.
 
 ## Quick start
-- @TODO
+- here again
+- test2
 
 ## Community
 - Check the latest state of the Joomla CMS code at [GitHub](https://github.com/joomla/joomla-cms)
