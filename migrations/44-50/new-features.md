@@ -28,7 +28,14 @@ For more detail about how to register your module in to `importmap` look for [Wo
 
 #### System events have own classes
 
-Each system event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/40522
+Each system event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/40522.
+The event class allows to retrieve an active application form the event:
+```php
+public function onAfterDispatch(Joomla\CMS\Event\Application\AfterDispatchEvent $event)
+{
+    dump($event->getApplication()->getName());
+}
+```
 
 #### New plugin events
 
