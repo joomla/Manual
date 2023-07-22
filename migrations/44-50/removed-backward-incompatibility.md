@@ -98,10 +98,6 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
 
-### Demo task plugin got removed
-- PR: https://github.com/joomla/joomla-cms/pull/40147
-- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
-
 ### User changes
 - Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
 
@@ -136,3 +132,28 @@ In the unusual case of creating a full custom session object of `\Joomla\CMS\Ses
 cookie domain and cookie path should now be set in the options object when creating the class. They will not be fetched
 from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
 session created by the CMS in the application this is not expected to have a practical effect on end users.
+
+### Plugins
+
+#### Demo task plugin got removed
+- PR: https://github.com/joomla/joomla-cms/pull/40147
+- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
+
+#### Codemirror plugin
+
+PR: https://github.com/joomla/joomla-cms/pull/41070
+
+Codemirror script has been update to 6-th version. New version are based on ES modules. 
+Any customisation and javascript code written for Codemirror 5 is incompatible with Codemirror 6.
+
+
+To initialise codemirror instance you can use helper provided by Joomla in `codemirror` module, example:
+```php
+$wa->getRegistry()->addExtensionRegistryFile('plg_editors_codemirror');
+$wa->useScript('codemirror');
+```
+```javascript
+import { createFromTextarea } from 'codemirror';
+const editor = await createFromTextarea(textAreaElement, options);
+```
+ 
