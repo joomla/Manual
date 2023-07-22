@@ -1,8 +1,16 @@
+---
+sidebar_position: 2
+title: Categories
+---
+Categories Overview
+===================
+This is the content for ACL
+
 Several of the Joomla core components implement categories to enable records which are similar in some way to be grouped together. If you're developing a component then you can easily incorporate category functionality into your component.
 
 It's helpful initially to consider how categories are stored and linked to in the database. The diagram below takes as an example categories associated with `com_contact`.  The blue rectangles relate to database tables, the yellow ones to Joomla classes. The red bars are meant to indicate records in the Categories table.
 
-![Categories](https://github.com/robbiejackson/Manual/assets/5058681/bc29722e-38f8-499b-8e35-301847fb1df8)
+![Categories](_assets/categories_overview.jpg)
 
 The Joomla Categories table is split into "partitions", one partition for each component which uses categories. (Here "partitions" is used in a loose sense, not related to the technical term "database partition" for example). 
 
