@@ -158,9 +158,9 @@ Within your Joomla administrator go to Install Extensions and via the Upload Pac
 
 Make this module visible by editing it (click on it within the Modules page) then:
 
-1 making its status Published
-2 selecting a position on the page for it to be shown
-3 on the menu assignment tab specify the pages it should appear on
+1. making its status Published
+2. selecting a position on the page for it to be shown
+3. on the menu assignment tab specify the pages it should appear on
 
 When you visit a site web page then you should see the module in your selected position, and it should show the set of com_content categories in the database and for each category:
 
@@ -172,3 +172,120 @@ When you visit a site web page then you should see the module in your selected p
 You can get categories for other components by adding the parameters `categoryextension` and `categorytable` to the URL, eg `...&categoryextension=contact&categorytable=contact_details` to get `com_contact` categories. Note that if you're trying to get the categories of a component which isn't one of the core Joomla components, then you may need to supply the component field names etc within the `options` to the `Categories::getInstance()` call, as described above.
 
 The code also tries to guess if the page displayed relates to a category, by checking if there's a `catid` parameter in the URL, or if the `view` parameter is set to 'category'. In this case it shows the id and title of the associated category. Obviously this may not work correctly in all cases. 
+
+## Getting Categories via the Dependency Injection Container
+
+In general the preferred way to get access to the `Categories` class is via the DI container, and in particular by using a `CategoryFactory` class which is obtained via the DI container. Once you have a `CategoryFactory` you can call `createCategory($options)` on that instance and receive back a `Categories` object; the `$options` array is the set of options described at the top of this page. However, the `CategoryFactory` object has to be instantiated with the extension for which you want to access the categories, as the `createCategory()` will try to access the `\\<namespace prefix>\\Site\\Service\\Category` class in order to find the extension's database table etc.
+
+A method of doing this for accessing `com_content` categories is by using the following in your services/provider.php file.
+
+    <?php
+
+    defined('_JEXEC') or die;
+
+    use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
+    use Joomla\CMS\Extension\Service\Provider\HelperFactory;
+    use Joomla\CMS\Extension\Service\Provider\Module;
+    use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory;
+    use Joomla\CMS\Dispatcher\ModuleDispatcherFactoryInterface;
+    use Joomla\CMS\Extension\ModuleInterface;
+    use Joomla\CMS\Helper\HelperFactoryInterface;
+    use Joomla\DI\Container;
+    use Joomla\DI\ServiceProviderInterface;
+    use Mycompany\Module\CategoriesDemo\Site\Extension\CategoriesDemoModule;
+    use Joomla\CMS\Categories\CategoryFactoryInterface;
+
+    return new class () implements ServiceProviderInterface {
+
+        public function register(Container $container)
+        {
+            $container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
+            $container->registerServiceProvider(new ModuleDispatcherFactory('\\Mycompany\\Module\\CategoriesDemo'));
+            $container->registerServiceProvider(new HelperFactory('\\Mycompany\\Module\\CategoriesDemo\\Site\\Helper'));
+            //$container->registerServiceProvider(new Module());
+            $container->set(
+                ModuleInterface::class,
+                function (Container $container) {
+                    $module = new CategoriesDemoModule(
+                        $container->get(ModuleDispatcherFactoryInterface::class),
+                        $container->has(HelperFactoryInterface::class) ? $container->get(HelperFactoryInterface::class) : null
+                    );
+                    $module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+                    return $module;
+                }
+            );
+        }
+    };
+
+The line:
+
+    $container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
+
+will run the `register()` function in libraries/src/Extension/Service/Provider/CategoryFactory.php. This will create an entry in the DI container with key "Joomla\CMS\Categories\CategoryFactoryInterface", and as value a function which will return a CategoryFactory instantiated with the namespace prefix of `com_content`. 
+
+The line:
+
+    $module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+
+will `get` this entry from the DI container (and so will get the CategoryFactory instance), and store it against our Extension `$module` via the `setCategoryFactory` call.
+
+The above assumes that you set the namespace prefix of your own module in your module manifest file:
+
+    <namespace path="src">Mycompany\Module\CategoriesDemo</namespace>
+
+Then in your extension file (in the src/Extension/CategoriesDemoModule.php file of your module):
+
+    <?php
+
+    namespace Mycompany\Module\CategoriesDemo\Site\Extension;
+
+    defined('JPATH_PLATFORM') or die;
+
+    use Joomla\CMS\Categories\CategoryServiceInterface;
+    use Joomla\CMS\Categories\CategoryServiceTrait;
+    use Joomla\CMS\Extension\BootableExtensionInterface;
+    use Psr\Container\ContainerInterface;
+    use Joomla\CMS\Extension\Module;
+        
+    class CategoriesDemoModule extends Module implements CategoryServiceInterface, BootableExtensionInterface
+    {
+        use CategoryServiceTrait;
+        
+        public static $categories;
+        
+        public function boot(ContainerInterface $container)
+        {
+            self::$categories = $this->categoryFactory->createCategory();
+        }
+        
+        public static function getCategories()
+        {
+            return self::$categories;
+        }
+    }
+
+This is the Extension object which is created and returned as `$module` in the services/provider.php file. The function `setCategoryFactory` which was used there is in the `CategoryServiceTrait`, and that function stores the CategoryFactory as a local variable which can be accessed using `$this->categoryFactory`, or you could use:
+
+    self::$categories = $this->getCategory();
+
+When your module is run Joomla will call your `boot()` function, and this sets up a static variable which holds the Categories instance. You can then access it via this static variable, eg:
+
+    use Mycompany\Module\CategoriesDemo\Site\Extension\CategoriesDemoModule;
+    ...
+    $categories = CategoriesDemoModule::$categories;
+
+Note however that 
+- it's more problematic if (like the sample module code) you're determining in a dynamic fashion the extension whose categories you want to access, as this affects your line
+
+    `$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));`
+
+  when you load the entry into the DI container
+- if you're wanting to access the categories of several component in your modules then this approach doesn't work as if you try to load both `com_content` and `com_contact` CategoryFactory classes by
+  
+    `$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));`
+  
+    `$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Contact'));`
+  
+  This is because the second entry will overwrite the first as they both use the same key in the DI container.
+
+Not all the issues regarding moving to using the DI container have been satisfactorily resolved!
