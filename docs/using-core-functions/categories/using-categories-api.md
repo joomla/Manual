@@ -9,10 +9,12 @@ title: Using the Categories API
 
 To get access to the set of categories for `com_content` you can use:
 
+```php
     use Joomla\CMS\Categories\Categories;
     ...
     $extension = "content";   // Note that you don't have the usual "com_" prefix in the extension. 
     $categories = Categories::getInstance($extension);
+```
 
 (This actually uses a deprecated API as the means of accessing the Categories class because it doesn't go via the Dependency Injection Container. However, it is a lot simpler, and an alternative method of using the DIC is described later). You can provide an associative array of options as a second parameter to the Categories static `getInstance()` method. The keys of this array are:
 
@@ -26,11 +28,15 @@ To get access to the set of categories for `com_content` you can use:
 
 Examples:
 
-    $categories = Categories::getInstance("content", array("access" => false, "published" => 0));
+```php
+$categories = Categories::getInstance("content", array("access" => false, "published" => 0));
+```
 
 Category nodes returned will not be restricted by Access or the Published state.
 
-    $categories = Categories::getInstance("helloworld", array("countitems" => 1, "table" => "helloworld", "statefield" => "published"));
+```php
+$categories = Categories::getInstance("helloworld", array("countitems" => 1, "table" => "helloworld", "statefield" => "published"));
+```
 
 Category nodes of the "helloworld" component will include the number of associated records in the "helloworld" table, where the published state is held in a field called "published". 
 
@@ -38,7 +44,9 @@ Category nodes of the "helloworld" component will include the number of associat
 
 Once you have the `$categories` instance you can get `CategoryNode` instances using eg
 
-    $categoryNodes = $categories->get(12);   // returns the category node for category with id=12
+```php
+$categoryNodes = $categories->get(12);   // returns the category node for category with id=12
+```
 
 The Categories `get()` method takes as its first parameter the `id` of the category record to be read from the database and returns to the caller the corresponding `CategoryNode` object. If no `id` is given, then the method returns the `CategoryNode` object relating to the system `ROOT` record at the very top of the category tree in the database.
 
@@ -52,12 +60,14 @@ In a multilanguage site the categories returned will be restricted to those of t
 
 The object from a call to the Categories `get($id)` method will be a `CategoryNode` object relating to the category with id `$id`. If you called `get()` using the default of 'root' then you will have to make a subsequent call to `getChildren()` to get an array of `CategoryNode` objects for the extension you want, eg:
 
+```php
     use Joomla\CMS\Categories\Categories;
     use Joomla\CMS\Categories\CategoryNode;
 
     $categories = Categories::getInstance("content");
     $rootNode = $categories->get();   
     $categoryNodes = $rootNode->getChildren();
+```
 
 Once you have a `CategoryNode` object you can access the properties of this object as defined in the API definition, and these mostly relate closely to the category attributes visible in the Joomla admin forms. Properties where the meaning is fairly clear are not described below, but below is a list of those where the meaning may not be totally apparent.
 
@@ -98,64 +108,66 @@ Below is the code for a simple Joomla module which you can install and run to de
 In a folder `mod_sample_categories` create the following 2 files:
 
 `mod_sample_categories.xml` 
-
-    <?xml version="1.0" encoding="utf-8"?>
-    <extension type="module" version="3.1" client="site" method="upgrade">
-        <name>Categories demo</name>
-        <version>1.0.1</version>
-        <description>Code demonstrating use of Joomla APIs related to Categories</description>
-        <files>
-            <filename module="mod_sample_categories">mod_sample_categories.php</filename>
-        </files>
-    </extension>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.1" client="site" method="upgrade">
+    <name>Categories demo</name>
+    <version>1.0.1</version>
+    <description>Code demonstrating use of Joomla APIs related to Categories</description>
+    <files>
+        <filename module="mod_sample_categories">mod_sample_categories.php</filename>
+    </files>
+</extension>
+```
 
 `mod_sample_categories.php`
+```php
+<?php
+defined('_JEXEC') or die('Restricted Access');
 
-    <?php
-    defined('_JEXEC') or die('Restricted Access');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Categories\Categories;
+use Joomla\CMS\Categories\CategoryNode;
 
-    use Joomla\CMS\Factory;
-    use Joomla\CMS\Categories\Categories;
-    use Joomla\CMS\Categories\CategoryNode;
+$app = Factory::getApplication();
+$input = $app->input;
+$ext = $input->get('categoryextension', "Content", "STRING");
+$tab = $input->get('categorytable', "Content", "STRING");
+echo "Getting {$ext} categories and using {$tab} table<br>";
+echo "-------------<br>";
 
-    $app = Factory::getApplication();
-    $input = $app->input;
-    $ext = $input->get('categoryextension', "Content", "STRING");
-    $tab = $input->get('categorytable', "Content", "STRING");
-    echo "Getting {$ext} categories and using {$tab} table<br>";
+$categories = Categories::getInstance($ext, array("table" => "Content", "countItems" => 1, "access" => false));
+
+$cat0 = $categories->get('root');
+
+$cats = $cat0->getChildren(true);
+foreach ($cats as $cat)
+{
+    echo "Category {$cat->id}, title: {$cat->title}<br>";
+    $parent = $cat->getParent();
+    echo "Level: {$cat->level}, parent id: {$cat->parent_id}, title: {$parent->title}<br>";
+    echo "Numitems {$cat->getNumitems()}, including descendants: {$cat->getNumitems(true)}<br>";
+    var_dump($cat->getPath());
     echo "-------------<br>";
+}
 
-    $categories = Categories::getInstance($ext, array("table" => "Content", "countItems" => 1, "access" => false));
-
-    $cat0 = $categories->get('root');
-
-    $cats = $cat0->getChildren(true);
-    foreach ($cats as $cat)
+$ext2 = $input->get('option', "", "STRING");
+$catid = $input->get('catid', 0, "INT");
+$view = $input->get('view', "", "STRING");
+$id = $input->get('id', 0, "INT");
+if ($ext2 && (strtolower(substr($ext2, 0, 4)) == "com_") && ($catid || (strtolower($view) == "category" && $id)))
+{
+    $ext2 = substr($ext2, 4);
+    $categories2 = Categories::getInstance($ext2, array("access" => false));
+    $categoryId = $catid ? $catid : $id; 
+    echo "<br>Getting $ext2 category $categoryId<br>";
+    $cat2 = $categories2->get($categoryId);
+    if ($cat2)
     {
-        echo "Category {$cat->id}, title: {$cat->title}<br>";
-        $parent = $cat->getParent();
-        echo "Level: {$cat->level}, parent id: {$cat->parent_id}, title: {$parent->title}<br>";
-        echo "Numitems {$cat->getNumitems()}, including descendants: {$cat->getNumitems(true)}<br>";
-        var_dump($cat->getPath());
-        echo "-------------<br>";
+        echo "Category {$cat2->id}, title: {$cat2->title}<br>";
     }
-
-    $ext2 = $input->get('option', "", "STRING");
-    $catid = $input->get('catid', 0, "INT");
-    $view = $input->get('view', "", "STRING");
-    $id = $input->get('id', 0, "INT");
-    if ($ext2 && (strtolower(substr($ext2, 0, 4)) == "com_") && ($catid || (strtolower($view) == "category" && $id)))
-    {
-        $ext2 = substr($ext2, 4);
-        $categories2 = Categories::getInstance($ext2, array("access" => false));
-        $categoryId = $catid ? $catid : $id; 
-        echo "<br>Getting $ext2 category $categoryId<br>";
-        $cat2 = $categories2->get($categoryId);
-        if ($cat2)
-        {
-            echo "Category {$cat2->id}, title: {$cat2->title}<br>";
-        }
-    }
+}
+```
 
 Zip up the mod_sample_categories directory to create `mod_sample_categories.zip`.
 
@@ -184,100 +196,114 @@ In general the preferred way to get access to the `Categories` class is via the 
 
 A method of doing this for accessing `com_content` categories is by using the following in your services/provider.php file.
 
-    <?php
+```php
+<?php
 
-    defined('_JEXEC') or die;
+defined('_JEXEC') or die;
 
-    use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
-    use Joomla\CMS\Extension\Service\Provider\HelperFactory;
-    use Joomla\CMS\Extension\Service\Provider\Module;
-    use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory;
-    use Joomla\CMS\Dispatcher\ModuleDispatcherFactoryInterface;
-    use Joomla\CMS\Extension\ModuleInterface;
-    use Joomla\CMS\Helper\HelperFactoryInterface;
-    use Joomla\DI\Container;
-    use Joomla\DI\ServiceProviderInterface;
-    use Mycompany\Module\CategoriesDemo\Site\Extension\CategoriesDemoModule;
-    use Joomla\CMS\Categories\CategoryFactoryInterface;
+use Joomla\CMS\Extension\Service\Provider\CategoryFactory;
+use Joomla\CMS\Extension\Service\Provider\HelperFactory;
+use Joomla\CMS\Extension\Service\Provider\Module;
+use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory;
+use Joomla\CMS\Dispatcher\ModuleDispatcherFactoryInterface;
+use Joomla\CMS\Extension\ModuleInterface;
+use Joomla\CMS\Helper\HelperFactoryInterface;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+use Mycompany\Module\CategoriesDemo\Site\Extension\CategoriesDemoModule;
+use Joomla\CMS\Categories\CategoryFactoryInterface;
 
-    return new class () implements ServiceProviderInterface {
+return new class () implements ServiceProviderInterface {
 
-        public function register(Container $container)
-        {
-            $container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
-            $container->registerServiceProvider(new ModuleDispatcherFactory('\\Mycompany\\Module\\CategoriesDemo'));
-            $container->registerServiceProvider(new HelperFactory('\\Mycompany\\Module\\CategoriesDemo\\Site\\Helper'));
-            //$container->registerServiceProvider(new Module());
-            $container->set(
-                ModuleInterface::class,
-                function (Container $container) {
-                    $module = new CategoriesDemoModule(
-                        $container->get(ModuleDispatcherFactoryInterface::class),
-                        $container->has(HelperFactoryInterface::class) ? $container->get(HelperFactoryInterface::class) : null
-                    );
-                    $module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
-                    return $module;
-                }
-            );
-        }
-    };
+    public function register(Container $container)
+    {
+        $container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
+        $container->registerServiceProvider(new ModuleDispatcherFactory('\\Mycompany\\Module\\CategoriesDemo'));
+        $container->registerServiceProvider(new HelperFactory('\\Mycompany\\Module\\CategoriesDemo\\Site\\Helper'));
+        //$container->registerServiceProvider(new Module());
+        $container->set(
+            ModuleInterface::class,
+            function (Container $container) {
+                $module = new CategoriesDemoModule(
+                    $container->get(ModuleDispatcherFactoryInterface::class),
+                    $container->has(HelperFactoryInterface::class) ? $container->get(HelperFactoryInterface::class) : null
+                );
+                $module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+                return $module;
+            }
+        );
+    }
+};
+```
 
 The line:
 
-    $container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
+```php
+$container->registerServiceProvider(new CategoryFactory('\\Joomla\\Component\\Content'));
+```
 
 will run the `register()` function in libraries/src/Extension/Service/Provider/CategoryFactory.php. This will create an entry in the DI container with key "Joomla\CMS\Categories\CategoryFactoryInterface", and as value a function which will return a CategoryFactory instantiated with the namespace prefix of `com_content`. 
 
 The line:
 
-    $module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+```php
+$module->setCategoryFactory($container->get(CategoryFactoryInterface::class));
+```
 
 will `get` this entry from the DI container (and so will get the CategoryFactory instance), and store it against our Extension `$module` via the `setCategoryFactory` call.
 
 The above assumes that you set the namespace prefix of your own module in your module manifest file:
 
+```xml
     <namespace path="src">Mycompany\Module\CategoriesDemo</namespace>
+```
 
 Then in your extension file (in the src/Extension/CategoriesDemoModule.php file of your module):
 
-    <?php
+```php
+<?php
 
-    namespace Mycompany\Module\CategoriesDemo\Site\Extension;
+namespace Mycompany\Module\CategoriesDemo\Site\Extension;
 
-    defined('JPATH_PLATFORM') or die;
+defined('JPATH_PLATFORM') or die;
 
-    use Joomla\CMS\Categories\CategoryServiceInterface;
-    use Joomla\CMS\Categories\CategoryServiceTrait;
-    use Joomla\CMS\Extension\BootableExtensionInterface;
-    use Psr\Container\ContainerInterface;
-    use Joomla\CMS\Extension\Module;
-        
-    class CategoriesDemoModule extends Module implements CategoryServiceInterface, BootableExtensionInterface
+use Joomla\CMS\Categories\CategoryServiceInterface;
+use Joomla\CMS\Categories\CategoryServiceTrait;
+use Joomla\CMS\Extension\BootableExtensionInterface;
+use Psr\Container\ContainerInterface;
+use Joomla\CMS\Extension\Module;
+    
+class CategoriesDemoModule extends Module implements CategoryServiceInterface, BootableExtensionInterface
+{
+    use CategoryServiceTrait;
+    
+    public static $categories;
+    
+    public function boot(ContainerInterface $container)
     {
-        use CategoryServiceTrait;
-        
-        public static $categories;
-        
-        public function boot(ContainerInterface $container)
-        {
-            self::$categories = $this->categoryFactory->createCategory();
-        }
-        
-        public static function getCategories()
-        {
-            return self::$categories;
-        }
+        self::$categories = $this->categoryFactory->createCategory();
     }
+    
+    public static function getCategories()
+    {
+        return self::$categories;
+    }
+}
+```
 
 This is the Extension object which is created and returned as `$module` in the services/provider.php file. The function `setCategoryFactory` which was used there is in the `CategoryServiceTrait`, and that function stores the CategoryFactory as a local variable which can be accessed using `$this->categoryFactory`, or you could use:
 
+```php
     self::$categories = $this->getCategory();
+```
 
 When your module is run Joomla will call your `boot()` function, and this sets up a static variable which holds the Categories instance. You can then access it via this static variable, eg:
 
+```php
     use Mycompany\Module\CategoriesDemo\Site\Extension\CategoriesDemoModule;
-    ...
+    // ...
     $categories = CategoriesDemoModule::$categories;
+```
 
 Note however that 
 - it's more problematic if (like the sample module code) you're determining in a dynamic fashion the extension whose categories you want to access, as this affects your line
