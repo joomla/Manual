@@ -186,7 +186,7 @@ Whenever Joomla wants to execute the component it runs the services/provider.php
 
 `$categories = ExampleComponent::$categories;``
 
-The CategoryFactory `createCategory()` code will use the namespace which was passed into it (originally in services/provider.php above) and will try to instantiate a class <namespace>\Site\Service\Category, raising an exception if it does not exist. So you need to provide a file within your site area src/Service/Category.php similar to the following:
+The CategoryFactory `createCategory()` code will use the namespace which was passed into it (originally in services/provider.php above) and will try to instantiate a class `<namespace>\Site\Service\Category`, raising an exception if it does not exist. So you need to provide a file within your site area src/Service/Category.php similar to the following:
 
 ```php
 <?php
