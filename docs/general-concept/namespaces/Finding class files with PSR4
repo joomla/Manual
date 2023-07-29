@@ -4,6 +4,8 @@ title: Finding Class files with PSR4
 ---
 Namespaces allow us to organise our PHP classes in a similar way that directories allow us to organise our files. In particular, the [PSR4 recommendation](https://www.php-fig.org/psr/psr-4/) which Joomla uses enables us to determine what file a certain class should be in. 
 
+![Namespacing](_assets/namespace.jpg "PSR4 namespacing")
+
 To see this, let's take an example of the file administrator/components/com_content/src/View/Articles/HtmlView.php, which contains the code for the view which presents the Articles to the administrator. This file contains the lines
 ```php
 namespace Joomla\Component\Content\Administrator\View\Articles;
