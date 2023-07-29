@@ -1,10 +1,9 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 title: Categories
 ---
 Categories Overview
 ===================
-This is the content for ACL
 
 Several of the Joomla core components implement categories to enable records which are similar in some way to be grouped together. If you're developing a component then you can easily incorporate category functionality into your component.
 
