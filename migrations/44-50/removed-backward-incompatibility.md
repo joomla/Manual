@@ -161,3 +161,14 @@ import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
 ```
  
+### Removed 3rd party libraries
+
+## Joomla\Ldap
+
+Our own LDAP library is no longer compatible with Joomla 5, it has been removed.
+As part of this we removed the following class aliases from the b/c plugin:
+
+- JClientLdap -> \\Joomla\\Ldap\\LdapClient
+- JLDAP -> \\Joomla\\Ldap\\LdapClient
+
+Joomla 4 and 5 includes the symfony Ldap package.
