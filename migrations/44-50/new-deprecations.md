@@ -29,7 +29,7 @@ Replacement: Direct property access to the state object of the model should be r
 Example:
 ```php
 // Write to the state
-$model->getState()->set('foo', 'bar);
+$model->getState()->set('foo', 'bar');
 
 // Access the state
 $data = $model->getState()->get('foo');
