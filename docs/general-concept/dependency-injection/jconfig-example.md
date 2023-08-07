@@ -66,6 +66,7 @@ Or you can obtain them via the Application instance, which has already got them 
 ```php
 use Joomla\CMS\Factory;
 $application = Factory::getApplication();
-$application->getConfig();   // or, to get a particular parameter:
+$application->getConfig();   
+// or, to get a particular parameter:
 $application->get($paramName, $defaultValue);
 ```

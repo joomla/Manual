@@ -47,6 +47,6 @@ public function register(Container $container)
 ```
 The plugin's Extension class is Color, which gets instantiated with 2 parameters being passed into its constructor:
 - the EventDispatcher class – this is obtained from the parent DIC, having been originally put into it from libraries/src/Service/Provider/Dispatcher.php when Joomla initialised
-- the plugin stdClass object which Joomla has used to store plugin data (id, name, type and params).
+- the plugin stdClass object which Joomla has traditionally used to store plugin data (id, name, type and params).
 
 This is a standard pattern that you can use for your own plugins. You can obviously get the Application instance by calling `Factory::getApplication` either in the services/provider.php file or in your standard plugin code. 
