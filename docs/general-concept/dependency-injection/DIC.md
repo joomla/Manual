@@ -12,10 +12,10 @@ It doesn't *really* matter what the key is set to - as long as it's intelligible
 ![DIC](_assets/dic.jpg "DIC")
 
 You put things into the container using `set()` passing: 
-- the class name or interface name 
-- a function which returns an instance of the class (or the value can be just an instance of the class, without the enveloping function) 
-- a boolean defining whether the class instance may be shared or not (ie if there is a second request to the DIC to supply that instance, does it return the same instance or a new one)
-- a boolean defining whether this entry into the DI container is protected or not (an error will be raised if you try to overwrite a protected entry by calling `set()` again using the same key).
+- the key = the class name or interface name
+- the value = a function which returns an instance of the class (or the value can be just an instance of the class, without the enveloping function)
+- shared - a boolean defining whether the class instance may be shared or not (ie if there is a second request to the DIC to supply that instance, does it return the same instance or a new one)
+- protected - a boolean defining whether this entry into the DI container is protected or not (an error will be raised if you try to overwrite a protected entry by calling `set()` again using the same key).
 
 The function `share()` is basically the same as `set()` with the shared boolean set to true. 
 

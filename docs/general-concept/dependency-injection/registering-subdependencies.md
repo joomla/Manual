@@ -17,6 +17,7 @@ use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 use Mycompany\Component\Example\Administrator\Extension\ExampleComponent;
+
 return new class implements ServiceProviderInterface {
     public function register(Container $container): void 
     {
@@ -61,7 +62,7 @@ Let's look first at the ComponentDispatcherFactory
 ```php
 $component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
 ```
-The code `$container->get(ComponentDispatcherFactoryInterface::class)` runs the function in the child DIC associated with the ComponentDispatcherFactoryInterface::class key, and the object returned:
+The code `$container->get(ComponentDispatcherFactoryInterface::class)` runs the function in the child DIC associated with the ComponentDispatcherFactoryInterface::class key. This function is found in libraries/src/Extension/Service/Provider/ComponentDispatcherFactory.php, and the object returned:
 ```php
 new \Joomla\CMS\Dispatcher\ComponentDispatcherFactory($this->namespace, $container->get(MVCFactoryInterface::class))
 ```
@@ -83,12 +84,12 @@ Let's take another look at the line when the ComponentDispatcherFactory is insta
 ```php
 new \Joomla\CMS\Dispatcher\ComponentDispatcherFactory($this->namespace, $container->get(MVCFactoryInterface::class))
 ```
-Here the code is also getting the MVCFactory instance out of the child DIC; the ComponentDispatcherFactory has in turn a dependency on the MVCFactory. Why is this? As described in the [Dispatcher document](../extension-and-dispatcher/dispatcher-component.md) whenever the Dispatcher's `dispatch` function is called it analyses the *task* parameter of the URL, to decide which Controller class to instantiate. So it stores the MVCFactory object passed in its constructor so that it can later use it to create the Controller class:
+Here the code is also getting the MVCFactory instance out of the child DIC; the ComponentDispatcherFactory has in turn a dependency on the MVCFactory. Why is this? As described in the [Dispatcher documentation](../extension-and-dispatcher/dispatcher-component.md) whenever the Dispatcher's `dispatch` function is called it analyses the *task* parameter of the URL, to decide which Controller class to instantiate. So it stores the MVCFactory object passed in its constructor so that it can later use it to create the Controller class:
 ```php
 $controller = $this->mvcFactory->createController(...);
 $controller->execute($task);
 ```
-So the ComponentDispatcherFactory gets MVCFactory out of the DIC, stores a reference to it, and then passes it down to the Dispatcher class it instantiates it. Its code is in libraries/src/Dispatcher/ComponentDispatcherFactory.php.
+So the ComponentDispatcherFactory gets MVCFactory out of the DIC, stores a reference to it, and then passes it down to the Dispatcher class when instantiates it. Its code is in libraries/src/Dispatcher/ComponentDispatcherFactory.php.
 
 ## Resolving the MVCFactory Dependency
 This follows a pattern similar to that of the ComponentDispatcherFactory dependency.
@@ -104,13 +105,14 @@ The second step involves instantiating the Extension class and resolving its dep
 $component = new MVCComponent($container->get(ComponentDispatcherFactoryInterface::class));
 $component->setMVCFactory($container->get(MVCFactoryInterface::class));
 ```
-The code `$container->get(MVCFactoryInterface::class` obtains the MVCFactory instance from the child DIC, and then a reference to it is stored locally through it being passed to `setMVCFactory`. This function is available to `MVCComponent` via the trait Joomla\CMS\MVC\Factory\MVCFactoryServiceTrait, which contains the lines:
+In the first line the Extension class (MVCComponent) gets instantiated, with the ComponentDispatchFactory instance being passed into the constructor (as we saw above).
+
+In the second line the code `$container->get(MVCFactoryInterface::class` obtains the MVCFactory instance from the child DIC, and then a reference to it is stored locally through it being passed to `setMVCFactory`. This function is available to `MVCComponent` via the trait Joomla\CMS\MVC\Factory\MVCFactoryServiceTrait, which is used in MVCComponent, and which contains the lines:
 ```php
 public function setMVCFactory(MVCFactoryInterface $mvcFactory)
 {
     $this->mvcFactory = $mvcFactory;
 }
-
 ```
 ## Namespaces parameters
 You will have noticed that the namespace '\Mycompany\Component\Example' gets passed as a parameter into several classes constructors. (By the way, this is exactly the same PHP string as its equivalent with double backslashes instead of single backslashes).

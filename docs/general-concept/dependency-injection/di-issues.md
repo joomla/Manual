@@ -3,7 +3,9 @@ title: Dependency Injection Issues
 sidebar_position: 7
 ---
 # Dependency Injection Issues
-Dependency Injection was introduced in Joomla 4, with the intention of removing direct access to most key classes via `getInstance()` calls, including via `Factory::` calls, and many of these API calls are deprecated in Joomla 4. However, not all `getInstance()` calls are deprecated; examples which are not deprecated include `Uri::getInstance()` and `Filter\InputFilter::getInstance()`. 
+Dependency Injection was introduced in Joomla 4, with the intention of removing direct access to most key classes via `getInstance()` calls, including via `Factory::` calls, and many of these API calls are deprecated in Joomla 4. Note that not all `getInstance()` calls are deprecated; examples which are not deprecated include `Uri::getInstance()` and `Filter\InputFilter::getInstance()`. 
+
+However, some issues do remain, which you should be aware of. Early versions of Joomla 5 still have a lot of these `getInstance` calls!
 
 ## Toolbar::getInstance()
 The `Toolbar` class is used for managing the buttons on the forms within the Joomla administrator back-end. The [Toolbar API](https://api.joomla.org/cms-4/classes/Joomla-CMS-Toolbar-Toolbar.html) documentation seems to suggest that we should replace 
