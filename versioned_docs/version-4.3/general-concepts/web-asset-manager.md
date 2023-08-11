@@ -477,16 +477,6 @@ Will produce:
 Named inline asset may be as dependency to another inline asset, hovewer it is not recomended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
 :::
 
-## Working with ESM importmap
-
-WebAssetManager allows to define [importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for your ES modules.
-
-The `script` asset with option `"importmap": true` will be added to `importmap`. Other option available:
-- `importmap` boolean, whether the element should be added to `importmap`;
-- `importmapName` string, optional, custom module name, example when asset name `foo`, and module name is `@foo`;
-- `importmapScope` string, optional, a scope path for the asset in `importmap`;
-
-
 ### Methods to work with ESM importmap
 
 All methods to work with a ESM importmap are the same as methods to work with script asset item.
