@@ -477,6 +477,10 @@ Will produce:
 Named inline asset may be as dependency to another inline asset, hovewer it is not recomended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
 :::
 
+### Methods to work with ESM importmap
+
+All methods to work with a ESM importmap are the same as methods to work with script asset item.
+
 ## Working with a web component
 
 Joomla! allows you to use [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) for your needs. In Joomla! web components are not loaded as regular script, but loaded via Web Component loader so that they are loaded asynchronously. 
