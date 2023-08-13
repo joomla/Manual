@@ -16,7 +16,6 @@ use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
 use Joomla\CMS\MVC\Factory\MVCFactoryInterface;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Mycompany\Component\Example\Administrator\Extension\ExampleComponent;
 
 return new class implements ServiceProviderInterface {
     public function register(Container $container): void 
