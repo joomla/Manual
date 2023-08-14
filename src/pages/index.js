@@ -22,7 +22,7 @@ const quickaccess = [
   },
   {
     title: <>Components</>,
-    href: "/docs/building-extensions/component",
+    href: "/docs/building-extensions/components",
     iconName: <IconName.BsPuzzle className="icon--3x" />,
     description: (
       <>There are many articles, tutorials, references and FAQs which focus on component development. If this is your first time developing a component for Joomla, you should start with the Absolute Basics of How a Component Functions. If needed, you can visualise the control flow of a component with these diagrams.</>
