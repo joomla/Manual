@@ -56,6 +56,12 @@ Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
 * components/com_newsfeeds/helpers/route.php
 * components/com_tags/helpers/route.php
 
+# Classes made final
+
+##### \Joomla\CMS\Log\DelegatingPsrLogger
+File: libraries/src/Log/DelegatingPsrLogger.php
+
+Class becomes final and marked internal, therefore it cannot be overridden ([reasoning](https://github.com/joomla/joomla-cms/pull/39134#issuecomment-1316841537)).
 
 * libraries/src/Image/Image.php
 
@@ -200,5 +206,39 @@ try {
     $image->createThumbnails([$width . 'x' . $height], $image::SCALE_INSIDE, null, true);
 } catch (\Exception $e) {
     return false;
+
+#### CMSObject legacy traits
+
+File: libraries/src/Object/CMSObject.php
+Replacement: The CMSObject should be replaced by stdclass or \Joomla\Registry\Registry
+Example:
+```php
+$data = new \stdClass();
+// Or
+$data = (object) ['foo' => 1, 'bar' => 2];
+```
+
+File: libraries/src/Object/LegacyErrorHandlingTrait.php
+Replacement: The `setError` and `getError` functions should not be used anymore and an exception should be thrown.
+Example:
+```php
+throw new \Exception(...);
+```
+
+File: libraries/src/Object/LegacyPropertyManagementTrait.php
+Replacement: Dynamic properties should not be used anymore in regard to the deprecated [dynamic properties change in PHP 8.2](https://wiki.php.net/rfc/deprecate_dynamic_properties). Properties should be declared in the class and proper getter and setters be used.
+Example:
+```php
+class MyDataObject {
+    private $foo;
+    
+    public function getFoo() {
+        return $foo;
+    }
+    
+    public function setFoo($foo) {
+        $this->foo = $foo;
+    }
+
 }
 ```
