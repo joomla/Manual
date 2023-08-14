@@ -6,8 +6,13 @@ Removed and backward incompatibility
 ===============
 All the deprecated features than have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
-:::caution TODO
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
+### Use numeric access to named event arguments like `$event->getArgument('0')` are not recommended
 
-:::
+It is not recommended to use `$event->getArgument('0')` for events that does not have an event class.
+In future such event will receive own class and named arguments, and this code will not work.
+
+For such events should use legacy listener, or access to argument with:
+```php
+[$arg1, $arg2] = array_values($event->getArguments());
+```
