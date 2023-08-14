@@ -116,7 +116,8 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
 
 ### User changes
-- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+- PR: https://github.com/joomla/joomla-cms/pull/41048
+- Description: Removed message "Cannot load user X", for removed users.  
 
 ### Some core classes are not anymore of type CMSObject
 
@@ -172,6 +173,18 @@ $wa->useScript('codemirror');
 ```javascript
 import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
+```
+
+### Plugin constructor doesn't contain the assignment operator
+- PR: https://github.com/joomla/joomla-cms/pull/40746
+- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
+```php
+public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
+{
+	parent::__construct($dispatcher, $config);
+
+	// Assign the extra arguments to internal variables
+}
 ```
  
 ### Removed 3rd party libraries
