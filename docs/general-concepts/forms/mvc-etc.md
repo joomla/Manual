@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: MVC and other considerations
 ---
 # Introduction
@@ -61,10 +61,10 @@ $this->checkToken();
 If the token is found to be invalid then `checkToken()` outputs a warning and redirects the user back to the previous page. 
 
 ## Validation
-This is covered in the next section.
+This is covered in the following sections.
 
 # Sample Code
-You can find [here](./_assets/com_sample_form2.zip) a zip file of a component which you can download and install. It has basically the same functionality as `com_sample_form1` in the previous section, but it has been redesigned according to the principles above. Although at first sight it may seem more complex, distributing the functionality in this way makes the code much easier to understand when the component becomes sizeable. 
+For this section you can download [this component zip file](./_assets/com_sample_form2.zip) and install it. It has basically the same functionality as `com_sample_form1` in the previous section, but it has been redesigned according to the principles above. Although at first sight it may seem more complex, distributing the functionality in this way makes the code much easier to understand when the component becomes sizeable. 
 
 After you have installed the file, navigate to your site home page and add the query parameter `?option=com_sample_form2` to run the component. 
 
