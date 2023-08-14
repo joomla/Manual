@@ -3,10 +3,10 @@ Supporting Right to Left Languages
 Arabic, Hebrew and some others are right to left(RTL) languages which means that the user interface is typically mirrored.
 
 ## Joomla Admin LTR
-![screenshot of the joomla admin in english showing the sidebar on the left of the screen](rtl/assets/ltr-dashboard.png)
+![screenshot of the joomla admin in english showing the sidebar on the left of the screen](rtl/_assets/ltr-dashboard.png)
 
 ## Joomla Admin RTL
-![screenshot of the joomla admin in arabic showing the sidebar on the right of the screen](rtl/assets/rtl-dashboard.png)
+![screenshot of the joomla admin in arabic showing the sidebar on the right of the screen](rtl/_assets/rtl-dashboard.png)
 
 ## Template Support
 Both the default site template, Cassiopeia and the default admin template, Atum fully support the use of right to left languages. When Joomla is using an RTL language then a different variant of the template css will be used. This file is called template-rtl.min.css.
