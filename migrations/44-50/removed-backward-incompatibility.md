@@ -173,7 +173,6 @@ $wa->useScript('codemirror');
 import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
 ```
-
 ### Removed 3rd party libraries
 
 ## Joomla\Ldap
