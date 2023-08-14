@@ -28,15 +28,15 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          /*lastVersion: '4.3',*/
+          lastVersion: '4.3',
           versions: {
             'current': {
-              label: 'v4.3.x (upcoming)',
+              label: '4.4 (upcoming)',
               banner: 'unreleased'
             },
-            /*'4.3': {
-              label: 'v4.3.x (latest)',
-            }*/
+            '4.3': {
+              label: '4.3',
+            }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
         },
@@ -79,6 +79,12 @@ const config = {
             position: 'left',
           },
           {
+            to: '/migrations',
+            label: 'Migrations',
+            position: 'right',
+            activeBaseRegex: `/migrations/`,
+          },
+          {
             type: 'docsVersionDropdown',
             position: 'right',
             dropdownItemsBefore: [
@@ -86,6 +92,10 @@ const config = {
                 type: 'html',
                 className: 'dropdown-current-versions',
                 value: '<b>Current releases</b>',
+              },
+              {
+                label: '5.0 (upcoming)',
+                href: 'http://pr-28.manual.joomlacode.org/docs/get-started/',
               },
             ],
             dropdownItemsAfter: [
@@ -99,8 +109,12 @@ const config = {
                 value: '<b>Archived versions</b>',
               },
               {
+                label: '3.x',
                 href: 'https://docs.joomla.org/Category:Joomla!_3.0',
-                label: '2.5.x',
+              },
+              {
+                label: '2.5',
+                href: 'https://docs.joomla.org/Category:Joomla!_2.5',
               },
               {
                 type: 'html',
@@ -176,6 +190,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+        additionalLanguages: ['php', 'ini'],
       },
     }),
   plugins: [
@@ -185,6 +200,27 @@ const config = {
         indexBlog: false,
         language: "en",
       },
+    ],
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'migrations',
+        path: 'migrations',
+        routeBasePath: 'migrations',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          /* if we need to support more languages this is an example
+          if (locale !== 'en') {
+            return `https://crowdin.com/project/docusaurus-v2/${locale}`;
+          }
+           */
+          return `https://github.com/joomla/manual/edit/main/${versionDocsDirPath}/${docPath}`;
+        },
+        editCurrentVersion: true,
+        sidebarPath: require.resolve('./sidebarsMigrations.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+      }),
     ],
   ],
 };
