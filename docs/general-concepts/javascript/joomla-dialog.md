@@ -29,7 +29,11 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 - `height` (string) An optional height for the popup, any valid CSS value.
 - `popupTemplate` (string|HTMLTemplateElement) A template for the popup.
 - `preferredParent` (string|HTMLElement) The element where to attach the dialog, for cases when no parentElement exist, see show(). This allows to keep the dialog in the same branch of DOM as the popupContent.
-- `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exists).
+- `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exist).
+
+:::note
+The properties of Joomla Dialog are immutable, they can be set only before rendering. After that they cannot be changed.
+:::
 
 Any property can be set as instance property or in class constructor. This two is equal:
 
