@@ -3,7 +3,7 @@ Joomla Dialog (popup) script
 
 Joomla Dialog module provides a functionality wich allows to display various Dialogs (popup) windows. 
 
-To add Joomla Dialog module to the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager) `$wa->useScript('joomla.dialog')`, 
+To add Joomla Dialog module to the page use [WebAssetManager](/docs/general-concepts/web-asset-manager) `$wa->useScript('joomla.dialog')`, 
 and to enable auto binding of the buttons on the page use `$wa->useScript('joomla.dialog-autocreate')`.
 
 Joomla Dialog allows to display dialogs with following content:
