@@ -1,9 +1,10 @@
 Joomla Dialog (popup) script
 ============================
 
-Joomla Dialog script provides a functionality wich allows to display various Dialogs (popup) windows. 
+Joomla Dialog module provides a functionality wich allows to display various Dialogs (popup) windows. 
 
-To enable it on the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('dialog')`.
+To add Joomla Dialog module to the page use [WebAssetManager](/docs/using-core-functions/web-asset-manager.md) `$wa->useScript('joomla.dialog')`, 
+and to enable auto binding of the buttons on the page use `$wa->useScript('joomla.dialog-autocreate')`.
 
 Joomla Dialog allows to display dialogs with following content:
 
@@ -95,7 +96,11 @@ dialog.show();
 
 ## Usage examples
 
+Enable asset with `$wa->useScript('joomla.dialog')`.
+
 ```javascript
+import JoomlaDialog from 'joomla.dialog';
+
 // Inline 
 const dialog = new JoomlaDialog({
   textHeader: 'The header',
@@ -131,6 +136,8 @@ dialog.show();
 
 ### Alert and Confirm usage:
 ```javascript
+import JoomlaDialog from 'joomla.dialog';
+
 // Alert
 JoomlaDialog.alert('Chase ball of string eat plants, meow')
   .then(() => { 
@@ -145,6 +152,8 @@ JoomlaDialog.confirm('Cheese on toast airedale the big cheese?')
 ```
 
 ### Binding button/anchor for basic stuff
+
+Enable asset with `$wa->useScript('joomla.dialog-autocreate')`.
 
 ```html
 <button class="btn btn-primary" type="button"
