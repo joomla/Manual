@@ -88,7 +88,7 @@ If there are no errors then you can confirm this to the user, and show the next 
 # Sample Component Code
 Below is the code for a small component which you can install to demonstrate basic use of Joomla forms. Place the following 3 files into a folder called "com_sample_form1". Then zip up the folder to create com_sample_form1.zip and install this as a component on your Joomla instance.
 
-For simplicity this component uses the Joomla 3 way of defining a component, and this won't work under Joomla 5. However, the next section gives an example which will work under Joomla 5.
+For simplicity this component uses the Joomla 3 way of defining a component, and this won't work under Joomla 5. If you want an equivalent which will work under Joomla 5 then you can download and install [this zip file](./_assets/com_sample_form1.zip).
 
 `com_sample_form1.xml` Manifest file for the component 
 ```php
