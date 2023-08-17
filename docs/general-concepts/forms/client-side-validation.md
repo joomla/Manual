@@ -49,6 +49,17 @@ Also if you specify that the field is required by eg:
 ```
 then the javascript will also verify that a value has been entered into the field.
 
+The validation is performed whenever you click on a `submit` button on the form.
+```html
+<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('myform.submit')">Submit</button>
+```
+and the validation is triggered within the javascript Joomla.submitbutton function. You may also have a cancel button:
+```html
+<button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('myform.cancel')">Cancel</button>
+```
+The same Joomla.submitbutton function is run, but it checks if the second part of the parameter is 'cancel', and if so it doesn't trigger the validation. 
+
+
 ## Custom Validation using pattern
 For `type="text"` and `type="tel"` fields you can specify a javascript regular expression which the data entered by the user must match. For example
 ```xml
