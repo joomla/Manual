@@ -35,7 +35,7 @@ The code which provides the data for the form `bind()` operation must first chec
 
 Also, if the user enters data which successfully passes validation then `setUserState()` should then be called passing `null` in order to clear this prefill data in the session; otherwise it will appear whenever the user next displays the form.
 
-Of course, although Joomla works using this pattern, you don't always have to follow it. For example, if you have a large amount of confirmation data which you want to output after a form has been successfully submitted then you instead output this just as a response to the HTTP POST. 
+Of course, although Joomla works using this pattern, you don't always have to follow it. For example, if you have a large amount of confirmation data which you want to output after a form has been successfully submitted then you can instead output this just as a response to the HTTP POST. 
 
 ## Separate Controllers
 Joomla routes HTTP requests to separate Controllers based on the value of the *task* URL parameter sent in the request. This parameter is often set by Joomla core javascript based on the submit button, e.g. in the example below:
@@ -85,9 +85,9 @@ $view = $this->getView('sample', 'html');
 $view->setModel($model, true);
 $view->display();
 ```
-The `$model` and `$view` get created, and the parameter 'sample' which gets passed indicates the Fully Qualified Name (FQN) which the Model and View must have. (These two class instances actually get created by the MVCFactory class object which was included via the services/provider.php file.)
+The `$model` and `$view` get created, and the parameter 'sample' which gets passed indicates the Fully Qualified Name (FQN) which the Model and View must have. In other words, Joomla uses this 'sample' string as part of working out what the FQNs of the Model and View classes are. (These two class instances actually get created by the MVCFactory class object which was included via the services/provider.php file.)
 
-Then `setModel` is called so that the Model is available to the View code.
+Then `setModel` is called so that the Model is available to the View code, with `true` being passed to indicate that it's the default Model for the View. 
 
 Finally the View `display` method is called.
 
@@ -97,7 +97,7 @@ In the View `display` function:
 $this->form = $this->getModel()->getForm();
 parent::display($tpl);
 ```
-it calls the `getForm` method of the Model, then calls `parent::display()` which basically runs the tmpl/default.php file.
+it calls the `getForm` method of the (default) Model, then calls `parent::display()` which basically runs the tmpl/default.php file.
 
 ## site/src/Model/SampleModel.php
 In the Model `getForm` function we have:

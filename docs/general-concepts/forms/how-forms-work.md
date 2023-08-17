@@ -31,11 +31,11 @@ The Form object reads the file into memory (as a PHP SimpleXMLElement) and parse
 
 ## Step 2 Providing Pre-fill Data
 
-You provide values for any form element you wish. For example, if this form is being used to edit a record in the database, then you would pre-populate it with existing field values from the database. You can provide values by setting up an associative array `$data` where 
+You provide values for any form element you wish. For example, if this form is being used to edit a record in the database, then you would pre-populate it with existing field values from the database. You can provide values by setting up an associative array `$data` where for each element of the array:
 - the key is the `name` of the field (in the xml file)
 - the value is what you want to prefill that field with
 
-You pass `$data` as a parameter to the Form `bind` method, and Joomla Form then stores this data locally within the Form instance - represented by blue bars in the diagram. 
+You pass the `$data` array as a parameter to the Form `bind` method, and Joomla Form then stores this data locally within the Form instance - represented by blue bars in the diagram. 
 
 ## Step 3 Outputting the Form in HTML
 
