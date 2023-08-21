@@ -21,6 +21,9 @@ Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICEMBSTRINGOVERLOAD
 File: installation/language/en-GB/joomla.ini  
 Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICE_MBSTRING_OVERLOAD_OFF
 
+File: administrator/language/en-GB/plg_user_joomla.ini
+Strings: PLG_USER_JOOMLA_FIELD_STRONG_PASSWORDS_LABEL, PLG_USER_JOOMLA_POSTINSTALL_STRONGPW_BTN, PLG_USER_JOOMLA_POSTINSTALL_STRONGPW_TEXT, PLG_USER_JOOMLA_POSTINSTALL_STRONGPW_TITLE
+
 #### The item_associations property of the WebApplication class is deprecated
 
 File: libraries/src/Application/WebApplication.php
