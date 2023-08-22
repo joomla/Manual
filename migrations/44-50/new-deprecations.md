@@ -46,3 +46,12 @@ $model->getState()->set('foo', 'bar');
 // Access the state
 $data = $model->getState()->get('foo');
 ```
+
+#### ContentHelper actions are not anymore of type CMSObject
+
+File: libraries/src/Helper/ContentHelper.php
+Replacement: Direct property access to the canDo object of the view should be replaced with a get/set function call. The actions object is now a `Registry` which contains all the convenient functions a store should provide.
+Example:
+```php
+$canCreate = \Joomla\CMS\Helper\ContentHelper::getActions('com_content')->get('core.create');
+```
