@@ -186,6 +186,68 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 	// Assign the extra arguments to internal variables
 }
 ```
+
+#### Editor plugin now have to use `onEditorSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/40082
+
+Editor plugin now have to use `onEditorSetup` event to register own Editor provider which should implement `EditorProviderInterface`.
+See [Editors Plugin](docs/building-extensions/plugins/editors-plugin.md) for more information.
+
+For external class, kind of:
+```php
+public function onEditorSetup(EditorSetupEvent $event)
+{
+    $event->getEditorsRegistry()->add(new MyEditorProvider());
+}
+```
+When plugin implements `EditorProviderInterface` on its own:
+```php
+public function onEditorSetup(EditorSetupEvent $event)
+{
+    $event->getEditorsRegistry()->add($this);
+}
+```
+
+Editor provider is a class that provide an abstract access to your editor. It have all old methods, but sligntly changed:
+- `onDisplay($name, $content, $width, $height, $col, $row, $buttons, $id, $asset, $author, $params)` now is `display(string $name, string $content = '', array $attributes = [], array $params = []): string`;
+- `onInit($id = '')` is removed, you should load your assets in `display()` method;
+
+Legacy plugins will continue to function until next major release.
+
+#### Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/40082
+
+Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event to register the button(s) instance.
+See [Editors Buttons (XTD) Plugin](docs/building-extensions/plugins/editors-xtd-plugin.md) for more information.
+Additional the button now can register a custom action, that will be run when it is clicked.
+
+Example transforming old button to `Joomla\CMS\Editor\Button`:
+```php
+// Legacy
+$button = new CMSObject;
+$button->modal = true;
+$button->link  = $link;
+$button->text  = Text::_('PLG_ARTICLE_BUTTON_ARTICLE');
+$button->name  = $this->_type . '_' . $this->_name;
+$button->icon  = 'file-add';
+
+return $button
+
+// New
+$button = new Button($this->_name, [
+  'action' => 'modal',
+  'link'   => $link,
+  'text'   => Text::_('PLG_ARTICLE_BUTTON_ARTICLE'),
+  'name'   => $this->_type . '_' . $this->_name,
+  'icon'   => 'file-add'
+]);
+
+$event->getButtonsRegistry()->add($button);
+```
+
+Legacy plugins will continue to function until next major release.
  
 ### Removed 3rd party libraries
 
