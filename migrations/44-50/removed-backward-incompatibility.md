@@ -191,6 +191,21 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 
 - PR: https://github.com/joomla/joomla-cms/pull/41413
 - Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->setContent($content)`, instead of modification by reference.
+
+```php
+// Old
+function onAfterRenderModules(&$content, &$params){
+ $content .= '<strong>foobar</strong>';
+}
+
+// New
+function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $event){
+  $content  = $event->getContent();
+  $content .= '<strong>foobar</strong>';
+
+  $event->setContent($content);
+}
+```
  
 ### Removed 3rd party libraries
 
