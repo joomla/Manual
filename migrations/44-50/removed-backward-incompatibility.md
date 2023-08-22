@@ -186,6 +186,11 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 	// Assign the extra arguments to internal variables
 }
 ```
+
+### Module event `onAfterRenderModules` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41413
+- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->setContent($content)`, instead of modification by reference.
  
 ### Removed 3rd party libraries
 

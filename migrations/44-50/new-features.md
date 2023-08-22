@@ -37,6 +37,27 @@ public function onAfterDispatch(Joomla\CMS\Event\Application\AfterDispatchEvent 
 }
 ```
 
+#### Content events have own classes
+
+Each content event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41226
+
+#### User events have own classes
+
+Each user event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41317
+
+#### Finder events have own classes
+
+Each finder event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41320
+
+#### Module events have own classes
+
+Each module event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41413
+`onAfterRenderModules` should now use `$event->getContent()` and `$event->setContent($content)`, instead of modification by reference.
+
+#### Installer events have own classes
+
+Each installer event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41322
+
 #### New plugin events
 
  - System event `onAfterInitialiseDocument`, allows to access to Document instance at early stage of Document life, PR: https://github.com/joomla/joomla-cms/pull/40512
