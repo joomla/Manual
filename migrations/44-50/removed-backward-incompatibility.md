@@ -44,9 +44,26 @@ class MyModel extends ListModel {
 }
 ```
 
+### Drop -es5.js files
+- PR: https://github.com/joomla/joomla-cms/pull/39618
+- Descriptions: The build tools won't produce es5 files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed (the acutal entries for the -es5.js were kept for B/C but the URLs are empty, the files won't be loaded). The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributiong anymore `IE11` compatible scripts!
+.
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
 
+### Javascript removals
+The following Javascript assets were removed [via PR #40302](https://github.com/joomla/joomla-cms/pull/40302):
+- `/media/com_templates/js/admin-template-compare.js` - Not used anymore by the core since version 4.3.0, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
+
+- `/media/com_users/js/admin-users-mail.js` - Not used anymore by the core since version 4.3.0, [see PR #39374](https://github.com/joomla/joomla-cms/pull/39374).
+
+This includes also the `-es5.js` files and the minified and gzipped files and the corresponding entries in `joomla.asset.json` files.
+
+The files have been kept in Joomla 4 for b/c with layout overrides.
+
+To fix these layout overrides for Joomla 5, change your layout override in the same way as the corresponding core layout has been changed by the PR mentioned in the list above for each Javascript asset.
+
+Eg for the template manager's side-by-side comparison view, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
 
 ### Return Types
 All return types have been updated to match the PHP 8.1 return type signatures. This addresses any class utilising the ArrayAccess, Datetime or the JsonSerializable interfaces. If you extend from any of the affected classes and require compatibility with both Joomla 4.x and 5.x you should add the `#[\ReturnTypeWillChange]` annotation to your code.
@@ -98,12 +115,9 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
 
-### Demo task plugin got removed
-- PR: https://github.com/joomla/joomla-cms/pull/40147
-- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
-
 ### User changes
-- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+- PR: https://github.com/joomla/joomla-cms/pull/41048
+- Description: Removed message "Cannot load user X", for removed users.  
 
 ### Some core classes are not anymore of type CMSObject
 
@@ -120,3 +134,71 @@ Files:
 - libraries/src/User/User.php
 
 Description: These classes do not extend anymore from `CMSObject`, but are including the `LegacyErrorHandlingTrait` and `LegacyPropertyManagementTrait` legacy traits as the `CMSObject` does too. Like that does the functionality not change. Keep in mind that the functions of these traits are deprecated and exceptions should be thrown or proper getter and setters should be created.
+
+### DIC Service Provider Changes
+PR: https://github.com/joomla/joomla-cms/pull/36499
+
+The input object is now available in the DIC. You should NOT use it directly in your extensions and should continue to
+get the input via the application object.
+
+\Joomla\CMS\Factory::$application is no longer sometimes set inside the Application's DIC provider but instead is now
+reliably set inside the includes/app.php file of each Application. It is not expected for this change to affect
+extension developers as there are no extension hooks this early in the Joomla Application lifecycle.
+
+### Session Object Changes
+In the unusual case of creating a full custom session object of `\Joomla\CMS\Session\Storage\JoomlaStorage` the
+cookie domain and cookie path should now be set in the options object when creating the class. They will not be fetched
+from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
+session created by the CMS in the application this is not expected to have a practical effect on end users.
+
+### Plugins
+
+#### Demo task plugin got removed
+- PR: https://github.com/joomla/joomla-cms/pull/40147
+- Description: The demo task plugin got removed as it was intended for demonstration purposes only.
+
+#### Codemirror plugin
+
+PR: https://github.com/joomla/joomla-cms/pull/41070
+
+Codemirror script has been update to 6-th version. New version are based on ES modules. 
+Any customisation and javascript code written for Codemirror 5 is incompatible with Codemirror 6.
+
+
+To initialise codemirror instance you can use helper provided by Joomla in `codemirror` module, example:
+```php
+$wa->getRegistry()->addExtensionRegistryFile('plg_editors_codemirror');
+$wa->useScript('codemirror');
+```
+```javascript
+import { createFromTextarea } from 'codemirror';
+const editor = await createFromTextarea(textAreaElement, options);
+```
+
+### Plugin constructor doesn't contain the assignment operator
+- PR: https://github.com/joomla/joomla-cms/pull/40746
+- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
+```php
+public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
+{
+	parent::__construct($dispatcher, $config);
+
+	// Assign the extra arguments to internal variables
+}
+```
+ 
+### Removed 3rd party libraries
+
+## Joomla\Ldap
+
+Our own LDAP library is no longer compatible with Joomla 5, it has been removed.
+As part of this we removed the following class aliases from the b/c plugin:
+
+- JClientLdap -> \\Joomla\\Ldap\\LdapClient
+- JLDAP -> \\Joomla\\Ldap\\LdapClient
+
+Joomla 4 and 5 includes the symfony Ldap package.
+
+### Change ordered lists in com_content links to unordered lists
+The links in com_content > category > blog-links.php and com_content > featured > default-links.php use `<ul></ul>` instead of `<ol></ol>`.
+Changes made [via PR #40629](https://github.com/joomla/joomla-cms/pull/40629) 
