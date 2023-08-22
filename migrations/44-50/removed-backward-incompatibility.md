@@ -164,7 +164,6 @@ PR: https://github.com/joomla/joomla-cms/pull/41070
 Codemirror script has been update to 6-th version. New version are based on ES modules. 
 Any customisation and javascript code written for Codemirror 5 is incompatible with Codemirror 6.
 
-
 To initialise codemirror instance you can use helper provided by Joomla in `codemirror` module, example:
 ```php
 $wa->getRegistry()->addExtensionRegistryFile('plg_editors_codemirror');
@@ -174,6 +173,36 @@ $wa->useScript('codemirror');
 import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
 ```
+
+#### Captcha plugin now have to use `onCaptchaSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/39657
+
+Captcha plugin now have to use `onCaptchaSetup` event to register own Captcha provider which should implement `CaptchaProviderInterface`.
+See [Captcha Plugin](docs/building-extensions/plugins/captcha-plugin) for more information.
+
+For external class, kind of:
+```php
+public function onCaptchaSetup(CaptchaSetupEvent $event)
+{
+    $event->getCaptchaRegistry()->add(new MyCaptchaProvider());
+}
+```
+When plugin implements `CaptchaProviderInterface` on its own:
+```php
+public function onCaptchaSetup(CaptchaSetupEvent $event)
+{
+    $event->getCaptchaRegistry()->add($this);
+}
+```
+
+Captcha provider is a class that provide an abstract access to your captcha. It have all old methods, but sligntly changed:
+- `onDisplay($name = null, $id = '', $class = '')` now is `display(string $name = '', array $attributes = []): string`;
+- `onInit($id = '')` is removed, you should load your assets in `display()` method;
+- `onCheckAnswer($code = null)` now is `checkAnswer(string $code = null): bool`;
+- `onSetupField($field, $element)` now is `setupField(FormField $field, \SimpleXMLElement $element): void`
+
+Legacy plugins will continue to function until next major release.
 
 ### Plugin constructor doesn't contain the assignment operator
 - PR: https://github.com/joomla/joomla-cms/pull/40746
