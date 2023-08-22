@@ -179,7 +179,7 @@ const editor = await createFromTextarea(textAreaElement, options);
 PR: https://github.com/joomla/joomla-cms/pull/39657
 
 Captcha plugin now have to use `onCaptchaSetup` event to register own Captcha provider which should implement `CaptchaProviderInterface`.
-See [Captcha Plugin](docs/building-extensions/plugins/captcha-plugin) for more information.
+See [Captcha Plugin](/docs/building-extensions/plugins/captcha-plugin) for more information.
 
 For external class, kind of:
 ```php
