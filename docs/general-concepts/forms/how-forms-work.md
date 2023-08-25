@@ -127,7 +127,7 @@ For simplicity this component uses the Joomla 3 way of defining a component, and
 		size="40"
 		class="inputbox" />
 	<field name="telephone"
-		type="tel"
+		type="telephone"
 		label="Enter telephone number"
 		required="true"
 		size="40"

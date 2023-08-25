@@ -16,7 +16,7 @@ This section outlines server-side validation in Joomla: the following describes 
 This is triggered by specifying a `validate=...` attribute in your form definition. In the sample form used in the previous sections there is validation on the telephone number field
 ```php
 <field name="telephone"
-    type="tel"
+    type="telephone"
     label="Enter telephone number"
     required="true"
     size="40"
@@ -41,7 +41,7 @@ and you decide to store your rule within the administrator area in src/Rule/Cust
 <field 
     addruleprefix="Mycompany\Component\Example\Administrator\Rule"
     name="telephone"
-    type="tel"
+    type="telephone"
     label="Enter telephone number"
     required="true"
     size="40"
