@@ -13,7 +13,7 @@ In general terms Joomla splits components into separate types of functionality:
 - the Controller contains the logic to decide how to respond to the HTTP request - in particular, deciding which View and Model to use
 - the View defines what data items should be shown on the web page to be presented, and makes calls to the Model to obtain those data items
 - the Model provides access to the data
-- the tmpl file is an extension of the View (it runs within the context of the View and so has direct access to the variables of the View code). It outputs the HTML for the component, and it includes in the output the data which has been collated by the View. It's separate from the View code so that the HTML ouput can easily be overridden using a template override. 
+- the tmpl file is an extension of the View (it runs within the context of the View class instance and so has direct access to the `$this` variable of the View object). It outputs the HTML for the component, and it includes in the output the data which has been collated by the View. It's separate from the View code so that the HTML ouput can easily be overridden using a template override. 
 
 ## Post/Request/Get Pattern
 In Joomla all of the HTML output (such as the display of a form) is performed in response to an HTTP GET, following the [Post/Redirect/Get Pattern](https://en.wikipedia.org/wiki/Post/Redirect/Get) pattern. The sample code of the previous section doesn't follow this pattern, but instead outputs the validation errors and re-displays the form in the response to the HTTP POST request.
