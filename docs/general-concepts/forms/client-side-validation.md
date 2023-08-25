@@ -25,7 +25,7 @@ This line will result in the file media/system/js/fields/validate.js being sent 
 ```xml
 <field 
     name="telephone"
-    type="tel"
+    type="telephone"
     class="inputbox validate-numeric"
     ... />
 ```
@@ -43,25 +43,26 @@ Also if you specify that the field is required by eg:
 ```xml
 <field 
     name="telephone"
-    type="tel"
+    type="telephone"
     required="true"
     ... />
 ```
 then the javascript will also verify that a value has been entered into the field.
 
-The validation is performed whenever you click on a `submit` button on the form.
+The validation is performed whenever you click on a button on the form which relates to saving the data, for example:
 ```html
 <button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('myform.submit')">Submit</button>
 ```
-and the validation is triggered within the javascript Joomla.submitbutton function. You may also have a cancel button:
+and the validation is triggered within the javascript Joomla.submitbutton function. 
+
+You may also have a cancel button, which doesn't trigger the validation:
 ```html
 <button type="button" class="btn btn-primary" onclick="Joomla.submitbutton('myform.cancel')">Cancel</button>
 ```
-The same Joomla.submitbutton function is run, but it checks if the second part of the parameter is 'cancel', and if so it doesn't trigger the validation. 
-
+When the toolbar buttons are created only those which involve saving the data have a `class="form-validation"` attribute added to the button's HTML element. When a button is pressed then its `class` attribute is checked. If the `form-validation` class is present then the javascript `Joomla.submitbutton` function is called with the `validate` parameter set to `true`. Otherwise it is called with `validate` set to `false`.
 
 ## Custom Validation using pattern
-For `type="text"` and `type="tel"` fields you can specify a javascript regular expression which the data entered by the user must match. For example
+For fields such as `type="text"` and `type="telephone"` (which relate to an html `<input>` element) you can specify a javascript regular expression which the data entered by the user must match. For example
 ```xml
 <field 
     name="message"
