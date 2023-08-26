@@ -12,7 +12,7 @@ There should be an explanation of how to mitigate the removals / changes.
 It is not recommended to use `$event->getArgument('0')` for events that does not have an event class.
 In future such event will receive own class and named arguments, and this code will not work.
 
-For such events should use legacy listener, or access to argument with:
+As long as the event is not converted to it's own class or you need to support both versions please use the following example. All other ways are not supported. 
 ```php
 [$arg1, $arg2] = array_values($event->getArguments());
 ```
