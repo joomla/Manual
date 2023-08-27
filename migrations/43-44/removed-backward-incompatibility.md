@@ -21,12 +21,14 @@ As long as the event is not converted to it's own class or you need to support b
 As example for Joomla 4 and preparation for Joomla 5 you can use code such as
 
 ```php
-if (version_compare(JVERSION, '5.0', 'ge')) {
-    $arg1 = $event->getArgument('arg1');
-    $arg2 = $event->getArgument('arg2');
-} else {
-    // TODO remove after support for Joomla 4
-  [$arg1, $arg2] = array_values($event->getArguments());
+public function onBeforeCooking(EventInterface $event)
+{
+  if ($event instanceof BeforeCookingEvent) {
+    $recipe = $event->getRecipe();
+    $plate  = $event->getPlate();
+  } else {
+    [$recipe, $plate] = array_values($event->getArguments());
+  }
 }
 ```
 
