@@ -52,7 +52,7 @@ Each finder event now have own event class, PR: https://github.com/joomla/joomla
 #### Module events have own classes
 
 Each module event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41413
-`onAfterRenderModules` should now use `$event->getContent()` and `$event->setContent($content)`, instead of modification by reference.
+`onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
 
 #### Installer events have own classes
 

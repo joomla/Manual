@@ -190,7 +190,7 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 ### Module event `onAfterRenderModules` backward compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41413
-- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->setContent($content)`, instead of modification by reference.
+- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
 
 ```php
 // Old
@@ -203,7 +203,7 @@ function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $e
   $content  = $event->getContent();
   $content .= '<strong>foobar</strong>';
 
-  $event->setContent($content);
+  $event->updateContent($content);
 }
 ```
  
