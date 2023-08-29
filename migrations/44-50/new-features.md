@@ -56,7 +56,25 @@ Each module event now have own event class, PR: https://github.com/joomla/joomla
 
 #### Installer events have own classes
 
-Each installer event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41322
+Each installer event now have own event class, PR: 
+ - https://github.com/joomla/joomla-cms/pull/41322
+ - https://github.com/joomla/joomla-cms/pull/41518
+
+#### Privacy component events have own classes
+
+Each event of Privacy component now have own event class, PR:  https://github.com/joomla/joomla-cms/pull/41486
+
+#### Custom fields events have own classes
+
+Each Custom fields event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41495
+
+#### Events for Actionlog, Cache, Contact, Checkin components have own classes
+
+Each event for Actionlog, Cache, Contact, Checkin components have own class, PR: https://github.com/joomla/joomla-cms/pull/41488
+
+#### Menu events have own classes
+
+Each menu event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41498
 
 #### New plugin events
 
