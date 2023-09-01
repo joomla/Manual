@@ -32,4 +32,9 @@ public function onBeforeCooking(EventInterface $event)
 }
 ```
 
+### Events: Setting a result of immutable event is deprecated
+
+Setting the result of Immutable event `$event['result'][] = $result` is deprecated. 
+Only an event wich implement `ResultAwareInterface` can receive a result through `$event->addResult($result)`. 
+
 
