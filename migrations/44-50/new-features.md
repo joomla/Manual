@@ -41,9 +41,11 @@ public function onAfterDispatch(Joomla\CMS\Event\Application\AfterDispatchEvent 
 
 Each content event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41226
 
-#### User events have own classes
+#### User events
 
 Each user event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41317
+
+The event `onUserAuthenticate` now is a real event, PR: https://github.com/joomla/joomla-cms/pull/41485
 
 #### Finder events have own classes
 
@@ -75,6 +77,10 @@ Each event for Actionlog, Cache, Contact, Checkin components have own class, PR:
 #### Menu events have own classes
 
 Each menu event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41498
+
+#### com_ajax events have own classe
+
+com_ajax events event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41524
 
 #### New plugin events
 
