@@ -159,7 +159,7 @@ session created by the CMS in the application this is not expected to have a pra
 
 #### Recaptcha plugin is removed, Invisible Captcha is unlocked
 - PR: https://github.com/joomla/joomla-cms/pull/41530
-- Description: Outdated Recaptcha plugin is removed. Invisible Captcha is unlocked and can be removed manually. It is recommended to install a new captcha from JED.
+- Description: Outdated Recaptcha plugin is removed. Invisible Captcha is unlocked and can be removed manually. It is recommended to install a new captcha from https://extensions.joomla.org/.
 
 #### Codemirror plugin
 
