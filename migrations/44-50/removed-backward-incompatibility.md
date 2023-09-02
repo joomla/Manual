@@ -157,6 +157,10 @@ session created by the CMS in the application this is not expected to have a pra
 - PR: https://github.com/joomla/joomla-cms/pull/40147
 - Description: The demo task plugin got removed as it was intended for demonstration purposes only.
 
+#### Recaptcha plugin is removed, Invisible Captcha is unlocked
+- PR: https://github.com/joomla/joomla-cms/pull/41530
+- Description: Outdated Recaptcha plugin is removed. Invisible Captcha is unlocked and can be removed manually. It is recommended to install a new captcha from JED.
+
 #### Codemirror plugin
 
 PR: https://github.com/joomla/joomla-cms/pull/41070
