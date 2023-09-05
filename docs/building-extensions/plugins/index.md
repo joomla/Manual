@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+title: Plugins
+---
 Plugins
 =======
 Plugins are in Plugin Groups and listen to different events.
