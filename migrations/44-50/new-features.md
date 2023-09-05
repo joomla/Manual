@@ -29,7 +29,7 @@ For more detail about how to register your module in to `importmap` look for Wor
 #### JoomlaDialog script for rendering modals
 
 New JoomlaDialog module for rendering modals and dialogs. 
-For more detail check [Joomla Dialog (popup) script](../../docs/general-concepts/javascript/joomla-dialog.md).
+For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/docs/general-concepts/javascript/joomla-dialog.md).
 
 PR: https://github.com/joomla/joomla-cms/pull/40150
 
