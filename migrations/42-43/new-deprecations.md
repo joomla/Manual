@@ -63,6 +63,9 @@ File: libraries/src/Log/DelegatingPsrLogger.php
 
 Class becomes final and marked internal, therefore it cannot be overridden ([reasoning](https://github.com/joomla/joomla-cms/pull/39134#issuecomment-1316841537)).
 
+* libraries/src/Image/Image.php
+
+
 # Class deprecations
 
 Planned to be removed in Joomla! 6.0
@@ -191,6 +194,19 @@ Example:
 $articles = $this->getHelperFactory()->getHelper('ArticlesNewsHelper')->getArticles($data['params'], $this->getApplication());
 ```
 
+##### Image createThumbs($thumbSizes, $creationMethod = self::SCALE_INSIDE, $thumbsFolder = null)
+
+File: libraries/src/Image/Image.php
+Replacement: createThumbnails($thumbSizes, $creationMethod = self::SCALE_INSIDE, $thumbsFolder = null, $useOriginalName = false)
+Example:
+```php
+// when $useOriginalName is set to false, the filename follows the format {filename}_{width}x{height}.{ext}
+$image = new Image($path);
+try {
+    $image->createThumbnails([$width . 'x' . $height], $image::SCALE_INSIDE, null, true);
+} catch (\Exception $e) {
+    return false;
+
 #### CMSObject legacy traits
 
 File: libraries/src/Object/CMSObject.php
@@ -223,5 +239,6 @@ class MyDataObject {
     public function setFoo($foo) {
         $this->foo = $foo;
     }
+
 }
 ```
