@@ -37,6 +37,51 @@ public function onAfterDispatch(Joomla\CMS\Event\Application\AfterDispatchEvent 
 }
 ```
 
+#### Content events have own classes
+
+Each content event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41226
+
+#### User events
+
+Each user event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41317
+
+The event `onUserAuthenticate` now is a real event, PR: https://github.com/joomla/joomla-cms/pull/41485
+
+#### Finder events have own classes
+
+Each finder event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41320
+
+#### Module events have own classes
+
+Each module event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41413
+`onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+#### Installer events have own classes
+
+Each installer event now have own event class, PR: 
+ - https://github.com/joomla/joomla-cms/pull/41322
+ - https://github.com/joomla/joomla-cms/pull/41518
+
+#### Privacy component events have own classes
+
+Each event of Privacy component now have own event class, PR:  https://github.com/joomla/joomla-cms/pull/41486
+
+#### Custom fields events have own classes
+
+Each Custom fields event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41495
+
+#### Events for Actionlog, Cache, Contact, Checkin components have own classes
+
+Each event for Actionlog, Cache, Contact, Checkin components have own class, PR: https://github.com/joomla/joomla-cms/pull/41488
+
+#### Menu events have own classes
+
+Each menu event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41498
+
+#### com_ajax events have own classe
+
+com_ajax events event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41524
+
 #### New plugin events
 
  - System event `onAfterInitialiseDocument`, allows to access to Document instance at early stage of Document life, PR: https://github.com/joomla/joomla-cms/pull/40512

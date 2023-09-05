@@ -249,7 +249,89 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 	// Assign the extra arguments to internal variables
 }
 ```
- 
+
+### Module event `onAfterRenderModules` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41413
+- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterRenderModules(&$content, &$params){
+ $content .= '<strong>foobar</strong>';
+}
+
+// New
+function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $event){
+  $content  = $event->getContent();
+  $content .= '<strong>foobar</strong>';
+
+  $event->updateContent($content);
+}
+```
+
+### Custom Fields event `onCustomFieldsAfterPrepareField` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41495
+- Description: `onCustomFieldsAfterPrepareField` should now use `$event->getValue()` and `$event->updateValue($value)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onCustomFieldsAfterPrepareField($context, $item, $field, &$value){
+ $value .= '<strong>foobar</strong>';
+}
+
+// New
+function onCustomFieldsAfterPrepareField(Joomla\CMS\Event\CustomFields\AfterPrepareFieldEvent $event){
+  $value  = $event->getValue();
+  $value .= '<strong>foobar</strong>';
+
+  $event->updateValue($value);
+}
+```
+
+### Installer event `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller` should now use `$event->getPackage()` and `$event->updatePackage($package)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforeInstaller($model, &$package){
+ $package['foo'] = 'bar';
+}
+
+// New
+function onInstallerBeforeInstaller(Joomla\CMS\Event\Installer\BeforeInstallerEvent $event){
+  $package  = $event->getPackage() ?: [];
+  $package['foo'] = 'bar';
+
+  $event->updatePackage($package);
+}
+```
+
+Additionally `onInstallerAfterInstaller`, should use `$event->getInstallerResult()`, `$event->updateInstallerResult($result)`, and `$event->getMessage()`, `$event->updateMessage($message)`.
+
+### Installer event `onInstallerBeforePackageDownload` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforePackageDownload` should now use `$event->getUrl()` and `$event->updateUrl($url)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforePackageDownload(&$url, &$headers){
+ $url .= '&foo=bar';
+}
+
+// New
+function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePackageDownloadEvent $event){
+  $url  = $event->getUrl();
+  $url .= '&foo=bar';
+
+  $event->updateUrl($url);
+}
+```
+
 ### Removed 3rd party libraries
 
 ## Joomla\Ldap
