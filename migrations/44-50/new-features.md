@@ -26,6 +26,13 @@ Support of [ESM importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Ele
 provides a possibility to keep the code modular, flexible and allows to use existing ES modules with minimum recompilation. 
 For more detail about how to register your module in to `importmap` look for Working with ESM importmap in Web Asset Manager.
 
+#### JoomlaDialog script for rendering modals
+
+New JoomlaDialog module for rendering modals and dialogs. 
+For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/docs/general-concepts/javascript/joomla-dialog.md).
+
+PR: https://github.com/joomla/joomla-cms/pull/40150
+
 #### System events have own classes
 
 Each system event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/40522.
