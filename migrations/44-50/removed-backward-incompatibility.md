@@ -337,7 +337,7 @@ function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePacka
 PR: https://github.com/joomla/joomla-cms/pull/40082
 
 Editor plugin now have to use `onEditorSetup` event to register own Editor provider which should implement `EditorProviderInterface`.
-See [Editors Plugin](docs/building-extensions/plugins/editors-plugin.md) for more information.
+See [Editors Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-plugin.md) for more information.
 
 For external class, kind of:
 ```php
