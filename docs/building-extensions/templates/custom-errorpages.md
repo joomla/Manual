@@ -9,14 +9,14 @@ The existing error page text is displayed if there is no module and if debug is 
 
 ### Default 404 error page
 
-![Screenshot of the standard 404 error page](./custom-errorpages/assets/original404.png)
+![Screenshot of the standard 404 error page](./custom-errorpages/_assets/original404.png)
 
 
 ### Example custom 404 error pages
 
-![Screenshot of custom 404 error page with images and buttons](./custom-errorpages/assets/example404.png)
+![Screenshot of custom 404 error page with images and buttons](./custom-errorpages/_assets/example404.png)
 
-![Screenshot of funny custom 404 error page](./custom-errorpages/assets/example404-2.png)
+![Screenshot of funny custom 404 error page](./custom-errorpages/_assets/example404-2.png)
 
 
 ## Adding a custom error page to your template

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 title: MVC and other considerations
 ---
 # Introduction
@@ -13,7 +13,7 @@ In general terms Joomla splits components into separate types of functionality:
 - the Controller contains the logic to decide how to respond to the HTTP request - in particular, deciding which View and Model to use
 - the View defines what data items should be shown on the web page to be presented, and makes calls to the Model to obtain those data items
 - the Model provides access to the data
-- the tmpl file is an extension of the View (it runs within the context of the View and so has direct access to the variables of the View code). It outputs the HTML for the component, and it includes in the output the data which has been collated by the View. It's separate from the View code so that the HTML ouput can easily be overridden using a template override. 
+- the tmpl file is an extension of the View (it runs within the context of the View class instance and so has direct access to the `$this` variable of the View object). It outputs the HTML for the component, and it includes in the output the data which has been collated by the View. It's separate from the View code so that the HTML ouput can easily be overridden using a template override. 
 
 ## Post/Request/Get Pattern
 In Joomla all of the HTML output (such as the display of a form) is performed in response to an HTTP GET, following the [Post/Redirect/Get Pattern](https://en.wikipedia.org/wiki/Post/Redirect/Get) pattern. The sample code of the previous section doesn't follow this pattern, but instead outputs the validation errors and re-displays the form in the response to the HTTP POST request.
@@ -35,7 +35,7 @@ The code which provides the data for the form `bind()` operation must first chec
 
 Also, if the user enters data which successfully passes validation then `setUserState()` should then be called passing `null` in order to clear this prefill data in the session; otherwise it will appear whenever the user next displays the form.
 
-Of course, although Joomla works using this pattern, you don't always have to follow it. For example, if you have a large amount of confirmation data which you want to output after a form has been successfully submitted then you instead output this just as a response to the HTTP POST. 
+Of course, although Joomla works using this pattern, you don't always have to follow it. For example, if you have a large amount of confirmation data which you want to output after a form has been successfully submitted then you can instead output this just as a response to the HTTP POST. 
 
 ## Separate Controllers
 Joomla routes HTTP requests to separate Controllers based on the value of the *task* URL parameter sent in the request. This parameter is often set by Joomla core javascript based on the submit button, e.g. in the example below:
@@ -61,10 +61,10 @@ $this->checkToken();
 If the token is found to be invalid then `checkToken()` outputs a warning and redirects the user back to the previous page. 
 
 ## Validation
-This is covered in the next section.
+This is covered in the following sections.
 
 # Sample Code
-You can find [here](./_assets/com_sample_form2.zip) a zip file of a component which you can download and install. It has basically the same functionality as `com_sample_form1` in the previous section, but it has been redesigned according to the principles above. Although at first sight it may seem more complex, distributing the functionality in this way makes the code much easier to understand when the component becomes sizeable. 
+For this section you can download [this component zip file](./_assets/com_sample_form2.zip) and install it. It has basically the same functionality as `com_sample_form1` in the previous section, but it has been redesigned according to the principles above. Although at first sight it may seem more complex, distributing the functionality in this way makes the code much easier to understand when the component becomes sizeable. 
 
 After you have installed the file, navigate to your site home page and add the query parameter `?option=com_sample_form2` to run the component. 
 
@@ -85,9 +85,9 @@ $view = $this->getView('sample', 'html');
 $view->setModel($model, true);
 $view->display();
 ```
-The `$model` and `$view` get created, and the parameter 'sample' which gets passed indicates the Fully Qualified Name (FQN) which the Model and View must have. (These two class instances actually get created by the MVCFactory class object which was included via the services/provider.php file.)
+The `$model` and `$view` get created, and the parameter 'sample' which gets passed indicates the Fully Qualified Name (FQN) which the Model and View must have. In other words, Joomla uses this 'sample' string as part of working out what the FQNs of the Model and View classes are. (These two class instances actually get created by the MVCFactory class object which was included via the services/provider.php file.)
 
-Then `setModel` is called so that the Model is available to the View code.
+Then `setModel` is called so that the Model is available to the View code, with `true` being passed to indicate that it's the default Model for the View. 
 
 Finally the View `display` method is called.
 
@@ -97,7 +97,7 @@ In the View `display` function:
 $this->form = $this->getModel()->getForm();
 parent::display($tpl);
 ```
-it calls the `getForm` method of the Model, then calls `parent::display()` which basically runs the tmpl/default.php file.
+it calls the `getForm` method of the (default) Model, then calls `parent::display()` which basically runs the tmpl/default.php file.
 
 ## site/src/Model/SampleModel.php
 In the Model `getForm` function we have:

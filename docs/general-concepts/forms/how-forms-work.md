@@ -31,11 +31,11 @@ The Form object reads the file into memory (as a PHP SimpleXMLElement) and parse
 
 ## Step 2 Providing Pre-fill Data
 
-You provide values for any form element you wish. For example, if this form is being used to edit a record in the database, then you would pre-populate it with existing field values from the database. You can provide values by setting up an associative array `$data` where 
+You provide values for any form element you wish. For example, if this form is being used to edit a record in the database, then you would pre-populate it with existing field values from the database. You can provide values by setting up an associative array `$data` where for each element of the array:
 - the key is the `name` of the field (in the xml file)
 - the value is what you want to prefill that field with
 
-You pass `$data` as a parameter to the Form `bind` method, and Joomla Form then stores this data locally within the Form instance - represented by blue bars in the diagram. 
+You pass the `$data` array as a parameter to the Form `bind` method, and Joomla Form then stores this data locally within the Form instance - represented by blue bars in the diagram. 
 
 ## Step 3 Outputting the Form in HTML
 
@@ -88,7 +88,7 @@ If there are no errors then you can confirm this to the user, and show the next 
 # Sample Component Code
 Below is the code for a small component which you can install to demonstrate basic use of Joomla forms. Place the following 3 files into a folder called "com_sample_form1". Then zip up the folder to create com_sample_form1.zip and install this as a component on your Joomla instance.
 
-For simplicity this component uses the Joomla 3 way of defining a component, and this won't work under Joomla 5. However, the next section gives an example which will work under Joomla 5.
+For simplicity this component uses the Joomla 3 way of defining a component, and this won't work under Joomla 5. If you want an equivalent which will work under Joomla 5 then you can download and install [this zip file](./_assets/com_sample_form1.zip).
 
 `com_sample_form1.xml` Manifest file for the component 
 ```php
@@ -127,7 +127,7 @@ For simplicity this component uses the Joomla 3 way of defining a component, and
 		size="40"
 		class="inputbox" />
 	<field name="telephone"
-		type="tel"
+		type="telephone"
 		label="Enter telephone number"
 		required="true"
 		size="40"
@@ -196,4 +196,4 @@ and using your browser's development tools you can compare the HTML attributes w
 
 Note that modern browsers will do some validation on the values you enter, specifically they will validate the email address and will force you to enter something into fields with the "required" attribute set, but don't (currently) do validation on telephone number fields.
 
-Once you enter valid data into the fields and press `Submit`, then the data will be sent to the server using the same URL (again, use your browsers development tools to see the parameters) and the POST leg of the sample code will be run. This runs the filtering and validation routines. If there are validation errors then the code outputs the error messages, and prefills the form with the data which the user entered before redisplaying it. 
+Once you enter valid data into the fields and press `Submit`, then the data will be sent to the server using the same URL (again, use your browsers development tools to see the parameters) and the POST leg of the sample code will be run. This runs the filtering and validation routines. If there are validation errors (the telephone field has some validation) then the code outputs the error messages, and prefills the form with the data which the user entered before redisplaying it. By including html tags within the data values you enter, you can see how the filtering removes them. 
