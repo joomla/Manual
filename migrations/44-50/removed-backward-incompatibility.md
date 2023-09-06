@@ -242,7 +242,7 @@ const editor = await createFromTextarea(textAreaElement, options);
 PR: https://github.com/joomla/joomla-cms/pull/39657
 
 Captcha plugin now have to use `onCaptchaSetup` event to register own Captcha provider which should implement `CaptchaProviderInterface`.
-See [Captcha Plugin](https://manual.joomla.org/docs/building-extensions/plugins/captcha-plugin.md) for more information.
+See [Captcha Plugin](https://manual.joomla.org/docs/building-extensions/plugins/captcha-plugin) for more information.
 
 For external class, kind of:
 ```php
@@ -366,7 +366,7 @@ function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePacka
 PR: https://github.com/joomla/joomla-cms/pull/40082
 
 Editor plugin now have to use `onEditorSetup` event to register own Editor provider which should implement `EditorProviderInterface`.
-See [Editors Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-plugin.md) for more information.
+See [Editors Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-plugin) for more information.
 
 For external class, kind of:
 ```php
@@ -394,7 +394,7 @@ Legacy plugins will continue to function until next major release.
 PR: https://github.com/joomla/joomla-cms/pull/40082
 
 Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event to register the button(s) instance.
-See [Editors Buttons (XTD) Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-xtd-plugin.md) for more information.
+See [Editors Buttons (XTD) Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-xtd-plugin) for more information.
 Additional the button now can register a custom action, that will be run when it is clicked.
 
 Example transforming old button to `Joomla\CMS\Editor\Button`:
