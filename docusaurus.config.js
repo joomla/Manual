@@ -31,6 +31,10 @@ const config = {
           lastVersion: '4.3',
           versions: {
             'current': {
+              label: '5.0 (upcoming)',
+              banner: 'unreleased'
+            },
+            '4.4': {
               label: '4.4 (upcoming)',
               banner: 'unreleased'
             },
@@ -92,10 +96,6 @@ const config = {
                 type: 'html',
                 className: 'dropdown-current-versions',
                 value: '<b>Current releases</b>',
-              },
-              {
-                label: '5.0 (upcoming)',
-                href: 'http://pr-28.manual.joomlacode.org/docs/get-started/',
               },
             ],
             dropdownItemsAfter: [
