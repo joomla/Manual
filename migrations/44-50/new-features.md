@@ -92,3 +92,7 @@ com_ajax events event now have own event class, PR: https://github.com/joomla/jo
 #### New plugin events
 
  - System event `onAfterInitialiseDocument`, allows to access to Document instance at early stage of Document life, PR: https://github.com/joomla/joomla-cms/pull/40512
+
+#### Added the option to serve Joomla from a public folder
+
+ - The instance could be served from a public folder (either subfolder in the root folder of Joomla or not). Command Line tools are provided both for the installtion process or to use at a later time. Requirements: templates need to support the `child templates`, no PHP files inside the folders `media` and `images` and a server that allows defining the end point of the serving folder.

@@ -151,6 +151,9 @@ cookie domain and cookie path should now be set in the options object when creat
 from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
 session created by the CMS in the application this is not expected to have a practical effect on end users.
 
+### Wincache has been removed
+WinCache is abandoned and not supported from PHP 8 onwards. Removed without replacement.
+
 ### Toolbar popupButton now use JoomlaDialog
 
 Toolbar popupButton now use JoomlaDialog, for popup rendering. Legacy Bootstrap modals still works. PR: https://github.com/joomla/joomla-cms/pull/40359
