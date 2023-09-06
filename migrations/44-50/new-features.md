@@ -26,6 +26,13 @@ Support of [ESM importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Ele
 provides a possibility to keep the code modular, flexible and allows to use existing ES modules with minimum recompilation. 
 For more detail about how to register your module in to `importmap` look for Working with ESM importmap in Web Asset Manager.
 
+#### JoomlaDialog script for rendering modals
+
+New JoomlaDialog module for rendering modals and dialogs. 
+For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/docs/general-concepts/javascript/joomla-dialog).
+
+PR: https://github.com/joomla/joomla-cms/pull/40150
+
 #### System events have own classes
 
 Each system event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/40522.
@@ -36,6 +43,51 @@ public function onAfterDispatch(Joomla\CMS\Event\Application\AfterDispatchEvent 
     dump($event->getApplication()->getName());
 }
 ```
+
+#### Content events have own classes
+
+Each content event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41226
+
+#### User events
+
+Each user event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41317
+
+The event `onUserAuthenticate` now is a real event, PR: https://github.com/joomla/joomla-cms/pull/41485
+
+#### Finder events have own classes
+
+Each finder event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41320
+
+#### Module events have own classes
+
+Each module event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41413
+`onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+#### Installer events have own classes
+
+Each installer event now have own event class, PR: 
+ - https://github.com/joomla/joomla-cms/pull/41322
+ - https://github.com/joomla/joomla-cms/pull/41518
+
+#### Privacy component events have own classes
+
+Each event of Privacy component now have own event class, PR:  https://github.com/joomla/joomla-cms/pull/41486
+
+#### Custom fields events have own classes
+
+Each Custom fields event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41495
+
+#### Events for Actionlog, Cache, Contact, Checkin components have own classes
+
+Each event for Actionlog, Cache, Contact, Checkin components have own class, PR: https://github.com/joomla/joomla-cms/pull/41488
+
+#### Menu events have own classes
+
+Each menu event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41498
+
+#### com_ajax events have own classe
+
+com_ajax events event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41524
 
 #### New plugin events
 

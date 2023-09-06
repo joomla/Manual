@@ -116,7 +116,8 @@ public function debugFile(...) --> public function debugFile(string $filename): 
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
 
 ### User changes
-- Removed message "Cannot load user X", for removed users.  PR: https://github.com/joomla/joomla-cms/pull/41048
+- PR: https://github.com/joomla/joomla-cms/pull/41048
+- Description: Removed message "Cannot load user X", for removed users.  
 
 ### Some core classes are not anymore of type CMSObject
 
@@ -153,11 +154,74 @@ session created by the CMS in the application this is not expected to have a pra
 ### Wincache has been removed
 WinCache is abandoned and not supported from PHP 8 onwards. Removed without replacement.
 
+### Toolbar popupButton now use JoomlaDialog
+
+Toolbar popupButton now use JoomlaDialog, for popup rendering. Legacy Bootstrap modals still works. PR: https://github.com/joomla/joomla-cms/pull/40359
+
+To use new dialog, following properties was added:
+- `popupType` - popup type: `inline`, `iframe`, `ajax`;
+- `url` - url, or css selector for content for inline popup;
+- `textHeader` - text for popup header;
+- `modalWidth`, `modalHeight` - optional, width and height, any valid css value;
+
+Use Bootstrap modal for Toolbar popupButton and property `onclose` is deprecated.
+
+Example inline button definition:
+```php
+// Old:
+$toolbar->popupButton('batch', 'JTOOLBAR_BATCH')
+    ->selector('collapseModal')
+    ->listCheck(true);
+
+// New 
+$toolbar->popupButton('batch', 'JTOOLBAR_BATCH')
+    ->popupType('inline')
+    ->textHeader(Text::_('COM_CONTENT_BATCH_OPTIONS'))
+    ->url('#joomla-dialog-batch')
+    ->modalWidth('800px')
+    ->modalHeight('fit-content')
+    ->listCheck(true);
+```
+
+Example inline rendering for Batch:
+```php
+Old:
+<?php
+echo HTMLHelper::_('bootstrap.renderModal', 'collapseModal', [
+        'title'  => Text::_('COM_CATEGORIES_BATCH_OPTIONS'),
+        'footer' => $this->loadTemplate('batch_footer'),
+    ],
+    $this->loadTemplate('batch_body')
+);
+?>
+
+New:
+<template id="joomla-dialog-batch"><?php echo $this->loadTemplate('batch_body'); ?></template>
+```
+**Note:** The batch buttons now is part of `batch_body`.
+
+Example iframe button definition:
+```php
+// Old:
+$toolbar->popupButton('example', 'Example iframe')
+    ->url('index.php?option=com_example&view=foobar&tmpl=component');
+
+// New 
+$toolbar->popupButton('example', 'Example iframe')
+    ->popupType('iframe')
+    ->url('index.php?option=com_example&view=foobar&tmpl=component')
+    ->textHeader('Optional iframe title');
+```
+
 ### Plugins
 
 #### Demo task plugin got removed
 - PR: https://github.com/joomla/joomla-cms/pull/40147
 - Description: The demo task plugin got removed as it was intended for demonstration purposes only.
+
+#### Recaptcha plugin is removed, Invisible Captcha is unlocked
+- PR: https://github.com/joomla/joomla-cms/pull/41530
+- Description: Outdated Recaptcha plugin is removed. Invisible Captcha is unlocked and can be removed manually. It is recommended to install a new captcha from https://extensions.joomla.org/.
 
 #### Codemirror plugin
 
@@ -165,7 +229,6 @@ PR: https://github.com/joomla/joomla-cms/pull/41070
 
 Codemirror script has been update to 6-th version. New version are based on ES modules. 
 Any customisation and javascript code written for Codemirror 5 is incompatible with Codemirror 6.
-
 
 To initialise codemirror instance you can use helper provided by Joomla in `codemirror` module, example:
 ```php
@@ -176,7 +239,193 @@ $wa->useScript('codemirror');
 import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
 ```
- 
+
+#### Captcha plugin now have to use `onCaptchaSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/39657
+
+Captcha plugin now have to use `onCaptchaSetup` event to register own Captcha provider which should implement `CaptchaProviderInterface`.
+See [Captcha Plugin](https://manual.joomla.org/docs/building-extensions/plugins/captcha-plugin) for more information.
+
+For external class, kind of:
+```php
+public function onCaptchaSetup(CaptchaSetupEvent $event)
+{
+    $event->getCaptchaRegistry()->add(new MyCaptchaProvider());
+}
+```
+When plugin implements `CaptchaProviderInterface` on its own:
+```php
+public function onCaptchaSetup(CaptchaSetupEvent $event)
+{
+    $event->getCaptchaRegistry()->add($this);
+}
+```
+
+Captcha provider is a class that provide an abstract access to your captcha. It have all old methods, but sligntly changed:
+- `onDisplay($name = null, $id = '', $class = '')` now is `display(string $name = '', array $attributes = []): string`;
+- `onInit($id = '')` is removed, you should load your assets in `display()` method;
+- `onCheckAnswer($code = null)` now is `checkAnswer(string $code = null): bool`;
+- `onSetupField($field, $element)` now is `setupField(FormField $field, \SimpleXMLElement $element): void`
+
+Legacy plugins will continue to function until next major release.
+
+### Plugin constructor doesn't contain the assignment operator
+- PR: https://github.com/joomla/joomla-cms/pull/40746
+- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
+```php
+public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
+{
+	parent::__construct($dispatcher, $config);
+
+	// Assign the extra arguments to internal variables
+}
+```
+
+### Module event `onAfterRenderModules` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41413
+- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterRenderModules(&$content, &$params){
+ $content .= '<strong>foobar</strong>';
+}
+
+// New
+function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $event){
+  $content  = $event->getContent();
+  $content .= '<strong>foobar</strong>';
+
+  $event->updateContent($content);
+}
+```
+
+### Custom Fields event `onCustomFieldsAfterPrepareField` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41495
+- Description: `onCustomFieldsAfterPrepareField` should now use `$event->getValue()` and `$event->updateValue($value)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onCustomFieldsAfterPrepareField($context, $item, $field, &$value){
+ $value .= '<strong>foobar</strong>';
+}
+
+// New
+function onCustomFieldsAfterPrepareField(Joomla\CMS\Event\CustomFields\AfterPrepareFieldEvent $event){
+  $value  = $event->getValue();
+  $value .= '<strong>foobar</strong>';
+
+  $event->updateValue($value);
+}
+```
+
+### Installer event `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller` should now use `$event->getPackage()` and `$event->updatePackage($package)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforeInstaller($model, &$package){
+ $package['foo'] = 'bar';
+}
+
+// New
+function onInstallerBeforeInstaller(Joomla\CMS\Event\Installer\BeforeInstallerEvent $event){
+  $package  = $event->getPackage() ?: [];
+  $package['foo'] = 'bar';
+
+  $event->updatePackage($package);
+}
+```
+
+Additionally `onInstallerAfterInstaller`, should use `$event->getInstallerResult()`, `$event->updateInstallerResult($result)`, and `$event->getMessage()`, `$event->updateMessage($message)`.
+
+### Installer event `onInstallerBeforePackageDownload` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforePackageDownload` should now use `$event->getUrl()` and `$event->updateUrl($url)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforePackageDownload(&$url, &$headers){
+ $url .= '&foo=bar';
+}
+
+// New
+function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePackageDownloadEvent $event){
+  $url  = $event->getUrl();
+  $url .= '&foo=bar';
+
+  $event->updateUrl($url);
+}
+```
+
+#### Editor plugin now have to use `onEditorSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/40082
+
+Editor plugin now have to use `onEditorSetup` event to register own Editor provider which should implement `EditorProviderInterface`.
+See [Editors Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-plugin) for more information.
+
+For external class, kind of:
+```php
+public function onEditorSetup(EditorSetupEvent $event)
+{
+    $event->getEditorsRegistry()->add(new MyEditorProvider());
+}
+```
+When plugin implements `EditorProviderInterface` on its own:
+```php
+public function onEditorSetup(EditorSetupEvent $event)
+{
+    $event->getEditorsRegistry()->add($this);
+}
+```
+
+Editor provider is a class that provide an abstract access to your editor. It have all old methods, but sligntly changed:
+- `onDisplay($name, $content, $width, $height, $col, $row, $buttons, $id, $asset, $author, $params)` now is `display(string $name, string $content = '', array $attributes = [], array $params = []): string`;
+- `onInit($id = '')` is removed, you should load your assets in `display()` method;
+
+Legacy plugins will continue to function until next major release.
+
+#### Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event
+
+PR: https://github.com/joomla/joomla-cms/pull/40082
+
+Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event to register the button(s) instance.
+See [Editors Buttons (XTD) Plugin](https://manual.joomla.org/docs/building-extensions/plugins/editors-xtd-plugin) for more information.
+Additional the button now can register a custom action, that will be run when it is clicked.
+
+Example transforming old button to `Joomla\CMS\Editor\Button`:
+```php
+// Legacy
+$button = new CMSObject;
+$button->modal = true;
+$button->link  = $link;
+$button->text  = Text::_('PLG_ARTICLE_BUTTON_ARTICLE');
+$button->name  = $this->_type . '_' . $this->_name;
+$button->icon  = 'file-add';
+
+return $button
+
+// New
+$button = new Button($this->_name, [
+  'action' => 'modal',
+  'link'   => $link,
+  'text'   => Text::_('PLG_ARTICLE_BUTTON_ARTICLE'),
+  'name'   => $this->_type . '_' . $this->_name,
+  'icon'   => 'file-add'
+]);
+
+$event->getButtonsRegistry()->add($button);
+```
+
+Legacy plugins will continue to function until next major release.
+
 ### Removed 3rd party libraries
 
 ## Joomla\Ldap
