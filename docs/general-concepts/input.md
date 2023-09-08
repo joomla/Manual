@@ -11,7 +11,7 @@ The Joomla Input functionality provides an easy-to-use interface to obtaining an
 To get started you have to get an instance of the Joomla `Input` class:
 ```php
 use Joomla\CMS\Factory;
-$input = Factory::getApplication()->input;
+$input = Factory::getApplication()->getInput();
 ```
 
 This document explains how you can then obtain the data items listed above.
@@ -301,7 +301,7 @@ defined('_JEXEC') or die('Restricted Access');
 use Joomla\CMS\Factory;
 
 $app = Factory::getApplication();   // equivalent of $app = JFactory::getApplication();
-$input = $app->input;
+$input = $app->getInput();
 
 if ($input->exists('p1'))
 {
