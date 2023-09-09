@@ -13,6 +13,7 @@ To get started you have to get an instance of the Joomla `Input` class:
 use Joomla\CMS\Factory;
 $input = Factory::getApplication()->getInput();
 ```
+If your code is in a Controller which inherits from Joomla\CMS\MVC\Controller\BaseController then this is already done for you, and stored in a protected variable `$input`, so you can just use `$this->input` instead of `$input` in the function calls below, without having to first set up `$input`.
 
 This document explains how you can then obtain the data items listed above.
 
@@ -342,7 +343,7 @@ $data  = $this->input->post->get('jform', array(), 'array');
 // store this in the session so that we can display it in DisplayController
 $app->setUserState('com_sample_form_field.post', $data);
 ```
-After the redirect back to display the form, the view reads this stored data in src/View/Sample/HtmlView.php:
+After the redirect back to display the form, the View reads this stored data in src/View/Sample/HtmlView.php:
 ```php
 // check if there's any POST data from the previous form submission
 $this->postdata = Factory::getApplication()->getUserState('com_sample_form_field.post', null);
@@ -358,4 +359,4 @@ ob_end_clean();
 ...
 <?php echo '<pre>' . htmlspecialchars($post, ENT_QUOTES) . '</pre>'; ?>
 ```
-By following this pattern you can try out different methods and filters in PostController, then store the result in the session. Then after the redirect you can pick thie data out of the session in the view file, and display it in the tmpl default.php file. 
+By following this pattern you can try out different methods and filters in PostController, then store the result in the session. Then after the redirect you can pick the data out of the session in the View file, and display it in the tmpl default.php file. 
