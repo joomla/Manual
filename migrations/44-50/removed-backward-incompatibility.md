@@ -152,8 +152,8 @@ from the application object to fix various circular dependency issues. As we exp
 session created by the CMS in the application this is not expected to have a practical effect on end users.
 
 ### Error reporting options in global configuration
-The option to set error reporting to **development** in global configuration has been removed, as obsolete. Since php 5.4 
-error_reporting(-1) and error_reporting(E_ALL) have the same behavior. See https://www.php.net/manual/en/function.error-reporting
+The option to set error reporting to **development** in global configuration has been removed, as obsolete. Since php 5.4 error_reporting(-1) and error_reporting(E_ALL) have the same behavior. 
+See https://www.php.net/manual/en/function.error-reporting
 
 ### Wincache has been removed
 WinCache is abandoned and not supported from PHP 8 onwards. Removed without replacement.
