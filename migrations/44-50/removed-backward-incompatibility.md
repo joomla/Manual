@@ -430,6 +430,9 @@ $event->getButtonsRegistry()->add($button);
 
 Legacy plugins will continue to function until next major release.
 
+### CategoryFeedView Inheritance
+`\Joomla\CMS\MVC\View\CategoryFeedView` extends directly `\Joomla\CMS\MVC\View\AbstractView` (previously it extended `\Joomla\CMS\MVC\View\HtmlView` which in turn inherited from `AbstractView`) as it isn't rendering any HTML. We do not expect this to have a major influence on extensions.
+
 ### Removed 3rd party libraries
 
 ## Joomla\Ldap
