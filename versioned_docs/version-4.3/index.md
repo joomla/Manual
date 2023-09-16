@@ -5,7 +5,7 @@ title: Introduction
 
 # Welcome to the Joomla! Programmers Documentation for Joomla 4.3
 
-This documentation hold information for developers of templates, modules, plugins, components, libraries.
+This documentation holds information for developers of templates, modules, plugins, components, libraries.
 In Joomla! context all kind of this software are called extension. People often split extensions in to 2 categories.
 
 1. Core extension - Extensions which are shipped with Joomla installation package
