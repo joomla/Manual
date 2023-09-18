@@ -517,7 +517,72 @@ function onContentPrepareData(Joomla\CMS\Event\Model\PrepareDataEvent $event){
 }
 ```
 
+### Contact event `onValidateContact` backward compatibility
 
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Data modification in `onValidateContact` event is not allowed, use `onSubmitContact` event instead.
+
+### Contact event `onSubmitContact` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onSubmitContact` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onSubmitContact($contact, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onSubmitContact(Joomla\CMS\Event\Contact\SubmitContactEvent $event){
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
+
+### Menu event `onPreprocessMenuItems` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onPreprocessMenuItems` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onPreprocessMenuItems($context, &$items, $params, $enabled){
+  unset($items[3]);
+}
+
+// New
+function onPreprocessMenuItems(Joomla\CMS\Event\Menu\PreprocessMenuItemsEvent $event){
+  $items = $event->getItems();
+  
+  unset($items[3]);
+
+  $event->updateItems($items);
+}
+```
+
+### Menu event `onAfterGetMenuTypeOptions` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onAfterGetMenuTypeOptions` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterGetMenuTypeOptions(&$items, $model){
+  unset($items[3]);
+}
+
+// New
+function onAfterGetMenuTypeOptions(Joomla\CMS\Event\Menu\AfterGetMenuTypeOptionsEvent $event){
+  $items = $event->getItems();
+  
+  unset($items[3]);
+
+  $event->updateItems($items);
+}
+```
 
 ### CategoryFeedView Inheritance
 `\Joomla\CMS\MVC\View\CategoryFeedView` extends directly `\Joomla\CMS\MVC\View\AbstractView` (previously it extended `\Joomla\CMS\MVC\View\HtmlView` which in turn inherited from `AbstractView`) as it isn't rendering any HTML. We do not expect this to have a major influence on extensions.
