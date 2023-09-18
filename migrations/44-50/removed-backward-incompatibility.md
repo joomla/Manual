@@ -476,6 +476,46 @@ function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePacka
 }
 ```
 
+### Content event `onContentBeforeValidateData` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onContentBeforeValidateData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onContentBeforeValidateData($context, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onContentBeforeValidateData(Joomla\CMS\Event\Model\BeforeValidateDataEvent $event){
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
+
+### Content event `onContentPrepareData` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onContentPrepareData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onContentPrepareData($context, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onContentPrepareData(Joomla\CMS\Event\Model\PrepareDataEvent $event){
+  // Note: The data may be or Object or Array, following changes need only when data is an Array
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
 
 
 
