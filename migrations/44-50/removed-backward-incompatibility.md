@@ -274,100 +274,6 @@ Captcha provider is a class that provide an abstract access to your captcha. It 
 
 Legacy plugins will continue to function until next major release.
 
-### Plugin constructor doesn't contain the assignment operator
-- PR: https://github.com/joomla/joomla-cms/pull/40746
-- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
-```php
-public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
-{
-	parent::__construct($dispatcher, $config);
-
-	// Assign the extra arguments to internal variables
-}
-```
-
-### Module event `onAfterRenderModules` backward compatibility
-
-- PR: https://github.com/joomla/joomla-cms/pull/41413
-- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
-
-```php
-// Old
-function onAfterRenderModules(&$content, &$params){
- $content .= '<strong>foobar</strong>';
-}
-
-// New
-function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $event){
-  $content  = $event->getContent();
-  $content .= '<strong>foobar</strong>';
-
-  $event->updateContent($content);
-}
-```
-
-### Custom Fields event `onCustomFieldsAfterPrepareField` backward compatibility
-
-- PR: https://github.com/joomla/joomla-cms/pull/41495
-- Description: `onCustomFieldsAfterPrepareField` should now use `$event->getValue()` and `$event->updateValue($value)`, instead of modification by reference. The referencing still works but will be removed in the future.
-
-```php
-// Old
-function onCustomFieldsAfterPrepareField($context, $item, $field, &$value){
- $value .= '<strong>foobar</strong>';
-}
-
-// New
-function onCustomFieldsAfterPrepareField(Joomla\CMS\Event\CustomFields\AfterPrepareFieldEvent $event){
-  $value  = $event->getValue();
-  $value .= '<strong>foobar</strong>';
-
-  $event->updateValue($value);
-}
-```
-
-### Installer event `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` backward compatibility
-
-- PR: https://github.com/joomla/joomla-cms/pull/41518
-- Description: `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller` should now use `$event->getPackage()` and `$event->updatePackage($package)`, instead of modification by reference. The referencing still works but will be removed in the future.
-
-```php
-// Old
-function onInstallerBeforeInstaller($model, &$package){
- $package['foo'] = 'bar';
-}
-
-// New
-function onInstallerBeforeInstaller(Joomla\CMS\Event\Installer\BeforeInstallerEvent $event){
-  $package  = $event->getPackage() ?: [];
-  $package['foo'] = 'bar';
-
-  $event->updatePackage($package);
-}
-```
-
-Additionally `onInstallerAfterInstaller`, should use `$event->getInstallerResult()`, `$event->updateInstallerResult($result)`, and `$event->getMessage()`, `$event->updateMessage($message)`.
-
-### Installer event `onInstallerBeforePackageDownload` backward compatibility
-
-- PR: https://github.com/joomla/joomla-cms/pull/41518
-- Description: `onInstallerBeforePackageDownload` should now use `$event->getUrl()` and `$event->updateUrl($url)`, instead of modification by reference. The referencing still works but will be removed in the future.
-
-```php
-// Old
-function onInstallerBeforePackageDownload(&$url, &$headers){
- $url .= '&foo=bar';
-}
-
-// New
-function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePackageDownloadEvent $event){
-  $url  = $event->getUrl();
-  $url .= '&foo=bar';
-
-  $event->updateUrl($url);
-}
-```
-
 #### Editor plugin now have to use `onEditorSetup` event
 
 PR: https://github.com/joomla/joomla-cms/pull/40082
@@ -429,6 +335,254 @@ $event->getButtonsRegistry()->add($button);
 ```
 
 Legacy plugins will continue to function until next major release.
+
+### Plugin constructor doesn't contain the assignment operator
+- PR: https://github.com/joomla/joomla-cms/pull/40746
+- Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
+```php
+public function __construct(DispatcherInterface $dispatcher, array $config, more arguments)
+{
+	parent::__construct($dispatcher, $config);
+
+	// Assign the extra arguments to internal variables
+}
+```
+
+### Module event `onRenderModule` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780 https://github.com/joomla/joomla-cms/pull/41413
+- Description: `onRenderModule` should now use `$event->getAttributes()` and `$event->updateAttributes($attributes)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onRenderModule($module, &$attributes){
+ $attributes['foo'] = 'bar';
+}
+
+// New
+function onRenderModule(Joomla\CMS\Event\Module\BeforeRenderModuleEvent $event){
+  $attributes = $event->getAttributes();
+  
+  $attributes['foo'] = 'bar';
+  
+  $event->updateAttributes($attributes);
+}
+```
+
+### Module event `onAfterRenderModules` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41413
+- Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterRenderModules(&$content, &$params){
+ $content .= '<strong>foobar</strong>';
+}
+
+// New
+function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $event){
+  $content  = $event->getContent();
+  $content .= '<strong>foobar</strong>';
+
+  $event->updateContent($content);
+}
+```
+
+### Module events `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` should now use `$event->getModules()` and `$event->updateModules($module)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterModuleList(&$modules){
+ unset($modules[3]);
+}
+
+// New
+function onAfterModuleList(Joomla\CMS\Event\Module\AfterModuleListEvent $event){
+  $modules = $event->getModules();
+  
+  unset($modules[3]);
+  
+  $event->updateModules($modules);  
+}
+```
+
+### Custom Fields event `onCustomFieldsAfterPrepareField` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41495
+- Description: `onCustomFieldsAfterPrepareField` should now use `$event->getValue()` and `$event->updateValue($value)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onCustomFieldsAfterPrepareField($context, $item, $field, &$value){
+ $value .= '<strong>foobar</strong>';
+}
+
+// New
+function onCustomFieldsAfterPrepareField(Joomla\CMS\Event\CustomFields\AfterPrepareFieldEvent $event){
+  $value  = $event->getValue();
+  $value .= '<strong>foobar</strong>';
+
+  $event->updateValue($value);
+}
+```
+
+### Installer event `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller` should now use `$event->getPackage()` and `$event->updatePackage($package)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforeInstaller($model, &$package){
+ $package['foo'] = 'bar';
+}
+
+// New
+function onInstallerBeforeInstaller(Joomla\CMS\Event\Installer\BeforeInstallerEvent $event){
+  $package  = $event->getPackage() ?: [];
+  $package['foo'] = 'bar';
+
+  $event->updatePackage($package);
+}
+```
+
+Additionally `onInstallerAfterInstaller`, should use `$event->getInstallerResult()`, `$event->updateInstallerResult($result)`, and `$event->getMessage()`, `$event->updateMessage($message)`.
+
+### Installer event `onInstallerBeforePackageDownload` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41518
+- Description: `onInstallerBeforePackageDownload` should now use `$event->getUrl()` and `$event->updateUrl($url)`, `$event->getHeaders()` and `$event->updateHeaders($headers)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onInstallerBeforePackageDownload(&$url, &$headers){
+ $url .= '&foo=bar';
+}
+
+// New
+function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePackageDownloadEvent $event){
+  $url  = $event->getUrl();
+  $url .= '&foo=bar';
+  
+  $headers        = $event->getHeaders();
+  $headers['foo'] = 'bar';
+  
+  $event->updateUrl($url);
+  $event->updateHeaders($headers);  
+}
+```
+
+### Content event `onContentBeforeValidateData` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onContentBeforeValidateData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onContentBeforeValidateData($context, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onContentBeforeValidateData(Joomla\CMS\Event\Model\BeforeValidateDataEvent $event){
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
+
+### Content event `onContentPrepareData` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onContentPrepareData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onContentPrepareData($context, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onContentPrepareData(Joomla\CMS\Event\Model\PrepareDataEvent $event){
+  // Note: The data may be or Object or Array, following changes need only when data is an Array
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
+
+### Contact event `onValidateContact` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Data modification in `onValidateContact` event is not allowed, use `onSubmitContact` event instead.
+
+### Contact event `onSubmitContact` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onSubmitContact` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onSubmitContact($contact, &$data){
+  $data['foo'] = 'bar';
+}
+
+// New
+function onSubmitContact(Joomla\CMS\Event\Contact\SubmitContactEvent $event){
+  $data        = $event->getData();
+  $data['foo'] = 'bar';
+
+  $event->updateData($data);
+}
+```
+
+### Menu event `onPreprocessMenuItems` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onPreprocessMenuItems` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onPreprocessMenuItems($context, &$items, $params, $enabled){
+  unset($items[3]);
+}
+
+// New
+function onPreprocessMenuItems(Joomla\CMS\Event\Menu\PreprocessMenuItemsEvent $event){
+  $items = $event->getItems();
+  
+  unset($items[3]);
+
+  $event->updateItems($items);
+}
+```
+
+### Menu event `onAfterGetMenuTypeOptions` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41780
+- Description: `onAfterGetMenuTypeOptions` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
+
+```php
+// Old
+function onAfterGetMenuTypeOptions(&$items, $model){
+  unset($items[3]);
+}
+
+// New
+function onAfterGetMenuTypeOptions(Joomla\CMS\Event\Menu\AfterGetMenuTypeOptionsEvent $event){
+  $items = $event->getItems();
+  
+  unset($items[3]);
+
+  $event->updateItems($items);
+}
+```
 
 ### CategoryFeedView Inheritance
 `\Joomla\CMS\MVC\View\CategoryFeedView` extends directly `\Joomla\CMS\MVC\View\AbstractView` (previously it extended `\Joomla\CMS\MVC\View\HtmlView` which in turn inherited from `AbstractView`) as it isn't rendering any HTML. We do not expect this to have a major influence on extensions.
