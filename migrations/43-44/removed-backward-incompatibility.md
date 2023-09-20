@@ -39,8 +39,8 @@ Only an event wich implement `ResultAwareInterface` can receive a result through
 
 ### Event classes: Event pre-processing methods should now use onSet/onGet prefixes instead of set/get
 
-PR: https://github.com/joomla/joomla-cms/pull/41722
-Event classes that uses pre-processing method should now use `onSet/onGet` prefixes instead of `set/get`. Methods prefixed with `set/get` will continue to work until Joomla 6.
+- PR: https://github.com/joomla/joomla-cms/pull/41722
+- Event classes that uses pre-processing method should now use `onSet/onGet` prefixes instead of `set/get`. Methods prefixed with `set/get` will continue to work until Joomla 6.
 
 Example:
 ```php
