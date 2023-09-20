@@ -37,4 +37,24 @@ public function onBeforeCooking(EventInterface $event)
 Setting the result of Immutable event `$event['result'][] = $result` is deprecated. 
 Only an event wich implement `ResultAwareInterface` can receive a result through `$event->addResult($result)`. 
 
+### Event classes: Event pre-processing methods should now use onSet/onGet prefixes instead of set/get
+
+PR: https://github.com/joomla/joomla-cms/pull/41722
+Event classes tha use pre-processing method should now use `onSet/onGet` prefixes instead of `set/get`. Methods prefixed with `set/get` will continue to work until Joomla 6.
+
+Example:
+```php
+// Old
+protected function setFoobar(Foo $value): Foo
+{
+  return $value;
+}
+
+// New:
+protected function onSetFoobar(Foo $value): Foo
+{
+  return $value;
+}
+```
+
 
