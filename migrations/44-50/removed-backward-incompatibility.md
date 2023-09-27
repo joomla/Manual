@@ -587,7 +587,7 @@ function onAfterGetMenuTypeOptions(Joomla\CMS\Event\Menu\AfterGetMenuTypeOptions
 ### User group event `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` backward compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41916
-- Description: `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` is now compatible with `onContentBeforeDelete` and `onContentAfterDelete` events. Or attributes still work but will be removed in the future.
+- Description: `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` is now compatible with `onContentBeforeDelete` and `onContentAfterDelete` events. Old attributes still work but will be removed in the future.
 
 ```php
 // Old
