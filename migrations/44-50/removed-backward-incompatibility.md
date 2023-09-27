@@ -584,6 +584,24 @@ function onAfterGetMenuTypeOptions(Joomla\CMS\Event\Menu\AfterGetMenuTypeOptions
 }
 ```
 
+### User group event `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` backward compatibility
+
+- PR: https://github.com/joomla/joomla-cms/pull/41916
+- Description: `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` is now compatible with `onContentBeforeDelete` and `onContentAfterDelete` events. Old attributes still work but will be removed in the future.
+
+```php
+// Old
+function onUserBeforeDeleteGroup($data){
+}
+
+// New
+function onUserBeforeDeleteGroup(Joomla\CMS\Event\User\UserGroupBeforeDeleteEvent $event){
+  $context = $event->getContext();
+  $data    = $event->getItem()->getProperties();
+
+}
+```
+
 ### CategoryFeedView Inheritance
 `\Joomla\CMS\MVC\View\CategoryFeedView` extends directly `\Joomla\CMS\MVC\View\AbstractView` (previously it extended `\Joomla\CMS\MVC\View\HtmlView` which in turn inherited from `AbstractView`) as it isn't rendering any HTML. We do not expect this to have a major influence on extensions.
 
