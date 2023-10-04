@@ -4,13 +4,58 @@ sidebar_position: 4
 
 # Compatibility Plugin
 
-As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility.
+As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility between Joomla 5 and 4.
+The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded before any other plugin is loaded.
+(Just a heads-up, don't create a plugin as behaviour plugin because it's possible that this group get removed at some point)
 
-:::caution TODO
+The Joomla 5.0 version of the plugin includes 3 options which can separately can be activated by the Super User.
 
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
+1. Load legacy class name aliases.
+2. Load es5 webassets shim.
+3. Load removed webassets shim.
+
+After upgrading Joomla! 4.4 to 5.0 this plugin gets automatically enabled and all options are active.
+On new installations for 5.0 and maybe later the plugin and it's options are enabled too.
+
+Having the plugin active should allow a seamless update from Joomla 4 and allow to install not update Joomla extensions
+to be installed in Joomla 5. This gives extension developers or own developments additional 2 years time to update old
+code to the current standard.
+
+Starting with Joomla 6 it's planned that deprecated code get removed finally. Especially for code provided by this plugin.
+
+## Why should you try to disable the plugin?
+
+The plugin loads additional code which impacts page load times. The numbers for the options are:
+
+1. More than 500 php function calls for each request
+2. Loading more than 1000 lines of JSON data and analyse it for each request
+3. Compared to the other 2 options we only have 15 lines of JSON data
+
+You should be properly safe to disable option 2 and 3, because they are only relevant if an extension loads a legacy
+webasset directly which is unlikely.
+
+For the first option it's more tricky because the class aliases which are provided here did exist since Joomla 1.0 but
+get deprecated and replaced starting with Joomla 3.3 around 2014 and continued to be filled till 3.10. The reason for 
+the renaming of the classes was part of the move of Joomla to namespaces.
+
+:::note Recover in case the plugin has been disabled
+
+If you disabled the plugin by accident or by try and get a php error you have to re-enable the plugin in the database
+again. This can be achived by editing the `enabled` column in the `#__extensions` table for the row with the name 
+`plg_behaviour_compat` and set it to `1`.
 
 :::
+
+We are urging extension developers to test there extension with the combat plugin disabled.
+
+:::warning Disabling the compatibility plugin
+
+Please do not disable this plugin on your production page, please try to disable the plugin on a test copy first.
+Make sure you have access to the db. That way, you can enable the plugin again quickly if needed.
+
+:::
+
+
 
 ## Class Aliases
 
@@ -19,10 +64,8 @@ will be moved to this plugin.
 
 * ActionLogPlugin => \Joomla\Component\Actionlogs\Administrator\Plugin\ActionLogPlugin
 
-
 * FieldsPlugin => \Joomla\Component\Fields\Administrator\Plugin\FieldsPlugin
 * FieldsListPlugin => \Joomla\Component\Fields\Administrator\Plugin\FieldsListPlugin
-
 
 * PrivacyExportDomain => \Joomla\Component\Privacy\Administrator\Export\Domain
 * PrivacyExportField => \Joomla\Component\Privacy\Administrator\Export\Field
@@ -31,12 +74,9 @@ will be moved to this plugin.
 * PrivacyRemovalStatus => \Joomla\Component\Privacy\Administrator\Removal\Status
 * PrivacyTableRequest => \Joomla\Component\Privacy\Administrator\Table\RequestTable
 
-
 * TagsTableTag => \Joomla\Component\Tags\Administrator\Table\TagTable
 
-
 * ContentHelperRoute => \Joomla\Component\Content\Site\Helper\RouteHelper
-
 
 * FinderIndexerAdapter => \Joomla\Component\Finder\Administrator\Indexer\Adapter
 * FinderIndexerHelper => \Joomla\Component\Finder\Administrator\Indexer\Helper
@@ -46,7 +86,6 @@ will be moved to this plugin.
 * FinderIndexerResult => \Joomla\Component\Finder\Administrator\Indexer\Result
 * FinderIndexerTaxonomy => \Joomla\Component\Finder\Administrator\Indexer\Taxonomy
 * FinderIndexerToken => \Joomla\Component\Finder\Administrator\Indexer\Token
-
 
 * JRegistry => \Joomla\Registry\Registry
 * JRegistryFormatIni => \Joomla\Registry\Format\Ini
@@ -58,7 +97,6 @@ will be moved to this plugin.
 * JData => \Joomla\Data\DataObject
 * JDataSet => \Joomla\Data\DataSet
 * JDataDumpable => \Joomla\Data\DumpableInterface
-
 
 * JApplicationAdministrator => \Joomla\CMS\Application\AdministratorApplication
 * JApplicationHelper => \Joomla\CMS\Application\ApplicationHelper
@@ -73,7 +111,6 @@ will be moved to this plugin.
 * JCli => \Joomla\CMS\Application\CliApplication
 * JWeb => \Joomla\CMS\Application\WebApplication
 * JWebClient => \Joomla\Application\Web\WebClient
-
 
 * JModelAdmin => \Joomla\CMS\MVC\Model\AdminModel
 * JModelForm => \Joomla\CMS\MVC\Model\FormModel
@@ -108,7 +145,6 @@ will be moved to this plugin.
 * JTableMenuType => \Joomla\CMS\Table\MenuType
 * JTableModule => \Joomla\CMS\Table\Module
 
-
 * JAccess => \Joomla\CMS\Access\Access
 * JAccessRule => \Joomla\CMS\Access\Rule
 * JAccessRules => \Joomla\CMS\Access\Rules
@@ -116,10 +152,8 @@ will be moved to this plugin.
 * JRule => \Joomla\CMS\Access\Rule
 * JRules => \Joomla\CMS\Access\Rules
 
-
 * JHelp => \Joomla\CMS\Help\Help
 * JCaptcha => \Joomla\CMS\Captcha\Captcha
-
 
 * JLanguageAssociations => \Joomla\CMS\Language\Associations
 * JLanguage => \Joomla\CMS\Language\Language
@@ -127,7 +161,6 @@ will be moved to this plugin.
 * JLanguageMultilang => \Joomla\CMS\Language\Multilanguage
 * JText => \Joomla\CMS\Language\Text
 * JLanguageTransliterate => \Joomla\CMS\Language\Transliterate
-
 
 * JComponentRecord => \Joomla\CMS\Component\ComponentRecord
 * JComponentExceptionMissing => \Joomla\CMS\Component\Exception\MissingComponentException
@@ -141,12 +174,9 @@ will be moved to this plugin.
 * JComponentRouterRulesInterface => \Joomla\CMS\Component\Router\Rules\RulesInterface
 * JComponentRouterRulesStandard => \Joomla\CMS\Component\Router\Rules\StandardRules
 
-
 * JEditor => \Joomla\CMS\Editor\Editor
 
-
 * JErrorPage => \Joomla\CMS\Exception\ExceptionHandler
-
 
 * JAuthenticationHelper => \Joomla\CMS\Helper\AuthenticationHelper
 * JHelper => \Joomla\CMS\Helper\CMSHelper
@@ -158,33 +188,26 @@ will be moved to this plugin.
 * JHelperTags => \Joomla\CMS\Helper\TagsHelper
 * JHelperUsergroups => \Joomla\CMS\Helper\UserGroupsHelper
 
-
 * JLayoutBase => \Joomla\CMS\Layout\BaseLayout
 * JLayoutFile => \Joomla\CMS\Layout\FileLayout
 * JLayoutHelper => \Joomla\CMS\Layout\LayoutHelper
 * JLayout => \Joomla\CMS\Layout\LayoutInterface
 
-
 * JResponseJson => \Joomla\CMS\Response\JsonResponse
-
 
 * JPlugin => \Joomla\CMS\Plugin\CMSPlugin
 * JPluginHelper => \Joomla\CMS\Plugin\PluginHelper
-
 
 * JMenu => \Joomla\CMS\Menu\AbstractMenu
 * JMenuAdministrator => \Joomla\CMS\Menu\AdministratorMenu
 * JMenuItem => \Joomla\CMS\Menu\MenuItem
 * JMenuSite => \Joomla\CMS\Menu\SiteMenu
 
-
 * JPagination => \Joomla\CMS\Pagination\Pagination
 * JPaginationObject => \Joomla\CMS\Pagination\PaginationObject
 
-
 * JPathway => \Joomla\CMS\Pathway\Pathway
 * JPathwaySite => \Joomla\CMS\Pathway\SitePathway
-
 
 * JSchemaChangeitem => \Joomla\CMS\Schema\ChangeItem
 * JSchemaChangeset => \Joomla\CMS\Schema\ChangeSet
@@ -192,12 +215,10 @@ will be moved to this plugin.
 * JSchemaChangeitemPostgresql => \Joomla\CMS\Schema\ChangeItem\PostgresqlChangeItem
 * JSchemaChangeitemSqlsrv => \Joomla\CMS\Schema\ChangeItem\SqlsrvChangeItem
 
-
 * JUcm => \Joomla\CMS\UCM\UCM
 * JUcmBase => \Joomla\CMS\UCM\UCMBase
 * JUcmContent => \Joomla\CMS\UCM\UCMContent
 * JUcmType => \Joomla\CMS\UCM\UCMType
-
 
 * JToolbar => \Joomla\CMS\Toolbar\Toolbar
 * JToolbarButton => \Joomla\CMS\Toolbar\ToolbarButton
@@ -211,20 +232,15 @@ will be moved to this plugin.
 * JToolbarHelper => \Joomla\CMS\Toolbar\ToolbarHelper
 * JButton => \Joomla\CMS\Toolbar\ToolbarButton
 
-
 * JVersion => \Joomla\CMS\Version
-
 
 * JAuthentication => \Joomla\CMS\Authentication\Authentication
 * JAuthenticationResponse => \Joomla\CMS\Authentication\AuthenticationResponse
 
-
 * JBrowser => \Joomla\CMS\Environment\Browser
-
 
 * JAssociationExtensionInterface => \Joomla\CMS\Association\AssociationExtensionInterface
 * JAssociationExtensionHelper => \Joomla\CMS\Association\AssociationExtensionHelper
-
 
 * JDocument => \Joomla\CMS\Document\Document
 * JDocumentError => \Joomla\CMS\Document\ErrorDocument
@@ -256,10 +272,8 @@ will be moved to this plugin.
 * JOpenSearchImage => \Joomla\CMS\Document\Opensearch\OpensearchImage
 * JOpenSearchUrl => \Joomla\CMS\Document\Opensearch\OpensearchUrl
 
-
 * JFilterInput => \Joomla\CMS\Filter\InputFilter
 * JFilterOutput => \Joomla\CMS\Filter\OutputFilter
-
 
 * JHttp => \Joomla\CMS\Http\Http
 * JHttpFactory => \Joomla\CMS\Http\HttpFactory
@@ -268,7 +282,6 @@ will be moved to this plugin.
 * JHttpTransportCurl => \Joomla\CMS\Http\Transport\CurlTransport
 * JHttpTransportSocket => \Joomla\CMS\Http\Transport\SocketTransport
 * JHttpTransportStream => \Joomla\CMS\Http\Transport\StreamTransport
-
 
 * JInstaller => \Joomla\CMS\Installer\Installer
 * JInstallerAdapter => \Joomla\CMS\Installer\InstallerAdapter
@@ -296,19 +309,15 @@ will be moved to this plugin.
 * JInstallerManifestLibrary => \Joomla\CMS\Installer\Manifest\LibraryManifest
 * JInstallerManifestPackage => \Joomla\CMS\Installer\Manifest\PackageManifest
 
-
 * JRouterAdministrator => \Joomla\CMS\Router\AdministratorRouter
 * JRoute => \Joomla\CMS\Router\Route
 * JRouter => \Joomla\CMS\Router\Router
 * JRouterSite => \Joomla\CMS\Router\SiteRouter
 
-
 * JCategories => \Joomla\CMS\Categories\Categories
 * JCategoryNode => \Joomla\CMS\Categories\CategoryNode
 
-
 * JDate => \Joomla\CMS\Date\Date
-
 
 * JLog => \Joomla\CMS\Log\Log
 * JLogEntry => \Joomla\CMS\Log\LogEntry
@@ -322,12 +331,9 @@ will be moved to this plugin.
 * JLogLoggerSyslog => \Joomla\CMS\Log\Logger\SyslogLogger
 * JLogLoggerW3c => \Joomla\CMS\Log\Logger\W3cLogger
 
-
 * JProfiler => \Joomla\CMS\Profiler\Profiler
 
-
 * JUri => \Joomla\CMS\Uri\Uri
-
 
 * JCache => \Joomla\CMS\Cache\Cache
 * JCacheController => \Joomla\CMS\Cache\CacheController
@@ -346,19 +352,15 @@ will be moved to this plugin.
 * JCacheExceptionConnecting => \Joomla\CMS\Cache\Exception\CacheConnectingException
 * JCacheExceptionUnsupported => \Joomla\CMS\Cache\Exception\UnsupportedCacheException
 
-
 * JSession => \Joomla\CMS\Session\Session
-
 
 * JUser => \Joomla\CMS\User\User
 * JUserHelper => \Joomla\CMS\User\UserHelper
-
 
 * JForm => \Joomla\CMS\Form\Form
 * JFormField => \Joomla\CMS\Form\FormField
 * JFormHelper => \Joomla\CMS\Form\FormHelper
 * JFormRule => \Joomla\CMS\Form\FormRule
-
 
 * JFormFieldAccessLevel => \Joomla\CMS\Form\Field\AccesslevelField
 * JFormFieldAliastag => \Joomla\CMS\Form\Field\AliastagField
@@ -444,9 +446,7 @@ will be moved to this plugin.
 * JFormRuleUrl => \Joomla\CMS\Form\Rule\UrlRule
 * JFormRuleUsername => \Joomla\CMS\Form\Rule\UsernameRule
 
-
 * JMicrodata => \Joomla\CMS\Microdata\Microdata
-
 
 * JDatabaseDriver => \Joomla\Database\DatabaseDriver
 * JDatabaseExporter => \Joomla\Database\DatabaseExporter
@@ -482,13 +482,10 @@ will be moved to this plugin.
 * JDatabaseQuerySqlite => \Joomla\Database\Sqlite\SqliteQuery
 * JDatabaseQuerySqlsrv => \Joomla\Database\Sqlsrv\SqlsrvQuery
 
-
 * JFactory => \Joomla\CMS\Factory
-
 
 * JMail => \Joomla\CMS\Mail\Mail
 * JMailHelper => \Joomla\CMS\Mail\MailHelper
-
 
 * JClientHelper => \Joomla\CMS\Client\ClientHelper
 * JClientFtp => \Joomla\CMS\Client\FtpClient
@@ -496,13 +493,11 @@ will be moved to this plugin.
 * JClientLdap => \Joomla\Ldap\LdapClient
 * JLDAP => \Joomla\Ldap\LdapClient
 
-
 * JUpdate => \Joomla\CMS\Updater\Update
 * JUpdateAdapter => \Joomla\CMS\Updater\UpdateAdapter
 * JUpdater => \Joomla\CMS\Updater\Updater
 * JUpdaterCollection => \Joomla\CMS\Updater\Adapter\CollectionAdapter
 * JUpdaterExtension => \Joomla\CMS\Updater\Adapter\ExtensionAdapter
-
 
 * JCrypt => \Joomla\CMS\Crypt\Crypt
 * JCryptCipher => \Joomla\Crypt\CipherInterface
@@ -511,20 +506,16 @@ will be moved to this plugin.
 * \Joomla\CMS\Crypt\Key => \Joomla\Crypt\Key
 * JCryptCipherCrypto => \Joomla\CMS\Crypt\Cipher\CryptoCipher
 
-
 * JStringPunycode => \Joomla\CMS\String\PunycodeHelper
-
 
 * JBuffer => \Joomla\CMS\Utility\BufferStreamHandler
 * JUtility => \Joomla\CMS\Utility\Utility
-
 
 * JInputCli => \Joomla\CMS\Input\Cli
 * JInputCookie => \Joomla\CMS\Input\Cookie
 * JInputFiles => \Joomla\CMS\Input\Files
 * JInput => \Joomla\CMS\Input\Input
 * JInputJSON => \Joomla\CMS\Input\Json
-
 
 * JFeed => \Joomla\CMS\Feed\Feed
 * JFeedEntry => \Joomla\CMS\Feed\FeedEntry
@@ -538,7 +529,6 @@ will be moved to this plugin.
 * JFeedParserRssItunes => \Joomla\CMS\Feed\Parser\Rss\ItunesRssParser
 * JFeedParserRssMedia => \Joomla\CMS\Feed\Parser\Rss\MediaRssParser
 
-
 * JImage => \Joomla\CMS\Image\Image
 * JImageFilter => \Joomla\CMS\Image\ImageFilter
 * JImageFilterBackgroundfill => \Joomla\CMS\Image\Filter\Backgroundfill
@@ -549,15 +539,11 @@ will be moved to this plugin.
 * JImageFilterNegate => \Joomla\CMS\Image\Filter\Negate
 * JImageFilterSmooth => \Joomla\CMS\Image\Filter\Smooth
 
-
 * JObject => \Joomla\CMS\Object\CMSObject
-
 
 * JExtensionHelper => \Joomla\CMS\Extension\ExtensionHelper
 
-
 * JHtml => \Joomla\CMS\HTML\HTMLHelper
-
 
 * \Joomla\Application\Cli\CliInput => \Joomla\CMS\Application\CLI\CliInput
 * \Joomla\Application\Cli\CliOutput => \Joomla\CMS\Application\CLI\CliOutput
@@ -566,7 +552,6 @@ will be moved to this plugin.
 * \Joomla\Application\Cli\Output\Xml => \Joomla\CMS\Application\CLI\Output\Xml
 * \Joomla\Application\Cli\Output\Processor\ColorProcessor => \Joomla\CMS\Application\CLI\Output\Processor\ColorProcessor
 * \Joomla\Application\Cli\Output\Processor\ProcessorInterface => \Joomla\CMS\Application\CLI\Output\Processor\ProcessorInterface
-
 
 * JFile => \Joomla\CMS\Filesystem\File
 * JFolder => \Joomla\CMS\Filesystem\Folder
@@ -577,16 +562,12 @@ will be moved to this plugin.
 * JStreamString => \Joomla\CMS\Filesystem\Streams\StreamString
 * JStringController => \Joomla\CMS\Filesystem\Support\StringController
 
-
 * JClassLoader => \Joomla\CMS\Autoload\ClassLoader
-
 
 * JFormFilterInt_Array => \Joomla\CMS\Form\Filter\IntarrayFilter
 
-
 * JAdapter => \Joomla\CMS\Adapter\Adapter
 * JAdapterInstance => \Joomla\CMS\Adapter\AdapterInstance
-
 
 * JHtmlAccess => \Joomla\CMS\HTML\Helpers\Access
 * JHtmlActionsDropdown => \Joomla\CMS\HTML\Helpers\ActionsDropdown
@@ -627,4 +608,104 @@ Some class aliases can't be removed at this version because they are use in core
 TODO Evaluate this alias, it's used in all xml files for filterText
 
 * JComponentHelper => \Joomla\CMS\Component\ComponentHelper
+
+## Webassets es5 entries
+
+The es5 entries has been removed in 5.0 since no browser which doesn't support es6+ is maintained any more.
+The way our Webassetmanager works doesn't allow us to simply remove assets. For this reason we have all 
+es5 entries moved to the b/c plugin and provide an empty dummy entry.
+
+Removed entries:
+
+* bootstrap.es5
+* com_actionlogs.admin-actionlogs.es5
+* com_admin.admin-help.es5
+* com_associations.admin-associations-default.es5
+* com_associations.admin-associations-modal.es5
+* com_associations.associations-edit.es5
+* com_banners.admin-banner-edit.es5
+* com_cache.admin-cache.es5
+* com_categories.shared-categories-accordion.es5
+* com_config.config.es5
+* com_config.modules.es5
+* com_config.templates.es5
+* com_config.filters.es5
+* com_contact.admin-contacts-modal.es5
+* com_contact.contacts-list.es5
+* com_content.admin-article-pagebreak.es5
+* com_content.admin-article-readmore.es5
+* com_content.admin-articles-batch.es5
+* com_content.admin-articles-stage.es5
+* com_content.admin-articles-modal.es5
+* com_content.form-edit.es5
+* com_content.articles-list.es5
+* com_content.articles-status.es5
+* com_contenthistory.admin-compare-compare.es5
+* com_contenthistory.admin-history-modal.es5
+* com_contenthistory.admin-history-versions.es5
+* com_cpanel.admin-addmodule.es5
+* com_cpanel.admin-cpanel.es5
+* com_cpanel.admin-system-loader.es5
+* com_fields.admin-field-changecontext.es5
+* com_fields.admin-field-edit.es5
+* com_fields.admin-field-typehaschanged.es5
+* com_fields.admin-fields-batch.es5
+* com_fields.admin-fields-modal.es5
+* com_finder.debug.es5
+* com_finder.filters.es5
+* com_finder.finder.es5
+* com_finder.finder-edit.es5
+* com_finder.indexer.es5
+* com_finder.maps.es5
+* com_installer.changelog.es5
+* com_installer.installer.es5
+* com_joomlaupdate.admin-update-es5
+* com_joomlaupdate.default-es5
+* com_languages.admin-language-edit-change-flag.es5
+* com_languages.admin-override-edit-refresh-searchstring.es5
+* com_languages.overrider.es5
+* com_mails.admin-email-template-edit.es5
+* com_media.edit-images.es5
+* com_media.mediamanager.es5
+* com_menus.admin-item-edit.es5
+* com_menus.admin-item-edit-container.es5
+* com_menus.admin-item-edit-modules.es5
+* com_menus.admin-item-modal.es5
+* com_menus.admin-items-modal.es5
+* com_menus.admin-menus.es5
+* com_menus.batch-body.es5
+* com_modules.admin-module-edit.es5
+* com_modules.admin-module-edit-assignment.es5
+* com_modules.admin-module-search.es5
+* com_modules.admin-modules-modal.es5
+* com_modules.admin-select-modal.es5
+* com_templates.admin-templates.es5
+* showon.es5
+* com_scheduler.test-task.es5
+* com_scheduler.admin-view-select-task-search.es5
+* com_scheduler.scheduler-config.es5
+* com_tags.tag-default.es5
+* com_tags.tag-list.es5
+* com_tags.tags-default.es5
+* com_templates.admin-template-toggle-assignment.es5
+* com_templates.admin-template-toggle-switch.es5
+* com_users.admin-users-groups.es5
+* com_users.two-factor-focus.es5
+* com_users.two-factor-list.es5
+* com_workflow.admin-items-workflow-buttons.es5
+* plg_multifactorauth_totp.setup.es5
+* plg_multifactorauth_webauthn.webauthn.es5
+* plg_system_guidedtours.guidedtours.es5
+* plg_system_jooa11y.jooa11y-es5
+* plg_system_schedulerunner.run-schedule.es5
+* template.atum-es5
+* keepalive.es5
+
+## Webasset com_scheduler.admin-view-select-task-css entry
+
+The `com_scheduler.admin-view-select-task-css` has been removed in 5.0 and is provided as empty shim if an 
+extension depends on this webasset.
+
+
+
 
