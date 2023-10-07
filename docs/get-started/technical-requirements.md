@@ -9,22 +9,17 @@ All recommended versions are based on the latest released version of each series
 ## Requirements for Supported Software
 ### Requirements for Joomla! 5.x
 
-| Software                                 | Recommended[^4] | Minimum[^3] | More Information                                    |
-|------------------------------------------|-----------------|-------------|-----------------------------------------------------|
-| [PHP](https://php.net)                   | 8.2             | 8.1.0       | Modules: json, simplexml, dom, gd, mysqlnd or pgsql |
-| **Databases**                            |                 |             |                                                     |
-| [MySQL](https://mysql.com)               | 8.1             | 8.0.13      |                                                     |
-| [MariaDB](https://mariadb.com)           | 11.1.0          | 10.4.0      |                                                     |
-| [PostgreSQL](https://postgresql.org)     | 16.0            | 12.0        |                                                     |
-| **Web Servers**                          |                 |             |                                                     |
-| [Apache](https://httpd.apache.org)[^2]   | 2.4             | 2.4         |                                                     |
-| [Nginx](https://nginx.com)               | 1.25            | 1.21        |                                                     |
-| [Microsoft IIS](https://www.iis.net)[^1] | 10              | 10          |                                                     |
-
-    ext-json
-    ext-simplexml
-    ext-gd
-    ext-dom
+| Software                                  | Recommended[^4] | Minimum[^3] | More Information                                    |
+|-------------------------------------------|-----------------|-------------|-----------------------------------------------------|
+| [PHP](https://php.net)                    | 8.2             | 8.1.0       | Modules: json, simplexml, dom, gd, mysqlnd or pgsql |
+| **Databases**                             |                 |             |                                                     |
+| [MySQL](https://mysql.com)                | 8.1             | 8.0.13      |                                                     |
+| [MariaDB](https://mariadb.com)            | 11.1.0          | 10.4.0      |                                                     |
+| [PostgreSQL](https://postgresql.org)      | 16.0            | 12.0        |                                                     |
+| **Web Servers**                           |                 |             |                                                     |
+| [Apache](https://httpd.apache.org) [^2]   | 2.4             | 2.4         |                                                     |
+| [Nginx](https://nginx.com)                | 1.25            | 1.21        |                                                     |
+| [Microsoft IIS](https://www.iis.net) [^1] | 10              | 10          |                                                     |
 
 ### Requirements for Joomla! 4.x
 
@@ -35,7 +30,7 @@ All recommended versions are based on the latest released version of each series
 | MySQL              | 8.0             | 5.6         | https://www.mysql.com                                                                                            |
 | PostgreSQL         | 11.0            | 11.0        | https://www.postgresql.org/ <br/>(ext/pgsql support in PHP has been removed. Now uses the PostgreSQL PDO Driver) |
 | **Web Servers**    |                 |             |                                                                                                                  |
-| Apache[^2]         | 2.4             | 2.4         | https://www.apache.org                                                                                           |
+| Apache [^2]        | 2.4             | 2.4         | https://www.apache.org                                                                                           |
 | Nginx              | 1.18            | 1.10        | https://www.nginx.com/resources/wiki/                                                                            |
 | Microsoft IIS [^1] | 10              | 8           | https://www.iis.net                                                                                              |
 
