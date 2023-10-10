@@ -409,7 +409,7 @@ $wa->registerAndUseScript('bar','com_example/bar.js', [], ['defer' => true], ['c
 
 ### Add inline script
 
-Addittionally to script files WebAssetManager allow to add an inline script, and maintain their relation to the file asset.
+Additionally to script files WebAssetManager allow to add an inline script, and maintain their relation to the file asset.
 Inline script may be placed directly before the dependency, after the dependency, or as usual after all scripts.
 
 Inline asset may have a name as well as other assets (but not required), the name can be used to retrieve the asset item form a registry, or as dependency to another inline asset. If name not specified then will be used generated name based on a content hash.
@@ -474,7 +474,7 @@ Will produce:
 
 :::note Note
 
-Named inline asset may be as dependency to another inline asset, however it is not recmomended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
+Named inline asset may be as dependency to another inline asset, however it is not recommended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
 :::
 
 ## Working with a web component
