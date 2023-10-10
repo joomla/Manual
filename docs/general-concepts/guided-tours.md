@@ -30,12 +30,12 @@ companyname-tourname
 domain-tourname
 ```
 
-For instance, a welcome tour created by Joomla would have an identifier name 'joomla-welcome'.
+For instance, a welcome tour created by Joomla would have an identifier name `joomla-welcome`.
 authorname, companyname, domain name should be one single word, tourname can contain dashes.
 
 As long as the tour you create includes your 'signature' and is unique in your pool of tours, there will be no duplication issue for users. 
 
-The identifier corresponds to the uid column to the #__guidedtour table.
+The identifier corresponds to the uid column of the #__guidedtour table.
 On save or duplicate, a suggested identifier string is created.
 
 
@@ -45,7 +45,7 @@ The language files
 Not all tours need language files, especially if you are only targetting a one-language audience.
 But if you do need them, the files need to follow the new convention of the identifier.
 
-For instance, for the tour with identifier 'joomla-welcome', the language files will be:
+For instance, for the tour with identifier `joomla-welcome`, the language files will be:
 
 ```
 guidedtours.joomla_welcome.ini
@@ -54,9 +54,9 @@ guidedtours.joomla_welcome_steps.ini
 
 where the first file only contains 2 keys, one for the tour name and one for its description and the second file contains all step keys.
 
-All language files need to start with 'extensionname', 'com_extensionname', 'mod_modulename', 'plg_[group]_pluginname' or 'tpl_templatename', end with .ini or _steps.ini.
+All language files need to start with 'extensionname', 'com_extensionname', 'mod_modulename', 'plg_[group]_pluginname' or 'tpl_templatename', end with `.ini` or `_steps.ini`.
 
-Reminder: the language keys can be anything BUT contain GUIDEDTOUR in the key. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
+Reminder: the language keys can be anything BUT needs to contain GUIDEDTOUR in the key. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
 
 Language files do not need to be placed into administrator/language/[language]/. You can leave the files inside the extension's file structure.
 
@@ -64,13 +64,13 @@ Language files do not need to be placed into administrator/language/[language]/.
 The tour context
 =======================
 
-A 'Component selector' parameter has been available ever since tours have been introduced in Joomla.
+A `Component selector` parameter has been available ever since tours have been introduced in Joomla.
 The definition of 'component selector' slightly differs in Joomla 5.
 Now, on any given page where the module 'Take a tour' is showing, the tours being in the context of the page are the ones showing in priority.
 
 Selecting a component will ensure the tour will be tagged as 'favorite' when in the component's views. 'All' will show the tour in priority in all pages. Leaving the selection to 'All' is not recommended. As a third party developer, you would select the extension(s) the tour is tied to.  
 
-For instance, the 'How to create articles' tour will be visible in priority when in a 'Articles', 'Featured articles' or 'Categories' views.
+For instance, the 'How to create articles' tour will be visible in priority when in an 'Articles', 'Featured articles' or 'Categories' views.
 To allow that, the tour's component selector is set to 'Articles' and 'Categories'.
 
 Note that the Guided Tour component knows how to differentiate category tours for specific components. For instance, if you create a categories tour for com_contact, the category tour for articles won't show as a favorite tour when in 'Contact' context.
