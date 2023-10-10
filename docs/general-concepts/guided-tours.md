@@ -5,7 +5,7 @@ The simplest way to create tours for your organization or extensions is to creat
 
 Go to System (Manage section) -> Guided Tours.
 
-Create a new tour.
+# Creating a new tour
 
 Starting with Joomla 5, an identifier is provided for each tour. This is not a required field but a value will always be present.
 This identifier is supposed to:
@@ -18,8 +18,7 @@ This identifier is supposed to:
 New in Joomla 5 as well is the creation of 2 separate language files. One for the tour and one for the steps of the tour.
 
 
-The identifier
-=======================
+## The identifier
 
 This is a unique string, very much like an alias for an article.
 The string should be formatted as:
@@ -39,8 +38,7 @@ The identifier corresponds to the uid column of the #__guidedtour table.
 On save or duplicate, a suggested identifier string is created.
 
 
-The language files
-=======================
+## The language files
 
 Not all tours need language files, especially if you are only targetting a one-language audience.
 But if you do need them, the files need to follow the new convention of the identifier.
@@ -61,8 +59,7 @@ Reminder: the language keys can be anything BUT needs to contain GUIDEDTOUR in t
 Language files do not need to be placed into administrator/language/[language]/. You can leave the files inside the extension's file structure.
 
 
-The tour context
-=======================
+## The tour context
 
 A `Component selector` parameter has been available ever since tours have been introduced in Joomla.
 The definition of 'component selector' slightly differs in Joomla 5.
@@ -78,8 +75,7 @@ Note that the Guided Tour component knows how to differentiate category tours fo
 There is no available tour when editing a module, for instance. That is where launching a tour from anywhere can become handy.
 
 
-Launching a tour from any location
-==============================================
+# Launching a tour from any location
 
 Launching a tour from a different location than the Guided Tours module is as easy as adding the attribute `data-gt-uid` with the identifier of the tour.
 
