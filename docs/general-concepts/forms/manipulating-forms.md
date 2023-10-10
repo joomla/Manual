@@ -53,7 +53,7 @@ The `$group` parameter which appears in several Form API methods refers to the `
 Note that `fieldsets` and `field groups` are independent. In your form XML definition you can have `<fields>` elements within `<fieldset>` elements, and also `<fieldset>` elements within `<fields>` elements. 
 
 # Dynamically Changing Forms
-If you have defined your form statically in an XML file, then once it's been loaded you can modify it dyamically in your PHP code using the Form APIs
+If you have defined your form statically in an XML file, then once it's been loaded you can modify it dynamically in your PHP code using the Form APIs
 
 - adding further fields to your form by loading another form XML definition
 - modifying an existing field or fields,

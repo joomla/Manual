@@ -20,7 +20,7 @@ Most critically, the signature of the `\Psr\Log\LoggerInterface` methods has cha
 
 If you are using your own logger, you want to preserve compatibility with Joomla 4 and 5 in the same extension package, and you do not mind losing PSR-3 compatibility you can include a copy of PSR-3 in your extension _as long as it's under your extension's namespace_. For example, instead of using `\Psr\Log\LoggerInterface` you could use `\Acme\Component\Example\Administrator\Log\LoggerInterface`. Note that you can use [PHP Scoper](https://github.com/humbug/php-scoper) to easily migrate your dependencies under your own namespace.
 
-If you only need to maintain compatibilty with PSR-3 to use an logger external to your component, such as Joomla's logger, you can still typehint against `\Psr\Log\LoggerInterface`. Please note that the external logger you are using must be compatible with PSR-3 version 1 on Joomla 4 and PSR-3 version 3 on Joomla 5. If you are providing a third party, external logger yourself you may need to include two versions of the logger with your extension and only load the correct one for each Joomla version.
+If you only need to maintain compatibility with PSR-3 to use an logger external to your component, such as Joomla's logger, you can still typehint against `\Psr\Log\LoggerInterface`. Please note that the external logger you are using must be compatible with PSR-3 version 1 on Joomla 4 and PSR-3 version 3 on Joomla 5. If you are providing a third party, external logger yourself you may need to include two versions of the logger with your extension and only load the correct one for each Joomla version.
 
 ### Framework Update
 
@@ -46,7 +46,7 @@ class MyModel extends ListModel {
 
 ### Drop -es5.js files
 - PR: https://github.com/joomla/joomla-cms/pull/39618
-- Descriptions: The build tools won't produce es5 files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed (the acutal entries for the -es5.js were kept for B/C but the URLs are empty, the files won't be loaded). The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributiong anymore `IE11` compatible scripts!
+- Descriptions: The build tools won't produce es5 files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed (the actual entries for the -es5.js were kept for B/C but the URLs are empty, the files won't be loaded). The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributiong anymore `IE11` compatible scripts!
 .
 ### CSS removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
@@ -266,7 +266,7 @@ public function onCaptchaSetup(CaptchaSetupEvent $event)
 }
 ```
 
-Captcha provider is a class that provide an abstract access to your captcha. It have all old methods, but sligntly changed:
+Captcha provider is a class that provide an abstract access to your captcha. It have all old methods, but slightly changed:
 - `onDisplay($name = null, $id = '', $class = '')` now is `display(string $name = '', array $attributes = []): string`;
 - `onInit($id = '')` is removed, you should load your assets in `display()` method;
 - `onCheckAnswer($code = null)` now is `checkAnswer(string $code = null): bool`;
@@ -296,7 +296,7 @@ public function onEditorSetup(EditorSetupEvent $event)
 }
 ```
 
-Editor provider is a class that provide an abstract access to your editor. It have all old methods, but sligntly changed:
+Editor provider is a class that provide an abstract access to your editor. It have all old methods, but slightly changed:
 - `onDisplay($name, $content, $width, $height, $col, $row, $buttons, $id, $asset, $author, $params)` now is `display(string $name, string $content = '', array $attributes = [], array $params = []): string`;
 - `onInit($id = '')` is removed, you should load your assets in `display()` method;
 

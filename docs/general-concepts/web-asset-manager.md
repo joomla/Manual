@@ -276,7 +276,7 @@ $wa->registerAndUseStyle('bar', 'com_example/bar.css', [], ['data-foo' => 'some 
 
 ### Add inline style
 
-Additionaly to style files, WebAssetManager allows you to add an inline style, and maintain their relation to the file asset.
+Additionally to style files, WebAssetManager allows you to add an inline style, and maintain their relation to the file asset.
 Inline styles may be placed directly before the dependency, after the dependency, or as usual after all styles.
 
 Inline asset may have a name as well as other assets (but not required), the name can be used to retrieve the asset item from a registry, or as a dependency to another inline asset. If the name is not specified then a generated name based on a content hash will be used.
@@ -409,10 +409,10 @@ $wa->registerAndUseScript('bar','com_example/bar.js', [], ['defer' => true], ['c
 
 ### Add inline script
 
-Addittionaly to script files WebAssetManager allow to add an inline script, and maintain their relation to the file asset.
+Addittionally to script files WebAssetManager allow to add an inline script, and maintain their relation to the file asset.
 Inline script may be placed directly before the dependency, after the dependency, or as usual after all scripts.
 
-Inline asset may have a name as well as other assets (but not required), the name can be used to retrive the asset item form a registry, or as dependecy to another inline asset. If name not specified then will be used generated name based on a content hash.
+Inline asset may have a name as well as other assets (but not required), the name can be used to retrieve the asset item form a registry, or as dependency to another inline asset. If name not specified then will be used generated name based on a content hash.
 
 ```php
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
@@ -474,12 +474,12 @@ Will produce:
 
 :::note Note
 
-Named inline asset may be as dependency to another inline asset, hovewer it is not recomended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
+Named inline asset may be as dependency to another inline asset, however it is not recmomended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
 :::
 
 ## Working with a web component
 
-Joomla! allows you to use [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) for your needs. In Joomla! web components are not loaded as regular script, but loaded via Web Component loader so that they are loaded asynchronously. 
+Joomla! allows you to use [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) for your needs. In Joomla! web components are not loaded as regular script, but loaded via Web Component loader so that they are loaded asynchronously.
 
 In all other aspects, working with web components in Asset Manager is the same as working with a `script` asset item.
 

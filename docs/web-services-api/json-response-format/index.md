@@ -87,11 +87,11 @@ class PlgWebservicesVapi extends CMSPlugin
 }
 ```
 
-Let hightlight some things you should kown about this plugin:
+Let highlight some things you should know about this plugin:
 
 -   **onBeforeApiRoute method:** This method is required in each webservices plugin. Here is where you will define your routes (endpoints). You can define these routes inside this method, or in a custom separate method as was done here (this custom method will depend on you the way it will be built, it is not part of the Joomla core).
 
--   **createModuleSiteRoutes method:** Here you can check the constructor of the `Joomla\Router\Route` class and kown well all the params we using for instance the class. But, let extend the descriptions of them here.
+-   **createModuleSiteRoutes method:** Here you can check the constructor of the `Joomla\Router\Route` class and know well all the params we using for instance the class. But, let extend the descriptions of them here.
 
     -   **\["GET"\]:** The HTTP methods this route supports, all verbs must be in uppercase. All valid methods are <code>["GET", "POST", "PUT", "DELETE", "HEAD", "TRACE", "PATCH"]</code>
 
@@ -111,7 +111,7 @@ Let hightlight some things you should kown about this plugin:
         -   `'public' => $publicGets` Need be true if you have a route that you want it to be accessible by unauthenticated users, like how we did. False otherwise.
         -   `'format' => ['application/json']` Here is where is defined that our application will handle a json format response. Without this, Joomla will use the default JSON-API.
 
-Before jump to our component code, remember the plugin need have the **vapi.xml** manifest file. Will be a standar manifest, nothing new to add. You can follow any manifest inside the webservices plugins group.
+Before jump to our component code, remember the plugin need have the **vapi.xml** manifest file. Will be a standard manifest, nothing new to add. You can follow any manifest inside the webservices plugins group.
 
 ## Component API part
 
@@ -189,7 +189,7 @@ Notice the namespace of the controller. You can change it for your own custom na
 
 Also, the JSON-API from the Joomla core extends the controllers from `Joomla\CMS\MVC\Controller\ApiController`. The need in our case is get a JSON response, and for that extends from `\Joomla\CMS\MVC\Controller\BaseController`.
 
-We also declared 2 propeties, one will be used for tell Joomla the view file we expect to use and the other is for set the module params for model the data we will send in the API response.
+We also declared 2 properties, one will be used for tell Joomla the view file we expect to use and the other is for set the module params for model the data we will send in the API response.
 
 Now let see the methods who will be involve in the class:
 
@@ -281,7 +281,7 @@ class ModuleModel extends \Joomla\CMS\MVC\Model\BaseDatabaseModel
         if ($mid === 0) {
             throw new \InvalidArgumentException(
 				sprintf(
-					'A module ID is neccessary in %s',
+					'A module ID is necessary in %s',
 					__METHOD__
 				)
 			);
@@ -371,7 +371,7 @@ Now that we can get a specific module, let complete the method `setModuleParams(
     }
 ```
 
-Let see if the controller propertie $moduleParams is getting the expected result. For this let edit the main method `displayModule()`:
+Let see if the controller property $moduleParams is getting the expected result. For this let edit the main method `displayModule()`:
 
 ```php
     /**

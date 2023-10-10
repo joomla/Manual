@@ -186,7 +186,7 @@ File: modules/mod_articles_latest/src/Helper/ArticlesLatestHelper.php
 Replacement: $this->getArticles(Registry $params, SiteApplication $app)
 Example:
 ```php
-// Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
+// Usually used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
 $articles = $this->getHelperFactory()->getHelper('ArticlesLatestHelper')->getArticles($data['params'], $this->getApplication());
 ```
 
@@ -196,7 +196,7 @@ File: modules/mod_articles_news/src/Helper/ArticlesNewsHelper.php
 Replacement: $this->getArticles(Registry $params, SiteApplication $app)
 Example:
 ```php
-// Usally used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
+// Usually used in the module context which implements \Joomla\CMS\Helper\HelperFactoryAwareInterface
 $articles = $this->getHelperFactory()->getHelper('ArticlesNewsHelper')->getArticles($data['params'], $this->getApplication());
 ```
 

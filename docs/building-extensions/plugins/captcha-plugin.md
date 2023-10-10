@@ -31,7 +31,7 @@ $subject = $event->getCaptchaRegistry();
 ## Creating a captcha plugin
 
 The captcha plugin consist with two main things:
- - The Captcha provider class, wich provide a captcha logic for rendering input and for validation.
+ - The Captcha provider class, which provide a captcha logic for rendering input and for validation.
  - The Plugin in Captcha group, which register the provider, so system know it existence.
 
 Following example assume you already know  how to create Joomla plugin.
@@ -67,7 +67,7 @@ final class HoneypotCaptchaProvider implements CaptchaProviderInterface
      * Render the captcha input
      *
      * @param   string  $name        Input name given in the form
-     * @param   array   $attributes  The class of the field nd other attributes, from the form.
+     * @param   array   $attributes  The class of the field and other attributes, from the form.
      *
      * @return  string  The HTML to be embedded in the form
      *

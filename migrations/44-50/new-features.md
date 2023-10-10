@@ -85,7 +85,7 @@ Each event for Actionlog, Cache, Contact, Checkin components have own class, PR:
 
 Each menu event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41498
 
-#### com_ajax events have own classe
+#### com_ajax events have own classes
 
 com_ajax events event now have own event class, PR: https://github.com/joomla/joomla-cms/pull/41524
 
@@ -95,4 +95,4 @@ com_ajax events event now have own event class, PR: https://github.com/joomla/jo
 
 #### Added the option to serve Joomla from a public folder
 
- - The instance could be served from a public folder (either subfolder in the root folder of Joomla or not). Command Line tools are provided both for the installtion process or to use at a later time. Requirements: templates need to support the `child templates`, no PHP files inside the folders `media` and `images` and a server that allows defining the end point of the serving folder.
+ - The instance could be served from a public folder (either subfolder in the root folder of Joomla or not). Command Line tools are provided both for the installation process or to use at a later time. Requirements: templates need to support the `child templates`, no PHP files inside the folders `media` and `images` and a server that allows defining the end point of the serving folder.

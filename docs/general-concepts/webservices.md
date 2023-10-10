@@ -34,7 +34,7 @@ $url   = 'https://example.org/api/index.php/v1';
 $uri  = new Uri($url);
 
 // Put your Joomla! Api token in a safe place, for example a password manager or a vault storing secrets
-// We should not use environment variables to store secrets. 
+// We should not use environment variables to store secrets.
 // Here is why: https://www.trendmicro.com/en_us/research/22/h/analyzing-hidden-danger-of-environment-variables-for-keeping-secrets.html
 
 $token = '';
@@ -142,8 +142,8 @@ $articleId = 1; // The Article ID of a specific Article
 $data = [
 'id'          => $articleId,
 'title'       => 'How to add an article via the Joomla 4 API?',
-'introtext' => 'When using PATCH, articletext MUST be splitted in two parts or use at least just introtext in order to work properly',
-'fulltext' => 'MORE CONTENT if you wish',
+'introtext'   => 'When using PATCH, articletext MUST be split into two parts or use at least just introtext in order to work properly',
+'fulltext'    => 'MORE CONTENT if you wish',
 ];
 
 $dataString = json_encode($data);
@@ -218,7 +218,7 @@ $curl  = curl_init();
 $url   = 'https://example.org/api/index.php/v1';
 
 // Put your Joomla! Api token in a safe place, for example a password manager or a vault storing secrets
-// We should not use environment variables to store secrets. 
+// We should not use environment variables to store secrets.
 // Here is why: https://www.trendmicro.com/en_us/research/22/h/analyzing-hidden-danger-of-environment-variables-for-keeping-secrets.html
 $token = '';
 
@@ -335,8 +335,8 @@ $articleId = 1; // The Article ID of a specific Article
 $data = [
 'id'          => $articleId,
 'title'       => 'How to add an article via the Joomla 4 API?',
-'introtext' => 'When using PATCH, articletext MUST be splitted in two parts or use at least just introtext in order to work properly',
-'fulltext' => 'MORE CONTENT if you wish',
+'introtext'   => 'When using PATCH, articletext MUST be split into two parts or use at least just introtext in order to work properly',
+'fulltext'    => 'MORE CONTENT if you wish',
 ];
 
 $dataString = json_encode($data);

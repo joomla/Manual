@@ -41,7 +41,7 @@ the renaming of the classes was part of the move of Joomla to namespaces.
 :::note Recover in case the plugin has been disabled
 
 If you disabled the plugin by accident or by try and get a php error you have to re-enable the plugin in the database
-again. This can be achived by editing the `enabled` column in the `#__extensions` table for the row with the name 
+again. This can be achieved by editing the `enabled` column in the `#__extensions` table for the row with the name 
 `plg_behaviour_compat` and set it to `1`.
 
 :::
