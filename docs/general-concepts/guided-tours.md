@@ -54,7 +54,7 @@ where the first file only contains 2 keys, one for the tour name and one for its
 
 All language files need to start with 'extensionname', 'com_extensionname', 'mod_modulename', 'plg_[group]_pluginname' or 'tpl_templatename', end with `.ini` or `_steps.ini`.
 
-Reminder: the language keys can be anything BUT needs to contain GUIDEDTOUR in the key. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
+Reminder: the language keys can be anything BUT need to contain GUIDEDTOUR in the key. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
 
 Language files do not need to be placed into administrator/language/[language]/. You can leave the files inside the extension's file structure.
 
@@ -72,7 +72,7 @@ To allow that, the tour's component selector is set to 'Articles' and 'Categorie
 
 Note that the Guided Tour component knows how to differentiate category tours for specific components. For instance, if you create a categories tour for com_contact, the category tour for articles won't show as a favorite tour when in 'Contact' context.
 
-There is no available tour when editing a module, for instance. That is where launching a tour from anywhere can become handy.
+There is no available tour when editing a specific module, plugin or template. That is where launching a tour from anywhere can become handy.
 
 
 # Launching a tour from any location
