@@ -34,7 +34,7 @@ authorname, companyname, domain name should be one single word, tourname can con
 
 As long as the tour you create includes your 'signature' and is unique in your pool of tours, there will be no duplication issue for users. 
 
-The identifier corresponds to the uid column of the #__guidedtour table.
+The identifier corresponds to the `uid` column of the `#__guidedtour` table.
 On save or duplicate, a suggested identifier string is created.
 
 
