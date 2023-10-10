@@ -24,8 +24,8 @@ function onEditorSetup(Joomla\CMS\Event\Editor\EditorSetupEvent $event){}
 Event attributes:
 
 ```php
-/** 
- * @var Joomla\CMS\Editor\EditorsRegistry $subject 
+/**
+ * @var Joomla\CMS\Editor\EditorsRegistry $subject
  */
 $subject = $event->getEditorsRegistry();
 ```
@@ -33,7 +33,7 @@ $subject = $event->getEditorsRegistry();
 ## Creating an editor plugin
 
 The plugin consist with three main things:
-- The Editor provider class, wich provide a logic for rendering input, and loading Editor Buttons (XTD) plugins.
+- The Editor provider class, which provide a logic for rendering input, and loading Editor Buttons (XTD) plugins.
 - The Editor JavaScript code for client side integration.
 - The Plugin in Editors group, which register the provider, so system know it existence.
 
@@ -41,7 +41,7 @@ Following example assume you already know  how to create Joomla plugin.
 
 ### Let's create a simple editor
 
-In the example we display a `<textarea>` as our Editor. 
+In the example we display a `<textarea>` as our Editor.
 
 #### Backend side
 
@@ -75,7 +75,7 @@ final class ExampleEditorProvider extends AbstractEditorProvider
      * @var    CMSApplicationInterface
      */
     protected $application;
-    
+
     /**
      * Class constructor
      *
@@ -90,7 +90,7 @@ final class ExampleEditorProvider extends AbstractEditorProvider
 
         $this->setDispatcher($dispatcher);
     }
-    
+
     /**
      * Return Editor name, CMD string.
      *
@@ -100,7 +100,7 @@ final class ExampleEditorProvider extends AbstractEditorProvider
     {
         return 'example';
     }
-    
+
     /**
      * Gets the editor HTML markup
      *
@@ -120,9 +120,9 @@ final class ExampleEditorProvider extends AbstractEditorProvider
         $buttons = $params['buttons'] ?? true;
         $asset   = $params['asset'] ?? 0;
         $author  = $params['author'] ?? 0;
-        
+
         // Render the editor markup
-        return '<joomla-editor-example>' 
+        return '<joomla-editor-example>'
           . '<textarea name="' . $name . '" id="' . $id . '" cols="' . $col . '" rows="' . $row . '">' . $content . '</textarea>';
           . $this->displayButtons($buttons, ['asset' => $asset, 'author' => $author, 'editorId' => $id]);
           . '</joomla-editor-example>'
@@ -157,7 +157,7 @@ final class ExampleEditor extends CMSPlugin implements SubscriberInterface
             'onEditorSetup' => 'onEditorSetup',
         ];
     }
-    
+
     /**
      * Register Editor instance
      *
@@ -175,7 +175,7 @@ final class ExampleEditor extends CMSPlugin implements SubscriberInterface
 ```
 
 At this point, after plugin installation and enabling, the editor already should be available in Global configuration, and render our `textarea`.
-However, we stil missing a client side integration, that will be a next step.
+However, we are still missing a client side integration, that will be a next step.
 
 #### Frontend side
 
@@ -204,7 +204,7 @@ public function display(string $name, string $content = '', array $attributes = 
     $author  = $params['author'] ?? 0;
 
     // Render the editor markup
-    return '<joomla-editor-example>' 
+    return '<joomla-editor-example>'
       . '<textarea name="' . $name . '" id="' . $id . '" cols="' . $col . '" rows="' . $row . '">' . $content . '</textarea>';
       . $this->displayButtons($buttons, ['asset' => $asset, 'author' => $author, 'editorId' => $id]);
       . '</joomla-editor-example>'
@@ -218,8 +218,8 @@ The script should register editor instance, and provide a basic methods, for set
 import { JoomlaEditor, JoomlaEditorDecorator } from 'editor-api';
 
 /**
- * EditorExample Decorator wich implements required methods per Editor instance.
- * Joomla will use this to share it betwen Extension, to interact with a main Editor instance.
+ * EditorExample Decorator which implements required methods per Editor instance.
+ * Joomla will use this to share it between Extension, to interact with a main Editor instance.
  */
 class EditorExampleDecorator extends JoomlaEditorDecorator {
 
@@ -234,7 +234,7 @@ class EditorExampleDecorator extends JoomlaEditorDecorator {
 
   getSelection() {
     const input = this.instance.input;
-    
+
     if (input.selectionStart || input.selectionStart === 0) {
         return input.value.substring(input.selectionStart, input.selectionEnd);
     }
@@ -268,7 +268,7 @@ class JoomlaEditorExample extends HTMLElement {
     connectedCallback() {
         // Pick <textarea> input which is a first children in markup
         this.input = this.firstElementChild;
-        
+
         // Register the Decorator in Joomla.Editor
         const jEditor = new EditorExampleDecorator(this, 'example', this.input.id);
         JoomlaEditor.register(jEditor);
@@ -276,11 +276,11 @@ class JoomlaEditorExample extends HTMLElement {
         // Find out when editor is interacted
         // The script should tell to joomla when editor or one of Editor buttons (XTD) is interacted
         if (!this.interactionCallback) {
-            this.interactionCallback = () => {                 
+            this.interactionCallback = () => {
                 JoomlaEditor.setActive(this.input.id);
             };
         }
-        this.addEventListener('click', this.interactionCallback);        
+        this.addEventListener('click', this.interactionCallback);
     }
 
     // Element removed from DOM
@@ -288,11 +288,11 @@ class JoomlaEditorExample extends HTMLElement {
         // Unregister editor and unbind all events
         JoomlaEditor.unregister(this.input.id);
         this.removeEventListener('click', this.interactionCallback);
-    }    
+    }
 }
 
 customElements.define('joomla-editor-example', JoomlaEditorExample);
 ```
 
-And all done 🎉 
+And all done 🎉
 Now we have a new, fully integrated editor.

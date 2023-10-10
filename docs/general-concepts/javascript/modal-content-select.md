@@ -7,7 +7,7 @@ Usually this is achieved by use of a modal window. However, when the modal conte
 It may tempting to use direct access to a parent from an iframe `window.parent['field_id'].value='selected value';`. And it is what Joomla also used to do.
 Such approach is insecure, not reliable and often does not work with field in multiple mode (like SubForm field).
 
-A better approach is to use a message based communication: [Window: postMessage() method](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage), 
+A better approach is to use a message based communication: [Window: postMessage() method](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage),
 which provide a reliable and secure way to transfer any data from children window (iframe) to parent.
 
 ### How it works:
@@ -20,8 +20,8 @@ that can be used as is or as base for your field.
 
 `modal-content-select-field` asset loaded with `ModalSelect` field, creates a dialog when requested, and listen to `message`.
 
-`modal-content-select` asset, a helper which should be loaded within the iframe. It will listen on click on any element with `data-content-select` attribute, 
-and will post message with `messageType: 'joomla:content-select'` and the element's dataset to parent. 
+`modal-content-select` asset, a helper which should be loaded within the iframe. It will listen on click on any element with `data-content-select` attribute,
+and will post message with `messageType: 'joomla:content-select'` and the element's dataset to parent.
 Additionally, when scriptOptions contains `content-select-on-load` value, the helper will post this value to parent on iframe load event.
 Example of the "selectable" elements:
 ```html
@@ -31,22 +31,22 @@ Example of the "selectable" elements:
 It is not limited to only id and title, it can be extended as needs.
 
 The child window can post following messages:
- - `joomla:content-select` wich used to post a value to parent, example `window.parent.postMessage({messageType: 'joomla:content-select', id: 1, title: 'A title'})`;
+ - `joomla:content-select` which used to post a value to parent, example `window.parent.postMessage({messageType: 'joomla:content-select', id: 1, title: 'A title'})`;
  - `joomla:cancel` which cancel any action, example `window.parent.postMessage({messageType: 'joomla:cancel'})`;
 
 
 ### Dialog buttons and advanced usage
 
-It is recomended that all intercative buttons (like `save`, `cancel` etc) to be embed within dialog content (within iframe), instead of rendering them with parent window.
+It is recommended that all intercative buttons (like `save`, `cancel` etc) to be embed within dialog content (within iframe), instead of rendering them with parent window.
 This reduce complexity and makes code more reliable.
 
-When using Create/Edit/Cancel the controller usualy do redirect to a complete page. 
-For dialog window you can do redirect to `layout=modalreturn`, and on this page set the final state to `scriptOptions` then `modal-content-select` script will check it, 
-and post the result to parent. 
+When using Create/Edit/Cancel the controller usually do redirect to a complete page.
+For dialog window you can do redirect to `layout=modalreturn`, and on this page set the final state to `scriptOptions` then `modal-content-select` script will check it,
+and post the result to parent.
 Example:
 ```php
 $doc->addScriptOptions('content-select-on-load', [
-  'id' => 1, 
+  'id' => 1,
   'title' => 'A title',
 ]);
 ```

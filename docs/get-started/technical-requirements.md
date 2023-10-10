@@ -37,7 +37,7 @@ All recommended versions are based on the latest released version of each series
 ### Requirements for older Versions
 
 On this page you see only currently supported versions if you need the requirements for older Joomla Versions
-please select the old version in the version switcher in the top right corner. Requierements for versions 3 and
+please select the old version in the version switcher in the top right corner. Requirements for versions 3 and
 lower are listed in the documentention for [4.4](/versioned_docs/version-4.4/get-started/technical-requirements.md). 
 
 ## Footnotes

@@ -6,7 +6,7 @@ Code Changes
 ============
 
 An explanation of the code changes for each version of Joomla. This documentation is outside the development documentation
-to be version in dependent. The Documentation is per CMS version and it makes not much sense to see only deprecations and improvments 
+to be version in dependent. The Documentation is per CMS version and it makes not much sense to see only deprecations and improvements 
 up to the current CMS version.
 
 Joomla! is trying to follow SemVer as much as possible but some parts of SemVer doesn't fit into the lifecycle of the CMS.
