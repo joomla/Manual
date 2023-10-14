@@ -12,6 +12,12 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 
 :::
 
+### Replacing .tar.bz2 with .tar.zstd
+
+Starting with the final release of Joomla! 5.0.0 we no longer create .tar.bz2 packages. Instead we use .tar.zstd packages.
+This allows us to create download packages which are about 3 MiB smaller then bzip2 compressed files and about 11 MiB smaller
+files then zip compressed files.
+
 ### PSR-3 upgraded to version 3
 
 The PSR-3 (Logging) is upgraded to [version 3](https://github.com/php-fig/log/tree/3.0.0) of the specification.
