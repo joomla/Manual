@@ -626,3 +626,6 @@ Joomla 4 and 5 includes the symfony Ldap package.
 ### Change ordered lists in com_content links to unordered lists
 The links in com_content > category > blog-links.php and com_content > featured > default-links.php use `<ul></ul>` instead of `<ol></ol>`.
 Changes made [via PR #40629](https://github.com/joomla/joomla-cms/pull/40629) 
+
+### TinyMCE
+CSS classes defined in the editor.css file of a template are no longer displayed in the formats dropdown menu or button. They can be displayed if you wish by enabling the **new** TinyMCE plugin option CSS Classes Menu.
