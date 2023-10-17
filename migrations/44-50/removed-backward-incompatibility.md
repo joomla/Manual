@@ -398,7 +398,7 @@ function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $e
 ### Module events `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` backward compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
-- Description: `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` should now use `$event->getModules()` and `$event->updateModules($module)`, instead of modification by reference. The referencing still works but will be removed in the future.
+- Description: `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` should now use `$event->getModules()` and `$event->updateModules($module)`, instead of modification by reference. The referencing still works but will be removed in the future. The modules argument is now always initialised with an empty array. This is needed for consistency (typehint) and to allow references for legacy plugins.
 
 ```php
 // Old
