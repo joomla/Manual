@@ -28,7 +28,7 @@ This fundamental most importantly applies to:
 ## No 3: don't do your own crypto
 
 Properly implemented cryptography does a fantastic job to keep secret stuff secret. The hard part however is implementing it properly, as often details decide about whether an implementation is indeed secure or not. 
-Therefore you should not do you own implementations of cryptographic methods or algorithms. Instead, use "of-the-shelf" implementations like the [https://www.php.net/manual/de/book.sodium.php](libsodium) methods available in PHP. These methods have been developed by people that are way smarter than you and are extensively tested and reviewed.
+Therefore you should not do you own implementations of cryptographic methods or algorithms. Instead, use "of-the-shelf" implementations like the [libsodium](https://www.php.net/manual/de/book.sodium.php) methods available in PHP. These methods have been developed by people that are way smarter than you and are extensively tested and reviewed.
 
 ## No 4: Don't do security by obscurity
 
