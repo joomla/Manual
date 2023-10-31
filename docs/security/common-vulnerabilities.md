@@ -19,7 +19,7 @@ Now imagine the following output template for a comment:
 </div>
 ```
 
-Looks straightforward, huh? But now image that a user does not use "I love your site" as a comment subject, but ```<script>executeEvilJs()</script>```.
+Looks straightforward, huh? But now imagine that a user does not use "I love your site" as a comment subject, but ```<script>executeEvilJs()</script>```.
 With the output template given above, the JS provided by the user will be outputted as an executable HTML tag and the evil code will be executed in the browser of each and every user visiting the site where that comment is shown - that's a Cross-Site-Scripting vulnerability.
 
 ### Prevention
