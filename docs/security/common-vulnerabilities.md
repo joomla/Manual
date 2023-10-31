@@ -31,7 +31,7 @@ If the user input can contain HTML markup, the markup itself has to be filtered 
 Unless user generated markup is specifically needed (i.e. because the user can use a WYSIWYG editor) it's highly recommended to escape each and every snippet of user provided content.
 Escaping converts HTML markup into plaintext by replacing control-characters like `<` with their HTML entities, i.e. `&lt;`. 
 
-To escape user content in Joomla, use the ```echo $this->escape($evlString)``` method when outputting content in component view or ```echo htmlspecialchars($evilString, ENT_QUOTES, 'UTF-8')``` outside of component views.
+To escape user content in Joomla, use the ```echo $this->escape($evilString)``` method when outputting content in component view or ```echo htmlspecialchars($evilString, ENT_QUOTES, 'UTF-8')``` outside of component views.
 
 ## SQL injections / SQLi
 A SQL injection attack is a type of vulnerability where an attacker is able to manipulate a SQL query by injecting user controlled content.
