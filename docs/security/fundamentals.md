@@ -18,21 +18,21 @@ Please have in mind that this does not only apply to "obvious" sources of user i
 
 ## No 2: client-side security is no security
 
-Everything thats happening in a client-side context (=in the browser) is user-controlled. That also means that any security measure that's implemented on the client-side is no security measure at all, as the user can always deactivate or manipulate these chackes.
+Everything that's happening in a client-side context (=in the browser) is user-controlled. That also means that any security measure that's implemented on the client-side is no security measure at all, as the user can always deactivate or manipulate these checks.
 
 This fundamental most importantly applies to:
 * (form) validation: browser-based input validation is a UX feature (as it provides instant feedback to the user without a page reload) but not a replacement for server-side validation
-* access checks: if you, i.e. output a secret string to the browser but hide it via display:none, it's still accessible by the user as removing the display-directive is trivial
-* rate-limiting: if you limit the number of requests that a client is allowed to perform with clientside measures (i.e. by disabling a button via JS) that's again no protection at all
+* access checks: if you, i.e. output a secret string to the browser but hide it via `display:none`, it's still accessible by the user as removing the display-directive is trivial
+* rate-limiting: if you limit the number of requests that a client is allowed to perform with client-side measures (i.e. by disabling a button via JS) that's again no protection at all
 
-## No 3: don't do your own crypto
+## No 3: Don't do your own crypto
 
 Properly implemented cryptography does a fantastic job to keep secret stuff secret. The hard part however is implementing it properly, as often details decide about whether an implementation is indeed secure or not. 
-Therefore you should not do you own implementations of cryptographic methods or algorithms. Instead, use "of-the-shelf" implementations like the [libsodium](https://www.php.net/manual/de/book.sodium.php) methods available in PHP. These methods have been developed by people that are way smarter than you and are extensively tested and reviewed.
+Therefore you should not do your own implementations of cryptographic methods or algorithms. Instead, use "off-the-shelf" implementations like the [libsodium](https://www.php.net/manual/de/book.sodium.php) methods available in PHP. These methods have been developed by people that are way smarter than you and are extensively tested and reviewed.
 
 ## No 4: Don't do security by obscurity
 
-This rule does not only apply to the actual implementations in your codebase, but also to how you should handle a security issue in your code: once it's patched and the patch has been released, be open about it, notify users about the issue and the patch and outline it's criticalness. 
+This rule does not only apply to the actual implementations in your codebase, but also to how you should handle a security issue in your code: once it's patched and the patch has been released, be open about it, notify users about the issue and the patch and outline its criticalness. 
 
 ## No 5: Reduce your attack surface
 
