@@ -20,3 +20,12 @@ File: `administrator/language/en-GB/com_content.ini`
 Strings will be removed in 6.0: 
 * `COM_CONTENT_RUN_TRANSITION`, use `JWORKFLOW_RUN_TRANSITION` instead 
 * `COM_CONTENT_WORKFLOW_STAGE`, use `JWORKFLOW_STAGE` instead 
+
+# Class deprecations
+
+Planned to be removed in Joomla! 7.0.
+
+### Banner component helper
+
+File: components/com_banners/src/Helper/BannerHelper.php
+Replacement: BannerHelper::isImage() has been replaced with MediaHelper::isImage($url) to avoid duplicated code.
