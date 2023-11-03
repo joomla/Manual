@@ -27,5 +27,5 @@ Planned to be removed in Joomla! 7.0.
 
 ### Banner component helper
 
-File: components/com_banners/src/Helper/BannerHelper.php
-Replacement: BannerHelper::isImage() has been replaced with MediaHelper::isImage($url) to avoid duplicated code.
+File: `components/com_banners/src/Helper/BannerHelper.php`
+Replacement: `BannerHelper::isImage()` has been replaced with `MediaHelper::isImage($url)` to avoid duplicated code.
