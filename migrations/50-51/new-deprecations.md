@@ -28,4 +28,10 @@ Planned to be removed in Joomla! 7.0.
 ### Banner component helper
 
 File: `components/com_banners/src/Helper/BannerHelper.php`
-Replacement: `BannerHelper::isImage()` has been replaced with `MediaHelper::isImage($url)` to avoid duplicated code.
+
+Replacement: no replacement
+
+The function `BannerHelper::isImage($url)` has been replaced with a combination of 
+`Joomla\CMS\Helper\MediaHelper::isImage($url)` for pixel-based image files and
+`Joomla\CMS\Helper\MediaHelper::getMimeType($url) === 'image/svg+xml'` for vector based image files
+after being sanitized with the helper function `Joomla\CMS\HTML\HTMLHelper::cleanImageURL($imageurl)`
