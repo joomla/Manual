@@ -21,6 +21,11 @@ Strings will be removed in 6.0:
 * `COM_CONTENT_RUN_TRANSITION`, use `JWORKFLOW_RUN_TRANSITION` instead 
 * `COM_CONTENT_WORKFLOW_STAGE`, use `JWORKFLOW_STAGE` instead 
 
+#### ActionLog plugin app and db property is deprecated
+
+File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
+Replacement: The `$this->app` and `$this->db` property is deprecated in the actionlog plugins. Instead of use `$this->getApplication()` and `$this->getDatabase()` when the plugin is converted to service providers.
+
 # Class deprecations
 
 Planned to be removed in Joomla! 7.0.
