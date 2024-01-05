@@ -15,9 +15,9 @@ All the new deprecations that should be aware of and what you should now be usin
 
 # Language strings
 
-File: `administrator/language/en-GB/com_content.ini`
+Strings will be removed in 6.0:
 
-Strings will be removed in 6.0: 
+File: `administrator/language/en-GB/com_content.ini`
 * `COM_CONTENT_RUN_TRANSITION`, use `JWORKFLOW_RUN_TRANSITION` instead 
 * `COM_CONTENT_WORKFLOW_STAGE`, use `JWORKFLOW_STAGE` instead 
 
