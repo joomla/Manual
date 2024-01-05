@@ -21,6 +21,15 @@ Strings will be removed in 6.0:
 * `COM_CONTENT_RUN_TRANSITION`, use `JWORKFLOW_RUN_TRANSITION` instead 
 * `COM_CONTENT_WORKFLOW_STAGE`, use `JWORKFLOW_STAGE` instead 
 
+File: `administrator/language/en-GB/com_fields.ini`
+* `COM_FIELDS_FIELD_FORM_LAYOUT_LABEL`, use `JLIB_FORM_FIELD_PARAM_LAYOUT_LABEL` instead 
+
+File: `administrator/language/en-GB/plg_fields_list.ini`
+* `PLG_FIELDS_LIST_PARAMS_FORM_LAYOUT_FANCY_SELECT`, use `JLIB_FORM_FIELD_PARAM_LAYOUT_FANCY_SELECT` instead 
+
+File: `administrator/language/en-GB/plg_fields_sql.ini`
+* `PLG_FIELDS_SQL_PARAMS_FORM_LAYOUT_FANCY_SELECT`, use `JLIB_FORM_FIELD_PARAM_LAYOUT_FANCY_SELECT` instead 
+
 # Class deprecations
 
 Planned to be removed in Joomla! 7.0.
