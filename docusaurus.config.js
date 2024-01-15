@@ -30,13 +30,15 @@ const config = {
           editUrl: 'https://github.com/joomla/manual/tree/main/',
           lastVersion: '4.3',
           versions: {
+            '5.1': {
+              label: '5.1 (upcoming)',
+              banner: 'unreleased',
+            },
             'current': {
-              label: '5.0 (upcoming)',
-              banner: 'unreleased'
+              label: '5.0',
             },
             '4.4': {
-              label: '4.4 (upcoming)',
-              banner: 'unreleased'
+              label: '4.4',
             },
             '4.3': {
               label: '4.3',
