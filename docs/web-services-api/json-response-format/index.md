@@ -235,7 +235,7 @@ Now let see the methods who will be involve in the class:
 var_dump(__METHOD__);die;
 ```
 
-Then using your favorite API client like Postman, or Thunder Client from vscode or curl...make a request to the route `[yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/{id of your module}`. You will see this response:
+Then using your favorite API client like Postman, or Thunder Client from vscode or curl...make a request to the route `[yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/[idOfYourModule]`. You will see this response:
 
 ```log
 string(73)"Carlitorweb\Component\Vapi\Api\Controller\ModuleController::displayModule"
@@ -400,7 +400,7 @@ Let see if the controller property $moduleParams is getting the expected result.
 
 -   `'state' => $moduleState`: Notice we passed the ID when load the model. We already saw where we used this ID inside the model.
 
-Again, using your favorite API client, make a request to the route [yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/{id of your module}. You will see something like this:
+Again, using your favorite API client, make a request to the route `[yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/[idOfYourModule]`. You will see something like this:
 
 ```json
 object(Joomla\Registry\Registry)#938 (3) {
@@ -516,7 +516,7 @@ Let edit again the main method `displayModule()` for test we are getting the Art
     }
 ```
 
-Again, using your favorite API client, make a request to the route [yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/{id of your module}. You will get:
+Again, using your favorite API client, make a request to the route `[yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/[idOfYourModule]`. You will get:
 
 ```log
 string(49) "Joomla\Component\Content\Site\Model\ArticlesModel"
@@ -751,7 +751,7 @@ class JsonView extends BaseJsonView
 
 -   `$this->document->render()`: Outputs the document
 
-One more time, using your favorite API client, make a request to the route [yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/{id of your module}. You will get:
+One more time, using your favorite API client, make a request to the route `[yourLocalRootSiteURL]/api/index.php/v1/vapi/modules/[idOfYourModule]`. You will get:
 
 ```json
 [
