@@ -21,6 +21,9 @@ Implementation of newly introduced JoomlaDialog javascript module (5.0) into sta
 - ```Modal_Newsfeed``` field - PR [#42327](https://github.com/joomla/joomla-cms/pull/42327)
 - batch windows - PR: [42328](https://github.com/joomla/joomla-cms/pull/42328)
 - multilanguage status overview - PR [#42082](https://github.com/joomla/joomla-cms/pull/42082)
+- Use Dialog for Module editing - PR [#42423](https://github.com/joomla/joomla-cms/pull/42423)
+- Use Dialog for Plugins editing - PR [#42447](https://github.com/joomla/joomla-cms/pull/42447)
+
 
 
 For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/docs/next/general-concepts/javascript/joomla-dialog).
