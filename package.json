@@ -1,6 +1,6 @@
 {
   "name": "manual",
-  "version": "4.3",
+  "version": "5.0",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",

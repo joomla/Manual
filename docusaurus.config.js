@@ -28,18 +28,17 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '4.3',
+          lastVersion: '5.0',
           versions: {
             'current': {
-              label: '5.0 (upcoming)',
+              label: '5.1 (upcoming)',
               banner: 'unreleased'
+            },
+            '5.0': {
+              label: '5.0',
             },
             '4.4': {
-              label: '4.4 (upcoming)',
-              banner: 'unreleased'
-            },
-            '4.3': {
-              label: '4.3',
+              label: '4.4',
             }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
