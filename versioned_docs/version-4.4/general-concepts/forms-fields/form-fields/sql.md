@@ -76,11 +76,11 @@ not, the default value (if any) is selected.
 
 ```xml
 <field
-    name="title"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id AS value, title AS text FROM #__content"
+        name="title"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id AS value, title AS text FROM #__content"
 />
 ```
 
@@ -93,12 +93,12 @@ column to be used instead of *'value'*:
 
 ```xml
 <field
-    name="title"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id, title FROM #__content"
-    key_field="id"
+        name="title"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id, title FROM #__content"
+        key_field="id"
 />
 ```
 
@@ -110,11 +110,11 @@ example. Then you can do this:
 
 ```xml
 <field
-    name="myfield"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id AS value, title AS myfield FROM #__content"
+        name="myfield"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id AS value, title AS myfield FROM #__content"
 />
 ```
 
@@ -122,13 +122,13 @@ Or alternatively:
 
 ```xml
 <field
-    name="myfield"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id, title FROM #__content"
-    key_field="id"
-    value_field="title"
+        name="myfield"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id, title FROM #__content"
+        key_field="id"
+        value_field="title"
 />
 ```
 
@@ -150,16 +150,16 @@ tag. Please look at the following example.
 
 ```xml
 <field
-    name="myfield"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id, title FROM #__content"
-    key_field="id"
-    value_field="title"
-    required="true"
-    >
-    <option value="">Please select your option</option>
+        name="myfield"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id, title FROM #__content"
+        key_field="id"
+        value_field="title"
+        required="true"
+>
+  <option value="">Please select your option</option>
 </field>
 ```
 
@@ -168,15 +168,15 @@ attribute as follows:
 
 ```xml
 <field
-    name="myfield"
-    type="sql"
-    default="10"
-    label="Select an article"
-    query="SELECT id, title FROM #__content"
-    key_field="id"
-    value_field="title"
-    required="true"
-    header="Please select your option"
+        name="myfield"
+        type="sql"
+        default="10"
+        label="Select an article"
+        query="SELECT id, title FROM #__content"
+        key_field="id"
+        value_field="title"
+        required="true"
+        header="Please select your option"
 />
 ```
 
@@ -188,12 +188,12 @@ allows some additional features. These features are not available if the
 
 ```xml
 <field
-    name="example_group"
-    type="sql"
-    label="COM_EXAMPLE_GROUP"
-    query="SELECT e.* FROM #__example AS e GROUP BY name ORDER e.id ASC"
-    key_field="id"
-    value_field="name"
+        name="example_group"
+        type="sql"
+        label="COM_EXAMPLE_GROUP"
+        query="SELECT e.* FROM #__example AS e GROUP BY name ORDER e.id ASC"
+        key_field="id"
+        value_field="name"
 />
 ```
 
@@ -201,15 +201,15 @@ can be expressed as:
 
 ```xml
 <field
-    name="example_group" 
-    type="sql" 
-    label="COM_EXAMPLE_GROUP" 
-    sql_select="e.*" 
-    sql_from="#__example AS e" 
-    sql_group="name" 
-    sql_order="e.id ASC" 
-    key_field="id"
-    value_field="name" 
+        name="example_group"
+        type="sql"
+        label="COM_EXAMPLE_GROUP"
+        sql_select="e.*"
+        sql_from="#__example AS e"
+        sql_group="name"
+        sql_order="e.id ASC"
+        key_field="id"
+        value_field="name"
 />
 ```
 
@@ -227,14 +227,14 @@ select lists, one called *groups* and the other called *subgroups*. The
 
 ```xml
 <field name="groups"
-    type="sql"
-    label="COM_EXAMPLE_GROUPS"
-    sql_select="e.*"
-    sql_from="#__example_groups AS e"
-    sql_group="name"
-    sql_order="e.id ASC"
-    key_field="id"
-    value_field="name"
+       type="sql"
+       label="COM_EXAMPLE_GROUPS"
+       sql_select="e.*"
+       sql_from="#__example_groups AS e"
+       sql_group="name"
+       sql_order="e.id ASC"
+       key_field="id"
+       value_field="name"
 />
 ```
 
@@ -243,15 +243,15 @@ refers to the *groups* field by name:
 
 ```xml
 <field name="subgroups"
-    type="sql"
-    label="COM_EXAMPLE_SUBGROUPS"
-    sql_select="e.*"
-    sql_from="#__example_subgroups AS e"
-    sql_group="name"
-    sql_order="e.id ASC"
-    sql_filter="groups"
-    key_field="id"
-    value_field="name"
+       type="sql"
+       label="COM_EXAMPLE_SUBGROUPS"
+       sql_select="e.*"
+       sql_from="#__example_subgroups AS e"
+       sql_group="name"
+       sql_order="e.id ASC"
+       sql_filter="groups"
+       key_field="id"
+       value_field="name"
 />
 ```
 
@@ -260,10 +260,10 @@ statement will be executed for the *subgroups* field:
 
 ```sql
 SELECT e.*
-    FROM
-        jos_example_subgroups AS e
-    WHERE
-        `groups` = 99
+FROM
+    jos_example_subgroups AS e
+WHERE
+    `groups` = 99
 GROUP BY `name`
 ORDER BY e.id ASC
 ```
@@ -334,3 +334,7 @@ Note: As shown in these examples, the database prefix (often `jos`)
 should be entered in the form `#__` (hash-underscore-underscore). It
 will automatically be replaced by the actual database prefix used by
 Joomla.
+
+## See also
+
+* [Secure DB Queries](../../../security/secure-db-queries.md)

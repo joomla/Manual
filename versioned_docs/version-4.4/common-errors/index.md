@@ -6,7 +6,7 @@ Common Errors
 =============
 Some frequently asked questions on Error messages and how to resolve them. 
 
-As a developer you somtimes will be stuck in your code. 
+As a developer you sometimes will be stuck in your code. 
 If it happens to you, also have a look on https://joomla.stackexchange.com/ - a huge collection of valuable knowledge. 
 Here we collect some frequently asked questions. 
 
