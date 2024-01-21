@@ -6,7 +6,7 @@ title: SQL Form Field
 :::caution Limitation
 
 Using this generic form field type forces you to write SQL in an XML file and is rather limited.
-For more flexibility, consider creating your own, specific form field type by subclassing the 
+For more flexibility, consider creating your own, specific form field type by subclassing the
 `Joomla\CMS\Form\FormField` class.
 
 :::
@@ -68,8 +68,8 @@ not, the default value (if any) is selected.
     given. The field names must correspond to column names in the
     database table being queried. See the examples for further
     explanation.
--   **sql_default\_{FIELD_NAME}** (optional) is the default value used
-    by the **sql_filter** attribute when the value of the *{FIELD_NAME}*
+-   **sql_default\_\{FIELD_NAME}** (optional) is the default value used
+    by the **sql_filter** attribute when the value of the *\{FIELD_NAME}*
     filter has not been set. See the examples for further explanation.
 
 ## Example XML parameter definition
@@ -288,23 +288,23 @@ WHERE
 
 You can also define a default value for any filter that might not have a
 value when the field is evaluated by adding
-**sql_default\_{FIELD_NAME}** attributes. For example, suppose that the
+**sql_default\_\{FIELD_NAME}** attributes. For example, suppose that the
 default value for the *groups* filter is 0 and the default value for the
 *categories* filter is 0, then this definition:
 
 ```xml
 <field name="subgroups"
-    type="sql"
-    label="COM_EXAMPLE_SUBGROUPS"
-    sql_select="e.*"
-    sql_from="#__example_subgroups AS e"
-    sql_group="name"
-    sql_order="e.id ASC"
-    sql_filter="groups,categories"
-    sql_default_groups="0"
-    sql_default_categories="1"
-    key_field="id"
-    value_field="name"
+       type="sql"
+       label="COM_EXAMPLE_SUBGROUPS"
+       sql_select="e.*"
+       sql_from="#__example_subgroups AS e"
+       sql_group="name"
+       sql_order="e.id ASC"
+       sql_filter="groups,categories"
+       sql_default_groups="0"
+       sql_default_categories="1"
+       key_field="id"
+       value_field="name"
 />
 ```
 
@@ -334,7 +334,3 @@ Note: As shown in these examples, the database prefix (often `jos`)
 should be entered in the form `#__` (hash-underscore-underscore). It
 will automatically be replaced by the actual database prefix used by
 Joomla.
-
-## See also
-
-* [Secure DB Queries](../../../security/secure-db-queries.md)
