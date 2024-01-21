@@ -74,7 +74,7 @@ Example
 ## Measurements
 * Use lower case for all measurements eg px, em, w and h
 * Use the metric system for mass and non-web measurements eg kg, cm and m
-* Use celcius for temperature eg 34c
+* Use celsius for temperature eg 34c
 * For all other measurements use SI
 
 ## Money
@@ -91,7 +91,7 @@ Always use the hyphenated word. Multi-factor must always be a single hyphenated 
 (I have changed this based on the NNG findings (http://www.nngroup.com/articles/web-writing-show-numbers-as-numerals/))
 * Write numbers with digits, not letters (23, not twenty-three).
 * Use numerals even when the number is the first word in a sentence or bullet point.
-* Use numerals for big numbers up to one billon. As a compromise, you can often use numerals for the significant digits and write out the magnitude as a word. For example, write 24 billion.
+* Use numerals for big numbers up to one billion. As a compromise, you can often use numerals for the significant digits and write out the magnitude as a word. For example, write 24 billion.
 * "Enter the **number** of hits to increase the counter by."
 * "Limit the **amount** of text to display"
 

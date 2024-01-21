@@ -244,7 +244,7 @@ In the administrator edit product xml form (where you define each product, and i
 and similarly for any filter fields in `filter_products.xml` for filtering the list of products shown in the administrator products form.
 
 ### Category Summary.
-In your Extension class you'll need to provide the `countItems()` function which is in the trait `Joomla\CMS\Categories\CategoryServiceTrait`. `com_categories` will call this function passing in the category `section`, and if you're using `ContentHelper::countRelations()` to provide the summary then you'll need to set the appropiate category id field for each section – eg 'catid1' for section 'size' and 'catid2' for section 'price'. An example is below.
+In your Extension class you'll need to provide the `countItems()` function which is in the trait `Joomla\CMS\Categories\CategoryServiceTrait`. `com_categories` will call this function passing in the category `section`, and if you're using `ContentHelper::countRelations()` to provide the summary then you'll need to set the appropriate category id field for each section – eg 'catid1' for section 'size' and 'catid2' for section 'price'. An example is below.
 
 ```php
 public function countItems(array $items, string $section)
