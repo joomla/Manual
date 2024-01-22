@@ -11,9 +11,9 @@ Joomla has a very sophisticated permissions framework, and if you're not familia
 
 # Permissions - an implementation view
 Permissions are held in the Joomla `#__assets` table, in the `rules` column. If you have a clean Joomla install, in the `assets` record for `com_content` (ie the record where the `name` column is "com_content") you'll have an entry in the `rules` column similar to (but probably not exactly the same as):
-
+```
 {"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.edit":{"4":1,"2":1},"core.edit.state":{"5":1},"core.execute.transition":{"6":1,"5":1},"core.delete":{"2":0}}
-
+```
 This means that at the `com_content` level:
 - For the "core.admin" permission user group "7" has the value 1 (which is *Allowed*)
 - For the "core.manage" permission user group "6" has the value 1 (*Allowed*)
