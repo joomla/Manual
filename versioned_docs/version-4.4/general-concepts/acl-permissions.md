@@ -10,9 +10,10 @@ ACL Permissions relate to what users can do.
 Joomla has a very sophisticated permissions framework, and if you're not familiar with it you should view some introductory material first. I'd recommend the [Access Control List Tutorial](https://docs.joomla.org/J3.x:Access_Control_List_Tutorial) and the video [Joomla 3 ACL Explained with Randy Carey](https://www.youtube.com/watch?v=CFqXAc3orkY) (between 2 minutes and 32 minutes is the section to watch). Both of these related to Joomla 3, but ACL hasn't changed between Joomla version 3 and version 4 or 5.
 
 # Permissions - an implementation view
-Permissions are held in the Joomla `#__assets` table, in the `rules` column. If you have a clean Joomla install, in the `assets` record for `com_content` (ie the record where the `name` column is "com_content") you'll have an entry in the `rules` column similar to (but probably not exactly the same as):
+Permissions are held in the Joomla `#__assets` table, in the `rules` column. If you have a clean Joomla install, in the `assets` record for `com_content` (ie the record where the `name` column is "com_content") you'll have an entry in the `rules` column similar to (but probably not exactly the same as) the json string:
 ```
-{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.edit":{"4":1,"2":1},"core.edit.state":{"5":1},"core.execute.transition":{"6":1,"5":1},"core.delete":{"2":0}}
+{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.edit":{"4":1,"2":1},"core.edit.state":{"5":1},
+"core.execute.transition":{"6":1,"5":1},"core.delete":{"2":0}}
 ```
 This means that at the `com_content` level:
 - For the "core.admin" permission user group "7" has the value 1 (which is *Allowed*)
