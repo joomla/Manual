@@ -1,12 +1,6 @@
 ---
-title: ACL Permissions
+title: Permissions
 ---
-ACL stands for Access Control List.
-
-ACL Access relates to what users can view.
-
-ACL Permissions relate to what users can do. 
-
 Joomla has a very sophisticated permissions framework, and if you're not familiar with it you should view some introductory material first. I'd recommend the [Access Control List Tutorial](https://docs.joomla.org/J3.x:Access_Control_List_Tutorial) and the video [Joomla 3 ACL Explained with Randy Carey](https://www.youtube.com/watch?v=CFqXAc3orkY) (between 2 minutes and 32 minutes is the section to watch). Both of these related to Joomla 3, but ACL hasn't changed between Joomla version 3 and version 4 or 5.
 
 # Permissions - an implementation view

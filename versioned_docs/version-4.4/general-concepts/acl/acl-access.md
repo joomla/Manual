@@ -1,11 +1,6 @@
 ---
-title: ACL Access
+title: Access
 ---
-ACL stands for Access Control List.
-
-ACL Access relates to what users can view.
-
-ACL Permissions relate to what users can do. 
 
 # How Joomla Access Works
 
