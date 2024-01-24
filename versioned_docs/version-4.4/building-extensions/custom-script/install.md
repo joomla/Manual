@@ -2,6 +2,11 @@
 title: Installing a custom script
 sidebar_position: 3
 ---
+:::warning
+
+Custom scripts like this are not supported formally by the Joomla team!
+
+:::
 # Installing your Custom Script
 If you have access to the file system of your web application then you can obviously just copy your script into the folder of your choice. 
 

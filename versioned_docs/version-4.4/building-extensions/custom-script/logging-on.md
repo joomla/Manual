@@ -2,7 +2,11 @@
 title: To Logon or not to Logon
 sidebar_position: 2
 ---
+:::warning
 
+Custom scripts like this are not supported formally by the Joomla team!
+
+:::
 # To logon or not to logon
 As you can see from the script in the previous section, it's not necessary to logon to Joomla to perform a query on the database and output the result. But should you logon to Joomla or not? You've got 3 options:
 - Don't logon

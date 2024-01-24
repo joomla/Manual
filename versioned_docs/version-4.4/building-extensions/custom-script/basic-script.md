@@ -2,6 +2,11 @@
 title: Example PHP Script
 sidebar_position: 2
 ---
+:::warning
+
+Custom scripts like this are not supported formally by the Joomla team!
+
+:::
 # General Approach
 To make use of the Joomla framework, and in particular the Joomla APIs, you need to have an `Application` class instance. As `ConsoleApplication` and `CliApplication` both have checks to ensure that their application is run from the command line, and neither `AdministratorApplication` nor `ApiApplication` is appropriate, the clear choice is to build your script upon `SiteApplication`.
 

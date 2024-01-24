@@ -1,6 +1,11 @@
 ---
 title: Custom PHP Script
 ---
+:::warning
+
+Custom scripts like this are not supported formally by the Joomla team!
+
+:::
 # Introduction
 By a custom PHP script I mean a PHP script which can be run from a browser. Usually users will navigate using a browser to the Joomla site:
 ```
