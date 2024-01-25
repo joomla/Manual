@@ -59,9 +59,9 @@ protected function getInput()
 }
 protected function getLabel()
 {
-  $data = $this->getLayoutData();
+  $data = $this->collectLayoutData();
   ...
-  return $this->getRenderer($this->renderLabelLayout)->collectLayoutData($data);
+  return $this->getRenderer($this->renderLabelLayout)->render($data);
 }
 ```
 
