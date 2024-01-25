@@ -30,4 +30,39 @@ For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/d
 
 PR: https://github.com/joomla/joomla-cms/pull/40150
 
+#### `FormField` new method `collectLayoutData()`
 
+`FormField` class got a new method `collectLayoutData()`, to cache the data from `getLayoutData()`. 
+This was made to prevent a multiple call of this method, which may lead to doubled Queries/Request that may happen in some circumstances.
+
+it is recommended to update your fields to use new method to improve performance. Example:
+```php
+// Old code
+protected function getInput()
+{
+  return $this->getRenderer($this->layout)->render($this->getLayoutData());
+}
+protected function getLabel()
+{
+  $data = $this->getLayoutData();
+  ...
+  return $this->getRenderer($this->renderLabelLayout)->render($data);
+}
+
+```
+
+```php
+// New code
+protected function getInput()
+{
+  return $this->getRenderer($this->layout)->render($this->collectLayoutData());
+}
+protected function getLabel()
+{
+  $data = $this->getLayoutData();
+  ...
+  return $this->getRenderer($this->renderLabelLayout)->collectLayoutData($data);
+}
+```
+
+PR: https://github.com/joomla/joomla-cms/pull/42709
