@@ -2,12 +2,26 @@
 title: Example PHP Script
 sidebar_position: 2
 ---
-:::warning
 
-Custom scripts like this are not supported formally by the Joomla team!
+# Example PHP Script
+
+:::danger[Developer Notice]
+
+Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
+rare cases. Depending on the usecase you should create a [console plugin](https://docs.joomla.org/J4.x:Writing_A_CLI_Application) 
+and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an 
+[ajax plugin](https://docs.joomla.org/Using_Joomla_Ajax_Interface).
 
 :::
-# General Approach
+
+:::note[TODO]
+
+Update the link to docs.joomla.org in the "Developer notice" above when an example has been added to this manual. 
+
+:::
+
+
+## General Approach
 To make use of the Joomla framework, and in particular the Joomla APIs, you need to have an `Application` class instance. As `ConsoleApplication` and `CliApplication` both have checks to ensure that their application is run from the command line, and neither `AdministratorApplication` nor `ApiApplication` is appropriate, the clear choice is to build your script upon `SiteApplication`.
 
 So to build your script you basically have to mirror how Joomla initialises and instantiates `SiteApplication`, which involves:
