@@ -34,6 +34,6 @@ PR: https://github.com/joomla/joomla-cms/pull/40150
 #### Support of cross dependencies in WebAssetManager
 
 It is now possible to define cross dependencies for assets. 
-Check [Asset dependencies and cross dependencies](/docs/general-concepts/web-asset-manager.md#Asset-dependencies-and-cross-dependencies) for more detail.
+Check [Asset dependencies and cross dependencies](/docs/general-concepts/web-asset-manager#Asset-dependencies-and-cross-dependencies) for more detail.
 
 PR: https://github.com/joomla/joomla-cms/pull/42681
