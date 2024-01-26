@@ -43,7 +43,7 @@ is http://pr-[prnumber].manual.joomlacode.org
 Please use the following placeholder for unfinished sections of a document.
 
 ```
-:::note TODO
+:::note[TODO]
 
 This section is missing, please use the **Edit this Page** link at the bottom of this page to add this section.
 
@@ -53,9 +53,36 @@ This section is missing, please use the **Edit this Page** link at the bottom of
 If the page is not completed yet and bigger parts are missing use
 
 ```
-:::caution TODO
+:::caution[TODO]
 
 This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
+:::
+```
+
+### Using adminition
+
+Full reference could be found at [Docusaurus documentation](https://docusaurus.io/docs/markdown-features/admonitions).
+We don't use blank lines around content and we add 2 spaces before the text messages.
+
+```
+:::note[Developer Note]
+  Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::tip
+  Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::info
+  Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::warning
+  Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+:::
+
+:::danger
+  Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 :::
 ```
