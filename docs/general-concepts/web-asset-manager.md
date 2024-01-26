@@ -607,6 +607,61 @@ $wa->usePreset('bar');
 $wa->registerAndUsePreset('bar','', [], [], ['core#script', 'bar#script']);
 ```
 
+## Asset dependencies and cross dependencies
+
+Managing dependencies is an important part of WebAsset API. This allows easily pre-define when and which asset should be loaded. 
+Instead of writing down all required asset in to the rendering layout it is easier to write only a main asset, and rest of dependencies will be picked up by WebAssetManager.
+
+Dependency types:
+- `dependencies` Contain list of assets of the same type on which current asset depend on. All items from this list will be attached to Document and taken into account while calculating sorting for assets of parent type. 
+- `crossDependencies` Contain associative list of assets of another type on which current asset depend on, grouped by type. All items from this list will be attached to Document, however they will not be taken into account while calculating sorting for assets of parent type. Also note, cross dependencies cannot contain an assets of the same as parent type, example asset of type `script` cannot have `script` in `crossDependencies`, it will be ignored.
+
+When one of requested dependency are not available then exception will be thrown.
+
+Example of mixed dependencies:
+
+```json
+{
+  "name": "foo",
+  "type": "style",
+  "uri": "foo.css"
+},
+{
+  "name": "bar",
+  "type": "style",
+  "uri": "bar.css"
+},
+{
+  "name": "bar",
+  "type": "script",
+  "uri": "bar.js"
+  "crossDependencies": {
+    "style": ["bar"]
+  }
+},
+{
+  "name": "foo",
+  "type": "script",
+  "uri": "foo.js",
+  "dependencies": ["bar"]
+  "crossDependencies": {
+    "style": ["foo"]
+  }
+},
+```
+
+After enabling `foo` script with `$wa->useScript('foo')` WebAssetManager will enable all 4 assets as dependencies.
+
+:::note Note
+
+As was written before, the asset of type `presets` treat `dependencies` differently.
+:::
+
+:::note Note
+
+Avoid the circular dependencies, WebAssetManager will ignore these assets when will detect a loop.
+:::
+
 ## Advanced: Custom WebAssetItem class
 
 The default class for all WebAsset items is `Joomla\CMS\WebAsset\WebAssetItem`.
