@@ -635,31 +635,33 @@ Example of mixed dependencies:
   "name": "bar",
   "type": "script",
   "uri": "bar.js"
+  // highlight-start
   "crossDependencies": {
     "style": ["bar"]
   }
+  // highlight-end
 },
 {
   "name": "foo",
   "type": "script",
   "uri": "foo.js",
+  // highlight-start
   "dependencies": ["bar"]
   "crossDependencies": {
     "style": ["foo"]
   }
+  // highlight-end
 },
 ```
 
 After enabling `foo` script with `$wa->useScript('foo')` WebAssetManager will enable all 4 assets as dependencies.
 
-:::note Note
-
-As was written before, the asset of type `presets` treat `dependencies` differently.
+:::note[Developer Note]
+  As was written before, the asset of type `presets` treat `dependencies` differently.
 :::
 
-:::note Note
-
-Avoid the circular dependencies, WebAssetManager will ignore these assets when will detect a loop.
+:::warning[Developer Warning]
+  Avoid the circular dependencies, WebAssetManager will ignore these assets when a loop is detected.
 :::
 
 ## Advanced: Custom WebAssetItem class
