@@ -664,6 +664,42 @@ After enabling `foo` script with `$wa->useScript('foo')` WebAssetManager will en
   Avoid the circular dependencies, WebAssetManager will ignore these assets when a loop is detected.
 :::
 
+#### Dependencies visualisation:
+
+`a1` and `a7` assets are enabled by developer, rest of assets was picked by asset manager.
+
+```mermaid
+graph BT
+    A1[a1]-->A2((a2))
+    A1-->A3((a3))
+    A2-->A6((a6))
+    A3-->A4((a4))
+    A3-->A5((a5))
+    A7[a7]--->A5((a5))
+    A7--->A8((a8))
+```
+
+#### Cross dependencies visualisation:
+
+`aX` and `bX` are assets of different types. `a1` asset is enabled by developer, rest of assets was picked by asset manager.
+
+```mermaid
+graph BT
+    A1-->B1
+    A3-->B2
+    subgraph b
+        B2(b2)
+        B1-->B3(b3)
+        B1-->B4(b4)
+        
+    end
+    subgraph a
+        A1[a1]-->A2((a2))
+        A1-->A3((a3))
+    end
+        
+```
+
 ## Advanced: Custom WebAssetItem class
 
 The default class for all WebAsset items is `Joomla\CMS\WebAsset\WebAssetItem`.
