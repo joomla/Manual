@@ -11,7 +11,7 @@ Related assets are defined in a JSON file such as [system/joomla.asset.json#L14-
 
 This has a structure of having a schema definition (for validation), name, version, license and then one or more asset definitions. Assets are comprised of a list of js files and css files related to the assets and any dependencies. The dependencies section is just a list of asset names that are required for the asset to function. Example:
 
-```json
+```json title="/media/com_example/joomla.asset.json"
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "com_example",
