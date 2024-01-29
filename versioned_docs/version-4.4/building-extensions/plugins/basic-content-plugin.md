@@ -96,6 +96,8 @@ If you run into namespacing problems then it can be useful to check the `adminis
 
 Ensure that you specify where the entry point of your plugin is by using the `plugin="shortcodes"` on the folder. This also gets mapped to the `element` field in your admin plugins form.
 
+Ensure that the name of your manifest XML file matches this plugin attribute (ie it must be named `shortcodes.xml`). Otherwise Joomla will install your plugin ok, but it won't build your namespace correctly. 
+
 ## Language Files
 
 ```xml
