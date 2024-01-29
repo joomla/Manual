@@ -15,11 +15,11 @@ In addition, the plugin demonstrates the use of:
 - language constants - both in the manifest file and in the plugin code
 - returning a value from a plugin method - through the use of the `onContentAfterTitle` event. The plugin code adds some text after the article title.
 
-You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the differences in obtaining the parameters and returning the result (as described in [Joomla 4 and 5 changes](./joomla-4-and-5-changes)). 
+You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the differences in obtaining the parameters and returning the result (as described in [Joomla 4 and 5 changes](joomla-4-and-5-changes)). 
 
 ![Shortcodes plugin files](_assets/shortcodes.jpg "Shortcodes plugin files")
 
-The diagram shows the plugin files to write, or you can download a zip file of the plugin from [shortcodes plugin download](./_assets/plg_shortcodes.zip).
+The diagram shows the plugin files to write, or you can download a zip file of the plugin from [shortcodes plugin download](_assets/plg_shortcodes.zip).
 
 # Manifest File
 For general information on manifest files see [Manifest Files](https://docs.joomla.org/Manifest_files).
