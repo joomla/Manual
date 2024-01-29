@@ -29,15 +29,16 @@ Plugins are categorised into types, and these types match the subdirectories wit
 For example, after Joomla is initialised the system plugins are imported (ie those in the plugins/system directory).
 
 Importing a plugin type involves:
-- finding all the plugins associated with a particular type - in the diagram these are shown as `plugin1` and `plugin2`, 
+- finding all the plugins associated with a particular type - in the diagram these are shown as `plugin1`, `plugin2` and `plugin3`, 
 - instantiating each of these plugins,
-- determining which events each plugin wants to subscribe to. The subscriptions are then held locally in a data store represented by the `Listeners` box in the diagram.
+- determining which events each plugin wants to subscribe to. 
+- writing the subscriptions to a data store represented by the `Listeners` box in the diagram.
 
 Splitting the plugins by plugin type in this way makes Joomla more performant - it doesn't need to process plugins which aren't going to be interested in the event which will be triggered next.
 
 The second step is triggering an event via a call to the event dispatcher. Joomla looks through its store of `Listeners` to determine which plugins have subscribed to that event type. It then calls the associated method of the subscribing plugin, and passes the event data to it, often allowing that data to be modified by the plugin code. 
 
-Each plugin which has subscribed to that event is called in turn (based on a priority scheme), and the result which is returned by the plugin can prevent the event from propagating further, or allow the propagation to continue. 
+Each plugin which has subscribed to that event is called in turn (based on a priority scheme), and any results returned by the plugins are collated into an array associated with the event. 
 
 As an example, after Joomla is initialised system plugins are imported and the event `onAfterInitialise` is triggered. The "Remember Me" plugin (in plugins/system/remember) receives notification of this, and can log in a user who has previously checked the "Remember Me" checkbox on the login form. 
 
