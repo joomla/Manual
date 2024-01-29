@@ -15,7 +15,7 @@ In addition, the plugin demonstrates the use of:
 - language constants - both in the manifest file and in the plugin code
 - returning a value from a plugin method - through the use of the `onContentAfterTitle` event. The plugin code adds some text after the article title.
 
-You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the differences in obtaining the parameters and returning the result (as described in [Joomla 4 and 5 changes](joomla-4-and-5-changes)). 
+You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the differences in obtaining the parameters and returning the result (as described in [Joomla 4 and 5 changes](joomla-4-and-5-changes.md)). 
 
 ![Shortcodes plugin files](_assets/shortcodes.jpg "Shortcodes plugin files")
 
@@ -195,15 +195,10 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
 {
     public static function getSubscribedEvents(): array
     {
-        // we want this plugin to work only on the site, not eg on administrator or api
-        if (Factory::getApplication()->isClient('site')) {
-            return [
+        return [
                 'onContentPrepare' => 'replaceShortcodes',  
                 'onContentAfterTitle' => 'addShortcodeSubtitle',  
-            ];
-        } else {
-            return [];
-        }
+                ];
     }
 
     // this will be called whenever the onContentPrepare event is triggered
@@ -215,6 +210,12 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
          *
          * This is similar to shortcodes functionality within wordpress
          */
+
+        // The line below restricts the functionality to the site (ie not on api)
+        // You may not want this, so you need to consider this in your own plugins
+        if (!$this->getApplication()->isClient('site')) {
+            return;
+        }
          
         // use this format to get the arguments for both Joomla 4 and Joomla 5
         // In Joomla 4 a generic Event is passed
@@ -264,6 +265,9 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
     
     public function addShortcodeSubtitle(Event $event)
     {
+        if (!$this->getApplication()->isClient('site')) {
+            return;
+        }
         [$context, $article, $params, $page] = array_values($event->getArguments());
         if ($context !== "com_content.article" && $context !== "com_content.featured") return;
         
