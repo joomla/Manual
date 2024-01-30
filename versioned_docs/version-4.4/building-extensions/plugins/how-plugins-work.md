@@ -29,7 +29,7 @@ Plugins are categorised into types, and these types match the subdirectories wit
 For example, after Joomla is initialised the system plugins are imported (ie those in the plugins/system directory).
 
 Importing a plugin type involves:
-- finding all the plugins associated with a particular type - in the diagram these are shown as `plugin1`, `plugin2` and `plugin3`, 
+- finding from the database all the plugins associated with a particular type - the type matches the associated subfolder of the `/plugins` folder in the file system. In the diagram these plugins are shown as `plugin1`, `plugin2` and `plugin3`, 
 - instantiating each of these plugins,
 - determining which events each plugin wants to subscribe to. 
 - writing the subscriptions to a data store represented by the `Listeners` box in the diagram.
@@ -48,4 +48,22 @@ Once a plugin has been imported and its subscriptions logged in the `Listeners` 
 
 The system plugins imported in the first step can subscribe to the `onContentPrepare` event ok, even though it's associated with content plugins, and will receive the `onContentPrepare` event if they have subscribed to it, without having to be imported again.
 
-You should also be aware that unlike components and modules, there aren't different site plugins and administrator plugins. The plugins which you install are run for all the different contexts - site, administrator and API applications - so it's a good idea to when your plugin is subscribing to services to check the application context and avoid subscribing to events for the types of application context you're not interested in.
+You should also be aware that unlike components and modules, there aren't different site plugins and administrator plugins. The plugins which you install are run for all the different contexts - site, administrator and API applications - so it's a good idea to in your plugins to check the application context.
+
+For those who wish a more detailed picture of how plugins work, see the sequence diagram below.
+
+```mermaid
+sequenceDiagram
+    Code->Dispatcher: Get Dispatcher <br>$dispatcher
+    Code->>PluginHelper: PluginHelper::importPlugin($type, null, true, $dispatcher)
+    PluginHelper-->>Plugins Table: Query all active
+    Note over PluginHelper, Plugins Table: Only once at runtime, and <br>result is cached in memory
+    Plugins Table-->>PluginHelper: Return all active
+    PluginHelper-->>Dispatcher: Import only <br>group of $type <br>(once at runtime)
+    PluginHelper->>Plugin: Instantiate plugin
+    Dispatcher->>Plugin: Call $plugin->getSubscribedEvents() <br>for each plugin in group
+    Plugin->>Dispatcher: Return list of listeners
+    Code->>Dispatcher: dispatch('onFooBar', <br>$eventObject)
+    Dispatcher->>Plugin: Call listener for onFooBar event
+    Note over Plugin: Plugin executes own logic <br>and, when event support this, <br>add result to $eventObject
+```
