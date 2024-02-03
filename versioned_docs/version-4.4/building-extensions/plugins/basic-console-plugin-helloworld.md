@@ -158,7 +158,7 @@ As described [here](basic-content-plugin.md), there are a number of things you n
 ```
 
 ## Service provider file
-The `services/provider.php` file is fairly standard boilerplate code; you just need to code correctly the 3 lines which relate to your plugin.
+The `services/provider.php` file is fairly standard boilerplate code; you just need to code correctly the 3 lines which relate to your plugin, plus the Application is injected as it's accessed within the console plugin code. 
 
 ```php title="plg_helloworld_cli/services/provider.php"
 <?php
@@ -169,6 +169,7 @@ use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 use Joomla\Event\DispatcherInterface;
+use Joomla\CMS\Factory;
 use My\Plugin\Console\Helloworld\Extension\HelloworldConsolePlugin;
 
 return new class implements ServiceProviderInterface
@@ -192,6 +193,7 @@ return new class implements ServiceProviderInterface
                     $dispatcher,
                     (array) PluginHelper::getPlugin('console', 'helloworld')
                 );
+                $plugin->setApplication(Factory::getApplication());
 
                 return $plugin;
             }
@@ -212,7 +214,6 @@ namespace My\Plugin\Console\Helloworld\Extension;
 use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 use Joomla\Application\ApplicationEvents;
-use Joomla\CMS\Factory;
 use My\Plugin\Console\Helloworld\CliCommand\RunHelloCommand;
 
 class HelloworldConsolePlugin extends CMSPlugin implements SubscriberInterface
@@ -226,7 +227,7 @@ class HelloworldConsolePlugin extends CMSPlugin implements SubscriberInterface
 
     public function registerCommands(): void
     {
-        $app = Factory::getApplication();
+        $app = $this->getApplication();
         $app->addCommand(new RunHelloCommand());
     }
 }
