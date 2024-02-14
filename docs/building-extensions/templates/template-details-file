@@ -1,7 +1,7 @@
 templateDetails.xml
 ==================
 
-The `templateDetails.xml` is the file taht defines the installation instructions, the module positions and the style form for the template.
+The `templateDetails.xml` is the file that defines the installation instructions, the module positions and the style form for the template.
 The sections are defined as:
 
 ```xml
@@ -29,7 +29,7 @@ The sections are defined as:
 ```
 
 Since 5.1 in the config section the Menu Assignement tab can be overriden through the config part of the templateDetails.xml.
-So an entry as:
+So an example entry as the following will override the Menu Assignement tab contents with a field named menus:
 
 ```xml
 <fields name="assigned">
@@ -38,7 +38,8 @@ So an entry as:
   </fieldset>
 </fields>
 ```
-This will override the Menu Assignement tab contents with a field named assigned. A sample code for that field follows:
+
+A sample code for the field `menus` follows:
 
 <details>
 <summary>`templates/templateName/src/Field/MenusField.php`</summary>
