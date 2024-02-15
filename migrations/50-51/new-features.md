@@ -2,15 +2,14 @@
 sidebar_position: 1
 ---
 
-New features
-===============
+# New features
+
+:::tip[Developer Note]
+  Since this version of Joomla has not been released yet, this page can change anytime.
+:::
+
 All the new features that have been added to this version.
 Any changes in best practice.
-:::caution TODO
-
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
-
-:::
 
 #### Implementation of JoomlaDialog script
 
