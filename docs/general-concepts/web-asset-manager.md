@@ -612,6 +612,99 @@ $wa->usePreset('bar');
 $wa->registerAndUsePreset('bar','', [], [], ['core#script', 'bar#script']);
 ```
 
+## Asset dependencies and cross dependencies
+
+Managing dependencies is an important part of WebAsset API. This allows easily pre-define when and which asset should be loaded. 
+Instead of writing down all required asset in to the rendering layout it is easier to write only a main asset, and rest of dependencies will be picked up by WebAssetManager.
+
+Dependency types:
+- `dependencies` Contain list of assets of the same type on which current asset depend on. All items from this list will be attached to Document and taken into account while calculating sorting for assets of parent type. 
+- `crossDependencies` Contain associative list of assets of another type on which current asset depend on, grouped by type. All items from this list will be attached to Document, however they will not be taken into account while calculating sorting for assets of parent type. Also note, cross dependencies cannot contain an assets of the same as parent type, example asset of type `script` cannot have `script` in `crossDependencies`, it will be ignored.
+
+When one of requested dependency are not available then exception will be thrown.
+
+Example of mixed dependencies:
+
+```json
+{
+  "name": "foo",
+  "type": "style",
+  "uri": "foo.css"
+},
+{
+  "name": "bar",
+  "type": "style",
+  "uri": "bar.css"
+},
+{
+  "name": "bar",
+  "type": "script",
+  "uri": "bar.js"
+  // highlight-start
+  "crossDependencies": {
+    "style": ["bar"]
+  }
+  // highlight-end
+},
+{
+  "name": "foo",
+  "type": "script",
+  "uri": "foo.js",
+  // highlight-start
+  "dependencies": ["bar"]
+  "crossDependencies": {
+    "style": ["foo"]
+  }
+  // highlight-end
+},
+```
+
+After enabling `foo` script with `$wa->useScript('foo')` WebAssetManager will enable all 4 assets as dependencies.
+
+:::note[Developer Note]
+  As was written before, the asset of type `presets` treat `dependencies` differently.
+:::
+
+:::warning[Developer Warning]
+  Avoid the circular dependencies, WebAssetManager will ignore these assets when a loop is detected.
+:::
+
+#### Dependencies visualisation:
+
+`a1` and `a7` assets are enabled by developer, rest of assets was picked by asset manager.
+
+```mermaid
+graph BT
+    A1[a1]-->A2((a2))
+    A1-->A3((a3))
+    A2-->A6((a6))
+    A3-->A4((a4))
+    A3-->A5((a5))
+    A7[a7]--->A5((a5))
+    A7--->A8((a8))
+```
+
+#### Cross dependencies visualisation:
+
+`aX` and `bX` are assets of different types. `a1` asset is enabled by developer, rest of assets was picked by asset manager.
+
+```mermaid
+graph BT
+    A1-->B1
+    A3-->B2
+    subgraph b
+        B2(b2)
+        B1-->B3(b3)
+        B1-->B4(b4)
+        
+    end
+    subgraph a
+        A1[a1]-->A2((a2))
+        A1-->A3((a3))
+    end
+        
+```
+
 ## Advanced: Custom WebAssetItem class
 
 The default class for all WebAsset items is `Joomla\CMS\WebAsset\WebAssetItem`.
