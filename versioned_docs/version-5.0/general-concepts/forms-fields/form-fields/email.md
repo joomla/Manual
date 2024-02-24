@@ -6,7 +6,7 @@ title: Email Form Field
 
 The **email** form field type provides an input field for an email address.
 
-- **type** (mandatory) must be *color*.
+- **type** (mandatory) must be *email*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.

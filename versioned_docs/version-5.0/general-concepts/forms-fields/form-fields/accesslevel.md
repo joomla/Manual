@@ -28,5 +28,5 @@ Implemented by: libraries/src/Form/Field/AccesslevelField.php
         label="JFIELD_ACCESS_LABEL"
         description="JFIELD_ACCESS_DESC"
         class="span12 small" 
-        />
+/>
 ```

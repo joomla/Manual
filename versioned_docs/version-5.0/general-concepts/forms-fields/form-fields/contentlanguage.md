@@ -6,7 +6,7 @@ title: ContentLanguage Form Field
 
 The **contentlanguage** form field type provides a dropdown list of style options with the current option selected.
 
-- **type** (mandatory) must be *chromestyle*.
+- **type** (mandatory) must be *contentlanguage*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.

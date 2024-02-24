@@ -6,7 +6,7 @@ title: Componentlayout Form Field
 
 The **componentlayout** form field type provides a drop down list of all available layouts for a view of an extension. If the parameter has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
-- **type** (mandatory) must be *category*.
+- **type** (mandatory) must be *componentlayout*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.

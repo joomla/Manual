@@ -6,7 +6,7 @@ title: Contenttype Form Field
 
 The **contenttype** form field type provides a list of content types.
 
-- **type** (mandatory) must be *color*.
+- **type** (mandatory) must be *contenttype*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.

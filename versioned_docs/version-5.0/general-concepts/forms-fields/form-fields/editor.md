@@ -6,7 +6,7 @@ title: Editor Form Field
 
 The **editor** form field type provides a WYSIWYG editor.
 
-- **type** (mandatory) must be *color*.
+- **type** (mandatory) must be *editor*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
