@@ -64,7 +64,7 @@ The text field is shown only if the radio field is set to 2. The condition can i
 
 | **Type** | **Description** | **Availability** |  |
 | --- | --- | --- | --- |
-| [accessiblemedia](https://docs.joomla.org/Special:MyLanguage/Accessiblemedia_form_field_type) | provides modal access to the media manager for insertion of images with upload for users with appropriate permissions and a text field for adding a alternative text. | ![](/img/Compat_icon_1_6.png)and newer |  |
+| [accessiblemedia](https://docs.joomla.org/Special:MyLanguage/Accessiblemedia_form_field_type) | provides modal access to the media manager for insertion of images with upload for users with appropriate permissions and a text field for adding a alternative text. | [](/img/Compat_icon_1_6.png) and newer |  |
 | [accesslevel](https://docs.joomla.org/Special:MyLanguage/Accesslevel_form_field_type) | provides a drop down list of viewing access levels. | and newer |  |
 | [cachehandler](https://docs.joomla.org/Special:MyLanguage/Cachehandler_form_field_type) | provides a list of available cache handling options. | and newer |  |
 | [calendar](https://docs.joomla.org/Special:MyLanguage/Calendar_form_field_type) | provides a text box for entry of a date. An icon next to the text box provides a link to a pop-up calendar, which can also be used to enter the date value. | and newer |  |
