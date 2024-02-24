@@ -20,16 +20,14 @@ default value (if any) is selected.
 
 Implemented by: libraries/src/Form/GroupedlistField.php
 
-The XML <field> element must include one or more <option> elements which define the list items. The text between
-the <option> and </option> tags is what will be shown in the drop down list and is a translatable string. The <option>
-tag takes the following argument:
+The XML `<field>` element must include one or more `<option>` elements which define the list items. The text between the `<option>` and `</option>` tags is what will be shown in the drop down list and is a translatable string. The `<option>` tag takes the following argument:
 
 * value (mandatory) is the value that will be saved for the field if this item is selected.
 
-Tip: Don't forget to close the field definition with </field>.
+Tip: Don't forget to close the field definition with `</field>`.
 
-To group the data simply put a <group> before the <option> elements you want to group and a </group> after them.
-The <group> tag takes the following argument:
+To group the data simply put a <group> before the `<option>` elements you want to group and a `</group>` after them.
+The `<group>` tag takes the following argument:
 
 * label (translatable) is the text shown in the list.
 
