@@ -12,6 +12,7 @@ All the deprecated features than have now been removed and any backward incompat
 There should be an explanation of how to mitigate the removals / changes.
 
 ### CMS Input object switched to Framework Input object
+
 The CMS Input object `\Joomla\CMS\Input` has been deprecated since Joomla 4.3. The CMS core code
 has switched the code to the Framework Input object `\Joomla\Input`, which is very much a drop-in
 replacement. This is especially of relevance if you are using the MVC classes, which now use the
