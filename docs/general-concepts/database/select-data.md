@@ -229,13 +229,3 @@ $placeholders = [
   ':preparedArray4'
 ];
 ```
-
-# More
-
-# More Database
-- [Select Data from the Database](/docs/general-concepts/database/select-data)
-- [Query Results after Selecting Data from the Database](/docs/general-concepts/database/query-results.md)
-- [Insert Data into the Database](/docs/general-concepts/database/insert-data)
-- [Update Data in the Database](/docs/general-concepts/database/update-data)
-- [Delete Data from the Database](/docs/general-concepts/database/delete-data)
-- [Secure Database Queries](/docs/next/security/secure-db-queries)

@@ -59,12 +59,3 @@ Just like ``insertObject``, ``updateObject`` takes care of escaping table names 
 The ``updateObject`` method will throw a error if there is a problem updating the record into the database table.
 
 We need to ensure that the record already exists before attempting to update it, so we would probably add some kind of record check before executing the ``updateObject`` method.
-
-
-# More Database
-- [Select Data from the Database](/docs/general-concepts/database/select-data)
-- [Query Results after Selecting Data from the Database](/docs/general-concepts/database/query-results.md)
-- [Insert Data into the Database](/docs/general-concepts/database/insert-data)
-- [Update Data in the Database](/docs/general-concepts/database/update-data)
-- [Delete Data from the Database](/docs/general-concepts/database/delete-data)
-- [Secure Database Queries](/docs/next/security/secure-db-queries)

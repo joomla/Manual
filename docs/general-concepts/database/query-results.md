@@ -5,7 +5,7 @@ title: Query Results after Selecting Data from the Database
 
 # Query Results
 
-The database class contains many methods for working with a query's result set that you can get after [SELECT](/docs/general-concepts/database/select-data) queries.
+The database class contains many methods for working with a query's result set that you can get after [SELECT](select-data.md) queries.
 
 ## Single Value Result
 
@@ -20,7 +20,7 @@ Use ``loadResult()`` when you expect just a single value back from your database
 </tr>
 <tr>
 <td>1</td>
-<td style="background-color: yellow;">John Smith</td>
+<td>**John Smith**</td>
 <td>johnsmith@domain.example</td>
 <td>johnsmith</td>
 </tr>
@@ -74,11 +74,11 @@ Each of these results functions will return a single record from the database ev
     <th>email</th>
     <th>username</th>
   </tr>
-  <tr style="background-color: yellow;">
-    <td>1</td>
-    <td>John Smith</td>
-    <td>johnsmith@domain.example</td>
-    <td>johnsmith</td>
+  <tr>
+    <td>**1**</td>
+    <td>**John Smith**</td>
+    <td>**johnsmith@domain.example**</td>
+    <td>**johnsmith**</td>
   </tr>
   <tr>
     <td>2</td>
@@ -165,19 +165,19 @@ Each of these results functions will return a single column from the database.
   </tr>
   <tr>
     <td>1</td>
-    <td style="background-color: yellow;">John Smith</td>
+    <td>**John Smith**</td>
     <td>johnsmith@domain.example</td>
     <td>johnsmith</td>
   </tr>
   <tr>
     <td>2</td>
-    <td style="background-color: yellow;">Magda Hellman</td>
+    <td>**Magda Hellman**</td>
     <td>magda_h@domain.example</td>
     <td>magdah</td>
   </tr>
   <tr>
     <td>3</td>
-    <td style="background-color: yellow;">Yvonne de Gaulle</td>
+    <td>**Yvonne de Gaulle**</td>
     <td>ydg@domain.example</td>
     <td>ydegaulle</td>
   </tr>
@@ -251,23 +251,23 @@ Each of these results functions will return multiple records from the database.
     <th>email</th>
     <th>username</th>
   </tr>
-  <tr style="background-color: yellow;">
-    <td>1</td>
-    <td>John Smith</td>
-    <td>johnsmith@domain.example</td>
-    <td>johnsmith</td>
+  <tr>
+    <td>**1**</td>
+    <td>**John Smith**</td>
+    <td>**johnsmith@domain.example**</td>
+    <td>**johnsmith**</td>
   </tr>
-  <tr style="background-color: yellow;">
-    <td>2</td>
-    <td>Magda Hellman</td>
-    <td>magda_h@domain.example</td>
-    <td>magdah</td>
+  <tr>
+    <td>**2**</td>
+    <td>**Magda Hellman**</td>
+    <td>**magda_h@domain.example**</td>
+    <td>**magdah**</td>
   </tr>
-  <tr style="background-color: yellow;">
-    <td>3</td>
-    <td>Yvonne de Gaulle</td>
-    <td>ydg@domain.example</td>
-    <td>ydegaulle</td>
+  <tr>
+    <td>**3**</td>
+    <td>**Yvonne de Gaulle**</td>
+    <td>**ydg@domain.example**</td>
+    <td>**ydegaulle**</td>
   </tr>
 </table>
 
@@ -450,10 +450,3 @@ Note:
 Warning: mysql_num_rows(): 80 is not a valid MySQL result resource
 in libraries\joomla\database\database\mysql.php on line 344
 ```
-
-# More Database
-- [Select data from the database](/docs/general-concepts/database/select-data)
-- [Insert data into the database](/docs/general-concepts/database/insert-data)
-- [Update data in the database](/docs/general-concepts/database/update-data)
-- [Delete data from the database](/docs/general-concepts/database/delete-data)
-- [Secure DB Queries](/docs/next/security/secure-db-queries)
