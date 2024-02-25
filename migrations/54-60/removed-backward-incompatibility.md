@@ -2,8 +2,7 @@
 sidebar_position: 3
 ---
 
-Removed and backward incompatibility
-====================================
+# Removed and backward incompatibility
 
 :::tip[Developer Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
