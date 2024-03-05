@@ -175,3 +175,9 @@ The function `BannerHelper::isImage($url)` has been replaced with a combination 
 `Joomla\CMS\Helper\MediaHelper::isImage($url)` for pixel-based image files and
 `Joomla\CMS\Helper\MediaHelper::getMimeType($url) === 'image/svg+xml'` for vector based image files
 after being sanitized with the helper function `Joomla\CMS\HTML\HTMLHelper::cleanImageURL($imageurl)`
+
+### getItem function returns \stdClass in AdminModel
+
+PR: https://github.com/joomla/joomla-cms/pull/42717
+File: libraries/src/MVC/Model/AdminModel.php
+Description: The `getItem()` function in the `AdminModel` has now the return type of `\stdClass`. Internally is still the `CMSObject` returned which inherits from `\stdClass`.
