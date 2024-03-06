@@ -25,7 +25,7 @@ All recommended versions are based on the latest released version of each series
 
 | Software           | Recommended[^4] | Minimum[^3] | More Information                                                                                                 |
 |--------------------|-----------------|-------------|------------------------------------------------------------------------------------------------------------------|
-| PHP                | 8.2             | 7.2.5       | https://www.php.net                                                                                              |
+| PHP                | 8.2             | 7.2.5       | https://www.php.net <br/>Modules: json, simplexml, dom, gd, mysqlnd or pdo_mysql or pdo_pgsql                    |
 | **Databases**      |                 |             |                                                                                                                  |
 | MySQL              | 8.0             | 5.6         | https://www.mysql.com                                                                                            |
 | PostgreSQL         | 11.0            | 11.0        | https://www.postgresql.org/ <br/>(ext/pgsql support in PHP has been removed. Now uses the PostgreSQL PDO Driver) |
