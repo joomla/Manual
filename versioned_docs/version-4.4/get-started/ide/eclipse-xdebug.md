@@ -1,5 +1,9 @@
-# Eclipse and Xdebug
-As these products are both open source projects this option is free of charge. There are videos available online which show you how to install these products, but some of the key steps are explained below. It's assumed you have got an environment such as [WAMP](https://www.wampserver.com/) or [XAMPP](https://www.apachefriends.org/) running on your local machine, and that you're familiar with how to use it.
+---
+title: Eclipse
+sidebar_position: 3
+---
+# Eclipse
+This section explains how to install Eclipse together with Xdebug for developing with Joomla. As these products are both open source projects this option is free of charge. There are videos available online which show you how to install these products, but some of the key steps are explained below. It's assumed you have got an environment such as [WAMP](https://www.wampserver.com/) or [XAMPP](https://www.apachefriends.org/) running on your local machine, and that you're familiar with how to use it.
 
 ## Install Xdebug
 Go to [xdebug.org](https://xdebug.org/), click on the Install menu item and follow the instructions for downloading and installing xdebug.
