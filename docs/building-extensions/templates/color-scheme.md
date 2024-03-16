@@ -1,5 +1,7 @@
-Color scheme support, also known as "dark mode"
-===============================================
+Color scheme support
+====================
+
+...also known as "dark mode".
 
 Joomla template provides an API to supports the dark/light color scheme, which may be changed through a custom switch or automatically through CSS media queries.
 
