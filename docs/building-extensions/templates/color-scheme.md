@@ -1,5 +1,4 @@
-Color scheme support
-====================
+# Color scheme support
 
 ...also known as "dark mode".
 
