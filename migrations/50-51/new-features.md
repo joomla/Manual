@@ -69,6 +69,6 @@ PR: https://github.com/joomla/joomla-cms/pull/42709
 #### Dark Mode switch and Color scheme API
 
 Added a switch for changing color scheme "Dark"/"Light" for the Atum template.
-More about new [Color scheme API](https://manual.joomla.org/docs/building-extensions/templates/color-scheme)
+More about new [Color scheme API](https://manual.joomla.org/docs/next/building-extensions/templates/color-scheme)
 
 PR: https://github.com/joomla/joomla-cms/pull/42221
