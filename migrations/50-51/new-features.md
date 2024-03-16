@@ -65,3 +65,10 @@ protected function getLabel()
 ```
 
 PR: https://github.com/joomla/joomla-cms/pull/42709
+
+#### Dark Mode switch and Color scheme API
+
+Added a switch for changing color scheme "Dark"/"Light" for the Atum template.
+More about new [Color scheme API](/docs/building-extensions/templates/color-scheme.md)
+
+PR: https://github.com/joomla/joomla-cms/pull/42221
