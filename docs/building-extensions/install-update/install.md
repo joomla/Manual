@@ -95,7 +95,7 @@ return new class () implements ServiceProviderInterface {
 
         public function install(InstallerAdapter $parent): bool
         {
-          $this->app->enqueueMessage('Successful installed'.);
+          $this->app->enqueueMessage('Successful installed.');
 
           return true;
         }
