@@ -1,3 +1,7 @@
+---
+title: Visual Studio
+sidebar_position: 2
+---
 Visual Studio Code
 ==================
 

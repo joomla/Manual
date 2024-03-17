@@ -9,6 +9,7 @@ To develop a Joomla extension we recommend that you use an Integrated Developmen
   - Auto-implementing namespace usage
   - Type hinting when using well documented classes, methods and functions
   - Building auto comments for classes/methods/functions
+- Symbolic debugger
 - Code analyser
   - Automate code style feedback
   - Hints for "smelling code" to improve the code quality

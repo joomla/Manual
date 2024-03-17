@@ -21,7 +21,8 @@ If your code is running on the Joomla back end then you should do:
 ```php
 use Joomla\CMS\Factory;
 $app = Factory::getApplication();
-$sitemenu = $app->getMenu('site')->load();
+$sitemenu = $app->getMenu('site');
+$sitemenu->load();
 ```
 The `$sitemenu` structure will then have entries for all the site Menuitems.
 
