@@ -28,11 +28,11 @@ If you look at the list of standard form file types you'll see that they fall in
 ## Attributes
 Many of the attributes of the fields in the form definition XML file map directly to HTML field attributes, and don't require any further explanation. The descriptions below relate to attributes where the meaning may not be totally clear.
 
-**validate** - is used to define the server-side validation to be applied
+**validate** - is used to define the server-side validation to be applied; see the section on [server-side validation](../forms/server-side-validation.md)
 
 **hint** - maps to the HTML placeholder attribute
 
-**class** - maps to the HTML class attribute of the field/. It is used to define the client-side validation to be applied, in addition to the normal use by CSS
+**class** - maps to the HTML class attribute of the field. It is used to define the [client-side validation](../forms/client-side-validation.md) to be applied, in addition to the normal use by CSS
 
 **showon** - this controls whether a field appears in the form, dependent upon the value of another field. For example, 
 ```xml
@@ -42,7 +42,9 @@ Many of the attributes of the fields in the form definition XML file map directl
 </field>
 <field name="textfield" type="text" showon="radiofield:2"/>
 ```
-The text field is shown only if the radio field is set to 2. The condition can include operators `[AND]` or `[OR]`, as demonstrated in the [sample component code](./_assets/com_sample_form_field.zip) available for download. 
+The text field is shown only if the radio field is set to 2. The condition can include operators `[AND]` or `[OR]`, as demonstrated in the [sample component code](./_assets/com_sample_form_field.zip) available for download. You can also use
+- `showon="radiofield!:2"` - shown if the value of `radiofield` is not equal to 2
+- `showon="somefield!:"` - shown if `somefield` has a value - ie it's not blank/null.
 
 **value** - this defines the default value of a field, and is shown as the HTML value in the field unless the `loadFormData` callback results in this field value being set. So for example if the form is being re-presented because a field has an invalid entry, then any previous field value entered by the user will be set as the HTML field value, rather than what is defined in the `value=` attribute of the form XML file. 
 

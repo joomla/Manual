@@ -54,7 +54,7 @@ Example
 * Select which mailer for the delivery of site email.
 
 ## File Size display:
-* If less than 1 KB, display <1 KB
+* If less than 1 KB, display {'<'}1 KB
 * 1 KB to 1,023 KB, display 357 KB
 * 1 MB to 1,047 MB, display 2.5MB (only one decimal place)
 * 1 GB+, display 3.8 GB (only one decimal place)
@@ -74,7 +74,7 @@ Example
 ## Measurements
 * Use lower case for all measurements eg px, em, w and h
 * Use the metric system for mass and non-web measurements eg kg, cm and m
-* Use celcius for temperature eg 34c
+* Use celsius for temperature eg 34c
 * For all other measurements use SI
 
 ## Money
@@ -91,7 +91,7 @@ Always use the hyphenated word. Multi-factor must always be a single hyphenated 
 (I have changed this based on the NNG findings (http://www.nngroup.com/articles/web-writing-show-numbers-as-numerals/))
 * Write numbers with digits, not letters (23, not twenty-three).
 * Use numerals even when the number is the first word in a sentence or bullet point.
-* Use numerals for big numbers up to one billon. As a compromise, you can often use numerals for the significant digits and write out the magnitude as a word. For example, write 24 billion.
+* Use numerals for big numbers up to one billion. As a compromise, you can often use numerals for the significant digits and write out the magnitude as a word. For example, write 24 billion.
 * "Enter the **number** of hits to increase the counter by."
 * "Limit the **amount** of text to display"
 

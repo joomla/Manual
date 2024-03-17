@@ -34,18 +34,18 @@ As depicted in the diagram, basically the job of the field is to:
 
 To do this the `Form` code calls 2 functions:
 
-- setup - this function is passed the XML element relating to the `<field>`, together with the value of the field, and the field group (for when it's inside a `<fields>` element). It's usual that the code of this function extracts the relevant attributes from the XML element into local data.
-- renderField - this function is expected to return the HTML for the field.
+- `setup` - this function is passed the XML element relating to the `<field>`, together with the value of the field, and the field group (for when it's inside a `<fields>` element). It's usual that the code of this function extracts the relevant attributes from the XML element into local data.
+- `renderField` - this function is expected to return the HTML for the field.
 
 The field HTML comprises 3 parts:
 1. the label for the field
 2. the input element for the field
 3. a `<div>` element which encloses both of the above
 
-To get these parts renderField calls 
+To get these parts `renderField` calls 
 - getLabel() - to get the HTML for the label, and 
 - getInput() - to get the HTML for the input element
 
 and then uses a layout for the enclosing `<div>` element. The strings of HTML returned from `getLabel` and `getInput` are passed as variables into the layout, so that they get included appropriately with the final HTML. 
 
-Many of the Joomla standard form fields use layouts also for the HTML label and input elements as well, so the local data which is stored within the `setup()` function is passed as the `$displayData` to the layout, and in this way the HTML attributes such as `class`, `description`, etc get positioned correctly, based on the original attributes in the form XML file. 
+Many of the Joomla standard form fields use layouts for the HTML label and input elements as well, so the local data which is stored within the `setup()` function is passed as the `$displayData` to the layout, and in this way the HTML attributes such as `class`, `description`, etc get positioned correctly, based on the original attributes in the form XML file. 

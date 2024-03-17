@@ -11,7 +11,7 @@ Related assets are defined in a JSON file such as [system/joomla.asset.json#L14-
 
 This has a structure of having a schema definition (for validation), name, version, license and then one or more asset definitions. Assets are comprised of a list of js files and css files related to the assets and any dependencies. The dependencies section is just a list of asset names that are required for the asset to function. Example:
 
-```json
+```json title="/media/com_example/joomla.asset.json"
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
   "name": "com_example",
@@ -56,14 +56,12 @@ This has a structure of having a schema definition (for validation), name, versi
 
 The `$schema` attribute is a schema definition file that allows you to validate your file using JSON Schema. Read [the official website](https://json-schema.org/understanding-json-schema/index.html) for more information on json schema validation works.
 
-:::note Note
-
-Having joomla.asset.json for your extension or template are recommend but not required to WebAssset to work (see next section).
+:::note[Developer Note]
+  Having joomla.asset.json for your extension or template are recommend but not required to WebAssset to work (see next section).
 :::
 
-:::note Note
-
-It is not recommended to add an inline asset to a json file, prefer to use a file.
+:::info[Developer Hint]
+  It is not recommended to add an inline asset to a json file, prefer to use a file.
 :::
 
 ## Explaining asset stages
@@ -96,9 +94,8 @@ templates/{active_template}/joomla.asset.json
 
 And load them to registry of known assets.
 
-:::note Note
-
-Each following assets definition will override asset items from previous assets definition, by item name.
+:::note[Developer Note]
+  Each following assets definition will override asset items from previous assets definition, by item name.
 :::
 
 You can register your own assets definition via `WebAssetRegistry`:
@@ -166,9 +163,8 @@ $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 $wa->disableScript('jquery-noconflict');
 ```
 
-:::note Note
-
-If there are any dependencies to the disabled asset, then this asset will be re-enabled automatically, no matter what.
+:::note[Developer Note]
+  If there are any dependencies to the disabled asset, then this asset will be re-enabled automatically, no matter what.
 :::
 
 To check whether asset enabled, and the asset state:
@@ -298,9 +294,8 @@ $wa->addInlineStyle('content of inline3', ['position' => 'before'], [], ['foobar
 $wa->addInlineStyle('content of inline4', ['name' => 'my.inline.asset']);
 ```
 
-:::note Note
-
-`foobar` asset should exist in the asset registry, otherwise you will get an unsatisfied dependency exception.
+:::note[Developer Note]
+  `foobar` asset should exist in the asset registry, otherwise you will get an unsatisfied dependency exception.
 :::
 
 Example above will produce:
@@ -323,6 +318,7 @@ If inline asset has multiple dependencies, then will be used last one for positi
 $wa->addInlineStyle('content of inline1', ['position' => 'before'], [], ['foo', 'bar']);
 $wa->addInlineStyle('content of inline2', ['position' => 'after'], [], ['foo', 'bar']);
 ```
+
 Will produce:
 
 ```html
@@ -334,9 +330,8 @@ Will produce:
 ...
 ```
 
-:::note Note
-
-Named inline assets may be a dependency to another inline asset, however it is not recommended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may change in the future. Prefer to use "position" instead.
+:::note[Developer Note]
+  Named inline assets may be a dependency to another inline asset, however it is not recommended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may change in the future. Prefer to use "position" instead.
 :::
 
 ## Working with scripts
@@ -434,9 +429,8 @@ $wa->addInlineScript('content of inline4', ['name' => 'my.inline.asset']);
 $wa->addInlineScript('content of inline5', [], ['type' => 'module']);
 ```
 
-:::note Note
-
-`foobar` asset should exist in the asset registry, otherwise you will get an unsatisfied dependency exception.
+:::note[Developer Note]
+  `foobar` asset should exist in the asset registry, otherwise you will get an unsatisfied dependency exception.
 :::
 
 Example above will produce:
@@ -472,10 +466,22 @@ Will produce:
 ...
 ```
 
-:::note Note
 
-Named inline asset may be as dependency to another inline asset, however it is not recommended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
+:::note[Developer Note]
+  Named inline asset may be as dependency to another inline asset, however it is not recommended to use an inline asset as dependency to non-inline asset. This will work, but this behavior may changes in future. Prefer to use "position" instead.
 :::
+
+## Working with ESM importmap
+
+WebAssetManager allows to define [importmap](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script/type/importmap) for your ES modules.
+The `script` asset with option `"importmap": true` will be added to `importmap`. Other option available:
+- `importmap` boolean, whether the element should be added to `importmap`;
+- `importmapName` string, optional, custom module name, example when asset name `foo`, and module name is `@foo`;
+- `importmapScope` string, optional, a scope path for the asset in `importmap`;
+
+### Methods to work with ESM importmap
+
+All methods to work with a ESM importmap are the same as methods to work with script asset item.
 
 ## Working with a web component
 
@@ -552,9 +558,8 @@ $wa->useStyle('webcomponent.foobar')
     ->useScript('webcomponent.foobar');
 ```
 
-:::note Note
-
-It is preferred to prefix the asset name with "webcomponent." to make it easily to spot, and distinct it from regular scripts in a layout.
+:::note[Developer Note]
+  It is preferred to prefix the asset name with "webcomponent." to make it easily to spot, and distinct it from regular scripts in a layout.
 :::
 
 ### Methods to work with web component
@@ -648,9 +653,8 @@ class MyFancyFoobarAssetItem extends WebAssetItem implements WebAssetAttachBehav
 }
 ```
 
-:::note Important note:
-
-An asset item that implements `WebAssetAttachBehaviorInterface` should be enabled before [onBeforeCompileHead](https://docs.joomla.org/Plugin/Events/System#onBeforeCompileHead) event, otherwise `onAttachCallback` will be ignored.
+:::info[Developer Hint]
+  An asset item that implements `WebAssetAttachBehaviorInterface` should be enabled before [onBeforeCompileHead](https://docs.joomla.org/Plugin/Events/System#onBeforeCompileHead) event, otherwise `onAttachCallback` will be ignored.
 :::
 
 ### Defining a custom WebAssetItem class in joomla.asset.json
@@ -684,9 +688,8 @@ For this you can use 2 properties `namespace` and `class`. `namespace` can be de
 
 Here the asset `foo` will be associated with class `Joomla\Component\Example\WebAsset\FooAssetItem`, and `bar` with class `MyFooBar\Library\Example\WebAsset\BarAssetItem`.
 
-:::note Note
-
-If `namespace` are not defined then by default will be used `Joomla\CMS\WebAsset`. When `namespace` is defined but empty, then no namespace will be used, only `class`. Example:
+:::note[Developer Note]
+  If `namespace` are not defined then by default will be used `Joomla\CMS\WebAsset`. When `namespace` is defined but empty, then no namespace will be used, only `class`. Example:
 :::
 
 ```json

@@ -2,15 +2,10 @@
 sidebar_position: 1
 ---
 
-New features
-===============
+# New features
+
 All the new features that have been added to this version.
 Any changes in best practice.
-:::caution TODO
-
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
-
-:::
 
 #### Model states are a new class
 
@@ -96,3 +91,9 @@ com_ajax events event now have own event class, PR: https://github.com/joomla/jo
 #### Added the option to serve Joomla from a public folder
 
  - The instance could be served from a public folder (either subfolder in the root folder of Joomla or not). Command Line tools are provided both for the installation process or to use at a later time. Requirements: templates need to support the `child templates`, no PHP files inside the folders `media` and `images` and a server that allows defining the end point of the serving folder.
+
+#### Dark Mode Support
+
+The Joomla backend template - atum now supports the browser dark theme and is enabled automatically through CSS media queries. In the majority of cases simply utilising bootstrap 5.3's classes will natively give you this support. We encourage all 3rd party extension developers to check their extensions in dark mode and make any minor tweaks required to facilitate a consistent dark mode UI for their extensions.
+
+Templates that support dark mode through CSS media queries should add the `data-color-scheme-os` attribute to their body element (for both frontend and backend templates) so 3rd party extensions, such as the editor plugins ship with Joomla can load the appropriate dark theme.

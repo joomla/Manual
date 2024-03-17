@@ -1,8 +1,8 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require('prism-react-renderer').themes.github;
+const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -15,6 +15,11 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+
+  markdown: {
+    mermaid: true,
+  },
+
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -28,18 +33,17 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '4.3',
+          lastVersion: '5.0',
           versions: {
             'current': {
-              label: '5.0 (upcoming)',
+              label: '5.1 (upcoming)',
               banner: 'unreleased'
+            },
+            '5.0': {
+              label: '5.0',
             },
             '4.4': {
-              label: '4.4 (upcoming)',
-              banner: 'unreleased'
-            },
-            '4.3': {
-              label: '4.3',
+              label: '4.4',
             }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
@@ -51,6 +55,7 @@ const config = {
     ],
   ],
 
+  themes: ['@docusaurus/theme-mermaid'],
   themeConfig:
   /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -190,7 +195,7 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
-        additionalLanguages: ['php', 'ini'],
+        additionalLanguages: ['php', 'ini', 'json'],
       },
     }),
   plugins: [
