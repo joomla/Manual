@@ -53,7 +53,7 @@ Implemented by: libraries/src/Form/SubformField.php
 ```
 Example XML of exampleform.xml:
 
-<?xml version="1.0" encoding="UTF-8"?>
+
 ```xml
 <form>
     <field name="example_text" type="text" label="Example Text" />
@@ -134,12 +134,13 @@ The subform XML may also be specified inline as an alternative to placing the su
 ### Be aware
 
 If your field in the subform has additional JavaScript logic then it may not work in multiple mode, because do not see the fields which added by the subform field dynamically. If it happened then you need to adjust your field to support it. Next example may help:
+
 ```javascript
 jQuery(document).ready(function(){
-... here the code for setup your field as usual...
+/*... here the code for setup your field as usual...*/
 
     jQuery(document).on('subform-row-add', function(event, row){
-        ... here is the code to set up the fields in the new row ...
+        /*... here is the code to set up the fields in the new row ...*/
     })
 });
 ```
@@ -152,11 +153,10 @@ Addition: Since a security fix in Joomla 3.9.7 the `filter="example"` attributes
 
 ### Be aware
 All extensions that use subform fields MUST add an attribute `filter` to their subform child fields of type `editor`, `textarea`, `text` (maybe others, too) since Joomla 3.9.7 like it's common for "normal" Form fields, if you want to allow HTML input. Otherwise the validation falls back to STRING, which is the common behavior for "normal" Form fields. Examples: 
-```xml
-filter="safehtml"
-filter="ComponentHelper::filterText"
-filter="raw" (bad decision in most cases)
-```
+
+`filter="safehtml"`  
+`filter="ComponentHelper::filterText"`  
+`filter="raw" (bad decision in most cases)`
 
 ### A couple of problems / solutions
 **Problem** - After adding new rows selects are not "chosen".
