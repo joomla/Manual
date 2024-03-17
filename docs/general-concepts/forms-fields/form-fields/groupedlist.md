@@ -24,7 +24,7 @@ The XML `<field>` element must include one or more `<option>` elements which def
 
 Tip: Don't forget to close the field definition with `</field>`.
 
-To group the data simply put a <group> before the `<option>` elements you want to group and a `</group>` after them.
+To group the data simply put a `<group>` before the `<option>` elements you want to group and a `</group>` after them.
 The `<group>` tag takes the following argument:
 
 * label (translatable) is the text shown in the list.
