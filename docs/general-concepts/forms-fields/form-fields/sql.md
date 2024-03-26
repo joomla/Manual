@@ -72,6 +72,8 @@ not, the default value (if any) is selected.
     by the **sql_filter** attribute when the value of the *\{FIELD_NAME}*
     filter has not been set. See the examples for further explanation.
 
+Implemented by: libraries/src/Form/Field/SqlField.php
+
 ## Example XML parameter definition
 
 ```xml
