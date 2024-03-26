@@ -15,3 +15,19 @@ There should be an explanation of how to mitigate the removals / changes.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42805
 - Description: The CMS Input object `\Joomla\CMS\Input` has been deprecated since Joomla 4.3. The CMS core code has switched the code to the Framework Input object `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
+- 
+### View classes do not have a database reference
+
+- PR: https://github.com/joomla/joomla-cms/pull/42962
+- Description: In Joomla 3 some views had a reference to the global database instance to check if a date is a special null date (0000-00-00 00:00:00). Since Joomla 4 all these dates are real null values and the database check is not used anymore. If there are some old template overrides in place with these checks, they can be removed.
+```php
+// Old:
+if ($this->item->created !== $this->db->getNullDate()) {
+	echo $this->item->created;
+}
+
+// New:
+if ($this->item->created !== null) {
+	echo $this->item->created;
+}
+```
