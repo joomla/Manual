@@ -20,3 +20,8 @@ There should be an explanation of how to mitigate the removals / changes.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42890
 - Description: The CMS Input classes have been deprecated since Joomla 4.3. The CMS core has been switched to the Framework Input package.
+
+### CMS BaseApplication and CLI classes have been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/42884
+- Description: The class `\Joomla\CMS\Application\BaseApplication` and the CMS CLI Application classes have been deprecated since Joomla 4.3. The CMS core code has been switched to use the Application package of the Joomla Framework.
