@@ -11,7 +11,7 @@ All recommended versions are based on the latest released version of each series
 
 | Software                                  | Recommended[^4] | Minimum[^3] | More Information                                                           |
 |-------------------------------------------|-----------------|-------------|----------------------------------------------------------------------------|
-| [PHP](https://php.net)                    | 8.2             | 8.1.0       | Modules: json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql |
+| [PHP](https://php.net)                    | 8.3             | 8.1.0       | Modules: json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql |
 | **Databases**                             |                 |             |                                                                            |
 | [MySQL](https://mysql.com)                | 8.1             | 8.0.13      |                                                                            |
 | [MariaDB](https://mariadb.com)            | 11.1.0          | 10.4.0      |                                                                            |
