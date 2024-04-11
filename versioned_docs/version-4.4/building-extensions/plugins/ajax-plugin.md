@@ -13,7 +13,7 @@ For ad hoc jobs like these, using an Ajax plugin is better than using a [Custom 
 This example Ajax plugin provides a utility to list the number of extensions on the Joomla instance, grouped by extension type. You enter a URL in your browser:
 
 ```
-http://yourdomain/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
 ```
 
 and the utility responds with the counts:
