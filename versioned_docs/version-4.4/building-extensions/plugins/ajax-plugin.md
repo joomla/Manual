@@ -29,7 +29,8 @@ language:9
 To write a plugin which handles the URL
 
 ```
-http://yourdomain/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
+
 ```
 
 you simply have to write a standard plugin which listens for the event `onAjaxExtensions` and returns the result as a string. That's all that's required! Here's the pseudo code:
