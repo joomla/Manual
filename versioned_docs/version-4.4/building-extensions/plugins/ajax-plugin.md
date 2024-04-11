@@ -89,9 +89,9 @@ A standard manifest file for a plugin:
     <creationDate>Today</creationDate>
     <namespace path="src">My\Plugin\Ajax\AjaxJobs</namespace>
     <files>
-		<folder plugin="jobs">services</folder>
-		<folder>src</folder>
-	</files>
+        <folder plugin="jobs">services</folder>
+        <folder>src</folder>
+    </files>
 </extension>
 ```
 
