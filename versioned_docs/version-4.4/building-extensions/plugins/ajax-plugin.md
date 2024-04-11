@@ -69,7 +69,8 @@ This section contains the full source code for the ajax plugin. You can write th
 
 Install the zip file and enable the plugin. Then enter the URL
 ```
-http://yourdomain/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
+
 ```
 This should then display the number of each different type of extension on your Joomla instance.
 
