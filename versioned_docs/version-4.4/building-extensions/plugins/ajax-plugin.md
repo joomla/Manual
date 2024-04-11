@@ -54,7 +54,8 @@ You can obviously specify other query parameters which you can then capture usin
 If you look at the Joomla code, then you'll see that site `com_ajax` and the administrator `com_ajax` are exactly the same. So you could run the code using:
 
 ```
-http://yourdomain/administrator/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/administrator/index.php?option=com_ajax&format=raw&plugin=extensions
+
 ```
 
 However, in the previous case your code will run `SiteApplication` but in this case `AdministratorApplication`, which will have implications for functions such as building SEF routes using `Route::_()` (where you would need to use `Route::link()` on the back-end) and obtaining the site menuitems (where you would need to explicitly load them on the back-end). 
