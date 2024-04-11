@@ -86,7 +86,7 @@ A standard manifest file for a plugin:
     <version>1.0</version>
     <description>Example ajax plugin for ad hoc jobs</description>
     <author>Me</author>
-	<creationDate>Today</creationDate>
+    <creationDate>Today</creationDate>
     <namespace path="src">My\Plugin\Ajax\AjaxJobs</namespace>
     <files>
 		<folder plugin="jobs">services</folder>
