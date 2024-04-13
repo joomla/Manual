@@ -37,3 +37,15 @@ https://example.com/myscript.php
 This will not work with additonal security feature introduced in 5.0. Please consult the 5.0 documentation for more information.
 
 :::
+
+There are several ways which you can use the Joomla framework to perform ad hoc tasks:
+- using the Joomla Console application
+- using the Joomla Task Scheduler
+- using the Joomla Ajax component
+- using a custom PHP script
+
+However, the Joomla Console application requires that the script (cli/joomla.php) be run from the server command line (eg in a cron job), which does make it more complex for users to run the script, in addition to the security risk of providing the extra user access to the command line. 
+
+Similarly to allow users to run a Task Scheduler job you need to grant them access to the administator back-end. 
+
+So for simple ad hoc tasks which you want to allow ordinary website users to run, the custom PHP script is an option. However, you should be aware that the Joomla development team do not formally support this type of script.
