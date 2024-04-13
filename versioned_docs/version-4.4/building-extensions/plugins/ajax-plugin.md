@@ -13,7 +13,7 @@ For ad hoc jobs like these, using an Ajax plugin is better than using a [Custom 
 This example Ajax plugin provides a utility to list the number of extensions on the Joomla instance, grouped by extension type. You enter a URL in your browser:
 
 ```
-https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=getExtensionTotals
 ```
 
 and the utility responds with the counts:
@@ -29,14 +29,14 @@ language:9
 To write a plugin which handles the URL
 
 ```
-https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=getExtensionTotals
 
 ```
 
-you simply have to write a standard plugin which listens for the event `onAjaxExtensions` and returns the result as a string. That's all that's required! Here's the pseudo code:
+you simply have to write a standard plugin which listens for the event `onAjaxGetExtensionTotals` and returns the result as a string. That's all that's required! Here's the pseudo code:
 
 ```php
-public function onAjaxExtensions(Event $event)
+public function onAjaxGetExtensionTotals(Event $event)
 {
     // perform the database query
     // return the result
@@ -54,7 +54,7 @@ You can obviously specify other query parameters which you can then capture usin
 If you look at the Joomla code, then you'll see that site `com_ajax` and the administrator `com_ajax` are exactly the same. So you could run the code using:
 
 ```
-https://example.com/administrator/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/administrator/index.php?option=com_ajax&format=raw&plugin=getExtensionTotals
 
 ```
 
@@ -65,7 +65,7 @@ Also if the user is running the job after having been logged into the Joomla sit
 If you decide to use hard-coded credentials to login a user within your code, then you should ensure that they're logged out before you exit (as described in [to logon or not to logon](https://manual.joomla.org/docs/building-extensions/custom-script/logging-on)), and wrap functions which you call in try / catch blocks so that you can catch any exceptions. Otherwise the logged-in state will persist through the session cookie. 
 
 # Ajax Plugin code
-This section contains the full source code for the ajax plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Ajax Plugin Extensions](./_assets/plg_ajax_jobs.zip). If you're writing it manually then include the following files in a folder eg `plg_ajax_jobs`.
+This section contains the full source code for the ajax plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Ajax Plugin GetExtensionTotals](./_assets/plg_ajax_jobs.zip). If you're writing it manually then include the following files in a folder eg `plg_ajax_jobs`.
 
 Install the zip file and enable the plugin. Then enter the URL (replacing example.com with your domain):
 ```
