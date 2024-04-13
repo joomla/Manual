@@ -161,6 +161,12 @@ File: `administrator/language/en-GB/plg_system_jooa11y.ini`
 Handled from the dependency Sa11y itself, no more own translations are needed.
 [Sa11y - Github Repository](https://github.com/ryersondmp/sa11y)
 
+
+#### ActionLog plugin app and db property is deprecated
+
+File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
+Replacement: The `$this->app` and `$this->db` property is deprecated in the actionlog plugins. Instead of use `$this->getApplication()` and `$this->getDatabase()` when the plugin is converted to service providers.
+
 # Class deprecations
 
 Planned to be removed in Joomla! 7.0.
