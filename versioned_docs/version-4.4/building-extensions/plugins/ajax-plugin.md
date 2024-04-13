@@ -46,7 +46,7 @@ public function onAjaxExtensions(Event $event)
 In the URL which you enter to run the functionality you have to specify as query parameters:
 - `option=com_ajax`
 - `format=<format type>` (you can specify `format=json` which then returns a JSON string, but format= anything else will just return the string)
-- `plugin=<job name>` will cause the event `onAjax<Job name>` to be triggered (note the capitalisation). In our example `plugin=extensions` will cause `onAjaxExtensions` to be triggered. 
+- `plugin=<job name>` will cause the event `onAjax<Job name>` to be triggered (note the capitalisation). In our example `plugin=getExtensionTotals` will cause `onAjaxGetExtensionTotals` to be triggered. 
 
 You can obviously specify other query parameters which you can then capture using [Input](../../general-concepts/input.md) and use in the logic of your function.
 
@@ -67,9 +67,9 @@ If you decide to use hard-coded credentials to login a user within your code, th
 # Ajax Plugin code
 This section contains the full source code for the ajax plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Ajax Plugin Extensions](./_assets/plg_ajax_jobs.zip). If you're writing it manually then include the following files in a folder eg `plg_ajax_jobs`.
 
-Install the zip file and enable the plugin. Then enter the URL
+Install the zip file and enable the plugin. Then enter the URL (replacing example.com with your domain):
 ```
-https://example.com/index.php?option=com_ajax&format=raw&plugin=extensions
+https://example.com/index.php?option=com_ajax&format=raw&plugin=getExtensionTotals
 
 ```
 This should then display the number of each different type of extension on your Joomla instance.
@@ -153,11 +153,11 @@ class Jobs extends CMSPlugin implements SubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-                'onAjaxExtensions' => 'onAjaxExtensions', 
+                'onAjaxGetExtensionTotals' => 'onAjaxGetExtensionTotals', 
                 ];
     }
     
-    public function onAjaxExtensions(Event $event)
+    public function onAjaxGetExtensionTotals(Event $event)
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         

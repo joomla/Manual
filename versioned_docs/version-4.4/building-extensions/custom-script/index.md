@@ -7,10 +7,9 @@ title: Custom PHP Script
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. 
-- If you plan to run the script from the server (in a cron job or from a terminal session) then you should use instead a [console plugin](../plugins/basic-console-plugin-helloworld.md). 
-- If you plan to allow people to run the script from a client browser then you should use an [ajax plugin](../plugins/ajax-plugin.md). 
-- If you wish to provide task functionality for an administrator, then using the Joomla Task Scheduler may be a possibility. 
+rare cases. Depending on the use case you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md) 
+and extend the Joomla! console application. If you need to create a simple entry point for web requests write an 
+[ajax plugin](../plugins/ajax-plugin.md).
 
 :::
 
