@@ -31,18 +31,18 @@ For general information on manifest files see [Manifest Files](https://docs.joom
     <version>1.0</version>
     <description>PLG_CONTENT_SHORTCODES_DESCRIPTION</description>
     <author>Me</author>
-	<creationDate>Today</creationDate>
+    <creationDate>Today</creationDate>
     <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
-	<license>GNU General Public License version 2 or later</license>
+    <license>GNU General Public License version 2 or later</license>
     <namespace path="src">My\Plugin\Content\Shortcodes</namespace>
     <files>
-		<folder plugin="shortcodes">services</folder>
-		<folder>src</folder>
-	</files>
+        <folder plugin="shortcodes">services</folder>
+        <folder>src</folder>
+    </files>
     <languages>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
-	</languages>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
+    </languages>
 </extension>
 ```
 
