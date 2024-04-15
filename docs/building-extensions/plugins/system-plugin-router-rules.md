@@ -1,5 +1,5 @@
 ---
-title: System Plugin Example - Router Rules
+title: System Plugin Router Rules
 sidebar_position: 5
 ---
 # Introduction
