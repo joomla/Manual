@@ -1,80 +1,14 @@
-# Introduction
-Prior to Joomla version 4, for images and other types of media which you wanted to display on your Joomla site you had to store the files within a subfolder of your Joomla instance, by default /images. 
-
-With the media manager introduced in Joomla 4 the development team abstracted the idea of a "filesystem" to be a "filesystem adapter" - ie a PHP class which offered file-like functionality such as file create, rename, delete, etc. This then opened up the possibility of storing the media files in a location other than the local filesystem, for example, on a server within the "cloud". 
-
-This section describes how you can extend Joomla to allow you to store media files on an FTP server, by developing and installing a filesystem FTP plugin. 
-# Filesystem Providers and Adapters
-![Media Manager Screenshot](./_assets/media-screenshot.jpg "Media Manager Screenshot")
-
-The media manager screenshot shows a Joomla instance with 2 filesystem providers:
-- a Local provider which provides access via the local filestore - this is what comes shipped with Joomla
-- a Remote provider which provides access to files stored in an FTP server - this is what is enabled by the FTP filesystem plugin described in this section.
-
-In addition, the Local provider has 2 filesystem adapters 
-- images - which displays the files stored in the /images folder
-- videos - which displays the files stored in the /videos folder.
-
-This has been enabled purely by configuration
-- creating a /videos folder under the Joomla instance
-- configuring the Joomla "FileSystem - Local" plugin to include a second directory, called videos.
-
-The Remote provider has just 1 filesystem adapter called "shared". This is the name of the virtual path on the FTP server mount point, which will map to a real path on the FTP server. 
-
-The order of the providers shown is determined by the `ordering` of the filesystem plugins, set via the administrator System / Plugins page.
-
-# How Joomla Media Manager works
-To look at how the media manager works we consider what happens when a user clicks on the Content / Media button in the administrator back-end, and describe the steps shown on the diagram. It's simplified a little; the sequence diagram which follows is a more exact representation. 
-
-![Media Manager Overview](./_assets/media-overview.jpg "Media Manager Overview")
-
-1. The user clicks on the Content / Media button in the administrator back-end (in the menu sidebar, shown in dark blue)
-2. This causes an HTTP GET request to `com_media` on the server.
-3. In response to this request `com_media` imports the "filesystem" plugins, and triggers the event `onSetupProviders`.
-4. The diagram shows 2 filesystem providers, the Local provider shipped with Joomla, and the Remote provider associated with the FTP server. Each provider communicates back to `com_media` saying "I'm a filesystem provider, and here are my filesystem adapters". 
-5. In the HTTP response `com_media` sends down to the client browser the HTML page which includes the media window container (shown in grey) where all the media files are shown. In the left hand pane of this window the available filesystem providers and their associated adapters are shown. In addition the response tells the browser to download and run the `media-manager.js` code.
-6. The `media-manager.js` code sends an Ajax request to the server requesting details of the files for the first provider and adapter in the left hand pane. (Actually, this isn't quite true; the code remembers the session state and the folder which this user was previously viewing, and requests details of the files in that folder if it's set).
-7. Because of the stateless nature of HTTP, `com_media` has to repeat step 3, requesting the import of the filesystem plugins and triggering `onSetupProviders`.
-8. Similarly, the providers repeat step 4.
-9. Based on the adapter and folder set in the Ajax request, `com_media` calls the `getFiles` function of that adapter, passing the folder name. 
-10. The adapter `getFiles` function returns details of the files (including subfolders) in that folder.
-11. `com_media` relays these files details down to `media-manager.js` in the JSON response of the Ajax request.
-12. The `media-manager.js` code updates the media window with the details of these files and subfolders.
-
-Subsequently, as the user performs operations on the files or folders in the media window, the `media-manager.js` code sends Ajax requests to `com_media` to effect these operations. 
-
-An example is shown in the sequence diagram below, for the user requesting that a file be deleted. The sequence diagram is a little more detailed than the overview above, and depicts the interaction with the `com_media` ProviderManager class. 
-
-```mermaid
-sequenceDiagram
-actor User
-User->>media-manager.js:delete file
-media-manager.js->>com_media:Ajax HTTP DELETE
-com_media->>Provider Manager:Instantiate
-com_media->>Plugins:import filesystem plugins
-Plugins->>Provider Plugin:instantiate plugin
-com_media->>Plugins:Trigger onSetupProviders
-Plugins->>Provider Plugin:onSetupProviders()
-Provider Plugin->>Provider Manager:registerProvider()
-com_media->>Provider Manager:getAdapter()
-Provider Manager->>Provider Plugin:getAdapters
-Provider Plugin->>Provider Adapter:instantiate Adapter
-Provider Plugin->>Provider Manager:return Adapters
-Provider Manager->>com_media:return Adapter
-com_media->>Provider Adapter:getFile()
-Note over com_media, Provider Adapter: to check the file exists
-Provider Adapter->>com_media:return file details
-com_media->>Plugins:Trigger onContentBeforeDelete
-com_media->>Provider Adapter:delete()
-com_media->>Plugins:Trigger onContentAfterDelete
-com_media->>media-manager.js:confirm delete
-media-manager.js->>User:remove file from display
-```
+---
+title: Filesystem Plugin: FTP
+sidebar_position: 7
+---
+This plugin builds on the [basic filesystem plugin](filesystem-plugin-basic.md) to demonstrate how you can enable Joomla to use a media filesystem which is not within the local filestore. In this case we develop a plugin which enables the media filestore to be accessed via FTP.
 
 # Writing an FTP Filesystem Plugin
 To write an FTP Filesystem plugin you need to provide 2 classes:
 1. The Provider class, which implements `Joomla\Component\Media\Administrator\Provider\ProviderInterface` in administrator/components/com_media/src/Provider/ProviderInterface.php. This is straightforward, and you just copy the approach of the Local Filesystem plugin in plugins/filesystem/local/src/Extension/Local.php. The main plugin (Extension) class doubles as the Provider class.
 2. The Adapter class, which implements `Joomla\Component\Media\Administrator\Adapter\AdapterInterface` in administrator/components/com_media/src/Adapter/AdapterInterface.php. This is where the bulk of the work lies, as you have to map the various types of file operations to ftp calls. The set of PHP ftp functions available to you is listed in [FTP Functions](https://www.php.net/manual/en/ref.ftp.php).
+
 ## Testing
 To test the FTP aspects you need to install an FTP server on your local machine. I used [Filezilla](https://filezilla-project.org/) to test the filesystem plugin code below, but note that there can be interface differences between different FTP server implementations. In particular, the PHP function `ftp_mlsd` may not be available and you will need to use `ftp_nlist` or `ftp_rawlist` instead.
 On Filezilla I configured a test user, and a mount point which mapped `/shared` to a folder on my PC. As these details need to be known by the plugin, they're set as plugin config parameters defined in the XML manifest file:
@@ -175,7 +109,7 @@ The `search()` function has not been implemented. Although you could form a GET 
 The functionality hasn't been tested using HTTP requests to the Joomla API. 
 
 # Plugin Source Code
-You can copy the source code below in to a directory `plg_filesystem_ftp`, or download the complete plugin from [download filesystem plugin](./_assets/plg_filesystem_ftp.zip).
+You can copy the source code below into a directory `plg_filesystem_ftp`, or download the complete plugin from [download FTP filesystem plugin](./_assets/plg_filesystem_ftp.zip).
 
 Once installed, remember to enable the plugin! You also need to run your local FTP server, and configure the plugin with details of your FTP server.
 
