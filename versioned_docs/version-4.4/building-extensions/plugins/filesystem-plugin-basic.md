@@ -1,5 +1,5 @@
 ---
-title: Filesystem Plugin: Basic
+title: Filesystem Plugin - Basic
 sidebar_position: 6
 ---
 # Introduction

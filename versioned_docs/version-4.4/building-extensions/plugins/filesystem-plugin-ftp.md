@@ -1,5 +1,5 @@
 ---
-title: Filesystem Plugin: FTP
+title: Filesystem Plugin - FTP
 sidebar_position: 7
 ---
 This plugin builds on the [basic filesystem plugin](filesystem-plugin-basic.md) to demonstrate how you can enable Joomla to use a media filesystem which is not within the local filestore. In this case we develop a plugin which enables the media filestore to be accessed via FTP.
