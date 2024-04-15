@@ -5,18 +5,30 @@ Build Extensions
 ================
 Joomla is a rich featured content management system, but if you're building a website with Joomla and you need extra features which aren't available by default, then you can easily extend it with extensions. There are five common types of extensions for Joomla: Components, Modules, Plugins, Templates, and Languages. There are three others: Packages, Files and Libraries. Each of these extensions handle specific functionality (many built-in features of Joomla are implemented using extensions).
 
+The difference between Joomla components, modules, plugins and templates can be initially confusing. If you're new to Joomla then you may find it useful to watch the video [How Joomla Works - a guide for extension developers](https://youtu.be/JKnq47Yhtvs), which describes how these 4 types of extension fit into the generation of a Joomla web page. Their output is also highlighted in different colours in the diagram below. 
+
 ![Screenshot showing extension types](./_assets/screenshot-extension-types.jpg)
 
 # Components
 [Components](./components/index.md) provide the central part of a web page on a Joomla site; each site web page displays the output from one component. They can be thought of as mini applications. Most components have two parts: a site part and an administrator part. For example, `com_content` is the component which handles articles; on the site front-end `com_content` displays articles to website visitors and on the back-end `com_content` provides the functionality for administrators to edit articles. 
 
-- Examples: Content (com_content), Banners (com_banners), Contacts (com_contact), News Feeds (com_newsfeeds)
+In general, components manage the data of the Joomla instance and provide functionality for creating, editing, removing and displaying the data. Often the data management aspects are handled in the administrator back-end and the site front-end simply displays the data, but this split of responsibility is not mandated, and some components provide front-end functionality for creating/editing/removing data.
+
+When you navigate to a certain page on a site or perform a certain operation such as login/logout then you're selecting the component which is going to be run. That component is the code which is primarily responsible for handling the HTTP Request, executing the requested operation, and displaying the key data on the web page. 
+
+- Examples: Managing articles (com_content), Categories (com_categories), Contacts (com_contact), Images and media files (com_media)
 - Management feature: Admin menu → Components → Contacts (for com_contact)
 
-# Modules
-[Modules](./modules/index.md) are more lightweight and flexible extensions used within page rendering. These modules are mostly known as the “boxes” that are arranged around a component, for example: the login module or the breadcrumbs module. Modules are assigned per menu item. So you can decide to show or hide the login module depending on which menu item the user is viewing. Sometimes modules are linked to components such as the “Latest News” module which links to the `com_content` and displays links to the newest content items. However, modules do not need to be linked to components, as a matter of fact they don't even need to be linked to anything and can be just static HTML or text.
+Examples of component functionality available from third party extensions include backup utilities and support for eCommerce. 
 
-- Examples: Banners (mod_banners), Menus (mod_menu), Who's Online (mod_whosonline)
+# Modules
+[Modules](./modules/index.md) are more lightweight and flexible extensions displayed on a web page. Modules are mostly known as the “boxes” that are arranged around a component, for example: the login module or the breadcrumbs module. Modules are assigned per menu item. So you can decide to show or hide the login module depending on which menu item the user is viewing. 
+
+A module can often be a companion to the component. For example, if your web page displays an article (`com_content` component) then you might have a module (`mod_tags_similar`) in the sidebar which displays links to related articles, or a module which displays an image slider of related photos.
+
+However, modules do not need to be linked to components, as a matter of fact they don't even need to be linked to anything and can be just static HTML or text.
+
+- Examples: Latest Articles (mod_articles_latest), Menus (mod_menu), Who's Online (mod_whosonline), Custom HTML (mod_custom)
 - Management feature: Admin menu → Content → Site Modules
 
 If you're just beginning with Joomla extension development then developing a module is the easiest place to start. 
