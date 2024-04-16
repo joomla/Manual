@@ -3,6 +3,8 @@ sidebar_position: 5
 ---
 NPM
 =======================
+Note that NPM is needed only if you're developing for code for the core Joomla project.
+
 This is the content for NPM
 
 :::caution TODO
