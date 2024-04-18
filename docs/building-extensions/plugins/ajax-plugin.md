@@ -2,7 +2,11 @@
 title: Ajax Plugin for Ad Hoc Jobs
 sidebar_position: 4
 ---
-# Introduction
+
+Ajax Plugin
+===========
+
+## Introduction
 
 Imagine a Joomla site which handles bookings for events. On the day of the event the people putting out the chairs want to know how many people are coming, so they enter a URL on their browser which runs a job on the Joomla site and outputs the number of attendees.
 
@@ -25,7 +29,7 @@ language:9
 …
 ```
 
-# Writing an Ajax plugin
+## Writing an Ajax plugin
 To write a plugin which handles the URL
 
 ```
@@ -50,7 +54,7 @@ In the URL which you enter to run the functionality you have to specify as query
 
 You can obviously specify other query parameters which you can then capture using [Input](../../general-concepts/input.md) and use in the logic of your function.
 
-# Site, Administrator and Logged-on Users
+## Site, Administrator and Logged-on Users
 If you look at the Joomla code, then you'll see that site `com_ajax` and the administrator `com_ajax` are exactly the same. So you could run the code using:
 
 ```
@@ -64,7 +68,7 @@ Also if the user is running the job after having been logged into the Joomla sit
 
 If you decide to use hard-coded credentials to login a user within your code, then you should ensure that they're logged out before you exit (as described in [to logon or not to logon](https://manual.joomla.org/docs/building-extensions/custom-script/logging-on)), and wrap functions which you call in try / catch blocks so that you can catch any exceptions. Otherwise the logged-in state will persist through the session cookie. 
 
-# Ajax Plugin code
+## Ajax Plugin code
 This section contains the full source code for the ajax plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Ajax Plugin GetExtensionTotals](./_assets/plg_ajax_jobs.zip). If you're writing it manually then include the following files in a folder eg `plg_ajax_jobs`.
 
 Install the zip file and enable the plugin. Then enter the URL (replacing example.com with your domain):
@@ -76,7 +80,7 @@ This should then display the number of each different type of extension on your 
 
 Unfortunately it's not possible to create a nice SEF URL for `com_ajax` URLs. If you really want an easy-to-use URL then you would have to configure some rewrite rules in your web server. 
 
-## Manifest file
+### Manifest file
 A standard manifest file for a plugin:
 
 ```xml title="plg_ajax_jobs/jobs.xml"
@@ -95,7 +99,7 @@ A standard manifest file for a plugin:
 </extension>
 ```
 
-## Service Provider file
+### Service Provider file
 A standard service provider file for instantiating a plugin via the dependency injection container:
 
 ```php title="plg_ajax_jobs/services/provider.php"
@@ -131,7 +135,7 @@ use My\Plugin\Ajax\AjaxJobs\Extension\Jobs;
     };
 ```
 
-## Jobs file
+### Jobs file
 This is where you write your code for your ad hoc jobs. The result is returned as described in [Joomla 4 and 5 Changes](joomla-4-and-5-changes.md).
 
 ```php title="plg_ajax_jobs/src/Extension/Jobs.php"

@@ -3,7 +3,8 @@ title: Example PHP Script
 sidebar_position: 2
 ---
 
-# Example PHP Script
+Example PHP Script
+==================
 
 :::danger[Developer Notice]
 

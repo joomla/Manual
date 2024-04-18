@@ -3,7 +3,8 @@ title: To Logon or not to Logon
 sidebar_position: 2
 ---
 
-# To Logon or not to Logon
+To Logon or not to Logon
+========================
 
 :::danger[Developer Notice]
 

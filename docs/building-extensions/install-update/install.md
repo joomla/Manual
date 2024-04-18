@@ -12,7 +12,8 @@ This section is missing, please use the **Edit this Page** link at the bottom of
 There are various methods for installing an extension in Joomla!, but ultimately, the extension is always
 installed with the same functionality.
 
-# The Workflow explained
+The Workflow explained
+======================
 
 :::note TODO
 
