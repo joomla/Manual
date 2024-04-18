@@ -2,7 +2,8 @@
 sidebar_position: 2
 ---
 
-# New deprecations
+New deprecations
+================
 
 :::tip[Developer Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
@@ -11,11 +12,11 @@ sidebar_position: 2
 All the new deprecations that should be aware of and what you should now be using instead.
 
 
-# Class deprecations
+## Class deprecations
 
 Planned to be removed in Joomla! 7.0.
 
-## WebApplication::$JComponentTitle
+### WebApplication::$JComponentTitle
 
 `JComponentTitle` will be removed in 7.0 and is not used in a long time. Use `Docment::getTitle()`
 Example: `\Joomla\CMS\Factory::getApplication()->getDocument()->getTitle();`
