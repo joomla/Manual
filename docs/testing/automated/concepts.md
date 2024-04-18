@@ -3,11 +3,11 @@ sidebar_position: 1
 ---
 
 Concepts
-=============
+========
 
 For Joomla! we are using different strategies to test the application.
 
-# System Testing versus Unit Testing
+## System Testing versus Unit Testing
 
 System Testing and Unit Testing are complementary test strategies. In Joomla!, Unit Testing is mainly used to test the framework classes (for example, the classes in libraries/joomla). Unit tests test that an individual method (also known as function) in a class does what it is supposed to do. For example, a unit test is used to test that the methods in the JString class work as expected. Unit testing provides confidence that the framework classes work as expected and allows you to refactor these classes (improve the code without changing the functionality) and still have confidence that they still work correctly.
 

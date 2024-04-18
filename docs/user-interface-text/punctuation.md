@@ -2,7 +2,9 @@
 sidebar_position: 5
 ---
 
-# Punctuation
+Punctuation
+===========
+
 ## Ampersand
 Unless in a title or referring to a title use 'and' rather than an '&', unless it's part of a trademark. Where it is used then it should be `&amp;` and not `&`
 
