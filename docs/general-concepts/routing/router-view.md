@@ -2,7 +2,10 @@
 sidebar_position: 3
 title: RouterView
 ---
-# RouterView
+
+RouterView
+==========
+
 Writing the router preprocess, parse and build functions for your component can be a challenging task. If your component broadly follows the example of `com_content` in having items which are grouped by categories then using RouterView configurations can save you a lot of work.
 
 On the other hand, if you find it doesn't work then it's practically impossible to debug to find where things have gone wrong, and you're better just using the preprocess, parse and build functions.

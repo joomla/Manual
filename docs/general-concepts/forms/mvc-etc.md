@@ -2,12 +2,16 @@
 sidebar_position: 2
 title: MVC and other considerations
 ---
-# Introduction
+
+MVC and other considerations
+============================
+
+## Introduction
 The way that the code of the previous section was written isn't the best approach if you are developing a genuine Joomla component. Instead you should follow the way that the Joomla core code is designed, in particular splitting your component into MVC - model, view, controller pattern. The revised component code `com_sample_form2` at the end of this section follows this approach. 
 
 This section describes MVC and other design patterns, and following these patterns generally make the component code easier to follow, especially in large components. 
 
-## Joomla MVC Split
+### Joomla MVC Split
 In general terms Joomla splits components into separate types of functionality:
 
 - the Controller contains the logic to decide how to respond to the HTTP request - in particular, deciding which View and Model to use
@@ -15,7 +19,7 @@ In general terms Joomla splits components into separate types of functionality:
 - the Model provides access to the data
 - the tmpl file is an extension of the View (it runs within the context of the View class instance and so has direct access to the `$this` variable of the View object). It outputs the HTML for the component, and it includes in the output the data which has been collated by the View. It's separate from the View code so that the HTML output can easily be overridden using a template override. 
 
-## Post/Request/Get Pattern
+### Post/Request/Get Pattern
 In Joomla all of the HTML output (such as the display of a form) is performed in response to an HTTP GET, following the [Post/Redirect/Get Pattern](https://en.wikipedia.org/wiki/Post/Redirect/Get) pattern. The sample code of the previous section doesn't follow this pattern, but instead outputs the validation errors and re-displays the form in the response to the HTTP POST request.
 
 To follow the Joomla pattern, in the code which handles the POST we should include a HTTP GET redirect to the form URL. As that GET will then be a new HTTP request/response we must store in the user session the data to be shown when the form is redisplayed, which includes the following 2 items:
@@ -37,7 +41,7 @@ Also, if the user enters data which successfully passes validation then `setUser
 
 Of course, although Joomla works using this pattern, you don't always have to follow it. For example, if you have a large amount of confirmation data which you want to output after a form has been successfully submitted then you can instead output this just as a response to the HTTP POST. 
 
-## Separate Controllers
+### Separate Controllers
 Joomla routes HTTP requests to separate Controllers based on the value of the *task* URL parameter sent in the request. This parameter is often set by Joomla core javascript based on the submit button, e.g. in the example below:
 ```php
 onclick="Joomla.submitbutton('myform.submit')"
@@ -46,10 +50,10 @@ When the `submit` button is clicked then the onclick listener calls the javascri
 
 In general the *task* parameter is of the form `<controller type>.<method>` and so in this case the HTTP POST containing the form data will be handled by the MyformController and its `submit` method. 
 
-## Joomla MVC Classes
+### Joomla MVC Classes
 Joomla provides feature-rich Controller, View and Model classes from which your component Controllers, Views and Models can inherit. The Model code in `com_sample_form2` inherits from FormModel which shields somewhat the Joomla Form API explained in the previous section. In this case our model calls the FormModel `loadForm()` method, and this method then executes a callback to our `loadFormData()` to provide the data to `bind()` to the form. So in the code there isn't a separate call to `bind()`.
 
-## Security Token
+### Security Token
 Joomla uses a security token on forms to prevent [CSRF attacks](https://en.wikipedia.org/wiki/Cross-site_request_forgery). The token is output in the layout file
 ```php
 <?php echo HTMLHelper::_('form.token'); ?>
@@ -60,10 +64,10 @@ $this->checkToken();
 ```
 If the token is found to be invalid then `checkToken()` outputs a warning and redirects the user back to the previous page. 
 
-## Validation
+### Validation
 This is covered in the following sections.
 
-# Sample Code
+## Sample Code
 For this section you can download [this component zip file](./_assets/com_sample_form2.zip) and install it. It has basically the same functionality as `com_sample_form1` in the previous section, but it has been redesigned according to the principles above. Although at first sight it may seem more complex, distributing the functionality in this way makes the code much easier to understand when the component becomes sizeable. 
 
 After you have installed the file, navigate to your site home page and add the query parameter `?option=com_sample_form2` to run the component. 
@@ -74,10 +78,10 @@ The files in the package are shown below.
 
 Here's a description of the functionality in each file.
 
-## admin/services/provider.php
+### admin/services/provider.php
 This is just a standard source file associated with Joomla [Dependency Injection](../dependency-injection/index.md). 
 
-## site/src/Controller/DisplayController.php
+### site/src/Controller/DisplayController.php
 The `display()` method of this class is what gets run when you initially navigate to the `com_sample_form2` component.
 ```php
 $model = $this->getModel('sample');
@@ -91,7 +95,7 @@ Then `setModel` is called so that the Model is available to the View code, with 
 
 Finally the View `display` method is called.
 
-## site/src/View/Sample/HtmlView.php
+### site/src/View/Sample/HtmlView.php
 In the View `display` function:
 ```php
 $this->form = $this->getModel()->getForm();
@@ -99,7 +103,7 @@ parent::display($tpl);
 ```
 it calls the `getForm` method of the (default) Model, then calls `parent::display()` which basically runs the tmpl/default.php file.
 
-## site/src/Model/SampleModel.php
+### site/src/Model/SampleModel.php
 In the Model `getForm` function we have:
 ```php
 $form = $this->loadForm(
@@ -126,7 +130,7 @@ $data = Factory::getApplication()->getUserState(
 ```
 The `setUserState` and `getUserState` functions store data in the Joomla `Session`, using a key which is here set to 'com_sample_form2.sample'. (You can see what's in the `Session` by setting "Debug System" to Yes in the Global Configuration parameters, then on a webpage click on the Joomla symbol in the bottom left of the page.)
 
-## site/tmpl/sample/default.php
+### site/tmpl/sample/default.php
 ```php
 <form action="<?php echo Route::_('index.php?option=com_sample_form2'); ?>"
     method="post" name="adminForm" id="adminForm" enctype="multipart/form-data">
@@ -150,7 +154,7 @@ There are a few points to note here:
 - we still need to explicitly include a hidden field with type `task`
 - the security token is included with `HtmlHelper::_('form.token')`. This will be sent as one of the POST parameters, and we need to check it when we handle the form submission.
 
-## site/src/Controller/MyformController.php
+### site/src/Controller/MyformController.php
 When the HTTP POST is received Joomla will route it to this Controller, and call the `submit` method.
 ```php
 $this->checkToken();

@@ -2,7 +2,11 @@
 sidebar_position: 1
 title: How Forms Work
 ---
-# Introduction
+
+How Forms Work
+==============
+
+## Introduction
 This page describes how you interact in general with the Joomla Form class and provides the code of a simple component which you can install to demonstrate use of this API. With the aid of the diagram below we'll walk through each stage of displaying a form through to handling the submitted data. 
 
 The section in pale yellow is the Joomla library code, specifically code relating to the Form class.
@@ -13,7 +17,7 @@ The rectangles with white backgrounds contain your extension code.
 
 At the outset, you need to define your form in XML using [Joomla Standard form field types](https://docs.joomla.org/Standard_form_field_types). See the component code below for an example. In basic terms, each field element in your XML file maps to an HTML (mostly "input") element in the form, with the XML field attributes mapping to the (input) element attributes. Many of the possible field attributes are listed in [Text form field type](https://docs.joomla.org/Text_form_field_type). 
 
-## Step 1 Loading the form
+### Step 1 Loading the form
 Step 1 is where the user has navigated to a webpage on which you display a form. 
 
 You first have to instantiate an instance of the Joomla Form class, and you do this by getting a FormFactory out of the [Dependency Injection Container](../dependency-injection/DIC.md) and calling `createForm`. You can do this with the code:
@@ -29,7 +33,7 @@ $form->loadFile("sample_form.xml");  // pass the file path and name of the XML f
 
 The Form object reads the file into memory (as a PHP SimpleXMLElement) and parses the XML to ensure it's valid. The SimpleXMLElement is represented by the blue rectangle with "xml" in the diagram.
 
-## Step 2 Providing Pre-fill Data
+### Step 2 Providing Pre-fill Data
 
 You provide values for any form element you wish. For example, if this form is being used to edit a record in the database, then you would pre-populate it with existing field values from the database. You can provide values by setting up an associative array `$data` where for each element of the array:
 - the key is the `name` of the field (in the xml file)
@@ -37,7 +41,7 @@ You provide values for any form element you wish. For example, if this form is b
 
 You pass the `$data` array as a parameter to the Form `bind` method, and Joomla Form then stores this data locally within the Form instance - represented by blue bars in the diagram. 
 
-## Step 3 Outputting the Form in HTML
+### Step 3 Outputting the Form in HTML
 
 You call `renderField`:
 ```php
@@ -47,17 +51,17 @@ where `$name` is the `name` of the field in the XML file, and you get returned t
 
 When outputting the form you also need to surround the input elements in a `<form>` element and add a `submit` button. 
 
-## Step 4 User Submitting the Form
+### Step 4 User Submitting the Form
 
 The user enters data into your HTML form and clicks on the `submit` button. The browser generates an HTTP POST request to the URL specified in the `<form>` element and passes to the server in an array called `myform` (or whatever `option` you chose previously) the values entered by the user; each element of the array keyed by the `name` attribute of the HTML input element.
 
 Joomla routes this POST through to your component. As this is a new HTTP request the previous Form instance no longer exists, so you have to repeat Step 1 to create a Form instance and load the XML form-definition file into memory. 
 
-## Step 5 Handling the HTTP POST Data
+### Step 5 Handling the HTTP POST Data
 
 In this step you process the submitted data. This involves 4 parts:
 
-### Getting the POST data
+#### Getting the POST data
 You can use the Joomla [Input](../input.md) functionality to get the data which the user entered. For example 
 ```php
 $app = Factory::getApplication();
@@ -65,27 +69,27 @@ $data = $app->input->post->get('myform', array(), "array");
 ```
 will read the POST `myform` parameters into an associative array.
 
-### Filtering the data
+#### Filtering the data
 It is vital to sanitize any data received to avoid injection attacks by hackers. With many of the [Input](../input.md) methods filtering is applied, but if you read them directly into an array (as above) then no filtering is applied, and you must do it explicitly using eg
 ```php
 $filteredData = $form->filter($data);
 ```
 This applies filtering on each of the input values. The filter applied to a field is governed by the "filter=..." attribute on that field in your form XML file, or if not present then the default filter will remove HTML tags etc from your data values. The possible filters are the classes which are in libraries/src/Form/Filter. Note that these form field filters are different from the [Input](../input.md) filters.
 
-### Validating the data
+#### Validating the data
 You validate the data which the user has entered by calling 
 ```php
 $result = $form->validate($data);
 ```
 Joomla compares the user-entered data with the validation you defined in your form XML file, and generates errors for fields which fail the validation. 
 
-### Providing user feedback
+#### Providing user feedback
 
 If there are validation errors then you should display those errors to the user, and redisplay the form, pre-populating the fields with the (filtered) data which the user entered previously.
 
 If there are no errors then you can confirm this to the user, and show the next web page. 
 
-# Sample Component Code
+## Sample Component Code
 Below is the code for a small component which you can install to demonstrate basic use of Joomla forms. Place the following 3 files into a folder called "com_sample_form1". Then zip up the folder to create com_sample_form1.zip and install this as a component on your Joomla instance.
 
 For simplicity this component uses the Joomla 3 way of defining a component, and this won't work under Joomla 5. If you want an equivalent which will work under Joomla 5 then you can download and install [this zip file](./_assets/com_sample_form1.zip).

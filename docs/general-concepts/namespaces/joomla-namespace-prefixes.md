@@ -2,11 +2,14 @@
 sidebar_position: 2
 title: Joomla Namespace Prefixes
 ---
-# Joomla Namespace Prefixes
+
+Joomla Namespace Prefixes
+=========================
 
 Joomla holds namespace prefixes and their mapping to the position in the file system for the following:
 
 ## Components
+
 `'Joomla\Component\<Component name>\Administrator\'` points to `administrator/components/com_<component name>/src`
 
 `'Joomla\Component\<Component name>\Site\'` points to `components/com_<component name>/src`
@@ -16,6 +19,7 @@ Joomla holds namespace prefixes and their mapping to the position in the file sy
 eg 'Joomla\Component\Content\Administrator\' points to administrator/components/com_content/src
 
 ## Modules
+
 `'Joomla\Module\<Module name>\Administrator\'` points to `administrator/modules/mod_<module name>/src`
 
 `'Joomla\Module\<Module name>\Site\'` points to `modules/mod_<module name>/src`
@@ -23,11 +27,13 @@ eg 'Joomla\Component\Content\Administrator\' points to administrator/components/
 eg 'Joomla\Module\Login\Site\' points to modules/mod_login/src
 
 ## Plugins
+
 `'Joomla\Plugin\<Plugin type>\<Plugin name>\'` points to `plugins/<plugin type>/<plugin name>/src`
 
 eg 'Joomla\Plugin\Fields\Calendar' points to plugins/fields/calendar/src
 
 ## Library Classes
+
 'Joomla\CMS\' points to libraries/src. Note that these are the classes which are described in the [API docs](https://api.joomla.org/) on the [Joomla CMS](https://api.joomla.org/cms-4/index.html) side. 
 
 'Joomla\SomethingElse\' points to libraries/vendor/somethingelse/src. 
@@ -45,9 +51,11 @@ If a library classname doesn't start with 'Joomla' then it's going to be found i
 If you look in administrator/cache/autoload_psr4.php you'll see all the namespace prefixes for Joomla component, modules and plugins, together with the associated position in the file system (and also the namespace prefixes of any installed extensions).
 
 ## Duplicate class names
+
 Before namespacing was introduced Joomla had a lot of duplicate classnames, eg. for com_example the MVC model code would be in the class ExampleModelExample for both site and administrator, with both classes in the global namespace. This presented an obstacle to sharing code - you couldn't just have your site model class inheriting from your admin model class, for instance.
 
 With Joomla namespacing, the FQNs of the site and administrator model are different, as they're in different namespaces. This makes it very easy to share code between them - you just have to let one model class inherit from the other.
+
 ```php
 <?php
 namespace Mycompany\Component\Example\Site\Model;
