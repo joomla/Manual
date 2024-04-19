@@ -41,7 +41,7 @@ To use github dev go to your repository and press the "." (dot) key, as describe
 - return to github repository (by clicking on GitHub in bottom left, or by replacing github.dev by github.com in the URL)
 
 ## Pull Requests
-Once you raise a pull request on the [Joomla manual](/https://github.com/joomla/Manual) a test build is run to identify any problems with your documentation. If you find a check has failed then click on the Details of the check which failed, and you can check the console logs to find the problem.
+Once you raise a pull request on the [Joomla manual](https://github.com/joomla/Manual) a test build is run to identify any problems with your documentation. If you find a check has failed then click on the Details of the check which failed, and you can check the console logs to find the problem.
 
 When the build succeeds you will be able to see the result of your documentation changes by navigating to a URL like `http://pr-240.manual.joomlacode.org/docs/`, where you replace 240 with the number of your pull request.
 
