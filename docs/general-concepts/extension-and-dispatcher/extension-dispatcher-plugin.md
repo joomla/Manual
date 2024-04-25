@@ -2,7 +2,10 @@
 title: Extension and Dispatcher Classes for Plugins
 sidebar_position: 4
 ---
-# Extension and Dispatcher Classes for Plugins
+
+Extension and Dispatcher Classes for Plugins
+============================================
+
 The equivalent classes for plugins are a little different.
 
 For plugins the Extension class is your plugin code, where you specify the events which want to subscribe to, and the code to execute when that event is triggered. See the plugin documentation for more details.

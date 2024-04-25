@@ -2,7 +2,8 @@
 title: Access
 ---
 
-# How Joomla Access Works
+How Joomla Access Works
+=======================
 
 Joomla items such as Articles, Contacts and Menuitems have an Access field which is used in determining whether a user may or may not view that item. 
 
@@ -32,7 +33,7 @@ Because the User doesn't belong to User Group E, any item which has a red Access
 
 Following this approach you should see that the User should have visibility to item 5, but not to items 3 or 4. 
 
-# Coding Approach
+## Coding Approach
 It's important to understand that Joomla doesn't magically apply the Access rules to ensure website visitors see only what they should be allowed to see. It's up to you when you're coding your extension to follow the example of the core Joomla components and apply the Access framework to your extension. Joomla does provide library functions which enable you (and the developers of the core Joomla components and modules) to apply the Access rules easily. 
 
 When checking Access in your code, the easiest approach is to use the `User::getAuthorisedViewLevels` function:

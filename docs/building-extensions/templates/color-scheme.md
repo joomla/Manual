@@ -1,4 +1,10 @@
-# Color scheme support
+---
+title: Color scheme support
+sidebar_position: 5
+---
+
+Color scheme support
+====================
 
 ...also known as "dark mode".
 
@@ -8,7 +14,7 @@ When color scheme changes (either automatically or through custom switch) the te
 to help to the extensions (such as the editor plugins) to load the appropriate dark/light theme. 
 Additionally, the event `joomla:color-scheme-change` should be triggered.
 
-#### Document attributes
+## Document attributes
 
 The following data attributes in the `<html>` element should be used within template that provides color scheme switch feature:
 
@@ -16,7 +22,7 @@ The following data attributes in the `<html>` element should be used within temp
 - `data-color-scheme="light"` When template uses the **Light** color scheme, which were changed either automatically or through custom switch. 
 - `data-color-scheme="dark"` When template uses the **Dark** color scheme, which were changed either automatically or through custom switch.
 
-#### JavaScript event
+## JavaScript event
 
 When the scheme changes the template should trigger a Custom event `joomla:color-scheme-change`, 
 to notify about color scheme changes (which were changed either automatically or through custom switch)

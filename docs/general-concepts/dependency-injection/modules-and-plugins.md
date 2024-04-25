@@ -2,11 +2,15 @@
 title: Modules and Plugins
 sidebar_position: 6
 ---
-# Modules and Plugins
+Modules and Plugins
+===================
+
 The service provider files for modules and plugins are considerably more straightforward than those for components. If you look through your Joomla instance modules and plugins folders then you'll find several examples of services/provider.php files.
 
 ## Modules
+
 For example, for mod_breadcrumbs in Joomla 5 we have:
+
 ```php
 use Joomla\CMS\Extension\Service\Provider\Module;
 
@@ -18,6 +22,7 @@ public function register(Container $container): void
     $container->registerServiceProvider(new Module());
 }
 ```
+
 This module uses the standard Joomla\CMS\Extension\Service\Provider\Module class to generate its extension class \Joomla\CMS\Extension\Module. 
 
 It has 2 dependencies:
@@ -25,7 +30,9 @@ It has 2 dependencies:
 2. It uses a HelperFactory to find its helper file in src/Helper/BreadcrumbsHelper.php
 
 ## Plugins
+
 For example for the custom field color plugin in plugins/fields/color
+
 ```php
 use Joomla\Plugin\Fields\Color\Extension\Color;
 
@@ -45,6 +52,7 @@ public function register(Container $container)
     );
 }
 ```
+
 The plugin's Extension class is Color, which gets instantiated with 2 parameters being passed into its constructor:
 - the EventDispatcher class – this is obtained from the parent DIC, having been originally put into it from libraries/src/Service/Provider/Dispatcher.php when Joomla initialised
 - the plugin stdClass object which Joomla has traditionally used to store plugin data (id, name, type and params).

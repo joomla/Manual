@@ -2,7 +2,10 @@
 title: The Dependency Injection Container
 sidebar_position: 2
 ---
-# The Dependency Injection Container
+
+The Dependency Injection Container
+==================================
+
 The Joomla Dependency Injection Container, DIC for short, is basically a repository of key-value pairs where: 
 - the key is a string which is (usually) the fully qualified name of a class or interface 
 - the value is an instance of the relevant class, or a function that returns an instance of that class.

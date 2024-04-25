@@ -2,10 +2,15 @@
 sidebar_position: 1
 title: Standard Form Fields
 ---
-# Standard Form Fields
+
+Standard Form Fields
+====================
+
 ## Introduction
+
 Joomla provides an extensive range of type of fields which you can use in your forms. The source code for these field types is found in the libraries/src/Form/Field directory, and nearly all of these are described at [Joomla standard form fields](https://docs.joomla.org/Standard_form_field_types).
 To use one of these in your form you simply set it as the `type`, as in the following example:
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <form> 
@@ -15,6 +20,7 @@ To use one of these in your form you simply set it as the `type`, as in the foll
         />
 </form>
 ```
+
 The detailed descriptions of the [standard form field types](https://docs.joomla.org/Standard_form_field_types) also include the attributes you can associate with each form field type; for example you can find a general set of attributes associated with ordinary text input fields at [text field type](https://docs.joomla.org/Text_form_field_type).
 
 If you look at the list of standard form file types you'll see that they fall into a few different categories:
@@ -26,6 +32,7 @@ If you look at the list of standard form file types you'll see that they fall in
 5. the `subform` type provides the ability to include a "subform" consisting of a group of fields, usually defined in a separate XML file. This group of elements can be repeated. There is an example of a `subform` in the [sample component](./_assets/com_sample_form_field.zip) 
 
 ## Attributes
+
 Many of the attributes of the fields in the form definition XML file map directly to HTML field attributes, and don't require any further explanation. The descriptions below relate to attributes where the meaning may not be totally clear.
 
 **validate** - is used to define the server-side validation to be applied; see the section on [server-side validation](../forms/server-side-validation.md)

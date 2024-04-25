@@ -1,9 +1,13 @@
 ---
 title: Permissions
 ---
+
+Permissions
+===========
+
 Joomla has a very sophisticated permissions framework, and if you're not familiar with it you should view some introductory material first. I'd recommend the [Access Control List Tutorial](https://docs.joomla.org/J3.x:Access_Control_List_Tutorial) and the video [Joomla 3 ACL Explained with Randy Carey](https://www.youtube.com/watch?v=CFqXAc3orkY) (between 2 minutes and 32 minutes is the section to watch). Both of these related to Joomla 3, but ACL hasn't changed between Joomla version 3 and version 4 or 5.
 
-# Permissions - an implementation view
+## Permissions - an implementation view
 Permissions are held in the Joomla `#__assets` table, in the `rules` column. If you have a clean Joomla install, in the `assets` record for `com_content` (ie the record where the `name` column is "com_content") you'll have an entry in the `rules` column similar to (but probably not exactly the same as) the json string:
 ```
 {"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.edit":{"4":1,"2":1},"core.edit.state":{"5":1},
@@ -26,7 +30,7 @@ The picture shows the permissions for the Registered user group, which on my Joo
 - "core.delete" - set to 0 - *Denied*
 Other permissions are not set, and so these default to *Inherited*. 
 
-# Permission Actions
+## Permission Actions
 These are the types of actions which users may perform. Most are self-evident, but some may require a little explanation.  
 
 "**core.admin**" - this is described as "Configure ACL & Options" at the component configuration level and "Super User" at the Global Configuration level. 
@@ -41,7 +45,7 @@ A user with "core.admin" permission at the Joomla site level (ie Global Configur
 
 "**core.manage**" - described as "Access Administration Interface". A user with this permission may access the administrator back-end and perform lower level administration functions such as checking in items. 
 
-# The Asset Hierarchy
+## The Asset Hierarchy
 ![Joomla Asset Hierarchy](_assets/asset-hierarchy.jpg "Joomla Asset Hierarchy")
 
 As shown in the diagram, assets are held in a hierarchy, implemented as a Nested Set structure in the `#__assets` table. This enables permissions to be set at a higher level, and then for these to ripple down to lower level items. 
@@ -52,7 +56,7 @@ For `com_content` the lowest level is the individual article, then going up we h
 - com_content permissions
 - global configuration permissions
 
-# How Joomla determines if a user may perform an action
+## How Joomla determines if a user may perform an action
 Let's consider how Joomla checks if a user may edit an article. Here are the steps (these are the logical steps - the actual is code is designed differently to be more performant):
 
 1. Decide on the permission - let's say in this case that it's "core.edit"
@@ -64,7 +68,7 @@ Let's consider how Joomla checks if a user may edit an article. Here are the ste
 - If no Denied value is found for any of the user's usergroups then if there's at least one entry for any of the user's usergroups which has a value 1 (Allowed) then the user is permitted to perform the action.
 - If there are no entries in any of the asset hierarchy rules for any of the user's usergroups then the user is not permitted to perform the action. 
 
-# Checking Permissions in your Extension
+## Checking Permissions in your Extension
 Joomla doesn't magically apply the permission rules to control what users may or may not do within your extension. It's up to you to determine which permission string is appropriate for an action, and call the Joomla library functions to check if the user has permissions to perform that action.
 
 For example, to check if a user may edit an article (with id = 22, say), use:

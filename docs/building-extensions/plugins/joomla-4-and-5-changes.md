@@ -2,7 +2,11 @@
 title: Joomla 4 and 5 Changes
 sidebar_position: 2
 ---
-# Key changes
+
+Joomla 4 and 5 Changes
+======================
+
+## Key changes
 In Joomla 4 a number of significant changes began to be introduced to the plugins area:
 1. Plugins were instantiated via the Dependency Injection Container, through the `services/provider.php` file. Previously plugins were run via the plugin's main php file.
 2. Plugins subscribed to the events which they wanted to get notified about. Previously you wrote a method whose name matched the name of the event, and Joomla used PHP reflection classes to determine when your method got called. With the subscription mechanism Joomla checks if your plugin implements `Joomla\Event\SubscriberInterface` and if so calls `getSubscribedEvents` to which the plugin returns the event types it wants to handle, and the method which Joomla should call:
@@ -31,10 +35,10 @@ To enable plugins to use Event classes before the full concrete event class coul
 
 This is what we're now going to look at in detail. 
 
-# Joomla 3 / 4 / 5 comparison
+## Joomla 3 / 4 / 5 comparison
 Let's take the example of `onContentPrepare` and consider how it has changed through these releases. 
 
-## Joomla 3
+### Joomla 3
 In Joomla 3 the event was triggered in `com_content` using
 ```php
 $dispatcher->trigger('onContentPrepare', array ('com_content.article', &$item, &$item->params, $offset));
@@ -52,7 +56,7 @@ return $value;
 
 The Joomla team have provided backward compatibility for plugins through releases 4 and 5, so this mechanism will still work. However it will likely disappear in Joomla 6, so you should not write any new plugins this way. 
 
-## Joomla 4
+### Joomla 4
 In Joomla 4 the event is triggered using:
 ```php
 $this->dispatchEvent(new Event('onContentPrepare', ['com_content.article', &$item, &$item->params, $offset]));
@@ -70,7 +74,7 @@ $result[] = $value;                              // add your return value into t
 $event->setArgument('result', $result);          // write back the updated result into the GenericEvent instance
 ```
 
-## Joomla 5
+### Joomla 5
 In Joomla 5 the event is triggered using:
 ```php
 $dispatcher->dispatch('onContentPrepare', new Content\ContentPrepareEvent('onContentPrepare', $contentEventArguments));
@@ -95,8 +99,8 @@ use Joomla\CMS\Event\Result\ResultAwareInterface;
 
 **If you're developing a developing a plugin to handle a `GenericEvent` then it's crucial to use the above mechanisms to avoid the plugin failing whenever the triggering code moves to using a concrete Event class.**
 
-# Other New Features
-## Priority
+## Other New Features
+### Priority
 To use a plugin priority other than the default, specify this in your response to `getSubscribedEvents`
 ```php
 public static function getSubscribedEvents(): array
@@ -109,7 +113,7 @@ public static function getSubscribedEvents(): array
 ```
 See the other values available in libraries/vendor/joomla/event/src/Priority.php. Use with caution though, as this will override any priority which the site administrator may want to set through ordering the plugins.
 
-## Stop Propagation
+### Stop Propagation
 To stop the propagation of an event to other plugins you can call
 ```php
 $event->stopPropagation();

@@ -1,5 +1,6 @@
 Web Services
 ============
+
 Description of the webservices concept
 
 - Web Services are used to make systems COMMUNICATE each other by using the HTTP protocol and nowadays over TLS (Transport Layer Security).
@@ -7,18 +8,18 @@ Description of the webservices concept
 - Simply put, Web Services are like doors and windows in a house, they are INPUTS and OUTPUTS to the OUTSIDE world.
 - In the context on Joomla! as a system, Joomla Webservices API allows Joomla! to INTERACT WITH, EXTERNAL DATASOURCES. Like webapps, mobile,etc...
 
-# Communicate with the Joomla 4.x Web Services API
+## Communicate with the Joomla 4.x Web Services API
 The communication with Joomla's Web Services API takes place via specified endpoints.
 
 - Joomla's core endpoints: https://docs.joomla.org/J4.x:Joomla_Core_APIs
 - A collection of Joomla endpoints to use in Postman: https://github.com/alexandreelise/j4x-api-collection
 
-## Using the Joomla framework
+### Using the Joomla framework
 
 More often than not, when using the Joomla framework, under the hood it still uses cURL or php streams. Most of the cURL is available with your web hosting provider. Otherwise check phpinfo();
 You should be able to follow along because the examples using the Joomla framework will mimic those with cURL.
 
-### Define some variables
+#### Define some variables
 First we define some variables that we use in all our cURL requests:
 - the URL of your Joomla 4.x website and
 - the Joomla's API Token of a Super User account or an account which has at least core.login.api permission and core.login.site to be able to see change current logged-in user's token.
@@ -41,7 +42,8 @@ $token = '';
 ```
 
 
-### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
+#### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
+
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
 
@@ -79,7 +81,8 @@ echo $response->body;
 
 ```
 
-### GET - Retrieve all articles from the "Uncategorized" Category
+#### GET - Retrieve all articles from the "Uncategorized" Category
+
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
 
@@ -107,7 +110,8 @@ echo $response->body;
 
 ```
 
-### GET - Retrieve one specific Article
+#### GET - Retrieve one specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
@@ -135,7 +139,8 @@ echo $response->body;
 
 ```
 
-### PATCH - Modify a specific Article
+#### PATCH - Modify a specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
@@ -170,7 +175,8 @@ echo $response->code;
 
 ```
 
-### DELETE - Remove a specific Article
+#### DELETE - Remove a specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
@@ -195,21 +201,19 @@ $response = $http->request('DELETE', $uri, $dataString, $headers, $timeout);
 
 // show response status code
 echo $response->code;
-
 ```
 
 
-## Using the PHP cURL Functions
+### Using the PHP cURL Functions
+
 The cURL functions needs to be available and enabled in your PHP configuration, check phpinfo();
 
-### Define some variables
+#### Define some variables
+
 First we define some variables that we use in all our cURL requests:
 
 - the URL of your Joomla 4.x website and
 - the Joomla's API Token of a Super User account or an account which has at least core.login.api permission and core.login.site to be able to see change current logged-in user's token.
-
-
-
 
 ```php
 // Before passing the HTTP METHOD to CURL
@@ -221,10 +225,10 @@ $url   = 'https://example.org/api/index.php/v1';
 // We should not use environment variables to store secrets.
 // Here is why: https://www.trendmicro.com/en_us/research/22/h/analyzing-hidden-danger-of-environment-variables-for-keeping-secrets.html
 $token = '';
-
 ```
 
-### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
+#### POST - Create an Article in the Category "Uncategorized" (Category ID = 2)
+
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
 
@@ -268,7 +272,8 @@ curl_close($curl);
 echo $response;
 ```
 
-### GET - Retrieve all articles from the "Uncategorized" Category
+#### GET - Retrieve all articles from the "Uncategorized" Category
+
 ```php
 $categoryId = 2; // Joomla's default "Uncategorized" Category
 
@@ -298,7 +303,8 @@ curl_close($curl);
 echo $response;
 ```
 
-### GET - Retrieve one specific Article
+#### GET - Retrieve one specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
@@ -327,7 +333,8 @@ curl_close($curl);
 echo $response;
 ```
 
-### PATCH - Modify a specific Article
+#### PATCH - Modify a specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
@@ -368,7 +375,8 @@ curl_close($curl);
 echo $response;
 ```
 
-### DELETE - Remove a specific Article
+#### DELETE - Remove a specific Article
+
 ```php
 $articleId = 1; // The Article ID of a specific Article
 
