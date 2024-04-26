@@ -2,7 +2,11 @@
 title: Filesystem Plugin - Basic
 sidebar_position: 6
 ---
-# Introduction
+
+Filesystem Plugin - Basic
+=========================
+
+## Introduction
 Prior to Joomla version 4, for images and other types of media which you wanted to display on your Joomla site you had to store the files within a subfolder of your Joomla instance, by default /images. 
 
 With the media manager introduced in Joomla 4 the development team abstracted the idea of a "filesystem" to be a "filesystem adapter" - ie a PHP class which offered file-like functionality such as file create, rename, delete, etc. This then opened up the possibility of storing the media files in a location other than the local filesystem, for example, on a server within the "cloud". 
@@ -13,7 +17,7 @@ This section demonstrates how to develop a basic filesystem plugin. It will be s
 
 In the next section the [FTP Filesystem plugin](filesystem-plugin-ftp.md) will demonstrate how you can store media files on an FTP server. 
 
-# Filesystem Providers and Adapters
+## Filesystem Providers and Adapters
 ![Media Manager Screenshot](./_assets/screenshot-filesystem-adapters.png "Media Manager Screenshot")
 
 The media manager screenshot shows a Joomla instance with 2 filesystem providers:
@@ -32,7 +36,7 @@ The Restricted provider has just 1 filesystem adapter called "restricted". This 
 
 The order of the providers shown is determined by the `ordering` of the filesystem plugins, set via the administrator System / Plugins page.
 
-# How Joomla Media Manager works
+## How Joomla Media Manager works
 To look at how the media manager works we consider what happens when a user clicks on the Content / Media button in the administrator back-end, and describe the steps shown on the diagram. It's simplified a little; the sequence diagram which follows is a more exact representation. 
 
 ![Media Manager Overview](./_assets/media-overview.jpg "Media Manager Overview")
@@ -80,7 +84,7 @@ com_media->>media-manager.js:confirm delete
 media-manager.js->>User:remove file from display
 ```
 
-# Writing a Filesystem Plugin
+## Writing a Filesystem Plugin
 To write a Filesystem plugin you need to provide 2 classes:
 1. The Provider class, which implements `Joomla\Component\Media\Administrator\Provider\ProviderInterface` in administrator/components/com_media/src/Provider/ProviderInterface.php. This is straightforward, and you just copy the approach of the Local Filesystem plugin in plugins/filesystem/local/src/Extension/Local.php. The main plugin (Extension) class doubles as the Provider class.
 2. The Adapter class, which implements `Joomla\Component\Media\Administrator\Adapter\AdapterInterface` in administrator/components/com_media/src/Adapter/AdapterInterface.php. This is where the bulk of the work lies, as you have to implement based on your filestore the various types of file operations.
@@ -103,12 +107,12 @@ public function delete(string $path)
 }
 ```
 
-# Plugin Source Code
+## Plugin Source Code
 You can copy the source code below into a directory `plg_filesystem_restricted`, or download the complete plugin from [download restricted filesystem plugin](./_assets/plg_filesystem_restricted.zip).
 
 Once installed, remember to enable the plugin! You also need to create the `/restricted` folder within the root folder of your Joomla instance.
 
-## Manifest file
+### Manifest file
 
 ```php title="plg_filesystem_restricted/restricted.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -126,7 +130,7 @@ Once installed, remember to enable the plugin! You also need to create the `/res
 </extension>
 ```
 
-## Service Provider File
+### Service Provider File
 This is boilerplate code for instantiating the plugin via the Joomla Dependency Injection Container.
 
 ```php title="plg_filesystem_restricted/services/provider.php"
@@ -162,7 +166,7 @@ return new class () implements ServiceProviderInterface {
 };
 ```
 
-## Plugin / Provider class
+### Plugin / Provider class
 This has been adapted from the equivalent class in the Joomla Local filesystem plugin.
 
 ```php title="plg_filesystem_restricted/src/Extension/Restricted.php"
@@ -240,7 +244,7 @@ final class Restricted extends CMSPlugin implements ProviderInterface
 }
 ```
 
-## Adapter Class
+### Adapter Class
 For our Adapter class we extend the Joomla LocalAdapter and override the `delete` function. 
 
 ```php title="plg_filesystem_restricted/src/Adapter/RestrictedAdapter.php"

@@ -2,14 +2,19 @@
 sidebar_position: 2
 title: Custom Fields Overview
 ---
-# Custom Fields Overview
+Custom Fields Overview
+======================
+
 You can define your own type of field (eg "mycustom") which you can then reference in your form definition XML file:
+
 ```xml
 <field type="mycustom" … />
 ```
+
 To do this you should extend the `\Joomla\CMS\Form\FormField` which is found in libraries/src/Form/Formfield.php, or you can extend one of the [standard form field types](https://docs.joomla.org/Standard_form_field_types) which extends `FormField`. 
 
 When you define your custom form you will also need to include an `addfieldprefix` attribute in your form XML file, so tell Joomla where to find the field definition. For example, if you have
+
 ```php
 namespace Mycompany\Component\Example\Administrator\Field;
 class MycustomField extends FormField {
@@ -17,10 +22,13 @@ class MycustomField extends FormField {
    // including the above is still common practice, but not now necessary with namespaced classes
 …
 ```
+
 then you should have
+
 ```xml
 <field addfieldprefix ="Mycompany\Component\Example\Administrator\Field" type="mycustom" … />
 ```
+
 You can include the `addfieldprefix` attribute either at the `<field>` level or inside a tag which encloses the `<field>` tag.
 
 ## Joomla Field Design Overview

@@ -3,7 +3,8 @@ title: Installing a custom script
 sidebar_position: 3
 ---
 
-# Install
+Install
+=======
 
 :::danger[Developer Notice]
 
