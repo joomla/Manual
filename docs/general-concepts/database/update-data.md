@@ -3,7 +3,8 @@ sidebar_position: 4
 title: Update Data in the Database
 ---
 
-# Updating a Record
+Updating a Record
+=================
 
 ## Using SQL
 

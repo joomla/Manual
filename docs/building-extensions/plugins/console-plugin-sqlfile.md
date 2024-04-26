@@ -2,9 +2,10 @@
 title: Console Plugin 2 SQLfile
 sidebar_position: 5
 ---
-# Console Plugin Example - Execute a file of SQL statements
+Console Plugin Example - Execute a file of SQL statements
+=========================================================
 
-# Introduction
+## Introduction
 This example expands the concepts described in the [Basic Helloworld Console Plugin](./basic-console-plugin-helloworld.md) to cover:
 - plugin options 
 - defining an argument in the command line
@@ -13,7 +14,7 @@ This example expands the concepts described in the [Basic Helloworld Console Plu
 
 It describes the use of several methods of the `Joomla\Console\Command\AbstractCommand` class.
 
-# Functionality
+## Functionality
 This console plugin enables a CLI utility called `sql:execute-file` to run a series of SQL commands in a file, where the commands include the Joomla table prefix, as in:
 
 ```sql title="sqlfile.sql"
@@ -37,12 +38,12 @@ Finally, we incorporate a plugin option which controls whether transaction contr
 
 For simplicity we'll just use the English language within the plugin; to see how to make your plugin multilingual look at [Basic Content Plugin](./basic-content-plugin.md). 
 
-# Overall Design
+## Overall Design
 As in the Basic Console Plugin there are 2 main classes:
 - a console plugin class which handles the aspects associated with the Joomla plugin mechanism
 - a command class which contains the code for the command
 
-# Console Plugin Class
+## Console Plugin Class
 Here's the core of our plugin class:
 
 ```php
@@ -71,7 +72,7 @@ Within `registerCommands()` we then do 3 things
 - inject into our command class the plugin params (we'll look at this in more detail shortly)
 - add our command class instance to the core Joomla console application.
 
-## Plugin Params
+### Plugin Params
 We define a configurable parameter for the plugin by including in the manifest file:
 
 ```xml
@@ -108,11 +109,11 @@ $transactionControl = $this->getParams()->get('txn', 1);
 
 The string 'txn' has to match the `name` attribute of our field in the `<config>` section in the manifest file. 
 
-# Command Class
+## Command Class
 The command class extends `Joomla\Console\Command\AbstractCommand` and the APIs associated with this class are listed in the [API docs](
 https://api.joomla.org/framework-3/classes/Joomla-Console-Command-AbstractCommand.html). We used a number of these APIs in the [Basic Helloworld Console Plugin](./basic-console-plugin-helloworld.md), and here we explore several more.
 
-## Defining an argument
+### Defining an argument
 You define in your command class's `configure()` method what arguments you want your command to have . To define an argument you use eg:
 
 ```php
@@ -137,7 +138,7 @@ protected function doExecute(InputInterface $input, OutputInterface $output): in
     ...
 ```
 
-## Defining an option
+### Defining an option
 You define the options also in the `configure()` method, eg
 
 ```php
@@ -168,7 +169,7 @@ $logfile = $logpath . '/' . ltrim($logging, "=");
 
 The code in the plugin sets `$logpath` to the Global Configuration Logging / "Path to Log Folder" parameter. 
 
-## Using a Joomla-defined option
+### Using a Joomla-defined option
 Joomla provides a 'help' option which enables you display help text
 
 ```
@@ -187,7 +188,7 @@ The standard help text also displays a number of other options which Joomla pred
 $verbose = $input->getOption('verbose');
 ```
 
-## getSynopsis()
+### getSynopsis()
 This function returns a string explaining the usage of the command, and you can obtain the short or the long version:
 
 ```php
@@ -203,12 +204,12 @@ php cli/joomla.cli sql:execute-file -h
 
 Note how it matches the "Usage:" section at the top of the help output.
 
-# Plugin Code
+## Plugin Code
 This section contains the full source code for the console plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Console Plugin Sqlfile](./_assets/plg_console_sqlfile.zip). If you're writing it manually then include the following files in a folder eg `plg_console_sqlfile`.
 
 As described [here](basic-content-plugin.md), there are a number of things you need to ensure are consistent across your source code files when you're developing plugins. That example also includes how to use language files to make your plugin language-independent. For simplicity this console plugin example supports only English. 
 
-## Manifest File
+### Manifest File
 
 ```xml title="plg_console_sqlfile/sqlfile_cli.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -241,7 +242,7 @@ As described [here](basic-content-plugin.md), there are a number of things you n
 </extension>
 ```
 
-## Service provider file
+### Service provider file
 The `services/provider.php` file is fairly standard boilerplate code for instantiating the plugin via the Dependency Injection Container; you just need to code correctly the 3 lines which relate to your plugin, plus the Application is injected as it's accessed within the console plugin code. 
 
 ```php title="plg_console_sqlfile/services/provider.php"
@@ -286,7 +287,7 @@ return new class implements ServiceProviderInterface
 };
 ```
 
-## Console Plugin file
+### Console Plugin file
 The file below handles the interaction with the Joomla plugin framework:
 
 ```php title="plg_console_sqlfile/src/Extension/SqlfileConsolePlugin.php"
@@ -319,7 +320,7 @@ class SqlfileConsolePlugin extends CMSPlugin implements SubscriberInterface
 }
 ```
 
-## Command file
+### Command file
 The file below handles the execution of the `sql:execute-file` command.
 
 ```php title="plg_console_sqlfile/src/CliCommand/RunSqlfileCommand.php"
@@ -479,7 +480,7 @@ EOF
 }
 ```
 
-## Installation and Execution
+### Installation and Execution
 Generate a zip file from the folder and install the plugin in the usual way. Remember to enable the plugin!
 
 Then in a terminal session navigate to the top level of your Joomla instance and enter:

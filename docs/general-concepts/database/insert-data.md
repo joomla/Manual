@@ -3,7 +3,10 @@ sidebar_position: 3
 title: Insert Data into the Database
 ---
 
-# The Query
+Insert Data into the Database
+=============================
+
+## The Query
 
 Joomla's database querying has changed since the new Joomla Framework was introduced "query chaining" 
 is now the recommended method for building database queries (although string queries are still supported).
@@ -40,9 +43,9 @@ Some of the more frequently used methods include; select, from, join, where and 
 such as insert, update and delete for modifying records in the data store. By chaining these and other method
 calls, you can create almost any query against your data store without compromising portability of your code.
 
-# Inserting a Record
+## Inserting a Record
 
-## Using SQL via the Query Object
+### Using SQL via the Query Object
 
 The `DatabaseQuery` class provides a number of methods for building insert queries,
 the most common being insert, columns and values.
@@ -76,7 +79,7 @@ $db->setQuery($query);
 $db->execute();
 ```
 
-## Using an Object
+### Using an Object
 
 The `DatabaseDriver` class also provides a convenient method for saving an object directly to the database
 allowing us to add a record to a table without writing a single line of SQL.

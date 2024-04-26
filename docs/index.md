@@ -3,7 +3,8 @@ sidebar_position: 0
 title: Introduction
 ---
 
-# Welcome to the Joomla! Programmers Documentation for Joomla 5.0
+Welcome to the Joomla! Programmers Documentation for Joomla 5.2
+===============================================================
 
 This documentation hold information for developers of templates, modules, plugins, components, libraries.
 In Joomla! context all kind of this software are called extension. People often split extensions in to 2 categories.

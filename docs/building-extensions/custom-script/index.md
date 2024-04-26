@@ -2,7 +2,8 @@
 title: Custom PHP Script
 ---
 
-# Custom PHP Script
+Custom PHP Script
+=================
 
 :::danger[Developer Notice]
 

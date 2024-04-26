@@ -1,4 +1,5 @@
-# JSON Response Format
+JSON Response Format
+====================
 
 Joomla by default will return a [JSON API](https://jsonapi.org/) Responses when requested with an Accept: application/json header as well as with the specific JSON API header. Although the Core of Joomla will not support additional content types, **support the ability that developers add additional content types that can be responded**.
 

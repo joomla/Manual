@@ -2,7 +2,11 @@
 title: System Plugin Router Rules
 sidebar_position: 5
 ---
-# Introduction
+
+System Plugin Router Rules
+==========================
+
+## Introduction
 This example of a system plugin illustrates the flexibility of Joomla in allowing developers to change how the routing within `com_content` works, without having to hack the Joomla code.  
 
 **WARNING: This is a system plugin, which is loaded every time Joomla runs, on both the site front-end and administrator back-end. If you have a PHP syntax error in it then you will get locked out of the Joomla administrator back-end, and will have to go into phpmyadmin (or equivalent) to set to 0 the `enabled` field within the plugin record in the `#__extensions` table. If you're not comfortable doing this then using this plugin is not recommended.**
@@ -21,7 +25,7 @@ If you're copying the code below, then you will need to write the following 5 fi
 
 For simplicity the plugin uses English only; if you want to make it multilingual you can change it as described in [basic content plugin](basic-content-plugin.md).
 
-## Manifest file
+### Manifest file
 
 ```xml title="plg_custom_menurule/custom_menurule.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -40,7 +44,7 @@ For simplicity the plugin uses English only; if you want to make it multilingual
 </extension>
 ```
 
-## Service Provider file
+### Service Provider file
 This is standard boilerplate code for plugins for instantiating the plugin via the Dependency Injection Container. You just have to adapt the standard code for your own plugin (basically 3 lines, plus we inject the Application as we'll use that within the plugin).
 
 ```php title="plg_custom_menurule/services/provider.php"
@@ -65,7 +69,7 @@ return new class implements ServiceProviderInterface {
 };
 ```
 
-## Extension class file
+### Extension class file
 This is the entry point for the plugin. It registers to listen for the 'onAfterExtensionBoot' event, which is raised within `loadExtension` in libraries/src/Extension/ExtensionManagerTrait.php. Joomla runs this code every time it loads an extension, and this code:
 - runs the component's services/provider.php file to load it and its dependencies into the [component's child DIC](../../general-concepts/dependency-injection/extension-child-containers.md) 
 - triggers the 'onAfterExtensionBoot' event
@@ -105,7 +109,7 @@ class CustomMenurulePlugin extends CMSPlugin implements SubscriberInterface {
 }
 ```
 
-## Component Router
+### Component Router
 Because the RouterFactory will try to instantiate a component router with a fully qualified classname of `<namespace>\Site\Service\Router`, this defines the classname for our Router and the location of the PHP file. We make our Router class similar to that of `com_content` by extending the `com_content` Router class, but we change the `MenuRules` class which it attaches to be our own MenuRules class. 
 
 We also have to define the `getName` function to return the string "content", as this will be used in getting the relevant menuitems, namely those which are associated with `com_content`.
@@ -151,7 +155,7 @@ class Router extends \Joomla\Component\Content\Site\Service\Router
 
 ```
 
-## MenuRules class
+### MenuRules class
 We're now in a position to write our own rules for determining how the menuitem is chosen on which to base the `com_content` SEF URLs. What's below is an example of how you can modify the Joomla code in libraries/src/Component/Router/Rules/MenuRules.php. Because our rules class inherits from the Joomla rules class, you can write your own rules in the `preprocess` function, and if you can't find a suitable menuitem you can just drop back to the Joomla version by calling `parent::preprocess(&$query)`.
 
 This function differs from the standard Joomla router in a number of areas:
@@ -366,5 +370,5 @@ class MenuRules extends \Joomla\CMS\Component\Router\Rules\MenuRules
 }
 ```
 
-## Installation
+### Installation
 Once you have created the files above, then zip up the folder and install the extension. Then go into System / Plugins or System / Extensions and Enable the plugin. Experiment with `com_content` menuitems, categories and articles to see the difference in how the SEF URLs appear.

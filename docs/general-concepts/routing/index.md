@@ -1,7 +1,13 @@
 ---
 title: Routing
 ---
-# Introduction
+
+Routing
+=======
+
+## Introduction
+
+
 In the context of a web application, routing involves analysing an incoming URL to determine which application constituent parts need to be involved to handle the request. Sometimes this is fairly straightforward, but in a Joomla site the support of Search Engine Friendly (SEF) URLs make this job particularly challenging. It is the responsibility of the Joomla Site Router to convert between SEF URLs and the internal URL format (which identifies those constituent parts).
 
 When people access web pages on your site you want to have URLs which naturally reflect the content that is being shown, like `mysite.org/articles/latest-news`.

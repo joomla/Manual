@@ -1,4 +1,5 @@
-# Web Services API
+Web Services API
+================
 
 This is the content for tutorials how to work with the webservices API of Joomla.
 :::caution TODO

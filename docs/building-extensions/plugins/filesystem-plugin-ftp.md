@@ -2,14 +2,18 @@
 title: Filesystem Plugin - FTP
 sidebar_position: 7
 ---
+
+Filesystem Plugin - FTP
+=======================
+
 This plugin builds on the [basic filesystem plugin](filesystem-plugin-basic.md) to demonstrate how you can enable Joomla to use a media filesystem which is not within the local filestore. In this case we develop a plugin which enables the media filestore to be accessed via FTP.
 
-# Writing an FTP Filesystem Plugin
+## Writing an FTP Filesystem Plugin
 To write an FTP Filesystem plugin you need to provide 2 classes:
 1. The Provider class, which implements `Joomla\Component\Media\Administrator\Provider\ProviderInterface` in administrator/components/com_media/src/Provider/ProviderInterface.php. This is straightforward, and you just copy the approach of the Local Filesystem plugin in plugins/filesystem/local/src/Extension/Local.php. The main plugin (Extension) class doubles as the Provider class.
 2. The Adapter class, which implements `Joomla\Component\Media\Administrator\Adapter\AdapterInterface` in administrator/components/com_media/src/Adapter/AdapterInterface.php. This is where the bulk of the work lies, as you have to map the various types of file operations to ftp calls. The set of PHP ftp functions available to you is listed in [FTP Functions](https://www.php.net/manual/en/ref.ftp.php).
 
-## Testing
+### Testing
 To test the FTP aspects you need to install an FTP server on your local machine. I used [Filezilla](https://filezilla-project.org/) to test the filesystem plugin code below, but note that there can be interface differences between different FTP server implementations. In particular, the PHP function `ftp_mlsd` may not be available and you will need to use `ftp_nlist` or `ftp_rawlist` instead.
 On Filezilla I configured a test user, and a mount point which mapped `/shared` to a folder on my PC. As these details need to be known by the plugin, they're set as plugin config parameters defined in the XML manifest file:
 - host: I used localhost
@@ -18,7 +22,7 @@ On Filezilla I configured a test user, and a mount point which mapped `/shared` 
 - ftproot: virtual path of the mount point; I used "shared"
 
 I found it useful to write a small PHP program which enabled me to see the results of calling the various ftp functions.
-## FTP Connection
+### FTP Connection
 You have to open and close the FTP connection on each HTTP request, as the connection may time out if you try and leave it open between HTTP requests. In this filesystem plugin code the opening and user login is done in the constructor, and the closing in the destructor.
 
 ```php
@@ -41,7 +45,7 @@ public function __destruct()
 }
 
 ```
-## URLs
+### URLs
 If you're wanting to include your media on your front-end web site, then you will need to provide URLs to enable visitors to access them, and you do this via the `getUrl()` function of your adapter. You have 2 possibilities:
 - if you have a web server on the same server as your ftp server, and if the ftp directory is accessible from the web server, then you can just form the URL related to this web server.
 - otherwise you will have to copy the file down from the ftp server and store it in a local directory, and form the URL related to the local file.
@@ -73,9 +77,9 @@ public function getUrl(string $path): string
 ```
 
 To avoid repeatedly downloading the file the code checks if the file is already present in the /tmp directory. Of course, this won't work in a production environment as the file contents may be changed on the ftp server, but you could improve this approach to build some cacheing capability. 
-## File or Directory?
+### File or Directory?
 Much of the complexity in several functions (eg `getFile`, `getFiles`) arises because you have to determine whether it's a file or a directory which has been passed as a `$path`. The strategy in the code is to call `ftp_mlsd` on the parent directory and try to match the filename in the results returned. An alternative approach would be to try `ftp_chdir` on the `$path`and see if that works or not. 
-## Error handling
+### Error handling
 The filesystem plugin code reports errors using the Joomla logging mechanism, so you need to have that enabled via the Joomla global configuration.
 
 ```php
@@ -96,24 +100,24 @@ If you attempt to delete a directory which is not empty or rename a directory wh
 - ftp_rename(): Permission denied 
 
 Also, you may find a Joomla error reported "The account was not found". You can circumvent this by using your browser's dev tools to clear the session storage and local storage. (This was due to an early bug in the media manager, which was fixed, but still appears on rare occasions).
-## Not implemented
-### Thumbnails
+### Not implemented
+#### Thumbnails
 The code does not implement [thumbnails](https://en.wikipedia.org/wiki/Thumbnail). To implement this functionality you should fit your thumbnails into 200 x 200 pixels, and you will need to provide URLs for them as described above, and return the URL in the `thumb_path` field of the object returned in `getFile` and `getFiles`. (Note that the comments before these functions in the AdapterInterface.php file are not complete, and you should compare what's written in the code of the Joomla local adapter plugin).
-### Mime Types
+#### Mime Types
 The code includes a map from file extension to mime type, but only for a few extensions. You can find better lists online, eg [here](https://github.com/ralouphie/mimey). If the media type isn't an image then the media manager uses the mime type to determine the icon to display, so you need to set it to something which the media manager will recognise.
-### Uploading Files
+#### Uploading Files
 Obviously you need to be very careful when uploading files from the internet to avoid hackers uploading malware. You need to make the code below more robust, eg checking the filename more rigorously and using `MediaHelper::canUpload()`.
-### Search
+#### Search
 The `search()` function has not been implemented. Although you could form a GET request which would result in it being called, this doesn't seem to be initiated by media-manager.js (which implements its own search functionality). 
-### Joomla API
+#### Joomla API
 The functionality hasn't been tested using HTTP requests to the Joomla API. 
 
-# Plugin Source Code
+## Plugin Source Code
 You can copy the source code below into a directory `plg_filesystem_ftp`, or download the complete plugin from [download FTP filesystem plugin](./_assets/plg_filesystem_ftp.zip).
 
 Once installed, remember to enable the plugin! You also need to run your local FTP server, and configure the plugin with details of your FTP server.
 
-## Manifest File
+### Manifest File
 
 ```php title="plg_filesystem_ftp/ftp.xml"
 <?xml version="1.0" encoding="UTF-8"?>
@@ -173,7 +177,7 @@ Once installed, remember to enable the plugin! You also need to run your local F
 
 ```
 
-## Service Provider File
+### Service Provider File
 This is boilerplate code for instantiating the plugin via the Joomla Dependency Injection Container.
 
 ```php title="plg_filesystem_ftp/services/provider.php"
@@ -209,7 +213,7 @@ return new class () implements ServiceProviderInterface {
 };
 ```
 
-## Plugin / Provider class
+### Plugin / Provider class
 This has been adapted from the equivalent class in the Joomla Local filesystem plugin.
 
 ```php title="plg_filesystem_ftp/src/Extension/Ftp.php"
@@ -297,7 +301,7 @@ final class Ftp extends CMSPlugin implements ProviderInterface
 }
 ```
 
-## Adapter Class
+### Adapter Class
 This is where all the work happens! There's clearly overlap between the code in `getFile` and `getFiles`, but the code has been left like this to make it easier to appreciate what each function has to do.
 
 ```php title="plg_filesystem_ftp/src/Adapter/FtpAdapter.php"

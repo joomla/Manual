@@ -2,6 +2,10 @@
 title: Basic Content Plugin
 sidebar_position: 3
 ---
+
+Basic Content Plugin
+====================
+
 # Introduction
 In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```

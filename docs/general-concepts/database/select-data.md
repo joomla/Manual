@@ -3,7 +3,8 @@ sidebar_position: 1
 title: Select Data from the Database
 ---
 
-# The Query
+Select Data from the Database
+=============================
 
 Since Joomla introduced support for a variety of database types in Joomla 1.6 - the recommended way of building database queries is through "query chaining" (although string queries will always be supported).
 

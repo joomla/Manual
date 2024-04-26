@@ -2,7 +2,9 @@
 sidebar_position: 4
 ---
 
-# Use of the Joomla Name
+Use of the Joomla Name
+======================
+
 "Joomla!" is our name, and as such it deserves everyone's best efforts to protect it.  It defines our brand for both our software and our community.  It signifies our reputation for excellence.  We have specific guidelines for when and how to properly use our trademarks in public-facing content such as marketing materials and Joomla.org web pages.  Those guidelines are excessive within a controlled user-facing environment like the Joomla backend.
 
 ## "Joomla!" should always be capitalised ... ALWAYS

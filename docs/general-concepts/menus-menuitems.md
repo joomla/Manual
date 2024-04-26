@@ -1,7 +1,12 @@
 ---
 title: Menus and Menuitems
 ---
-# Introduction
+
+Menus and Menuitems
+===================
+
+## Introduction
+
 The Joomla Menu and Menuitem classes manage the configuration and display of menus and menu items on the site front end. The Menu is the set of navigation links which you can have as a main menu (e.g. at the top of your site) or as a subsidiary menu (e.g. in the footer). Each of the individual navigation links is a Menuitem. 
 
 Within an overall Menu structure you can have a "submenu". This isn't implemented as a Joomla Menu construct, rather as a set of menu items below a parent menu item. The Joomla menu items are thus implemented in an ordered tree structure, specifically using the [Nested Set model](https://en.wikipedia.org/wiki/Nested_set_model).
@@ -10,20 +15,25 @@ This guide describes how you can use the Joomla API to access the menu and menui
 
 Note that these classes aren't used in the administrator back end.
 
-# Basic Operations
+## Basic Operations
+
 To get the details of all the Menuitems on the site you do:
+
 ```php
 use Joomla\CMS\Factory;
 $app = Factory::getApplication();
 $sitemenu = $app->getMenu();
 ```
+
 If your code is running on the Joomla back end then you should do:
+
 ```php
 use Joomla\CMS\Factory;
 $app = Factory::getApplication();
 $sitemenu = $app->getMenu('site');
 $sitemenu->load();
 ```
+
 The `$sitemenu` structure will then have entries for all the site Menuitems.
 
 (The reason that you don't need to call `load` on the front end is because the Menuitems will most likely have already been loaded by the time your code is run, as they're needed for the site router function. If you a writing a site system plugin which gets called before the router, then you'll need to add the `load` call yourself.)
@@ -31,24 +41,30 @@ The `$sitemenu` structure will then have entries for all the site Menuitems.
 There isn't a Joomla API to enable you to get *just* the set of Menus on the system (as opposed to the set of Menuitems), so if you really do need these then your only recourse is to read the data from the `menu_types` table directly using a SQL query. But you can find (from the Menuitem structure described below) the Menu to which that Menuitem belongs, and find all the Menuitems for a particular Menu. 
 
 To get at the individual menu items we apply a filter to `$sitemenu` using `getItems()` to select the particular Menuitems we're interested in. To obtain an array of all the Menuitems use a blank filter:
+
 ```php
 $menuitems = $sitemenu->getItems(array(), array());
 ```
+
 To obtain an array of all the menu items which are in the "mainmenu" menu use:
+
 ```php
 $mainmenuItems = $sitemenu->getItems('menutype', 'mainmenu');
 ```
+
 The above gives all the menu items within the "mainmenu" menu, including those in submenus. To access just the menu items which are in either the topmost or the first submenu level of the "mainmenu" menu use:
+
 ```php
 $mainmenuItems = $sitemenu->getItems(array('menutype','level'), array('mainmenu',array("1","2")));
 ```
+
 In summary, to filter the specific menu items you want, you pass an array of properties (from the list in the next section) and an array of corresponding values which those properties should have.
 
 Unpublished menu items are not returned. They're not included within the `$sitemenu` structure. 
 
 As mentioned above, there isn't an equivalent method to get the menu items on the administrator back-end, as the Menu and Menuitem classes aren't used. If you wanted to access the menu details you would have to read and interpret the appropriate records from the database. 
 
-# Properties and Parameters
+## Properties and Parameters
 The following are available as public properties of the Menuitem class. Most of these are shown in the first tab ("Details") of the "Menus: Edit Item" form when you're editing a menu item within the back end. Once you have a Menuitem object you can access the properties directly, as shown below. 
 ```php
 $menuitems = $sitemenu->getItems(array(), array());
@@ -99,10 +115,10 @@ Some of these parameters (e.g. those defined in the Link Type tab of the menu it
 
 Other parameters are related to the component which is navigated to via this menu item and contain attributes which related to how the output of that component is displayed on that particular web page. To find these locate the .xml file in the folder where the layout file for that particular page is held. For example, for a page displaying a single contact look in `components/com_contact/tmpl/contact/`. 
 
-# Getting Individual Menu Items
+## Getting Individual Menu Items
 As well as the mechanisms described above for filtering down to the menu item(s) you want, there are some methods available to get directly to certain menu items. 
 
-## Active Menu Item
+### Active Menu Item
 The active menu item of a site web page relates to the menu item which Joomla is using to determine the presentation of that page (e.g. using the Template Style defined for the menu item). To find this use: 
 ```php
 use Joomla\CMS\Factory;
@@ -114,14 +130,14 @@ You can then get the properties and parameters of this menu item as described ab
 
 However, note that there have been unusual cases where the active menu item has not been set (when you get SEF URLs of the form /component/com_xxx).
 
-## Default Menu Item
+### Default Menu Item
 To find the default menu item for a language use for example: 
 ```php
 $menuitem = $sitemenu->getItem($itemid);
 ```
 (When you view the list of menuitems in the administrator back end, then this is the menuitem which has the country's flag set against it.)
 
-## Setting Menu Items
+### Setting Menu Items
 You can set menu item properties and parameters using for example: 
 ```php
 $menuitem->setParams($params)     //set the params values
@@ -130,7 +146,7 @@ $sitemenu->setActive($itemid)     // set the active menu item
 ```
 or by simply assigning different values to the menu item public properties. However these changes are not saved to the database and will last only for the duration of handling the current HTTP request. 
 
-# Sample Module Code
+## Sample Module Code
 Below is the code for a simple Joomla module which you can install and run to demonstrate use of the menu item API functionality. 
 
 In a folder mod_sample_menu create the following 2 files: 
