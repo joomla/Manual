@@ -32,8 +32,11 @@ And we add in a tmpl subdirectory the file default.php:
 
 ```php title="mod_hello/tmpl/default.php"
 <?php
+defined('_JEXEC') or die('Restricted Access');
 
-echo "<h4>{$data}</h4>";
+?>
+
+<h4><?php echo $data; ?></h4>
 ```
 
 This is a lot more complicated than before! Why do it this way? The answer is that it supports template overrides.
@@ -68,7 +71,8 @@ require ModuleHelper::getLayoutPath('mod_hello');
 
 You can read how Joomla implements namespacing in the [namespaces](../../../general-concepts/namespaces/index.md) section. 
 
-In particular the [mapping from Joomla fully-qualified name to source file](../../../general-concepts/namespaces/joomla-namespace-prefixes.md) enables to find quickly the source of any Joomla class, for example \Joomla\CMS\Helper\ModuleHelper is found in libraries/src/Helper/ModuleHelper.php. 
+In particular the [mapping from Joomla fully-qualified name to source file](../../../general-concepts/namespaces/joomla-namespace-prefixes.md) enables us to find quickly the source of any Joomla class. 
+For example \Joomla\CMS\Helper\ModuleHelper is found in libraries/src/Helper/ModuleHelper.php. 
 
 ## Manifest file update
 
@@ -78,7 +82,8 @@ As we've introduced a new folder in our set of source files we need to tell the 
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.4" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
-    <version>1.0.1</version>
+    <!-- highlight-next-line -->
+    <version>1.0.2</version>
     <author>me</author>
     <creationDate>today</creationDate>
     <description>Code used in the Joomla module tutorial</description>
