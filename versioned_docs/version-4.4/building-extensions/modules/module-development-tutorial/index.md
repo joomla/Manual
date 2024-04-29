@@ -6,4 +6,4 @@ This is a multi-step tutorial which will take you through the developmnent of a 
 
 Along the way you'll learn some key Joomla concepts.
 
-All the code is available in the Joomla manual-examples github repository. 
+All the code is available in the [Joomla manual-examples github repository](https://github.com/joomla/manual-examples/tree/main/module-tutorial). 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 1
 title: Step 1 Basic Module
 ---
 
@@ -21,7 +21,7 @@ In this step you need to create 2 files. Put them both in a folder called `mod_h
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="module" version="4.4" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <author>me</author>
     <creationDate>today</creationDate>
     <description>Code used in the Joomla module tutorial</description>
