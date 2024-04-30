@@ -61,7 +61,7 @@ The configuration is implemented by adding a section to the manifest file:
 ```
 
 Joomla provides a mechanism for defining HTML forms in XML, which you can read about in the [Forms](../../../general-concepts/forms/index.md) and [Form Fields](../../../general-concepts/forms-fields/index.md) sections. 
-This includes a framework for handling the HTTP POST parameters, right through to storing these in the database. 
+This includes a framework for handling the form HTTP POST parameters, right through to storing these in the database. 
 
 All this makes it very easy to develop Joomla forms quickly without having to duplicate boilerplate text, once you have overcome the initial threshold of understanding how they work.
 
@@ -117,18 +117,18 @@ $greeting = "<{$h}>{$data}</{$h}>"
 
 We must include the new language constants from our `<config>` in the .ini file:
 
-```php title="language/en-GB/mod_hello.ini"
+```php title="mod_hello/language/en-GB/mod_hello.ini"
 ; language strings used inside mod_hello 
 MOD_HELLO_NAME="Joomla Module Tutorial"
 MOD_HELLO_DESCRIPTION="Source code for the Joomla module tutorial"
 MOD_HELLO_GREETING="Hello "
-; highlight-start
+// highlight-start
 MOD_HELLO_HEADER_LEVEL="Header level of greeting"
 MOD_HELLO_HEADER_LEVEL_3="Header level 3"
 MOD_HELLO_HEADER_LEVEL_4="Header level 4"
 MOD_HELLO_HEADER_LEVEL_5="Header level 5"
 MOD_HELLO_HEADER_LEVEL_6="Header level 6"
-; highlight-end
+// highlight-end
 ```
 
 ## Installation

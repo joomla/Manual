@@ -9,7 +9,7 @@ Step 4 Adding Language Support
 ## Introduction
 
 Up to now any text associated with our module has been in English. In this step we change it so that it can display multiple languages, so that:
-- an adminstrator can view the module description in his/her preferred language
+- an administrator can view the module description in his/her preferred language
 - a site visitor can see the module output with "Hello" replaced by a greeting in their own language
 
 To view multiple languages on your site you have to configure it as multilingual. You can find online various videos and tutorials, for example [this one](https://www.themexpert.com/blog/beginners-guide-to-multilingual-joomla-website).
@@ -32,20 +32,20 @@ All the language constants should start with the (unique) name of the extension,
 
 We define values for these constants in 2 language files:
 
-```php title="language/en-GB/mod_hello.sys.ini"
+```php title="mod_hello/language/en-GB/mod_hello.sys.ini"
 ; mod_hello language strings for administrator listings of modules
 MOD_HELLO_NAME="Joomla Module Tutorial"
 MOD_HELLO_DESCRIPTION="Source code for the Joomla module tutorial"
 ```
 
-```php title="language/en-GB/mod_hello.ini"
+```php title="mod_hello/language/en-GB/mod_hello.ini"
 ; language strings used inside mod_hello 
 MOD_HELLO_NAME="Joomla Module Tutorial"
 MOD_HELLO_DESCRIPTION="Source code for the Joomla module tutorial"
 MOD_HELLO_GREETING="Hello "
 ```
 
-The .sys.ini file is used for constants where the text appears in a form which lists multiple modules. 
+The .sys.ini file is used for constants where the text appears in an HTML form which lists multiple modules. 
 For example in the administrator back-end in System / Manage / Extensions the list of extensions has
 - the extension name in the Name field (as defined in the manifest file `<name>` element)
 - the extension description, as a tooltip for the extension name (as defined in the manifest file `<description>` element).
