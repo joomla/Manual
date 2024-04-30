@@ -40,6 +40,8 @@ MOD_HELLO_DESCRIPTION="Source code for the Joomla module tutorial"
 
 ```php title="language/en-GB/mod_hello.ini"
 ; language strings used inside mod_hello 
+MOD_HELLO_NAME="Joomla Module Tutorial"
+MOD_HELLO_DESCRIPTION="Source code for the Joomla module tutorial"
 MOD_HELLO_GREETING="Hello "
 ```
 
@@ -48,7 +50,10 @@ For example in the administrator back-end in System / Manage / Extensions the li
 - the extension name in the Name field (as defined in the manifest file `<name>` element)
 - the extension description, as a tooltip for the extension name (as defined in the manifest file `<description>` element).
 
-The .ini file is used for constants which appear when the module is displayed. 
+The .ini file is used for constants which appear when the individual module is displayed.
+
+The name and description constants are needed in the .ini file as well because Joomla displays them when an administrator selects Content / Site Modules and creates or edits a mod_hello module.
+In this case Joomla just reads the .ini file as it's the single mod_hello module which is being displayed.
 
 The reason for the split is performance, to minimise the number of language constants which have to be read.
 
@@ -119,7 +124,7 @@ $data = Text::_('MOD_HELLO_GREETING') . $username;
 require ModuleHelper::getLayoutPath('mod_hello');
 ```
 
-## Installation and Troubleshooting
+## Installation, Tips and Troubleshooting
 
 Once again, zip up your mod_hello directory and install the upgraded module on Joomla. 
 
@@ -130,3 +135,6 @@ The module output should be the same.
 A useful tip is to go to System / Global Configuration / System tab, and then set Debug Language to Yes, and then Save.
 
 This causes language strings to be highlighted between 2 asterisks. By toggling the Language Display option which appears you can get Joomla to output either the language constant or the associated text.
+
+If you're writing a multilingual module which has a lot of language constants then you should consider how best to order them in the language files, otherwise it can be hard to spot missing constants in foreign language files.
+For example, in Joomla extensions they're ordered alphabetically.
