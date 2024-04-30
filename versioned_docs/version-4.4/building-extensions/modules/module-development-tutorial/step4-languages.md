@@ -17,7 +17,7 @@ To view multiple languages on your site you have to configure it as multilingual
 In this step we write the infrastructure to support multiple languages, but implement it only for English. 
 If you configure your own site as multilingual then you can easily extend what's here to implement another language.
 
-The source code is available at [mod_hello step4](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step4_languages). 
+The source code is available at [mod_hello step 4](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step4_languages). 
 
 ## Language Files
 
