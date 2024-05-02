@@ -91,7 +91,7 @@ We update our module main file to use the helper:
 
 ```php title="mod_hello/mod_hello.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 // highlight-start

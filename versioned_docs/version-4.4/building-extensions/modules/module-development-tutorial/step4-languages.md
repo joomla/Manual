@@ -112,7 +112,7 @@ Our updated main source code file is now:
 
 ```php title="mod_hello/mod_hello.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 
 use Joomla\CMS\Helper\ModuleHelper;
 use My\Module\Hello\Site\Helper\HelloHelper;

@@ -101,7 +101,7 @@ We use this in our updated tmpl file:
 
 ```php title="mod_hello/tmpl/default.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 
 // highlight-start
 $h = $params->get('header');

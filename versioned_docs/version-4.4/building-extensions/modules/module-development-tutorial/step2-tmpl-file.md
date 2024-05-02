@@ -18,7 +18,7 @@ We change our simple statement `echo "<h4>Hello</h4>";` to the following:
 
 ```php title="mod_hello/mod_hello.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 // highlight-start
 use Joomla\CMS\Helper\ModuleHelper;
 
@@ -32,7 +32,7 @@ And we add in a tmpl subdirectory the file default.php:
 
 ```php title="mod_hello/tmpl/default.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 
 ?>
 

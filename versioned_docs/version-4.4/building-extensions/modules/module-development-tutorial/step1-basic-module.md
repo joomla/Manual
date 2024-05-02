@@ -46,7 +46,7 @@ The second file is the main PHP file for your module:
 
 ```php title="mod_hello/mod_hello.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
+defined('_JEXEC') or die;
 
 echo "<h4>Hello</h4>";
 ```
