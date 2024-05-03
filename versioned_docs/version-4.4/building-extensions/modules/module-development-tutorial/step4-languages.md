@@ -64,7 +64,7 @@ We replace the English text in the manifest file with the language constants, an
 
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <!-- highlight-next-line -->
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->

@@ -19,7 +19,7 @@ In this step you need to create 2 files. Put them both in a folder called `mod_h
 
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
     <version>1.0.1</version>
     <author>me</author>
@@ -34,7 +34,6 @@ In this step you need to create 2 files. Put them both in a folder called `mod_h
 This file is called a "manifest" file and it tells the Joomla installer key information about the extension which you want to install:
 
 - type="module" - the extension type is a module (rather than a component, plugin, etc)
-- version="4.4" - the minimum Joomla version supported - if you try and install this on Joomla 4.3 it will fail
 - client="site" - this module is for the "site", aka the Joomla front-end. It's not for the administrator back-end.
 - method="upgrade" - this is more relevant for the next tutorial step and means that the version being installed can be installed in place of an existing version (ie it's providing an upgrade)
 - `<name>`, `<author>`, `<creationDate>`, `<description>` are all descriptive elements not validated by Joomla. When the module is installed you'll be able to see them by going to Content / Site Modules and System / Manage / Extensions.

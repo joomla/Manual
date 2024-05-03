@@ -22,7 +22,7 @@ The configuration is implemented by adding a section to the manifest file:
 
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->
     <version>1.0.5</version>

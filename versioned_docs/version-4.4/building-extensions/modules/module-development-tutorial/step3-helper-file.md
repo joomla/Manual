@@ -23,7 +23,7 @@ The manifest file is where we tell Joomla what namespace the module is going to 
 
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
     <!-- highlight-next-line -->
     <version>1.0.3</version>
