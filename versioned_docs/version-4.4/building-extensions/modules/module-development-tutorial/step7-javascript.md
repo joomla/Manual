@@ -1,9 +1,9 @@
 ---
-sidebar_position: 6
-title: Step 6 Adding Javascript
+sidebar_position: 7
+title: Step 7 Adding Javascript
 ---
 
-Step 6 Adding Javascript
+Step 7 Adding Javascript
 ========================
 
 ## Introduction
