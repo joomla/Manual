@@ -136,6 +136,7 @@ We need to tell the Joomla installer to include our media folder, and to put tho
         <folder>src</folder>
         <folder>tmpl</folder>
     </files>
+    <scriptfile>script.php</scriptfile>
     <!-- highlight-start -->
     <media destination="mod_hello" folder="media">
         <filename>joomla.asset.json</filename>
