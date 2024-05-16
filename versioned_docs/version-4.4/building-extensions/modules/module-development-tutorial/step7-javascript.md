@@ -13,7 +13,7 @@ So this step describes:
 - how to pass variables from PHP to javascript.
 - how to use the Joomla Web Asset Manager to manage the javascript asset
 
-The source code is available at [mod_hello step 6](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step6_javascript). 
+The source code is available at [mod_hello step 7](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step7_javascript). 
 
 ## Passing Variables to Javascript
 
@@ -111,7 +111,7 @@ $document->addScriptOptions('vars', array('suffix' => "!"));
 
 $h = $params->get('header', 'h4');
 // highlight-next-line
-$greeting = "<{$h} class='mod_hello'>{$data}</{$h}>"
+$greeting = "<{$h} class='mod_hello'>{$hello}</{$h}>"
 ?>
 
 <?php echo $greeting; ?>

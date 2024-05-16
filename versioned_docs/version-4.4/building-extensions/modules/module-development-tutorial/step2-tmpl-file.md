@@ -22,7 +22,7 @@ defined('_JEXEC') or die;
 // highlight-start
 use Joomla\CMS\Helper\ModuleHelper;
 
-$data = "Hello";
+$hello = "Hello";
 
 require ModuleHelper::getLayoutPath('mod_hello');
 // highlight-end
@@ -36,7 +36,7 @@ defined('_JEXEC') or die;
 
 ?>
 
-<h4><?php echo $data; ?></h4>
+<h4><?php echo $hello; ?></h4>
 ```
 
 This is a lot more complicated than before! Why do it this way? The answer is that it supports template overrides.

@@ -105,7 +105,7 @@ defined('_JEXEC') or die;
 
 // highlight-start
 $h = $params->get('header');
-$greeting = "<{$h}>{$data}</{$h}>"
+$greeting = "<{$h}>{$hello}</{$h}>"
 // highlight-end
 ?>
 

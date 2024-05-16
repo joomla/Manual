@@ -13,6 +13,8 @@ This script file is run whenever the extension is installed or uninstalled, and 
 - check the minimum PHP version and Joomla version required
 - predefine default configuration for the extension
 
+The source code is available at [mod_hello step 6](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step6_script). 
+
 An installation script file is a class with 5 functions: 
 - preflight - called at the start of the install process
 - install, update, uninstall - called part way through the process:

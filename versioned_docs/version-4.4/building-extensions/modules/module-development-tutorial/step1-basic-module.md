@@ -47,7 +47,7 @@ The second file is the main PHP file for your module:
 <?php
 defined('_JEXEC') or die;
 
-echo "<h4>Hello</h4>";
+echo '<h4>Hello</h4>';
 ```
 
 The first PHP line is a security feature. If someone enters a URL which points directly at this PHP source file, then the PHP interpreter will start running the code. 

@@ -119,7 +119,7 @@ use My\Module\Hello\Site\Helper\HelloHelper;
 
 $username = HelloHelper::getLoggedonUsername("Guest");
 // highlight-next-line
-$data = Text::_('MOD_HELLO_GREETING') . $username;
+$hello = Text::_('MOD_HELLO_GREETING') . $username;
 
 require ModuleHelper::getLayoutPath('mod_hello');
 ```
