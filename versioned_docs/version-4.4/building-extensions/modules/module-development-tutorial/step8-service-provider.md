@@ -102,11 +102,15 @@ For mod_hello there are 3 classes which we will get via the DIC:
 3. The Helper class
 
 Also the Joomla pattern decrees that we don't put the Dispatcher and Helper classes directly into the DIC, but rather that we use DispatcherFactory and HelperFactory classes instead, and these 2 Factory classes are injected into the Extension class's constructor and stored as local instance variables. 
-We can then obtain new instances of the Dispatcher and Helper classes inside the Extension class code by using:
+We can then obtain new instances of the Dispatcher and Helper classes inside the Extension class by using something like:
 
 ```php
-$dispatcher = $this->dispatcherFactory->createDispatcher(...);
-$helper = $this->helperFactory->getHelper();
+public function getDispatcher(...) {
+    $dispatcher = $this->dispatcherFactory->createDispatcher(...);
+}
+public function getHelper(...) {
+    $helper = $this->helperFactory->getHelper(...);
+}
 ```
 
 However, we usually want to obtain the Helper class inside our Dispatcher code (rather than inside or Extension class), because that is where the real work is done to set up the data for displaying in the module.
@@ -222,12 +226,12 @@ The AbstractModuleDispatcher `dispatch` function will look after loading the lan
 
 namespace My\Module\Hello\Site\Dispatcher;
 
+\defined('_JEXEC') or die;
+
 use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
 use Joomla\CMS\Helper\HelperFactoryAwareInterface;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
 use Joomla\CMS\Language\Text;
-
-\defined('_JEXEC') or die;
 
 class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareInterface
 {
@@ -253,9 +257,9 @@ As the HelloHelper class is instantiated by the HelperFactory we have to remove 
 
 namespace My\Module\Hello\Site\Helper;
 
-use Joomla\CMS\Factory;
-
 \defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
 
 class HelloHelper
 {

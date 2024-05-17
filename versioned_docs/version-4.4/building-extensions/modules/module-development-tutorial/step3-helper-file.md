@@ -62,9 +62,9 @@ In the helper file we obtain the username of the logged-on user, using the User 
 
 namespace My\Module\Hello\Site\Helper;
 
-use Joomla\CMS\Factory;
-
 \defined('_JEXEC') or die;
+
+use Joomla\CMS\Factory;
 
 class HelloHelper
 {
