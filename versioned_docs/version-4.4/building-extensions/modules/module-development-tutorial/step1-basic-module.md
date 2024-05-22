@@ -14,19 +14,28 @@ In this first step the module will simply output the HTML
 <h4>Hello</h4>
 ```
 
+The source code also available at [mod_hello step 1](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step1_basic_module).
+
 ## Source Code
-In this step you need to create 2 files. Put them both in a folder called `mod_hello`:
+
+In this step you need to create 3 files in a folder called `mod_hello` as shown in this diagram:
+
+![Module tutorial step 1 file structure](./_assets/module-tutorial-step1-files.jpg)
+
+### Manifest File
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
     <version>1.0.1</version>
     <author>me</author>
     <creationDate>today</creationDate>
     <description>Code used in the Joomla module tutorial</description>
+    <namespace path="src">My\Module\Hello</namespace>
     <files>
-        <filename module="mod_hello">mod_hello.php</filename>
+        <folder module="mod_hello">services</folder>
+        <folder>src</folder>
     </files>
 </extension>
 ```
@@ -38,25 +47,71 @@ This file is called a "manifest" file and it tells the Joomla installer key info
 - method="upgrade" - this is more relevant for the next tutorial step and means that the version being installed can be installed in place of an existing version (ie it's providing an upgrade)
 - `<name>`, `<author>`, `<creationDate>`, `<description>` are all descriptive elements not validated by Joomla. When the module is installed you'll be able to see them by going to Content / Site Modules and System / Manage / Extensions.
 - `<version>` - version of the module - you should update this with subsequent versions.
-- `<files>` - tells the installer which files should be considered part of the module code. If you have files in your directory which haven't been explicitly included within the `<files>` section then the Joomla installer will ignore them.
-- `<filename module="mod_hello">` - tells Joomla the name of the module (ie "mod_hello") and that this file is the entry point for the module - ie when Joomla wants to run your module, then this is the source file it should run.
+- `<files>` - tells the installer which files should be considered part of the module code. The module="mod_hello" attribute tells Joomla to look in the /services folder to find a service provider file which is the starting point of mod_hello. 
+If you have files in your directory which haven't been explicitly included within the `<files>` section then the Joomla installer will ignore them.
+- `<namespace>` - is the namespace prefix for our module mod_hello. It follows the [Joomla recommendation](../../../general-concepts/namespaces/defining-your-namespace.md), and we've used "My" as our company name. 
 
-The second file is the main PHP file for your module:
+The path="src" attribute means that we should store our PHP classes in the /src subfolder, and we have to include it within the `<files>` element so that the Joomla installer processes it. 
 
-```php title="mod_hello/mod_hello.php"
+Then the namespace prefix \My\Module\Hello\Site will point to this folder, and we should name our classes below it according to the [PSR-4 recommendation](https://www.php-fig.org/psr/psr-4/). 
+
+Namespacing within Joomla is described in the [Namespaces section](../../../general-concepts/namespaces/index.md). 
+
+### Service Provider File
+
+Put into mod_hello/services/provider.php the following code:
+
+```php title="mod_hello/services/provider.php"
 <?php
-defined('_JEXEC') or die;
 
-echo '<h4>Hello</h4>';
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
+use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
+use Joomla\CMS\Extension\Service\Provider\HelperFactory as HelperFactoryServiceProvider;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+
+return new class () implements ServiceProviderInterface {
+
+    public function register(Container $container): void
+    {
+        $container->registerServiceProvider(new ModuleDispatcherFactoryServiceProvider('\\My\\Module\\Hello'));
+        $container->registerServiceProvider(new HelperFactoryServiceProvider('\\My\\Module\\Hello\\Site\\Helper'));
+        $container->registerServiceProvider(new ModuleServiceProvider());
+    }
+};
 ```
 
-The first PHP line is a security feature. If someone enters a URL which points directly at this PHP source file, then the PHP interpreter will start running the code. 
-To avoid a hacker gaining information about the code in a file the first line checks if the constant "_JEXEC" has already been defined, and exits if it's not.
+If you're new to Joomla development then this code probably looks very intimidating. If so, the best thing is just to accept it for now. It's just boilerplate code that is used to link the Joomla core code with our mod_hello extension. We'll explain it in a later step of the tutorial.
+
+### Dispatcher File
+
+When Joomla runs our mod_hello code it starts by instantiating our Dispatcher class and calling its `dispatch()` function. 
+
+```php title="mod_hello/src/Dispatcher/Dispatcher.php"
+<?php
+namespace My\Module\Hello\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
+
+class Dispatcher implements DispatcherInterface
+{
+    public function dispatch()
+    {
+        echo '<h4>Hello</h4>';
+    }
+```
+
+The `_JEXEC` check at the start is a security feature. If someone enters a URL which points directly at this PHP source file, then the PHP interpreter will start running the code. 
+To avoid a hacker gaining information about the code in a file this line checks if the constant "_JEXEC" has already been defined, and exits if it's not.
 When Joomla runs normally it defines this "_JEXEC" constant, so when Joomla calls your module it will already have been defined. 
 
 ## Installing your Module
 
-Next zip up the folder mod_hello containing the two source files to create a file mod_hello.zip.
+Next zip up the folder mod_hello containing the 3 source files to create a file mod_hello.zip.
 
 In your Joomla administrator back-end go to System / Install / Extensions and click on the Upload Package File tab:
 
@@ -99,10 +154,6 @@ Now in this list your "Joomla module tutorial" module should show a green tick i
 If you display a page on your website then you should see your module in the right-hand sidebar:
 
 ![Display Tutorial Module](./_assets/module-display-basic.jpg "Display Tutorial Module")
-
-You may find that there are several modules with Position set to "sidebar-right". You can control the order in which these appear by clicking on the up/down arrow which is a column header, then moving a module using drag/drop:
-
-![Change Module Order](./_assets/module-list.jpg "Change Module Order")
 
 ## Finding Template Positions
 
