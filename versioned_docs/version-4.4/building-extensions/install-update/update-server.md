@@ -181,24 +181,24 @@ Here is an example Extension Server type - for the Joomla 4.4 release:
 ```
 
 You can have different `<update>` elements in this file and these must be within an enclosing `<updates>` element.
-A separate <update> definition will be required for each version of your extension you release.
+A separate `<update>` definition will be required for each version of your extension you release.
 
 You might also have different updates relating to the same version of your extension, but for different `<targetplatform>` Joomla versions.
 
 The following section describes the elements of a single update entity.
 - **name** – The name of the extension, this name will appear in the Name column of the Extension Manager's Update view (required)
 - **description** – A short description of the extension (optional) — if you choose to use `<![CDATA[]]>`, double-quotes will break the HTML formatting. Use single quotes with your HTML entities.
-- **element** – The installed name of the extension (required). For plugins, this needs to be same as plugin attribute value for main file in plugin manifest. For <filename plugin="pluginname">pluginname.php</filename>, element value should be **pluginname**.
+- **element** – The installed name of the extension (required). For plugins, this needs to be same as plugin attribute value for main file in plugin manifest. For `<filename plugin="pluginname">pluginname.php</filename>`, element value should be **pluginname**.
 - **type** – The type of extension (component, module, plugin, etc.) (required)
 - **folder** – Specific to plugins, this tag describes the type of plugin being updated (content, system, etc.) (required for plugins)
 - **client** – The client of the extension. Required for modules and templates. Possible values at this time are "site" or "administrator". Warning! Plugins and front-end modules are automatically installed with a client of site, but you will need to specify the client in an update or it will default to administrator and then found update would not be shown because it would not match any extension. Components are automatically installed with a client of administrator, which is currently the default.
 - **version** – The version of the release (required)
 - **infourl** – A URL to point users to containing information about the update (optional) 
 - **downloads** – The section which lists all download locations
-    - **downloadurl** – The URL to download the extension from; the <downloadurl> tag has two required parameters:
+    - **downloadurl** – The URL to download the extension from; the `<downloadurl>` tag has two required parameters:
         - **type** – The type of package (full or upgrade)
         - **format** – The format of the package (zip, tar, etc.)
-    - **downloadsource** – Optional. Alternative URL to download the extension from when the connection to <downloadurl> fails. Multiple <downloadsource> tags are allowed. The <downloadsource> tag has two required parameters:
+    - **downloadsource** – Optional. Alternative URL to download the extension from when the connection to `<downloadurl>` fails. Multiple `<downloadsource>` tags are allowed. The `<downloadsource>` tag has two required parameters:
         - **type** – The type of package (full or upgrade)
         - **format** – The format of the package (zip, tar, etc.)
 
@@ -219,7 +219,7 @@ The following section describes the elements of a single update entity.
 - **targetplatform** – A tag to define platform requirements with the following elementsː
     - **name** – The name of the platform dependency; it should ONLY be "joomla"
     - **version** – The version of Joomla! the extension supports, like a regular expression (mandatory). For example `version="4.[1234]"` will run on Joomla 4.1 to 4.4, but not on any Joomla 3 or Joomla 5 instance, `version="4.(2|4)"` will run only on 4.2 or 4.4.
-    - **min_dev_level** and **max_dev_level** – These attributes allow you to select a target platform based on the developer level ("z" in x.y.z). They are optional. You can specify either one or both. If omitted, all developer levels are matched. For example, the following matches versions 4.0.0 and 4.0.1. <targetplatform name="joomla" version="4.0" min_dev_level="0" max_dev_level="1"/>
+    - **min_dev_level** and **max_dev_level** – These attributes allow you to select a target platform based on the developer level ("z" in x.y.z). They are optional. You can specify either one or both. If omitted, all developer levels are matched. For example, the following matches versions 4.0.0 and 4.0.1. `<targetplatform name="joomla" version="4.0" min_dev_level="0" max_dev_level="1"/>`
 
 - **php_minimum** – a minimum supported PHP version can be supplied in the update stream. If the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements.
 - **supported_databases** – a minimum supported databases + version check can be supplied in the update stream. When the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements. For example:  `<supported_databases mysql="5.5.3" mariadb="10.1" postgresql="9.2" mssql="10.50.1600.1" />`
