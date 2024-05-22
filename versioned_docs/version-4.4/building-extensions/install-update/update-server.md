@@ -187,7 +187,7 @@ You might also have different updates relating to the same version of your exten
 
 The following section describes the elements of a single update entity.
 - **name** – The name of the extension, this name will appear in the Name column of the Extension Manager's Update view (required)
-- **description** – A short description of the extension (optional) — if you choose to use <![CDATA[]]>, double-quotes will break the HTML formatting. Use single quotes with your HTML entities.
+- **description** – A short description of the extension (optional) — if you choose to use `<![CDATA[]]>`, double-quotes will break the HTML formatting. Use single quotes with your HTML entities.
 - **element** – The installed name of the extension (required). For plugins, this needs to be same as plugin attribute value for main file in plugin manifest. For <filename plugin="pluginname">pluginname.php</filename>, element value should be **pluginname**.
 - **type** – The type of extension (component, module, plugin, etc.) (required)
 - **folder** – Specific to plugins, this tag describes the type of plugin being updated (content, system, etc.) (required for plugins)

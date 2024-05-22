@@ -3,7 +3,7 @@ sidebar_position: 9
 title: Step 9 Adding Ajax
 ---
 
-Step 8 Adding Ajax
+Step 9 Adding Ajax
 ==================
 
 In this step we add Ajax to mod_hello and also describe
@@ -16,7 +16,7 @@ The source code is available at [mod_hello step 9](https://github.com/joomla/man
 
 Joomla provides a component `com_ajax` (described [here](https://docs.joomla.org/Using_Joomla_Ajax_Interface)) which allows a module's javascript code to make an Ajax call and get back an Ajax response.
 
-:::todo
+:::caution todo
   Update link above when com_ajax documentation is moved to the manual
 :::
 
@@ -45,7 +45,7 @@ helper->>com_ajax:result
 
 When com_ajax receives the result it uses the Joomla [JsonResponse](https://docs.joomla.org/JSON_Responses_with_JResponseJson) class to return the result to the javascript code. 
 
-:::todo
+:::caution todo
   Update link above when JsonResponse documentation is moved to the manual
 :::
 
@@ -233,7 +233,7 @@ class HelloHelper
 
 The Registry is a utility class which you can find described [here](https://github.com/joomla-framework/registry).
 
-:::todo
+:::caution todo
   Update link above when Registry documentation is moved to the manual
 :::
 
