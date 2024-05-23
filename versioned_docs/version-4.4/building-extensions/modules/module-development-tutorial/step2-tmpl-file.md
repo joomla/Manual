@@ -8,7 +8,7 @@ Step 2 Adding a tmpl file
 
 ## Introduction
 
-In this step we add a tmpl file to the module, and introduce the Joomla concepts of template overrides and namespacing. 
+In this step we add a tmpl file to the module, and introduce the Joomla concept of template overrides. 
 
 The source code is available at [mod_hello step 2](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step2_tmpl_file).
 
@@ -16,16 +16,28 @@ The source code is available at [mod_hello step 2](https://github.com/joomla/man
 
 We change our simple statement `echo "<h4>Hello</h4>";` to the following:
 
-```php title="mod_hello/mod_hello.php"
+```php title="mod_hello/src/Dispatcher/Dispatcher.php"
 <?php
-defined('_JEXEC') or die;
-// highlight-start
+
+namespace My\Module\Hello\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
+// highlight-next-line
 use Joomla\CMS\Helper\ModuleHelper;
 
-$hello = "Hello";
+class Dispatcher implements DispatcherInterface
+{
+    public function dispatch()
+    {
+        // highlight-start
+        $hello = "Hello";
 
-require ModuleHelper::getLayoutPath('mod_hello');
-// highlight-end
+        require ModuleHelper::getLayoutPath('mod_hello');
+        // highlight-end
+    }
+}
 ```
 
 And we add in a tmpl subdirectory the file default.php:
@@ -79,7 +91,7 @@ For example \Joomla\CMS\Helper\ModuleHelper is found in libraries/src/Helper/Mod
 As we've introduced a new folder in our set of source files we need to tell the Joomla installer to process it:
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>Joomla module tutorial</name>
     <!-- highlight-next-line -->
@@ -87,9 +99,11 @@ As we've introduced a new folder in our set of source files we need to tell the 
     <author>me</author>
     <creationDate>today</creationDate>
     <description>Code used in the Joomla module tutorial</description>
+    <namespace path="src">My\Module\Hello</namespace>
     <files>
-        <filename module="mod_hello">mod_hello.php</filename>
-        <!-- highlight-next-line -->
+        <folder module="mod_hello">services</folder>
+        <folder>src</folder>
+    <!-- highlight-next-line -->
         <folder>tmpl</folder>
     </files>
 </extension>

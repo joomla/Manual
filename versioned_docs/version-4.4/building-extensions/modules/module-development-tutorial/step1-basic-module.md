@@ -123,7 +123,7 @@ Click on "browse for file" and select your mod_hello.zip to get Joomla to instal
 
 together with text in your manifest file's `<description>` element.
 
-Joomla stores your code in the /modules folder. If you open that folder then you should see your mod_hello folder with the 2 source code files.
+Joomla stores your code in the /modules folder. If you open that folder then you should see your mod_hello folder your file structure below.
 
 ## Making your Module Visible
 
