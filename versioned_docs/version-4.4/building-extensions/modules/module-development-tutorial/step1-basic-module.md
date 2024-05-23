@@ -157,6 +157,22 @@ If you display a page on your website then you should see your module in the rig
 
 ![Display Tutorial Module](./_assets/module-display-basic.jpg "Display Tutorial Module")
 
+## Troubleshooting
+
+If you get a Class not found exception then it means that Joomla can't find one of the classes you've specified in your code.
+
+Check carefully 
+- your `<namespace>` tag in the manifest file
+- your `use` statements in your PHP file
+- the class name in your PHP class file
+- the filename of your PHP class file
+
+Joomla will use the details to locate your class source file as described in [Finding Class Files with PSR-4](../../../general-concepts/namespaces/finding-classes-with-psr4.md).
+
+Also ensure that your subdirectories under your /src folder, and the filenames of your PHP class files have the correct capitalisation. 
+If you're developing under Windows then the operating system ignores the difference between small letters and capitals in filenames.
+If you then install your extension on a live site which is running on linux you may find a Class Not Found exception because linux isn't as forgiving.
+
 ## Finding Template Positions
 
 In the previous section I suggested that you used "sidebar-right" as your module Position. 

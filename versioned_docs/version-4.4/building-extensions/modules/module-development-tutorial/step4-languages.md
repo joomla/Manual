@@ -57,13 +57,12 @@ In this case Joomla just reads the .ini file as it's the single mod_hello module
 
 The reason for the split is performance, to minimise the number of language constants which have to be read.
 
-
 ## Updated Manifest File
 
 We replace the English text in the manifest file with the language constants, and we also tell the Joomla installer where to find the language files:
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <!-- highlight-next-line -->
     <name>MOD_HELLO_NAME</name>
@@ -75,7 +74,7 @@ We replace the English text in the manifest file with the language constants, an
     <description>MOD_HELLO_DESCRIPTION</description>
     <namespace path="src">My\Module\Hello</namespace>
     <files>
-        <filename module="mod_hello">mod_hello.php</filename>
+        <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
     </files>
@@ -94,11 +93,16 @@ To obtain the text associated with a language constant the source code needs to 
 1. Load the appropriate language file (.ini or .sys.ini)
 2. Obtain the text associated with an individual language constant.
 
-For mod_hello Joomla handles loading the language files, both in the administrator forms and when rendering the module on the site pages.
+We can load the language .ini file in our module using:
 
-For the administrator functionality Joomla also handles the interpretation of the mod_hello language constants.
+```php
+use Joomla\CMS\Factory;
 
-The only thing left for us to do is to handle the language constants within the module code, and we do this using:
+$language = Factory::getApplication()->getLanguage();
+$language->load('mod_hello');
+```
+
+We obtain the text associated with an individual language constant using:
 
 ```php
 use Joomla\CMS\Language\Text;
@@ -108,27 +112,50 @@ $text = Text::_('MOD_HELLO_GREETING');
 
 Don't be concerned that the function name is an underscore - it's just an ordinary PHP function. 
 
-Our updated main source code file is now:
+We'll add these lines in our Dispatcher code.
 
-```php title="mod_hello/mod_hello.php"
+In the administrator forms Joomla looks after loading the language and interpreting the language constants, for example when editing the module via Content / Site Modules. 
+
+Our updated main Dispatcher source code file is now:
+
+```php title="mod_hello/src/Dispatcher/Dispatcher.php"
 <?php
-defined('_JEXEC') or die;
 
+namespace My\Module\Hello\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
 use Joomla\CMS\Helper\ModuleHelper;
+// highlight-next-line
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
 use My\Module\Hello\Site\Helper\HelloHelper;
 
-$username = HelloHelper::getLoggedonUsername("Guest");
-// highlight-next-line
-$hello = Text::_('MOD_HELLO_GREETING') . $username;
+class Dispatcher implements DispatcherInterface
+{
+    public function dispatch()
+    {
+        // highlight-start
+        $language = Factory::getApplication()->getLanguage();
+        $language->load('mod_hello');
+        // highlight-end
+        
+        $username = HelloHelper::getLoggedonUsername('Guest');
 
-require ModuleHelper::getLayoutPath('mod_hello');
+        // highlight-next-line
+        $hello = Text::_('MOD_HELLO_GREETING') . $username;
+
+        require ModuleHelper::getLayoutPath('mod_hello');
+    }
+}
 ```
 
 ## Installation, Tips and Troubleshooting
 
 Once again, zip up your mod_hello directory and install the upgraded module on Joomla. 
 
-The language strings in the .sys.ini are slightly different from previous steps, so you should be able to see these differences when the extension is installed, and when you navigate to Administrator / System / Manage / Extensions.
+The text of the language strings in the .sys.ini is slightly different from previous steps, so you should be able to see these differences when the extension is installed, and when you navigate to Administrator / System / Manage / Extensions.
 
 The module output should be the same.
 
