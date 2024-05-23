@@ -109,6 +109,8 @@ The `_JEXEC` check at the start is a security feature. If someone enters a URL w
 To avoid a hacker gaining information about the code in a file this line checks if the constant "_JEXEC" has already been defined, and exits if it's not.
 When Joomla runs normally it defines this "_JEXEC" constant, so when Joomla calls your module it will already have been defined. 
 
+(The backslash in front of the `defined` function is just to indicate that we want to use the PHP `defined` function in the global namespace, rather than this file's namespace. Here it won't matter if we omit the backslash because we haven't got a local `defined` function, and PHP will revert to the global one if it doesn't find one here.)
+
 ## Installing your Module
 
 Next zip up the folder mod_hello containing the 3 source files to create a file mod_hello.zip.
