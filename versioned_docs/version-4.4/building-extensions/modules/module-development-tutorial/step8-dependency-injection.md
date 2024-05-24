@@ -1,12 +1,14 @@
 ---
 sidebar_position: 8
-title: Step 8 Adding a Service Provider
+title: Step 8 Dependency Injection
 ---
 
-Step 8 Adding a Service Provider
-================================
+Step 8 Dependency Injection
+===========================
 
-In this step we add a service provider file, and describe the Joomla principles of Extension and Dispatcher classes, and Dependency Injection.
+In this step we describe the Joomla principles of Extension and Dispatcher classes, and Dependency Injection, and explain the services/provider.php file.
+
+We change mod_hello to get the HelloHelper class via dependency injection. 
 
 This step is quite long and complicated, but it's worth persevering as these principles are fundamental to Joomla and developing Joomla extensions.
 
@@ -20,67 +22,26 @@ In high-level terms this is how it starts up a module:
 ```mermaid
 sequenceDiagram
 Joomla->>service provider:get extension
-service provider->>extension:new
+service provider->>Extension:new
 service provider->>Joomla:return extension
-Joomla->>extension:getDispatcher()
-extension->>dispatcher:new
-extension->>Joomla:return dispatcher
-Joomla->>dispatcher:dispatch()
+Joomla->>Extension:getDispatcher()
+Extension->>Dispatcher:new
+Extension->>Joomla:return dispatcher
+Joomla->>Dispatcher:dispatch()
 ```
 
-The Extension class can be thought of as a "handle" that the core Joomla code uses to get connected to our module. It's the first module class which is instantiated.
+The service provider code is in services/provider.php
+
+The Extension class can be thought of as a "handle" that the core Joomla code uses to get connected to our module. It's the first module class which is instantiated. 
+For modules, the Extension class is mostly just used to get the Dispatcher class.
 
 The Dispatcher class can be thought of as providing a mechanism for Joomla to run our module code, as it provides the `dispatch` function which Joomla calls to run the module.
 
-You may be wondering why the Extension class doesn't just provide the `dispatch` function itself - well, it could, and that would make it easier for extension developers, but it's separated out to enable a similar set of classes for components, modules and plugins. 
+The Dispatcher `dispatch` function is generally where the module logic begins. 
+
+You may be wondering why the Extension class doesn't just provide the `dispatch` function itself - well, it could, and that might make it easier for extension developers, but it's separated out to enable a similar set of classes for components, modules and plugins. 
 
 You can find more information on Extension and Dispatcher classes [here](../../../general-concepts/extension-and-dispatcher/index.md).
-
-## Default Extension and Dispatcher Classes
-
-Up till now we haven't specified our own mod_hello Extension and Dispatcher classes, but behind the scenes Joomla has been providing default ones for us.
-
-The default Extension class is \Joomla\CMS\Extension\Module in libraries/src/Extension/Module.php, and for mod_hello it's just used to get the Dispatcher class.
-
-The default Dispatcher class is \Joomla\CMS\Dispatcher\ModuleDispatcher in libraries/src/Dispatcher/ModuleDispatcher.php, and this class inherits from \Joomla\CMS\Dispatcher\AbstractModuleDispatcher in libraries/src/Dispatcher/AbstractModuleDispatcher.php.
-
-There are a few things to note about AbstractModuleDispatcher:
-
-1. It gets passed into its constructor the module `$module`, application `$app` and input `$input` variables. From these it is able to construct the 5 variables described in [step 5](step5-config.md#obtaining-the-parameter-value).
-
-2. It has a function `loadLanguage` which loads the .ini language file for the module.
-
-3. It has a function `getLayoutData` which returns an array of the 5 variables (module, app, input, params and template):
-
-```php
-return [
-    'module'   => $this->module,
-    'app'      => $this->app,
-    'input'    => $this->input,
-    'params'   => new Registry($this->module->params),
-    'template' => $this->app->getTemplate(),
-];
-```
-
-4. It has a function `dispatch` which performs the following:
-    - loads the language via `loadLanguage`
-    - calls `getLayoutData` and assigns the array returned to a variable `$displayData`
-    - uses PHP `extract` to extract into variables the array elements of `$displayData`
-    - executes `require ModuleHelper::getLayoutPath($module->module, $params->get('layout', 'default'));` which runs the tmpl file.
-
-The last 2 operations are performed inside a separate function to create a clean scope.
-
-These operations are common to many modules, and we'll use them in our mod_hello Dispatcher class below.
-
-Returning to our default \Joomla\CMS\Dispatcher\ModuleDispatcher, it uses the `loadLanguage` and `getLayoutData` functions of AbstractModuleDispatcher, but provides its own `dispatch` function which does the following:
-- loads the language via `loadLanguage` (from AbstractModuleDispatcher)
-- calls `getLayoutData` (from AbstractModuleDispatcher) and assigns the array returned to a variable `$displayData`
-- uses PHP `extract` to extract into variables the array elements of `$displayData`
-- does an `include` of our mod_hello.php file
-
-Once again, the last 2 operations are performed inside a separate function to create a clean scope.
-
-So this is how Joomla ends up running the code of our mod_hello.php file, with the 5 variables available within its scope.
 
 ## Dependency Injection
 
@@ -96,12 +57,13 @@ So you can capture that event in a plugin, replace the extension's DIC entries w
 
 Joomla's Dependency Injection approach is described in more detail [here](../../../general-concepts/dependency-injection/index.md) (where you can find a link to an associated video).
 
-For mod_hello there are 3 classes which we will get via the DIC:
+For mod_hello there are 3 classes which we get via the DIC:
 1. The Extension class - this will just be the default Joomla extension class for modules: \Joomla\CMS\Extension\Module
 2. The Dispatcher class
 3. The Helper class
 
-Also the Joomla pattern decrees that we don't put the Dispatcher and Helper classes directly into the DIC, but rather that we use DispatcherFactory and HelperFactory classes instead, and these 2 Factory classes are injected into the Extension class's constructor and stored as local instance variables. 
+Also the Joomla pattern decrees that we don't put the Dispatcher and Helper classes directly into the DIC, but rather that we use DispatcherFactory and HelperFactory classes instead, and these 2 Factory classes are passed into the Extension class's constructor and stored as local instance variables `$this->dispatcherFactory` and `$this->helperFactory`. 
+
 We can then obtain new instances of the Dispatcher and Helper classes inside the Extension class by using something like:
 
 ```php
@@ -122,7 +84,7 @@ use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
 use Joomla\CMS\Helper\HelperFactoryAwareInterface;
 use Joomla\CMS\Helper\HelperFactoryAwareTrait;
 
-class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareInterface
+class Dispatcher implements HelperFactoryAwareInterface
 {
     use HelperFactoryAwareTrait;
     ...
@@ -131,7 +93,15 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 }
 ```
 
-This link from the Dispatcher to the HelperFactory is set up in the `getDispatcher` function of \Joomla\CMS\Extension\Module in libraries/src/Extension/Module.php.
+This link from the Dispatcher to the HelperFactory is set up in the `getDispatcher` function of \Joomla\CMS\Extension\Module in libraries/src/Extension/Module.php, using the code:
+
+```php
+if ($dispatcher instanceof HelperFactoryAwareInterface) {
+    $dispatcher->setHelperFactory($this->helperFactory);
+}
+```
+
+and the HelperFactoryAwareTrait provides the Dispatcher with the getHelperFactory and setHelperFactory functions. 
 
 ## Service Provider
 
@@ -179,12 +149,12 @@ $container->set(
 );
 ```
 
-(By the way, `ModuleInterface::class` is just shorthand for a string containing the class fully qualified name).
+(By the way, `ModuleInterface::class` is just shorthand for a string containing the class or interface fully qualified name).
 
 When Joomla gets the entry for `ModuleInterface::class` then it will cause the associated function to run. 
 This will create the Module instance, and pass into the constructor what is returned from obtaining the ModuleDispatcherFactoryInterface::class and HelperFactoryInterface::class entries from the DIC.
 
-These 3 DIC entries are used so often that Joomla provides a shorthand way of entering them into the DIC. We use this in our final service provider file:
+These 3 DIC entries are used so often that Joomla provides a shorthand way of entering them into the DIC. We use this in our service provider file:
 
 ```php title="mod_hello/services/provider.php"
 <?php
@@ -214,41 +184,56 @@ Here `registerServiceProvider` just means calling `register` on the service prov
   You'll find the same name ModuleDispatcherFactory used for the service provider class and the Factory class - you need to check the `use` statement to confirm which one is meant. The same is true of other Factory service provider classes. 
 :::
 
-## Dispatcher
+## Helper Class
 
-Our Dispatcher will extend AbstractModuleDispatcher described above, and we'll use the fact that it does most of the work for us. 
-We just have to override `getLayoutData` to add in the 'hello' element into the `$data` array, which will become the `$hello` variable when the PHP `extract` is executed.
+Up until now we have been obtaining our HelloHelper class using:
 
-The AbstractModuleDispatcher `dispatch` function will look after loading the language, calling the `getLayoutData` function, extracting the variables and passing control to the tmpl file.
+```php
+use My\Module\Hello\Site\Helper\HelloHelper;
 
-```php title="mod_hello/src/Dispatcher/Dispatcher.php"
-<?php
+$username = HelloHelper::getLoggedonUsername('Guest');
+```
 
-namespace My\Module\Hello\Site\Dispatcher;
+What if we want to perform unit testing on our Dispatcher class, and want to provide mocks for the HelloHelper functions? 
 
-\defined('_JEXEC') or die;
+Because Joomla uses the PSR-4 rules to find the HelloHelper class - a mechanism that we can't easily interrupt - it means that we're forced to change our code to something like:
 
-use Joomla\CMS\Dispatcher\AbstractModuleDispatcher;
-use Joomla\CMS\Helper\HelperFactoryAwareInterface;
-use Joomla\CMS\Helper\HelperFactoryAwareTrait;
-use Joomla\CMS\Language\Text;
+```php
+use My\Mocks\HelloHelper;
 
-class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareInterface
+$username = HelloHelper::getLoggedonUsername('Guest');
+```
+
+so we're changing the very source file which we're trying to unit test. We can avoid this situation by using dependency injection.
+
+If we use dependency injection then our Dispatcher code is:
+
+```php
+class Dispatcher implements HelperFactoryAwareInterface
 {
     use HelperFactoryAwareTrait;
 
-    protected function getLayoutData(): array
-    {
-        $data = parent::getLayoutData();
-
-        $data['hello'] = Text::_('MOD_HELLO_GREETING') . $this->getHelperFactory()->getHelper('HelloHelper')->getLoggedonUsername('Guest');
-
-        return $data;
-    }
+    $username = $this->getHelperFactory()->getHelper('HelloHelper')->getLoggedonUsername('Guest');
+    ...
 }
 ```
 
-## Helper
+Here there's no direct reference to the HelloHelper class.
+If we want to mock the HelloHelper class then we can change the service provider file from
+
+```php
+$container->registerServiceProvider(new HelperFactoryServiceProvider('\\My\\Module\\Hello\\Site\\Helper'));
+```
+
+to 
+
+```php
+$container->registerServiceProvider(new HelperFactoryServiceProvider('\\My\\Mocks'));
+```
+
+Then the HelperFactory will instantiate our mocked HelloHelper instead, and we don't have to change the file whose code we're unit testing.
+
+## Updated Helper Code
 
 As the HelloHelper class is instantiated by the HelperFactory we have to remove the `static` from the `getLoggedonUsername` function:
 
@@ -279,22 +264,69 @@ class HelloHelper
 }
 ```
 
+## Updated Dispatcher Code
+
+```php title="mod_hello/src/Dispatcher/Dispatcher.php"
+<?php
+
+namespace My\Module\Hello\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
+use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Application\CMSApplicationInterface;
+use Joomla\Input\Input;
+use Joomla\Registry\Registry;
+// highlight-start
+use Joomla\CMS\Helper\HelperFactoryAwareInterface;
+use Joomla\CMS\Helper\HelperFactoryAwareTrait;
+
+class Dispatcher implements DispatcherInterface, HelperFactoryAwareInterface
+{
+    use HelperFactoryAwareTrait;
+// highlight-end
+    
+    protected $module;
+    
+    protected $app;
+
+    public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
+    {
+        $this->module = $module;
+        $this->app = $app;
+    }
+    
+    public function dispatch()
+    {
+        $language = $this->app->getLanguage();
+        $language->load('mod_hello');
+        
+        // highlight-next-line
+        $username = $this->getHelperFactory()->getHelper('HelloHelper')->getLoggedonUsername('Guest');
+
+        $hello = Text::_('MOD_HELLO_GREETING') . $username;
+        
+        $params = new Registry($this->module->params);
+
+        require ModuleHelper::getLayoutPath('mod_hello');
+    }
+}
+```
+
 ## Manifest File
 
-We have to make the Joomla install process aware of the services/provider.php file and tell it that it's the entry point for our module:
-
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
-    <!-- highlight-next-line -->
     <version>1.0.8</version>
     <author>me</author>
     <creationDate>today</creationDate>
     <description>MOD_HELLO_DESCRIPTION</description>
     <namespace path="src">My\Module\Hello</namespace>
     <files>
-    <!-- highlight-next-line -->
         <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
@@ -315,6 +347,7 @@ We have to make the Joomla install process aware of the services/provider.php fi
                     name="header"
                     type="list"
                     label="MOD_HELLO_HEADER_LEVEL"
+                    default="h4"
                     >
                     <option value="h3">MOD_HELLO_HEADER_LEVEL_3</option>
                     <option value="h4">MOD_HELLO_HEADER_LEVEL_4</option>
@@ -326,21 +359,3 @@ We have to make the Joomla install process aware of the services/provider.php fi
     </config>
 </extension>
 ```
-
-We've also removed the line within `<files>` pointing to mod_hello.php. However, the Joomla installer won't delete this file in the target directory, but you can delete it manually if you wish.
-
-## Simplifying it all
-
-If you've waded through all the complexity above then congratulations on making it this far!
-
-However, modules in general follow a simple pattern:
-- get the data you want to display (putting any complex logic into a helper file), and,
-- display the data in a section of HTML
-
-If the module you want to develop follows this pattern then you can do the following:
-- keep the same services/provider.php file
-- keep the same Dispatcher.php file, but customise the getLayoutData to set up the data array to suit your requirements. Remember that the elements of this array get extracted into PHP variables (which are available in the tmpl file)
-- put any complex logic into functions within the helper file
-- using the data you set up, output the HTML in the tmpl file
-
-If you have more complex requirements then you may need to override more functionality in the Dispatcher.php file, but you can use AbstractModuleDispatcher as a basis.
