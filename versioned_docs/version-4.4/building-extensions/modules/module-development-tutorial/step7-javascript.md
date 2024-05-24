@@ -20,30 +20,29 @@ The source code is available at [mod_hello step 7](https://github.com/joomla/man
 To pass variables from PHP to js we use the [Document::addScriptOptions](https://api.joomla.org/cms-4/classes/Joomla-CMS-Document-Document.html#method_addScriptOptions) function. 
 
 ```php
-$document = $app->getDocument();
+$document = $this->app->getDocument();
 $document->addScriptOptions('vars', array('suffix' => "!"));
 ```
 
-We can get the `Document` instance (which is an object relating to what will be output in the HTML document) via the `$app` variable that is injected into our module by Joomla (as described in the previous step).
+We can get the `Document` instance (which is an object relating to what will be output in the HTML document) via the Application parameter that is injected into our module constructor by Joomla (as described in the previous step).
 
 Then in the js code we can retrieve the variables using:
 
 ```js
-let arr = Joomla.getOptions('vars');
+const arr = Joomla.getOptions('vars');
 console.log(arr);   // outputs Object { suffix: "!" }
 ```
 
 We'll set an HTML class "mod_hello" on the element we're going to update, so our js code is:
 
 ```js title="mod_hello/media/js/add-suffix.js
-jQuery(document).ready(function() {
-    let arr = Joomla.getOptions('vars');
-    let hello = document.getElementsByClassName('mod_hello');
-    if (hello != null) {
-        for (let i = 0; i < hello.length; i++) {
-            hello[i].innerText = hello[i].innerText + arr['suffix'];
-        }
-    }
+if (!window.Joomla) {
+  throw new Error('Joomla API was not properly initialised');
+}
+
+const { suffix } = Joomla.getOptions('vars');
+document.querySelectorAll('.mod_hello').forEach(element => {
+  element.innerText += suffix;
 });
 ```
 
@@ -66,31 +65,35 @@ Fur our js code file we create an asset in mod_hello/media/joomla.asset.json, as
       "type": "script",
       "uri": "mod_hello/add-suffix.js",
       "dependencies": [
-        "jquery"
+        "core"
       ],
+      "attributes": {
+        "type": "module"
+      },
       "version": "1.0.0"
     } 
   ]
 }
 ```
 
-We've used jQuery to identify when the DOM is ready, so we need to specify it as a dependency.
-The Web Asset Manager already knows about an asset called "jquery" because it's defined in media/vendor/joomla.asset.json, and it always processes this file during initialisation.
+We've used the function Joomla.getOptions to retrieve the suffix we set in the PHP code.
+This function is in the Joomla core.js javascript library (in media/system/js/core.js), so we need to include "core" as a dependency. 
 
-The Web Asset Manager doesn't automatically read the joomla.asset.json files of modules, so we need to tell it to process it, by calling `addRegistryFile` on the Web Asset Manager registry.
-Then we need to tell it that we want to use the "mod_hello.add-suffix" asset, so that our js file gets included in the HTML response:
+The Web Asset Manager already knows about an asset called "core" because it's defined in media/system/joomla.asset.json, and Joomla always processes this file during initialisation.
+
+The Web Asset Manager doesn't automatically read the joomla.asset.json files of modules, so we need to tell it to process it, by calling `addExtensionRegistryFile` on the Web Asset Manager registry.
+Then we need to tell it that we want to use the "mod_hello.add-suffix" asset, so that our js file gets included in the HTTP response:
 
 ```php
 $document = $app->getDocument();
 $wa = $document->getWebAssetManager();
-$wr = $wa->getRegistry();
-$wr->addRegistryFile('media/mod_hello/joomla.asset.json');
+$wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
 ```
 
-The Web Asset Manager orders the HTML `<script>` elements to  ensure that our dependency jQuery is loaded before our add-suffix.js. 
+The Web Asset Manager orders the HTML `<script>` elements to ensure that our dependency "core" is loaded before our add-suffix.js. 
 
-The above code could be included in our main module file, or in the tmpl file, but within Joomla the convention seems to be that it should go in the tmpl file.
+The above code could be included in our Dispatcher code or in the tmpl file, but within Joomla the convention seems to be that it should go in the tmpl file.
 
 Our updated tmpl file is:
 
@@ -101,8 +104,7 @@ defined('_JEXEC') or die;
 // highlight-start
 $document = $app->getDocument();
 $wa = $document->getWebAssetManager();
-$wr = $wa->getRegistry();
-$wr->addRegistryFile('media/mod_hello/joomla.asset.json');
+$wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
 
 // Pass the suffix to add down to js
@@ -122,17 +124,17 @@ $greeting = "<{$h} class='mod_hello'>{$hello}</{$h}>"
 We need to tell the Joomla installer to include our media folder, and to put those files below the /media/mod_hello folder. 
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <author>me</author>
     <creationDate>today</creationDate>
     <description>MOD_HELLO_DESCRIPTION</description>
     <namespace path="src">My\Module\Hello</namespace>
     <files>
-        <filename module="mod_hello">mod_hello.php</filename>
+        <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
     </files>
@@ -154,6 +156,7 @@ We need to tell the Joomla installer to include our media folder, and to put tho
                     name="header"
                     type="list"
                     label="MOD_HELLO_HEADER_LEVEL"
+                    default="h4"
                     >
                     <option value="h3">MOD_HELLO_HEADER_LEVEL_3</option>
                     <option value="h4">MOD_HELLO_HEADER_LEVEL_4</option>
