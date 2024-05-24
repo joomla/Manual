@@ -3,22 +3,32 @@ sidebar_position: 2
 title: Installing Extensions
 ---
 
-:::note TODO
+There are various methods for installing an extension in Joomla!, but ultimately, the extension is always installed using the same overall process.
 
-This section is missing, please use the **Edit this Page** link at the bottom of this page to add this section.
+## Installation Process
 
-:::
-
-There are various methods for installing an extension in Joomla!, but ultimately, the extension is always
-installed with the same functionality.
-
-# The Workflow explained
-
-:::note TODO
-
-This section is missing, please use the **Edit this Page** link at the bottom of this page to add this section.
-
-:::
+When you go to install extensions and select a zip file of an extension to install then this is an overview of what happens:
+(If you want to step through this process in a debugger then set a break at administrator/components/com_installer/src/Model/InstallModel.php::install)
+- imports the "installer" type plugins, and triggers the 'onInstallerBeforeInstallation' event
+- the zip file is stored in the Joomla /tmp folder, and then unzipped into a subfolder of /tmp
+- triggers the 'onInstallerBeforeInstaller' event
+- triggers the 'onExtensionBeforeInstall' event
+- loads the .sys.ini language file from the new install files (or failing that, from the existing extension directory)
+- reads basic information about the extension from the manifest file, for example, the type of the extension
+- performs a `require_once` of the installer script file
+- calls the script file `preflight` function
+- copies the extension files from the /tmp folder to their place within the Joomla instance - for example, when installing a site module mod_example, the code would be copied to /modules/mod_example
+- writes / updates the extension record in the database (ie this extension's record in the `#__extensions` table)
+- performs any functionality specific to that extension type. For example, for new installs of modules it creates a record in the `#__modules` table
+- applies any database changes required by this install. 
+- calls the script file `install` / `update` / `uninstall` function
+- tidy-up:
+    - If there's a record in the `#__updates` table saying that there's a new version available for this extension then it deletes it. 
+    - It copies the manifest file into the target extension directory (for components this will be the component directory under /administrator)
+- calls the script file `postflight` function
+- triggers the 'onExtensionAfterInstall' event
+- triggers the 'onInstallerAfterInstaller' event
+- performs some further tidy-up, eg deleting the temporary installation files
 
 ## Boilerplate manifest xml
 
