@@ -115,3 +115,5 @@ When you have made the source files updates you should zip up the mod_hello fold
 You shouldn't need to specify the publishing status, template position or menu assignment again - Joomla will continue to use what you specified before.
 
 When you redisplay a site page then you should see that the module displays the same as before, but now you can go into the administrator back-end to setup a template override.
+
+**However, if you do create a template override, then remember to delete it afterwards, otherwise the updates to the tmpl file in the later steps in this tutorial will not be visible.** 

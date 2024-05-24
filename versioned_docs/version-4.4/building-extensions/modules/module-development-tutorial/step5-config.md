@@ -72,7 +72,7 @@ This field becomes part of the form which is presented when an administrator cli
 Some parts of this `<config>` section are described below:
 - `<fields name="params">` results in the data being sent (in the HTTP POST parameters) in an array called `params`. This will map through to the database field "params" in this site module's record in the `#__modules` database table, where the params are stored as a JSON string.
 - `<fieldset name="basic">` results in the field being included in the Module tab within the form. If you specified "advanced" instead then it would appear in the Advanced tab.
-- `<field name="header">` you use this to get the value of the field
+- `<field name="header">` you use this to get the value of the field in your code
 - `<field type="list">` specifies the type of Joomla field that will be generated. The types of fields available are listed at [standard form field types](https://docs.joomla.org/Standard_form_field_types).
 - `<field label="MOD_HELLO_HEADER_LEVEL">` will get mapped to the HTML label for the field
 
@@ -82,29 +82,115 @@ Some parts of this `<config>` section are described below:
 
 ## Obtaining the parameter value
 
-When Joomla runs your module code it makes 5 variables available by default:
-1. `$module` - a PHP stdClass with fields which are mostly aligned to the fields of the module's record in the `#__modules` table. 
-2. `$app` - the `SiteApplication` instance
-3. `$input` - the `Input` class instance through which you can get details of the HTTP request's parameters (as described [here](../../../general-concepts/input.md))
-4. `$params` - a [Registry](https://github.com/joomla-framework/registry) instance containing the data of the module's params
-5. `$template` - a string containing the name of the site template, eg "cassiopeia"
-
-You can use these variables in your module code, but be careful not to change properties of `$module`, `$app` or `$input`, as these point to the real Joomla instances (ie they're not just copies).
-
-We can obtain the value of the params field using the `name` of the field (which is set to "header"):
+When Joomla instantiates your Dispatcher class it passes into the constructor 3 parameters:
 
 ```php
-$value = $params->get('header');
+public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
 ```
 
-We use this in our updated tmpl file:
+Let's look at each parameter in more detail.
+
+### Module Parameter
+
+The `$module` parameter is a structure with several fields related to the module, and several of these can be found in the `#__modules` database table. 
+In particular, the configuration parameters are held in a field called `params` in a JSON string. 
+
+To access the individual parameters you can use the Joomla [Registry class](https://github.com/joomla-framework/registry), which is a utility class for manipulating data structures. 
+
+In our Dispatcher constructor we'll store the `$module` as an instance variable, and then later access the 'header' parameter like this:
+
+```php
+use Joomla\Registry\Registry;
+
+$params = Registry($this->module->params);
+
+// and in the tmpl file:
+$h = $params->get('header', 'default');
+```
+
+See the [Registry API documentation](https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html) for details. 
+
+### Application Parameter
+
+The Application class is the central class of the Joomla application, and having access to it enables us to access many other Joomla class instances, such as the Language class in the previous tutorial step. 
+
+In our Dispatcher constructor we'll store it as an instance variable `$app`, and then use it to replace the line:
+
+```php
+$language = Factory::getApplication()->getLanguage();
+```
+
+with 
+
+```php
+$language = $this->app->getLanguage();
+
+```
+
+### Input Parameter
+
+This can be used to access URL parameters, as described in [Input documentation](../../../general-concepts/input.md), but there's no need to use it in mod_hello.
+
+## Updated Dispatcher File
+
+```php title="mod_hello/src/Dispatcher/Dispatcher.php"
+<?php
+
+namespace My\Module\Hello\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
+use Joomla\CMS\Helper\ModuleHelper;
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Application\CMSApplicationInterface;
+use Joomla\Input\Input;
+use Joomla\Registry\Registry;
+use My\Module\Hello\Site\Helper\HelloHelper;
+
+class Dispatcher implements DispatcherInterface
+{
+    // highlight-start
+    protected $module;
+    
+    protected $app;
+
+    public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
+    {
+        $this->module = $module;
+        $this->app = $app;
+    }
+    // highlight-end
+    
+    public function dispatch()
+    {
+        // highlight-next-line
+        $language = $this->app->getLanguage();
+        $language->load('mod_hello');
+        
+        $username = HelloHelper::getLoggedonUsername('Guest');
+
+        $hello = Text::_('MOD_HELLO_GREETING') . $username;
+        
+        // highlight-next-line
+        $params = new Registry($this->module->params);
+
+        require ModuleHelper::getLayoutPath('mod_hello');
+    }
+}
+```
+
+## Updated tmpl File
+
+Remember that the tmpl file will run in the same function context as our `dispatch()` function, so we can access the `$params` variable which we defined there.
 
 ```php title="mod_hello/tmpl/default.php"
 <?php
 defined('_JEXEC') or die;
 
 // highlight-start
-$h = $params->get('header');
+$h = $params->get('header', 'h4');
 $greeting = "<{$h}>{$hello}</{$h}>"
 // highlight-end
 ?>
