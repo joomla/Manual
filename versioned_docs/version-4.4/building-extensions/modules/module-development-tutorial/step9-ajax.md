@@ -69,17 +69,19 @@ Here's the updated tmpl file:
 <?php
 defined('_JEXEC') or die;
 
-$document = $app->getDocument();
+// highlight-next-line
+use Joomla\CMS\Language\Text;
+
+$document = $this->app->getDocument();
 $wa = $document->getWebAssetManager();
-$wr = $wa->getRegistry();
-$wr->addRegistryFile('media/mod_hello/joomla.asset.json');
+$wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
 
 // Pass the suffix to add down to js
-$document->addScriptOptions('vars', array('suffix' => "!"));
+$document->addScriptOptions('vars', ['suffix' => '!']);
 
 $h = $params->get('header', 'h4');
-$greeting = "<{$h} class='mod_hello'>{$hello}</{$h}>"
+$greeting = "<{$h} class='mod_hello'>{$hello}</{$h}>";
 
 // highlight-start
 Text::script('MOD_HELLO_AJAX_OK');
@@ -91,7 +93,7 @@ Text::script('JLIB_JS_AJAX_ERROR_OTHER');
 <!-- highlight-start -->
 <div>
     <p><?php echo Text::_('MOD_HELLO_NUSERS'); ?><span class="mod_hello_nusers"></span></p>
-    <button onclick="count_users();"><?php echo Text::_('MOD_HELLO_UPDATE_NUSERS'); ?></button>
+    <button class="mod_hello_updateusers"><?php echo Text::_('MOD_HELLO_UPDATE_NUSERS'); ?></button>
 </div>
 <!-- highlight-end -->
 ```
@@ -99,10 +101,10 @@ Text::script('JLIB_JS_AJAX_ERROR_OTHER');
 Here we've used the [Text::script](https://api.joomla.org/cms-4/classes/Joomla-CMS-Language-Text.html#method_script) function to pass language strings down to the javascript code.
 
 ```php
-Text::script('JLIB_JS_AJAX_ERROR_OTHER');
+Text::script('MOD_HELLO_AJAX_OK');
 ```
 
-will pass the language string 'JLIB_JS_AJAX_ERROR_OTHER' to make it available to the js code. This language string is in the lib_joomla.ini language file, and this is always loaded by Joomla as part of its initialisation.
+will pass the language string 'MOD_HELLO_AJAX_OK' to make it available to the js code. 
 
 We can then interpret this language string in javascript using:
 
@@ -112,42 +114,51 @@ Joomla.Text._('MOD_HELLO_AJAX_OK')
 
 You can find `Joomla.text` in the core.js library in media/system/js/core.js.
 
+The 'JLIB_JS_AJAX_ERROR_OTHER' language string is in the lib_joomla.ini language file, and this is always loaded by Joomla as part of its initialisation.
+
 ## javascript changes
 
 For convenience we'll just add our Ajax code into add-suffix.js. The additional lines are:
 
 ```js title="mod_hello/media/js/add-suffix.js
-function count_users() {
-    let nusers = event.target.parentElement.querySelector('span');
-    Joomla.request({
-        url: 'index.php?option=com_ajax&module=hello&method=count&format=json',
-        method: 'GET',
-        onSuccess(data) {
-            const response = JSON.parse(data);
-            if (response.success) {
-                nusers.innerText = response.data;
-                const confirmation = Joomla.Text._('MOD_HELLO_AJAX_OK').replace('%s', response.data);
-                Joomla.renderMessages({'info': [confirmation]});
-            } else {
-                const messages = {"error": [response.message]};
-                Joomla.renderMessages(messages);
-            }
-        },
-        onError(xhr) {
-            Joomla.renderMessages(Joomla.ajaxErrorsMessages(xhr));
-            const response = JSON.parse(xhr.response);
-            Joomla.renderMessages({"error": [response.message]}, undefined, true);
-        }
-    });
-}
+const countUsers = (event) => {
+  const nusers = event.target.parentElement.querySelector('span.mod_hello_nusers');
+  Joomla.request({
+    url: 'index.php?option=com_ajax&module=hello&method=count&format=json',
+    method: 'GET',
+    onSuccess(data) {
+      const response = JSON.parse(data);
+      if (response.success) {
+        nusers.innerText = response.data;
+        const confirmation = Joomla.Text._('MOD_HELLO_AJAX_OK').replace('%s', response.data);
+        Joomla.renderMessages({ 'info': [confirmation] });
+      } else {
+        const messages = { 'error': [response.message] };
+        Joomla.renderMessages(messages);
+      }
+    },
+    onError(xhr) {
+      Joomla.renderMessages(Joomla.ajaxErrorsMessages(xhr));
+      const response = JSON.parse(xhr.response);
+      Joomla.renderMessages({ 'error': [response.message] }, undefined, true);
+    }
+  });
+};
+
+document.querySelectorAll('.mod_hello_updateusers').forEach(element => {
+  element.addEventListener('click', countUsers);
+});
 ```
 
-`Joomla.request` is also in core.js and is described [here](../../../general-concepts/javascript/core.md). Of course you can use your own preferred way of initiating Ajax requests.
+We set an onclick listener on the Update button, which when clicked results in the Ajax call being triggered. 
+
+`Joomla.request` is in core.js and is described [here](../../../general-concepts/javascript/core.md). Of course you can use your own preferred way of initiating Ajax requests.
 
 `Joomla.renderMessages` is in media/system/js/messages.js and is used to display messages in the system message area of the HTML document. 
 Check the messages.js code for details of how to use it.
 
-Because our code now depends on these Joomla libraries we need to update the joomla.asset.json to define these as dependencies (although in practice core.js always gets downloaded). 
+Because our code now depends on "messages" as well as "core" we need to update the joomla.asset.json.
+
 Also we should update our javascript version number as that will ensure that any add-suffix.js code cached by the browser gets flushed. 
 
 ```json title="mod_hello/media/joomla.asset.json"
@@ -178,70 +189,39 @@ Also we should update our javascript version number as that will ensure that any
 When you logon to the administrator back-end Joomla displays a list of the logged-on users. 
 With a little investigation you can find that this is output by an administrator module administrator/modules/mod_logged and that it contains a method `getList` in its helper file which returns a list of the logged-on users.
 
-We use this function in our updated helper class:
+One option would be to use this code directly by making a call to \Joomla\Module\Logged\Administrator\Helper\LoggedHelper::getList() however reusing Joomla code like this is rather risky, as it could change between releases. 
+In particular, when the module is updated from the old style (Joomla 3) to including dependency injection, then the getList function changes from being a static function to an instance function.
+
+For this reason it's more straightforward just to copy the approach and use a similar database query, and the new lines in our helper file are as follows
 
 ```php title="mod_hello/src/Helper/HelloHelper.php"
-<?php
-
-namespace My\Module\Hello\Site\Helper;
-
-\defined('_JEXEC') or die;
-
-use Joomla\CMS\Factory;
-// highlight-start
-use Joomla\Registry\Registry;
 use Joomla\Database\DatabaseInterface;
-use Joomla\Module\Logged\Administrator\Helper\LoggedHelper;
 use Joomla\CMS\Language\Text;
-// highlight-end
-
-class HelloHelper
+...
+public function countAjax()
 {
-    public function getLoggedonUsername(string $default)
-    {
-        $user = Factory::getApplication()->getIdentity();
-        if ($user->id !== 0)  // found a logged-on user
-        {
-            return $user->username;
-        }
-        else
-        {
-            return $default;
-        }
+    $user = Factory::getApplication()->getIdentity();
+
+    if ($user->id == 0) {
+        // not logged on
+        throw new \Exception(Text::_('JERROR_ALERTNOAUTHOR'));
     }
 
-// highlight-start
-    public function countAjax() {
+    $db    = Factory::getContainer()->get(DatabaseInterface::class);
+    $query = $db->getQuery(true)
+        ->select('COUNT(*)')
+        ->from('#__session AS s')
+        ->where('s.guest = 0');
 
-        $user = Factory::getApplication()->getIdentity();
-        if ($user->id == 0)  // not logged on
-        {
-            throw new \Exception(Text::_('JERROR_ALERTNOAUTHOR'));
-        }
-        else
-        {
-            $params = new Registry(array('count' => 0));
-            $app = Factory::getApplication();
-            $db = Factory::getContainer()->get(DatabaseInterface::class);
-            $users = LoggedHelper::getList($params, $app, $db);
-            return (string)count($users);
-        }
-    }
-// highlight-end
+    $db->setQuery($query);
+
+    return (string) $db->loadResult();
 }
+
 ```
 
-The Registry is a utility class which you can find described [here](https://github.com/joomla-framework/registry).
-
-:::caution todo
-  Update link above when Registry documentation is moved to the manual
-:::
-
-Note how namespacing makes it very easy to reuse code from elsewhere within Joomla! 
-However, the risk is that the mod_logged module gets updated in a version of Joomla in a way that makes this call fail. 
-This is actually quite likely, as when this module is updated to use dependency injection then the function will change from being a static method to an instance method.
-
-If you incorporate Joomla code like this into your extension then you have to check each Joomla version upgrade carefully!
+Note that com_ajax uses `$module->getHelper(...)` on the module Extension class to find the Helper class (as is described in [step 8](./step8-dependency-injection.md#dependency-injection)).
+So you have to set up the HelperFactory in the services/provider.php file, as we have done in the dependency injection step. 
 
 ## New Language Strings
 
