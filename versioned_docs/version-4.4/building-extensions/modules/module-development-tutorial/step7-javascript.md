@@ -21,17 +21,19 @@ To pass variables from PHP to js we use the [Document::addScriptOptions](https:/
 
 ```php
 $document = $this->app->getDocument();
-$document->addScriptOptions('vars', array('suffix' => "!"));
+$document->addScriptOptions('mod_hello.vars', array('suffix' => "!"));
 ```
 
 We can get the `Document` instance (which is an object relating to what will be output in the HTML document) via the Application parameter that is injected into our module constructor by Joomla (as described in the previous step).
 
-Then in the js code we can retrieve the variables using:
+Then in the js code we can retrieve the variables using the same key "mod_hello.vars":
 
 ```js
-const arr = Joomla.getOptions('vars');
+const arr = Joomla.getOptions('mod_hello.vars');
 console.log(arr);   // outputs Object { suffix: "!" }
 ```
+
+You can set any string as the key for passing the Options, but it's conventional to start it with the extension name, because the data is passed in global storage, and this ensures that there isn't a clash with the key of another extension. 
 
 We'll set an HTML class "mod_hello" on the element we're going to update, so our js code is:
 
@@ -40,7 +42,7 @@ if (!window.Joomla) {
   throw new Error('Joomla API was not properly initialised');
 }
 
-const { suffix } = Joomla.getOptions('vars');
+const { suffix } = Joomla.getOptions('mod_hello.vars');
 document.querySelectorAll('.mod_hello').forEach(element => {
   element.innerText += suffix;
 });
@@ -108,7 +110,7 @@ $wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
 
 // Pass the suffix to add down to js
-$document->addScriptOptions('vars', array('suffix' => "!"));
+$document->addScriptOptions('mod_hello.vars', array('suffix' => "!"));
 // highlight-end
 
 $h = $params->get('header', 'h4');
