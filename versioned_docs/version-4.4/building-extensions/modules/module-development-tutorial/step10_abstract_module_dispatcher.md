@@ -13,7 +13,7 @@ In this step we look at AbstractModuleDispatcher and how we can simplify our cod
 
 The source code is available at [mod_hello step 10](https://github.com/joomla/manual-examples/tree/main/module-tutorial/step10_abstract_module_dispatcher). 
 
-## AbstractModuleDispatcher
+## AbstractModuleDispatcher Functionality
 
 The code for \Joomla\CMS\Dispatcher\AbstractModuleDispatcher is in libraries/src/Dispatcher/AbstractModuleDispatcher.php, and this class in turn extends \Joomla\CMS\Dispatcher\Dispatcher in libraries/src/Dispatcher/Dispatcher.php
 
@@ -52,7 +52,7 @@ Because of the similarity of our mod_hello Dispatcher and AbstractModuleDispatch
 - load the language
 - load the tmpl file
 
-We just have to override `getLayoutData` to add in the 'hello' element into the `$data` array, which will become the `$hello` variable when the PHP `extract` is executed.
+We just have to override `getLayoutData` to add the 'hello' element into the `$data` array, which will become the `$hello` variable when the PHP `extract` is executed.
 
 Our update Dispatcher file has several lines deleted and becomes:
 
@@ -92,7 +92,7 @@ class Dispatcher extends AbstractModuleDispatcher implements HelperFactoryAwareI
 }
 ```
 
-In our tmpl file we just have to remember to access the application using `$app` instead of `$this->app`:
+In our tmpl file we just have to remember to access the application using `$app` instead of `$this->app`. The `$hello` variable will be defined when the `extract` is performed on the `$data` array. 
 
 ```php title="mod_hello/tmpl/default.php"
 <?php
@@ -135,7 +135,7 @@ If the module you want to develop follows this pattern then you can do the follo
 - put any complex logic into functions within the helper file
 - using the data you set up, output the HTML in the tmpl file
 
-If you have more complex requirements then you may need to override more functionality in the Dispatcher.php file, but you can use AbstractModuleDispatcher as a basis.
+If you have more complex requirements then you may need to override more functionality in the Dispatcher.php file, but you can use AbstractModuleDispatcher as a base class.
 
 ## Updated Manifest File
 
