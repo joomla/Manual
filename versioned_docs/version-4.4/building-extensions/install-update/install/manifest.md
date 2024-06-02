@@ -87,10 +87,10 @@ This starting and closing tag is the same for all extensions. The following attr
 
 | Attribute                         | Values           | Applicable To    | Description                                              |
 | --------------------------------- | ---------------- | ---------------- | -------------------------------------------------------- |
-| type | component<br>file<br>language<br>library<br>module<br>package<br>plugin<br>template | All extensions | |
-| method | install<br>upgrade | All extensions | The install value (default) means the installer will gracefully stop if it finds any existing file/folder of the new extension<br>The upgrade value allows you to install an upgraded version on top of the existing version | 
-| client | site<br>administrator | Modules | Defines whether the module is a front-end site module or back-end administrator module |
-| group | *string* | Plugins | The group name specifies for which group of plugins the new plugin is available.<br>The existing groups are the folder names within the directory /plugins.<br>The installer will create new folder names for group names that do not exist yet. |
+| type | component<br/>file<br/>language<br/>library<br/>module<br/>package<br/>plugin<br/>template | All extensions | |
+| method | install<br/>upgrade | All extensions | The install value (default) means the installer will gracefully stop if it finds any existing file/folder of the new extension<br/>The upgrade value allows you to install an upgraded version on top of the existing version | 
+| client | site<br/>administrator | Modules | Defines whether the module is a front-end site module or back-end administrator module |
+| group | *string* | Plugins | The group name specifies for which group of plugins the new plugin is available.<br/>The existing groups are the folder names within the directory /plugins.<br/>The installer will create new folder names for group names that do not exist yet. |
 
 ## Metadata
 
@@ -202,8 +202,8 @@ Each `<menu>` item can define the following attributes:
 | Attribute          | Description                                                              |
 | ------------------ | ------------------------------------------------------------------------ |
 | link | A link to send the user to when the menu item is clicked. You can use "view" instead. |
-| view | An URL parameter to add to the link.<br> For example, `<menu view="cpanel">COM_EXAMPLE</menu>` in com_example's XML manifest would cause the URL of the menu item to be index.php?option=com_example&view=cpanel.<br> You can use "link" instead. |
-| img  | The (relative) path to an image (16x16 pixels) to appear beside the menu item.<br>Must be an url compatible as a file too (e.g. no spaces) ! |
+| view | An URL parameter to add to the link.<br/> For example, `<menu view="cpanel">COM_EXAMPLE</menu>` in com_example's XML manifest would cause the URL of the menu item to be index.php?option=com_example&view=cpanel.<br/> You can use "link" instead. |
+| img  | The (relative) path to an image (16x16 pixels) to appear beside the menu item.<br/>Must be an url compatible as a file too (e.g. no spaces) ! |
 | alt  | alt text for the link |
 
 You can also create links to dashboards - see the following section for details.
