@@ -34,11 +34,8 @@ The configuration is implemented by adding a section to the manifest file:
         <filename module="mod_hello">mod_hello.php</filename>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <folder>language</folder>
     </files>
-    <languages>
-        <language tag="en-GB">language/en-GB/mod_hello.ini</language>
-        <language tag="en-GB">language/en-GB/mod_hello.sys.ini</language>
-    </languages>
     <!-- highlight-start -->
     <config>
         <fields name="params">
@@ -167,7 +164,7 @@ class Dispatcher implements DispatcherInterface
     {
         // highlight-next-line
         $language = $this->app->getLanguage();
-        $language->load('mod_hello');
+        $language->load('mod_hello', JPATH_BASE . '/modules/mod_hello');
         
         $username = HelloHelper::getLoggedonUsername('Guest');
 

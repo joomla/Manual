@@ -124,13 +124,10 @@ All that remains is to update the manifest file to notify Joomla that there is a
         <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <folder>language</folder>
     </files>
     <!-- highlight-next-line -->
     <scriptfile>script.php</scriptfile>
-    <languages>
-        <language tag="en-GB">language/en-GB/mod_hello.ini</language>
-        <language tag="en-GB">language/en-GB/mod_hello.sys.ini</language>
-    </languages>
     <config>
         <fields name="params">
             <fieldset name="basic">

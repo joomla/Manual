@@ -61,6 +61,8 @@ The reason for the split is performance, to minimise the number of language cons
 
 We replace the English text in the manifest file with the language constants, and we also tell the Joomla installer where to find the language files:
 
+As described in the [Manifest File Languages section](../../install-update/install/manifest.md#languages), there are 2 ways of including language files in an extension, and we opt for the second approach.
+
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
@@ -77,13 +79,9 @@ We replace the English text in the manifest file with the language constants, an
         <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <!-- highlight-next-line -->
+        <folder>language</folder>
     </files>
-    <!-- highlight-start -->
-    <languages>
-        <language tag="en-GB">language/en-GB/mod_hello.ini</language>
-        <language tag="en-GB">language/en-GB/mod_hello.sys.ini</language>
-    </languages>
-    <!-- highlight-end -->
 </extension>
 ```
 
@@ -99,7 +97,7 @@ We can load the language .ini file in our module using:
 use Joomla\CMS\Factory;
 
 $language = Factory::getApplication()->getLanguage();
-$language->load('mod_hello');
+$language->load('mod_hello', JPATH_BASE . '/modules/mod_hello');
 ```
 
 We obtain the text associated with an individual language constant using:
@@ -138,7 +136,7 @@ class Dispatcher implements DispatcherInterface
     {
         // highlight-start
         $language = Factory::getApplication()->getLanguage();
-        $language->load('mod_hello');
+        $language->load('mod_hello', JPATH_BASE . '/modules/mod_hello');
         // highlight-end
         
         $username = HelloHelper::getLoggedonUsername('Guest');

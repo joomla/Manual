@@ -301,7 +301,7 @@ class Dispatcher implements DispatcherInterface, HelperFactoryAwareInterface
     public function dispatch()
     {
         $language = $this->app->getLanguage();
-        $language->load('mod_hello');
+        $language->load('mod_hello', JPATH_BASE . '/modules/mod_hello');
         
         // highlight-next-line
         $username = $this->getHelperFactory()->getHelper('HelloHelper')->getLoggedonUsername('Guest');
@@ -330,16 +330,13 @@ class Dispatcher implements DispatcherInterface, HelperFactoryAwareInterface
         <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <folder>language</folder>
     </files>
     <scriptfile>script.php</scriptfile>
     <media destination="mod_hello" folder="media">
         <filename>joomla.asset.json</filename>
         <folder>js</folder>
     </media>
-    <languages>
-        <language tag="en-GB">language/en-GB/mod_hello.ini</language>
-        <language tag="en-GB">language/en-GB/mod_hello.sys.ini</language>
-    </languages>
     <config>
         <fields name="params">
             <fieldset name="basic">

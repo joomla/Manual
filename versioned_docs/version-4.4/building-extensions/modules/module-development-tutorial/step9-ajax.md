@@ -258,16 +258,13 @@ MOD_HELLO_AJAX_OK="Ajax response: %s received ok"
         <folder module="mod_hello">services</folder>
         <folder>src</folder>
         <folder>tmpl</folder>
+        <folder>language</folder>
     </files>
     <scriptfile>script.php</scriptfile>
     <media destination="mod_hello" folder="media">
         <filename>joomla.asset.json</filename>
         <folder>js</folder>
     </media>
-    <languages>
-        <language tag="en-GB">language/en-GB/mod_hello.ini</language>
-        <language tag="en-GB">language/en-GB/mod_hello.sys.ini</language>
-    </languages>
     <config>
         <fields name="params">
             <fieldset name="basic">
