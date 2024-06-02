@@ -94,7 +94,7 @@ This starting and closing tag is the same for all extensions. The following attr
 
 ## Metadata
 
-The following elements can be used to insert metadata. Although not strictly required, you should define at least the `<name>`, `<author>`, '<version>` and `<description>` tags, all of which are used on the default administrator Manage Extensions form. 
+The following elements can be used to insert metadata. Although not strictly required, you should define at least the `<name>`, `<author>`, `<version>` and `<description>` tags, all of which are used on the default administrator Manage Extensions form. 
 
 ```xml
 <name> – extension name (e.g. com_banners). 
