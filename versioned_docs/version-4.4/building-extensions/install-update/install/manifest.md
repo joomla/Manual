@@ -19,7 +19,7 @@ This section covers the detailed definition of the XML in a Manifest File.
 
 It is important that you name your manifest file correctly. Otherwise you may find that your extension installs, but that your extension's namespace isn't built correctly, and your extension doesn't run.
 
-Here are the naming rules for the different extension types (as listed in [Building Extensions](../../building-extensions/index.md)):
+Here are the naming rules for the different extension types (as listed in [Building Extensions](../../../building-extensions/index.md)):
 
 **Components**: for a component called com_example you can use either com_example.xml or example.xml.
 
@@ -502,7 +502,7 @@ The key is added before the `onInstallerBeforePackageDownload` event is triggere
 This documents which manifest elements are supported during which installation of an extension.
 
 | Component | File | Language | Library | Module | Package | Plugin | Template |
-| --------- | ---- | -------- | ------- | ------ | ------- | ------ | -------- | 
+| :-------: | :--: | :------: | :-----: | :----: | :-----: | :----: | :------: | 
 | `<sql>` | yes | yes | no | no | yes | no | yes | no |
 | `<languages>` | yes | yes | no | yes | yes | yes | yes | yes | 
 | `<tag>` | no | no | yes | no | no | no | no | no |

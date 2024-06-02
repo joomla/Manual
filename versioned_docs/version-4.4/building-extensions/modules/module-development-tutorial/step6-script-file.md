@@ -27,7 +27,7 @@ An installation script file is a class with 5 functions:
 
 ## Install Process
 
-You should first read about the Joomla [Installation Process](../../install-update/install.md#installation-process), to get an understanding of how the script file fits into the overall process. 
+You should first read about the Joomla [Installation Process](../../install-update/install/install-process.md#installation-process), to get an understanding of how the script file fits into the overall process. 
 
 ## Script File
 
