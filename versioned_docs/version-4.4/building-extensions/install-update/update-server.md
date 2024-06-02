@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: Update Servers
 ---
 
@@ -88,6 +88,8 @@ There are 2 types of server: "extension" and "collection" (described in detail b
     <server type="extension" priority="2" name="My Extension's Updates">http://example.com/extension.xml</server>
  </updateservers>
 ```
+
+Don't use a language string for the `name` attribute - for some reason Joomla doesn't always try to translate it.
 
 ## Installing Updates
 
