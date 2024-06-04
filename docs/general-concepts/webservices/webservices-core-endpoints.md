@@ -169,7 +169,7 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/config/appli
 ```bash
 curl -X GET /api/index.php/v1/config/{component_name}
 ```
-Example “component_name” is “com_content”.
+Example ``component_name`` is ``com_content``.
 
 #### Update Application Config
 ```bash
@@ -525,7 +525,7 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/ov
 }
 ```
 - var app - enum {"site", "administrator"}
-- var lang_code - string Example: “fr-FR“, “en-GB“ you can get lang_code from v1/languages/content
+- var lang_code - string Example: ``"fr-FR"``, ``"en-GB"`` you can get lang_code from v1/languages/content
 
 #### Search Override Constant
 ```bash
@@ -537,7 +537,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/ove
 "searchtype": "constant"
 }
 ```
-- var searchtype - enum {“constant”, “value”}. “constant” search by constant name, “value” - search by constant value
+- var searchtype - enum ``{"constant", "value"}``. ``constant`` search by constant name, ``value`` - search by constant value
 #### Refresh Override Search Cache
 ```bash
 curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/overrides/search/cache/refresh
