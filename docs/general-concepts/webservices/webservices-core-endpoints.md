@@ -309,11 +309,11 @@ curl -X GET /api/index.php/v1/fields/groups/contacts/contact
 ```
 #### Get Single Group Fields Contact
 ```bash
-curl -X GET /api/index.php/v1/fields/groups/contacts/contact/{group_id}
+curl -X GET /api/index.php/v1/fields/groups/contacts/contact/\{group_id\}
 ```
 #### Delete Group Fields Contact
 ```bash
-curl -X DELETE /api/index.php/v1/fields/groups/contacts/contact/{group_id}
+curl -X DELETE /api/index.php/v1/fields/groups/contacts/contact/\{group_id\}
 ```
 #### Create Group Fields Contact
 ```bash
@@ -352,7 +352,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/fields/groups
 ```
 #### Update Group Fields Contact
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/fields/groups/contacts/contact/{group_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/fields/groups/contacts/contact/\{group_id\} -d
 ```
 ```json
 {
@@ -368,7 +368,7 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/fields/group
 - Route Group Fields Contact Categories is: "v1/fields/groups/contacts/categories"
 - Working with it is similar to Group Fields Contact.
 ### Content History
-- Route Content History is: "v1/contacts/{groupid}/contenthistory"
+- Route Content History is: "v1/contacts/\{groupid\}/contenthistory"
 - Working with it is similar to Banners Content History.
 
 ## Content
@@ -379,11 +379,11 @@ curl -X GET /api/index.php/v1/content/articles
 ```
 #### Get Single Article
 ```bash
-curl -X GET /api/index.php/v1/content/articles/{article_id}
+curl -X GET /api/index.php/v1/content/articles/\{article_id\}
 ```
 #### Delete Article
 ```bash
-curl -X DELETE /api/index.php/v1/content/articles/{article_id}
+curl -X DELETE /api/index.php/v1/content/articles/\{article_id\}
 ```
 #### Create Article
 ```bash
@@ -404,7 +404,7 @@ Currently the options mentioned here are required properties. However the intent
 
 #### Update Article
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/content/articles/{article_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/content/articles/\{article_id\} -d
 ```
 ```json
 {
@@ -425,7 +425,7 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/content/arti
 - Route Fields Categories is: "v1/fields/groups/content/categories"
 - Working with it is similar to Fields Contact.
 ### Content History
-- Route Content History is: "v1/content/articles/{article_id}/contenthistory"
+- Route Content History is: "v1/content/articles/\{article_id\}/contenthistory"
 - Working with it is similar to Banners Content History.
 
 ## Languages
@@ -450,11 +450,11 @@ curl -X GET /api/index.php/v1/languages/content
 ```
 #### Get Single Content Language
 ```bash
-curl -X GET /api/index.php/v1/v1/languages/content/{language_id}
+curl -X GET /api/index.php/v1/v1/languages/content/\{language_id\}
 ```
 #### Delete Content Language
 ```bash
-curl -X DELETE /api/index.php/v1/languages/content/{language_id}
+curl -X DELETE /api/index.php/v1/languages/content/\{language_id\}
 ```
 #### Create Content Language
 ```bash
@@ -478,7 +478,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/con
 ```
 #### Update Content Language
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/content/{language_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/content/\{language_id\} -d
 ```
 ```json
 {
@@ -494,19 +494,19 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/co
 ### Overrides Languages
 #### Get List of Overrides Languages Constants
 ```bash
-curl -X GET /api/index.php/v1/languages/overrides/{app}/{lang_code}
+curl -X GET /api/index.php/v1/languages/overrides/\{app\}/\{lang_code\}
 ```
 #### Get Single Override Language Constant
 ```bash
-curl -X GET /api/index.php/v1/languages/overrides/{app}/{lang_code}/{constant_id}
+curl -X GET /api/index.php/v1/languages/overrides/\{app\}/\{lang_code\}/\{constant_id\}
 ```
 #### Delete Content Language
 ```bash
-curl -X DELETE /api/index.php/v1/languages/overrides/{app}/{lang_code}/{constant_id}
+curl -X DELETE /api/index.php/v1/languages/overrides/\{app\}/\{lang_code\}/\{constant_id\}
 ```
 #### Create Content Language
 ```bash
-curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/overrides/{app}/{lang_code} -d
+curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/overrides/\{app\}/\{lang_code\} -d
 ```
 ```json
 {
@@ -516,7 +516,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/ove
 ```
 #### Update Content Language
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/overrides/{app}/{lang_code}/{constant_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/languages/overrides/\{app\}/\{lang_code\}/\{constant_id\} -d
 ```
 ```json
 {
@@ -547,19 +547,19 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/languages/ove
 ### Menus
 #### Get List of Menus
 ```bash
-curl -X GET /api/index.php/v1/menus/{app}
+curl -X GET /api/index.php/v1/menus/\{app\}
 ```
 #### Get Single Menu
 ```bash
-curl -X GET /api/index.php/v1/menus/{app}/{menu_id}
+curl -X GET /api/index.php/v1/menus/\{app\}/\{menu_id\}
 ```
 #### Delete Menu
 ```bash
-curl -X DELETE /api/index.php/v1/menus/{app}/{menu_id}
+curl -X DELETE /api/index.php/v1/menus/\{app\}/\{menu_id\}
 ```
 #### Create Menu
 ```bash
-curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/{app} -d
+curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/\{app\} -d
 ```
 ```json
 {
@@ -571,7 +571,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/{app} -
 ```
 #### Update Menu
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/menus/{app}/{menu_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/menus/\{app\}/\{menu_id\} -d
 ```
 ```json
 {
@@ -582,23 +582,23 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/menus/{app}/
 ### Menus Items
 #### Get List of Menus Items Types
 ```bash
-curl -X GET /api/index.php/v1/menus/{app}/items/types
+curl -X GET /api/index.php/v1/menus/\{app\}/items/types
 ```
 #### Get List of Menus Items
 ```bash
-curl -X GET /api/index.php/v1/menus/{app}/items
+curl -X GET /api/index.php/v1/menus/\{app\}/items
 ```
 #### Get Single Menu Item
 ```bash
-curl -X GET /api/index.php/v1/menus/{app}/items/{menu_item_id}
+curl -X GET /api/index.php/v1/menus/\{app\}/items/\{menu_item_id\}
 ```
 #### Delete Menu Item
 ```bash
-curl -X DELETE /api/index.php/v1/menus/{app}/items/{menu_item_id}
+curl -X DELETE /api/index.php/v1/menus/\{app\}/items/\{menu_item_id\}
 ```
 #### Create Menu Item
 ```bash
-curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/{app}/items -d
+curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/\{app\}/items -d
 ```
 ```json
 {
@@ -650,7 +650,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/menus/{app}/i
 
 #### Update Menu Item
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/menus/{app}/items/{menu_item_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/menus/\{app\}/items/\{menu_item_id\} -d
 ```
 ```json
 {
@@ -673,11 +673,11 @@ curl -X GET /api/index.php/v1/messages
 ```
 #### Get Single Message
 ```bash
-curl -X GET /api/index.php/v1/messages/{message_id}
+curl -X GET /api/index.php/v1/messages/\{message_id\}
 ```
 #### Delete Message
 ```bash
-curl -X DELETE /api/index.php/v1/messages/{message_id}
+curl -X DELETE /api/index.php/v1/messages/\{message_id\}
 ```
 #### Create Message
 ```bash
@@ -694,7 +694,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/messages -d
 ```
 #### Update Message
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/messages/{message_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/messages/\{message_id\} -d
 ```
 ```json
 {
@@ -709,23 +709,23 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/messages/{me
 ### Modules
 #### Get List of Modules Types
 ```bash
-curl -X GET /api/index.php/v1/modules/types/{app}
+curl -X GET /api/index.php/v1/modules/types/\{app\}
 ```
 #### Get List of Modules
 ```bash
-curl -X GET /api/index.php/v1/modules/{app}
+curl -X GET /api/index.php/v1/modules/\{app\}
 ```
 #### Get Single Module
 ```bash
-curl -X GET /api/index.php/v1/modules/{app}/{module_id}
+curl -X GET /api/index.php/v1/modules/\{app\}/\{module_id\}
 ```
 #### Delete Module
 ```bash
-curl -X DELETE /api/index.php/v1/modules/{app}/{module_id}
+curl -X DELETE /api/index.php/v1/modules/\{app\}/\{module_id\}
 ```
 #### Create Module
 ```bash
-curl -X POST -H "Content-Type: application/json" /api/index.php/v1/modules/{app} -d
+curl -X POST -H "Content-Type: application/json" /api/index.php/v1/modules/\{app\} -d
 ```
 ```json
 {
@@ -765,7 +765,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/modules/{app}
 
 #### Update Module
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/modules/{app}/{module_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/modules/\{app\}/\{module_id\} -d
 ```
 ```json
 {
@@ -868,11 +868,11 @@ curl -X GET /api/index.php/v1/privacy/requests
 ```
 #### Get Single Request
 ```bash
-curl -X GET /api/index.php/v1/privacy/requests/{request_id}
+curl -X GET /api/index.php/v1/privacy/requests/\{request_id\}
 ```
 #### Get Single Request Export Data
 ```bash
-curl -X GET /api/index.php/v1/privacy/request/export/{request_id}
+curl -X GET /api/index.php/v1/privacy/request/export/\{request_id\}
 ```
 #### Create Request
 ```bash
@@ -902,11 +902,11 @@ curl -X GET /api/index.php/v1/redirect
 ```
 #### Get Single Redirect
 ```bash
-curl -X GET /api/index.php/v1/redirect/{redirect_id}
+curl -X GET /api/index.php/v1/redirect/\{redirect_id\}
 ```
 #### Delete Redirect
 ```bash
-curl -X DELETE /api/index.php/v1/redirect/{redirect_id}
+curl -X DELETE /api/index.php/v1/redirect/\{redirect_id\}
 ```
 #### Create Redirect
 ```bash
@@ -925,7 +925,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/redirect -d
 ```
 #### Update Redirect
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/redirect/{redirect_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/redirect/\{redirect_id\} -d
 ```
 ```json
 {
@@ -942,11 +942,11 @@ curl -X GET /api/index.php/v1/tags
 ```
 #### Get Single Tag
 ```bash
-curl -X GET /api/index.php/v1/tags/{tag_id}
+curl -X GET /api/index.php/v1/tags/\{tag_id\}
 ```
 #### Delete Tag
 ```bash
-curl -X DELETE /api/index.php/v1/tags/{tag_id}
+curl -X DELETE /api/index.php/v1/tags/\{tag_id\}
 ```
 #### Create Tag
 ```bash
@@ -968,7 +968,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/tags -d
 ```
 #### Update Tag
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/tags/{tag_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/tags/\{tag_id\} -d
 ```
 ```json
 {
@@ -980,19 +980,19 @@ curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/tags/{tag_id
 ### Templates Styles
 #### Get List of Templates Styles
 ```bash
-curl -X GET /api/index.php/v1/templates/styles/{app}
+curl -X GET /api/index.php/v1/templates/styles/\{app\}
 ```
 #### Get Single Template Style
 ```bash
-curl -X GET /api/index.php/v1/templates/styles/{app}/{template_style_id}
+curl -X GET /api/index.php/v1/templates/styles/\{app\}/\{template_style_id\}
 ```
 #### Delete Template Style
 ```bash
-curl -X DELETE /api/index.php/v1/templates/styles/{app}/{template_style_id}
+curl -X DELETE /api/index.php/v1/templates/styles/\{app\}/\{template_style_id\}
 ```
 #### Create Template Style
 ```bash
-curl -X POST -H "Content-Type: application/json" /api/index.php/v1/templates/styles/{app} -d
+curl -X POST -H "Content-Type: application/json" /api/index.php/v1/templates/styles/\{app\} -d
 ```
 ```json
 {
@@ -1009,7 +1009,7 @@ curl -X POST -H "Content-Type: application/json" /api/index.php/v1/templates/sty
 ```
 #### Update Template Style
 ```bash
-curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/templates/styles/{app}/{template_style_id} -d
+curl -X PATCH -H "Content-Type: application/json" /api/index.php/v1/templates/styles/\{app\}/\{template_style_id\} -d
 ```
 ```json
 {
