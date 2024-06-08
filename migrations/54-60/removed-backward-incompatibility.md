@@ -22,3 +22,19 @@ There should be an explanation of how to mitigate the removals / changes.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42884
 - Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+
+### View classes do not have a database reference
+
+- PR: https://github.com/joomla/joomla-cms/pull/42962
+- Description: In Joomla 3 some views had a reference to the global database instance to check if a date is a special null date (0000-00-00 00:00:00). Since Joomla 4 all these dates are real null values and the database check is not used anymore. If there are some old template overrides in place with these checks, they can be removed.
+```php
+// Old:
+if ($this->item->created !== $this->db->getNullDate()) {
+	echo $this->item->created;
+}
+
+// New:
+if ($this->item->created !== null) {
+	echo $this->item->created;
+}
+```
