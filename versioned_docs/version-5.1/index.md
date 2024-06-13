@@ -17,4 +17,4 @@ But basically it shouldn't matter if the extension is provided by Joomla or by a
 This manual should help any kind of developer, if you are a template creator or just want to write the next
 Joomla shop system. Everything you need to understand Joomla development should be found here.
 If something is missing (this chance is really since we getting started this new documentation) please don't
-hasitate to contribute with a [github pull request](https://github.com/joomla/Manual/) to improve the manual for all of us.
+hesitate to contribute with a [github pull request](https://github.com/joomla/Manual/) to improve the manual for all of us.
