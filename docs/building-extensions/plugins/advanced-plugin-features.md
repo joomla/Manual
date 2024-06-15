@@ -6,7 +6,7 @@ Advanced Plugin features
 The decorator `Joomla\CMS\Event\LazyServiceSubscriber` allows to instantiate the plugin with heavy dependencies only when the event is actually dispatched.
 The plugin should implement `Joomla\Event\SubscriberInterface` to be able to use decorator.
 
-Note, that use of lazy decorator does not make sense when the plugin subscribed to the events that happening regularly, like `onAfterInitialise`.
+Note that the use of the lazy decorator does not make sense when the plugin is subscribed to events that happen regularly, like `onAfterInitialise`.
 
 Additionally, the interface `Joomla\CMS\Event\LazySubscriberInterface` allows to use [`LazyServiceEventListener`](https://github.com/joomla-framework/event/blob/2.0-dev/src/LazyServiceEventListener.php), however the plugin should implement it on its own.
 
