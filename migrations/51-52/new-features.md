@@ -19,7 +19,7 @@ PR: [43575](https://github.com/joomla/joomla-cms/pull/43575)
 
 ### com_ajax support Stringable result
 
-Allows to customise the response for com_ajax.
+Allows to customise the response for com_ajax, with help of `Joomla\CMS\String\StringableInterface`.
 
 PR: https://github.com/joomla/joomla-cms/pull/43530
 
