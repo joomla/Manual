@@ -37,10 +37,10 @@ function getAjax() {
     $result = new class() implements \Joomla\CMS\String\StringableInterface {
         public $title = '';
         public $text = '';
-    }
+    };
     
     $result->title = 'Foo';
-    $result->text => 'Bar';
+    $result->text = 'Bar';
     
     return $result;
 }
@@ -51,7 +51,7 @@ Example of customised `Joomla\CMS\Response\JsonResponse` response:
 ```php
 function getAjax() {
     $data   = $this->getData(); //... code to load your data
-    $result = new class($data, null, false, false) extends \Joomla\CMS\Response\JsonResponse implements \Joomla\CMS\String\StringableInterface {}
+    $result = new class($data, null, false, false) extends \Joomla\CMS\Response\JsonResponse implements \Joomla\CMS\String\StringableInterface {};
    
     return $result;
 }
