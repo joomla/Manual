@@ -1,5 +1,7 @@
-Subscriber Registration Checker
-================================
+Advanced plugin features
+========================
+
+## Subscriber Registration Checker
 
 Subscriber Registration Checker `Joomla\CMS\Event\SubscriberRegistrationCheckerInterface` interface allows the Plugin to be checked before listener registration.
 This allows the plugin to be registered only when special conditions are met, e.g., only for specific applications.

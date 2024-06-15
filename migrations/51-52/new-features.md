@@ -23,4 +23,4 @@ PR: [43575](https://github.com/joomla/joomla-cms/pull/43575)
 Adding interface that allows the Plugin to be checked before listener registration.
 PR: https://github.com/joomla/joomla-cms/pull/43657
 
-More details here [Subscriber Registration Checker](https://manual.joomla.org/docs/building-extensions/plugins/implementing-subscriber-registration-checker).
+More details here [Subscriber Registration Checker](https://manual.joomla.org/docs/building-extensions/plugins/advanced-plugin-features#subscriber-registration-checker).
