@@ -1,4 +1,4 @@
-Advanced plugin features
+Advanced Plugin features
 ========================
 
 ## Subscriber Registration Checker
