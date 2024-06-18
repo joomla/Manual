@@ -37,6 +37,11 @@ function getAjax() {
     $result = new class() implements \Joomla\CMS\String\StringableInterface {
         public $title = '';
         public $text = '';
+        
+        public function __toString(): string
+        {
+          return json_encode($this);
+        }
     };
     
     $result->title = 'Foo';
