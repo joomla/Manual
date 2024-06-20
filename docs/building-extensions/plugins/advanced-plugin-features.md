@@ -64,3 +64,7 @@ return new class () implements ServiceProviderInterface {
   }
 }
 ```
+
+With the regular plugin service the dependencies are instantiated whenever the plugin is instantiated, ie when its plugin type is imported.
+
+With the Lazy Subscriber the plugin service and its dependencies are instantiated only whenever one of the events to which the plugin service subscribes is triggered.
