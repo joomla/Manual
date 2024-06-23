@@ -128,7 +128,7 @@ return new class () implements ServiceProviderInterface {
 
         private function deleteUnexistingFiles()
         {
-          $files = [];
+          $files = [];  // overwrite this line with your files to delete
 
           if (empty($files)) {
             return;
