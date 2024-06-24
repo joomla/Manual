@@ -41,5 +41,7 @@ $wa->useScript('table.columns');
 #### Notes
 Your table will need to be a valid html table with a `<thead>` and each column a `<th>`.
 
+Your table can not include `<tfoot>` or `<colgroup>` or `<colspan>` elements. These will cause the table to display empty columns at the end of the row and will break any classes or styles applied in the `<colgroup>`. ([Tracking Issue](https://github.com/joomla/joomla-cms/issues/43564))
+
 If you have multiple tables on the page and you want to prevent the script loading on one of those tables then you can add the class "columns-order-ignore" to the table.
 
