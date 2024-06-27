@@ -98,7 +98,7 @@ Text::script('JLIB_JS_AJAX_ERROR_OTHER');
 <!-- highlight-end -->
 ```
 
-Here we've used the [Text::script](https://api.joomla.org/cms-4/classes/Joomla-CMS-Language-Text.html#method_script) function to pass language strings down to the javascript code.
+Here we've used the [Text::script](https://api.joomla.org/cms-5/classes/Joomla-CMS-Language-Text.html#method_script) function to pass language strings down to the javascript code.
 
 ```php
 Text::script('MOD_HELLO_AJAX_OK');
