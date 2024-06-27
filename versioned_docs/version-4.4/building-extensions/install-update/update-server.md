@@ -230,4 +230,3 @@ The following section describes the elements of a single update entity.
 The values of **element**, **type** and **folder** should match those in the table `#_extensions`, and the client_id there should match the **client** (0 for site, 1 for administrator).
 
 **Important for plugins**: Plugins have to include `<folder>` and `<client>` elements to work properly 
-
