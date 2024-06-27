@@ -21,7 +21,7 @@ An installation script file is a class with 5 functions:
 - preflight - called at the start of the install process
 - install, update, uninstall - called part way through the process:
     - install is called when the operation is an initial install of an extension
-    - update is called when the operation is an install of an existing extensions
+    - update is called when the operation is an install of an existing extension
     - uninstall is called when the operation is a removal of an extension
 - postflight - called at the end of the install process
 

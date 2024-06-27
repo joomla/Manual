@@ -24,7 +24,7 @@ $document = $this->app->getDocument();
 $document->addScriptOptions('mod_hello.vars', array('suffix' => "!"));
 ```
 
-We can get the `Document` instance (which is an object relating to what will be output in the HTML document) via the Application parameter that is injected into our module constructor by Joomla (as described in the previous step).
+We can get the `Document` instance (which is an object relating to what will be output in the HTML document) via the Application parameter that is injected into our module constructor by Joomla (as described in the previous tutorial step).
 
 Then in the js code we can retrieve the variables using the same key "mod_hello.vars":
 
@@ -80,8 +80,6 @@ Fur our js code file we create an asset in mod_hello/media/joomla.asset.json, as
 
 We've used the function Joomla.getOptions to retrieve the suffix we set in the PHP code.
 This function is in the Joomla core.js javascript library (in media/system/js/core.js), so we need to include "core" as a dependency. 
-
-The Web Asset Manager already knows about an asset called "core" because it's defined in media/system/joomla.asset.json, and Joomla always processes this file during initialisation.
 
 The Web Asset Manager doesn't automatically read the joomla.asset.json files of modules, so we need to tell it to process it, by calling `addExtensionRegistryFile` on the Web Asset Manager registry.
 Then we need to tell it that we want to use the "mod_hello.add-suffix" asset, so that our js file gets included in the HTTP response:

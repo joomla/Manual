@@ -2,7 +2,7 @@
 sidebar_position: 1
 title: Module Development Tutorial
 ---
-This is a multi-step tutorial which will take you through the developmnent of a Joomla site module. It is aimed at people who have a working knowledge of PHP and javascript, but have no experience in developing extensions for Joomla.
+This is a multi-step tutorial which will take you through the development of a Joomla site module. It is aimed at people who have a working knowledge of PHP and javascript, but have no experience in developing extensions for Joomla.
 
 Along the way you'll be introduced to some key Joomla concepts.
 

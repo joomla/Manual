@@ -57,6 +57,8 @@ Then the namespace prefix \My\Module\Hello\Site will point to this folder, and w
 
 Namespacing within Joomla is described in the [Namespaces section](../../../general-concepts/namespaces/index.md). 
 
+Manifest files are described in [Manifest Files](../../install-update/install/manifest.md).
+
 ### Service Provider File
 
 Put into mod_hello/services/provider.php the following code:
@@ -125,7 +127,7 @@ Click on "browse for file" and select your mod_hello.zip to get Joomla to instal
 
 together with text in your manifest file's `<description>` element.
 
-Joomla stores your code in the /modules folder. If you open that folder then you should see your mod_hello folder your file structure below.
+Joomla stores your code in the /modules folder. If you open that folder then you should see your mod_hello folder and your file structure below it.
 
 ## Making your Module Visible
 
