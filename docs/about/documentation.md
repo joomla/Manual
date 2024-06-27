@@ -110,6 +110,10 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 :::
 
+:::note[Joomla Issue]
+  For issues that affect the documentation - please link to the issue on the Joomla Issue Tracker
+:::
+
 :::tip
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
 :::
