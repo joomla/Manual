@@ -1,6 +1,6 @@
 {
   "name": "manual",
-  "version": "5.0",
+  "version": "5.1",
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
@@ -15,9 +15,10 @@
   },
   "dependencies": {
     "@cmfcmf/docusaurus-search-local": "^1.1.0",
-    "@docusaurus/core": "3.1.1",
-    "@docusaurus/preset-classic": "3.1.1",
-    "@docusaurus/theme-mermaid": "3.1.1",
+    "@docusaurus/core": "3.4.0",
+    "@docusaurus/plugin-sitemap": "^3.2.1",
+    "@docusaurus/preset-classic": "3.4.0",
+    "@docusaurus/theme-mermaid": "3.4.0",
     "@mdx-js/react": "^3.0.0",
     "clsx": "^1.2.1",
     "prism-react-renderer": "^2.1.0",
@@ -31,7 +32,7 @@
     }
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.1.1"
+    "@docusaurus/module-type-aliases": "3.4.0"
   },
   "browserslist": {
     "production": [

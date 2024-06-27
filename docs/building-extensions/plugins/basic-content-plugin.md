@@ -2,6 +2,10 @@
 title: Basic Content Plugin
 sidebar_position: 3
 ---
+
+Basic Content Plugin
+====================
+
 # Introduction
 In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
@@ -31,18 +35,18 @@ For general information on manifest files see [Manifest Files](https://docs.joom
     <version>1.0</version>
     <description>PLG_CONTENT_SHORTCODES_DESCRIPTION</description>
     <author>Me</author>
-	<creationDate>Today</creationDate>
+    <creationDate>Today</creationDate>
     <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
-	<license>GNU General Public License version 2 or later</license>
+    <license>GNU General Public License version 2 or later</license>
     <namespace path="src">My\Plugin\Content\Shortcodes</namespace>
     <files>
-		<folder plugin="shortcodes">services</folder>
-		<folder>src</folder>
-	</files>
+        <folder plugin="shortcodes">services</folder>
+        <folder>src</folder>
+    </files>
     <languages>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
-	</languages>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
+    </languages>
 </extension>
 ```
 

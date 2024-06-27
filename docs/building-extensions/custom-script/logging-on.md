@@ -3,20 +3,15 @@ title: To Logon or not to Logon
 sidebar_position: 2
 ---
 
-# To Logon or not to Logon
+To Logon or not to Logon
+========================
 
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. Depending on the usecase you should create a [console plugin](https://docs.joomla.org/J4.x:Writing_A_CLI_Application)
+rare cases. Depending on the usecase you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md)
 and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an
-[ajax plugin](https://docs.joomla.org/Using_Joomla_Ajax_Interface).
-
-:::
-
-:::note[TODO]
-
-Update the link to docs.joomla.org in the "Developer notice" above when an example has been added to this manual.
+[ajax plugin](../plugins/ajax-plugin.md).
 
 :::
 

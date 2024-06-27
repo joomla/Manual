@@ -2,10 +2,15 @@
 sidebar_position: 1
 title: Standard Form Fields
 ---
-# Standard Form Fields
+
+Standard Form Fields
+====================
+
 ## Introduction
+
 Joomla provides an extensive range of type of fields which you can use in your forms. The source code for these field types is found in the libraries/src/Form/Field directory, and nearly all of these are described at [Joomla standard form fields](https://docs.joomla.org/Standard_form_field_types).
 To use one of these in your form you simply set it as the `type`, as in the following example:
+
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <form>
@@ -15,6 +20,7 @@ To use one of these in your form you simply set it as the `type`, as in the foll
   />
 </form>
 ```
+
 The detailed descriptions of the [standard form field types](https://docs.joomla.org/Standard_form_field_types) also include the attributes you can associate with each form field type; for example you can find a general set of attributes associated with ordinary text input fields at [text field type](https://docs.joomla.org/Text_form_field_type).
 
 If you look at the list of standard form file types you'll see that they fall into a few different categories:
@@ -35,6 +41,7 @@ Many of the attributes of the fields in the form definition XML file map directl
 **class** - maps to the HTML class attribute of the field. It is used to define the [client-side validation](../../forms/client-side-validation.md) to be applied, in addition to the normal use by CSS
 
 **showon** - this controls whether a field appears in the form, dependent upon the value of another field. For example,
+
 ```xml
 <field name="radiofield" type="radio" default="1" >
   <option value="1">No showon</option>
@@ -42,6 +49,7 @@ Many of the attributes of the fields in the form definition XML file map directl
 </field>
 <field name="textfield" type="text" showon="radiofield:2"/>
 ```
+
 The text field is shown only if the radio field is set to 2. The condition can include operators `[AND]` or `[OR]`, as demonstrated in the [sample component code](../_assets/com_sample_form_field.zip) available for download. You can also use
 - `showon="radiofield!:2"` - shown if the value of `radiofield` is not equal to 2
 - `showon="somefield!:"` - shown if `somefield` has a value - ie it's not blank/null.
