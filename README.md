@@ -2,7 +2,7 @@
 
 This repository should hold all Joomla! documentation needed to develop extensions.
 
-The Documentation can be found at https://manual.joomla.org
+The Documentation can be found at [https://manual.joomla.org](https://manual.joomla.org)
 
 ## Contributing to the Joomla Manual
 
@@ -96,6 +96,7 @@ Don't use `<br>` to force a new line (eg in table text); use `<br/>` instead.
 You won't see the effect of these when you preview the Markdown text, but you will see them by previewing the Pull Request. 
 
 [Front Matter](https://docusaurus.io/docs/next/markdown-features#front-matter) should be used for titles and position in the left-hand sidebar:
+
 ```
 ---
 title: Best Practices
@@ -119,7 +120,9 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 
 ```
 :::note[Developer Note]
+
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
 :::
 
 :::note[Joomla Issue]
@@ -127,11 +130,15 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 :::
 
 :::tip
+
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
 :::
 
 :::info
+
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
 :::
 
 :::warning
@@ -139,7 +146,9 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 :::
 
 :::danger
+
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
+
 :::
 ```
 
