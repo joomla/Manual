@@ -3,20 +3,18 @@ sidebar_position: 2
 title: List Form Field
 ---
 
-
-
 The **list** form field type provides  a drop down list or a list box of custom-defined entries. If the field has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
--   **type** (mandatory) must be *list*.
--   **name** (mandatory) is the unique name of the field.
--   **label** (mandatory) (translatable) is the descriptive title of the
+- **type** (mandatory) must be *list*.
+- **name** (mandatory) is the unique name of the field.
+- **label** (mandatory) (translatable) is the descriptive title of the
     field.
--  *description** (optional) (translatable) is text that will be shown
+- **description** (optional) (translatable) is text that will be shown
      as a tooltip when the user moves the mouse over the field.
--   **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
--   **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
+- **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
+- **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 - **required** (optional) if set to true, the first field option should be empty, see last example.
--  **useglobal** (optional) if set to true, it will show the value that is set in the global configuration if found in the database.
+- **useglobal** (optional) if set to true, it will show the value that is set in the global configuration if found in the database.
 
 Implemented by: libraries/src/Form/Field/ListField.php
 
@@ -101,9 +99,10 @@ Since Joomla 3.9.0 one can use the `showon` attribute for `option` tags in a lis
 *    "Option 3" of `fieldb` is only displayed if option "TYPE_TEXT" is selected in `fielda`.
 *    "Option 2" of `fieldb` is only displayed if option "TYPE_TEXT" OR "TYPE_TEXTAREA" is selected in `fielda`.
 *    "Option 1" and "JNO" of `fieldb` is always displayed.
-* 
+ 
 ## See also
 
 * [Filelist form field type](./filelist.md)
 * [Folderlist form field type](./folderlist.md)
 * [Imagelist form field type](./imagelist.md)
+* [Custom Field extending ListField](../example-custom-fields.md#custom-field-extending-listfield)

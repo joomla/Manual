@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Ordering Form Field
 ---
 
-
 The **ordering** form field type provides a dropdown list of entries within a specified table along with `-First-` and `-Last-`.
 
 - **type** (mandatory) must be *ordering*.
@@ -15,7 +14,7 @@ As an example, see com_banners. In its table definition `##__com_banners` it has
 
 **Note** If you do not have a `catid` field then an error is thrown.
 
-Implemented by: libraries/src/Form/OrderingField.php
+Implemented by: libraries/src/Form/Field/OrderingField.php
 
 ## Example XML parameter definition
 
@@ -27,6 +26,7 @@ Implemented by: libraries/src/Form/OrderingField.php
         table="#__banners"
 />
 ```
+
 Based on the source code this returns the following entries in a list:  
 'today',  
 'past_week',  

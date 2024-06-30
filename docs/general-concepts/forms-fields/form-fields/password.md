@@ -10,13 +10,13 @@ The **password** form field type provides a text box for entry of a password. Th
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) is the default password.
 - **size** (optional) is the width of the text box in characters. If omitted the width is determined by the browser. The value of size does not limit the number of characters that may be entered.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
-- **lock** (optional) is a boolean value, if active it removes the password from the output and adds a Modify button to the password field. It only transmits data if the fields is in modify mode.
+- **lock** (optional) is a boolean value, if active it removes the password from the output and adds a Modify button to the password field. It only transmits data if the field is in modify mode.
 
-Implemented by: libraries/src/Form/PasswordField.php
+Implemented by: libraries/src/Form/Field/PasswordField.php
 
 ## Example XML parameter definition
 
@@ -30,5 +30,7 @@ Implemented by: libraries/src/Form/PasswordField.php
         size="5"
 />
 ```
+
 ## See also
+
 * [Text form field type](./text.md)

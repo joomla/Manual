@@ -10,13 +10,12 @@ The **language** form field type provides a drop down list of the installed lang
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
-- **client** (mandatory) is the application whose installed languages will be listed. Use site when you want to list the Frontend languages or administrator when you want to list the Backend languages.
-  **description** (optional) (translatable) is text that will be shown
+- **client** (mandatory) is the application whose installed languages will be listed. Use 'site' when you want to list the Frontend languages or 'administrator' when you want to list the Backend languages.
+- **description** (optional) (translatable) is text that will be shown
   as a tooltip when the user moves the mouse over the field.
 - **default** (optional) (translatable) is the default value.
--
 
-Implemented by: libraries/src/Form/LanguageField.php
+Implemented by: libraries/src/Form/Field/LanguageField.php
 
 ## Example XML parameter definition
 

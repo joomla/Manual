@@ -14,7 +14,7 @@ It does not appear to be used within Joomla 4 or 5.
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 
 
-Implemented by: libraries/src/Form/FrontendlanguageField.php
+Implemented by: libraries/src/Form/Field/FrontendlanguageField.php
 
 ## Example XML parameter definition
 

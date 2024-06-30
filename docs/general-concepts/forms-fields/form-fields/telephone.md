@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Telephone Form Field
 ---
 
-
 The **telephone** form field type provides a text box for telephone number data entry. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is selected. 
 
 * @link   https://html.spec.whatwg.org/multipage/input.html#telephone-state-(type=tel)
 * @see    \Joomla\CMS\Form\Rule\TelRule for telephone number validation
 
-- **type** (mandatory) must be *text*.
+- **type** (mandatory) must be *telephone*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
@@ -25,11 +24,11 @@ The **telephone** form field type provides a text box for telephone number data 
 - **hint** (optional) The text displayed in the html placeholder element, usually a lighter coloured hint displayed inside an blank field.
 - **inputtype** (optional) Set the HTML5 input type
 - **pattern** (optional) A regular expression pattern to use for validation.
-- **charcounter** (optional) (Joomla 4.3) Whether to show a character counter (true or false). Use in conjunction with `maxlength`. Default: false.
+- **charcounter** (optional) (from Joomla 4.3) Whether to show a character counter (true or false). Use in conjunction with `maxlength`. Default: false.
 
 The Text field can also take an array of option sub elements in order to show suggestions to user in the text field.
 
-Implemented by: libraries/src/Form/TelephoneField.php
+Implemented by: libraries/src/Form/Field/TelephoneField.php
 
 ## Example XML parameter definition
 
@@ -43,7 +42,9 @@ Implemented by: libraries/src/Form/TelephoneField.php
 />
 ```
 
-## Example - Use the integer filter to ensure that letters types get stripped when the form is processed.
+## Example - integer filter
+
+Use the integer filter to ensure that letters types get stripped when the form is processed.
 
 ```xml
 <field 
@@ -55,7 +56,9 @@ Implemented by: libraries/src/Form/TelephoneField.php
         filter="integer" 
 />
 ```
-## Example - Use the raw filter to ensure that html code is preserved when the form is processed.
+## Example - raw filter
+
+Use the raw filter to ensure that html code is preserved when the form is processed.
 
 ```xml
 <field
@@ -67,5 +70,6 @@ Implemented by: libraries/src/Form/TelephoneField.php
         filter="raw"
 />
 ```
+
 ## See also
 * [Textarea form field type](./textarea.md)

@@ -4,12 +4,12 @@ title: Number Form Field
 ---
 
 
-The **number** form field type provides a HTML5 text box with arrows. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is used. Available from Joomla 3.2
+The **number** form field type provides a HTML5 text box with arrows. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is used.
 
 - **type** (mandatory) must be *number*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) (translatable) is the default value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
 - **min** (optional) this value is the lowest that can be chosen.
@@ -24,9 +24,10 @@ The **number** form field type provides a HTML5 text box with arrows. If the fie
 - **autofocus** (optional) should this field have focus when page first time loads?
 - **size** (optional) the maximum field width in characters.
 
-Implemented by: libraries/src/Form/NumberField.php
+Implemented by: libraries/src/Form/Field/NumberField.php
 
-## Example XML parameter definition which would create a number box with possibility to chose values between 0 and 10 and change current value by 1 each time user click up/down field button.
+## Example XML parameter definition 
+This will create a number box allowing the user to choose values between 0 and 10 and change current value by 1 each time user click up/down field button.
 
 ```xml
 <field
@@ -40,3 +41,7 @@ Implemented by: libraries/src/Form/NumberField.php
         step="1"
 />
 ```
+
+## See also
+
+* [Integer field type](./integer.md)

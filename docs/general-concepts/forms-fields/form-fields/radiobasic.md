@@ -3,15 +3,17 @@ sidebar_position: 2
 title: Radiobasic Form Field
 ---
 
-**NOTE** This field is not currently used within Joomla and there is a PR to remove it in future Joomla releases ([https://github.com/joomla/joomla-cms/issues/19299)](https://github.com/joomla/joomla-cms/issues/19299)
+:::warning
+  This field type is deprecated in Joomla 5 and will be removed in Joomla 7, see [Removal of the radiobasic field](https://github.com/joomla/joomla-cms/issues/42974).
+ :::
 
-The **radio** form field type provides radio button inputs using default styling
+The **radiobasic** form field type provides radio button inputs using default styling
 
-- **type** (mandatory) must be *radio*.
+- **type** (mandatory) must be *radiobasic*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) is the default password.
 - **class** (optional) is a CSS class name for the HTML form field. 
 
@@ -21,7 +23,7 @@ The XML `<field>` element must include one or more `<option>` elements which def
 
 Tip: Don't forget to close the field definition with `</field>`.
 
-Implemented by: libraries/src/Form/RadiobasicField.php
+Implemented by: libraries/src/Form/Field/RadiobasicField.php
 
 ## Example XML parameter definition
 
@@ -36,7 +38,6 @@ Implemented by: libraries/src/Form/RadiobasicField.php
         <option value="1">2</option>
 </field>
 ```
-
 
 ## See also
 * [List form field type](./list.md)

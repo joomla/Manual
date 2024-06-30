@@ -3,19 +3,16 @@ sidebar_position: 2
 title: Checkboxes Form Field
 ---
 
-
 The **checkboxes** form field type provides a set of checkboxes.
 
-- **type** (mandatory) must be *checkbox*.
+- **type** (mandatory) must be *checkboxes*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
+- **label** (mandatory) (translatable) is the descriptive title of the field.
 - **option** (mandatory) contains a checkbox definition.
 - **checkedOptions** (optional) is a comma separated list of checked checkboxes value.
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the label.
 - **class** (optional) allows you set a css class for display.
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
-
 
 Implemented by: libraries/src/Form/Field/CheckboxesField.php
 
@@ -32,9 +29,10 @@ Implemented by: libraries/src/Form/Field/CheckboxesField.php
 </field>
 ```
 
+:::warning
+  Unlike most standard form field types, such as textfield or checkbox, this field is not an "out of the box" solution. It will create checkboxes for you, and submit their values in form of an array, but you will need to do further work to store the returned data in the database.
+:::
 
-[!WARNING]  
-Unlike most standard form field types, such as textfield or checkbox, this field is not an "out of the box" solution. It will create checkboxes for you, and submit their values in form of an array, but it will not store them in the database. 
 Example: 
 ```xml
 <field

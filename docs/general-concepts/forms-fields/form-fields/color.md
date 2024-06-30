@@ -12,7 +12,7 @@ The **color** form field type provides a color picker. Enter the color as #ff00f
 - **format** (optional) allows you to select the type of colour format, you can select rgb, rgba, hex.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
-  **description** (optional) (translatable) is text that will be shown
+- **description** (optional) (translatable) is text that will be shown
   as a tooltip when the user moves the mouse over the field.
 
 Implemented by: libraries/src/Form/Field/ColorField.php

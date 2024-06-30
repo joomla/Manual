@@ -3,11 +3,9 @@ sidebar_position: 2
 title: Workflowstage Form Field
 ---
 
-
 The **workflowstage** form field extends the **groupedlist** form field type. 
-In this case it shows all work flow stages grouped by workflow. 
+In this case it shows all workflow stages grouped by workflow. 
 If the field has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected. 
-
 
 - **type** (mandatory) must be *workflowstage*.
 - **name** (mandatory) is the unique name of the field.
@@ -15,7 +13,7 @@ If the field has a saved value this is selected when the page is first loaded. I
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) (not translatable) is the default help site URL (not the visible help site name).
 
-Implemented by: libraries/src/Form/WorkflowstageField.php
+Implemented by: libraries/src/Form/Field/WorkflowstageField.php
 
 ## Example XML parameter definition
 

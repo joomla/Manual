@@ -3,15 +3,14 @@ sidebar_position: 2
 title: Moduletag Form Field
 ---
 
+The **moduletag** form field type provides a dropdown list of html5 elements (used to wrap a module in).
 
-The **moduletag** form field type provides a dropdown list of h1 to h6 as options.
-
-- **type** (mandatory) must be *helpsite*.
+- **type** (mandatory) must be *moduletag*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 
-Implemented by: libraries/src/Form/ModuletagField.php
+Implemented by: libraries/src/Form/Field/ModuletagField.php
 
 ## Example XML parameter definition
 

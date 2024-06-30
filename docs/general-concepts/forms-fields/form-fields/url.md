@@ -26,7 +26,7 @@ $value = PunycodeHelper::urlToPunycode($value);
 - **validate** (optional) makes a validation.
 - **relative** (optional) set to true for relative URLs.
 
-Implemented by: libraries/src/Form/UrlField.php
+Implemented by: libraries/src/Form/Field/UrlField.php
 
 ## Example XML parameter definition
 
@@ -40,6 +40,8 @@ Implemented by: libraries/src/Form/UrlField.php
         size="10"
 />
 ```
-Both a url rule and a url input filter can assist with this insuring that valid url data are entered into this field field.
+
+Both a url rule and a url input filter can assist with this ensuring that valid url data are entered into this field.
+
 ## See also
 * [Text form field type](./text.md)

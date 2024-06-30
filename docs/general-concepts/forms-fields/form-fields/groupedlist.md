@@ -57,3 +57,4 @@ The `<group>` tag takes the following argument:
 * [Filelist form field type](./filelist.md)
 * [Folderlist form field type](./folderlist.md)
 * [Imagelist form field type](./imagelist.md)
+* [Custom Field extending GrouplistField](../example-custom-fields.md#custom-field-extending-groupedlistfield)

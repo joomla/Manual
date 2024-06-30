@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Rules Form Field
 ---
 
-
 The **rules** form field type provides a matrix of group by action options for managing access control.
 
 - **type** (mandatory) must be *rules*.
@@ -11,9 +10,9 @@ The **rules** form field type provides a matrix of group by action options for m
 - **label** (mandatory) (translatable) is the descriptive title of the field.
 - **component** (mandatory) sets the component to which the action options will apply.
 - **section** (mandatory) indicates the section of the access.xml actions the control should apply to. For example, "component" or "my_item_type".
--  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 
-Implemented by: libraries/src/Form/RulesField.php
+Implemented by: libraries/src/Form/Field/RulesField.php
 
 This field is often used in config.xml files for a custom extension.
 

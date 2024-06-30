@@ -3,18 +3,17 @@ sidebar_position: 2
 title: Note Form Field
 ---
 
-
 The **note** form field type makes it possible to create titles, texts, descriptions and even alert boxes. It also allows you to bring order in the settings for extensions, by separating them with useful titles. Or adding descriptions for certain settings (without having to rely on the tooltips). Or adding any other text you want.
 
 - **type** (mandatory) must be *note*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (optional if using description) (translatable) is the descriptive title of the field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **heading** (optional) the type of heading element to use for the label (optional) (default: h4)
 - **class** (optional) a  class name (or class names), like alert (see below for examples) (optional)
 - **close** (optional) a value of 'true' (for alerts) or the value for the data-dismiss of the Bootstrap close icon 
 
-Implemented by: libraries/src/Form/NoteField.php
+Implemented by: libraries/src/Form/Field/NoteField.php
 
 ## Example XML parameter definition
 

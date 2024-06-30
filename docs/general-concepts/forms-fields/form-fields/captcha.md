@@ -11,9 +11,9 @@ The **captcha** form field type provides access to an installed captcha plugin.
 - **label** (mandatory) (translatable) is the descriptive title of the
   field.
 - **validate** (mandatory) must be captcha.
-  **description** (optional) (translatable) is text that will be shown
+- **description** (optional) (translatable) is text that will be shown
   as a tooltip when the user moves the mouse over the field.
-- **namespace** (optional) is used on the com_contact component but I don't know enough about it to comment (from original docs.joomla.org).
+- **namespace** (optional) only relevant if there are 2 captchas on a page. If the 2 captchas have the same `namespace` then they will share the same Captcha object. If omitted, the `name` of the `form` object is used instead.
 
 Implemented by: libraries/src/Form/Field/CaptchaField.php
 
@@ -29,3 +29,12 @@ Implemented by: libraries/src/Form/Field/CaptchaField.php
         description="COM_CONTACT_CAPTCHA_DESC"
 />
 ```
+
+To use a Captcha on a form you must have:
+- downloaded and installed a Captcha plugin (eg from the [Joomla Extension Directory](https://extensions.joomla.org/))
+- enabled the Captcha plugin
+- set the Global Configuration / Site / Default Captcha parameter
+
+## See Also
+
+How to develop a [Captcha Plugin](../../../building-extensions/plugins/captcha-plugin.md). 

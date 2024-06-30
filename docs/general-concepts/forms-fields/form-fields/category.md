@@ -14,9 +14,9 @@ The **category** form field type provides a drop down list of all published cate
 - **scope** (optional) is an alias for extension.
 - **show_root** (optional) is whether a choice representing the root category will be shown.
 - **default** (optional) is the default category ID number.
-  **description** (optional) (translatable) is text that will be shown
+- **description** (optional) (translatable) is text that will be shown
   as a tooltip when the user moves the mouse over the field.
-- **class** (optional) allows you set a css class for display. If omitted this will default to 'inputbox
+- **class** (optional) allows you set a css class for display. If omitted this will default to 'inputbox'
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 
 

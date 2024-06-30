@@ -13,7 +13,7 @@ The **editor** form field type provides a WYSIWYG editor.
 - **width** (optional) defines the width (in pixels) of the WYSIWYG editor and defaults to 100%. (Currently not supported)
 - **height** (optional) defines the height (in pixels) of the WYSIWYG editor and defaults to 250px. (Currently not supported)
 - **cols** (optional) defines the width of the editor (in columns). (Currently not supported)
-- rows (optional) defines the height of the editor (in rows). (Currently not supported)
+- **rows** (optional) defines the height of the editor (in rows). (Currently not supported)
 - **buttons** (optional) can be an array of plugin buttons to be excluded or set to false. The default editors-xtd are: article, image, pagebreak and readmore.
 - **hide** (optional) array of plugin buttons to be hidden. E.g. set buttons="true" hide="readmore,pagebreak"
 - **editor** specifies the editor to be used and can include two options. (editor="desired|alternative")

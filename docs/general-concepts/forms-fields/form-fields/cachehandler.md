@@ -11,7 +11,7 @@ The **cachehandler** form field type provides a list of available cache handling
 -   **name** (mandatory) is the unique name of the field.
 -   **label** (mandatory) (translatable) is the descriptive title of the
     field.
--  *description** (optional) (translatable) is descriptive text for the field.
+-  **description** (optional) (translatable) is descriptive text for the field.
 -   **filter** (optional) filter to apply, normally use "word".
 
 Implemented by: libraries/src/Form/Field/CachehandlerField.php

@@ -3,16 +3,15 @@ sidebar_position: 2
 title: Plugins Form Field
 ---
 
-
-The **plugins** form field type provides a dropdown list of plugin options from the folder.
+The **plugins** form field type provides a dropdown list of plugins from the specified folder.
 
 - **type** (mandatory) must be *plugins*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
-- **folder** (mandatory) `editors` or `captcha`
--  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **folder** (mandatory) eg `editors` or `captcha`
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 
-Implemented by: libraries/src/Form/PluginsField.php
+Implemented by: libraries/src/Form/Field/PluginsField.php
 
 ## Example XML parameter definition
 
@@ -25,7 +24,9 @@ Implemented by: libraries/src/Form/PluginsField.php
         <option value="">JOPTION_USE_DEFAULT</option>
 </field>
 ````
+
 or
+
 ```xml
 <field  name="captcha" 
         type="plugins" 
@@ -37,5 +38,4 @@ or
         <option value="">JOPTION_USE_DEFAULT</option>
         <option value="0">JOPTION_DO_NOT_USE</option>
 </field>
-
 ```

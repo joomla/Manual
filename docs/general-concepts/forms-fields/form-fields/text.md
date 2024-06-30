@@ -22,11 +22,11 @@ The **text** form field type provides a text box for data entry. If the field ha
 - **hint** (optional) The text displayed in the html placeholder element, usually a lighter coloured hint displayed inside an blank field.
 - **inputtype** (optional) Set the HTML5 input type
 - **pattern** (optional) A regular expression pattern to use for validation.
-- **charcounter** (optional) (Joomla 4.3) Whether to show a character counter (true or false). Use in conjunction with `maxlength`. Default: false.
+- **charcounter** (optional) (from Joomla 4.3) Whether to show a character counter (true or false). Use in conjunction with `maxlength`. Default: false.
 
 The Text field can also take an array of option sub elements in order to show suggestions to user in the text field.
 
-Implemented by: libraries/src/Form/TextField.php
+Implemented by: libraries/src/Form/Field/TextField.php
 
 ## Example XML parameter definition
 
@@ -65,5 +65,6 @@ Implemented by: libraries/src/Form/TextField.php
         filter="raw"
 />
 ```
+
 ## See also
 * [Textarea form field type](./textarea.md)

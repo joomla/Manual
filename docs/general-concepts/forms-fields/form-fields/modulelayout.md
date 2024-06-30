@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Modulelayout Form Field
 ---
 
-
 The **modulelayout** form field type provides a drop down list of all available layouts for a view of an extension. If the parameter has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
 - **type** (mandatory) must be *modulelayout*.
@@ -18,7 +17,7 @@ Combining following attributes enable you to provide a drop down list of layouts
 - **client_id** (optional)  
   If 0 (site): Forces searching for layouts only in directories /modules/[MODULENAME]/tmpl/ and all /templates/[TEMPLATENAME]/html/[MODULENAME]/.   
   If 1 (administrator): Forces searching for layouts only in directories /administrator/modules/[MODULENAME]/tmpl/ and all /administrator/templates/[TEMPLATENAME]/html/[MODULENAME]/.
-- **template** (optional) is a template name (e.g. protostar or isis). If set forces searching for module template overrides only in this template.`
+- **template** (optional) is a template name (e.g. cassiopeia or atum). If set forces searching for module template overrides only in this template.`
 
 Implemented by: libraries/src/Form/Field/ModulelayoutField.php
 

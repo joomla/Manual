@@ -16,7 +16,7 @@ The **time** form field type provides a select list of integers with specified f
 - **layout**  (optional) The name of the layout being used to render the field, default "joomla.form.field.time"
 
 
-Implemented by: libraries/src/Form/TimeField.php
+Implemented by: libraries/src/Form/Field/TimeField.php
 
 ## Example XML parameter definition
 

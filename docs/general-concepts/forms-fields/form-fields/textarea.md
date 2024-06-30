@@ -17,7 +17,7 @@ The **textarea** form field type provides a dropdown list of h1 to h6 as options
 - **filter** (optional) allow the system to save certain html tags or raw data.
 - **hint** (optional) The text displayed in the html placeholder element, usually a lighter coloured hint displayed inside an blank field.
 
-Implemented by: libraries/src/Form/TextareaField.php
+Implemented by: libraries/src/Form/Field/TextareaField.php
 
 ## Example XML parameter definition
 

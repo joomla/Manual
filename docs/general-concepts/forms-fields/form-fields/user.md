@@ -14,7 +14,7 @@ The **user** form field type provides a modal select box of users.
 - **class** (optional) is a CSS class name for the HTML form field.
 - **size** (optional) is the width of the text box in characters. If omitted the width is determined by the browser. The value of size does not limit the number of characters that may be entered.
 
-Implemented by: libraries/src/Form/UserField.php
+Implemented by: libraries/src/Form/Field/UserField.php
 
 ## Example XML parameter definition
 
@@ -28,5 +28,6 @@ Implemented by: libraries/src/Form/UserField.php
         filter="unset"
 />
 ```
-### Note!
+
+### Note
 The user field only works on administration forms and should not be added to front-end forms. 

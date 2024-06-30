@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Subform Form Field
 ---
+
 TODO:: Rewrite Jquery and examples to use WebAssets.
 
 The **subform** form field type provides a method for using XML forms inside one another or reuse forms inside an existing form. If attribute `multiple` is set to `true` then the included form will be **repeatable**.
@@ -12,7 +13,7 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
 - **formsource** (mandatory) the form source to be included. A relative path to the xml file (relative to the root folder for the installed Joomla site) or a valid form name which can be found by `Factory::getContainer()->get(FormFactoryInterface::class)->createForm($name, $options);`.
--  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) is the default value, a JSON string.
 - **required** (optional) The field must be filled before submitting the form.
 - **message** (optional) The error message that will be displayed instead of the default message.
@@ -27,7 +28,7 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
   `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.  
   `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.  
   `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.
-- **validate** (optional) should be set to Subform (note that this is case-sensitive!) to ensure that fields in the subform are individually validated. Default: Fields in the subform are not validated, even if validation rules are specified.
+- **validate** (optional) should be set to 'Subform' (note that this is case-sensitive!) to ensure that fields in the subform are individually validated. Default: Fields in the subform are not validated, even if validation rules are specified.
 
 Implemented by: libraries/src/Form/SubformField.php
 

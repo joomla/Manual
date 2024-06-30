@@ -12,7 +12,7 @@ The **timezone** form field type provides a drop down list of time zones. If the
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) (translatable) is the default time zone. For example, use '-10' for '(UTC -10:00) Hawaii'.
 
-Implemented by: libraries/src/Form/TimezoneField.php
+Implemented by: libraries/src/Form/Field/TimezoneField.php
 
 ## Example XML parameter definition
 

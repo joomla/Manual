@@ -12,7 +12,7 @@ The **contenthistory** form field type provides a model popup showing the modifi
 
 
 
-Implemented by: libraries/src/Form/ContentHistoryField.php
+Implemented by: libraries/src/Form/Field/ContentHistoryField.php
 
 ## Example XML parameter definition
 

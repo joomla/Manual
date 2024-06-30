@@ -4,7 +4,7 @@ title: Spacer Form Field
 ---
 
 
-The **spacer** form field type provides a dropdown list of h1 to h6 as options.
+The **spacer** form field type provides a visual separator between parameter field elements. It is purely a visual aid and no field value is stored.
 
 - **type** (mandatory) must be *spacer*.
 - **name** (mandatory) is the unique name of the field.
@@ -13,7 +13,7 @@ The **spacer** form field type provides a dropdown list of h1 to h6 as options.
 - **hr** (optional) is whether to display a horizontal rule ('true' or 'false'). If this attribute is 'true', the label attribute will be ignored. 
 - **class** (optional) is a CSS class name for the HTML form field.
 
-Implemented by: libraries/src/Form/SpacerField.php
+Implemented by: libraries/src/Form/Field/SpacerField.php
 
 ## Example XML parameter definition
 

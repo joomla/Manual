@@ -16,7 +16,7 @@ If the field has a saved value this is selected when the page is first loaded. I
 - **default** (optional) (not translatable) is the default help site URL (not the visible help site name).
 - **workflow_stage** which stage is current. An integer value.
 
-Implemented by: libraries/src/Form/TransitionField.php
+Implemented by: libraries/src/Form/Field/TransitionField.php
 
 ## Example XML parameter definition
 

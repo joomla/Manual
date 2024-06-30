@@ -18,40 +18,40 @@ the text box. Otherwise the default value, if any, is displayed.
 - **disabled** (optional) is whether the text box is disabled (true or false). If the text box is disabled, the date
   cannot be changed, selected or copied.
 - **class** (optional) is a CSS class name for the HTML form field.
-- format** (optional) is the date format to be used. This is in the format used by PHP to specify date string formats (
-  see below). If no format argument is given, '%Y-%m-%d' is assumed (giving dates like '2017-05-15'). If showtime is
-  true then you will need to include some time fields, for example, '%Y-%m-%d %H:%i:%s'.
-- **filter** (optional) is time zone to be used. There are two main values: server_utc and user_utc. The first one is
+- **format** (optional) is the date format to be used. This is in the format used by PHP to specify date string formats (see below). 
+If no format argument is given, '%Y-%m-%d' is assumed (giving dates like '2017-05-15'). 
+If showtime is true then you will need to include some time fields, for example, '%Y-%m-%d %H:%i:%s'.
+- **filter** (optional) is time zone to be used. There are two main values: "server_utc" and "user_utc". The first one is
   server time zone and the later is user time zone as configured in global configuration and user information
   respectively. There is also a value of none which must be used if the server time zone is set to something other than
   UTC and showtime is false.
 - **translateformat** (optional) If set to true, the calendar will use the DATE_FORMAT_CALENDAR_DATE language key (if
   showtime is true) or DATE_FORMAT_CALENDAR_DATETIME (if showtime is false) to determine the format. The format
-  attribute is ignored. If false, the format attribute is used (same behaviour as prior to 3.7.0) but note that the
+  attribute is ignored. If false, the format attribute is used but note that the
   format string must include time fields for the time to be recorded. Defaults to false.
 - **showtime** (optional) If set to true and translateformat is true, the language key DATE_FORMAT_CALENDAR_DATETIME is
-  used, otherwise DATE_FORMAT_CALENDAR_DATE. (starting with 3.7.0). Defaults to false.
-- **timeformat** (optional): can be set to 12 or 24 (starting with 3.7.0). If set to 12, an additional selection is
+  used, otherwise DATE_FORMAT_CALENDAR_DATE. Defaults to false.
+- **timeformat** (optional): can be set to 12 or 24. If set to 12, an additional selection is
   available to the user to choose between AM and PM. This attribute does not affect how the date/time is saved. Defaults
   to 24.
-- **singleheader** (optional): if set to false, the year and the month selection will be set on two separates lines,
-  with independent selection (starting with 3.7.0). Defaults to false.
+- **singleheader** (optional): if set to false, the year and the month selection will be set on two separate lines,
+  with independent selection. Defaults to false.
 
 - **todaybutton** (optional): if set to true, a button is added at the bottom of the date picker to select the date of
-  the current day (starting with 3.7.0). Defaults to true.
+  the current day. Defaults to true.
 
 - **weeknumbers** (optional): if set to true, a column is added at the left of the date picker to display the number of
-  the week in the current year (starting with 3.7.0). Defaults to true.
+  the week in the current year. Defaults to true.
 
 - **filltable** (optional): if set to true, dates of the previous and next month are added at the top and bottom of the
-  current month to fill the grid (starting with 3.7.0). Defaults to true.
+  current month to fill the grid. Defaults to true.
 
 - **minyear** (optional): set a signed integer for a number of years (-10, -2, 0, 7, 12, ...) to define the relative
-  lower limit for the year selection. The user cannot select a year before this limit (starting with 3.7.0). If zero,
+  lower limit for the year selection. The user cannot select a year before this limit. If zero,
   which is the default, there is no limit.
 
 - **maxyear** (optional): set a signed integer for a number of years (-10, -2, 0, 7, 12, ...) to define the relative
-  upper limit for the year selection. The user cannot select a year after this limit (starting with 3.7.0). If zero,
+  upper limit for the year selection. The user cannot select a year after this limit. If zero,
   which is the default, there is no limit.
 
 Implemented by: libraries/src/Form/Field/CalendarField.php
@@ -130,6 +130,3 @@ such elements if there is a possibility that the front-end and back-end language
 
 Note: The calendar form field type does not support non-Gregorian calendars. If you need to support non-Gregorian
 calendars then you will need to create a custom form field type to support your calendar. 
-
-## Standard associated filters
-* **user_utc** - Calculates the specified value to the time of Greenwich, according to the user time zone settings.

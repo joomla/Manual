@@ -15,7 +15,7 @@ The **usergrouplist** form field type provides a  dropdown select box of user gr
 - **checksuperusergroup** (optional) is boolean to omit Super User groups. Values 1 or 0.
 - **multiple** (optional) If set to true then allows more than one usergroup to be selected.
 
-Implemented by: libraries/src/Form/UsergrouplistField.php
+Implemented by: libraries/src/Form/Field/UsergrouplistField.php
 
 ## Example XML parameter definition
 

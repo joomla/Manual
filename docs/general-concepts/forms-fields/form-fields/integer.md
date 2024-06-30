@@ -9,14 +9,14 @@ The **integer** form field type provides a select box with a range of integer va
 - **type** (mandatory) must be *integer*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the descriptive title of the field.
-  **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **default** (optional) (translatable) is the default value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
 - **first** (mandatory) this value is the lowest on the list.
 - **last** (mandatory) this value is the highest on the list.
 - **step** (mandatory) each option will be the previous option incremented by this integer, starting with the **first** value until the **last** value is reached.
 
-Implemented by: libraries/src/Form/IntegerField.php
+Implemented by: libraries/src/Form/Field/IntegerField.php
 
 ## Example XML parameter definition which would create a select box with the choices of 1,2,3,4,5,6,7,8,9,10:
 

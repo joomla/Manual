@@ -4,7 +4,7 @@ title: Templatestyle Form Field
 ---
 
 
-The **templatestyle** form field type provides a dropdown list of style options
+The **templatestyle** form field type provides a dropdown list of template style options
 
 - **type** (mandatory) must be *templatestyle*.
 - **name** (mandatory) is the unique name of the field.
@@ -12,10 +12,9 @@ The **templatestyle** form field type provides a dropdown list of style options
 - **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
 - **client** (optional) site or administrator, defaults to site.
 - **class** (optional) for styling.
-- **multiple** (optional) is whether multiple items can be selected at the same time (true or false). In Joomla 4 it is recommended to use additionally `layout="joomla.form.field.groupedlist-fancy-select"` in the field declaration (= `chosen` replacement).
+- **multiple** (optional) is whether multiple items can be selected at the same time (true or false). In Joomla 4 it is recommended to use additionally `layout="joomla.form.field.groupedlist-fancy-select"` in the field declaration (replacement for the 'chosen' library used previously).
 
-
-Implemented by: libraries/src/Form/TemplatestyleField.php
+Implemented by: libraries/src/Form/Field/TemplatestyleField.php
 
 ## Example XML parameter definition
 
