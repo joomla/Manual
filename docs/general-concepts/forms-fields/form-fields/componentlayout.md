@@ -7,11 +7,11 @@ The **componentlayout** form field type provides a drop down list of all availab
 
 - **type** (mandatory) must be *componentlayout*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **extension** (mandatory) is the name of the extension for which the layouts will be retrieved (e.g. 'com_content').
 - **view** (mandatory) is the name of the view for which the layouts will be retrieved (e.g. 'article').
 - **useglobal** (optional) if set to true, it will show the value that is set in the global configuration if found in the database.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 
 Implemented by: libraries/src/Form/Field/ComponentlayoutField.php
 

@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Number Form Field
 ---
 
-
 The **number** form field type provides a HTML5 text box with arrows. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is used.
 
 - **type** (mandatory) must be *number*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (translatable) is the default value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
 - **min** (optional) this value is the lowest that can be chosen.

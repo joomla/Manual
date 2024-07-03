@@ -8,11 +8,9 @@ The **captcha** form field type provides access to an installed captcha plugin.
 
 - **type** (mandatory) must be *captcha*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **validate** (mandatory) must be captcha.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **validate** (mandatory) must be "captcha".
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **namespace** (optional) only relevant if there are 2 captchas on a page. If the 2 captchas have the same `namespace` then they will share the same Captcha object. If omitted, the `name` of the `form` object is used instead.
 
 Implemented by: libraries/src/Form/Field/CaptchaField.php

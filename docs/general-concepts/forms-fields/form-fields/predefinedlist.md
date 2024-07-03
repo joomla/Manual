@@ -3,15 +3,14 @@ sidebar_position: 2
 title: Predefinedlist Form Field
 ---
 
-
 The **predefinedlist** form field type provides a drop down list of pre-defined entries. If the field has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
 Largely the configuration options are the same as that of the list field however the values for the field are created by the predefinedOptions class variable. So the following variables have the same meaning as the list field.
 
 - **type** (mandatory) must be *predefinedlist*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default list item value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
 - **multiple** (optional) is whether multiple items can be selected at the same time (true or false).

@@ -12,8 +12,8 @@ $value = PunycodeHelper::urlToPunycode($value);
 
 - **type** (mandatory) must be *url*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default value.
 - **size** (optional) is the width of the text box in characters. If omitted the width is determined by the browser. The value of size does not limit the number of characters that may be entered.
 - **maxlength** (optional) limits the number of characters that may be entered.
@@ -21,7 +21,7 @@ $value = PunycodeHelper::urlToPunycode($value);
 - **readonly** (optional) The field cannot be changed and will automatically inherit the default value. (Possible values: "true", "1", "readonly" to set to true)
 - **disabled** (optional) The field cannot be changed and will automatically inherit the default value - it will also not submit. (Possible values: "true", "1", "readonly" to set to true)
 - **required** (optional) The field must be filled before submitting the form. (Possible values: "true", "1", "readonly" to set to true)
-- **filter** (optional) allow the system to save certain html tags or raw data.
+- **filter** (optional) is the [filter](../standard-form-field-attributes.md#filter) to apply.
 - **hint** (optional) The text displayed in the html placeholder element, usually a lighter coloured hint displayed inside an blank field.
 - **validate** (optional) makes a validation.
 - **relative** (optional) set to true for relative URLs.

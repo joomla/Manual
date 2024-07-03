@@ -7,7 +7,7 @@ The **ordering** form field type provides a dropdown list of entries within a sp
 
 - **type** (mandatory) must be *ordering*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **table** (mandatory) is content table for items needing to be in order.
 
 As an example, see com_banners. In its table definition `##__com_banners` it has a `catid` field which contains the category number of the linked category and also a `ordering` field which keeps the number of each banner, 1,2,3 etc.

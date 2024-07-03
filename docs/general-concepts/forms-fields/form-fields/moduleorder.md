@@ -7,8 +7,8 @@ The **moduleorder** form field type provides a drop down to set the ordering of 
 
 - **type** (mandatory) must be *moduleorder*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 
 Implemented by: libraries/src/Form/Field/ModuleorderField.php
 

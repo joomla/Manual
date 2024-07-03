@@ -1,10 +1,18 @@
 ---
 sidebar_position: 1
-title: Form Fields in Joomla 5.
+title: Standard Form Fields List
 ---
-# Form Fields in Joomla 5.
+
+# Standard Form Fields
+
 ## Introduction
-The following is a full list of all supplied form fields available in Joomla 5.0.3.
+
+Joomla provides an extensive range of type of fields which you can use in your forms. The source code for these field types is found in the libraries/src/Form/Field directory, and are described in this section of the Joomla Manual.
+
+To try out a standard form field you can download the `com_exampleform` component from [Exampleform component](https://github.com/joomla/manual-examples/tree/main/component-exampleform), and edit the /site/forms/example_form.xml to include the field you want to investigate.
+
+## List of Standard Form Fields
+The following is a full list of all supplied form fields available in this release.
 
 | Type                                                                          | Description                                                                                                                                                                          | 
 |-------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -46,7 +54,6 @@ The following is a full list of all supplied form fields available in Joomla 5.0
 | [Menu](./form-fields/menu.md)                                                 | Provides a drop down list of the available menus from your Joomla site.                                                                                                              |
 | [Menu Item](./form-fields/menuitem.md)                                        | Provides a drop down list of the available menu items from your Joomla site.                                                                                                         |
 | [Meter](./form-fields/meter.md)                                               | Provides a meter to show value in a range.                                                                                                                                           |
-| [Modal Select](./form-fields/modalselect.md)                                  | Provides a pop up modal window displaying content and a selection field that can have specific actions such as select, edit, new.                                                    |
 | [Module Layout](./form-fields/modulelayout.md)                                | Provides a list of alternative layout for a module grouped by core and template.                                                                                                     |
 | [Module Order](./form-fields/moduleorder.md)                                  | Provides a drop down to set the ordering of module in a given position                                                                                                               |
 | [Module Position](./form-fields/moduleposition.md)                            | Provides a text input to set the position of a module.                                                                                                                               |

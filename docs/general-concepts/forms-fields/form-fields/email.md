@@ -3,15 +3,12 @@ sidebar_position: 2
 title: Email Form Field
 ---
 
-
 The **email** form field type provides an input field for an email address.
 
 - **type** (mandatory) must be *email*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **size** (optional) determines the size of the field on the screen.
 - **required** (optional) "true" to enforce a value.
 - **class** (optional) for styling.

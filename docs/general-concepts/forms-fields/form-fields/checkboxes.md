@@ -7,10 +7,10 @@ The **checkboxes** form field type provides a set of checkboxes.
 
 - **type** (mandatory) must be *checkboxes*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **option** (mandatory) contains a checkbox definition.
 - **checkedOptions** (optional) is a comma separated list of checked checkboxes value.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **class** (optional) allows you set a css class for display.
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 

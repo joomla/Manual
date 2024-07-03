@@ -11,9 +11,9 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 
 - **type** (mandatory) must be *subform*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **formsource** (mandatory) the form source to be included. A relative path to the xml file (relative to the root folder for the installed Joomla site) or a valid form name which can be found by `Factory::getContainer()->get(FormFactoryInterface::class)->createForm($name, $options);`.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) is the default value, a JSON string.
 - **required** (optional) The field must be filled before submitting the form.
 - **message** (optional) The error message that will be displayed instead of the default message.

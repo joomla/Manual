@@ -7,8 +7,8 @@ The **combo** form field type provides a combobox field, which offers a list lik
 
 - **type** (mandatory) must be *combo*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the label.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **class** (optional) allows you set a css class for display. If omitted this will default to 'combobox'.
 - **readonly** (optional) set to "true", meaning not editable, defaults to false.
 - **disabled** (optional) set to "true", meaning not enabled, defaults to false.

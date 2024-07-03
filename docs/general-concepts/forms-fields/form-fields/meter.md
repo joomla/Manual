@@ -8,8 +8,8 @@ See [Bootstrap Progress Bar](https://getbootstrap.com/2.3.2/components.html#prog
 
 - **type** (mandatory) must be *meter*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **class** (optional) is a CSS class name for the HTML form field.
 - **size** (optional) sets the input size of the field.
 - **default** (optional) the initial value of the progress bar.

@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Range Form Field
 ---
 
-
 The **range** form field type provides a horizontal slider for numeric input. While the default value can be set, there is no indication of the actual value being chosen, just the position of the slider’s thumb.
 
 - **type** (mandatory) must be *range*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (optional) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (optional) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) the initial value.
 - **class** (optional) is a CSS class name for the HTML form field.
 - **min** (optional) the lowest value that can be chosen.

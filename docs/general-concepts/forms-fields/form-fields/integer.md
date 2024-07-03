@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Integer Form Field
 ---
 
-
 The **integer** form field type provides a select box with a range of integer values. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is selected.
 
 - **type** (mandatory) must be *integer*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (translatable) is the default value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
 - **first** (mandatory) this value is the lowest on the list.

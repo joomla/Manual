@@ -7,10 +7,8 @@ The **media** form field type provides modal access to the media manager for the
 
 - **type** (mandatory) must be *media*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-    field.
-- **description** (optional) (translatable) is text that will be shown
-     as a tooltip when the user moves the mouse over the drop-down box.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **directory** (optional) (translatable) is the directory from which the user will be able to choose a file. This attribute should be relative to the top level /images/ folder. The default is that the user will be confined to the top level /images/ folder.
 -  **preview** (optional) shows or hides the preview of the currently chosen image. ("true": Show always, "tooltip": Show as tooltip, "false": Show never). Default is "tooltip".
 - **preview_width** (optional) sets the max-width of preview image (default: "200").

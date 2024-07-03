@@ -7,10 +7,8 @@ The **list** form field type provides  a drop down list or a list box of custom-
 
 - **type** (mandatory) must be *list*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-    field.
-- **description** (optional) (translatable) is text that will be shown
-     as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 - **required** (optional) if set to true, the first field option should be empty, see last example.
@@ -20,8 +18,8 @@ Implemented by: libraries/src/Form/Field/ListField.php
 
 The XML `<field>` element must include one or more `<option>` elements which define the list items. The text between the `<option>` and `</option>` tags is what will be shown in the drop down list and is a translatable string. The `<option>` tag takes the following argument:
 
--    **value** (mandatory) is the value that will be saved for the field if this item is selected.
- -   **requires** (optional) Values: multilanguage, associations and adminlanguage can be used.
+- **value** (mandatory) is the value that will be saved for the field if this item is selected.
+- **requires** (optional) Values: multilanguage, associations and adminlanguage can be used.
 
 Tip: Don't forget to close the field definition with `</field>`.
 
@@ -62,11 +60,11 @@ Tip: Some values for "name" field are reserved, so don't use them and avoid prob
 
 ## Showon attribute for list options
 
-Since Joomla 3.9.0 one can use the `showon` attribute for `option` tags in a list field.
+Since Joomla 3.9.0 one can use the [showon](../standard-form-field-attributes.md#showon) attribute for `option` tags in a list field.
 
-* See [Showon documentation](https://docs.joomla.org/Special:MyLanguage/Form_field#Showon).
-    This feature was introduced with the [Pull Request #18998](https://github.com/joomla/joomla-cms/pull/18998).
-#### Example XML parameter definition for two list fields `fielda` and `fieldb` where the displayed options of `fieldb` are controlled by selections in `fielda`
+This feature was introduced with the [Pull Request #18998](https://github.com/joomla/joomla-cms/pull/18998).
+
+## Example XML parameter definition for two list fields `fielda` and `fieldb` where the displayed options of `fieldb` are controlled by selections in `fielda`
 
 ```xml
 <field

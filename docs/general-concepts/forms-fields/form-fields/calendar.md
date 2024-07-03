@@ -10,9 +10,8 @@ the text box. Otherwise the default value, if any, is displayed.
 
 - **type** (mandatory) must be *calendar*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is descriptive text for the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **readonly** (optional) is whether the text box is read-only (true or false). If the text box is read-only, the date
   cannot be changed, but can be selected and copied. No calendar icon will be shown.
 - **disabled** (optional) is whether the text box is disabled (true or false). If the text box is disabled, the date

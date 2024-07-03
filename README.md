@@ -120,9 +120,7 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 
 ```
 :::note[Developer Note]
-
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
-
 :::
 
 :::note[Joomla Issue]
@@ -130,15 +128,11 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 :::
 
 :::tip
-
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
-
 :::
 
 :::info
-
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
-
 :::
 
 :::warning
@@ -146,9 +140,7 @@ We don't use blank lines around content, and we add 2 spaces before the text mes
 :::
 
 :::danger
-
   Some **content** with _Markdown_ `syntax`. Check [this `api`](#).
-
 :::
 ```
 

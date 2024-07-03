@@ -3,19 +3,16 @@ sidebar_position: 2
 title: Checkbox Form Field
 ---
 
-
 The **checkbox** form field type provides a single checkbox. If the parameter has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
 - **type** (mandatory) must be *checkbox*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
+- **label** (mandatory) (translatable) is the field html label.
 - **value** (optional) is the value of the parameter if this checkbox is set (usually 1).
 - **checked** (optional) should be set to 1 to check the checkbox by default or 0 if not.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **class** (optional) allows you set a css class for display. If omitted this will default to 'inputbox'
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
-
 
 Implemented by: libraries/src/Form/Field/CheckboxField.php
 

@@ -3,16 +3,12 @@ sidebar_position: 2
 title: Cachehandler Form Field
 ---
 
-
-
 The **cachehandler** form field type provides a list of available cache handling options.
 
--   **type** (mandatory) must be *cachehandler*.
--   **name** (mandatory) is the unique name of the field.
--   **label** (mandatory) (translatable) is the descriptive title of the
-    field.
--  **description** (optional) (translatable) is descriptive text for the field.
--   **filter** (optional) filter to apply, normally use "word".
+- **type** (mandatory) must be *cachehandler*.
+- **name** (mandatory) is the unique name of the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 
 Implemented by: libraries/src/Form/Field/CachehandlerField.php
 

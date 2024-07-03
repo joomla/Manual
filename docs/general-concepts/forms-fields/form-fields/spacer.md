@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Spacer Form Field
 ---
 
-
 The **spacer** form field type provides a visual separator between parameter field elements. It is purely a visual aid and no field value is stored.
 
 - **type** (mandatory) must be *spacer*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) is the text to use as a spacer.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **hr** (optional) is whether to display a horizontal rule ('true' or 'false'). If this attribute is 'true', the label attribute will be ignored. 
 - **class** (optional) is a CSS class name for the HTML form field.
 

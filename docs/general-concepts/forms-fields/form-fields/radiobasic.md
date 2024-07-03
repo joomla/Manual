@@ -11,15 +11,14 @@ The **radiobasic** form field type provides radio button inputs using default st
 
 - **type** (mandatory) must be *radiobasic*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) is the default password.
 - **class** (optional) is a CSS class name for the HTML form field. 
 
 The XML `<field>` element must include one or more `<option>` elements which define the individual radio button items. The text between the `<option>` and `</option>` tags is shown as the label for the radio button and is a translatable string. The `<option>` tag takes the following argument:
 
--    **value** (mandatory) is the value that will be saved for the parameter if this item is selected.
+- **value** (mandatory) is the value that will be saved for the parameter if this item is selected.
 
 Tip: Don't forget to close the field definition with `</field>`.
 

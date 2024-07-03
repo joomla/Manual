@@ -7,10 +7,10 @@ The **rules** form field type provides a matrix of group by action options for m
 
 - **type** (mandatory) must be *rules*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **component** (mandatory) sets the component to which the action options will apply.
 - **section** (mandatory) indicates the section of the access.xml actions the control should apply to. For example, "component" or "my_item_type".
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 
 Implemented by: libraries/src/Form/Field/RulesField.php
 

@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Hidden Form Field
 ---
 
-
 The **hidden** form field type provides a hidden field for saving a field whose value cannot be altered directly by a user in the Administrator (it can be altered in code or by editing the xml file). If the parameter has a saved value this is entered in the text box. If not, the default value (if any) is entered. As the field is hidden there is no visible field in the Administrator.
 
 - **type** (mandatory) must be *hidden*.

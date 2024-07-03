@@ -3,18 +3,17 @@ sidebar_position: 2
 title: Textarea Form Field
 ---
 
-
 The **textarea** form field type provides a dropdown list of h1 to h6 as options.
 
 - **type** (mandatory) must be *textarea*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
+- **label** (mandatory) (translatable) is the field html label.
 - **rows** (mandatory) is the height of the visible text area in lines. If omitted the height is determined by the browser. The value of rows does not limit the number of lines that may be entered.
 - **cols** (mandatory) is the width of the visible text area in characters. If omitted the width is determined by the browser. The value of cols does not limit the number of characters that may be entered.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default value.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'text_area'.
-- **filter** (optional) allow the system to save certain html tags or raw data.
+- **filter** (optional) is the [filter](../standard-form-field-attributes.md#filter) to apply.
 - **hint** (optional) The text displayed in the html placeholder element, usually a lighter coloured hint displayed inside an blank field.
 
 Implemented by: libraries/src/Form/Field/TextareaField.php

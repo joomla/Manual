@@ -3,15 +3,12 @@ sidebar_position: 2
 title: ContentLanguage Form Field
 ---
 
-
 The **contentlanguage** form field type provides a dropdown list of style options with the current option selected.
 
 - **type** (mandatory) must be *contentlanguage*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 
 Implemented by: libraries/src/Form/Field/ContentlanguageField.php
 

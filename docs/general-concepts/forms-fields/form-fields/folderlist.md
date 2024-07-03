@@ -3,7 +3,6 @@ sidebar_position: 2
 title: Folderlist Form Field
 ---
 
-
 The **folderlist** form field type provides a drop down list of folders from a specfied directory. If the field has a
 saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
@@ -12,11 +11,9 @@ is followed by '- Use Default -' (also translatable) given the value '0'.
 
 - **type** (mandatory) must be *folderlist*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
+- **label** (mandatory) (translatable) is the field html label.
 - **directory** (mandatory) is the filesystem path to the directory containing the folders to be listed.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) is the default folder name.
 - **filter** (Joomla 3.x) or **fileFilter** (Joomla 4.0 and later) (optional) is a regular expression string which is
   used to filter the list of folders selected for inclusion in the drop-down list. If omitted, all folders in the

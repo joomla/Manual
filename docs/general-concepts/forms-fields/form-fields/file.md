@@ -3,15 +3,12 @@ sidebar_position: 2
 title: File Form Field
 ---
 
-
 The **file** form field type provides an input field for files.
 
 - **type** (mandatory) must be *file*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default value, but doesn't mean much for a file.
 - **size** (optional) is the width of the file box in characters.
 - **accept** (optional) Tells the browser what file/MIME types your form will allow to be uploaded. See [accept](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file#accept).

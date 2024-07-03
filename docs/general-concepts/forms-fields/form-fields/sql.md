@@ -21,8 +21,7 @@ not, the default value (if any) is selected.
     match the name of the query results column that contains the values
     that will be shown to the user in the drop-down list, unless a
     different name is specified in the **value_field** attribute.
--   **label** (mandatory) (translatable) is the descriptive title of the
-    field.
+-   **label** (mandatory) (translatable) is the field html label.
 -   **query** (mandatory if not using the sql\_\* attributes) is the SQL
     query which will provide the data for the drop-down list. The query
     must return two columns; one called *'value'* (unless overridden by
@@ -33,8 +32,7 @@ not, the default value (if any) is selected.
 -   **default** (optional) is the default value. This is the value of
     the *'value'* column, unless overridden by the **key_field**
     attribute.
--   **description** (optional) (translatable) is text that will be shown
-    as a tooltip when the user moves the mouse over the drop-down box.
+-   **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 -   **multiple** (optional) turns the field into a multi-selector. Use
     multiple="multiple".
 -   **key_field** (optional) is the name of the column that will contain

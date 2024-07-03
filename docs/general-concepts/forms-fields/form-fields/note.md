@@ -7,8 +7,8 @@ The **note** form field type makes it possible to create titles, texts, descript
 
 - **type** (mandatory) must be *note*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (optional if using description) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (optional if using description) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **heading** (optional) the type of heading element to use for the label (optional) (default: h4)
 - **class** (optional) a  class name (or class names), like alert (see below for examples) (optional)
 - **close** (optional) a value of 'true' (for alerts) or the value for the data-dismiss of the Bootstrap close icon 

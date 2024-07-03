@@ -3,15 +3,12 @@ sidebar_position: 2
 title: Groupedlist Form Field
 ---
 
-
 The **groupedlist** form field type provides a drop down list or a list box of custom-defined entries which has the ability to show grouped data. If the field has a saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
 - **type** (mandatory) must be *groupedlist*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the
-  field.
-- **description** (optional) (translatable) is text that will be shown
-  as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default value, but doesn't mean much for a file.
 - **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
 - **multiple** (optional) is whether multiple items can be selected at the same time (true or false).

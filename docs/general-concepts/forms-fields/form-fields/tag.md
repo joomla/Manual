@@ -7,8 +7,8 @@ The **tag** form field type provides a point where you can enter tags - this is 
 
 - **type** (mandatory) must be *tag*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **mode** (optional) (translatable) is either "ajax" or "nested".
 - **id** (optional) is the id to add to the field. Note if none is set this will be the name of the field.
 - **class** (optional) is the class to add to the field.

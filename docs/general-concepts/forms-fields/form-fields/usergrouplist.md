@@ -3,13 +3,12 @@ sidebar_position: 2
 title: Usergrouplist Form Field
 ---
 
-
 The **usergrouplist** form field type provides a  dropdown select box of user groups.
 
 - **type** (mandatory) must be *usergrouplist*.
 - **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the descriptive title of the field.
-- **description** (optional) (translatable) is text that will be shown as a tooltip when the user moves the mouse over the field.
+- **label** (mandatory) (translatable) is the field html label.
+- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the usergroup id of the default selection in the dropdown list.
 - **layout** (optional) (translatable) is the layout, for example joomla.form.field.list-fancy-select.
 - **checksuperusergroup** (optional) is boolean to omit Super User groups. Values 1 or 0.
