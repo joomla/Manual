@@ -97,31 +97,34 @@ will reject the data if there is a letter "x" within the field.
 
 ## Custom Validation routine
 
-You can write your own javascript validation function as follows.
+You can write your own javascript validation function as described below. The [com_exampleform](../../building-extensions/components/example-form-component.md) example component (which can be downloaded from [here](https://github.com/joomla/manual-examples/tree/main/component-exampleform)) provides a working example of client-side validation.
 
-1. Step 1 Write the js function. (Although a regex is used below, you're obviously not limited to this).
+1. Step 1 Write the js function. (Although a regex is used below, you're obviously not limited to this). The value of the field is passed in the `value` parameter, and you should return `true` if the value is valid, or `false` if it isn't.
 
-```js
-jQuery(function() {
-    document.formvalidator.setHandler('message',
+```js title="no-uppercase.js"
+window.onload = (event) => {
+    document.formvalidator.setHandler('noUppercase',
         function (value) {
-            regex=/^[^y]+$/;
-            return regex.test(value);
+            // look for any uppercase characters 
+            regex=/[A-Z]/g;
+            // we should return false if any uppercase characters are found
+            // ie, it has failed validation
+            return !regex.test(value);
         });
-});
+};
 ```
 
-You should store all js files within the media folder, eg as media/js/validate-message.js within your component development directory structure. 
+You should store all js files within the media folder, eg as media/js/no-uppercase.js within your component development directory structure. 
 
-2. Assuming you're writing this for a component `com_example`, include the js file within your media/joomla.asset.json list of assets. The code is dependent upon the `form.validate` entry and upon jquery:
+2. Assuming you're writing this for a component `com_example`, include the js file within your media/joomla.asset.json list of assets. The code is dependent upon the `form.validate` entry:
 
 ```json
 {
-      "name": "com_example.validate-message",
+      "name": "com_example.validate-no-uppercase",
       "type": "script",
-      "uri": "com_example/validate-message.js",
+      "uri": "com_example/no-uppercase.js",
       "dependencies": [
-        "form.validate", "jquery"
+        "form.validate"
       ],
       "attributes": {
         "defer": true
@@ -133,16 +136,16 @@ You should store all js files within the media folder, eg as media/js/validate-m
 3. Include your asset within your code, eg in your tmpl file:
 
 ```php
-$this->document()->getWebAssetManager()->useScript('com_example.validate-message');
+$this->document()->getWebAssetManager()->useScript('com_example.validate-no-uppercase');
 ```
 
-4. In your form definition XML file specify the field to which this validation should be applied
+4. In your form definition XML file specify the field to which this validation should be applied. The class attribute "validate-noUppercase" should match the parameter to setHandler in step 1, after the prefix "validate-" is removed. 
 
 ```xml
 <field 
     name="message"
     type="text"
-    class="inputbox validate-message"
+    class="inputbox validate-noUppercase"
     ... />
 ```
 
