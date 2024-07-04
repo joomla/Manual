@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Folderlist Form Field
 ---
 
-The **folderlist** form field type provides a drop down list of folders from a specfied directory. If the field has a
+The **folderlist** form field type provides a drop down list of folders from a specified directory.
 saved value this is selected when the page is first loaded. If not, the default value (if any) is selected.
 
 By default, the first item on the list is '- None Selected -' (which is translatable) and is given the value '-1' and this
