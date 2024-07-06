@@ -1,13 +1,15 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-import {visit} from 'unist-util-visit';
+import { visit } from 'unist-util-visit';
 
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 /**
  * The plugin for parsing the API links. cms-api:// and  framework-api://
+ * https://docusaurus.io/docs/markdown-features/plugins#creating-new-rehyperemark-plugins
+ *
  * @param {Object} options Object with links for CMS API, and Framework API, for each "major" or "major.minor" version. Example:
  *  {
  *    cmsMap: {
