@@ -56,10 +56,16 @@ const apiLinkPlugin = (options) => {
     visit(ast, 'link', (node) => {
       if (node.url.indexOf('cms-api://') === 0) {
         node.url = node.url.replace('cms-api://', cmsLink);
-        //console.log(['link', node]);
+
+        // if (vfile.path.indexOf('joomla-namespace-prefixes.md') !== -1) {
+        //   console.log(['link', node, versionFull, vfile.path]);
+        // }
       } else if (node.url.indexOf('framework-api://') === 0) {
         node.url = node.url.replace('framework-api://', frameworkLink);
-        //console.log(['link', node]);
+
+        // if (vfile.path.indexOf('joomla-namespace-prefixes.md') !== -1) {
+        //   console.log(['link', node, versionFull, vfile.path]);
+        // }
       }
     });
   };
