@@ -150,7 +150,7 @@ const config = {
       },
       footer: {
         style: 'dark',
-        copyright: 'The content is available under the <a href="https://docs.joomla.org/JEDL">Joomla! EDL</a> license, unless otherwise stated.',
+        copyright: 'The content is available under the <a id="JEDL_Footer_Link" href="https://docs.joomla.org/JEDL">Joomla! EDL</a> license, unless otherwise stated.',
         links: [
           {
             title: 'Docs',
