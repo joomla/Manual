@@ -8,15 +8,16 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 const apiLinkPlugin = (options) => {
   console.log({apiLinkPlugin, options});
-  const transformer = async (ast) => {
-    //console.log({ast});
-    //throw new Error('stop transformer');
+  const transformer = async (ast, vfile) => {
+    // console.log({ast, path: vfile.path});
+    // throw new Error('stop transformer');
 
+    // https://github.com/syntax-tree/mdast?tab=readme-ov-file#link
     visit(ast, 'link', (node) => {
-      console.log(['link', node]);
-    });
-    visit(ast, 'linkReference', (node) => {
-      console.log(['linkReference', node]);
+      if (node.url.indexOf('https://api.joomla.org') === 0) {
+        node.url = node.url + '?aaaaaa';
+        console.log(['link', node]);
+      }
     });
   };
 //throw new Error('stop');
@@ -69,7 +70,18 @@ const config = {
             }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
-          remarkPlugins: [[apiLinkPlugin, {'apiCms': 'link1'}]],
+          beforeDefaultRemarkPlugins: [
+              [apiLinkPlugin,{
+                  cmsMap: {
+                    '4.4': 'https://api.joomla.org/cms-4/',
+                    '5.1': 'https://api.joomla.org/cms-5/',
+                  },
+                  freamworkMap: {
+                    '4.4': 'https://api.joomla.org/framework-2/',
+                    '5.1': 'https://api.joomla.org/framework-3/',
+                  }
+                }]
+          ],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
