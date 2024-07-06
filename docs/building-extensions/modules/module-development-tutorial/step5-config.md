@@ -105,7 +105,7 @@ $params = Registry($this->module->params);
 $h = $params->get('header', 'default');
 ```
 
-See the [Registry API documentation](https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html) for details. 
+See the [Registry API documentation](freamwork-api://classes/Joomla-Registry-Registry.html) for details. 
 
 ### Application Parameter
 
