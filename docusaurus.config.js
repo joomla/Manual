@@ -7,20 +7,42 @@ const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
 const apiLinkPlugin = (options) => {
-  console.log({apiLinkPlugin, options});
+  //console.log({apiLinkPlugin, options});
   const transformer = async (ast, vfile) => {
-    const fCopy = {... vfile};
-    fCopy.value = ' ...';
-    console.log({ast, path: vfile.path, cwd: vfile.cwd, vfile: fCopy});
+    // Extract version from the file path, eg: /versioned_docs/version-5.1/testing.md => version-5.1
+    const versionPart = vfile.path.replace(vfile.cwd).split('/').find((part) => part.indexOf('version-') === 0) || '';
+
+    // Extract full version and major version, eg: version-5.1 => 5.1 => 5
+    const versionFull = versionPart.replace('version-', '') || 'default';
+    const versionMajor = versionFull.split('.').shift() || 'default';
+
+    // Get the links from the options
+    const cmsLink = options.cmsMap[versionFull] || options.cmsMap[versionMajor] || options.cmsMap['default'];
+    const frameworkLink = options.frameworkMap[versionFull] || options.frameworkMap[versionMajor] || options.frameworkMap['default'];
+
+    if (!cmsLink) {
+      throw new Error('apiLinkPlugin were unable to find the link for CMS API');
+    }
+
+    if (!frameworkLink) {
+      throw new Error('apiLinkPlugin were unable to find the link for Framework API');
+    }
+
+    // const fCopy = {... vfile};
+    // fCopy.value = ' ...';
+    //console.log({versionFull, versionMajor, cmsLink, frameworkLink, path: vfile.path, cwd: vfile.cwd, vfile: vfile.prototype});
     // const er = new Error('stop transformer');
     // console.log(er.stack);
     // throw new Error('stop transformer');
 
     // https://github.com/syntax-tree/mdast?tab=readme-ov-file#link
     visit(ast, 'link', (node) => {
-      if (node.url.indexOf('https://api.joomla.org') === 0) {
-        node.url = node.url + '?aaaaaa';
-        console.log(['link', node]);
+      if (node.url.indexOf('cms-api://') === 0) {
+        node.url = node.url.replace('cms-api://', cmsLink);
+        //console.log(['link', node]);
+      } else if (node.url.indexOf('framework-api://') === 0) {
+        node.url = node.url.replace('framework-api://', frameworkLink);
+        //console.log(['link', node]);
       }
     });
   };
@@ -75,18 +97,17 @@ const config = {
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
           beforeDefaultRemarkPlugins: [
+              // Configure the plugin for parsing the API links
               [apiLinkPlugin,{
                   cmsMap: {
-                    '4.4': 'https://api.joomla.org/cms-4/',
-                    '5.0': 'https://api.joomla.org/cms-5/',
-                    '5.1': 'https://api.joomla.org/cms-5/',
-                    'current': 'https://api.joomla.org/cms-5/',
+                    'default': 'https://api.joomla.org/cms-5/',
+                    '4': 'https://api.joomla.org/cms-4/',
+                    '5': 'https://api.joomla.org/cms-5/',
                   },
-                  freamworkMap: {
-                    '4.4': 'https://api.joomla.org/framework-2/',
-                    '5.1': 'https://api.joomla.org/framework-3/',
-                    '5.2': 'https://api.joomla.org/framework-3/',
-                    'current': 'https://api.joomla.org/framework-3/',
+                  frameworkMap: {
+                    'default': 'https://api.joomla.org/framework-3/',
+                    '4': 'https://api.joomla.org/framework-2/',
+                    '5': 'https://api.joomla.org/framework-3/',
                   }
                 }]
           ],
