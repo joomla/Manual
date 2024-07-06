@@ -1,8 +1,27 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
+import {visit} from 'unist-util-visit';
+
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
+
+const apiLinkPlugin = (options) => {
+  console.log({apiLinkPlugin, options});
+  const transformer = async (ast) => {
+    //console.log({ast});
+    //throw new Error('stop transformer');
+
+    visit(ast, 'link', (node) => {
+      console.log(['link', node]);
+    });
+    visit(ast, 'linkReference', (node) => {
+      console.log(['linkReference', node]);
+    });
+  };
+//throw new Error('stop');
+  return transformer;
+};
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -50,6 +69,7 @@ const config = {
             }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
+          remarkPlugins: [[apiLinkPlugin, {'apiCms': 'link1'}]],
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
