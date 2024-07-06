@@ -24,10 +24,9 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
  * @returns {(function(*, *): Promise<void>)|*}
  */
 const apiLinkPlugin = (options) => {
-  //console.log({apiLinkPlugin, options});
-  const transformer = async (ast, vfile) => {
+  return async (ast, vfile) => {
     // Extract version from the file path, eg: /versioned_docs/version-5.1/testing.md => version-5.1
-    const versionPart = vfile.path.replace(vfile.cwd).split('/').find((part) => part.indexOf('version-') === 0) || '';
+    const versionPart = vfile.path.replace(vfile.cwd).split('/').find((part) => part.startsWith('version-')) || '';
 
     // Extract full version and major version, eg: version-5.1 => 5.1 => 5
     const versionFull = versionPart.replace('version-', '') || 'default';
@@ -45,32 +44,15 @@ const apiLinkPlugin = (options) => {
       throw new Error('apiLinkPlugin were unable to find the link for Framework API');
     }
 
-    // const fCopy = {... vfile};
-    // fCopy.value = ' ...';
-    //console.log({versionFull, versionMajor, cmsLink, frameworkLink, path: vfile.path, cwd: vfile.cwd, vfile: vfile.prototype});
-    // const er = new Error('stop transformer');
-    // console.log(er.stack);
-    // throw new Error('stop transformer');
-
     // https://github.com/syntax-tree/mdast?tab=readme-ov-file#link
     visit(ast, 'link', (node) => {
-      if (node.url.indexOf('cms-api://') === 0) {
+      if (node.url.startsWith('cms-api://')) {
         node.url = node.url.replace('cms-api://', cmsLink);
-
-        // if (vfile.path.indexOf('joomla-namespace-prefixes.md') !== -1) {
-        //   console.log(['link', node, versionFull, vfile.path]);
-        // }
-      } else if (node.url.indexOf('framework-api://') === 0) {
+      } else if (node.url.startsWith('framework-api://')) {
         node.url = node.url.replace('framework-api://', frameworkLink);
-
-        // if (vfile.path.indexOf('joomla-namespace-prefixes.md') !== -1) {
-        //   console.log(['link', node, versionFull, vfile.path]);
-        // }
       }
     });
   };
-//throw new Error('stop');
-  return transformer;
 };
 
 /** @type {import('@docusaurus/types').Config} */
