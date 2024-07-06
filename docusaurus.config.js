@@ -113,7 +113,7 @@ const config = {
             }
           },
           /*onlyIncludeVersions: ['current', '4.3'], */
-          beforeDefaultRemarkPlugins: [
+          remarkPlugins: [
               // Configure the plugin for parsing the API links
               [apiLinkPlugin,{
                   cmsMap: {
