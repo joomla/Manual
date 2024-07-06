@@ -9,7 +9,11 @@ const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const apiLinkPlugin = (options) => {
   console.log({apiLinkPlugin, options});
   const transformer = async (ast, vfile) => {
-    // console.log({ast, path: vfile.path});
+    const fCopy = {... vfile};
+    fCopy.value = ' ...';
+    console.log({ast, path: vfile.path, cwd: vfile.cwd, vfile: fCopy});
+    // const er = new Error('stop transformer');
+    // console.log(er.stack);
     // throw new Error('stop transformer');
 
     // https://github.com/syntax-tree/mdast?tab=readme-ov-file#link
@@ -74,11 +78,15 @@ const config = {
               [apiLinkPlugin,{
                   cmsMap: {
                     '4.4': 'https://api.joomla.org/cms-4/',
+                    '5.0': 'https://api.joomla.org/cms-5/',
                     '5.1': 'https://api.joomla.org/cms-5/',
+                    'current': 'https://api.joomla.org/cms-5/',
                   },
                   freamworkMap: {
                     '4.4': 'https://api.joomla.org/framework-2/',
                     '5.1': 'https://api.joomla.org/framework-3/',
+                    '5.2': 'https://api.joomla.org/framework-3/',
+                    'current': 'https://api.joomla.org/framework-3/',
                   }
                 }]
           ],
