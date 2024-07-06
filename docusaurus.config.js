@@ -6,6 +6,21 @@ import {visit} from 'unist-util-visit';
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 
+/**
+ * The plugin for parsing the API links. cms-api:// and  framework-api://
+ * @param {Object} options Object with links for CMS API, and Framework API, for each "major" or "major.minor" version. Example:
+ *  {
+ *    cmsMap: {
+ *      'default': 'https://api.joomla.org/cms-5/',
+ *      '5': 'https://api.joomla.org/cms-5/',
+ *    },
+ *    frameworkMap: {
+ *      'default': 'https://api.joomla.org/framework-3/',
+ *      '5': 'https://api.joomla.org/framework-3/',
+ *    },
+ *  }
+ * @returns {(function(*, *): Promise<void>)|*}
+ */
 const apiLinkPlugin = (options) => {
   //console.log({apiLinkPlugin, options});
   const transformer = async (ast, vfile) => {
