@@ -43,6 +43,7 @@ Implemented by: libraries/src/Form/Field/CheckboxField.php
 
 :::warning 
   Special care needs to be taken with saving a checkbox from a form!! This is a common mistake.
-You see, on saving a form with a checkbox that is unchecked, there is no variable for it in the POST information and joomla does not take care of that yet!
-See Discussion on [this page](https://docs.joomla.org/Talk:Checkbox_form_field_type) for more.
+You see, on saving a form with a checkbox that is unchecked, there is no variable for it in the POST information and this is standard browser behaviour.
+
+See Discussion on [this page](https://docs.joomla.org/Talk:Checkbox_form_field_type) for some suggestions for how you might like to handle this.
 :::

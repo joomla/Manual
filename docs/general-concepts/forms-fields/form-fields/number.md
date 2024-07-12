@@ -26,7 +26,8 @@ The **number** form field type provides a HTML5 text box with arrows. If the fie
 Implemented by: libraries/src/Form/Field/NumberField.php
 
 ## Example XML parameter definition 
-This will create a number box allowing the user to choose values between 0 and 10 and change current value by 1 each time user click up/down field button.
+This will create a number box allowing the user to choose values between 0 and 10, 
+and with up/down field buttons allowing the value to be changed by a step value of 1.
 
 ```xml
 <field

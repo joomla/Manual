@@ -27,6 +27,8 @@ Tip: Add first an option without a value, with a text like "Select an option". O
 
 Tip: Some values for "name" field are reserved, so don't use them and avoid problems. One of them is: "style".
 
+The response will be a numeric array with the elements being the values of the options selected. Options which are not selected will not be present in the array.
+
 ## Example XML parameter definition
 
 ```xml
@@ -64,7 +66,9 @@ Since Joomla 3.9.0 one can use the [showon](../standard-form-field-attributes.md
 
 This feature was introduced with the [Pull Request #18998](https://github.com/joomla/joomla-cms/pull/18998).
 
-## Example XML parameter definition for two list fields `fielda` and `fieldb` where the displayed options of `fieldb` are controlled by selections in `fielda`
+## Example XML parameter definition with showon
+
+This is the definition for two list fields `fielda` and `fieldb` where the displayed options of `fieldb` are controlled by selections in `fielda`
 
 ```xml
 <field

@@ -5,7 +5,7 @@ title: Subform Form Field
 
 TODO:: Rewrite Jquery and examples to use WebAssets.
 
-The **subform** form field type provides a method for using XML forms inside one another or reuse forms inside an existing form. If attribute `multiple` is set to `true` then the included form will be **repeatable**.
+The **subform** form field type provides a method for using XML forms inside one another or reusing forms inside an existing form. If attribute `multiple` is set to `true` then the included form will be **repeatable**.
 
 The Field has two "predefined" layouts for displaying the subform as either a table or as a div container, as well as support for custom layouts.
 
@@ -60,7 +60,6 @@ Example XML of exampleform.xml:
     <field name="example_text" type="text" label="Example Text" />
     <field name="example_textarea" type="textarea" label="Example Textarea" cols="40" rows="8" />
 </form>
-
 ```
 An example XML of exampleform.xml with fieldsets:
 ```xml
@@ -108,9 +107,9 @@ The subform XML may also be specified inline as an alternative to placing the su
 </field>
 ```
 
-
 ## Example XML parameter definition
-### Allowing up to 8 image files to be uploaded
+
+The following form allows up to 8 image files to be uploaded
 
 ```xml
  <field
@@ -132,61 +131,25 @@ The subform XML may also be specified inline as an alternative to placing the su
   </form>
 </field>
 ```
-### Be aware
+## Javascript
 
-If your field in the subform has additional JavaScript logic then it may not work in multiple mode, because do not see the fields which added by the subform field dynamically. If it happened then you need to adjust your field to support it. Next example may help:
+If a field in your subform has associated JavaScript logic then you may need to consider how to make this work in *multiple="true"* mode, because the subform fields are added dynamically. 
+
+To handle this you can capture the 'joomla:updated' event which is triggered when a subform is added dynamically:
 
 ```javascript
-jQuery(document).ready(function(){
-/*... here the code for setup your field as usual...*/
-
-    jQuery(document).on('subform-row-add', function(event, row){
-        /*... here is the code to set up the fields in the new row ...*/
-    })
+document.addEventListener('joomla:updated', (event) => {
+  const updatedElement = event.target;
+  /*... your code here to process fields in the new row ("updatedElement") ...*/
 });
 ```
-Because of this some extra Joomla! fields may not work for now. 
 
-## Fields Validation and Filters
-The subform form field does not provide the Validation and Filters for child fields.
+If you have javascript validation set in fields of your subform (set by the class="validate-xxx") then this is not triggered when the focus leaves the field, but the validation is run prior to the form being submitted.
 
-Addition: Since a security fix in Joomla 3.9.7 the `filter="example"` attributes in subform child fields are supported and the fields will be validated; **but NOT** in custom form fields that extend the SubformField class. You have to adapt such custom fields yourself! 
+This is also true for custom fields which extend SubformField. 
 
-### Be aware
-All extensions that use subform fields MUST add an attribute `filter` to their subform child fields of type `editor`, `textarea`, `text` (maybe others, too) since Joomla 3.9.7 like it's common for "normal" Form fields, if you want to allow HTML input. Otherwise the validation falls back to STRING, which is the common behavior for "normal" Form fields. Examples: 
+## Server-side validation and filters
 
-`filter="safehtml"`  
-`filter="ComponentHelper::filterText"`  
-`filter="raw" (bad decision in most cases)`
+Server-side validation and filters are applied to the fields of the subform as normal, in the same way as when those fields are not part of a subform.
 
-### A couple of problems / solutions
-**Problem** - After adding new rows selects are not "chosen".
-
-**Solution**
-```javascript
-jQuery(document).ready(function(){
-    jQuery(document).on('subform-row-add', function(event, row){
-        jQuery(row).find('select').chosen();
-    })
-});
-```
-Or a PHP snippet to be used in e.g. your plugin in **onBeforeCompileHead** method or in your component view. 
-```php
-$doc = Factory::getApplication()->getDocument(); 
-$js = '
-	jQuery(document).on(\'subform-row-add\', function(event, row){
-		jQuery(row).find(\'select\').chosen();
-	})
-';
-$doc->addScriptDeclaration($js);
-```
-So newly added rows now are "chosen" now 
-
-**Problem** - Subform data not getting stored to database on custom component. 
-
-**Solution**
-Add the following line to the beginning of your corresponding table class:
-```php
-protected $_jsonEncode = array('fieldnamehere');
-```
-More information [Here](https://joomla.stackexchange.com/questions/19163/subform-multiple-data-not-saving). 
+This is also true for custom fields which extend SubformField. 

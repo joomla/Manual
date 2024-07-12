@@ -44,7 +44,7 @@ Implemented by: libraries/src/Form/Field/TelephoneField.php
 
 ## Example - integer filter
 
-Use the integer filter to ensure that letters types get stripped when the form is processed.
+Use the integer filter to ensure that non-numerical characters get stripped when the form is processed.
 
 ```xml
 <field 
@@ -56,6 +56,7 @@ Use the integer filter to ensure that letters types get stripped when the form i
         filter="integer" 
 />
 ```
+
 ## Example - raw filter
 
 Use the raw filter to ensure that html code is preserved when the form is processed.

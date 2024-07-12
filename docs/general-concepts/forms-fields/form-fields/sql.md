@@ -213,14 +213,9 @@ can be expressed as:
 />
 ```
 
-:::warning Limitation
+## Linked Fields as Filters
 
-The following feature **linked fields as filters** is currently not working!
-See [Github issue 22241](https://github.com/joomla/joomla-cms/issues/22241)
-
-:::
-
-One advantage to using this syntax is that it allows the use of linked
+One advantage to using the alternative syntax above is that it allows the use of linked
 fields as filters. For example, suppose you have a form containing two
 select lists, one called *groups* and the other called *subgroups*. The
 *groups* field is straightforward:
@@ -254,6 +249,7 @@ refers to the *groups* field by name:
   sql_filter="groups"
   key_field="id"
   value_field="name"
+  context="sqlfield"
 />
 ```
 
@@ -287,6 +283,8 @@ WHERE
   AND
     `categories` = 12
 ```
+
+The `context=...` attribute is necessary and is described below. 
 
 You can also define a default value for any filter that might not have a
 value when the field is evaluated by adding
@@ -337,6 +335,100 @@ Note: As shown in these examples, the database prefix (often `jos`)
 should be entered in the form `#__` (hash-underscore-underscore). It
 will automatically be replaced by the actual database prefix used by
 Joomla.
+
+### Linked Fields - additional implementation details
+
+**It is important to understand what this feature does support and what it doesn't support.**
+
+**Also, you need to implementation additional code to make the feature work as expected.**
+
+Let's take the example where 
+- the linked filter field is a category field, 
+- the SQL field shows the titles of articles whose category is selected in the category field.
+
+You want to allow the user to select the category, and then be shown the titles of articles with that category, so that he/she can then select the article.
+
+However, whenever the user selects or changes the category, the code ***doesn't automatically update*** the set of titles in the sql field. (There's no Ajax request operating behind the scenes). This update functionality is **not** part of the supported functionality.
+
+That said, you can implement the functionality to update the titles by following the approach below.
+
+To update the sql field you need to reload the form by
+1. sending the current form data to the server (by submitting the form), 
+2. passing the key value(s) from the current form data into the `user state` where they can be picked up by the SQL field, and,
+3. redisplaying the form via your View class and tmpl file
+
+To **send the form data**, implement an onchange javascript listener against the category field, for example, by setting in the XML the file attribute
+
+```xml
+  onchange="categoryReload(this)"
+```
+
+then implement the javascript categoryReload function:
+
+```js title="reload.js"
+function categoryReload(element) {
+    document.body.appendChild(document.createElement('joomla-core-loader'));
+    Joomla.submitform(`sqlfield.reload`, element.form, false);
+}
+```
+
+This first loads the Joomla spinning logo (which will disappear when the form is re-presented).
+To call this you need to specify "webcomponent.core-loader" as a dependency in your component's joomla.asset.json file.
+
+Then the form is submitted with
+- a *task* parameter set to 'sqlfield.reload' - change the string 'sqlfield' to your own component Controller name
+- the third parameter set to `false` means that it won't perform field validation before sending the HTTP POST
+
+This POST request will be routed to your SqlfieldController::reload() method.
+
+To **pass the key values by user state** you need to call `setUserState`, using
+- the **context** you specified as your attribute in the SQL field
+- the relevant data items from the POST parameters
+
+So you need to include in your SqlfieldController::reload() method something like:
+
+```php title="SqlfieldController.php"
+public function reload($key = null, $urlVar = null)
+{
+    $this->checkToken();
+
+    $app   = Factory::getApplication();
+
+    $data  = $this->input->post->get('jform', array(), 'array');
+
+    // This is the usual call to set the state for preserving the form data entered by the user
+    $app->setUserState('com_sqlfield.example', $data);
+
+    $catid = filter_var($data['catid'], FILTER_SANITIZE_NUMBER_INT);
+    // This is the call you need to make to pass the sql_filter ids to the SQL field
+    // The first parameter must be `'<context>.filter'` where `context` is what you set
+    // as the context= ... attribute of the SQL field
+    $app->setUserState('sqlfield.filter', array('catid' => $catid));
+    
+    // Then re-present the form
+}
+```
+
+When you have received successfully validated data then you should clear the filter state (in the same way as you would do with the form data), so that the next time the form is displayed it doesn't contain the titles which match the category from the previous execution of the form, because this is unlikely to match what is the initial value in the category field.
+
+```php 
+$app->setUserState('sqlfield.filter', null);
+```
+
+To **redisplay the form** you can either send the form as an HTTP response to the HTTP POST request:
+
+```php title="SqlfieldController.php"
+    $model = $this->getModel('sqlfield');
+    $view = $this->getView('sqlfield', 'html');
+    $view->setModel($model, true);
+    
+    $view->display();
+```
+
+or use the Post/Request/Get pattern to redirect to the DisplayController.
+
+You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow. 
+Once you have installed the com_sqlfield component you can run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
 
 ## See also
 

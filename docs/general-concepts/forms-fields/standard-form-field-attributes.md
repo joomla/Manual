@@ -8,6 +8,14 @@ Standard Form Field Attributes
 
 Many of the attributes of the standard form map directly to HTML field attributes, and don't require any further explanation. The descriptions below relate to attributes where the meaning may not be totally clear.
 
+You can view the available list of general attributes by looking at libraries/src/Form/FormField.php, in the `__set` function. 
+As many of these can be used across the range of Joomla standard form fields, they're often not explicitly cited in the form field detailed description.
+
+These attributes include, for example:
+- **onchange** - in which you can pass a javascript function which should get control when the input element is changed
+- **autofocus** - to specify the input element which should receive focus on page load
+- **data-xxx** - data attributes to be set on the input element
+
 ## class
 
 This maps to the HTML class attribute of the field. It is used to define the [client-side validation](../forms/client-side-validation.md) to be applied, in addition to the normal use by CSS.
@@ -38,7 +46,6 @@ $toolbar->inlinehelp();
 </form>
 ```
  
-
 ## filter
 
 This defines the filter which is applied to the field data entered by the user. 
@@ -79,7 +86,7 @@ addfilterprefix="My\Component\Example\Site\Filter"
 
 3. Use your filter against a field by specifying the attribute filter="myfilter".
 
-The `exampleform` component found at [Example Form Component](https://github.com/joomla/manual-examples/tree/main/component-exampleform) contains an example of a custom filter.
+The [com_exampleform](../../building-extensions/components/example-form-component.md) component whose code you can find at [Example Form Component](https://github.com/joomla/manual-examples/tree/main/component-exampleform) contains an example of a custom filter.
 
 ## hint
 
