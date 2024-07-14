@@ -15,11 +15,11 @@ Then go to `<your domain>/index.php?component/exampleform` to run it on your Joo
 It is an MVC component which demonstrates the following:
 
 - using [Joomla Forms](../../general-concepts/forms/how-forms-work.md) to capture data in a form
-- using several of the [standard form fields](../../general-concepts/forms-fields/form-fields/index.md)
+- using several of the [standard form fields](../../general-concepts/forms-fields/standard-fields/index.md)
 - writing a [custom field](../../general-concepts/forms-fields/custom-fields-overview.md)
 - writing a [custom server-side validation rule](../../general-concepts/forms/server-side-validation.md)
 - writing a [custom client-side validation rule](../../general-concepts/forms/client-side-validation.md)
-- writing a [custom form filter](../../general-concepts/forms-fields/form-form-field-attributes.md#filter)
+- writing a [custom form filter](../../general-concepts/forms-fields/standard-form-field-attributes.md#filter)
 
 You can easily adapt it to experiment with other standard fields, simply by including the standard field in the form XML file.
 
