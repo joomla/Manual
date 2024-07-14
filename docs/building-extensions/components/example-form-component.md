@@ -15,7 +15,7 @@ Then go to `<your domain>/index.php?component/exampleform` to run it on your Joo
 It is an MVC component which demonstrates the following:
 
 - using [Joomla Forms](../../general-concepts/forms/how-forms-work.md) to capture data in a form
-- using several of the [standard form fields](../../general-concepts/forms-fields/standard-form-fields-list.md)
+- using several of the [standard form fields](../../general-concepts/forms-fields/standard-fields/index.md)
 - writing a [custom field](../../general-concepts/forms-fields/custom-fields-overview.md)
 - writing a [custom server-side validation rule](../../general-concepts/forms/server-side-validation.md)
 - writing a [custom client-side validation rule](../../general-concepts/forms/client-side-validation.md)
@@ -59,7 +59,7 @@ When the HTTP request reaches the server Joomla will examine the *task* paramete
 
 ## Example XML Form (site/forms/example_form.xml)
 
-Most of this involves simply using the [Joomla Standard Form Fields](../../general-concepts/forms-fields/standard-form-fields-list.md).
+Most of this involves simply using the [Joomla Standard Form Fields](../../general-concepts/forms-fields/standard-fields/index.md).
 
 You can easily add in other standard form fields to experiment with them.
 

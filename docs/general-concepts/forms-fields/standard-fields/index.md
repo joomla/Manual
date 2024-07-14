@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: List of Standard Form Fields
+title: Standard Form Fields
 ---
 
 # Standard Form Fields

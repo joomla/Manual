@@ -427,7 +427,7 @@ To **redisplay the form** you can either send the form as an HTTP response to th
 
 or use the Post/Request/Get pattern to redirect to the DisplayController.
 
-You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow. 
+You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow (you may need to change the sql_default_catid attribute). 
 Once you have installed the com_sqlfield component you can run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
 
 ## See also
