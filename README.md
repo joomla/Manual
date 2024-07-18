@@ -91,6 +91,8 @@ Don't use colons (:) in titles.
 
 Don't use `<br>` to force a new line (eg in table text); use `<br/>` instead. 
 
+Don't use subdirectory names which match somewhat the parent directory name. For example, avoid `./install-update/install/`, as this can cause docusaurus to report broken links.
+
 ### Docusaurus Additions
 
 You won't see the effect of these when you preview the Markdown text, but you will see them by previewing the Pull Request. 
