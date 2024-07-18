@@ -61,7 +61,7 @@ The reason for the split is performance, to minimise the number of language cons
 
 We replace the English text in the manifest file with the language constants, and we also tell the Joomla installer where to find the language files:
 
-As described in the [Manifest File Languages section](../../install-update/install/manifest.md#languages), there are 2 ways of including language files in an extension, and we opt for the second approach.
+As described in the [Manifest File Languages section](../../install-update/installation/manifest.md#languages), there are 2 ways of including language files in an extension, and we opt for the second approach.
 
 ```xml title="mod_hello/mod_hello.xml"
 <?xml version="1.0" encoding="UTF-8"?>
