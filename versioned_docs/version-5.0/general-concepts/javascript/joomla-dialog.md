@@ -30,6 +30,8 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 - `popupTemplate` (string|HTMLTemplateElement) A template for the popup.
 - `preferredParent` (string|HTMLElement) The element where to attach the dialog, for cases when no parentElement exist, see show(). This allows to keep the dialog in the same branch of DOM as the popupContent.
 - `popupButtons` (array)  An optional list of buttons, to be rendered in footer/header (or bottom/top of the popup body, when header/footer does not exist).
+- `className` (string) An optional class for the `joomla-dialog` element.
+- `data` (object) An optional object with data attributes for `joomla-dialog` element. Note: the data keys should be `camelCase`, example `{fooBar: 1}` for `data-foo-bar="1"`.
 
 :::note
 The properties of Joomla Dialog are immutable, they can be set only before rendering. After that they cannot be changed.
@@ -155,9 +157,22 @@ JoomlaDialog.confirm('Cheese on toast airedale the big cheese?')
   });
 ```
 
-### Binding button/anchor for basic stuff
+## Dialog auto-create
+
+Binding button/anchor for basic stuff.
+The asset allows to create the dialog for basic needs without use of additional JavaScript.
 
 Enable asset with `$wa->useScript('joomla.dialog-autocreate')`.
+
+### Button attributes:
+
+- `data-joomla-dialog` Indicates that the element is intended for `joomla.dialog-autocreate`. Can be empty or contain JSON string with parameters for `JoomlaDialog`.
+- `data-joomla-dialog-cache` When attribute is present the dialog will be cached, and not destroyed on close. Any future click will open the same dialog instead of creating a new one.
+- `data-reload-on-close` When attribute is present then script will reload the page after closing of the dialog. 
+- `data-close-on-message` When attribute is present then script will close the dialog on receiving any message from its Window (from `postMessage()`).
+- `data-checkin-url` When attribute is present and contain a value then the script will perform POST request to given URL after closing of the dialog. Useful for `checkin` operations for dialogs with content editing. 
+
+### Auto-create examples
 
 ```html
 <button class="btn btn-primary" type="button"
@@ -168,6 +183,7 @@ Enable asset with `$wa->useScript('joomla.dialog-autocreate')`.
 
 <a href="index.php?option=com_content&view=articles&tmpl=component&layout=modal"
   data-joomla-dialog class="btn btn-outline-primary">Click</a>
+
 <a href="#popupText" data-joomla-dialog class="btn btn-outline-primary">Click</a>
 
 <template id="popupText"><p class="p-3">Popup content text</p></template>
