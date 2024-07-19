@@ -66,7 +66,7 @@ You'll get back a `Joomla\CMS\User\User` object with
 - the id set to 0 if the user isn't logged on, or 
 - an id > 0 for a logged on user. 
 
-The other properties of this User object you can find at [User API](https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html).
+The other properties of this User object you can find at [User API](cms-api://classes/Joomla-CMS-User-User.html).
 
 If your script uses other Joomla library or extension code then that code may try to access the User object via 
 

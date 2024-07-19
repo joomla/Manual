@@ -143,5 +143,5 @@ You add your preset in the dashboard of your component with a single line of cod
     $this->addDashboardMenu('example', 'example');
 ```
 
-See also: https://api.joomla.org/cms-4/classes/Joomla-CMS-Installer-InstallerScript.html#method_addDashboardMenu
+See also: [Joomla CMS Installer InstallerScript API](cms-api://classes/Joomla-CMS-Installer-InstallerScript.html#method_addDashboardMenu)
 

@@ -110,7 +110,7 @@ The string 'txn' has to match the `name` attribute of our field in the `<config>
 
 # Command Class
 The command class extends `Joomla\Console\Command\AbstractCommand` and the APIs associated with this class are listed in the [API docs](
-https://api.joomla.org/framework-3/classes/Joomla-Console-Command-AbstractCommand.html). We used a number of these APIs in the [Basic Helloworld Console Plugin](./basic-console-plugin-helloworld.md), and here we explore several more.
+framework-api://classes/Joomla-Console-Command-AbstractCommand.html). We used a number of these APIs in the [Basic Helloworld Console Plugin](./basic-console-plugin-helloworld.md), and here we explore several more.
 
 ## Defining an argument
 You define in your command class's `configure()` method what arguments you want your command to have . To define an argument you use eg:

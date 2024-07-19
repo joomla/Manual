@@ -34,15 +34,15 @@ eg 'Joomla\Plugin\Fields\Calendar' points to plugins/fields/calendar/src
 
 ## Library Classes
 
-'Joomla\CMS\' points to libraries/src. Note that these are the classes which are described in the [API docs](https://api.joomla.org/) on the [Joomla CMS](https://api.joomla.org/cms-4/index.html) side. 
+'Joomla\CMS\' points to libraries/src. Note that these are the classes which are described in the [API docs](https://api.joomla.org/) on the [Joomla CMS](cms-api://index.html) side. 
 
 'Joomla\SomethingElse\' points to libraries/vendor/somethingelse/src. 
 
 eg 'Joomla\Event\' points to libraries/vendor/event/src
 
-Note that these are the classes which are described in the [API docs](https://api.joomla.org/) on the [Framework](https://api.joomla.org/framework-2/index.html) side. 
+Note that these are the classes which are described in the [API docs](https://api.joomla.org/) on the [Framework](framework-api://index.html) side. 
 
-(As an aside, just be aware that if a class on the CMS side inherits from a class on the framework side, then not all of the methods available might be in the API docs. For example, the class Joomla\CMS\Application\WebApplication has methods such as `setHeader` because it extends [Joomla\Application\AbstractWebApplication](https://api.joomla.org/framework-2/classes/Joomla-Application-AbstractWebApplication.html), but this function isn't listed in [WebApplication API doc](https://api.joomla.org/cms-4/classes/Joomla-CMS-Application-WebApplication.html).)
+(As an aside, just be aware that if a class on the CMS side inherits from a class on the framework side, then not all of the methods available might be in the API docs. For example, the class Joomla\CMS\Application\WebApplication has methods such as `setHeader` because it extends [Joomla\Application\AbstractWebApplication](framework-api://classes/Joomla-Application-AbstractWebApplication.html), but this function isn't listed in [WebApplication API doc](https://api.joomla.org/cms-4/classes/Joomla-CMS-Application-WebApplication.html).)
 
 If a library classname doesn't start with 'Joomla' then it's going to be found in one of the other directories under libraries/vendor/. 
 
