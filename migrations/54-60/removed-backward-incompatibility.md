@@ -22,3 +22,16 @@ There should be an explanation of how to mitigate the removals / changes.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42884
 - Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+
+### Web cron scheduler `id` parameter has been changed to `taskid` 
+
+- PR: https://github.com/joomla/joomla-cms/pull/43490
+- Description: The Web cron scheduler `id` parameter has been changed to `taskid` all links need to be updated to the new ID. As a fallback, as when the taskid is not set the tasks will be queued and triggered.
+
+```php
+// Old
+$id = (int) $this->getApplication()->getInput()->getInt('id', 0);
+
+// New
+$taskId = (int) $this->getApplication()->getInput()->getInt('taskid', 0);
+```
