@@ -26,7 +26,7 @@ There should be an explanation of how to mitigate the removals / changes.
 ### Web cron scheduler `id` parameter has been changed to `taskid` 
 
 - PR: https://github.com/joomla/joomla-cms/pull/43490
-- Description: The Web cron scheduler `id` parameter has been changed to `taskid` all links need to be updated to the new ID. As a fallback, as when the taskid is not set the tasks will be queued and triggered.
+The Web cron scheduler `id` parameter has been changed to `taskid`. All references to the old `id` parameter in URLs or API calls should be updated to `taskid`. For example, change `https://example.com/cron?id=123` to `https://example.com/cron?taskid=123`. Ensure all documentation and scripts are updated accordingly.
 
 ```php
 // Old
