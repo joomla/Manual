@@ -169,7 +169,7 @@ described in [RouterView Configurations](router-view.md).
 
 ## Using the Site Router in the Joomla back-end
 There may be occasions where you want to display on the administrator back-end the result of building a SEF URL which
-will be present on the site front-end. To enable this, Joomla provides the [`link()`](https://api.joomla.org/cms-5/classes/Joomla-CMS-Router-Route.html) method within 
+will be present on the site front-end. To enable this, Joomla provides the [`link()`](cms-api://classes/Joomla-CMS-Router-Route.html) method within 
 the `Joomla\CMS\Router\Route` class. It's basically the same as the `Route::_()` function, except that it has an 
 additional parameter "client" at p1, which you would set to "site" to enable a site SEF URL to be built.
 
