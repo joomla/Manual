@@ -16,7 +16,7 @@ The **tag** form field type provides a point where you can enter tags - this is 
 - **language** (optional) is language to filter the existing tags by.
 - **multiple** (optional) is the ability to add more than 1 tag to the form field.
 - **custom** (optional) if the ajax mode is chosen setting this to "deny" will prevent users from adding in new tags.
-- **remote-seach** (optional) Enables Ajax search - if using mode="nested" you need to set this to "false" or you will only get a partial option list and a broken hierarchy. (*remote-serach="true" (default) only lists a amximum of 30 tags until you search, and orders the list by most used tags first which destroys the heirarchy display. See* [*issue #43803*](https://github.com/joomla/joomla-cms/issues/43803#issuecomment-2234376819))
+**remote-search** (optional) Enables Ajax search - if using mode="nested" you need to set this to "false" or you will only get a partial option list and a broken hierarchy.
 
 You can see the difference between "ajax" mode and "nested" mode by setting the Global Configuration / Tags / Data Entry and then entering data into the Tags field of an existing article.
 
