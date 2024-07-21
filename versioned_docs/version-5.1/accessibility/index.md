@@ -10,9 +10,9 @@ Find here Joomla's accessibility Statement https://www.joomla.org/accessibility-
 Joomla! is an accessible Authoring Tool (ATAG). https://www.w3.org/TR/ATAG20/
 
 It enables developers to build accessible sites which are WCAG 2.1 AA compliant from a backend which itself is WCAG 2.1 AA compliant. 
-We follow the international Standards of the World Wide Web Consortium for Web Accessibilty https://www.w3.org/TR/WCAG21/
+We follow the international Standards of the World Wide Web Consortium for Web Accessibility https://www.w3.org/TR/WCAG21/
 
-Reporting Accessibilty Issues
+Reporting Accessibility Issues
 =============================
 Joomla encourages everyone to report accessibility issues in backend and the template which is shipped with Joomla Core.  
 For reporting issues in code, we have a special issue template on github or the possibilties mentioned in the accessibility statement.
@@ -23,7 +23,7 @@ Extension developers are urged to adhere to the recommendations for accessible d
 
 Further Reading
 =============
-Detailled information espcially for developers can be found for example here: 
+Detailed information espcially for developers can be found for example here: 
 https://www.w3.org/WAI/tips/developing/
 
 
