@@ -16,3 +16,8 @@ This new feature adds a "total" counter at the bottom near the pagination in Joo
 displaying the number of items available after applying filters for easier item management.
 
 PR: [43575](https://github.com/joomla/joomla-cms/pull/43575)
+
+#### Media field: allow to select folders
+It is now possible to select directories usign the Media field.
+
+PR: https://github.com/joomla/joomla-cms/pull/43579
