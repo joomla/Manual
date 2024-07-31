@@ -75,6 +75,22 @@ Note that the Guided Tour component knows how to differentiate category tours fo
 There is no available tour when editing a specific module, plugin or template. That is where launching a tour from anywhere can become handy.
 
 
+### Auto start
+
+Starting with Joomla 5.2, you can set tours to auto start. Those tours will run automatically once a user enters the context of the tour. Once a tour auto starts, the user can hide the tour forever (although the tour can still be run manually), and a cancellation will delay the tour for a later run. Once a specific time has passed (the delay setting can be found in the Global Configuration of the Guided Tours - it defaults to 1 hour), the tour will run again automatically, once in context.
+
+
+### Event dispatchers
+
+Once a user cancels, opts-out or completes a tour, events are triggered, allowing developers to act according to user actions. One may want to send a message to a user after completion of a tour in order to propose another one, for instance.
+Those events are: 
+- onBeforeTourRunSaveState: triggered before saving the auto-start tour user state and recording user action logs
+- onTourRunSaveState: triggered before saving the auto-start tour user state, used to record user actions into the logs
+- onAfterTourRunSaveState: triggered after saving the auto-start tour user state and recording user action logs
+
+You can find those events in the AjaxController. 
+
+
 ## Launching a tour from any location
 
 Launching a tour from a different location than the Guided Tours module is as easy as adding the attribute `data-gt-uid` with the identifier of the tour.
