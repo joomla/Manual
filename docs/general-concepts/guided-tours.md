@@ -84,11 +84,10 @@ Starting with Joomla 5.2, you can set tours to auto start. Those tours will run 
 
 Once a user cancels, opts-out or completes a tour, events are triggered, allowing developers to act according to user actions. One may want to send a message to a user after completion of a tour in order to propose another one, for instance.
 Those events are: 
-- onBeforeTourRunSaveState: triggered before saving the auto-start tour user state and recording user action logs
-- onTourRunSaveState: triggered before saving the auto-start tour user state, used to record user actions into the logs
-- onAfterTourRunSaveState: triggered after saving the auto-start tour user state and recording user action logs
+- onBeforeTourSaveUserState: triggered before saving the auto-start tour user state (used to record states in the User Action Logs),
+- onAfterTourSaveUserState: triggered after saving the auto-start tour user state.
 
-You can find those events in the AjaxController. 
+You can find those events in the AjaxController class. 
 
 
 ## Launching a tour from any location
