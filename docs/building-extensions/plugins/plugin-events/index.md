@@ -19,9 +19,9 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 
 | Event Name                        | Event Class                             | Group            | From Release |
 | --------------------------------- | --------------------------------------- | ---------------- | ------------ |
-| [onContentPrepare](content.md#contentcontentprepareevent--oncontentprepare) | \Joomla\CMS\Event\Content\ContentPrepareEvent | Content          |  before 4.0  |
-| [onContentAfterTitle](./content.md#contentaftertitleevent--oncontentaftertitle) | \Joomla\CMS\Event\Content\AfterTitleEvent | Content          |  before 4.0  |
-| [onContentBeforeDisplay](./content.md#contentbeforedisplayevent--oncontentbeforedisplay) | \Joomla\CMS\Event\Content\BeforeDisplayEvent | Content          |  before 4.0  |
-| [onContentAfterDisplay](./content.md#contentafterdisplayevent--oncontentbeforedisplay) | \Joomla\CMS\Event\Content\BeforeAfterEvent | Content          |  before 4.0  |
+| [onContentPrepare](content.md#oncontentprepare) | \Joomla\CMS\Event\Content\ContentPrepareEvent | Content          |  before 4.0  |
+| [onContentAfterTitle](./content.md#oncontentaftertitle) | \Joomla\CMS\Event\Content\AfterTitleEvent | Content          |  before 4.0  |
+| [onContentBeforeDisplay](./content.md#oncontentbeforedisplay) | \Joomla\CMS\Event\Content\BeforeDisplayEvent | Content          |  before 4.0  |
+| [onContentAfterDisplay](./content.md#oncontentafterdisplay) | \Joomla\CMS\Event\Content\BeforeAfterEvent | Content          |  before 4.0  |
 | [onContentNormaliseRequestData](./content.md#oncontentnormaliserequestdata) | \Joomla\CMS\Event\Model\NormaliseRequestDataEvent | Content          |  4.0  |
 
