@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: Content Plugin Events
+toc_max_heading_level: 2 
 ---
 
 Content Plugin Events
