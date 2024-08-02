@@ -8,18 +8,73 @@ Content Plugin Events
 
 Content events are triggered during the content creation process. These events are triggered in many different components and modules - they are not specific to the `com_content` component. 
 
-This list gives a brief description of each event, what their parameters are, and any examples of their use which are available in the Joomla Manual.
+This list gives a brief description of each event, what the event arguments are, and any examples of their use which are available in the Joomla Manual.
 
-Where a Return Value is expected, this should be returned via the event `addResult` method, as described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md).
+<details>
+  <summary>Accessing Event Arguments</summary>
 
-## Content\ContentPrepareEvent / onContentPrepare
+To access the event arguments of an event concrete class you can use within your plugin class:
+
+```php
+use Joomla\CMS\Event\Content\ContentPrepareEvent;
+
+class MyPlugin ...
+    public function onContentPrepare(ContentPrepareEvent $event)
+    {
+        $context = $event->getArgument('context');
+        $item = $event->getArgument('item');
+        $params = $event->getArgument('params');
+        $page = $event->getArgument('page');
+        // ...
+    }
+```
+
+However, if you want your plugin to work across Joomla 4 and 5 it may be better to use:
+
+```php
+use Joomla\Event\Event;
+
+class MyPlugin ...
+    public function onContentPrepare(Event $event)
+    {
+        [$context, $item, $params, $page] = array_values($event->getArguments());
+        // ...
+    }
+```
+
+This will work for both concrete event classes and generic event classes (as described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md)).
+</details>
+
+<details>
+  <summary>Returning Values</summary>
+
+Where a return value is expected, how this is handled differs depending upon whether the event class is a concrete class or is a generic event class. 
+To return a value `$value` in a manner which works for both use the following:
+
+```php
+use Joomla\CMS\Event\Result\ResultAwareInterface;
+...
+    if ($event instanceof ResultAwareInterface) {
+        $event->addResult($value);
+        return;
+    } else {   // use GenericEvent approach
+        $result = $event->getArgument('result') ?: [];   // get the result argument from GenericEvent
+        $result[] = $value;                              // add your return value into the array
+        $event->setArgument('result', $result);  
+    }
+```
+
+</details>
+
+## onContentPrepare
 
 ### Description
 
 This is the first stage in preparing content for output and is the most common point for content-orientated plugins to do their work. 
 Since the item and related parameters are passed by reference, event handlers can modify them prior to display. 
 
-### Parameters
+### Event Arguments
+The event class \Joomla\CMS\Event\Content\ContentPrepareEvent has the following arguments:
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
@@ -41,15 +96,12 @@ None.
 The [Basic Content](../basic-content-plugin.md) plugin provides a feature similar to the Wordpress Shortcodes feature. 
 In an article text it replaces `{fieldname}` with the value of `fieldname`.
 
-### Additional Notes
-
-None.
-
-## Content\AfterTitleEvent / onContentAfterTitle
+## onContentAfterTitle
 
 This is a request for information that should be placed between the content title and the content body. 
 
-### Parameters
+### Event Arguments
+The event class \Joomla\CMS\Event\Content\AfterTitleEvent has the following arguments:
 
 Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
@@ -64,24 +116,23 @@ However, it is often set to 0 or null, so you probably shouldn't rely on it.
 
 ### Return Value
 
-String. This will get displayed after the item title.
+String of HTML. This will get displayed after the item title.
 
-### Examples
-
-None.
-
-### Additional Notes
-
-The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+:::info
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
 This plugin returns the HTML for those custom fields which have the Automatic Display option set to After Title.
+So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
+If you implement a component which supports custom fields then you will need to dispatch this event.
+:::
 
-## Content\BeforeDisplayEvent / onContentBeforeDisplay
+## onContentBeforeDisplay
 
 This is a request for information that should be placed immediately before the component's main content (eg article text). 
 
 For views that generate HTML, this might include the use of styles that are specified as part of the content or related parameters.
 
-### Parameters
+### Event Arguments
+The event class \Joomla\CMS\Event\Content\BeforeDisplayEvent has the following arguments:
 
 Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
@@ -96,24 +147,27 @@ However, it is often set to 0 or null, so you probably shouldn't rely on it.
 
 ### Return Value
 
-String. This will get displayed before the text of the item.
+String of HTML. This will get displayed before the text of the item.
 
 ### Examples
 
 None.
 
-### Additional Notes
-
-The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+:::info
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
 This plugin returns the HTML for those custom fields which have the Automatic Display option set to Before Display Content.
+So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
+If you implement a component which supports custom fields then you will need to dispatch this event.
 
 It is also used by the Joomla Vote plugin which allows website visitors to specify a star rating against content.
+:::
 
-## Content\AfterDisplayEvent / onContentAfterDisplay
+## onContentAfterDisplay
 
 This is a request for information that should be placed immediately after the component's main content (eg article text). 
 
-### Parameters
+### Event Arguments
+The event class \Joomla\CMS\Event\Content\AfterDisplayEvent has the following arguments:
 
 Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
@@ -128,13 +182,34 @@ However, it is often set to 0 or null, so you probably shouldn't rely on it.
 
 ### Return Value
 
-String. This will get displayed immediately after the text of the item.
+String of HTML. This will get displayed immediately after the text of the item.
 
-### Examples
+:::info
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+This plugin returns the HTML for those custom fields which have the Automatic Display option set to After Display Content.
+So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
+If you implement a component which supports custom fields then you will need to dispatch this event.
+:::
+
+## onContentNormaliseRequestData
+
+### Description
+
+This is an event which is raised during the process of handling submitted form data through Controllers and Models to the database.
+It is triggered after the submitted form data (usually an array sent by the browser within a `jform` HTTP POST parameter) has been filtered and validated. 
+The array of data is cast into a PHP `object` which is then passed as a parameter in the event. 
+As PHP objects are always passed by reference, plugins listening for this event can modify the submitted form data.
+
+### Event Arguments
+The event class \Joomla\CMS\Event\Model\NormaliseRequestDataEvent has the following arguments:
+
+- **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
+
+- **`data`** - The data in the fields of the submitted form, passed as a PHP object. You can access properties of this object using, for example, `$data->title`; the properties available will depend on what type of `data` is being passed. 
+If you set any of these properties then they will be modified in the form data, and (most likely) persisted in the database.
+
+- **`form`** - The Joomla `Form` instance, as described in [how Joomla forms work](../../../general-concepts/forms/how-forms-work.md).
+
+### Return Value
 
 None.
-
-### Additional Notes
-
-The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
-This plugin returns the HTML for those custom fields which have the Automatic Display option set to After Display Content.
