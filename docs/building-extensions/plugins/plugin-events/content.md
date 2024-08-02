@@ -56,7 +56,6 @@ use Joomla\CMS\Event\Result\ResultAwareInterface;
 ...
     if ($event instanceof ResultAwareInterface) {
         $event->addResult($value);
-        return;
     } else {   // use GenericEvent approach
         $result = $event->getArgument('result') ?: [];   // get the result argument from GenericEvent
         $result[] = $value;                              // add your return value into the array
