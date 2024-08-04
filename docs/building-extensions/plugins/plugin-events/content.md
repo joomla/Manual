@@ -9,10 +9,57 @@ Content Plugin Events
 
 Content events are triggered during the content creation process. These events are triggered in many different components and modules - they are not specific to the `com_content` component. 
 
-This list gives a brief description of each event, what the event arguments are, and any examples of their use which are available in the Joomla Manual.
+This list gives a brief description of each event, what the event parameters / arguments are, and any examples of their use which are available in the Joomla Manual.
 
 <details>
-  <summary>Accessing Event Arguments</summary>
+  <summary>Accessing Event Parameters / Arguments</summary>
+
+As described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md) the Joomla team have been changing plugin events from strings and associated parameters, via Generic Events, to Concrete Events.
+
+In this transitional phase you have a choice with regard to how your plugin registers to receive events.
+
+To use the traditional (legacy) method, you specify a public function which has the same name as the event name, and Joomla uses PHP reflection to find your method. You specify the event parameters in your function signature, for example:
+
+```php
+use Joomla\CMS\Plugin\CMSPlugin;
+
+class MyPlugin extends CMSPlugin 
+{
+  public function onContentPrepare($context, $item, $params, $page)
+  {
+    if ($context == "com_content.article") ...
+  }
+```
+
+It doesn't matter what you specify as the names of your function parameters, just on their order in the parameter sequence.
+The documentation in the Joomla manual always specifies the correct order of these arguments.
+
+This will work until at least Joomla 7.
+
+A disadvantage of this approach is that you will have to change at some point, and you also will not benefit from the performance increase in using event classes, as PHP reflection is expensive in computing terms.
+
+To use an event class your plugin class must implement \Joomla\Event\SubscriberInterface and provide the `getSubscribedEvents` function. In this case your plugin listener function must have 1 parameter `$event`:
+
+```php
+use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\Event\SubscriberInterface;
+
+class MyPlugin extends CMSPlugin extends SubscriberInterface
+{
+  public static function getSubscribedEvents(): array
+  {
+    return [
+      'onContentPrepare' => 'myOnContentPrepare',  
+    ];
+  } 
+
+  public function myOnContentPrepare(EventClass $event)
+  {
+    ...
+  }
+```
+
+However, you still have to decide what `EventClass` you're going to use.
 
 To access the event arguments of an event concrete class you can use within your plugin class:
 
@@ -30,7 +77,13 @@ class MyPlugin ...
     }
 ```
 
-However, if you want your plugin to work across Joomla 4 and 5 it may be better to use:
+Here in the `getArgument()` call you must use the correct name for the argument, and in the Joomla manual documentation the correct name is always specified.
+
+However, this will work only for concrete event classes, not for generic event classes, and as Joomla events were transitioned via generic event classes to concrete event classes over Joomla 4 and 5 releases, this approach is unlikely to work across all Joomla 4 and 5 releases. 
+
+In addition, even if a Joomla event is implemented as a concrete event, then a third party component may dispatch that event as a generic event; Joomla will not forbid this.
+
+If you want your plugin to work across both generic and concrete event classes (and so across Joomla 4 and 5) you can use:
 
 ```php
 use Joomla\Event\Event;
@@ -43,13 +96,26 @@ class MyPlugin ...
     }
 ```
 
-This will work for both concrete event classes and generic event classes (as described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md)).
+This depends on the order of the arguments in the event class, and there is a commitment from the Joomla team to preserve the same order within the event arguments as within the order of the parameters of the legacy method - via the variable `$legacyArgumentsOrder`, eg in Joomla\CMS\Event\Content\ContentPrepareEvent (in libraries/src/Event/Content/ContentPrepareEvent.php):
+
+```php
+class ContentPrepareEvent extends ContentEvent
+{
+    protected $legacyArgumentsOrder = ['context', 'subject', 'params', 'page'];
+    // note that in this event class 'subject' is treated as equivalent to 'item'
+```
 </details>
 
 <details>
   <summary>Returning Values</summary>
 
-Where a return value is expected, how this is handled differs depending upon whether the event class is a concrete class or is a generic event class. 
+If you're using the traditional (legacy) approach of listening for events, then to return a value `$value` you simple do:
+
+```php
+  return $value;
+```
+
+If you are using event classes then how this is handled differs depending upon whether the event class is a concrete class or is a generic event class. 
 To return a value `$value` in a manner which works for both use the following:
 
 ```php
