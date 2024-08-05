@@ -86,7 +86,7 @@ export default function Home() {
   return (
     <Layout
       title={`Get started with the ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Comprehensive Joomla! developer manual with full documentation for creating custom extensions and components.">
       <HomepageHeader />
       <main>
         {quickaccess && quickaccess.length > 0 && (
