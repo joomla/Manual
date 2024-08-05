@@ -8,18 +8,11 @@ sidebar_position: 2
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. Depending on the usecase you should create a [console plugin](https://docs.joomla.org/J4.x:Writing_A_CLI_Application) 
+rare cases. Depending on the usecase you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md) 
 and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an 
-[ajax plugin](https://docs.joomla.org/Using_Joomla_Ajax_Interface).
+[ajax plugin](../plugins/ajax-plugin.md).
 
 :::
-
-:::note[TODO]
-
-Update the link to docs.joomla.org in the "Developer notice" above when an example has been added to this manual. 
-
-:::
-
 
 ## General Approach
 To make use of the Joomla framework, and in particular the Joomla APIs, you need to have an `Application` class instance. As `ConsoleApplication` and `CliApplication` both have checks to ensure that their application is run from the command line, and neither `AdministratorApplication` nor `ApiApplication` is appropriate, the clear choice is to build your script upon `SiteApplication`.
@@ -79,10 +72,6 @@ Log::add('logging initialised ok', Log::DEBUG, 'script-debug');
 $lang = Language::getInstance("en-GB");
 $app->loadLanguage($lang);
 $app->getLanguage()->load('lib_joomla', JPATH_ADMINISTRATOR);
-
-// Optional - Trigger the onAfterInitialise event.
-PluginHelper::importPlugin('system');
-$app->triggerEvent('onAfterInitialise');
 
 // Write below here what you want your script to do
 $db = $container->get(Joomla\Database\DatabaseInterface::class);
