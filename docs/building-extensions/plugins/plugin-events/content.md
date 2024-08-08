@@ -25,7 +25,7 @@ The event class \Joomla\CMS\Event\Content\ContentPrepareEvent has the following 
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&subject`** (**`&item`** is also acceptable) - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
 You can access properties of this object using, for example, `$item->title`; the properties available will depend on what type of `item` is being passed.
 As `item` is passed by reference, if you set any of these properties then they will be carried through to the webpage output, but not persisted in the database.
 
@@ -53,7 +53,7 @@ Although `&item` and `&params` are passed by reference, this is not the event to
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&subject`** (**`&item`** is also acceptable) - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
 
 - **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
@@ -84,7 +84,7 @@ Although `&item` and `&params` are passed by reference, this is not the event to
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&subject`** (**`&item`** is also acceptable) - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
 
 - **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
@@ -119,7 +119,7 @@ Although `&item` and `&params` are passed by reference, this is not the event to
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&subject`** (**`&item`** is also acceptable) - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
 
 - **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 

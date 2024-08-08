@@ -121,15 +121,17 @@ class MyPlugin extends CMSPlugin extends SubscriberInterface
 
   public function myOnContentPrepare(ContentPrepareEvent $event)
   {
-    $context = $event->getArgument('context');
-    $item = $event->getArgument('subject'); 
-    $params = $event->getArgument('params');
-    $page = $event->getArgument('page');
+    $context = $event->getContext();
+    $item = $event->getItem(); 
+    $params = $event->getParams();
+    $page = $event->getPage();
     // ...
   }
 ```
 
-Here in the `getArgument()` call you must use the correct name for the argument, and in the Joomla manual documentation the correct name is always specified.
+Here in the getter call you must use the correct name for the argument, and in the Joomla manual documentation the correct name is always specified.
+
+You can also find the getter methods in the API documentation for the event class, for example [Event/Content/ContentPrepareEvent methods](cms-api://classes/Joomla-CMS-Event-Content-ContentPrepareEvent.html).
 
 To use an event class your plugin class must implement \Joomla\Event\SubscriberInterface and provide the `getSubscribedEvents` function. Your plugin listener function must then have just the single `$event` parameter.
 
