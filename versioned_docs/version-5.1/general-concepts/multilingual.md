@@ -3,19 +3,19 @@ Multilingual
 
 Joomla provides robust support for multiple languages, allowing developers to create extensions that can be easily translated and used in different languages.
 
-### How Joomla Supports Multiple Languages
+## How Joomla Supports Multiple Languages
 
 Joomla differentiates between **installed languages** (languages that the Joomla core or extensions are translated into) and **content languages** (languages that site content can be written in). 
 
 This distinction helps in managing translations more effectively.
 
-#### Language Constants
+### Language Constants
 
 To handle translations, Joomla uses **language constants**. These constants are defined in language files (`.ini` and `.sys.ini`) and are used throughout the codebase. 
 
 By using **constants**, you can ensure that your extensions are easily translatable.
 
-#### Language Files
+### Language Files
 
 **Language files** are simple text files that map language constants to their translations. There are two main types of language files:
 - `.ini` files: Used for **regular translations.**
@@ -30,9 +30,9 @@ MOD_EXAMPLE_GOODBYE="Goodbye"
 Place it in the `language/en-GB` directory of your extension.
 
 
-### Implementing Multilingual Support in Your Extension
+## Implementing Multilingual Support in Your Extension
 
-#### Using the `Text` Class
+### Using the `Text` Class
 
 To translate strings within your code, use the `Text` handling class from Joomla.
 
@@ -47,7 +47,7 @@ echo Text::_("MOD_EXAMPLE_GOODBYE");  // Outputs: Goodbye
 
 The key **has to match** either the key in the language file or the constant in the code.
 
-#### Language Files in Components
+### Language Files in Components
 
 For components, language files are typically stored in the `language` directory of the component. 
 
@@ -60,7 +60,7 @@ components
                 en-GB.com_example.sys.ini
 ```
 
-#### Language Files in Modules
+### Language Files in Modules
 
 Same goes for modules, language files are stored in the `language` directory of the module.
 
@@ -73,7 +73,7 @@ modules
                 en-GB.mod_example.sys.ini
 ```
 
-#### Including Language Files in the Manifest
+### Including Language Files in the Manifest
 
 To ensure your extension's language files are recognized, include them in the **extension's manifest file**.
 
@@ -86,7 +86,7 @@ To ensure your extension's language files are recognized, include them in the **
 
 For more details on the manifest file, refer to the [Joomla documentation](https://manual.joomla.org/docs/building-extensions/modules/module-development-tutorial/step4-languages/).
 
-#### Database Schema
+### Database Schema
 
 For components, ensure to include a 'language' column in your database tables to store the language code of the content. 
 
@@ -103,7 +103,7 @@ CREATE TABLE `#__example` (
 
 This column should be populated with the language code (e.g., `en-GB`, `fr-FR`) when saving content.
 
-### Debugging Multilingual Issues
+## Debugging Multilingual Issues
 
 Joomla offers robust debugging tools to help identify untranslated strings and resolve issues with language translations in your installed extensions. 
 
@@ -132,21 +132,21 @@ When **Debug Language** is activated, Joomla highlights all translatable values 
 Utilizing these debugging features will help you quickly identify and fix translation issues in your Joomla extensions.
 
 
-### Additional Resources
+## Additional Resources
 
-#### Language Overrides
+### Language Overrides
 
 Language overrides allow administrators to customize translations without modifying the core language files. 
 
 This feature can be accessed from the backend under `System > Language Overrides`. Select `Site` for front-end strings and `Administrator` for back-end strings.
 
-#### Language Associations
-
 ### Language Associations
+
+## Language Associations
 
 Joomla’s Multilingual Associations component simplifies the management of multilingual content by allowing you to associate translations with each other.
 
-#### Enabling Multilingual Associations
+### Enabling Multilingual Associations
 
 1. **Enable the Language Filter Plugin:**
     - Go to **Extensions > Plugins**.
@@ -163,7 +163,7 @@ Joomla’s Multilingual Associations component simplifies the management of mult
 
 When you enable the Multilingual Associations component, you can easily manage and link your translated content. This tool provides a side-by-side view of the content, allowing you to edit and associate items without switching between different screens.
 
-#### Steps to Use Multilingual Associations
+### Steps to Use Multilingual Associations
 
 1. **Enable the Plugin:**
     - Navigate to **Extensions > Plugins**.
@@ -184,7 +184,7 @@ This is useful for maintaining consistency across languages.
 
 More details can be found in the [Joomla documentation](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_Associations).
 
-#### Form Fields
+### Form Fields
 
 Joomla provides standard form fields for languages and content languages. These can be used in your extensions to manage multilingual content more effectively. Refer to the following links for more information:
 - [Standard Fields - Language](https://manual.joomla.org/docs/general-concepts/forms-fields/standard-fields/language)
