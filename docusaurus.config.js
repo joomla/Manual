@@ -85,7 +85,6 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
           lastVersion: '5.1',
-          docLayoutComponent: "@theme/DocPage",
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi-docs
           /*lastVersion: '4.3',*/
           versions: {
@@ -278,6 +277,7 @@ const config = {
       },
     }),
   plugins: [
+      /*
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
@@ -285,6 +285,7 @@ const config = {
         language: "en",
       },
     ],
+      */
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
@@ -313,8 +314,8 @@ const config = {
         docsPluginId: "classic",
         config: {
           joomla: {
-            specPath: "docs/using-core-functions/webservices/assets/webservices-openapi.yaml",
-            outputDir: "docs/using-core-functions/webservices",
+            specPath: "docs/web-services/specification/_assets/webservices-openapi.yaml",
+            outputDir: "docs/web-services/specification",
             sidebarOptions: {
               groupPathsBy: "tag",
             },
