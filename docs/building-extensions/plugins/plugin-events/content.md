@@ -7,13 +7,13 @@ toc_max_heading_level: 2
 Content Events
 ==============
 
-Content plugin events are triggered not only by com_content but also by other components such as Contacts, Categories and Tags, as well as some modules.
+Content plugin events are triggered not only by `com_content` but also by other components such as Contacts, Categories and Tags, as well as some modules.
 
 They are triggered during the process of:
-- preparing the content for display in a View - both for ordinary HTML and for HTML forms
-- handling the POST data submitted from a view - relating to data validation and CRUD operations at the MVC Model level
+- preparing the content for display in a View - both for textual HTML and for HTML forms
+- handling the POST data submitted from a form - relating to data validation and CRUD operations at the MVC Model level
 
-This list gives a brief description of each event, what the event parameters / arguments are, and any examples of their use which are available in the Joomla Manual.
+The sections below give a brief description of each content event, what the event parameters / arguments are, and any examples of their use which are available in the Joomla Manual.
 
 For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
 
