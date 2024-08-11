@@ -7,7 +7,11 @@ toc_max_heading_level: 2
 Content Plugin Events
 =====================
 
-Content events are triggered during the content creation process. These events are triggered in many different components and modules - they are not specific to the `com_content` component. 
+Content plugin events are triggered not only by com_content but also by other components such as Contacts, Categories and Tags, as well as some modules.
+
+They are triggered during the process of:
+- preparing the content for display in a View - both for ordinary HTML and for HTML forms
+- handling the POST data submitted from a view - relating to data validation and CRUD operations at the MVC Model level
 
 This list gives a brief description of each event, what the event parameters / arguments are, and any examples of their use which are available in the Joomla Manual.
 
@@ -26,11 +30,11 @@ The event class \Joomla\CMS\Event\Content\ContentPrepareEvent has the following 
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
 You can access properties of this object using, for example, `$item->title`; the properties available will depend on what type of `item` is being passed.
-As `item` is passed by reference, if you set any of these properties then they will be carried through to the webpage output, but not persisted in the database.
+If you set any of these properties then they will be carried through to the webpage output, but not persisted in the database.
 
-- **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). Any values which you set can affect the webpage output, but are not persisted in the database.
+- **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). Any values which you set can affect the webpage output, but are not persisted in the database.
 
 - **`page`** - An integer which has been associated with the offset when displaying paginated lists of items. 
 However, it is often set to 0 or null, so you probably shouldn't rely on it.
@@ -51,13 +55,13 @@ This is a request for information that should be placed between the content titl
 
 The event class \Joomla\CMS\Event\Content\AfterTitleEvent has the following arguments:
 
-Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
+Although `item` and `params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
 
-- **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
+- **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
 - **`page`** - An integer which has been associated with the offset when displaying paginated lists of items. 
 However, it is often set to 0 or null, so you probably shouldn't rely on it.
@@ -83,13 +87,13 @@ For views that generate HTML, this might include the use of styles that are spec
 
 The event class \Joomla\CMS\Event\Content\BeforeDisplayEvent has the following arguments:
 
-Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
+Although `item` and `params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
 
-- **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
+- **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
 - **`page`** - An integer which has been associated with the offset when displaying paginated lists of items. 
 However, it is often set to 0 or null, so you probably shouldn't rely on it.
@@ -119,13 +123,13 @@ This is a request for information that should be placed immediately after the co
 
 The event class \Joomla\CMS\Event\Content\AfterDisplayEvent has the following arguments:
 
-Although `&item` and `&params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
+Although `item` and `params` are passed by reference, this is not the event to modify item data. Use onContentPrepare for that purpose. 
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&item`** - A reference to the item which is being rendered by the view, for example, an article, contact or user. 
+- **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
 
-- **`&params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
+- **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
 - **`page`** - An integer which has been associated with the offset when displaying paginated lists of items. 
 However, it is often set to 0 or null, so you probably shouldn't rely on it.
@@ -159,7 +163,7 @@ The event class \Joomla\CMS\Event\Model\PrepareDataEvent has the following argum
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
-- **`&data`** - The initial (pre-fill) data for the fields of the form, passed as a PHP object. You can access properties of this object using, for example, `$data->title`; the properties available will depend on what type of `data` is being passed. 
+- **`data`** - The initial (pre-fill) data for the fields of the form, passed as a PHP object. You can access properties of this object using, for example, `$data->title`; the properties available will depend on what type of `data` is being passed. 
 If you set any of these properties then they will be modified in the form data which is presented to the user.
 
 However, setting the properties directly is deprecated, and you should use `updateData` instead:
@@ -210,7 +214,7 @@ The event class \Joomla\CMS\Event\Model\BeforeValidateDataEvent has the followin
 
 - **`form`** - The Form object. The `name` object of this object (which you can get via `$form->getName()`) will be of the form 'com_content.article', 'com_contact.contact', and you can use this to check whether you are in the desired context for the plugin.
 
-- **`&data`** - The submitted form data, passed by reference as an associative array. The array elements available will depend on the form. If you set any of these elements then they will be modified prior to the data validation being applied.
+- **`data`** - The submitted form data, passed by reference as an associative array. The array elements available will depend on the form. If you set any of these elements then they will be modified prior to the data validation being applied.
 
 However, setting the `data` directly is deprecated, and you should use `updateData` instead:
 
@@ -267,7 +271,7 @@ The event class \Joomla\CMS\Event\Model\BeforeSaveEvent has the following argume
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
-- **`item`** - A reference to the `Table` object containing the data to be stored. 
+- **`item`** - The `Table` object containing the data to be stored. 
 
 - **`isNew`** - A boolean which is set to `true` if the content is about to be created (as opposed to updated)
 
@@ -297,7 +301,7 @@ The event class \Joomla\CMS\Event\Model\AfterSaveEvent has the following argumen
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
-- **`item`** - A reference to the `Table` object containing the data which was stored. 
+- **`item`** - The `Table` object containing the data which was stored. 
 
 - **`isNew`** - A boolean which is set to `true` if the content was created (as opposed to updated)
 
@@ -330,7 +334,7 @@ The event class \Joomla\CMS\Event\Model\BeforeDeleteEvent has the following argu
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
-- **`item`** - A reference to the `Table` object containing the data to be deleted. 
+- **`item`** - The `Table` object containing the data to be deleted. 
 
 ### Return Value
 
@@ -355,7 +359,7 @@ The event class \Joomla\CMS\Event\Model\AfterDeleteEvent has the following argum
 
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
-- **`item`** - A reference to the `Table` object containing the data which was deleted. 
+- **`item`** - The `Table` object containing the data which was deleted. 
 
 ### Return Value
 

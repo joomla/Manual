@@ -110,7 +110,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 use Joomla\CMS\Event\Content\ContentPrepareEvent;
 
-class MyPlugin extends CMSPlugin extends SubscriberInterface
+class MyPlugin extends CMSPlugin implements SubscriberInterface
 {
   public static function getSubscribedEvents(): array
   {
@@ -144,7 +144,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\Event\SubscriberInterface;
 use Joomla\Event\Event;
 
-class MyPlugin extends CMSPlugin extends SubscriberInterface
+class MyPlugin extends CMSPlugin implements SubscriberInterface
 {
   public static function getSubscribedEvents(): array
   {
