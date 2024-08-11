@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
-title: Content Plugin Events
+title: Content Events
 toc_max_heading_level: 2 
 ---
 
-Content Plugin Events
-=====================
+Content Events
+==============
 
 Content plugin events are triggered not only by com_content but also by other components such as Contacts, Categories and Tags, as well as some modules.
 
