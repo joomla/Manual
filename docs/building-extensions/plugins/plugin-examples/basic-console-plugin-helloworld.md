@@ -1,8 +1,13 @@
 ---
-title: Basic Console Plugin - Hello World
+title: Console Plugin - Hello World
 sidebar_position: 4
 ---
-# Introduction
+
+Console Plugin - Hello World
+============================
+
+
+## Introduction
 Console applications were introduced in Joomla 4, and are now the Joomla strategic way of writing command line applications. You may also hear these called CLI applications. They are PHP applications which utilise the Joomla framework and are run from the command line where your Joomla instance is hosted, so you can run these applications:
 - from a terminal session on the server
 - from a cron job on the server
@@ -32,7 +37,7 @@ and the application will output "Hello World".
 
 You may find it useful to watch this video [Adding commands to the CLI Update](https://www.youtube.com/watch?v=gcJJtTcPiTg) but be aware that this video (for Joomla core developers) describes creating commands by changing a library file, whereas you must use a plugin instead. 
 
-# What you have to do
+## What you have to do
 You need to write 2 classes:
 - one class (ConsolePlugin below) handles the aspects associated with the Joomla plugin mechanism
 - one class (Command below) contains the code for the command
@@ -58,7 +63,7 @@ In this example the 2 classes are:
 - HelloworldConsolePlugin - which handles the plugin aspects, and, 
 - RunHelloCommand which writes out "Hello World", and contains information about the command..
 
-## Console plugin code
+### Console plugin code
 Following the sequence diagram above, the code for HelloworldConsolePlugin is:
 
 ```php
@@ -76,7 +81,7 @@ public function registerCommands(): void
 }
 ```
 
-## The Command configure() call
+### The Command configure() call
 
 ```php
 protected function configure(): void
@@ -118,7 +123,7 @@ This also is displayed whenever the user enters
 php cli/joomla.php
 ```
 
-## The Command doExecute() call
+### The Command doExecute() call
 Finally, `doExecute()` is called on `RunHelloCommand` to execute the command, and the code writes out "Hello World"
 
 ```php
@@ -134,12 +139,12 @@ To handling the I/O Joomla has incorporated the [Symfony Style](https://symfony.
 
 The function returns an exit code, which on successful completion should be the int zero. This code is what the Joomla php application will exit with, so you can capture this if you're running the command within a batch process.
 
-# Plugin Code
+## Plugin Code
 This section contains the full source code for the console plugin. You can write the plugin manually by copying the code below, or you can download the zip file from [Download Console Plugin Helloworld](./_assets/plg_helloworld_cli.zip). If you're writing it manually then include the following files in a folder eg `plg_helloworld_cli`.
 
-As described [here](basic-content-plugin.md), there are a number of things you need to ensure are consistent across your source code files when you're developing plugins. That example also includes how to use language files to make your plugin language-independent. For simplicity this helloworld example supports only English. 
+As described [here](../basic-content-plugin.md), there are a number of things you need to ensure are consistent across your source code files when you're developing plugins. That example also includes how to use language files to make your plugin language-independent. For simplicity this helloworld example supports only English. 
 
-## Manifest file
+### Manifest file
 
 ```xml title="plg_helloworld_cli/helloworld.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -157,7 +162,7 @@ As described [here](basic-content-plugin.md), there are a number of things you n
 </extension>
 ```
 
-## Service provider file
+### Service provider file
 The `services/provider.php` file is fairly standard boilerplate code; you just need to code correctly the 3 lines which relate to your plugin, plus the Application is injected as it's accessed within the console plugin code. 
 
 ```php title="plg_helloworld_cli/services/provider.php"
@@ -202,7 +207,7 @@ return new class implements ServiceProviderInterface
 };
 ```
 
-## Console Plugin file
+### Console Plugin file
 The file below handles the interaction with the Joomla plugin framework:
 
 ```php title="plg_helloworld_cli/src/Extension/HelloworldConsolePlugin.php"
@@ -233,7 +238,7 @@ class HelloworldConsolePlugin extends CMSPlugin implements SubscriberInterface
 }
 ```
 
-## Command file
+### Command file
 The file below handles the execution of the hello:world command.
 
 ```php title="plg_helloworld_cli/src/CliCommand/RunHelloworldCommand.php"
@@ -296,7 +301,7 @@ EOF
 }
 ```
 
-## Installation
+### Installation
 Generate a zip file from the folder and install the plugin in the usual way. Remember to enable the plugin!
 
 Then in a terminal session navigate to the top level of your Joomla instance and enter:
