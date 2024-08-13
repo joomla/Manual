@@ -32,7 +32,3 @@ To use a Captcha on a form you must have:
 - downloaded and installed a Captcha plugin (eg from the [Joomla Extension Directory](https://extensions.joomla.org/))
 - enabled the Captcha plugin
 - set the Global Configuration / Site / Default Captcha parameter
-
-## See Also
-
-How to develop a [Captcha Plugin](../../../building-extensions/plugins/captcha-plugin.md). 

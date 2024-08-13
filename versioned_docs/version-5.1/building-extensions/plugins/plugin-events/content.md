@@ -195,29 +195,12 @@ If the event is triggered in the process of handling the POST from a form then t
 
 None.
 
-## onContentBeforeValidateData
-
-When handling data submitted in a POST from a Joomla form, this event is triggered by the Model just before it applies the validation rules. 
-You can use this event to modify the submitted data, or (probably less likely) the form object.
-
-### Event Arguments
-
-The event class \Joomla\CMS\Event\Model\BeforeValidateDataEvent has the following arguments:
-
-- **`form`** - The Form object. The `name` object of this object (which you can get via `$form->getName()`) will be of the form 'com_content.article', 'com_contact.contact', and you can use this to check whether you are in the desired context for the plugin.
-
-- **`data`** - The submitted form data, passed by reference as an associative array. The array elements available will depend on the form. If you set any of these elements then they will be modified prior to the data validation being applied.
-
-### Return Value
-
-None.
-
 ## onContentNormaliseRequestData
 
 ### Description
 
 This is an event which is raised during the process of handling submitted form data through Controllers and Models to the database.
-It is triggered after the submitted form data (usually an array sent by the browser within a `jform` HTTP POST parameter) has been filtered and validated. 
+It is triggered by the Controller before the submitted form data (usually an array sent by the browser within a `jform` HTTP POST parameter) has been filtered and validated. 
 The array of data is cast into a PHP `object` which is then passed as a parameter in the event. 
 As PHP objects are always passed by reference, plugins listening for this event can modify the submitted form data.
 
@@ -231,6 +214,23 @@ The event class \Joomla\CMS\Event\Model\NormaliseRequestDataEvent has the follow
 If you set any of these properties then they will be modified in the form data, and (most likely) persisted in the database.
 
 - **`form`** - The Joomla `Form` instance, as described in [how Joomla forms work](../../../general-concepts/forms/how-forms-work.md).
+
+### Return Value
+
+None.
+
+## onContentBeforeValidateData
+
+When handling data submitted in a POST from a Joomla form, this event is triggered by the Model just before it applies the validation rules. 
+You can use this event to modify the submitted data, or (probably less likely) the form object.
+
+### Event Arguments
+
+The event class \Joomla\CMS\Event\Model\BeforeValidateDataEvent has the following arguments:
+
+- **`form`** - The Form object. The `name` object of this object (which you can get via `$form->getName()`) will be of the form 'com_content.article', 'com_contact.contact', and you can use this to check whether you are in the desired context for the plugin.
+
+- **`data`** - The submitted form data, passed by reference as an associative array. The array elements available will depend on the form. If you set any of these elements then they will be modified prior to the data validation being applied.
 
 ### Return Value
 
@@ -357,7 +357,7 @@ This event is triggered at the Model level before the state of a number of items
 You can abort the change of state by returning `false`. 
 However, in this case you should enqueue s message to explain to the user why the change of state was rejected. 
 
-:::Warning
+:::warning
   Joomla doesn't handle this rejection properly - the requested change of state is not applied, but messages output to the user may indicate that the action was successful.
 :::
 
@@ -368,7 +368,7 @@ This occurs whenever the user:
 
 This event is also fired for similar components (for example Contacts, Tags), but not for enabling/disabling Users or Extensions.
 
-:::Warning
+:::warning
   This event is NOT fired whenever you edit an item, change its published state and then Save.
 :::
 
@@ -394,7 +394,7 @@ Note that this event isn't called "onContentAfterChangeState" - Joomla is a litt
 
 This event is triggered at the Model level after the state of a number of items is changed.
 
-:::Warning
+:::warning
   This event is NOT fired whenever you edit an item, change its published state and then Save.
 :::
 

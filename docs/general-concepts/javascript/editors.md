@@ -29,7 +29,7 @@ When editor script decides to integrate Joomla Editor Buttons in to its interfac
 - `name` - is a name of the action that need to be run.
 - `options` - an options object that will be passed to the action `handler`.
 
-For examples look [How to create an Editor plugin](building-extensions/plugins/editors-plugin.md).
+For examples look [How to create an Editor plugin](building-extensions/plugins/plugin-examples/editors-plugin.md).
 
 ## `JoomlaEditor` Methods
 

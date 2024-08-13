@@ -11,19 +11,19 @@ This example of a system plugin illustrates the flexibility of Joomla in allowin
 
 **WARNING: This is a system plugin, which is loaded every time Joomla runs, on both the site front-end and administrator back-end. If you have a PHP syntax error in it then you will get locked out of the Joomla administrator back-end, and will have to go into phpmyadmin (or equivalent) to set to 0 the `enabled` field within the plugin record in the `#__extensions` table. If you're not comfortable doing this then using this plugin is not recommended.**
 
-For background information on how Joomla routing works you can read the documentation on [routing](../../general-concepts/routing/index.md). 
+For background information on how Joomla routing works you can read the documentation on [routing](../../../general-concepts/routing/index.md). 
 
 When building an SEF URL the Joomla SiteRouter class uses a MenuRules class to work out the menuitem to base the URL upon. This is an important selection, as the menuitem affects not only the format of the SEF URL produced, but also affects the presentation of the web page and the associated modules which are displayed.
 
 The `com_content` component uses these rules, and you may find that you wish to change the format of some of the `com_content` SEF URLs generated on your site. This system plugin shows you how you can build your own rules and get them used by `com_content` to build SEF URLs which have the format you wish to have.
 
-The key to doing this is to write our own component router class, and then get `com_content` use our component router class instead of its own. As `com_content` uses the RouterFactory to instantiate its router we need to get the RouterFactory to instantiate our router. As described in [Accessing the Component Router class](../../general-concepts/routing/access-component-router-class.md) the RouterFactory instantiates a component Router class with the classname `<namespace>\Site\Service\Router`, so if we inject our own namespace into this RouterFactory then it will instantiate our Router instead of the `com_content` Router.
+The key to doing this is to write our own component router class, and then get `com_content` use our component router class instead of its own. As `com_content` uses the RouterFactory to instantiate its router we need to get the RouterFactory to instantiate our router. As described in [Accessing the Component Router class](../../../general-concepts/routing/access-component-router-class.md) the RouterFactory instantiates a component Router class with the classname `<namespace>\Site\Service\Router`, so if we inject our own namespace into this RouterFactory then it will instantiate our Router instead of the `com_content` Router.
 
 You can copy and adapt the code below, or download and install the plugin from [system plugin router rules download](_assets/plg_custom_menurule.zip).
 
 If you're copying the code below, then you will need to write the following 5 files into folder called `plg_custom_menurule`.
 
-For simplicity the plugin uses English only; if you want to make it multilingual you can change it as described in [basic content plugin](basic-content-plugin.md).
+For simplicity the plugin uses English only; if you want to make it multilingual you can change it as described in [basic content plugin](../basic-content-plugin.md).
 
 ### Manifest file
 
@@ -71,7 +71,7 @@ return new class implements ServiceProviderInterface {
 
 ### Extension class file
 This is the entry point for the plugin. It registers to listen for the 'onAfterExtensionBoot' event, which is raised within `loadExtension` in libraries/src/Extension/ExtensionManagerTrait.php. Joomla runs this code every time it loads an extension, and this code:
-- runs the component's services/provider.php file to load it and its dependencies into the [component's child DIC](../../general-concepts/dependency-injection/extension-child-containers.md) 
+- runs the component's services/provider.php file to load it and its dependencies into the [component's child DIC](../../../general-concepts/dependency-injection/extension-child-containers.md) 
 - triggers the 'onAfterExtensionBoot' event
 - gets the extension and its dependencies out of the child DIC.
 
