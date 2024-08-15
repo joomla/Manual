@@ -8,7 +8,7 @@ Dependency Injection was introduced in Joomla 4, with the intention of removing 
 However, some issues do remain, which you should be aware of. Early versions of Joomla 5 still have a lot of these `getInstance` calls!
 
 ## Toolbar::getInstance()
-The `Toolbar` class is used for managing the buttons on the forms within the Joomla administrator back-end. The [Toolbar API](https://api.joomla.org/cms-4/classes/Joomla-CMS-Toolbar-Toolbar.html) documentation seems to suggest that we should replace 
+The `Toolbar` class is used for managing the buttons on the forms within the Joomla administrator back-end. The [Toolbar API](cms-api://classes/Joomla-CMS-Toolbar-Toolbar.html) documentation seems to suggest that we should replace 
 ```php
 $bar = Toolbar::getInstance('toolbar');
 ```

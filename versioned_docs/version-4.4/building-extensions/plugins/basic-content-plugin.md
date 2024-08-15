@@ -1,9 +1,13 @@
 ---
-title: Basic Content Plugin
+title: Plugin Tutorial
 sidebar_position: 3
 ---
+
+Plugin Tutorial
+===============
+
 # Introduction
-In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
+In this section we develop a basic content plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
 On my Joomla instance {sitename} the default editor is {editor}.
 ```
@@ -108,7 +112,7 @@ Ensure that the name of your manifest XML file matches this plugin attribute (ie
 ```
 
 Ensure that your plugin language files are named correctly. You must include in the filename:
-- the plugin type - matching the `<extension group=."..">` attribute, and
+- the plugin type - matching the `<extension group="...">` attribute, and
 - the plugin element - matching the `<folder plugin="...">` attribute.
 
 # Service Provider file

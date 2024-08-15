@@ -2,7 +2,9 @@
 sidebar_position: 3
 title: Implementing Categories in your Component
 ---
-# Implementing Categories in your Component
+Implementing Categories in your Component
+=========================================
+
 It's quite straightforward to implement categories in a custom component. Here is a summary of what you have to do.
 
 ## Specify a category id column in your component's database table

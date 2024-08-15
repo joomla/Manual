@@ -2,7 +2,8 @@
 title: Database
 ---
 
-# Introduction
+Introduction
+============
 
 Joomla provides a sophisticated database abstraction layer to simplify the usage for third party developers. New versions of the Joomla Platform API provide additional functionality which extends the database layer further, and includes features such as connectors to a greater variety of database servers and the query chaining to improve readability of connection code and simplify SQL coding.
 

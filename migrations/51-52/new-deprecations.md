@@ -11,7 +11,6 @@ New deprecations
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-
 ## Class deprecations
 
 Planned to be removed in Joomla! 7.0.
@@ -21,3 +20,9 @@ Planned to be removed in Joomla! 7.0.
 `JComponentTitle` will be removed in 7.0 and is not used in a long time. Use `Docment::getTitle()`
 Example: `\Joomla\CMS\Factory::getApplication()->getDocument()->getTitle();`
 Related PR: https://github.com/joomla/joomla-cms/pull/43304
+
+### getData() method in ArchiveModel will be removed 
+
+PR: https://github.com/joomla/joomla-cms/pull/43354
+File: /components/com_content/src/Model/ArchiveModel.php
+Description: The `getData()` method in the `ArchiveModel.php` will be removed in 7.0. Use `getItems()` instead.
