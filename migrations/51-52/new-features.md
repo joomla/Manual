@@ -16,3 +16,12 @@ This new feature adds a "total" counter at the bottom near the pagination in Joo
 displaying the number of items available after applying filters for easier item management.
 
 PR: [43575](https://github.com/joomla/joomla-cms/pull/43575)
+
+
+#### New lazy decorator for Plugins
+
+Adding Lazy Subscriber interface and decorator. 
+The decorator allows to instantiate the plugin with heavy dependencies only when the event is actually dispatched.
+PR: https://github.com/joomla/joomla-cms/pull/43658
+
+More details here: [Lazy Subscriber](https://manual.joomla.org/docs/building-extensions/plugins/advanced-plugin-features#lazy-subscriber).
