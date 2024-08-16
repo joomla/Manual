@@ -30,5 +30,5 @@ Description: The `getData()` method in the `ArchiveModel.php` will be removed in
 ### RadiobasicField
 
 PR: https://github.com/joomla/joomla-cms/pull/43860
-Description: Based on the Issue #19299 and and PR #19320 the radiobasic field is pretty useless and can be removed.
+Description: Based on the Issue #19299 and PR #19320 the radiobasic field is pretty useless and can be removed.
 Decision in the maintainer meeting we deprecate the field in 5.x and move it to the b/c plugin in 6.0 and remove it in 7.0.
