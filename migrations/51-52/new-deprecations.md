@@ -26,3 +26,9 @@ Related PR: https://github.com/joomla/joomla-cms/pull/43304
 PR: https://github.com/joomla/joomla-cms/pull/43354
 File: /components/com_content/src/Model/ArchiveModel.php
 Description: The `getData()` method in the `ArchiveModel.php` will be removed in 7.0. Use `getItems()` instead.
+
+### RadiobasicField
+
+PR: https://github.com/joomla/joomla-cms/pull/43860
+Description: Based on the Issue #19299 and and PR #19320 the radiobasic field is pretty useless and can be removed.
+Decision in the maintainer meeting we deprecate the field in 5.x and move it to the b/c plugin in 6.0 and remove it in 7.0.
