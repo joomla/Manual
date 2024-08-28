@@ -32,6 +32,15 @@ Place it in the `language/en-GB` directory of your extension.
 
 ## Implementing Multilingual Support in Your Extension
 
+### Where Language Files are stored
+
+Language files can be stored in the following directories:
+- **Components:** `language/en-GB/com_example.ini`
+- **Modules:** `language/en-GB/mod_example.ini`
+- **Plugins:** `language/en-GB/plg_example.ini`
+- **Templates:** `language/en-GB/tpl_example.ini`
+- **Language Root**: `/language` or `/administrator/language`
+
 ### Using the `Text` Class
 
 To translate strings within your code, use the `Text` handling class from Joomla.
@@ -49,8 +58,6 @@ The key **has to match** either the key in the language file or the constant in 
 
 ### Language Files in Components
 
-For components, language files are typically stored in the `language` directory of the component. 
-
 :::info
 Since Joomla Version 4 and 5, you do not need the language prefix in the language file name.
 :::
@@ -65,10 +72,6 @@ components
 ```
 
 ### Language Files in Modules
-
-Same goes for modules, language files are stored either in the `language` directory of the module or in the `/administrator/language` as well as the `/language` directory of the Joomla Installation.
-
-However in this guide, we will focus on the language files in the module's directory.
 
 ```plaintext
 modules
