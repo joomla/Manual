@@ -21,7 +21,7 @@ By using **constants**, you can ensure that your extensions are easily translata
 - `.ini` files: Used for **regular translations.**
 - `.sys.ini` files: Used for **installation and system messages.**
 
-Here’s an example of a language file (`en-GB.mod_example.ini`):
+Here’s an example of a language file (`mod_example.ini`):
 ```ini
 MOD_EXAMPLE_HELLO="Hello"
 MOD_EXAMPLE_GOODBYE="Goodbye"
@@ -51,26 +51,32 @@ The key **has to match** either the key in the language file or the constant in 
 
 For components, language files are typically stored in the `language` directory of the component. 
 
+:::info
+Since Joomla Version 4 and 5, you do not need the language prefix in the language file name.
+:::
+
 ```plaintext
 components
     com_example
         language
             en-GB
-                en-GB.com_example.ini
-                en-GB.com_example.sys.ini
+                com_example.ini
+                com_example.sys.ini
 ```
 
 ### Language Files in Modules
 
-Same goes for modules, language files are stored in the `language` directory of the module.
+Same goes for modules, language files are stored either in the `language` directory of the module or in the `/administrator/language` as well as the `/language` directory of the Joomla Installation.
+
+However in this guide, we will focus on the language files in the module's directory.
 
 ```plaintext
 modules
     mod_example
         language
             en-GB
-                en-GB.mod_example.ini
-                en-GB.mod_example.sys.ini
+                mod_example.ini
+                mod_example.sys.ini
 ```
 
 ### Including Language Files in the Manifest
@@ -79,8 +85,8 @@ To ensure your extension's language files are recognized, include them in the **
 
 ```xml
 <languages>
-    <language tag="en-GB">language/en-GB/en-GB.mod_example.ini</language>
-    <language tag="en-GB">language/en-GB/en-GB.mod_example.sys.ini</language>
+    <language tag="en-GB">language/en-GB/mod_example.ini</language>
+    <language tag="en-GB">language/en-GB/mod_example.sys.ini</language>
 </languages>
 ```
 
