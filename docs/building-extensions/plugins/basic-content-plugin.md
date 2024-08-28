@@ -1,13 +1,13 @@
 ---
-title: Basic Content Plugin
+title: Plugin Tutorial
 sidebar_position: 3
 ---
 
-Basic Content Plugin
-====================
+Plugin Tutorial
+===============
 
 # Introduction
-In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
+In this section we develop a basic content plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
 On my Joomla instance {sitename} the default editor is {editor}.
 ```

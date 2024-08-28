@@ -170,8 +170,25 @@ Images, code zip files, etc should be held in a folder `_assets` at the point in
 
 ### Other Recommendations
 
+#### Header Levels - just one H1
+
 To align with a11y requirements for accessibility, please don't have more than one header level 1:
 
 ```
 # Just One H1
 ```
+
+#### API Docs Links
+
+If you link to the Joomla API docs then the URL of the API depends on the version of the manual documentation. For example, for Joomla 4.4 documentation the User API is at [https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html](https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html), but for Joomla 5.x documentation it is [https://api.joomla.org/cms-5/classes/Joomla-CMS-User-User.html](https://api.joomla.org/cms-5/classes/Joomla-CMS-User-User.html).
+
+This is similar for Framework classes, eg [https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html](https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html), which is also dependent upon the documentation version.
+
+As this creates a maintainability issue a plugin has been developed which automatically selects the appropriate API docs version, and you should use this plugin by specifying API docs links like the following examples:
+
+```
+cms-api://classes/Joomla-CMS-User-User.html
+framework-api://classes/Joomla-Registry-Registry.html
+```
+
+The plugin will replace `cms-api://` or `framework-api://` with the correct URL section.

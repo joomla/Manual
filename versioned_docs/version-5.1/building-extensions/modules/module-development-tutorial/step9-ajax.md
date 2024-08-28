@@ -245,7 +245,7 @@ MOD_HELLO_AJAX_OK="Ajax response: %s received ok"
 ## Manifest File changes
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->
