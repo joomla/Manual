@@ -58,4 +58,4 @@ lower are listed in the documentention for [4.4](/versioned_docs/version-4.4/get
 [^5]: Although of minimum requirement, Joomla still may work on MySQL 5.7.
 We do not recommend, but you could use it if you really stuck in old environment.
 Keep in mind, it has a few limitation: update can be done only with manual upload, and the installer will forbid you to process a fresh installation.
-Also be aware, MySQL 5.7 reached its official End Of Life and may expose your site to security vulnerabilities.
+Also be aware, MySQL 5.7 reached its official End Of Life and may expose your site to security vulnerabilities. We strongly recommend upgrading to a supported MySQL version as soon as possible.
