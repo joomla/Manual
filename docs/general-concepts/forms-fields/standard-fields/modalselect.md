@@ -48,79 +48,6 @@ records based on the updated filter criteria.
 
 Implemented by: libraries/src/Form/Field/ModalSelectField.php
 
-## Example ModalSelect field
-
-ModalSelect fields work best on the administrator back-end, because that's where the necessary Joomla code is located for working with them.
-
-However, you can use this [exampleform component](../../../building-extensions/components/example-form-component.md) and insert the following into the XML form.
-
-```xml
-<field
-  type="ModalSelect"
-  name="article"
-  label="Article"
-  select="true"
-  iconSelect="fa fa-bomb"
-  titleSelect="Selecting the Article"
-  urlSelect="index.php?option=com_content&amp;view=articles&amp;layout=modal&amp;tmpl=component"
-  clear="true"
-  sql_title_table="#__content"
-  sql_title_column="title"
-  sql_title_key="id"
-/>
-```
-
-By navigating to "/index.php/component/exampleform/" on your site front-end, this will display a ModalSelect field which will allow you to select an article.
-
-This works because in the site com_content DisplayController constructor it has:
-
-```php
-if ($this->input->get('view') === 'articles' && $this->input->get('layout') === 'modal') {
-    // Article frontpage Editor article proxying:
-    $config['base_path'] = JPATH_COMPONENT_ADMINISTRATOR;
-    }
-```
-
-and this results in the administrator Articles view being displayed. 
-
-(The display looks a bit different on the site front-end because the site template (by default cassiopeia)
-is different from the administrator template (by default atum)).
-
-## Custom Components
-
-If you want to enable a ModalSelect for your custom component, then you need to do the following.
-
-For your equivalent of the administrator com_content articles view you need to write your equivalent of 
-administrator/components/com_content/tmpl/articles/modal.php.
-
-This differs from articles.php (in the same folder) in the following key details, which you should replicate:
-
-- include the system modal-select-field.js code:
-
-```php
-$this->document->getWebAssetManager()->useScript('modal-content-select');
-```
-
-- specify '&tmpl=component' within the `<form action="...">` URL. 
-This means that the display will use the template component.php file instead of index.php file within the iframe,
-and will avoid displaying the Joomla toolbar, for example.
-
-- on your field within the display which you want to allow users to selecting by clicking, add the following attributes
-
-```php
-$attribs = 'data-content-select'
-        . ' data-id="' . $row->id . '"'
-        . ' data-title="' . $this->escape($row->title) . '"';
-```
-
-(Change `$row->id` and `$row->title` to match your fields).
-
-The 'data-content-select' is used by the Joomla dialog to define that this field should be clickable.
-
-The 'data-id' and 'data-title' fields are used to define the values of the id and title for the ModalSelect field.
-
-You'll also need to select this modal.php tmpl file by specifying `&amp;layout=modal` within the `urlSelect` attribute.
-
 ## How it works
 
 There are 2 main parts to the ModalSelect field.
@@ -166,6 +93,91 @@ The Select and Create buttons are shown only if no item has been selected.
 
 The Edit and Clear buttons are shown only if an item has been selected.
 
+## Example ModalSelect field
+
+ModalSelect fields work best on the administrator back-end, because that's where the necessary Joomla code is located for working with them.
+
+However, you can use this [exampleform component](../../../building-extensions/components/example-form-component.md) and insert the following into the XML form.
+
+```xml
+<field
+  type="ModalSelect"
+  name="article"
+  label="Article"
+  select="true"
+  iconSelect="fa fa-bomb"
+  titleSelect="Selecting the Article"
+  urlSelect="index.php?option=com_content&amp;view=articles&amp;layout=modal&amp;tmpl=component"
+  clear="true"
+  sql_title_table="#__content"
+  sql_title_column="title"
+  sql_title_key="id"
+/>
+```
+
+By navigating to "/index.php/component/exampleform/" on your site front-end, this will display a ModalSelect field which will allow you to select an article.
+
+After clicking the "Select" button the field will open a Joomla Dialog containing a iframe.
+The content of the iframe comes from `urlSelect` which is 
+```
+"index.php?option=com_content&amp;view=articles&amp;layout=modal&amp;tmpl=component"
+```
+and this displays the list of articles to select from.
+
+In this example, on the front-end 
+the com_content view will assign the `modal` layout from the administrator back-end.
+This is because in the front-end com_content DisplayController constructor it has:
+
+```php
+if ($this->input->get('view') === 'articles' && $this->input->get('layout') === 'modal') {
+    // Article frontpage Editor article proxying:
+    $config['base_path'] = JPATH_COMPONENT_ADMINISTRATOR;
+    }
+```
+
+and this results in the administrator Articles view being displayed. 
+
+If you use the ModalSelect field on the administrator back-end to select an article, 
+then com_content will use the administrator Articles `modal` layout directly.
+
+(The display looks a bit different on the site front-end because the site template (by default cassiopeia)
+is different from the administrator template (by default atum)).
+
+## Custom Components
+
+If you want to enable a ModalSelect for your custom component, then you need to do the following.
+
+For your equivalent of the administrator com_content articles view you need to write your equivalent of 
+administrator/components/com_content/tmpl/articles/modal.php.
+
+This differs from articles.php (in the same folder) in the following key details, which you should replicate:
+
+- include the system modal-select-field.js code:
+
+```php
+$this->document->getWebAssetManager()->useScript('modal-content-select');
+```
+
+- specify '&tmpl=component' within the `<form action="...">` URL. 
+This means that the display will use the template component.php file instead of index.php file within the iframe,
+and will avoid displaying the Joomla toolbar, for example.
+
+- on your field within the display which you want to allow users to selecting by clicking, add the following attributes
+
+```php
+$attribs = 'data-content-select'
+        . ' data-id="' . $row->id . '"'
+        . ' data-title="' . $this->escape($row->title) . '"';
+```
+
+(Change `$row->id` and `$row->title` to match your fields).
+
+The 'data-content-select' is used by the Joomla dialog to define that this field should be clickable.
+
+The 'data-id' and 'data-title' fields are used to define the values of the id and title for the ModalSelect field.
+
+You'll also need to select this modal.php tmpl file by specifying `&amp;layout=modal` within the `urlSelect` attribute.
+
 ## Creating and Editing items
 
 If you have a custom component and you want to allow Edit and Create of items within your ModalSelectField,
@@ -210,7 +222,9 @@ $this->document->addScriptOptions('content-select-on-load', $data, false);
 ```
 
 If the modal-content-select.js code finds data within the 'content-select-on-load' datastore,
-then it immediately passes the data in a postMessage to the main window, and the Joomla Dialog closes.
+then it immediately passes the data in a postMessage to the main window. 
+The message listener in the main window receives the message and sets the passed id and title in the modal select field.
+It then closes the Joomla Dialog.
 
 If you get stuck you can follow the example of com_content:
 - administrator/components/com_content/src/Controller/ArticleController.php - com_content uses 
