@@ -55,7 +55,7 @@ lower are listed in the documentention for [4.4](/versioned_docs/version-4.4/get
 
 [^4]: In order to use SEO URLs, you will need to have the Apache mod_rewrite extension installed.
 
-[^5]: Although of minimum requirement, Joomla still can work on MySQL 5.7.
+[^5]: Although of minimum requirement, Joomla still may work on MySQL 5.7.
 We do not recommend, but you could use it if you really stuck in old environment.
 Keep in mind, it has a few limitation: update can be done only with manual upload, and the installer will forbid you to process a fresh installation.
 Also be aware, MySQL 5.7 reached its official End Of Life and may expose your site to security vulnerabilities.
