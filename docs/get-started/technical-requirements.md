@@ -13,7 +13,7 @@ All recommended versions are based on the latest released version of each series
 |-------------------------------------------|-----------------|-------------|----------------------------------------------------------------------------|
 | [PHP](https://php.net)                    | 8.3             | 8.1.0       | Modules: json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql |
 | **Databases**                             |                 |             |                                                                            |
-| [MySQL](https://mysql.com)                | 8.1             | 8.0.13      |                                                                            |
+| [MySQL](https://mysql.com)                | 8.1             | 8.0.13[^5]  |                                                                            |
 | [MariaDB](https://mariadb.com)            | 11.1.0          | 10.4.0      |                                                                            |
 | [PostgreSQL](https://postgresql.org)      | 16.0            | 12.0        |                                                                            |
 | **Web Servers**                           |                 |             |                                                                            |
@@ -54,3 +54,8 @@ lower are listed in the documentention for [4.4](/versioned_docs/version-4.4/get
 [^3]: This is the minimum version which is guaranteed to work, older versions may work but are not supported.
 
 [^4]: In order to use SEO URLs, you will need to have the Apache mod_rewrite extension installed.
+
+[^5]: Although of minimum requirement, Joomla still can work on MySQL 5.7.
+We do not recommend, but you could use it if you really stuck in old environment.
+Keep in mind, it has a few limitation: update can be done only with manual upload, and the installer will forbid you to process a fresh installation.
+Also be aware, MySQL 5.7 reached its official End Of Life and may expose your site to security vulnerabilities.
