@@ -152,7 +152,7 @@ document.querySelectorAll('.mod_hello_updateusers').forEach(element => {
 
 We set an onclick listener on the Update button, which when clicked results in the Ajax call being triggered. 
 
-`Joomla.request` is in core.js and is described [here](../../../general-concepts/javascript/core.md). Of course you can use your own preferred way of initiating Ajax requests.
+`Joomla.request` is in core.js and is described [here](../../../general-concepts/javascript/js-library/core.md). Of course you can use your own preferred way of initiating Ajax requests.
 
 `Joomla.renderMessages` is in media/system/js/messages.js and is used to display messages in the system message area of the HTML document. 
 Check the messages.js code for details of how to use it.
@@ -245,7 +245,7 @@ MOD_HELLO_AJAX_OK="Ajax response: %s received ok"
 ## Manifest File changes
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->

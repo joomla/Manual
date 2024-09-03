@@ -37,7 +37,7 @@ The child window can post following messages:
 
 ### Dialog buttons and advanced usage
 
-It is recommended that all intercative buttons (like `save`, `cancel` etc) to be embed within dialog content (within iframe), instead of rendering them with parent window.
+It is recommended that all interactive buttons (like `save`, `cancel` etc) be embedded within dialog content (within iframe), instead of rendering them with parent window.
 This reduce complexity and makes code more reliable.
 
 When using Create/Edit/Cancel the controller usually do redirect to a complete page.
