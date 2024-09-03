@@ -3,7 +3,7 @@ Joomla core.js
 
 Provides a global `Joomla` object and a core functionality for client side: options storage, translations, etc.
 
-To enable it on the page use [WebAssetManager](../web-asset-manager.md) `$wa->useScript('core')`.
+To enable it on the page use [WebAssetManager](../../web-asset-manager.md) `$wa->useScript('core')`.
 
 ## Client side options
 
