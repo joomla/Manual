@@ -87,7 +87,14 @@ Those events are:
 - onBeforeTourSaveUserState: triggered before saving the auto-start tour user state (used to record states in the User Action Logs),
 - onAfterTourSaveUserState: triggered after saving the auto-start tour user state.
 
-You can find those events in the AjaxController class. 
+You can find those events in the AjaxController class.
+
+
+### Adding images to the content
+
+Use the editor to include images inside the content descriptions. Images are located in the media folder, ```/images``` by default.
+However, expecially when creating a tour for a third party extension, you may want to include images located in the media folder of the extension.
+In this case, the image path must start with ```media/...```.
 
 
 ## Launching a tour from any location
