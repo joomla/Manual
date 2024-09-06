@@ -456,7 +456,7 @@ Example json definition of ES6 module script, with fallback to legacy:
     "defer": true
   },
   "dependencies": ["core"]
-}
+},
 {
   "name": "foobar",
   "type": "script",
