@@ -6,7 +6,9 @@ title: Create a Joomla Library
 Creating a Joomla Library
 ======================================
 
-In this guide, we will create a Joomla library to use in Joomla.
+A Joomla library is a reusable set of classes or functions that can be shared across multiple extensions. Libraries help in organizing and reusing code, making development more efficient and maintainable.
+
+In this guide, we will create a Joomla library and learn how to use it in Joomla projects.
 
 ## Folder Structure
 
@@ -14,18 +16,16 @@ The folder structure for a Joomla library is as follows:
 
 ```
 libraries/
-    mylibrary/
-        Service/
-            MyService.php
-        mylibrary.xml
+    yourlibraryname/
+        src/
+            YourLibrary.php
+        yourlibraryname.xml
 ```
 
 ### Key Sections of the Library
 
-- `Service/MyService.php`: This is the main file of the library. It contains the class definition and the functions that the library will provide.
-- `mylibrary.xml`: This file contains the metadata for the library.
-- `mylibrary.php`: This file is the entry point for the library.
-- `Service/`: This folder contains the service classes for the library.
+- `src/YourLibrary.php`: This is the main file of the library. It contains the class definition and the functions that the library will provide.
+- `yourlibraryname.xml`: This file contains the metadata for the library.
 
 ### Extension manifest file
 
@@ -40,15 +40,15 @@ libraries/
     <version>1.0.0</version>
     <description>Showcase on how to create a Joomla 5 library to reuse code.</description>
     <files>
-        <folder>Service</folder>
+        <folder>src</folder>
         <filename>joomlaexamplelibrary.xml</filename>
     </files>
 </extension>
 ```
 
-### Service Class
+### Library Class
 
-The service class is where you define the functions that the library will provide. Here is an example of a service class:
+Inside this class is where you will define the functions that the library will provide. Here is an example of a simple library class:
 
 ```php
 <?php
@@ -60,6 +60,12 @@ class YourLibrary
     {
         return "Hello, World!";
     }
+    
+     public function greet($name)
+    {
+        return "Hello, " . $name . "!";
+    }
+
 }
 ```
 
@@ -70,7 +76,7 @@ Once you have created the library, you need to package it for installation. You 
 ```
 yourlibraryname.zip
     ├── yourlibraryname.xml
-    └── Service/
+    └── src/
         └── YourLibrary.php
 ```
 
@@ -90,6 +96,8 @@ To use the library in your Joomla extension, you need to include the library in 
 <?php
 use YourLibraryNamespace\YourLibrary;
 
-$service = new YourLibrary();
-echo $service->helloWorld();
+$library = new YourLibrary();
+echo $library->greet("John");
+
+echo YourLibrary::helloWorld();
 ```
