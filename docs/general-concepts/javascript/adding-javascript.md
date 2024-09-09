@@ -36,8 +36,13 @@ where here (and elsewhere in this documentation page) you need to replace "com_e
 
 When you install your extension Joomla will copy your js files into the folder media/com_example/js.
 
+:::info
+  You can also implement a JavaScript library for your extension in, for example, your development folder media/mylib/js/ containing js source files.
+  This would get mapped to media/com_example/mylib/js when your extension is installed. 
+:::
+
 ### 2 Create a media/joomla.asset.json file
- 
+
 Create a file `joomla.asset.json` in your media folder, as defined in [Web Asset Manager - Definition](../web-asset-manager.md#definition), for example:
 
 ```json
@@ -120,6 +125,25 @@ You also need to get Joomla to copy your joomla.asset.json file into the media f
     </media>
 ```
 
+:::info
+  If your extension has only 1 or 2 assets then you may find it more convenient 
+  to [register your asset](../web-asset-manager.md#register-an-asset) directly with the Web Asset Manager, rather than via a joomla.asset.json file.
+  You can use [WebAssetManager::registerScript](cms-api://classes/Joomla-CMS-WebAsset-WebAssetManager.html#method_registerScript):
+  
+```php
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->registerScript('com_example.myjs1', 'com_example/myjs1.js', [], ['defer' => 'true'], ["core", "jquery"]);
+```  
+
+  or use [WebAssetManager::method_registerAndUseScript](cms-api://classes/Joomla-CMS-WebAsset-WebAssetManager.html#method_registerAndUseScript)
+  to both register and use your script in one go:
+
+```php
+$wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+$wa->registerAndUseScript('com_example.myjs1', 'com_example/myjs1.js', [], ['defer' => 'true'], ["core", "jquery"]);
+```  
+:::
+
 ### 3 Get Joomla to process your joomla.asset.json file
 
 If your extension is a component or a template then Joomla performs this step automatically for you, and you have nothing to do.
@@ -133,7 +157,7 @@ $wa = $document->getWebAssetManager();
 $wa->getRegistry()->addExtensionRegistryFile('mod_example');
 ```
 
-The code above will get Joomla to process media/mod_example/joomla.asset.json.
+The code above will get Joomla to process media/mod_example/joomla.asset.json and register the assets within it.
 
 ### 4 Use your asset in your PHP Code
 
@@ -150,6 +174,19 @@ In core Joomla the code for using scripts is usually placed within the relevant 
 although you can place it in another file, for example in a `View` class file.
 Sometimes a View may have different `tmpl` files, only one of which may need the JavaScript code,
 so placing the `useScript` in the appropriate `tmpl` file will be more efficient.
+
+:::tip
+  If your extension uses Joomla library code then you may be able to access the `Document` instance using
+
+```php
+$document = $this->getDocument();
+// or the Application instance via
+$app = $this->getApplication();
+```
+
+  Using [Dependency Injection](../dependency-injection/index.md) in this way, rather than repeating calls to `Factory` static functions
+  enables you to mock classes more easily for automated unit testing, to improve the quality of your code.
+:::
 
 ## Using External JavaScript Libraries
 
