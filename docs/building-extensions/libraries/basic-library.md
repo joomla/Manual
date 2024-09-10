@@ -39,6 +39,7 @@ libraries/
     <license>GNU General Public License version 2 or later</license>
     <version>1.0.0</version>
     <description>Showcase on how to create a Joomla 5 library to reuse code.</description>
+    <namespace path="src">VendorName\LibraryName</namespace>
     <files>
         <folder>src</folder>
         <filename>joomlaexamplelibrary.xml</filename>
@@ -52,7 +53,7 @@ Inside this class is where you will define the functions that the library will p
 
 ```php
 <?php
-namespace YourLibraryNamespace;
+namespace VendorName\LibraryName;
 
 class YourLibrary
 {
@@ -94,9 +95,9 @@ To use the library in your Joomla extension, you need to include the library in 
 
 ```php
 <?php
-use YourLibraryNamespace\YourLibrary;
+use VendorName\LibraryName\HelloWord;
 
-$library = new YourLibrary();
+$library = new HelloWorld();
 echo $library->greet("John");
 
 echo YourLibrary::helloWorld();
