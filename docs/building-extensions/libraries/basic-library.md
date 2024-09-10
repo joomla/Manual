@@ -42,7 +42,6 @@ libraries/
     <namespace path="src">VendorName\LibraryName</namespace>
     <files>
         <folder>src</folder>
-        <filename>joomlaexamplelibrary.xml</filename>
     </files>
 </extension>
 ```
@@ -95,9 +94,9 @@ To use the library in your Joomla extension, you need to include the library in 
 
 ```php
 <?php
-use VendorName\LibraryName\HelloWord;
+use VendorName\LibraryName\YourLibrary;
 
-$library = new HelloWorld();
+$library = new YourLibrary();
 echo $library->greet("John");
 
 echo YourLibrary::helloWorld();
