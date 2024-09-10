@@ -29,9 +29,9 @@ libraries/
 
 ### Extension manifest file
 
-```xml
+```xml title="libraries/yourlibraryname/yourlibraryname.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="library" version="5.0" method="upgrade">
+<extension type="library" method="upgrade">
     <name>Joomla 5 Example Library</name>
     <libraryname>JoomlaExampleLibrary</libraryname>
     <author>Author Name</author>
@@ -51,7 +51,7 @@ libraries/
 
 Inside this class is where you will define the functions that the library will provide. Here is an example of a simple library class:
 
-```php
+```php title="libraries/yourlibraryname/src/YourLibrary.php"
 <?php
 namespace VendorName\LibraryName;
 
