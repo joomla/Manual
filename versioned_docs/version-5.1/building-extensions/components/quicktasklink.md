@@ -16,11 +16,11 @@ Sometimes it is useful to add a so called <strong>quicktask link</strong> which 
 You can see this for Joomla core components, for example articles in com_content, here the quicktask is the plus icon and lets you add a new article in a single click.
 Your menu link is added in the manfest file during installation.
 
-## Qicktask link
+## Quicktask Link and Title
 
-A quicktask link and icon are added as params to a menu item.
+A quicktask link and title are added as params to a menu item.
 
-```xml title="Qicktask Link and icon"
+```xml title="Qicktask Link and title"
 	<menu link="option=com_example&amp;view=examples">
 		COM_EXAMPLE
 		<params>
@@ -30,10 +30,29 @@ A quicktask link and icon are added as params to a menu item.
 	</menu>
 
 ```
+NB the title translation string needs to appear in the language `.sys.ini` file for the extension
+
+## Quicktask Icon
+
+The default icon is the '+' sign indicating create a new item as this is the most common usage in the built-in compponents. 
+
+You can specify a different icon, either as a simple name for the built in common aliased icons (the `icon-` prefix will be automatically added), or as the font-awesome specification. 
+
+```xml title="Qicktask Link and icon"
+	<menu link="option=com_example&amp;view=examples">
+		COM_EXAMPLE
+		<params>
+			<menu-quicktask-title>COM_EXAMPLE_MENU_QUICKTASK_TITLE</menu-quicktask-title>
+			<menu-quicktask-icon>eye</menu-quicktask-icon>
+			<menu-quicktask>index.php?option=com_example&amp;view=example&amp;layout=view</menu-quicktask>
+		</params>
+	</menu>
+
+```
 
 ## Example 
 
-This example shows a complete menu entry with dashboard, submenu and a quicktask.
+This example shows a complete menu entry with dashboard, submenu and a quicktask. The second item with a quicktask includes a fontawesome icon that has not been aliased.
 
 ```xml
 		<menu>
@@ -54,6 +73,7 @@ This example shows a complete menu entry with dashboard, submenu and a quicktask
 				COM_EXAMPLE_MENU_CATEGORIES
 				<params>
 					<menu-quicktask-title>COM_EXAMPLE_MENU_CATEGORIES</menu-quicktask-title>
+					<menu-quicktask-icon>fas fa-person-hiking</menu-quicktask-icon>
 					<menu-quicktask>index.php?option=com_categories&amp;view=category&amp;layout=edit&amp;extension=com_example</menu-quicktask>
 				</params>
 			</menu>
