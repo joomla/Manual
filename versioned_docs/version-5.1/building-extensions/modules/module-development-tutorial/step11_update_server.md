@@ -30,7 +30,7 @@ To associate mod_hello with an update server you need to add the following lines
 Your updated manifest file is thus:
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next=line -->

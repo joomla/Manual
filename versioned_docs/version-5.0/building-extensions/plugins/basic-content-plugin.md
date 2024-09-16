@@ -108,7 +108,7 @@ Ensure that the name of your manifest XML file matches this plugin attribute (ie
 ```
 
 Ensure that your plugin language files are named correctly. You must include in the filename:
-- the plugin type - matching the `<extension group=."..">` attribute, and
+- the plugin type - matching the `<extension group="...">` attribute, and
 - the plugin element - matching the `<folder plugin="...">` attribute.
 
 # Service Provider file

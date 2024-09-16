@@ -35,4 +35,4 @@ To use a Captcha on a form you must have:
 
 ## See Also
 
-How to develop a [Captcha Plugin](../../../building-extensions/plugins/captcha-plugin.md). 
+How to develop a [Captcha Plugin](../../../building-extensions/plugins/plugin-examples/captcha-plugin.md). 

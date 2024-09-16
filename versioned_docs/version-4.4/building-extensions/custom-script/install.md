@@ -3,14 +3,15 @@ title: Installing a custom script
 sidebar_position: 3
 ---
 
-# Install
+Install
+=======
 
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. Depending on the use case you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md) 
-and extend the Joomla! console application. If you need to create a simple entry point for web requests write an 
-[ajax plugin](../plugins/ajax-plugin.md).
+rare cases. Depending on the usecase you should create a [console plugin](../plugins/plugin-examples/basic-console-plugin-helloworld.md)
+and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an
+[ajax plugin](../plugins/plugin-examples/ajax-plugin.md).
 
 :::
 
@@ -21,7 +22,7 @@ If instead you want to install your script in the usual way, then you must use "
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="file" version="4.4" method="upgrade">
+<extension type="file" version="5.1" method="upgrade">
     <name>Custom Script</name>
     <version>1.0</version>
     <description>Script to count the number of articles in the database</description>

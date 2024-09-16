@@ -18,7 +18,7 @@ It's very useful, though not essential, to have git and a [PHP IDE](./ide/index.
 
 Download Joomla from the [Joomla download site](https://downloads.joomla.org/) and install it on your machine. Before you start trying to develop Joomla extensions you should really become familiar with administering a Joomla site - for example publishing articles, using categories and tags, defining menus and menuitems, setting up users, installing extensions and setting configuration parameters. You'll find plenty of information available online.
 
-That's about it! We recommend that you start with [developing a basic module](https://docs.joomla.org/J4.x:Creating_a_Simple_Module). After that you can explore the [General Concepts](../general-concepts/index.md) and try some of the sample extensions available in [Building Extensions](../building-extensions/index.md).
+That's about it! We recommend that you start with [developing a basic module](../building-extensions/modules/module-development-tutorial/index.md). After that you can explore the [General Concepts](../general-concepts/index.md) and try some of the sample extensions available in [Building Extensions](../building-extensions/index.md).
 
 You can find an overview of how Joomla works by watching the video [How Joomla Works - a guide for extension developers](https://youtu.be/JKnq47Yhtvs). 
 

@@ -91,11 +91,13 @@ Don't use colons (:) in titles.
 
 Don't use `<br>` to force a new line (eg in table text); use `<br/>` instead. 
 
+Don't use subdirectory names which match somewhat the parent directory name. For example, avoid `./install-update/install/`, as this can cause docusaurus to report broken links.
+
 ### Docusaurus Additions
 
 You won't see the effect of these when you preview the Markdown text, but you will see them by previewing the Pull Request. 
 
-[Front Matter](https://docusaurus.io/docs/next/markdown-features#front-matter) should be used for titles and position in the left-hand sidebar:
+[Front Matter](https://docusaurus.io/docs/markdown-features#front-matter) should be used for titles and position in the left-hand sidebar:
 
 ```
 ---
@@ -104,18 +106,20 @@ sidebar-position: 2
 ---
 ```
 
-[Code blocks](https://docusaurus.io/docs/next/markdown-features/code-blocks) are enclosed in 3 backticks, and can have a title:
-```php title="hello.php"
-public static function hello() 
-{
-    echo "Hello!"; 
-}
-```
+[Code blocks](https://docusaurus.io/docs/markdown-features/code-blocks) are enclosed in 3 backticks, and can have a [title](https://docusaurus.io/docs/markdown-features/code-blocks#code-title)
+
+    ```php title="hello.php"
+    public static function hello() 
+    {
+        echo "Hello!"; 
+    }
+    ```
+
 Line numbering and highlighting of individual lines are also supported.
 
 To aid readability of the markdown please leave a blank line before and after code blocks.
 
-[Admonitions](https://docusaurus.io/docs/next/markdown-features/admonitions) 
+[Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) 
 We don't use blank lines around content, and we add 2 spaces before the text messages.
 
 ```
@@ -168,8 +172,25 @@ Images, code zip files, etc should be held in a folder `_assets` at the point in
 
 ### Other Recommendations
 
+#### Header Levels - just one H1
+
 To align with a11y requirements for accessibility, please don't have more than one header level 1:
 
 ```
 # Just One H1
 ```
+
+#### API Docs Links
+
+If you link to the Joomla API docs then the URL of the API depends on the version of the manual documentation. For example, for Joomla 4.4 documentation the User API is at [https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html](https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html), but for Joomla 5.x documentation it is [https://api.joomla.org/cms-5/classes/Joomla-CMS-User-User.html](https://api.joomla.org/cms-5/classes/Joomla-CMS-User-User.html).
+
+This is similar for Framework classes, eg [https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html](https://api.joomla.org/framework-3/classes/Joomla-Registry-Registry.html), which is also dependent upon the documentation version.
+
+As this creates a maintainability issue a plugin has been developed which automatically selects the appropriate API docs version, and you should use this plugin by specifying API docs links like the following examples:
+
+```
+cms-api://classes/Joomla-CMS-User-User.html
+framework-api://classes/Joomla-Registry-Registry.html
+```
+
+The plugin will replace `cms-api://` or `framework-api://` with the correct URL section.

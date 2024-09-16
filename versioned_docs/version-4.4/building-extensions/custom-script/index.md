@@ -2,14 +2,15 @@
 title: Custom PHP Script
 ---
 
-# Custom PHP Script
+Custom PHP Script
+=================
 
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. Depending on the use case you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md) 
-and extend the Joomla! console application. If you need to create a simple entry point for web requests write an 
-[ajax plugin](../plugins/ajax-plugin.md).
+rare cases. Depending on the usecase you should create a [console plugin](../plugins/plugin-examples/basic-console-plugin-helloworld.md)
+and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an
+[ajax plugin](../plugins/plugin-examples/ajax-plugin.md).
 
 :::
 
@@ -33,8 +34,8 @@ https://example.com/myscript.php
 ```
 
 :::danger[Developer Notice]
-
-This will not work with additonal security feature introduced in 5.0. Please consult the 5.0 documentation for more information.
+ 
+This will not work with advanced security option [public folder](../../../../migrations/44-50/new-features#added-the-option-to-serve-joomla-from-a-public-folder) introduced in Joomla 5.0.
 
 :::
 

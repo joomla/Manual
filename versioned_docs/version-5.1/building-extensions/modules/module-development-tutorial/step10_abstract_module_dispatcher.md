@@ -140,7 +140,7 @@ If you have more complex requirements then you may need to override more functio
 ## Updated Manifest File
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->

@@ -57,7 +57,7 @@ Then the namespace prefix \My\Module\Hello\Site will point to this folder, and w
 
 Namespacing within Joomla is described in the [Namespaces section](../../../general-concepts/namespaces/index.md). 
 
-Manifest files are described in [Manifest Files](../../install-update/install/manifest.md).
+Manifest files are described in [Manifest Files](../../install-update/installation/manifest.md).
 
 ### Service Provider File
 
