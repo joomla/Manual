@@ -21,7 +21,7 @@ The source code is available at [mod_hello step 5](https://github.com/joomla/man
 The configuration is implemented by adding a section to the manifest file:
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->
