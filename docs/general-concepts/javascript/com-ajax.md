@@ -75,13 +75,13 @@ of the [Ajax](./ajax.md) documentation section.
 Within media/js/divide.js just change the line:
 
 ```js
-url: vars.root + 'index.php?option=com_ajaxdemo&format=json&task=ajax.divide',
+let url = vars.root + 'index.php?option=com_ajaxdemo&format=json&task=ajax.divide';
 ```
 
 to
 
 ```js
-url: vars.root + 'index.php?option=com_ajax&plugin=divide&format=json',
+let url = vars.root + 'index.php?option=com_ajax&plugin=divide&format=json',
 ```
 
 This will route the Ajax HTTP request to com_ajax, which will import the "ajax" plugin group, and raise the "OnAjaxDivide" event.
@@ -113,13 +113,13 @@ of the [Ajax](./ajax.md) documentation section.
 Within media/js/divide.js just change the line:
 
 ```js
-url: vars.root + 'index.php?option=com_ajaxdemo&format=json&task=ajax.divide',
+let url = vars.root + 'index.php?option=com_ajaxdemo&format=json&task=ajax.divide';
 ```
 
 to
 
 ```js
-url: vars.root + 'index.php?option=com_ajax&template=cassiopeia&format=json',
+let url = vars.root + 'index.php?option=com_ajax&template=cassiopeia&format=json',
 ```
 
 Then store the following file:
