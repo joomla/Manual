@@ -97,7 +97,7 @@ will reject the data if there is a letter "x" within the field.
 
 ## Custom Validation routine
 
-You can write your own javascript validation function as described below. The [com_exampleform](../../building-extensions/components/example-form-component.md) example component (which can be downloaded from [here](https://github.com/joomla/manual-examples/tree/main/component-exampleform)) provides a working example of client-side validation.
+You can write your own javascript validation function as described below. The [com_exampleform](../../building-extensions/components/component-examples/example-form-component.md) example component (which can be downloaded from [here](https://github.com/joomla/manual-examples/tree/main/component-exampleform)) provides a working example of client-side validation.
 
 1. Step 1 Write the js function. (Although a regex is used below, you're obviously not limited to this). The value of the field is passed in the `value` parameter, and you should return `true` if the value is valid, or `false` if it isn't.
 

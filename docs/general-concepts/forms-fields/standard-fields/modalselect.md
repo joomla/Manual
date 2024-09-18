@@ -97,7 +97,7 @@ The Edit and Clear buttons are shown only if an item has been selected.
 
 ModalSelect fields work best on the administrator back-end, because that's where the necessary Joomla code is located for working with them.
 
-However, you can use this [exampleform component](../../../building-extensions/components/example-form-component.md) and insert the following into the XML form.
+However, you can use this [exampleform component](../../../building-extensions/components/component-examples/example-form-component.md) and insert the following into the XML form.
 
 ```xml
 <field
