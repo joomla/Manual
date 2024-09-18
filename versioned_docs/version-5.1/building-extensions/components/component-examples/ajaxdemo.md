@@ -22,7 +22,9 @@ The division is performed by an Ajax call to the server, and if B is zero then a
 
 Brief summaries of the main source files are provided below.
 
-## administrator/components/com_ajaxdemo/services/provider.php
+## Administrator service provider
+
+Path: administrator/components/com_ajaxdemo/services/provider.php
 
 This is boilerplate code for a basic MVC component. For components this file is placed under /administrator in the Joomla filesystem.
 If you want to understand it fully then read the [Dependency Injection](../../../general-concepts/dependency-injection/index.md) section. 
@@ -35,21 +37,29 @@ The default Controller (when no `task` parameter is present) is the DisplayContr
 When the Divide button is pressed the JavaScript code sends an Ajax request using `task` set to "ajax.divide". 
 Based on this the default Dispatcher will instantiate this component's AjaxController and call its `divide` method. 
 
-## Display Controller (components/com_ajaxdemo/src/Controller/DisplayController.php)
+## Site Display Controller
+
+Path: components/com_ajaxdemo/src/Controller/DisplayController.php
 
 This controller's display method is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php/component/ajaxdemo`).
 
 It gets the associated Model and View classes, and calls display() on the View instance.
 
-## Ajaxdemo View (components/com_ajaxdemo/src/View/Ajaxdemo/HtmlView.php)
+## Site Ajaxdemo View
+
+Path: components/com_ajaxdemo/src/View/Ajaxdemo/HtmlView.php
 
 This calls the model to set up the form, then calls display() to run the tmpl file.
 
-## Ajaxdemo Model (components/com_ajaxdemo/src/Model/AjaxdemoModel.php)
+## Site Ajaxdemo Model
+
+Path: components/com_ajaxdemo/src/Model/AjaxdemoModel.php
 
 This sets up the form as described in [Forms](../../../general-concepts/forms/index.md).
 
-## Ajaxdemo tmpl file (components/com_ajaxdemo/tmpl/ajaxdemo/default.php)
+## Site Ajaxdemo tmpl file
+
+Path: components/com_ajaxdemo/tmpl/ajaxdemo/default.php
 
 This uses the [Web Asset Manager](../../../general-concepts/web-asset-manager.md) to attach the JavaScript divide.js which initiates the Ajax call.
 
@@ -58,17 +68,23 @@ as this makes the job of forming the URLs easier.
 
 Then it outputs the `<form>` html, including the button with the onclick listener to run the divide.js code.
 
-## XML Form (components/com_ajaxdemo/forms/divide_form.xml)
+## "Divide" XML Form 
+
+Path: components/com_ajaxdemo/forms/divide_form.xml
 
 This uses [Joomla Standard Form Fields](../../../general-concepts/forms-fields/standard-fields/index.md) for the fields in the form.
 
-## JavaScript (media/com_ajaxdemo/js/divide.js)
+## JavaScript code
+
+Path: media/com_ajaxdemo/js/divide.js
 
 The is the code which is run when the Divide button is pressed. 
 
 It initiates the Ajax call and handles the response.
 
-## Ajax Controller (components/com_ajaxdemo/src/Controller/AjaxController.php)
+## Ajax Controller
+
+Path: components/com_ajaxdemo/src/Controller/AjaxController.php
 
 This is the controller with the divide() method which gets called when the Ajax request is serviced by Joomla. 
 
@@ -78,6 +94,8 @@ If b is zero then it sends a 'divide by zero' exception into JsonResponse, which
 
 It also sets up a couple of dummy enqueued messages to demonstrate this aspect of JsonResponse.
 
-## media/com_ajaxdemo/joomla.asset.json
+## media joomla.asset.json file
+
+Path: media/com_ajaxdemo/joomla.asset.json
 
 This is the file required by the [Web Asset Manager](../../../general-concepts/web-asset-manager.md) for defining the JavaScript asset and its dependencies. 

@@ -25,28 +25,38 @@ You can easily adapt it to experiment with other standard fields, simply by incl
 
 There are comments throughout the code to help you understand it, and brief summaries of the main source files are provided below.
 
-## administrator/components/com_exampleform/services/provider.php
+## Administrator service provider
+
+Path: administrator/components/com_exampleform/services/provider.php
 
 This is boilerplate code for a basic MVC component. For components this file is placed under /administrator in the Joomla filesystem.
 If you want to understand it fully then read the [Dependency Injection](../../../general-concepts/dependency-injection/index.md) section. 
 
 From this file Joomla instantiates default [Extension and Dispatcher classes](../../../general-concepts/extension-and-dispatcher/index.md), and an MVC Factory class which creates Model, View and Controller classes for our component. 
 
-## Display Controller (components/com_exampleform/src/Controller/DisplayController.php)
+## Site Display Controller
+
+Path: components/com_exampleform/src/Controller/DisplayController.php
 
 This is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php/component/exampleform`).
 
 It gets the associated Model and View classes, and calls display() on the View instance.
 
-## Exampleform View (components/com_exampleform/src/View/Exampleform/HtmlView.php)
+## Site Exampleform View
+
+Path: components/com_exampleform/src/View/Exampleform/HtmlView.php
 
 This calls the model to set up the form, then calls display() to run the tmpl file.
 
-## Exampleform Model (components/com_exampleform/src/Model/ExampleformModel.php)
+## Site Exampleform Model
+
+Path: components/com_exampleform/src/Model/ExampleformModel.php
 
 This sets up the form as described in [Forms](../../../general-concepts/forms/index.md).
 
-## Exampleform tmpl file (components/com_exampleform/tmpl/exampleform/default.php)
+## Site Exampleform tmpl file
+
+Path: components/com_exampleform/tmpl/exampleform/default.php
 
 This uses the [Web Asset Manager](../../../general-concepts/web-asset-manager.md) to set up the scripts for client-side validation.
 
@@ -57,7 +67,9 @@ This function will initiate an HTTP POST to the server, with the field values as
 
 When the HTTP request reaches the server Joomla will examine the *task* parameter, and as a result will call the ExampleformController::submit() method, as described in [Joomla MVC](../mvc/mvc-overview.md).
 
-## Example XML Form (components/com_exampleform/forms/example_form.xml)
+## Example XML Form
+
+Path: components/com_exampleform/forms/example_form.xml
 
 Most of this involves simply using the [Joomla Standard Form Fields](../../../general-concepts/forms-fields/standard-fields/index.md).
 
@@ -92,7 +104,9 @@ validate="noasterisk"
 
 Use of the [showon attribute](../../../general-concepts/forms-fields/standard-form-field-attributes.md#showon). 
 
-## Exampleform Controller (components/com_exampleform/src/Controller/ExampleformController.php)
+## Site Exampleform Controller
+
+Path: components/com_exampleform/src/Controller/ExampleformController.php
 
 When the form data is sent to the server in an HTTP POST request, Joomla examines the *task* parameter, and as this will be set to 'exampleform.submit' Joomla will call the `submit` function of the ExampleformController class instance.
 
@@ -105,34 +119,48 @@ When the HTTP GET request to redisplay the form is received then the `loadFormDa
 
 If the data passes validation then the ExampleformReturn view is instantiated, and the raw data and filtered data passed to it. 
 
-## ExampleformReturn View (components/com_exampleform/src/View/ExampleformReturn/HtmlView.php)
+## Site ExampleformReturn View
+
+Path: components/com_exampleform/src/View/ExampleformReturn/HtmlView.php
 
 This simply has a function to accept the data from the Controller, which it stores locally.
 
-## ExampleformReturn tmpl file (components/com_exampleform/tmpl/exampleformReturn/default.php)
+## Site ExampleformReturn tmpl file
+
+Path: components/com_exampleform/tmpl/exampleformReturn/default.php
 
 This simply outputs the raw and filtered data which was passed to the view.
 
 Remember that the view and the tmpl file share the same function context, so variables set up in the view are accessible in the tmpl file. 
 
-## components/com_exampleform/src/Field/MytimeField.php
+## Custom Field
+
+Path: components/com_exampleform/src/Field/MytimeField.php
 
 This is the source code for the `mytime` custom field.
 
-## components/com_exampleform/src/Filter/LettersonlyFilter.php
+## Custom Filter
+
+Path: components/com_exampleform/src/Filter/LettersonlyFilter.php
 
 This is the source code for the `lettersonly` custom filter. 
 
-## components/com_exampleform/src/Rule/Noasterisk.php
+## Custom Validation Rule
+
+Path: components/com_exampleform/src/Rule/Noasterisk.php
 
 This is the source code for the `noasterisk` custom server-side validation rule.
 
-## media/com_exampleform/joomla.asset.json
+## Media joomla.asset.json file
+
+Path: media/com_exampleform/joomla.asset.json
 
 This defines the component's javascript (and CSS) assets, together with their dependancies, as required by the [Web Asset Manager](../../../general-concepts/web-asset-manager.md).
 
 For components this file is always automatically processed by Joomla.
 
-## media/com_exampleform/js/no-uppercase.js
+## Javascript client-side validation code
+
+Path: media/com_exampleform/js/no-uppercase.js
 
 This is javascript code for the custom client-side validation rule. 
