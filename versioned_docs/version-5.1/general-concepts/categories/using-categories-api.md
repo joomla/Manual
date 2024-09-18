@@ -3,7 +3,8 @@ sidebar_position: 2
 title: Using the Categories API
 ---
 
-# Using the Categories API
+Using the Categories API
+========================
 
 ## Accessing the Categories class
 

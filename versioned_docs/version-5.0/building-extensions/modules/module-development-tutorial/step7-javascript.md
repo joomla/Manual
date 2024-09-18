@@ -17,7 +17,7 @@ The source code is available at [mod_hello step 7](https://github.com/joomla/man
 
 ## Passing Variables to Javascript
 
-To pass variables from PHP to js we use the [Document::addScriptOptions](https://api.joomla.org/cms-5/classes/Joomla-CMS-Document-Document.html#method_addScriptOptions) function. 
+To pass variables from PHP to js we use the [Document::addScriptOptions](cms-api://classes/Joomla-CMS-Document-Document.html#method_addScriptOptions) function. 
 
 ```php
 $document = $this->app->getDocument();

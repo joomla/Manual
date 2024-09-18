@@ -2,6 +2,10 @@
 sidebar_position: 4
 title: Manipulating Forms
 ---
+
+Manipulating Forms
+==================
+
 ## Introduction
 This section describes more advanced features of the Joomla Form API than is covered previously, and comprises the following aspects:
 

@@ -72,7 +72,7 @@ __!If possible you should use prepared statements!__
 Learn more:
 * [The PHP Manual on Prepared statements](https://php.net/manual/en/pdo.prepared-statements.php)
 * [Simple Pull Request Implementing a Prepared Statement in Joomla](https://github.com/joomla/joomla-cms/pull/25049/files )
-* [Joomla Framework API](https://api.joomla.org/framework-1/classes/Joomla.Database.DatabaseQuery.html)
+* [Joomla Framework API](framework-api://classes/Joomla.Database.DatabaseQuery.html)
 
 
 #### Escape user controlled input

@@ -2,7 +2,9 @@
 sidebar_position: 1
 title: Parsing an SEF URL
 ---
-# Parsing an SEF URL
+
+Parsing an SEF URL
+==================
 
 Using the following SEF URL let's consider what the parse function involves: 
 
