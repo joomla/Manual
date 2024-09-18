@@ -1,5 +1,6 @@
 Dashboard
-=======================
+=========
+
 It is common usage to insert a link into the component menu for direct access to your own component.
 This is done in the manifest file: 
 
@@ -10,8 +11,9 @@ This is done in the manifest file:
 	[.. ]
 	</administration>
 ```
-Add a dashboard to your component:
-==================================
+
+## Add a dashboard to your component:
+
 
 A parameter "dashboard" expands the menu entry to your component with a link to a dashboard. You can give this dashboard any name you want, but <strong> Note:</strong> use lowercase and only "-", never underscore for the dashboard name.
 my-example or example are correct, my_example, Com-MY_EXAMPLE are wrong.
@@ -35,7 +37,7 @@ The param dashboard
 ```
 Joomla provides now a dashboard for your component. You can add modules here using the <strong> position: cpanel-example </strong>. 
 
-## Dashboard title and icon 
+### Dashboard title and icon 
 
 Give your dashboard a name and an icon. Add this to your manifest file:
 
@@ -45,7 +47,7 @@ Give your dashboard a name and an icon. Add this to your manifest file:
 	</dashboards>
 ```
 
-## Submenu
+### Submenu
 If you want to address different views of your component, expand the menu with a submenu.  
 
 ```xml title="Submenu items"
@@ -63,7 +65,7 @@ If you want to address different views of your component, expand the menu with a
 </submenu>
 ```
 
-# Submenu Module on your Dashboard
+## Submenu Module on your Dashboard
 
 Your dashboard is empty and waits for modules to be filled in. If you want to add your submenu, you have to
 - add a folder presets to your component
@@ -73,7 +75,7 @@ Your dashboard is empty and waits for modules to be filled in. If you want to ad
 
 Presets are already used in the core, see examples the component com_menu.
 
-## The menu preset
+### The menu preset
 
 In a folder 'presets' create a preset file, name it example.xml. 
 
@@ -108,7 +110,7 @@ In a folder 'presets' create a preset file, name it example.xml.
 ```
 
 
-## Manifest file
+### Manifest file
 
 ```xml title="New folder in example.xml"
 	<administration>
@@ -130,7 +132,7 @@ In a folder 'presets' create a preset file, name it example.xml.
 	</administration>
 ```
 
-## install script
+### install script
 
 We suppose here that you have a install script in your component. If not, please read the doc for install scripts.
 
@@ -141,5 +143,5 @@ You add your preset in the dashboard of your component with a single line of cod
     $this->addDashboardMenu('example', 'example');
 ```
 
-See also: cms-api://classes/Joomla-CMS-Installer-InstallerScript.html#method_addDashboardMenu
+See also: [Joomla CMS Installer InstallerScript API](cms-api://classes/Joomla-CMS-Installer-InstallerScript.html#method_addDashboardMenu)
 

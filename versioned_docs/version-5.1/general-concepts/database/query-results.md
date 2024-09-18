@@ -3,7 +3,8 @@ sidebar_position: 2
 title: Query Results after Selecting Data from the Database
 ---
 
-# Query Results
+Query Results
+=============
 
 The database class contains many methods for working with a query's result set
 that you can get after [SELECT](select-data.md) queries.

@@ -2,13 +2,17 @@
 title: Dispatcher Class for Components
 sidebar_position: 2
 ---
-# Dispatcher Class for Components
+Dispatcher Class for Components
+===============================
+
 The Dispatcher class comes into play whenever Joomla wants to run a component in order to capture the output to display on the web page. The class has one main function: `dispatch()`, which will run the component.
 
 So to run a component you first get its Extension class then:
+
 ```php
 $extension->getDispatcher()->dispatch();
 ```
+
 How the Extension class gets the Dispatcher class instance via the `getDispatcher()` call is covered in the Dependency Injection documentation; you will find the code for `getDispatcher()` in libraries/src/Extension/Component.php - the Component class in this file is in the inheritance chain of the Extension instance. 
 
 (You may be wondering why isn't there just a dispatch() function in the Extension class, rather than having this additional Dispatcher class. I think it's because the Joomla designers wanted a common Extension / Dispatcher pattern among components, modules and plugins, and the Dispatcher class for plugins is a lot more complex.)

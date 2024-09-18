@@ -1,7 +1,12 @@
 ---
 title: Menus and Menuitems
 ---
+
+Menus and Menuitems
+===================
+
 ## Introduction
+
 The Joomla Menu and Menuitem classes manage the configuration and display of menus and menu items on the site front end. The Menu is the set of navigation links which you can have as a main menu (e.g. at the top of your site) or as a subsidiary menu (e.g. in the footer). Each of the individual navigation links is a Menuitem. 
 
 Within an overall Menu structure you can have a "submenu". This isn't implemented as a Joomla Menu construct, rather as a set of menu items below a parent menu item. The Joomla menu items are thus implemented in an ordered tree structure, specifically using the [Nested Set model](https://en.wikipedia.org/wiki/Nested_set_model).
@@ -11,19 +16,24 @@ This guide describes how you can use the Joomla API to access the menu and menui
 Note that these classes aren't used in the administrator back end.
 
 ## Basic Operations
+
 To get the details of all the Menuitems on the site you do:
+
 ```php
 use Joomla\CMS\Factory;
 $app = Factory::getApplication();
 $sitemenu = $app->getMenu();
 ```
+
 If your code is running on the Joomla back end then you should do:
+
 ```php
 use Joomla\CMS\Factory;
 $app = Factory::getApplication();
 $sitemenu = $app->getMenu('site');
 $sitemenu->load();
 ```
+
 The `$sitemenu` structure will then have entries for all the site Menuitems.
 
 (The reason that you don't need to call `load` on the front end is because the Menuitems will most likely have already been loaded by the time your code is run, as they're needed for the site router function. If you a writing a site system plugin which gets called before the router, then you'll need to add the `load` call yourself.)
@@ -31,17 +41,23 @@ The `$sitemenu` structure will then have entries for all the site Menuitems.
 There isn't a Joomla API to enable you to get *just* the set of Menus on the system (as opposed to the set of Menuitems), so if you really do need these then your only recourse is to read the data from the `menu_types` table directly using a SQL query. But you can find (from the Menuitem structure described below) the Menu to which that Menuitem belongs, and find all the Menuitems for a particular Menu. 
 
 To get at the individual menu items we apply a filter to `$sitemenu` using `getItems()` to select the particular Menuitems we're interested in. To obtain an array of all the Menuitems use a blank filter:
+
 ```php
 $menuitems = $sitemenu->getItems(array(), array());
 ```
+
 To obtain an array of all the menu items which are in the "mainmenu" menu use:
+
 ```php
 $mainmenuItems = $sitemenu->getItems('menutype', 'mainmenu');
 ```
+
 The above gives all the menu items within the "mainmenu" menu, including those in submenus. To access just the menu items which are in either the topmost or the first submenu level of the "mainmenu" menu use:
+
 ```php
 $mainmenuItems = $sitemenu->getItems(array('menutype','level'), array('mainmenu',array("1","2")));
 ```
+
 In summary, to filter the specific menu items you want, you pass an array of properties (from the list in the next section) and an array of corresponding values which those properties should have.
 
 Unpublished menu items are not returned. They're not included within the `$sitemenu` structure. 

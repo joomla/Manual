@@ -3,7 +3,8 @@ sidebar_position: 5
 title: Delete Data from the Database
 ---
 
-# Deleting a Record
+Deleting a Record
+=================
 
 Use the delete method to remove records from the database.
 

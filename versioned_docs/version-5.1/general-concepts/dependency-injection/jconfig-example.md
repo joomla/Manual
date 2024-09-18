@@ -2,7 +2,9 @@
 title: JConfig Example
 sidebar_position: 3
 ---
-# JConfig Example
+JConfig Example
+===============
+
 Early in its initialisation phase Joomla initialises the dependency injection container (DIC) by calling `createContainer()` which is in library/src/Factory.php. This results in the `register()` function being called in each of the class files in libraries/src/Service/Provider. By looking through those files you can see what gets put into the DIC upon initialisation. 
 
 Let's look at library/src/Service/Provider/Config.php, which sets up the configuration class `JConfig`. Here's what gets executed when the `register()` function is called:
@@ -26,10 +28,13 @@ $container->alias('config', 'JConfig')
         true
     );
 ```
+
 Here's an explanation of the code:
+
 ```php
 $container->alias('config', 'JConfig')
 ```
+
 This sets up an alias in the DIC so that you can call `$container->get('config')` as well as `$container->get('JConfig')`. Notice that the return value of this function is again the `$container` so that you can chain function calls. 
 
 Next there's a call to `share()` passing 3 parameters:
@@ -40,9 +45,11 @@ Next there's a call to `share()` passing 3 parameters:
 Remember that `share()` is the same as `set()` with the `shared` parameter set to `true`, so that the same class instance is going to be returned for each `get('JConfig')` call.
 
 When some part of the Joomla code calls 
+
 ```php
 $container->get('JConfig')
 ```
+
 then the function passed as parameter 2 above will be executed. 
 
 The Joomla global configuration is held in the `JConfig` class in configuration.php in the top level folder of your Joomla instance, so that function does the following:
@@ -54,15 +61,18 @@ The Joomla global configuration is held in the `JConfig` class in configuration.
 As this DIC entry is shared, the Registry instance will be stored in the DIC and will be returned on subsequent calls to `get('JConfig')`.
 
 So you can obtain the global configuration parameters by 
+
 ```php
 use Joomla\CMS\Factory;
 $container = Factory::getContainer();
 $container->get('JConfig');   // or ...
 $container->get('config');
 ```
+
 These calls go directly to the DIC to obtain the shared JConfig instance.
 
 Or you can obtain them via the Application instance, which has already got them from the DIC:
+
 ```php
 use Joomla\CMS\Factory;
 $application = Factory::getApplication();
