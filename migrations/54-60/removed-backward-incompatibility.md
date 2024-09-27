@@ -22,3 +22,8 @@ There should be an explanation of how to mitigate the removals / changes.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42884
 - Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+- 
+### UTC is used instead of GMT
+
+- PR: https://github.com/joomla/joomla-cms/pull/43912
+- Description: To unify the code base, all instances do use or fallback to UTC timezone. Make sure that your code doesn't do an check against GMT string.
