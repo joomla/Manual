@@ -123,6 +123,8 @@ and selecting Mail Templates within the Templates panel.
 If you're unfamiliar with this, then you should have a play with these in a test Joomla instance,
 as this will make clearer what's described below.
 
+Look also at the effects of changing the Mail Templates Configuration Options.
+
 ### Defining Mail Templates
 
 Joomla doesn't provide functionality for creating mail templates.
@@ -146,8 +148,7 @@ For each template you define:
 You will need to define these email subject and body language constants in your .ini language file 
 (site or administrator, depending upon where you send the email from).
 
-You can define the email body text in HTML as well as in plain text, 
-but only the plain text version is shown in the administrator Mail Templates form.
+You can define the email body text in HTML as well as in plain text.
 
 You also need to define certain language constants which Joomla forms from your template key.
 
@@ -169,9 +170,16 @@ as these are also shown when you view/edit a single mail template.
 Once you have created your mail template an administrator can edit it, 
 using the functionality within the administrator Mail Templates area.
 
-An administrator can change the text of the email subject and body, and where the tag fields which you defined should appear.
+An administrator can change the text of the email subject and body,
+where the tag fields which you defined should appear,
+and attachments which should be added (from a folder outside the Joomla-owned folders, if this option is set).
 
-Although you define the email subject and body as a language constant, 
+The HTML body (if set) is shown only if the Mail Templates configuration option Mail Format includes HTML.
+
+If the Mail Templates configuration option Per Template Mail Settings is set
+then you an administrator can set further options via the Options tab (when editing a mail template).
+
+Although when you create a mail template you define the email subject and body as a language constant, 
 when the template is displayed those language constants are translated, and shown in a specific language.
 
 If an administrator changes and saves a template, then it is stored in the `#__mail_templates` database table
