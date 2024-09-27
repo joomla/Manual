@@ -20,10 +20,11 @@ To display such an icon you can use:
 <span class="icon-cancel"></span> <?php echo Text::_('JCANCEL') ?> 
 ```
 
-You can also display FontAwesome icons which aren't used in Joomla, but you have to include the "fa" class:
+You can also display FontAwesome icons which aren't used in Joomla, but you have to include an additional CSS class.
+According to [fa style names](https://docs.fontawesome.com/web/setup/upgrade/whats-changed#full-style-names) the CSS classes should be "fa-solid" or "fa-brands":
 
 ```php
 ?>
-<span class="fa fa-bomb"></span> <?php echo Text::_('JSAVE') ?> 
+<span class="fa-solid fa-bomb"></span> <?php echo Text::_('JSAVE') ?> 
+<span class="fa-brands fa-facebook"></span> <?php echo 'facebook' ?> 
 ```
-
