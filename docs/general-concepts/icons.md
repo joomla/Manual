@@ -21,9 +21,7 @@ To display such an icon you can use:
 ```
 
 You can also display FontAwesome icons which aren't used in Joomla, but you have to include an additional CSS class.
-In the past this has been "fa" and then after that "fas" or "fab", 
-but according to [fa style names](https://docs.fontawesome.com/web/setup/upgrade/whats-changed#full-style-names)
-the CSS classes should be "fa-solid" or "fa-brands":
+According to [fa style names](https://docs.fontawesome.com/web/setup/upgrade/whats-changed#full-style-names) the CSS classes should be "fa-solid" or "fa-brands":
 
 ```php
 ?>
