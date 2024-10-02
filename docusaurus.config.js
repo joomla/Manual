@@ -85,6 +85,8 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
           lastVersion: '5.1',
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi-docs
+          /*lastVersion: '4.3',*/
           versions: {
             'current': {
               label: '5.2 (upcoming)',
@@ -275,6 +277,7 @@ const config = {
       },
     }),
   plugins: [
+      /*
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
@@ -282,6 +285,7 @@ const config = {
         language: "en",
       },
     ],
+      */
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
@@ -303,7 +307,24 @@ const config = {
         showLastUpdateTime: true,
       }),
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "apiDocs",
+        docsPluginId: "classic",
+        config: {
+          joomla: {
+            specPath: "docs/web-services/specification/_assets/webservices-openapi.yaml",
+            outputDir: "docs/web-services/specification",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+            },
+          }
+        }
+      },
+    ],
   ],
+  themes: ["docusaurus-theme-openapi-docs"], // Allows use of @theme/ApiItem and other components
 };
 
 module.exports = config;
