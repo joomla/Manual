@@ -13,7 +13,11 @@ The **media** form field type provides modal access to the media manager for the
 -  **preview** (optional) shows or hides the preview of the currently chosen image. ("true": Show always, "tooltip": Show as tooltip, "false": Show never). Default is "tooltip".
 - **preview_width** (optional) sets the max-width of preview image (default: "200").
 - **preview_height** (optional) sets the max-height of preview image (default: "200").
-- **types** (optional) is a comma-separated list of file types (`images`, `audios`, `videos`, `documents`, `directories`). Default is `images`. This list decides which of the allowed file extensions from Media Manager configuration are used. E.g. `images,documents` means only files with an allowed images extension or an allowed documents extension are available for selection (since Joomla 4.0.0). When the type `directories` is used then the field will allow to select a directory, this can be useful in extension parameters, to select upload destination etc (since Joomla 5.2).
+- **types** (optional) is a comma-separated list of file types (`images`, `audios`, `videos`, `documents`, `directories`). 
+Default is `images`. This list decides which of the allowed file extensions from Media Manager configuration are used. 
+For example, `images,documents` means only files with an allowed images extension or an allowed documents extension are available for selection. 
+When the type `directories` is used then the field will allow selection of a directory; 
+this can be useful in setting extension parameters, to define an upload destination for example.
 
 Implemented by: libraries/src/Form/Field/MediaField.php
 
