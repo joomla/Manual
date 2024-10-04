@@ -2,14 +2,18 @@
 title: MVC Overview
 sidebar_position: 1
 ---
-# MVC Overview
+MVC Overview
+============
+
 The diagram below depicts the MVC pattern as it's used in Joomla. This applies to both the admin back end and the site front end.
 
 ![MVC Overview](_assets/mvc-overview.jpg "MVC Overview")
 
+## Basic Elements
+
 In this section we will cover the 4 types of classes shown in the diagram. In your component you're likely to have several Controller, View and Model classes, and (if your component uses its own table or tables in the database) one Table class for each database table your component has. 
 
-## Controller
+### Controller
 Your Controller code is run whenever there's an incoming HTTP request which is routed to your component. The controller is responsible for analysing the user's request, checking that the user is allowed to perform that action and determining how to satisfy the request. The latter could involve:
 
 - determining which Model (or Models) will be needed to satisfy the request, and creating an instance of that Model
@@ -17,7 +21,7 @@ Your Controller code is run whenever there's an incoming HTTP request which is r
 - determining which View should be used to present the web page to the user, and creating an instance of that View or
 - if instead the user should receive a redirect to another URL, then determining that redirect URL.
 
-## View
+### View
 The MVC View functionality is split into 2 files
 
 1. A View class file, which is usually just known as the View, and after this we'll just call it the View
@@ -35,19 +39,19 @@ This means that if the View holds the response data in, for example, `$this->ite
 
 Separating the View and tmpl like this enables another level of flexibility, as you can easily set up a layout override to output the View data using your own preferred HTML. 
 
-## Model
+### Model
 The Model encapsulates the data used by the component. In most cases this data will come from a database, either the Joomla database, or some external database, but it is also possible for the Model to obtain data from other sources, such as via a web services API running on another server. The Model is also responsible for updating the database where appropriate. The purpose of the Model is to isolate the Controller and View from the details of how data is obtained or amended.
 
 If the component is displaying a form which is defined in XML using the Joomla Form approach, the Model handles the setting-up and configuration of the `Form` instance, ready for the tmpl to output fields using `$form->renderField()` etc. 
 
-## Table
+### Table
 If your extension has one or more database tables, then you should have a Table class for each database table. Your Table class will inherit from the Joomla library Table class, which provides CRUD (Create / Read / Update / Delete) access to the underlying database table.
 
 The Table class provides access to individual records only, so it would be used by the Model if the requirement was a CRUD operation on an individual record, eg to create or update a record in the database.
 
 If instead it's required to access several records in the database table, then the Model would access the database directly, rather than using the Table class.
 
-# The HTTP Request *task* Parameter
+## The HTTP Request *task* Parameter
 Joomla uses the HTTP Request *task* parameter to determine which controller should be used. The *task* parameter can be sent in an HTTP GET or an HTTP POST - Joomla doesn't mind which - and it's just an ordinary HTTP parameter, nothing special. 
 
 The *task* parameter is of the form `<controllerType>.<method>`. The first part identifies the particular Controller class to use, and the second part identifies that class's instance method to call.
@@ -58,7 +62,7 @@ If the task parameter is not set at all then the `display()` method in the Displ
 
 We'll look at some examples later on.
 
-# Your MVC within Joomla
+## Your MVC within Joomla
 Of course, your component's MVC code runs within the context of Joomla's library code, really like the meat in a sandwich. When Joomla determines that it should run your component, then it obtains your component's Extension and Dispatcher classes, and it's the `dispatch()` function of the Joomla ComponentDispatcher class which actually analyses the *task* parameter to determine which of your Controller classes to instantiate, as described in [Extension and Dispatcher classes](../../../general-concepts/extension-and-dispatcher/index.md). Then `dispatch()` calls your component's `execute()` method, passing the `<method>` part of the *task* parameter. Assuming your component has Joomla\CMS\MVC\Controller\BaseController in its inheritance chain, then this will result (in the normal case) in your Controller's `method` function being called. 
 
 After the `execute()` method completes the `dispatch()` method will call the Controller's `redirect()` method - we'll see the significance of this later. 

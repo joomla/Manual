@@ -2,10 +2,12 @@
 title: Library MVC Classes
 sidebar_position: 4
 ---
-# Joomla Library MVC Classes
+Joomla Library MVC Classes
+==========================
+
 Joomla provides several Controller, View and Model library classes, and this section gives an overview of these, and explains when your own component should use each class. However, it doesn't attempt to provide a full description of each class's functionality. The classes can be found in libraries/src/MVC.
 
-# Base MVC Classes
+## Base MVC Classes
 In practical terms, the lowest level classes you would be likely to use are:
 - BaseController in libraries/src/MVC/Controller/BaseController.php
 - HtmlView in libraries/src/MVC/View/HtmlView.php (for displaying web pages)
@@ -15,27 +17,27 @@ In practical terms, the lowest level classes you would be likely to use are:
 
 In general, using these base classes is a good option if your component is displaying a single item on a site page. 
 
-## BaseController
+### BaseController
 The functionality within BaseController includes: 
 - the `execute()` method described above, which runs the appropriate Controller function, based on the *task* parameter's `<method>` part (which is passed to it).
 - functions for determining the appropriate View and Model classes to use (based on the setting of the view parameter within the HTTP request), and getting the MVCFactory class to create them
 - a default `display()` method, which gets instances of the View and Model classes (including providing the View instance with a link to the Model instance), and then calls the `display()` method of the View class.
 
-## HtmlView
+### HtmlView
 The functionality within HtmlView includes: 
 - a default `display()` method, which runs the tmpl file
 - code for finding the tmpl file, taking into account a layout override which may have been put into the template folder structure
 - code for setting the model instance, and subsequently retrieving it
 
-## BaseDatabaseModel
+### BaseDatabaseModel
 The functionality within BaseDatabaseModel includes: 
 - code for getting an instance of the Table class (via the MVCFactory class)
 - base code for creating a model "state". This feature is useful if the component and/or several modules shown on the web page all use the same base data. In this case they may share the same Model instance and the model "state" acts like a container for sharing the values of items across the component and modules.
 
-# Higher-level Controller Classes
+## Higher-level Controller Classes
 There are 2 higher-level controller classes, each of which inherit from BaseController. 
 
-## AdminController 
+### AdminController 
 AdminController contains methods which handle the types of operations that can be performed on multiple items, for example:
 
 - delete
@@ -49,7 +51,7 @@ The name AdminController suggests that this controller is to be used only on the
 
 Note however that it doesn't support the operations enabled by the Batch button on e.g. the Content/Articles page; these POST requests are handled by the FormController.
 
-## FormController
+### FormController
 FormController contains methods which are associated with editing an individual item 
 
 - handling a request to edit an item – which involves checking that the user is allowed to edit the item and that it isn't already checked out, and if these checks pass then the item is checked out (if that component has enabled checkout) and a redirect is issued to display the edit form
@@ -60,14 +62,14 @@ FormController contains methods which are associated with editing an individual 
 
 The FormController is thus well suited to Actions 3 and 5 shown in the diagrams above in the [Post/Request/Get pattern](post-redirect-get.md) section.
 
-# Higher-level View Classes
+## Higher-level View Classes
 Apart from the CategoryFeedView, which is used for generating a [feed](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_a_Feed), there are two higher level View classes in common usage:
 - CategoryView – for displaying a category and its children
 - CategoriesView – for displaying all the categories at a certain level in the category hierarchy, and the number of items associated with each category
 
 The two classes ListView and FormView seem to be aimed at functionality for displaying a list of records (like the `com_content` administrator View\Articles\HtmlView) and a form for editing a record (like the `com_content` administrator View\Article\HtmlView). However, at time of writing (Joomla 5 alpha has recently appeared), they aren't used by any of the Joomla components, so I wouldn't recommend using them, at least not yet.
 
-## Higher-level Model Classes
+### Higher-level Model Classes
 The diagram shows the inheritance tree of the Joomla library MVC models. 
 ![Model Class Hierarchy](_assets/model-hierarchy.jpg "Model Class Hierarchy")
 
@@ -87,32 +89,32 @@ Something to be aware of if you are using the same model across the "edit item" 
 
 When you're using the model because you're handling a POST (i.e. cases 3 and 5 in the diagram) then any effort expended in preparing the data for a web page is going to be wasted. (In fact, in the FormController `getModel()` method call, the parameter `$config` is set to `array('ignore_request' => true)` by default, which results in the model's `populateState` method not being run, to save this wasted effort.) 
 
-# Summary
+## Summary
 As we've seen, Joomla has rich functionality in higher level Controller and Model classes which can greatly simplify your code (all of which can be used on both the front end and back end). 
 
 The choice of which controller and model classes to extend is easier on the back end, because you just follow the pattern of the Joomla core components.
 
 For the front end here's a rough guide to choosing the most appropriate Controller and Model classes to extend; in each case you're using the standard HtmlView as base View class to extend.
 
-## Simple Display
+### Simple Display
 Simply displaying a record or a set of records, without providing the ability to change anything
 - Controller extends BaseController
 - Model extends BaseDatabaseModel or (particularly if you're sharing a model between a component and modules) ItemModel if it's a single record, ListModel if it's multiple records.
 
-## Displaying records, plus operations on selected records
+### Displaying records, plus operations on selected records
 Displaying a form with multiple records (but the form isn't defined in an XML file), including the providing the ability to select several records and apply some sort of operation to them (eg delete, publish):
 - Controller extends BaseController
 - Model extends ListModel – except if you're using the same model for displaying the form and handling the updates, in which case use AdminModel
 
-## Handling the HTTP POSTs from the above
+### Handling the HTTP POSTs from the above
 - Controller extends AdminController
 - Model extends AdminModel
 
-## Editing a record
+### Editing a record
 Displaying a form with a single record, where the form is defined in an XML file, and allowing the user to edit it, or a blank record and allowing the user to create a record:
 - Controller extends BaseController
 - Model extends FormModel – except if you're using the same model for displaying the form and handling the updates (as is usually the case), in which case use AdminModel
 
-## Handling the HTTP POSTs from the above
+### Handling the HTTP POSTs from the above
 - Controller extends FormController
 - Model extends AdminModel
