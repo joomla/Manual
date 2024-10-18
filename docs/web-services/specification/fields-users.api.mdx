@@ -1,0 +1,167 @@
+---
+id: fields-users
+title: "fields/users"
+description: "Generated from a curl request:"
+sidebar_label: "fields/users"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVktv4zYQ/ivEXNwG8iNBTrqli6KvQ4Mmiy5gBgYtjWxuKFIhqcSGof9eDClasp3kXmAvNjUvzuObGR7Ai42DfAlfHVoHTxmU6AorGy+Nhhx+Q41WeCxZZU3NBCtaq5jFlxadz7kOn9Nv7P7vh0c2OayFw1VrVTevJKrSzVsyO2HT39nk2/RPY2olpo/mGXXODqL125Vo5DPuuyjyxWiP2k8f9w3mTDSNkoUgT+bfndETNi3Z5MBBFAU6xyG/zjgUpLPzHHI616tw44x+OWQcSqxEq/zqVagWg1BPPkY5EDfWtM1KlhzyRcZBiTWqwCVrLEQU5JTQm1ZsormrQNKixqPodBDVxo9ubYQVNTl+4FAoEWJIDknXKLEPhJsxZWVRlEarMWsrtR9Ug5+rM3uRaFGXaC95e9OODDQWK7kbvt/XclvzthqniwhDjq4jra0GU13GIaRiHHcllafa5ByE0m0d1GqxU6g3fsshv110wYeXVlpMtXBehERSxb30Ct+ri983kR4B0U0ggx6qv5hyD/khokV7Ol7Nr+jPFVusBZ1IHXJw3kq9gQxwJ+pGEYnDgfMj7nj0gw/YI0r8PsEfJ6/4OQaT8Ig9YPGCecQkj5ngCZdJcpSDpHPEZ5K5OrICTseq01PVgNcLJ/r68VBBnrB7GUiP4cS4OecMWL4UCZi+MDnG9gfME7S+IxOwfhlSxPwF/XNrqQfeZZzW5XrgxZ4Y63SBMe6NY277/kjSsUeSqaFPeOoUPuqVASOxXwakxp75BDOhdxI/gbrjAF3XdVlEAHraEfnyEGAEOYznNWQgaWNsUZRoIfuwsbpxZ53PeOiyo/WwTBrht8l0f/7EcMoE5N622D0RxTVGO3Qkf7NY0N/pintoQ1tXLe21KAwUco1+a0q61jgPWbw9h5PNRt6gfU1paa2iDHjfuHw+76OcGbsBcsVh0Vrp90H0rpF/4f6uJZvLpzH7gcKL/o6FjtGKQLxId5+00y0bApG6MkGfMAA5RAF2y/7FNXtA+yoLdOzu/g/2xSiFBeWFVcaye+N8LTScPwpGYqZiH5v7VZeNkdq7sbUZe0BkKUcb6bftelaYei4U7oQuLaKSDuffb3dT0chpcepT25TCo2NCl4wCs3UAzwwyoDJEB69ni9mC8ND0EeRHUJ1V7ySw0Xr48fD58fD5fz98+mlBlHmjhKTRGgfUoR9ly74ZIIM2vf63NOvyJRwCor9a1XVEfmnR0tx6yuBVWCnWNEiWByoVnUvIK6EcftJPP/3Tx/Uz+8i5NN80DbcAW8gBMnjG/ck26J66LM09ciLyz3ZR0qdXHk3X4zSnhoUM1v2DsDYliVnxRo9F8UZXdl33Hz/DZMQ=
+sidebar_class_name: "post api-method"
+info_path: docs/web-services/specification/joomla-4-web-services-api-collection-for-postman
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"fields/users"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/fields/users"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generated from a curl request:
+curl -X POST '\{base_url\}/fields/users' -H 'X-Joomla-Token: \{auth_apikey\}' -H 'Content-Type: application/json' -d '\{"access":1,"context":"com_users.user","default_value":"","description":"","group_id":0,"label":"user field","language":"*","name":"user-field","note":"","params":\{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""\},"fieldparams":\{"filter":"alnum","maxlength":40\},"required":0,"state":1,"title":"user field","type":"text"\}'
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"base_path","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"*/*"}
+    value={"*/*-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      

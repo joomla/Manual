@@ -275,6 +275,36 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['php', 'ini', 'json'],
       },
+      languageTabs: [
+        {
+          highlight: "php",
+          language: "php",
+          logoClass: "php",
+          variant: "curl",
+          variants: ["curl","guzzle","pecl_http","http_request2"],
+        },
+        {
+          highlight: "bash",
+          language: "curl",
+          logoClass: "bash",
+        },
+        {
+          highlight: "javascript",
+          language: "nodejs",
+          logoClass: "nodejs",
+          variant: "axios",
+        },
+        {
+          highlight: "go",
+          language: "go",
+          logoClass: "go",
+        },
+        {
+          highlight: "python",
+          language: "python",
+          logoClass: "python",
+        },
+      ],
     }),
   plugins: [
       /*
@@ -318,6 +348,7 @@ const config = {
             outputDir: "docs/web-services/specification",
             sidebarOptions: {
               groupPathsBy: "tag",
+              categoryLinkSource: "tag",
             },
           }
         }

@@ -19,58 +19,63 @@ components:
 security:
   - ApiKeyAuth: [] # use the same name as under securitySchemes
 tags:
-  - name: Banners
-    description: Component Banners
-    x-displayName: Banners
-  - name: Config
-    description: Component Config
-    x-displayName: Config
-  - name: Contacts
-    description: Component Contacts
-    x-displayName: Contacts
-  - name: Content
-    description: Component Content
-    x-displayName: Content
-  - name: Languages
-    description: Component Languages
-    x-displayName: Languages
-  - name: Menus
-    description: Component Menus
-    x-displayName: Menus
-  - name: Messages
-    description: Component Messages
-    x-displayName: Messages
-  - name: Modules
-    description: Component Modules
-    x-displayName: Modules
-  - name: Newsfeeds
-    description: Component Newsfeeds
-    x-displayName: Newsfeeds
-  - name: Privacy
-    description: Component Privacy
-    x-displayName: Privacy
-  - name: Redirects
-    description: Component Redirects
-    x-displayName: Redirects
-  - name: Tags
-    description: Component Tags
-    x-displayName: Tags
-  - name: Templates
-    description: Component Templates
-    x-displayName: Templates
-  - name: Users
-    description: Component Users
-    x-displayName: Users
+  - name: 1. Banners
+  - name: 1. Banners > 1.1 Banners
+  - name: 1. Banners > 1.2 Banners Clients
+  - name: 1. Banners > 1.3 Banners Categories
+  - name: 1. Banners > 1.4 Banners Content History
+  - name: 2. Config
+  - name: 2. Config > 2.1 Config Application
+  - name: 2. Config > 2.2 Config Component
+  - name: 3. Contacts
+  - name: 3. Contacts > 3.1 Contacts
+  - name: 3. Contacts > 3.2 Contacts Form
+  - name: 3. Contacts > 3.3 Contact Custom Fields
+  - name: 3. Contacts > 3.4 Contacts Custom Fields Groups
+  - name: 3. Contacts > 3.5 Contacts Categories Custom Fields
+  - name: 4. Content
+  - name: 4. Content > 4.1 Content Articles
+  - name: 4. Content > 4.2 Content Articles Custom Fields
+  - name: 4. Content > 4.3 Content Articles Custom Fields Groups
+  - name: 4. Content > 4.4 Content Categories Custom Fields
+  - name: 5. Languages
+  - name: 5. Languages > 5.1 Languages
+  - name: 5. Languages > 5.2 Languages Content
+  - name: 5. Languages > 5.3 Languages Overrides
+  - name: 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
+  - name: 5. Languages > 5.3 Languages Overrides > 5.3.2 Languages Overrides Search
+  - name: 6. Menus
+  - name: 6. Menus > 6.1 Menus
+  - name: 6. Menus > 6.2 Menus Items
+  - name: 7. Messages
+  - name: 7. Messages > 7.1 Messages
+  - name: 8. Modules
+  - name: 8. Modules > 8.1 Modules
+  - name: 9. Newsfeeds
+  - name: 9. Newsfeeds > 9.1 Newsfeeds
+  - name: 10. Privacy
+  - name: 10. Privacy > 10.1 Privacy Requests
+  - name: 10. Privacy > 10.2 Privacy Consents
+  - name: 11. Redirects
+  - name: 11. Redirects > 11.1 Redirects
+  - name: 12. Tags
+  - name: 12. Tags > 12.1 Tags
+  - name: 13. Templates
+  - name: 13. Templates > 13.1 Templates Styles
+  - name: 14. Users
+  - name: 14. Users > 14.1 Users
+  - name: 14. Users > 14.2 Users Custom Fields
+  - name: 14. Users > 14.3 Users Custom Fields Groups
 paths:
-  /banners:
+  /{base_path}/banners:
     post:
       tags:
-        - Banners
+        - 1. Banners > 1.1 Banners
       summary: banners
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/banners' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"catid":3,"clicks":0,"custombannercode":"","description":"Text","metakey":"","name":"Name","params":{"alt":"","height":"","imageurl":"","width":""}'
+        curl -X POST '{base_url}/{base_path}/banners' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"catid":3,"clicks":0,"custombannercode":"","description":"Text","metakey":"","name":"Name","params":{"alt":"","height":"","imageurl":"","width":""}'
       requestBody:
         content:
           "*/*":
@@ -95,12 +100,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.1 Banners
       summary: banners
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -110,24 +115,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/{banner_id}:
-    get:
-      description: New endpoint
-      responses:
-        200:
-          description: New response
-          content:
-            application/json:
-              schema:
-                : 
+  /{base_path}/banners/{banner_id}:
     patch:
       tags:
-        - Banners
+        - 1. Banners > 1.1 Banners
       summary: banners/{banner_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"name","catid":3,"description":"New Text","name":"New Name"}'
+        curl -X PATCH '{base_url}/{base_path}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"name","catid":3,"description":"New Text","name":"New Name"}'
       requestBody:
         content:
           "*/*":
@@ -157,12 +153,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.1 Banners
       summary: banners/{banner_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -179,12 +175,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Banners
+        - 1. Banners > 1.1 Banners
       summary: banners/{banner_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/banners/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -199,15 +195,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/clients:
+  /{base_path}/banners/clients:
     post:
       tags:
-        - Banners
+        - 1. Banners > 1.2 Banners Clients
       summary: banners/clients
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/banners/clients' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact":"Name","email":"email@example.org","extrainfo":"","metakey":"","name":"Clients","state":1}'
+        curl -X POST '{base_url}/{base_path}/banners/clients' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact":"Name","email":"email@example.org","extrainfo":"","metakey":"","name":"Clients","state":1}'
       requestBody:
         content:
           "*/*":
@@ -231,12 +227,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.2 Banners Clients
       summary: banners/clients
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/clients' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/clients' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -246,15 +242,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/clients/{client_id}:
+  /{base_path}/banners/clients/{client_id}:
     patch:
       tags:
-        - Banners
+        - 1. Banners > 1.2 Banners Clients
       summary: banners/clients/{client_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact":"new Name","email":"newemail@example.org","name":"Clients"}'
+        curl -X PATCH '{base_url}/{base_path}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact":"new Name","email":"newemail@example.org","name":"Clients"}'
       requestBody:
         content:
           "*/*":
@@ -284,12 +280,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.2 Banners Clients
       summary: banners/clients/{client_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -306,12 +302,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Banners
+        - 1. Banners > 1.2 Banners Clients
       summary: banners/clients/{client_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/banners/clients/{client_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -326,15 +322,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/categories:
+  /{base_path}/banners/categories:
     post:
       tags:
-        - Banners
+        - 1. Banners > 1.3 Banners Categories
       summary: banners/categories
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/banners/categories' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"alias":"cat","extension":"com_banners","language":"*","note":"","parent_id":1,"published":1,"title":"Title","params":{"workflow_id":1}'
+        curl -X POST '{base_url}/{base_path}/banners/categories' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"alias":"cat","extension":"com_banners","language":"*","note":"","parent_id":1,"published":1,"title":"Title","params":{"workflow_id":1}'
       requestBody:
         content:
           "*/*":
@@ -358,12 +354,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.3 Banners Categories
       summary: banners/categories
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/categories' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/categories' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -373,15 +369,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/categories/{category_id}:
+  /{base_path}/banners/categories/{category_id}:
     patch:
       tags:
-        - Banners
+        - 1. Banners > 1.3 Banners Categories
       summary: banners/categories/{category_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"cat","note":"Some Text","parent_id":1,"title":"New Title"}'
+        curl -X PATCH '{base_url}/{base_path}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"cat","note":"Some Text","parent_id":1,"title":"New Title"}'
       requestBody:
         content:
           "*/*":
@@ -411,12 +407,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.3 Banners Categories
       summary: banners/categories/{category_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -433,12 +429,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Banners
+        - 1. Banners > 1.3 Banners Categories
       summary: banners/categories/{category_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/banners/categories/{category_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -453,15 +449,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/contenthistory/keep/{contenthistory_id}:
+  /{base_path}/banners/contenthistory/keep/{contenthistory_id}:
     patch:
       tags:
-        - Banners
+        - 1. Banners > 1.4 Banners Content History
       summary: banners/contenthistory/keep/{contenthistory_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/banners/contenthistory/keep/{contenthistory_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X PATCH '{base_url}/{base_path}/banners/contenthistory/keep/{contenthistory_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: Content-Type
           in: header
@@ -481,15 +477,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /banners/contenthistory/{banner_id}:
+  /{base_path}/banners/contenthistory/{banner_id}:
     get:
       tags:
-        - Banners
+        - 1. Banners > 1.4 Banners Content History
       summary: banners/contenthistory/{banner_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/banners/contenthistory/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/banners/contenthistory/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -506,12 +502,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Banners
+        - 1. Banners > 1.4 Banners Content History
       summary: banners/contenthistory/{banner_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/banners/contenthistory/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/banners/contenthistory/{banner_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -526,15 +522,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /config/application:
+  /{base_path}/config/application:
     get:
       tags:
-        - Config
+        - 2. Config > 2.1 Config Application
       summary: config/application
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/config/application' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/config/application' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -546,12 +542,12 @@ paths:
           description: Successful response
     patch:
       tags:
-        - Config
+        - 2. Config > 2.1 Config Application
       summary: config/application
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/config/application' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"debug":true,"sitename":"123"}'
+        curl -X PATCH '{base_url}/{base_path}/config/application' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"debug":true,"sitename":"123"}'
       requestBody:
         content:
           "*/*":
@@ -572,15 +568,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /config/{component_name}:
+  /{base_path}/config/{component_name}:
     get:
       tags:
-        - Config
+        - 2. Config > 2.2 Config Component
       summary: config/{component_name}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/config/{component_name}' -H
+        curl -X GET '{base_url}/{base_path}/config/{component_name}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -596,15 +592,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /contacts:
+  /{base_path}/contacts:
     post:
       tags:
-        - Contacts
+        - 3. Contacts > 3.1 Contacts
       summary: contacts
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/contact' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/contact' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"alias":"contact","catid":4,"language":"*","name":"Contact"}'
       requestBody:
@@ -630,12 +626,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.1 Contacts
       summary: contacts
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/contacts' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/contacts' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -645,15 +641,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /contacts/{contact_id}:
+  /{base_path}/contacts/{contact_id}:
     patch:
       tags:
-        - Contacts
+        - 3. Contacts > 3.1 Contacts
       summary: contacts/{contact_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"contact","catid":4,"name":"New Contact"}'
+        curl -X PATCH '{base_url}/{base_path}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"contact","catid":4,"name":"New Contact"}'
       requestBody:
         content:
           "*/*":
@@ -681,12 +677,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.1 Contacts
       summary: contacts/{contact_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -703,12 +699,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Contacts
+        - 3. Contacts > 3.1 Contacts
       summary: contacts/{contact_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/contacts/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -723,15 +719,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /contacts/form/{contact_id}:
+  /{base_path}/contacts/form/{contact_id}:
     post:
       tags:
-        - Contacts
+        - 3. Contacts > 3.2 Contacts Form
       summary: contacts/form/{contact_id}
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/contacts/form/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact_email":"email@example.org","contact_message":"some text","contact_name":"name","contact_subject":"subject"}'
+        curl -X POST '{base_url}/{base_path}/contacts/form/{contact_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"contact_email":"email@example.org","contact_message":"some text","contact_name":"name","contact_subject":"subject"}'
       requestBody:
         content:
           "*/*":
@@ -759,15 +755,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/contacts/contact:
+  /{base_path}/fields/contacts/contact:
     post:
       tags:
-        - Contacts
+        - 3. Contacts > 3.3 Contact Custom Fields
       summary: fields/contacts/contact
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.contact","default_value":"","description":"","group_id":0,"label":"contact field","language":"*","name":"contact-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact field","type":"text"}'
+        curl -X POST '{base_url}/{base_path}/fields/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.contact","default_value":"","description":"","group_id":0,"label":"contact field","language":"*","name":"contact-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact field","type":"text"}'
       requestBody:
         content:
           "*/*":
@@ -793,12 +789,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.3 Contact Custom Fields
       summary: fields/contacts/contact
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -808,15 +804,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/contacts/contact/{field_id}:
+  /{base_path}/fields/contacts/contact/{field_id}:
     patch:
       tags:
-        - Contacts
+        - 3. Contacts > 3.3 Contact Custom Fields
       summary: fields/contacts/contact/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact field","name":"contact-field","label":"contact field","default_value":"","type":"text","note":"","description":"Some New Text"}'
+        curl -X PATCH '{base_url}/{base_path}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact field","name":"contact-field","label":"contact field","default_value":"","type":"text","note":"","description":"Some New Text"}'
       requestBody:
         content:
           "*/*":
@@ -848,12 +844,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.3 Contact Custom Fields
       summary: fields/contacts/contact/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -870,12 +866,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Contacts
+        - 3. Contacts > 3.3 Contact Custom Fields
       summary: fields/contacts/contact/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/fields/contacts/contact/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -890,15 +886,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/contacts/contact:
+  /{base_path}/fields/groups/contacts/contact:
     post:
       tags:
-        - Contacts
+        - 3. Contacts > 3.4 Contacts Custom Fields Groups
       summary: fields/groups/contacts/contact
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/groups/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.contact","default_value":"","description":"","group_id":0,"label":"contact field","language":"*","name":"contact-field3","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact field","type":"text"}'
+        curl -X POST '{base_url}/{base_path}/fields/groups/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.contact","default_value":"","description":"","group_id":0,"label":"contact field","language":"*","name":"contact-field3","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact field","type":"text"}'
       requestBody:
         content:
           "*/*":
@@ -924,12 +920,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.4 Contacts Custom Fields Groups
       summary: fields/groups/contacts/contact
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/groups/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/groups/contacts/contact' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -939,15 +935,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/contacts/contact/{group_id}:
+  /{base_path}/fields/groups/contacts/contact/{group_id}:
     patch:
       tags:
-        - Contacts
+        - 3. Contacts > 3.4 Contacts Custom Fields Groups
       summary: fields/groups/contacts/contact/{group_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact group","note":"","description":"new description"}'
+        curl -X PATCH '{base_url}/{base_path}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact group","note":"","description":"new description"}'
       requestBody:
         content:
           "*/*":
@@ -977,12 +973,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.4 Contacts Custom Fields Groups
       summary: fields/groups/contacts/contact/{group_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -999,12 +995,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Contacts
+        - 3. Contacts > 3.4 Contacts Custom Fields Groups
       summary: fields/groups/contacts/contact/{group_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/fields/groups/contacts/contact/{group_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1019,15 +1015,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/contacts/categories:
+  /{base_path}/fields/contacts/categories:
     post:
       tags:
-        - Contacts
+        - 3. Contacts > 3.5 Contacts Categories Custom Fields
       summary: fields/contacts/categories
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/contacts/categories' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.categories","default_value":"","description":"","group_id":0,"label":"contact category field","language":"*","name":"contact-category-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact category field","type":"text"}'
+        curl -X POST '{base_url}/{base_path}/fields/contacts/categories' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_contact.categories","default_value":"","description":"","group_id":0,"label":"contact category field","language":"*","name":"contact-category-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"required":0,"state":1,"title":"contact category field","type":"text"}'
       requestBody:
         content:
           "*/*":
@@ -1054,12 +1050,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.5 Contacts Categories Custom Fields
       summary: fields/contacts/categories
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/contacts/categories' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/contacts/categories' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1069,15 +1065,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/contacts/categories/{field_id}:
+  /{base_path}/fields/contacts/categories/{field_id}:
     patch:
       tags:
-        - Contacts
+        - 3. Contacts > 3.5 Contacts Categories Custom Fields
       summary: fields/contacts/categories/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact category field","name":"contact-category-field","label":"contact category field","default_value":"","type":"text","note":"","description":"Some New Text"}'
+        curl -X PATCH '{base_url}/{base_path}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new contact category field","name":"contact-category-field","label":"contact category field","default_value":"","type":"text","note":"","description":"Some New Text"}'
       requestBody:
         content:
           "*/*":
@@ -1110,12 +1106,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Contacts
+        - 3. Contacts > 3.5 Contacts Categories Custom Fields
       summary: fields/contacts/categories/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1132,12 +1128,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Contacts
+        - 3. Contacts > 3.5 Contacts Categories Custom Fields
       summary: fields/contacts/categories/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/fields/contacts/categories/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1152,15 +1148,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /content/articles:
+  /{base_path}/content/articles:
     post:
       tags:
-        - Content
+        - 4. Content > 4.1 Content Articles
       summary: content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/content/articles' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"my-article","articletext":"My text","catid":64,"language":"*","metadesc":"","metakey":"","title":"Here is an article"}'
+        curl -X POST '{base_url}/{base_path}/content/articles' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"alias":"my-article","articletext":"My text","catid":64,"language":"*","metadesc":"","metakey":"","title":"Here is an article"}'
       requestBody:
         content:
           "*/*":
@@ -1186,12 +1182,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.1 Content Articles
       summary: content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/content/articles' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/content/articles' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1201,15 +1197,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /content/articles/{article_id}:
+  /{base_path}/content/articles/{article_id}:
     patch:
       tags:
-        - Content
+        - 4. Content > 4.1 Content Articles
       summary: content/articles/{article_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"catid":64,"title":"Updated article"}'
+        curl -X PATCH '{base_url}/{base_path}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"catid":64,"title":"Updated article"}'
       requestBody:
         content:
           "*/*":
@@ -1237,12 +1233,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.1 Content Articles
       summary: content/articles/{article_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1259,12 +1255,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Content
+        - 4. Content > 4.1 Content Articles
       summary: content/articles/{article_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X DELETE '{base_url}/{base_path}/content/articles/{article_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1279,15 +1275,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/content/articles:
+  /{base_path}/fields/content/articles:
     post:
       tags:
-        - Content
+        - 4. Content > 4.2 Content Articles Custom Fields
       summary: fields/content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/content/articles' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_content.article","default_value":"","description":"","group_id":0,"label":"article field","language":"*","name":"article-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"fieldparams":{"filter":"alnum","maxlength":40},"required":0,"state":1,"title":"article field","type":"text"}'
+        curl -X POST '{base_url}/{base_path}/fields/content/articles' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"access":1,"context":"com_content.article","default_value":"","description":"","group_id":0,"label":"article field","language":"*","name":"article-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"fieldparams":{"filter":"alnum","maxlength":40},"required":0,"state":1,"title":"article field","type":"text"}'
       requestBody:
         content:
           "*/*":
@@ -1313,12 +1309,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.2 Content Articles Custom Fields
       summary: fields/content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/content/articles' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/content/articles' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1328,15 +1324,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/content/articles/{field_id}:
+  /{base_path}/fields/content/articles/{field_id}:
     patch:
       tags:
-        - Content
+        - 4. Content > 4.2 Content Articles Custom Fields
       summary: fields/content/articles/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/fields/content/articles/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new article field","name":"article-field","label":"article field","default_value":"","type":"text","note":"","description":"Some New Text"}'
+        curl -X PATCH '{base_url}/{base_path}/fields/content/articles/{field_id}' -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d '{"title":"new article field","name":"article-field","label":"article field","default_value":"","type":"text","note":"","description":"Some New Text"}'
       requestBody:
         content:
           "*/*":
@@ -1368,12 +1364,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.2 Content Articles Custom Fields
       summary: fields/content/articles/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/content/articles/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
+        curl -X GET '{base_url}/{base_path}/fields/content/articles/{field_id}' -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
           in: path
@@ -1390,13 +1386,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Content
+        - 4. Content > 4.2 Content Articles Custom Fields
       summary: fields/content/articles/{field_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/fields/content/articles/{field_id}' -H
+        '{base_url}/{base_path}/fields/content/articles/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1412,15 +1408,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/content/articles:
+  /{base_path}/fields/groups/content/articles:
     post:
       tags:
-        - Content
+        - 4. Content > 4.3 Content Articles Custom Fields Groups
       summary: fields/groups/content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/groups/content/articles'
+        curl -X POST '{base_url}/{base_path}/fields/groups/content/articles'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d
         '{"access":1,"context":"com_content.article","description":"","language":"*","note":"","params":{"display_readonly":"1"},"required":0,"state":1,"title":"article
@@ -1449,12 +1445,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.3 Content Articles Custom Fields Groups
       summary: fields/groups/content/articles
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/groups/content/articles'
+        curl -X GET '{base_url}/{base_path}/fields/groups/content/articles'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1465,16 +1461,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/content/articles/{group_id}:
+  /{base_path}/fields/groups/content/articles/{group_id}:
     patch:
       tags:
-        - Content
+        - 4. Content > 4.3 Content Articles Custom Fields Groups
       summary: fields/groups/content/articles/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/fields/groups/content/articles/{group_id}'
+        '{base_url}/{base_path}/fields/groups/content/articles/{group_id}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d '{"title":"new article group","note":"","description":"new
         description"}'
@@ -1507,13 +1503,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.3 Content Articles Custom Fields Groups
       summary: fields/groups/content/articles/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/fields/groups/content/articles/{group_id}'
+        '{base_url}/{base_path}/fields/groups/content/articles/{group_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1531,13 +1527,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Content
+        - 4. Content > 4.3 Content Articles Custom Fields Groups
       summary: fields/groups/content/articles/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/fields/groups/content/articles/{group_id}'
+        '{base_url}/{base_path}/fields/groups/content/articles/{group_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1553,15 +1549,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/content/categories:
+  /{base_path}/fields/content/categories:
     post:
       tags:
-        - Content
+        - 4. Content > 4.4 Content Categories Custom Fields
       summary: fields/content/categories
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/content/categories' -H
+        curl -X POST '{base_url}/{base_path}/fields/content/categories' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"context":"com_content.categories","default_value":"","description":"","group_id":0,"label":"content
         category
@@ -1593,12 +1589,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.4 Content Categories Custom Fields
       summary: fields/content/categories
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/content/categories' -H
+        curl -X GET '{base_url}/{base_path}/fields/content/categories' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1609,16 +1605,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/content/categories/{field_id}:
+  /{base_path}/fields/content/categories/{field_id}:
     patch:
       tags:
-        - Content
+        - 4. Content > 4.4 Content Categories Custom Fields
       summary: fields/content/categories/{field_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/fields/content/categories/{field_id}' -H
+        '{base_url}/{base_path}/fields/content/categories/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"title":"new content category
         field","name":"content-category-field","label":"content category
@@ -1656,13 +1652,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Content
+        - 4. Content > 4.4 Content Categories Custom Fields
       summary: fields/content/categories/{field_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/fields/content/categories/{field_id}' -H
+        '{base_url}/{base_path}/fields/content/categories/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1680,13 +1676,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Content
+        - 4. Content > 4.4 Content Categories Custom Fields
       summary: fields/content/categories/{field_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/fields/content/categories/{field_id}' -H
+        '{base_url}/{base_path}/fields/content/categories/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1702,15 +1698,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages:
+  /{base_path}/languages:
     post:
       tags:
-        - Languages
+        - 5. Languages > 5.1 Languages
       summary: languages
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/languages' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/languages' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"package":"pkg_fr-FR"}'
       requestBody:
@@ -1735,12 +1731,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Languages
+        - 5. Languages > 5.1 Languages
       summary: languages
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/languages' -H 'X-Joomla-Token:
+        curl -X GET '{base_url}/{base_path}/languages' -H 'X-Joomla-Token:
         {auth_apikey}'
       parameters:
         - name: base_path
@@ -1751,15 +1747,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/content:
+  /{base_path}/languages/content:
     post:
       tags:
-        - Languages
+        - 5. Languages > 5.2 Languages Content
       summary: languages/content
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/languages/content' -H
+        curl -X POST '{base_url}/{base_path}/languages/content' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"description":"","image":"fr_FR","lang_code":"fr-FR","metadesc":"","metakey":"","ordering":1,"published":0,"sef":"fk","sitename":"","title":"French
         (FR)","title_native":"Français (France)"}'
@@ -1787,12 +1783,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Languages
+        - 5. Languages > 5.2 Languages Content
       summary: languages/content
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/languages/content' -H
+        curl -X GET '{base_url}/{base_path}/languages/content' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1803,16 +1799,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/content/{language_id}:
+  /{base_path}/languages/content/{language_id}:
     patch:
       tags:
-        - Languages
+        - 5. Languages > 5.2 Languages Content
       summary: languages/content/{language_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/languages/content/{language_id}' -H
+        '{base_url}/{base_path}/languages/content/{language_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"description":"","lang_code":"en-GB","metadesc":"","metakey":"","sitename":"","title":"English
         (en-GB)","title_native":"English (United Kingdom)"}'
@@ -1845,13 +1841,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Languages
+        - 5. Languages > 5.2 Languages Content
       summary: languages/content/{language_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/languages/content/{language_id}' -H
+        '{base_url}/{base_path}/languages/content/{language_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1867,16 +1863,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /v1/languages/content/{language_id}:
+  /{base_path}/v1/languages/content/{language_id}:
     get:
       tags:
-        - Languages
+        - 5. Languages > 5.2 Languages Content
       summary: v1/languages/content/{language_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/v1/languages/content/{language_id}' -H
+        '{base_url}/{base_path}/v1/languages/content/{language_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1892,16 +1888,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/overrides/{app}/{lang_code}:
+  /{base_path}/languages/overrides/{app}/{lang_code}:
     post:
       tags:
-        - Languages
+        - 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
       summary: languages/overrides/{app}/{lang_code}
       description: >-
         Generated from a curl request:
         
         curl -X POST
-        '{base_url}/languages/overrides/{app}/{lang_code}'
+        '{base_url}/{base_path}/languages/overrides/{app}/{lang_code}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d '{"key":"new_key","override":"text"}'
       requestBody:
@@ -1936,13 +1932,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Languages
+        - 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
       summary: languages/overrides/{app}/{lang_code}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/languages/overrides/{app}/{lang_code}'
+        '{base_url}/{base_path}/languages/overrides/{app}/{lang_code}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -1963,16 +1959,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/overrides/{app}/{lang_code}/{constant_id}:
+  /{base_path}/languages/overrides/{app}/{lang_code}/{constant_id}:
     patch:
       tags:
-        - Languages
+        - 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
       summary: languages/overrides/{app}/{lang_code}/{constant_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/languages/overrides/{app}/{lang_code}/{constant_id}'
+        '{base_url}/{base_path}/languages/overrides/{app}/{lang_code}/{constant_id}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d '{"key":"new_key","override":"new text"}'
       requestBody:
@@ -2012,13 +2008,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Languages
+        - 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
       summary: languages/overrides/{app}/{lang_code}/{constant_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/languages/overrides/{app}/{lang_code}/{constant_id}'
+        '{base_url}/{base_path}/languages/overrides/{app}/{lang_code}/{constant_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2046,13 +2042,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Languages
+        - 5. Languages > 5.3 Languages Overrides > 5.3.1 Languages Overrides App
       summary: languages/overrides/{app}/{lang_code}/{constant_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/languages/overrides/{app}/{lang_code}/{constant_id}'
+        '{base_url}/{base_path}/languages/overrides/{app}/{lang_code}/{constant_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2078,17 +2074,17 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/overrides/search:
+  /{base_path}/languages/overrides/search:
     post:
       tags:
         - >-
-          Languages
+          5. Languages > 5.3 Languages Overrides > 5.3.2 Languages Overrides
           Search
       summary: languages/overrides/search
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/languages/overrides/search' -H
+        curl -X POST '{base_url}/{base_path}/languages/overrides/search' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"searchstring":"JLIB_APPLICATION_ERROR_SAVE_FAILED","searchtype":"constant"}'
       requestBody:
@@ -2112,18 +2108,18 @@ paths:
       responses:
         "200":
           description: Successful response
-  /languages/overrides/search/cache/refresh:
+  /{base_path}/languages/overrides/search/cache/refresh:
     post:
       tags:
         - >-
-          Languages
+          5. Languages > 5.3 Languages Overrides > 5.3.2 Languages Overrides
           Search
       summary: languages/overrides/search/cache/refresh
       description: >-
         Generated from a curl request:
         
         curl -X POST
-        '{base_url}/languages/overrides/search/cache/refresh' -H
+        '{base_url}/{base_path}/languages/overrides/search/cache/refresh' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: Content-Type
@@ -2139,15 +2135,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /menus/{app}:
+  /{base_path}/menus/{app}:
     post:
       tags:
-        - Menus
+        - 6. Menus > 6.1 Menus
       summary: menus/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/menus/{app}' -H
+        curl -X POST '{base_url}/{base_path}/menus/{app}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"client_id":0,"description":"The menu for the
         site","menutype":"menu","title":"Menu"}'
@@ -2180,12 +2176,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Menus
+        - 6. Menus > 6.1 Menus
       summary: menus/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/menus/{app}' -H
+        curl -X GET '{base_url}/{base_path}/menus/{app}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2201,15 +2197,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /menus/{app}/{menu_id}:
+  /{base_path}/menus/{app}/{menu_id}:
     patch:
       tags:
-        - Menus
+        - 6. Menus > 6.1 Menus
       summary: menus/{app}/{menu_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/menus/{app}/{menu_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/menus/{app}/{menu_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"menutype":"menu","title":"New Menu"}'
       requestBody:
@@ -2244,12 +2240,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Menus
+        - 6. Menus > 6.1 Menus
       summary: menus/{app}/{menu_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/menus/{app}/{menu_id}' -H
+        curl -X GET '{base_url}/{base_path}/menus/{app}/{menu_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2272,12 +2268,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Menus
+        - 6. Menus > 6.1 Menus
       summary: menus/{app}/{menu_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/menus/{app}/{menu_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/menus/{app}/{menu_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2298,15 +2294,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /menus/{app}/items:
+  /{base_path}/menus/{app}/items:
     post:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/menus/{app}/items' -H
+        curl -X POST '{base_url}/{base_path}/menus/{app}/items' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":"1","alias":"","associations":{"en-GB":"","fr-FR":""},"browserNav":"0","component_id":"20","home":"0","language":"*","link":"index.php?option=com_content&view=form&layout=edit","menutype":"mainmenu","note":"","params":{"cancel_redirect_menuitem":"","catid":"","custom_cancel_redirect":"0","enable_category":"0","menu-anchor_css":"","menu-anchor_title":"","menu-meta_description":"","menu-meta_keywords":"","menu_image":"","menu_image_css":"","menu_show":"1","menu_text":"1","page_heading":"","page_title":"","pageclass_sfx":"","redirect_menuitem":"","robots":"","show_page_heading":""},"parent_id":"1","publish_down":"","publish_up":"","published":"1","template_style_id":"0","title":"title","toggle_modules_assigned":"1","toggle_modules_published":"1","type":"component"}'
       requestBody:
@@ -2337,12 +2333,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/menus/{app}/items' -H
+        curl -X GET '{base_url}/{base_path}/menus/{app}/items' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2358,16 +2354,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /menus/{app}/items/{menu_item_id}:
+  /{base_path}/menus/{app}/items/{menu_item_id}:
     patch:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items/{menu_item_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/menus/{app}/items/{menu_item_id}' -H
+        '{base_url}/{base_path}/menus/{app}/items/{menu_item_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"component_id":"20","language":"*","link":"index.php?option=com_content&view=form&layout=edit","menutype":"mainmenu","note":"","title":"new
         title","type":"component"}'
@@ -2405,13 +2401,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items/{menu_item_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/menus/{app}/items/{menu_item_id}' -H
+        '{base_url}/{base_path}/menus/{app}/items/{menu_item_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2434,13 +2430,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items/{menu_item_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/menus/{app}/items/{menu_item_id}' -H
+        '{base_url}/{base_path}/menus/{app}/items/{menu_item_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2461,15 +2457,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /menus/{app}/items/types:
+  /{base_path}/menus/{app}/items/types:
     get:
       tags:
-        - Menus
+        - 6. Menus > 6.2 Menus Items
       summary: menus/{app}/items/types
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/menus/{app}/items/types' -H
+        curl -X GET '{base_url}/{base_path}/menus/{app}/items/types' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2485,15 +2481,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /messages:
+  /{base_path}/messages:
     post:
       tags:
-        - Messages
+        - 7. Messages > 7.1 Messages
       summary: messages
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/messages' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/messages' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"message":"<p>text</p>","state":0,"subject":"text","user_id_from":773,"user_id_to":772}'
       requestBody:
@@ -2519,12 +2515,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Messages
+        - 7. Messages > 7.1 Messages
       summary: messages
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/messages' -H 'X-Joomla-Token:
+        curl -X GET '{base_url}/{base_path}/messages' -H 'X-Joomla-Token:
         {auth_apikey}'
       parameters:
         - name: base_path
@@ -2535,15 +2531,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /messages/{message_id}:
+  /{base_path}/messages/{message_id}:
     patch:
       tags:
-        - Messages
+        - 7. Messages > 7.1 Messages
       summary: messages/{message_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/messages/{message_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/messages/{message_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"message":"<p>new text</p>","subject":"new
         text","user_id_from":773,"user_id_to":772}'
@@ -2576,12 +2572,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Messages
+        - 7. Messages > 7.1 Messages
       summary: messages/{message_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/messages/{message_id}' -H
+        curl -X GET '{base_url}/{base_path}/messages/{message_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2599,12 +2595,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Messages
+        - 7. Messages > 7.1 Messages
       summary: messages/{message_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/messages/{message_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/messages/{message_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2620,15 +2616,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /modules/{app}:
+  /{base_path}/modules/{app}:
     post:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/modules/{app}' -H
+        curl -X POST '{base_url}/{base_path}/modules/{app}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":"1","assigned":["101","105"],"assignment":"0","client_id":"0","language":"*","module":"mod_articles_archive","note":"","ordering":"1","params":{"bootstrap_size":"0","cache":"1","cache_time":"900","cachemode":"static","count":"10","header_class":"","header_tag":"h3","layout":"_:default","module_tag":"div","moduleclass_sfx":"","style":"0"},"position":"","publish_down":"","publish_up":"","published":"1","showtitle":"1","title":"Title"}'
       requestBody:
@@ -2659,12 +2655,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/modules/{app}' -H
+        curl -X GET '{base_url}/{base_path}/modules/{app}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2680,15 +2676,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /modules/{app}/{module_id}:
+  /{base_path}/modules/{app}/{module_id}:
     patch:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/{app}/{module_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/modules/{app}/{module_id}'
+        curl -X PATCH '{base_url}/{base_path}/modules/{app}/{module_id}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d
         '{"access":"1","client_id":"0","language":"*","module":"mod_articles_archive","note":"","ordering":"1","title":"New
@@ -2727,12 +2723,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/{app}/{module_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/modules/{app}/{module_id}'
+        curl -X GET '{base_url}/{base_path}/modules/{app}/{module_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2755,13 +2751,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/{app}/{module_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/modules/{app}/{module_id}' -H
+        '{base_url}/{base_path}/modules/{app}/{module_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2782,15 +2778,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /modules/types/{app}:
+  /{base_path}/modules/types/{app}:
     get:
       tags:
-        - Modules
+        - 8. Modules > 8.1 Modules
       summary: modules/types/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/modules/types/{app}' -H
+        curl -X GET '{base_url}/{base_path}/modules/types/{app}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2806,15 +2802,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /newsfeeds/feeds:
+  /{base_path}/newsfeeds/feeds:
     post:
       tags:
-        - Newsfeeds
+        - 9. Newsfeeds > 9.1 Newsfeeds
       summary: newsfeeds/feeds
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/newsfeeds/feeds' -H
+        curl -X POST '{base_url}/{base_path}/newsfeeds/feeds' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"alias":"alias","catid":5,"description":"","images":{"float_first":"","float_second":"","image_first":"","image_first_alt":"","image_first_caption":"","image_second":"","image_second_alt":"","image_second_caption":""},"language":"*","link":"http://samoylov/joomla/gsoc19_webservices/index.php","metadata":{"hits":"","rights":"","robots":"","tags":{"tags":"","typeAlias":null},"metadesc":"","metakey":"","name":"Name","ordering":1,"params":{"feed_character_count":"","feed_display_order":"","newsfeed_layout":"","show_feed_description":"","show_feed_image":"","show_item_description":""},"published":1}'
       requestBody:
@@ -2840,12 +2836,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Newsfeeds
+        - 9. Newsfeeds > 9.1 Newsfeeds
       summary: newsfeeds/feeds
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/newsfeeds/feeds' -H
+        curl -X GET '{base_url}/{base_path}/newsfeeds/feeds' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2856,15 +2852,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /newsfeeds/feeds/{feed_id}:
+  /{base_path}/newsfeeds/feeds/{feed_id}:
     patch:
       tags:
-        - Newsfeeds
+        - 9. Newsfeeds > 9.1 Newsfeeds
       summary: newsfeeds/feeds/{feed_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/newsfeeds/feeds/{feed_id}'
+        curl -X PATCH '{base_url}/{base_path}/newsfeeds/feeds/{feed_id}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d
         '{"access":1,"alias":"test2","catid":5,"description":"","link":"http://samoylov/joomla/gsoc19_webservices/index.php","metadesc":"","metakey":"","name":"Test"}'
@@ -2896,12 +2892,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Newsfeeds
+        - 9. Newsfeeds > 9.1 Newsfeeds
       summary: newsfeeds/feeds/{feed_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/newsfeeds/feeds/{feed_id}' -H
+        curl -X GET '{base_url}/{base_path}/newsfeeds/feeds/{feed_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2919,12 +2915,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Newsfeeds
+        - 9. Newsfeeds > 9.1 Newsfeeds
       summary: newsfeeds/feeds/{feed_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/newsfeeds/feeds/{feed_id}'
+        curl -X DELETE '{base_url}/{base_path}/newsfeeds/feeds/{feed_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2940,15 +2936,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /privacy/requests:
+  /{base_path}/privacy/requests:
     post:
       tags:
-        - Privacy
+        - 10. Privacy > 10.1 Privacy Requests
       summary: privacy/requests
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/privacy/request' -H
+        curl -X POST '{base_url}/{base_path}/privacy/request' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"email":"test@example.org","request_type":"export"}'
       requestBody:
@@ -2973,12 +2969,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Privacy
+        - 10. Privacy > 10.1 Privacy Requests
       summary: privacy/requests
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/privacy/requests' -H
+        curl -X GET '{base_url}/{base_path}/privacy/requests' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -2989,15 +2985,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /privacy/requests/{request_id}:
+  /{base_path}/privacy/requests/{request_id}:
     get:
       tags:
-        - Privacy
+        - 10. Privacy > 10.1 Privacy Requests
       summary: privacy/requests/{request_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/privacy/requests/{request_id}'
+        curl -X GET '{base_url}/{base_path}/privacy/requests/{request_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3013,16 +3009,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /privacy/requests/export/{request_id}:
+  /{base_path}/privacy/requests/export/{request_id}:
     get:
       tags:
-        - Privacy
+        - 10. Privacy > 10.1 Privacy Requests
       summary: privacy/requests/export/{request_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/privacy/requests/export/{request_id}' -H
+        '{base_url}/{base_path}/privacy/requests/export/{request_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3038,15 +3034,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /privacy/consents:
+  /{base_path}/privacy/consents:
     get:
       tags:
-        - Privacy
+        - 10. Privacy > 10.2 Privacy Consents
       summary: privacy/consents
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/privacy/consents' -H
+        curl -X GET '{base_url}/{base_path}/privacy/consents' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3057,15 +3053,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /privacy/consents/{consent_id}:
+  /{base_path}/privacy/consents/{consent_id}:
     get:
       tags:
-        - Privacy
+        - 10. Privacy > 10.2 Privacy Consents
       summary: privacy/consents/{consent_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/privacy/consents/{consent_id}'
+        curl -X GET '{base_url}/{base_path}/privacy/consents/{consent_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3083,13 +3079,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Privacy
+        - 10. Privacy > 10.2 Privacy Consents
       summary: privacy/consents/{consent_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/privacy/consents/{consent_id}' -H
+        '{base_url}/{base_path}/privacy/consents/{consent_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3105,15 +3101,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /redirect:
+  /{base_path}/redirect:
     post:
       tags:
-        - Redirects
+        - 11. Redirects > 11.1 Redirects
       summary: redirect
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/redirect' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/redirect' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"comment":"","header":301,"hits":0,"new_url":"/content/art/99","old_url":"/content/art/12","published":1,"referer":""}'
       requestBody:
@@ -3137,15 +3133,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /redirects/{redirect_id}:
+  /{base_path}/redirects/{redirect_id}:
     patch:
       tags:
-        - Redirects
+        - 11. Redirects > 11.1 Redirects
       summary: redirects/{redirect_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/redirects/{redirect_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/redirects/{redirect_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"new_url":"/content/art/4","old_url":"/content/art/132"}'
       requestBody:
@@ -3176,12 +3172,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Redirects
+        - 11. Redirects > 11.1 Redirects
       summary: redirects/{redirect_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/redirects/{redirect_id}' -H
+        curl -X GET '{base_url}/{base_path}/redirects/{redirect_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3199,12 +3195,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Redirects
+        - 11. Redirects > 11.1 Redirects
       summary: redirects/{redirect_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/redirects/{redirect_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/redirects/{redirect_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3220,15 +3216,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /redirects:
+  /{base_path}/redirects:
     get:
       tags:
-        - Redirects
+        - 11. Redirects > 11.1 Redirects
       summary: redirects
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/redirects' -H 'X-Joomla-Token:
+        curl -X GET '{base_url}/{base_path}/redirects' -H 'X-Joomla-Token:
         {auth_apikey}'
       parameters:
         - name: base_path
@@ -3239,15 +3235,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /tags:
+  /{base_path}/tags:
     post:
       tags:
-        - Tags
+        - 12. Tags > 12.1 Tags
       summary: tags
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/tags' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/tags' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"access_title":"Public","alias":"test","description":"","language":"*","note":"","parent_id":1,"path":"test","published":1,"title":"test"}'
       requestBody:
@@ -3273,12 +3269,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Tags
+        - 12. Tags > 12.1 Tags
       summary: tags
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/tags' -H 'X-Joomla-Token:
+        curl -X GET '{base_url}/{base_path}/tags' -H 'X-Joomla-Token:
         {auth_apikey}'
       parameters:
         - name: base_path
@@ -3289,15 +3285,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /tags/{tag_id}:
+  /{base_path}/tags/{tag_id}:
     patch:
       tags:
-        - Tags
+        - 12. Tags > 12.1 Tags
       summary: tags/{tag_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/tags/{tag_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/tags/{tag_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"alias":"test","title":"new title"}'
       requestBody:
@@ -3327,12 +3323,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Tags
+        - 12. Tags > 12.1 Tags
       summary: tags/{tag_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/tags/{tag_id}' -H
+        curl -X GET '{base_url}/{base_path}/tags/{tag_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3350,12 +3346,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Tags
+        - 12. Tags > 12.1 Tags
       summary: tags/{tag_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/tags/{tag_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/tags/{tag_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3371,15 +3367,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /templates/styles/{app}:
+  /{base_path}/templates/styles/{app}:
     post:
       tags:
-        - Templates
+        - 13. Templates > 13.1 Templates Styles
       summary: templates/styles/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/templates/styles/{app}' -H
+        curl -X POST '{base_url}/{base_path}/templates/styles/{app}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"home":"0","params":{"fluidContainer":"0","logoFile":"","sidebarLeftWidth":"3","sidebarRightWidth":"3"},"template":"cassiopeia","title":"cassiopeia
         - Some Text"}'
@@ -3412,12 +3408,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Templates
+        - 13. Templates > 13.1 Templates Styles
       summary: templates/styles/{app}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/templates/styles/{app}' -H
+        curl -X GET '{base_url}/{base_path}/templates/styles/{app}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3433,16 +3429,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /templates/styles/{app}/{template_style_id}:
+  /{base_path}/templates/styles/{app}/{template_style_id}:
     patch:
       tags:
-        - Templates
+        - 13. Templates > 13.1 Templates Styles
       summary: templates/styles/{app}/{template_style_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/templates/styles/{app}/{template_style_id}'
+        '{base_url}/{base_path}/templates/styles/{app}/{template_style_id}'
         -H 'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json'
         -d '{"template":"cassiopeia","title":"new cassiopeia - Default"}'
       requestBody:
@@ -3479,13 +3475,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Templates
+        - 13. Templates > 13.1 Templates Styles
       summary: templates/styles/{app}/{template_style_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/templates/styles/{app}/{template_style_id}'
+        '{base_url}/{base_path}/templates/styles/{app}/{template_style_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3508,13 +3504,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Templates
+        - 13. Templates > 13.1 Templates Styles
       summary: templates/styles/{app}/{template_style_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/templates/styles/{app}/{template_style_id}'
+        '{base_url}/{base_path}/templates/styles/{app}/{template_style_id}'
         -H 'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3535,15 +3531,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /users:
+  /{base_path}/users:
     post:
       tags:
-        - Users
+        - 14. Users > 14.1 Users
       summary: users
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/users' -H 'X-Joomla-Token:
+        curl -X POST '{base_url}/{base_path}/users' -H 'X-Joomla-Token:
         {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"block":"0","email":"test@example.org","groups":["2"],"id":"0","lastResetTime":"","lastvisitDate":"","name":"nnn","params":{"admin_language":"","admin_style":"","editor":"","helpsite":"","language":"","timezone":""},"password":"qwerty","password2":"qwerty","registerDate":"","requireReset":"0","resetCount":"0","sendEmail":"0","username":"ad"}'
       requestBody:
@@ -3569,12 +3565,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.1 Users
       summary: users
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/users' -H 'X-Joomla-Token:
+        curl -X GET '{base_url}/{base_path}/users' -H 'X-Joomla-Token:
         {auth_apikey}'
       parameters:
         - name: base_path
@@ -3585,15 +3581,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /users/{user_id}:
+  /{base_path}/users/{user_id}:
     patch:
       tags:
-        - Users
+        - 14. Users > 14.1 Users
       summary: users/{user_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/users/{user_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/users/{user_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"email":"new@example.org","groups":["2"],"name":"name","username":"username"}'
       requestBody:
@@ -3624,12 +3620,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.1 Users
       summary: users/{user_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/users/{user_id}' -H
+        curl -X GET '{base_url}/{base_path}/users/{user_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3647,12 +3643,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Users
+        - 14. Users > 14.1 Users
       summary: users/{user_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/users/{user_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/users/{user_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3668,15 +3664,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/users:
+  /{base_path}/fields/users:
     post:
       tags:
-        - Users
+        - 14. Users > 14.2 Users Custom Fields
       summary: fields/users
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/users' -H
+        curl -X POST '{base_url}/{base_path}/fields/users' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"context":"com_users.user","default_value":"","description":"","group_id":0,"label":"user
         field","language":"*","name":"user-field","note":"","params":{"class":"","display":"2","display_readonly":"2","hint":"","label_class":"","label_render_class":"","layout":"","prefix":"","render_class":"","show_on":"","showlabel":"1","suffix":""},"fieldparams":{"filter":"alnum","maxlength":40},"required":0,"state":1,"title":"user
@@ -3706,12 +3702,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.2 Users Custom Fields
       summary: fields/users
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/users' -H
+        curl -X GET '{base_url}/{base_path}/fields/users' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3722,15 +3718,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/users/{field_id}:
+  /{base_path}/fields/users/{field_id}:
     patch:
       tags:
-        - Users
+        - 14. Users > 14.2 Users Custom Fields
       summary: fields/users/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X PATCH '{base_url}/fields/users/{field_id}' -H
+        curl -X PATCH '{base_url}/{base_path}/fields/users/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"title":"new user field","name":"user-field","label":"user
         field","default_value":"","type":"text","note":"","description":"Some
@@ -3766,12 +3762,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.2 Users Custom Fields
       summary: fields/users/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/users/{field_id}' -H
+        curl -X GET '{base_url}/{base_path}/fields/users/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3789,12 +3785,12 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Users
+        - 14. Users > 14.2 Users Custom Fields
       summary: fields/users/{field_id}
       description: >-
         Generated from a curl request:
         
-        curl -X DELETE '{base_url}/fields/users/{field_id}' -H
+        curl -X DELETE '{base_url}/{base_path}/fields/users/{field_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3810,15 +3806,15 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/users:
+  /{base_path}/fields/groups/users:
     post:
       tags:
-        - Users
+        - 14. Users > 14.3 Users Custom Fields Groups
       summary: fields/groups/users
       description: >-
         Generated from a curl request:
         
-        curl -X POST '{base_url}/fields/groups/users' -H
+        curl -X POST '{base_url}/{base_path}/fields/groups/users' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"access":1,"context":"com_users.user","description":"","language":"*","note":"","params":{"display_readonly":"1"},"required":0,"state":1,"title":"user
         field group","checked_out":0,"created_by":0}'
@@ -3846,12 +3842,12 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.3 Users Custom Fields Groups
       summary: fields/groups/users
       description: >-
         Generated from a curl request:
         
-        curl -X GET '{base_url}/fields/groups/users' -H
+        curl -X GET '{base_url}/{base_path}/fields/groups/users' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3862,16 +3858,16 @@ paths:
       responses:
         "200":
           description: Successful response
-  /fields/groups/users/{group_id}:
+  /{base_path}/fields/groups/users/{group_id}:
     patch:
       tags:
-        - Users
+        - 14. Users > 14.3 Users Custom Fields Groups
       summary: fields/groups/users/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X PATCH
-        '{base_url}/fields/groups/users/{group_id}' -H
+        '{base_url}/{base_path}/fields/groups/users/{group_id}' -H
         'X-Joomla-Token: {auth_apikey}' -H 'Content-Type: application/json' -d
         '{"title":"new user group","note":"","description":"new description"}'
       requestBody:
@@ -3903,13 +3899,13 @@ paths:
           description: Successful response
     get:
       tags:
-        - Users
+        - 14. Users > 14.3 Users Custom Fields Groups
       summary: fields/groups/users/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X GET
-        '{base_url}/fields/groups/users/{group_id}' -H
+        '{base_url}/{base_path}/fields/groups/users/{group_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
@@ -3927,13 +3923,13 @@ paths:
           description: Successful response
     delete:
       tags:
-        - Users
+        - 14. Users > 14.3 Users Custom Fields Groups
       summary: fields/groups/users/{group_id}
       description: >-
         Generated from a curl request:
         
         curl -X DELETE
-        '{base_url}/fields/groups/users/{group_id}' -H
+        '{base_url}/{base_path}/fields/groups/users/{group_id}' -H
         'X-Joomla-Token: {auth_apikey}'
       parameters:
         - name: base_path
