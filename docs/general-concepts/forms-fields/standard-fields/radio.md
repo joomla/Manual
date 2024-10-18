@@ -11,6 +11,7 @@ The **radio** form field type provides radio buttons to select options. If the f
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) is the default password.
 - **class** (optional) is a CSS class name for the HTML form field. If set to `class="btn-group btn-group-yesno"` will show coloured buttons.
+- **layout** (optional) can be used to set a Layout for the switcher. Eg. if set to `layout="joomla.form.field.radio.switcher"` will use the Joomla Radio-Switcher Layout.
 
 The XML `<field>` element must include one or more `<option>` elements which define the individual radio button items. The text between the `<option>` and `</option>` tags is shown as the label for the radio button and is a translatable string. The `<option>` tag takes the following argument:
 
@@ -59,8 +60,23 @@ Styling with yes/no values:
         label="Select an option" 
         description=""
         class="btn-group btn-group-yesno">
-        <option value="0">1</option>
-        <option value="1">2</option>
+        <option value="0">JNo</option>
+        <option value="1">JYes</option>
+</field>
+```
+
+Styling with yes/no values as Switcher:
+
+```xml
+<field 
+        name="myradiovalue" 
+        type="radio" 
+        default="0" 
+        label="Select an option" 
+        description=""
+        layout="joomla.form.field.radio.switcher">
+        <option value="0">JNo</option>
+        <option value="1">JYes</option>
 </field>
 ```
 
