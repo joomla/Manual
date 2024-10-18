@@ -84,23 +84,29 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.1',
+          lastVersion: '5.2',
           versions: {
             'current': {
-              label: '5.2 (upcoming)',
+              label: '5.3 (Upcoming)',
               banner: 'unreleased'
             },
+            '5.2': {
+              label: '5.2 (Current)',
+            },
             '5.1': {
-              label: '5.1',
+              label: '5.1 (Archived)',
+              banner: 'unmaintained'
             },
             '5.0': {
-              label: '5.0',
+              label: '5.0 (Archived)',
+              banner: 'unmaintained'
             },
             '4.4': {
-              label: '4.4',
-            }
+              label: '4.4 (Security)',
+              banner: 'none'
+            },
           },
-          /*onlyIncludeVersions: ['current', '4.3'], */
+          /* onlyIncludeVersions: ['current', '5.2', '4.4'], */
           remarkPlugins: [
               // Configure the plugin for parsing the API links
               [apiLinkPlugin,{
@@ -180,27 +186,6 @@ const config = {
               },
             ],
             dropdownItemsAfter: [
-              {
-                type: 'html',
-                value: '<hr class="dropdown-separator">',
-              },
-              {
-                type: 'html',
-                className: 'dropdown-archived-versions',
-                value: '<b>Archived versions</b>',
-              },
-              {
-                label: '3.x',
-                href: 'https://docs.joomla.org/Category:Joomla!_3.0',
-              },
-              {
-                label: '2.5',
-                href: 'https://docs.joomla.org/Category:Joomla!_2.5',
-              },
-              {
-                type: 'html',
-                value: '<hr class="dropdown-separator">',
-              },
               {
                 to: '/versions',
                 label: 'All versions',
