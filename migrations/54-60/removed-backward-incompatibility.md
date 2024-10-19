@@ -26,4 +26,9 @@ There should be an explanation of how to mitigate the removals / changes.
 ### UTC is used instead of GMT
 
 - PR: https://github.com/joomla/joomla-cms/pull/43912
-- Description: To unify the code base, all instances do use or fallback to UTC timezone. Make sure that your code doesn't do an check against GMT string.
+- Description: To unify the code base, all instances do use or fallback to UTC timezone. Make sure that your code doesn't do a check against GMT string.
+
+### Removed legacy b/c code in \Joomla\CMS\Date\Date Class
+
+- PR: https://github.com/joomla/joomla-cms/pull/43959
+- Description: Removed Date::$gmt and Date::$stz variables and related code. If you extend the \Joomla\CMS\Date\Date class make sure not to depend on them any longer.
