@@ -7,7 +7,7 @@ sidebar_position: 1
 #### Form control fields
 
 New methods to manage form control fields.
-More detail at [Form Control fields](/docs/general-concepts/forms/manipulating-forms.md#control-fields)
+More detail at [Form Control fields](docs/general-concepts/forms/manipulating-forms.md#control-fields)
 
 PR: https://github.com/joomla/joomla-cms/pull/43857
 
