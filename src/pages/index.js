@@ -16,35 +16,37 @@ const quickaccess = [
     iconName: <IconName.BsPlayCircle className="icon--3x" />,
     description: (
       <>
-        There are several ways of setting up your workstation for Joomla! development. Some suggestions can be found at Setting up your workstation for Joomla development.
+        Find out how to get set up for Joomla development, and how to get help from your Joomla colleagues when you get stuck.
       </>
     ),
   },
   {
-    title: <>Components</>,
-    href: "/docs/building-extensions/components",
-    iconName: <IconName.BsPuzzle className="icon--3x" />,
+    title: <>Tutorials</>,
+    href: "/docs/building-extensions/modules/module-development-tutorial/",
+    iconName: <IconName.BsBook className="icon--3x" />,
     description: (
-      <>There are many articles, tutorials, references and FAQs which focus on component development. If this is your first time developing a component for Joomla, you should start with the Absolute Basics of How a Component Functions. If needed, you can visualise the control flow of a component with these diagrams.</>
+      <>
+        Learn the basics of Joomla through following the Module Development Tutorial. 
+      </>
     ),
   },
   {
     title: <>Plugins</>,
     href: "/docs/building-extensions/plugins/",
-    iconName: <IconName.BsBox className="icon--3x" />,
+    iconName: <IconName.BsPlug className="icon--3x" />,
     description: (
       <>
-        The following articles will help familiarise you with Joomla! plugins. They are a good starting point to understanding and then developing plugins.
+        Learn how Joomla plugins work. Download and install the different example plugins, all with detailed explanations to help you understand what's going on.
       </>
     ),
   },
   {
-    title: <>Accessibility</>,
-    href: "/docs/accessibility/",
-    iconName: <FaIconName.FaUniversalAccess className="icon--3x" />,
+    title: <>Concepts</>,
+    href: "/docs/general-concepts/",
+    iconName: <IconName.BsGear className="icon--3x" />,
     description: (
         <>
-          Accessibility is a priority for Joomla across its CMS, front- and back-end templates, and community extensions. Explore Joomla’s accessible UI library and best practices.
+          Read about Joomla Forms, Web Asset Manager, Namespacing and lots more. All the ways that Joomla makes it easy for you to achieve your aims.
         </>
     ),
   },
@@ -84,7 +86,7 @@ export default function Home() {
   return (
     <Layout
       title={`Get started with the ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      description="Comprehensive Joomla! developer manual with full documentation for creating custom extensions and components.">
       <HomepageHeader />
       <main>
         {quickaccess && quickaccess.length > 0 && (

@@ -2,7 +2,7 @@
 title: User
 ---
 ## Overview
-This page describes the functionality associated with the Joomla `User` class, accessible via the [User API](https://api.joomla.org/cms-5/classes/Joomla-CMS-User-User.html). At the bottom of the page there is also the code of a module that you can install to demonstrate some of this functionality.
+This page describes the functionality associated with the Joomla `User` class, accessible via the [User API](cms-api://classes/Joomla-CMS-User-User.html). At the bottom of the page there is also the code of a module that you can install to demonstrate some of this functionality.
 
 In general, the `user` represents the identity of someone who can log on to a Joomla instance, whether that be the front-end, back-end (Administrator functionality) or both. Associated with the `user` is
 
@@ -24,7 +24,7 @@ $user = Factory::getApplication()->getIdentity();
 
 If no user is logged on then `Factory::getApplication()->getIdentity()` returns a "blank" user object, with the `id` field set to 0 (zero).
 
-To get information about any other registered user you can use functions of the [UserFactory](https://api.joomla.org/cms-5/classes/Joomla-CMS-User-UserFactory.html) class (which you get from the Dependency Injection Container)
+To get information about any other registered user you can use functions of the [UserFactory](cms-api://classes/Joomla-CMS-User-UserFactory.html) class (which you get from the Dependency Injection Container)
 
 ```
 use Joomla\CMS\User\UserFactoryInterface;

@@ -63,7 +63,7 @@ This is how these rules relate to the 3 functions involved in the component rout
 | StandardRules |            |  &check;  |  &check;  |
 | NomenuRules   |            |  &check;  |  &check;  |
 
-A big advantage of Joomla structuring the code this way is that if you don't like how Joomla handles one of these routing aspects then you can write your own code and get it used (eg by `com_content`) instead of the Joomla-supplied version, as shown in [system plugin router rules](../../building-extensions/plugins/system-plugin-router-rules.md).
+A big advantage of Joomla structuring the code this way is that if you don't like how Joomla handles one of these routing aspects then you can write your own code and get it used (eg by `com_content`) instead of the Joomla-supplied version, as shown in [system plugin router rules](../../building-extensions/plugins/plugin-examples/system-plugin-router-rules.md).
 
 ## Segments and query variables
 The third aspect of RouterView configurations enables the router to convert between the segments of the SEF URL and the associated id of the query parameters. So for each RouterView configuration (ie for each view) you need to write 2 callback functions:

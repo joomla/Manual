@@ -3,14 +3,15 @@ title: To Logon or not to Logon
 sidebar_position: 2
 ---
 
-# To Logon or not to Logon
+To Logon or not to Logon
+========================
 
 :::danger[Developer Notice]
 
 Creating a script which directly includes loads and boots the CMS framework is not recommended and only needed in
-rare cases. Depending on the usecase you should create a [console plugin](../plugins/basic-console-plugin-helloworld.md)
+rare cases. Depending on the usecase you should create a [console plugin](../plugins/plugin-examples/basic-console-plugin-helloworld.md)
 and extend the Joomla! console application. If you need to create a simple entry point for webrequests write an
-[ajax plugin](../plugins/ajax-plugin.md).
+[ajax plugin](../plugins/plugin-examples/ajax-plugin.md).
 
 :::
 
@@ -60,7 +61,7 @@ You'll get back a `Joomla\CMS\User\User` object with
 - the id set to 0 if the user isn't logged on, or 
 - an id > 0 for a logged on user. 
 
-The other properties of this User object you can find at [User API](https://api.joomla.org/cms-4/classes/Joomla-CMS-User-User.html).
+The other properties of this User object you can find at [User API](cms-api://classes/Joomla-CMS-User-User.html).
 
 If your script uses other Joomla library or extension code then that code may try to access the User object via 
 

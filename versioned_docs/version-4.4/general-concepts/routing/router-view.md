@@ -2,7 +2,10 @@
 sidebar_position: 3
 title: RouterView
 ---
-# RouterView
+
+RouterView
+==========
+
 Writing the router preprocess, parse and build functions for your component can be a challenging task. If your component broadly follows the example of `com_content` in having items which are grouped by categories then using RouterView configurations can save you a lot of work.
 
 On the other hand, if you find it doesn't work then it's practically impossible to debug to find where things have gone wrong, and you're better just using the preprocess, parse and build functions.
@@ -60,7 +63,7 @@ This is how these rules relate to the 3 functions involved in the component rout
 | StandardRules |            |  &check;  |  &check;  |
 | NomenuRules   |            |  &check;  |  &check;  |
 
-A big advantage of Joomla structuring the code this way is that if you don't like how Joomla handles one of these routing aspects then you can write your own code and get it used (eg by `com_content`) instead of the Joomla-supplied version, as shown in [system plugin router rules](../../building-extensions/plugins/system-plugin-router-rules.md).
+A big advantage of Joomla structuring the code this way is that if you don't like how Joomla handles one of these routing aspects then you can write your own code and get it used (eg by `com_content`) instead of the Joomla-supplied version, as shown in [system plugin router rules](../../building-extensions/plugins/plugin-examples/system-plugin-router-rules.md).
 
 ## Segments and query variables
 The third aspect of RouterView configurations enables the router to convert between the segments of the SEF URL and the associated id of the query parameters. So for each RouterView configuration (ie for each view) you need to write 2 callback functions:
