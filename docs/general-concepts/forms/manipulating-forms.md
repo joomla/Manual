@@ -107,6 +107,42 @@ You can thus set the default attribute using `setFieldAttribute()`, but to set t
 ### Removing Fields
 You can remove fields from the Form definition by calling `removeField()` to remove a specific field or `removeGroup()` to remove all the fields within a specified field group. 
 
+## Control fields
+While the form fields used for data handling in the Model, the Controller also requires a few fields, like `task`, `return`, and CSRF token.
+Previously these fields were coded directly in to the form layout.
+
+Form class provides a methods to manage these control fields programmatically:
+- `addControlField()` add control field to the form;
+- `removeControlField()` remove control field from the form;
+- `getControlFields()` get list of control fields in the form;
+- `renderControlFields()` render the control fields;
+
+While rendering the control fields the CSRF token will always be rendered, no need to add it to list of control fields.
+
+### Use of control fields example
+
+Before:
+```html
+<input type="hidden" name="task" value="">
+<input type="hidden" name="foo" value="bar">
+<input type="hidden" name="return" value="<?php echo $input->getBase64('return'); ?>">
+<?php echo HTMLHelper::_('form.token'); ?>
+```
+
+With control fields:
+```php
+// Code in Controller/View
+$this->form
+  ->addControlField('task', '')
+  ->addControlField('foo', 'bar')
+  ->addControlField('return', $input->getBase64('return', ''));
+
+// Code in the form layout
+echo $this->form->renderControlFields();
+```
+
+
+
 ## Reflection Methods
 There are a number of methods which allow you to access various aspects of the Form instance data. Mostly these are fairly straightforward to understand, and only cases where it may not be totally clear are explained below.
 
