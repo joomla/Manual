@@ -70,7 +70,6 @@ Put into mod_hello/services/provider.php the following code:
 
 use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
 use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
-use Joomla\CMS\Extension\Service\Provider\HelperFactory as HelperFactoryServiceProvider;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
