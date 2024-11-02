@@ -3,6 +3,8 @@ sidebar_position: 4
 ---
 Composer
 =======================
+Note that Composer is needed only if you're developing for code for the core Joomla project.
+
 This is the content for Composer
 :::caution TODO
 

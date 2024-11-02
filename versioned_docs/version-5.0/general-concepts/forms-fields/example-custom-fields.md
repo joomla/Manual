@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: Example Custom Fields
 ---
 This section provides 4 examples of how to create custom fields. The examples are also available in the [sample component code](./_assets/com_sample_form_field.zip) which you can download and install. 
