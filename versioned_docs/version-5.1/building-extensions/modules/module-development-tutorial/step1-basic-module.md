@@ -70,7 +70,6 @@ Put into mod_hello/services/provider.php the following code:
 
 use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
 use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
-use Joomla\CMS\Extension\Service\Provider\HelperFactory as HelperFactoryServiceProvider;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
 
@@ -79,13 +78,12 @@ return new class () implements ServiceProviderInterface {
     public function register(Container $container): void
     {
         $container->registerServiceProvider(new ModuleDispatcherFactoryServiceProvider('\\My\\Module\\Hello'));
-        $container->registerServiceProvider(new HelperFactoryServiceProvider('\\My\\Module\\Hello\\Site\\Helper'));
         $container->registerServiceProvider(new ModuleServiceProvider());
     }
 };
 ```
 
-If you're new to Joomla development then this code probably looks very intimidating. If so, the best thing is just to accept it for now. It's just boilerplate code that is used to link the Joomla core code with our mod_hello extension. We'll explain it in a later step of the tutorial.
+If you're new to Joomla development then this code probably looks very intimidating. If so, the best thing is just to accept it for now. It's just boilerplate code that is used to link the Joomla core code with our mod_hello extension. We'll explain it in the [Dependency Injection](step8-dependency-injection.md) step of the tutorial. 
 
 ### Dispatcher File
 
