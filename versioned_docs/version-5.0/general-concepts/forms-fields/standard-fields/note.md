@@ -46,7 +46,7 @@ With this note field you can either use the title or the description or both.
 <field name="opt13" type="text" label="Some Other Option" />
 ```
 
-![](D:\Mark\Documents\GitHub\DevelopersManual\static\img\screenshots\note-form-field-title-screenshot.png)
+![](/static/img/screenshots/note-form-field-title-screenshot.png)
 
 ### Classes (Alerts)
 You can add classes to the note. In this way you can easily make (Bootstrap) alerts and also add other styling via class names (like a 'well').
@@ -61,7 +61,7 @@ You can add classes to the note. In this way you can easily make (Bootstrap) ale
 <field name="note24" type="note" class="alert alert-error" label="LOREMIPSUM" description="LOREMIPSUM_DESC" />
 <field name="opt24" type="text" label="Some Other Option" />
 ```
-![](D:\Mark\Documents\GitHub\DevelopersManual\static\img\screenshots\note-form-field-classes-screenshot.png)
+![](/static/img/screenshots/note-form-field-classes-screenshot.png)
 
 ### Close Button
 A close button can be added to the alerts by adding the close="true" attribute to the tag. If you use a class other than the alert, use the required value for the data-dismiss of the Bootstrap close icon instead of the value true. Here is the code to test the close icon on an alert.
@@ -70,6 +70,6 @@ A close button can be added to the alerts by adding the close="true" attribute t
 <field name="note31" type="note" class="alert" close="true" label="LOREMIPSUM" description="LOREMIPSUM_DESC" />
 <field name="opt31" type="text" label="Some Other Option" />
 ```
-![](D:\Mark\Documents\GitHub\DevelopersManual\static\img\screenshots\note-form-field-close-screenshot.png)
+![](/static/img/screenshots/note-form-field-close-screenshot.png)
 
 Be aware that a closed alert/note cannot be reopened by the user without page reload. It's not a show/hide functionality. 

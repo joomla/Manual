@@ -74,7 +74,7 @@ Implemented by: libraries/src/Form/Field/CalendarField.php
 />
 ```
 
-![](D:\Mark\Documents\GitHub\DevelopersManual\static\img\screenshots\DatePicker1.calendar-en.png)
+![](/static/img/screenshots/DatePicker1.calendar-en.png)
 
 ## Example XML parameter definition for an advanced DatePicker
 
@@ -100,7 +100,7 @@ Implemented by: libraries/src/Form/Field/CalendarField.php
 />
 ```
 
-![](D:\Mark\Documents\GitHub\DevelopersManual\static\img\screenshots\DatePicker2.calendar-en.png)
+![](/static/img/screenshots/DatePicker2.calendar-en.png)
 
 The format attribute specifies the format that the date string will be saved in. It is also the format that manually
 entered dates need to be enterered in; except that the punctuation character is ignored. The coding scheme used to
