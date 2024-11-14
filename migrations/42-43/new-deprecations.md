@@ -32,7 +32,7 @@ The section above should be moved to the deprecation strategy.
 
 :::
 
-Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
+Planned to be removed in Joomla! 6.0 alias added to the compat plugin in 5.0.
 
 * administrator/components/com_banners/helpers/banners.php
 * administrator/components/com_categories/helpers/categories.php
