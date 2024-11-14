@@ -14,7 +14,7 @@ The source code is available at [mod_hello step 9](https://github.com/joomla/man
 
 ## com_ajax
 
-Joomla provides a component `com_ajax` (described [here](../../../general-concepts/javascript/com-ajax.md)) which allows a module's javascript code to make an Ajax call and get back an Ajax response.
+Joomla provides a component `com_ajax` which allows a module's javascript code to make an Ajax call and get back an Ajax response.
 
 In the javascript code we make an Ajax call to `index.php?option=com_ajax&module=hello&method=count&format=json`. 
 The URL parameters are interpreted as follows 
@@ -39,7 +39,7 @@ com_ajax->>helper:countAjax()
 helper->>com_ajax:result
 ```
 
-When com_ajax receives the result it uses the Joomla [JsonResponse](../../../general-concepts/javascript/ajax.md) class to return the result to the javascript code. 
+When com_ajax receives the result it uses the Joomla JsonResponse class to return the result to the javascript code. 
 
 ## mod_hello changes
 
