@@ -23,7 +23,7 @@ for legacy reasons. For example in Joomla 4 component helpers get moved from
 get a namespace `\Joomla\Component\Banners\Administrator\Helper\BannersHelper`.
 
 The class will be aliased in `libraries/classmap.php` or `libraries/extensions.classmap.php`.
-In the next major version all aliases will be moved to the combat plugin. The file will be
+In the next major version all aliases will be moved to the compat plugin. The file will be
 kept till the next major version, in this version file and alias will be removed.
 
 :::caution TODO
