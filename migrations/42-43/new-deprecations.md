@@ -23,7 +23,7 @@ for legacy reasons. For example in Joomla 4 component helpers get moved from
 get a namespace `\Joomla\Component\Banners\Administrator\Helper\BannersHelper`.
 
 The class will be aliased in `libraries/classmap.php` or `libraries/extensions.classmap.php`.
-In the next major version all aliases will be moved to the combat plugin. The file will be
+In the next major version all aliases will be moved to the compat plugin. The file will be
 kept till the next major version, in this version file and alias will be removed.
 
 :::caution TODO
@@ -32,7 +32,7 @@ The section above should be moved to the deprecation strategy.
 
 :::
 
-Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
+Planned to be removed in Joomla! 6.0 alias added to the compat plugin in 5.0.
 
 * administrator/components/com_banners/helpers/banners.php
 * administrator/components/com_categories/helpers/categories.php
