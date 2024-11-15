@@ -65,10 +65,10 @@ The Joomla Manual contains documentation for multiple versions of the Joomla sof
 
 The mapping between the versions of the manual in github and the live manual is:
 
-| github manual (development)      | Live Docusaurus manual |
-| -------------------------------- | ---------------------- |
-| /docs                            | "upcoming" release  (shown as /docs/next in the URL)     |
-| /versioned_docs/version-m.n      | version m.n (under "Current releases")        |
+| github manual (development)      | Live Docusaurus manual                               |
+| -------------------------------- |------------------------------------------------------|
+| /docs                            | "upcoming" release  (shown as /docs/next in the URL) |
+| /versioned_docs/version-m.n      | version m.n (under "Current releases")               |
 
 If your documentation changes relate to multiple versions of Joomla then you should duplicate these changes into multiple versions of Joomla manual. These versions which are updated are currently agreed to be: 
 - the version m.n of the latest full Joomla release ("latest" release)
@@ -97,7 +97,7 @@ Don't use subdirectory names which match somewhat the parent directory name. For
 
 You won't see the effect of these when you preview the Markdown text, but you will see them by previewing the Pull Request. 
 
-[Front Matter](https://docusaurus.io/docs/next/markdown-features#front-matter) should be used for titles and position in the left-hand sidebar:
+[Front Matter](https://docusaurus.io/docs/markdown-features#front-matter) should be used for titles and position in the left-hand sidebar:
 
 ```
 ---
@@ -106,18 +106,20 @@ sidebar-position: 2
 ---
 ```
 
-[Code blocks](https://docusaurus.io/docs/next/markdown-features/code-blocks) are enclosed in 3 backticks, and can have a title:
-```php title="hello.php"
-public static function hello() 
-{
-    echo "Hello!"; 
-}
-```
+[Code blocks](https://docusaurus.io/docs/markdown-features/code-blocks) are enclosed in 3 backticks, and can have a [title](https://docusaurus.io/docs/markdown-features/code-blocks#code-title)
+
+    ```php title="hello.php"
+    public static function hello() 
+    {
+        echo "Hello!"; 
+    }
+    ```
+
 Line numbering and highlighting of individual lines are also supported.
 
 To aid readability of the markdown please leave a blank line before and after code blocks.
 
-[Admonitions](https://docusaurus.io/docs/next/markdown-features/admonitions) 
+[Admonitions](https://docusaurus.io/docs/markdown-features/admonitions) 
 We don't use blank lines around content, and we add 2 spaces before the text messages.
 
 ```

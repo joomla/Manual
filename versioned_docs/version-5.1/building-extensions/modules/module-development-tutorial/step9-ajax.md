@@ -14,11 +14,7 @@ The source code is available at [mod_hello step 9](https://github.com/joomla/man
 
 ## com_ajax
 
-Joomla provides a component `com_ajax` (described [here](https://docs.joomla.org/Using_Joomla_Ajax_Interface)) which allows a module's javascript code to make an Ajax call and get back an Ajax response.
-
-:::caution todo
-  Update link above when com_ajax documentation is moved to the manual
-:::
+Joomla provides a component `com_ajax` (described [here](../../../general-concepts/javascript/com-ajax.md)) which allows a module's javascript code to make an Ajax call and get back an Ajax response.
 
 In the javascript code we make an Ajax call to `index.php?option=com_ajax&module=hello&method=count&format=json`. 
 The URL parameters are interpreted as follows 
@@ -43,11 +39,7 @@ com_ajax->>helper:countAjax()
 helper->>com_ajax:result
 ```
 
-When com_ajax receives the result it uses the Joomla [JsonResponse](https://docs.joomla.org/JSON_Responses_with_JResponseJson) class to return the result to the javascript code. 
-
-:::caution todo
-  Update link above when JsonResponse documentation is moved to the manual
-:::
+When com_ajax receives the result it uses the Joomla [JsonResponse](../../../general-concepts/javascript/ajax.md) class to return the result to the javascript code. 
 
 ## mod_hello changes
 
@@ -152,7 +144,7 @@ document.querySelectorAll('.mod_hello_updateusers').forEach(element => {
 
 We set an onclick listener on the Update button, which when clicked results in the Ajax call being triggered. 
 
-`Joomla.request` is in core.js and is described [here](../../../general-concepts/javascript/core.md). Of course you can use your own preferred way of initiating Ajax requests.
+`Joomla.request` is in core.js and is described [here](../../../general-concepts/javascript/js-library/core.md). Of course you can use your own preferred way of initiating Ajax requests.
 
 `Joomla.renderMessages` is in media/system/js/messages.js and is used to display messages in the system message area of the HTML document. 
 Check the messages.js code for details of how to use it.
@@ -245,7 +237,7 @@ MOD_HELLO_AJAX_OK="Ajax response: %s received ok"
 ## Manifest File changes
 
 ```xml title="mod_hello/mod_hello.xml"
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <extension type="module" client="site" method="upgrade">
     <name>MOD_HELLO_NAME</name>
     <!-- highlight-next-line -->
