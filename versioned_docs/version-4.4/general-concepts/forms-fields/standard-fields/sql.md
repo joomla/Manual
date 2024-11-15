@@ -215,6 +215,11 @@ can be expressed as:
 
 ## Linked Fields as Filters
 
+:::tip
+  The description below is quite complex and you may find it helpful to install
+  the [example sqlfield component](./sql#example-component) and use it to help you in your understanding.
+:::
+
 One advantage to using the alternative syntax above is that it allows the use of linked
 fields as filters. For example, suppose you have a form containing two
 select lists, one called *groups* and the other called *subgroups*. The
@@ -427,8 +432,29 @@ To **redisplay the form** you can either send the form as an HTTP response to th
 
 or use the Post/Request/Get pattern to redirect to the DisplayController.
 
-You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow (you may need to change the sql_default_catid attribute). 
-Once you have installed the com_sqlfield component you can run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+### Example Component
+
+You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow.
+
+Go onto your Joomla instance back-end, display the article categories and find the id of your `Uncategorised` category.
+
+If it's not 2 then edit the com_sqlfield site/forms/example_form.xml and set the `sql_default_catid` to whatever id it is.
+
+Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+
+The component will display an HTML select field with the article categories available on your instance, and in the next field, 
+the titles of the articles associated with the selected category.
+
+If you select a different category then the component will send the form data to the server in an HTTP POST request, 
+with the task parameter set to "sqlfield.reload" which will cause the `SqlfieldController::reload()` function to be called.
+
+The SQL Field will obtain the category from the user state, 
+and perform a SQL query to obtain the articles associated with the selected category. 
+These article ids and titles will be set in the field, and will be shown when the form is re-presented. 
+
+When you press `Select` then the selected category and article will be sent to the server in the HTTP POST request,
+together with the task set to "sqlfield.submit", 
+and the component code then displays the selected ids in the associated HTTP POST response. 
 
 ## See also
 

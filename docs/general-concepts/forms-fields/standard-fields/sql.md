@@ -215,6 +215,11 @@ can be expressed as:
 
 ## Linked Fields as Filters
 
+:::tip
+  The description below is quite complex and you may find it helpful to install
+  the [example sqlfield component](./sql#example-component) and use it to help you in your understanding.
+:::
+
 One advantage to using the alternative syntax above is that it allows the use of linked
 fields as filters. For example, suppose you have a form containing two
 select lists, one called *groups* and the other called *subgroups*. The
@@ -344,7 +349,7 @@ Joomla.
 
 Let's take the example where 
 - the linked filter field is a category field, 
-- the SQL field shows the titles of articles whose category is selected in the category field.
+- the SQL field is an HTML Select field which shows the titles of articles whose category is selected in the category field.
 
 You want to allow the user to select the category, and then be shown the titles of articles with that category, so that he/she can then select the article.
 
@@ -353,9 +358,12 @@ However, whenever the user selects or changes the category, the code ***doesn't 
 That said, you can implement the functionality to update the titles by following the approach below.
 
 To update the sql field you need to reload the form by
-1. sending the current form data to the server (by submitting the form), 
-2. passing the key value(s) from the current form data into the `user state` where they can be picked up by the SQL field, and,
-3. redisplaying the form via your View class and tmpl file
+1. **sending the current form data** to the server (by submitting the form in your javascript code), 
+2. **redisplaying the form** via your View class and tmpl file
+
+When you redisplay the form you inject the current form field values into the `Form` structure. 
+The SQL field will then pick up the key value(s) from the `Form` structure,
+and perform the SQL query using these new values, in order to set the new options for the SQL HTML Select field.
 
 To **send the form data**, implement an onchange javascript listener against the category field, for example, by setting in the XML the file attribute
 
@@ -381,10 +389,6 @@ Then the form is submitted with
 
 This POST request will be routed to your SqlfieldController::reload() method.
 
-To **pass the key values by user state** you need to call `setUserState`, using
-- the **context** you specified as your attribute in the SQL field
-- the relevant data items from the POST parameters
-
 So you need to include in your SqlfieldController::reload() method something like:
 
 ```php title="SqlfieldController.php"
@@ -399,20 +403,8 @@ public function reload($key = null, $urlVar = null)
     // This is the usual call to set the state for preserving the form data entered by the user
     $app->setUserState('com_sqlfield.example', $data);
 
-    $catid = filter_var($data['catid'], FILTER_SANITIZE_NUMBER_INT);
-    // This is the call you need to make to pass the sql_filter ids to the SQL field
-    // The first parameter must be `'<context>.filter'` where `context` is what you set
-    // as the context= ... attribute of the SQL field
-    $app->setUserState('sqlfield.filter', array('catid' => $catid));
-    
-    // Then re-present the form
+    // Then redisplay the form
 }
-```
-
-When you have received successfully validated data then you should clear the filter state (in the same way as you would do with the form data), so that the next time the form is displayed it doesn't contain the titles which match the category from the previous execution of the form, because this is unlikely to match what is the initial value in the category field.
-
-```php 
-$app->setUserState('sqlfield.filter', null);
 ```
 
 To **redisplay the form** you can either send the form as an HTTP response to the HTTP POST request:
@@ -427,8 +419,34 @@ To **redisplay the form** you can either send the form as an HTTP response to th
 
 or use the Post/Request/Get pattern to redirect to the DisplayController.
 
-You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow (you may need to change the sql_default_catid attribute). 
-Once you have installed the com_sqlfield component you can run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+(The example component below uses the first approach).
+
+### Example Component
+
+You can download [this com_sqlfield component](./_assets/com_sqlfield.zip) as an example to follow.
+
+Go onto your Joomla instance back-end, display the article categories and find the id of your `Uncategorised` category.
+
+If it's not 2 then edit the com_sqlfield site/forms/example_form.xml and set the `sql_default_catid` to whatever id it is.
+
+Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+
+The component will display an HTML select field with the article categories available on your instance, and in the next field, 
+the titles of the articles associated with the selected category.
+
+If you select a different category then the component will send the form data to the server in an HTTP POST request, 
+with the task parameter set to "sqlfield.reload" which will cause the `SqlfieldController::reload()` function to be called.
+This function stores the existing form values in the user state, and arranges for the form to be redisplayed. 
+
+When the component redisplays the form it injects the existing form values into the Joomla `Form` structure. 
+(This is standard practice, so that the when the form is redisplayed the user sees the values he/she previously entered).
+The SQL Field can then obtain the category from this `Form` structure, 
+and perform a SQL query to obtain the articles associated with the selected category. 
+These article ids and titles will be set as options in the field, and will be shown when the form is re-presented. 
+
+When you press `Select` then the selected category and article will be sent to the server in the HTTP POST request,
+together with the task set to "sqlfield.submit", 
+and the component code then displays the selected ids in the associated HTTP POST response. 
 
 ## See also
 
