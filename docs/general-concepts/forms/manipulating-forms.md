@@ -118,6 +118,8 @@ Form class provides a methods to manage these control fields programmatically:
 - `renderControlFields()` render the control fields;
 
 While rendering the control fields the CSRF token will always be rendered, no need to add it to list of control fields.
+The name `joomla.form.token` is reserved in the control fields list for Joomla default CSRF token field.
+When in some reason need to remove default CSRF token then use `$form->removeControlField('joomla.form.token');` to remove it. 
 
 ### Use of control fields example
 
