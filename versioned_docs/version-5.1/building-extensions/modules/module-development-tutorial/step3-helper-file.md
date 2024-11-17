@@ -59,7 +59,7 @@ class HelloHelper
 
 There are 2 ways we can get access to our HelloHelper class. 
 In this step we'll access it directly using Namespacing.
-When we later look at dependency injection we'll change the code to use the alternative method of getting it instantiated via a HelperFactory class. 
+When we later look at [Dependency Injection](step8-dependency-injection.md) we'll change the code to use the alternative method of getting it instantiated via a HelperFactory class. 
 
 ```php title="mod_hello/src/Dispatcher/Dispatcher.php"
 <?php

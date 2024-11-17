@@ -65,10 +65,10 @@ The Joomla Manual contains documentation for multiple versions of the Joomla sof
 
 The mapping between the versions of the manual in github and the live manual is:
 
-| github manual (development)      | Live Docusaurus manual |
-| -------------------------------- | ---------------------- |
-| /docs                            | "upcoming" release  (shown as /docs/next in the URL)     |
-| /versioned_docs/version-m.n      | version m.n (under "Current releases")        |
+| github manual (development)      | Live Docusaurus manual                               |
+| -------------------------------- |------------------------------------------------------|
+| /docs                            | "upcoming" release  (shown as /docs/next in the URL) |
+| /versioned_docs/version-m.n      | version m.n (under "Current releases")               |
 
 If your documentation changes relate to multiple versions of Joomla then you should duplicate these changes into multiple versions of Joomla manual. These versions which are updated are currently agreed to be: 
 - the version m.n of the latest full Joomla release ("latest" release)

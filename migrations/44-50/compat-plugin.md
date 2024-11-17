@@ -46,7 +46,7 @@ again. This can be achieved by editing the `enabled` column in the `#__extension
 
 :::
 
-We are urging extension developers to test there extension with the combat plugin disabled.
+We are urging extension developers to test there extension with the compat plugin disabled.
 
 :::warning Disabling the compatibility plugin
 

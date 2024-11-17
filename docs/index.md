@@ -3,7 +3,7 @@ sidebar_position: 0
 title: Introduction
 ---
 
-Welcome to the Joomla! Programmers Documentation for Joomla 5.2
+Welcome to the Joomla! Programmers Documentation for Joomla 5.3
 ===============================================================
 
 This documentation hold information for developers of templates, modules, plugins, components, libraries.
