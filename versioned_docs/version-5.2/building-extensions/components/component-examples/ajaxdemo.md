@@ -63,7 +63,7 @@ Path: components/com_ajaxdemo/tmpl/ajaxdemo/default.php
 
 This uses the [Web Asset Manager](../../../general-concepts/web-asset-manager.md) to attach the JavaScript divide.js which initiates the Ajax call.
 
-It passes the root URL of your Joomla instance to the JavaScript code using [passing variables to Javascript](../../../general-concepts/javascript/adding-javascript#passing-variables-to-javascript)
+It passes the root URL of your Joomla instance to the JavaScript code using [passing variables to Javascript](../../../general-concepts/javascript/adding-javascript.md#passing-variables-to-javascript)
 as this makes the job of forming the URLs easier.
 
 Then it outputs the `<form>` html, including the button with the onclick listener to run the divide.js code.
