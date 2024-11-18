@@ -62,7 +62,6 @@ const config = {
   organizationName: 'joomla',
   projectName: 'joomla-cms',
   url: 'https://manual.joomla.org',
-  trailingSlash: false,
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
