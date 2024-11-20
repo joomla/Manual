@@ -217,7 +217,7 @@ can be expressed as:
 
 :::tip
   The description below is quite complex and you may find it helpful to install
-  the [example sqlfield component](./sql#example-component) and use it to help you in your understanding.
+  the [example sqlfield component](./sql.md#example-component) and use it to help you in your understanding.
 :::
 
 One advantage to using the alternative syntax above is that it allows the use of linked
@@ -429,7 +429,7 @@ Go onto your Joomla instance back-end, display the article categories and find t
 
 If it's not 2 then edit the com_sqlfield site/forms/example_form.xml and set the `sql_default_catid` to whatever id it is.
 
-Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php?option=com_sqlfield
 
 The component will display an HTML select field with the article categories available on your instance, and in the next field, 
 the titles of the articles associated with the selected category.
@@ -438,8 +438,8 @@ If you select a different category then the component will send the form data to
 with the task parameter set to "sqlfield.reload" which will cause the `SqlfieldController::reload()` function to be called.
 This function stores the existing form values in the user state, and arranges for the form to be redisplayed. 
 
-When the component redisplays the form it injects the existing form values into the Joomla `Form` structure. 
-(This is standard practice, so that the when the form is redisplayed the user sees the values he/she previously entered).
+When the component redisplays the form it injects the existing form values into the Joomla `Form` structure,
+(so that when the form is redisplayed the user sees the values he/she previously entered).
 The SQL Field can then obtain the category from this `Form` structure, 
 and perform a SQL query to obtain the articles associated with the selected category. 
 These article ids and titles will be set as options in the field, and will be shown when the form is re-presented. 

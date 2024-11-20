@@ -10,7 +10,7 @@ This is an example component which you can download from [com_exampleform](https
 
 Once you have downloaded the source, zip up the com_exampleform directory and install the component.
 
-Then go to `<your domain>/index.php/component/exampleform` to run it on your Joomla instance.
+Then go to `<your domain>/index.php?option=com_exampleform` to run it on your Joomla instance.
 
 It is an MVC component which demonstrates the following:
 
@@ -38,7 +38,7 @@ From this file Joomla instantiates default [Extension and Dispatcher classes](..
 
 Path: components/com_exampleform/src/Controller/DisplayController.php
 
-This is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php/component/exampleform`).
+This is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php?option=com_exampleform`).
 
 It gets the associated Model and View classes, and calls display() on the View instance.
 

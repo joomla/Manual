@@ -217,7 +217,7 @@ can be expressed as:
 
 :::tip
   The description below is quite complex and you may find it helpful to install
-  the [example sqlfield component](./sql#example-component) and use it to help you in your understanding.
+  the [example sqlfield component](./sql.md#example-component) and use it to help you in your understanding.
 :::
 
 One advantage to using the alternative syntax above is that it allows the use of linked
@@ -440,7 +440,7 @@ Go onto your Joomla instance back-end, display the article categories and find t
 
 If it's not 2 then edit the com_sqlfield site/forms/example_form.xml and set the `sql_default_catid` to whatever id it is.
 
-Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php/component/sqlfield/
+Install the com_sqlfield component and run the form by navigating to your Joomla instance's site page index.php?option=com_sqlfield
 
 The component will display an HTML select field with the article categories available on your instance, and in the next field, 
 the titles of the articles associated with the selected category.
