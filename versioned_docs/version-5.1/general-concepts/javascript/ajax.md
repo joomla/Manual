@@ -31,7 +31,7 @@ Within your component you should use the [MVC approach](../../building-extension
 and split your functionality into different Controllers, Models and Views.
 
 The default Joomla [Extension/Dispatcher](../extension-and-dispatcher/index.md) code uses the URL 
-[`task` parameter](../../building-extensions/components/mvc/mvc-overview#the-http-request-task-parameter) 
+[`task` parameter](../../building-extensions/components/mvc/mvc-overview.md#the-http-request-task-parameter) 
 to determine the Controller class to instantiate and the method within that Controller to call.
 
 For example, if you set the `task` parameter to "ajax.divide" then the default Dispatcher code will instantiate your AjaxController and call its `divide` instance method.
