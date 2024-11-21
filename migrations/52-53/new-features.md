@@ -26,7 +26,7 @@ PR: https://github.com/joomla/joomla-cms/pull/43532
 #### Form control fields
 
 New methods to manage form control fields.
-More detail at [Form Control fields](../../docs/general-concepts/forms/manipulating-forms#control-fields)
+More detail at [Form Control fields](https://manual.joomla.org/docs/general-concepts/forms/manipulating-forms.md#control-fields)
 
 PR: https://github.com/joomla/joomla-cms/pull/43857
 
