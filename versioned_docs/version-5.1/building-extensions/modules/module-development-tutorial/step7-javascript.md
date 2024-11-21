@@ -85,7 +85,7 @@ The Web Asset Manager doesn't automatically read the joomla.asset.json files of 
 Then we need to tell it that we want to use the "mod_hello.add-suffix" asset, so that our js file gets included in the HTTP response:
 
 ```php
-$document = $app->getDocument();
+$document = $this->app->getDocument();
 $wa = $document->getWebAssetManager();
 $wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
