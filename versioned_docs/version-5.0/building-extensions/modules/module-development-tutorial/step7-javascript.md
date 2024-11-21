@@ -102,7 +102,7 @@ Our updated tmpl file is:
 defined('_JEXEC') or die;
 
 // highlight-start
-$document = $app->getDocument();
+$document = $this->app->getDocument();
 $wa = $document->getWebAssetManager();
 $wa->getRegistry()->addExtensionRegistryFile('mod_hello');
 $wa->useScript('mod_hello.add-suffix');
