@@ -19,7 +19,15 @@ To run the code sniffer/fixer you need to start a terminal, navigate to your Joo
 
 ### Checking for code style violations
 
+To facilitate this process, we have prepared a shortcut script command.
+
+- ```composer run phpcs```
+- ```composer run csfixer```
+
+For reference and to adjust to other needs, here the complete command:
+
 ```./libraries/vendor/bin/phpcs --extensions=php -p --standard=ruleset.xml .```
+```./libraries/vendor/bin/php-cs-fixer fix -vvv --dry-run --diff```
 
 This will run the code style check for the whole Joomla! installation, including your extensions, when installed in Joomla!
 
