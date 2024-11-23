@@ -115,7 +115,7 @@ However, you can use this [exampleform component](../../../building-extensions/c
 />
 ```
 
-By navigating to "/index.php/component/exampleform/" on your site front-end, this will display a ModalSelect field which will allow you to select an article.
+By navigating to "/index.php?option=com_exampleform" on your site front-end, this will display a ModalSelect field which will allow you to select an article.
 
 After clicking the "Select" button the field will open a Joomla Dialog containing a iframe.
 The content of the iframe comes from `urlSelect` which is 
