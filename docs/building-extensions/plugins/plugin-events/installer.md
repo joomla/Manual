@@ -13,7 +13,8 @@ Installer plugin events are triggered when some routines are performed during th
 
 ### Description
 
-This event will be executed before a package of an extension is downloaded. It allows to modify the url or headers for the request. 
+This event will be executed before a package of an extension is downloaded. It allows plugins to modify the url or headers for the request. 
+
 
 ### Event Arguments
 
