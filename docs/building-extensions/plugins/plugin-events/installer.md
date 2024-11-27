@@ -13,7 +13,7 @@ Installer plugin events are triggered when some routines are performed during th
 
 ### Description
 
-This event will be executed before a package of an extension is downloaded. It allows plugins to modify the url or headers for the request. 
+This event will be executed before an installable package (zip file) of an extension (package, component, module, plugin, template, library) is downloaded. It allows plugins to modify the url or headers for the request. 
 
 
 ### Event Arguments
@@ -35,6 +35,7 @@ public function onInstallerBeforePackageDownload(\Joomla\CMS\Event\Installer\Bef
 {
     $event->updateUrl($event->getUrl() . '?auth=foo');
 }
+```
 
 ## onInstallerBeforeUpdateSiteDownload
 
