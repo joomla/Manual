@@ -35,6 +35,7 @@
 
 .theme-doc-markdown.markdown {
   --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: none;
 }
 
 .theme-doc-markdown.markdown img {
