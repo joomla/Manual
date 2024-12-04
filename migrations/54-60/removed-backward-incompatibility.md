@@ -48,6 +48,7 @@ if ($this->item->created !== $this->db->getNullDate()) {
 if ($this->item->created !== null) {
 	echo $this->item->created;
 }
+```
 
 ### getItem returns a stdClass instead of CMSObject
 
