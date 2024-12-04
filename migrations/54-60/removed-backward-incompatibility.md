@@ -49,3 +49,18 @@ if ($this->item->created !== null) {
 	echo $this->item->created;
 }
 ```
+
+### getItem returns a stdClass instead of CMSObject
+
+- PR: https://github.com/joomla/joomla-cms/pull/42961
+- File: libraries/src/MVC/Model/AdminModel.php
+- Description: The `AdminModel` class does return a `stdClass` object in the `getItem` function instead of a `CMSObject`. This means that all the deprecated functions of `CMSObject` are not available anymore. Mainly the set and get function should be replaced accordingly as documented in the `CMSObject` class or the respective traits. For example you can use 
+```php
+// Old:
+$article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
+echo $article->get('title');
+
+// New:
+$article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
+echo $article->title;
+```
