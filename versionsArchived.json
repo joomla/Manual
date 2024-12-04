@@ -1,3 +1,5 @@
 {
-  "< 4.4": "https://docs.joomla.org/Portal:Developers"
+  "3.x": "https://docs.joomla.org/Category:Joomla!_3.0",
+  "2.5": "https://docs.joomla.org/Category:Joomla!_2.5",
+  "< 2.5": "https://docs.joomla.org/Portal:Developers"
 }

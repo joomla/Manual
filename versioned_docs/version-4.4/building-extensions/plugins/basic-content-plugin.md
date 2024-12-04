@@ -1,9 +1,13 @@
 ---
-title: Basic Content Plugin
+title: Plugin Tutorial
 sidebar_position: 3
 ---
+
+Plugin Tutorial
+===============
+
 # Introduction
-In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
+In this section we develop a basic content plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
 On my Joomla instance {sitename} the default editor is {editor}.
 ```
@@ -31,18 +35,18 @@ For general information on manifest files see [Manifest Files](https://docs.joom
     <version>1.0</version>
     <description>PLG_CONTENT_SHORTCODES_DESCRIPTION</description>
     <author>Me</author>
-	<creationDate>Today</creationDate>
+    <creationDate>Today</creationDate>
     <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
-	<license>GNU General Public License version 2 or later</license>
+    <license>GNU General Public License version 2 or later</license>
     <namespace path="src">My\Plugin\Content\Shortcodes</namespace>
     <files>
-		<folder plugin="shortcodes">services</folder>
-		<folder>src</folder>
-	</files>
+        <folder plugin="shortcodes">services</folder>
+        <folder>src</folder>
+    </files>
     <languages>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
-		<language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
-	</languages>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.ini</language>
+        <language tag="en-GB">language/en-GB/plg_content_shortcodes.sys.ini</language>
+    </languages>
 </extension>
 ```
 
@@ -108,7 +112,7 @@ Ensure that the name of your manifest XML file matches this plugin attribute (ie
 ```
 
 Ensure that your plugin language files are named correctly. You must include in the filename:
-- the plugin type - matching the `<extension group=."..">` attribute, and
+- the plugin type - matching the `<extension group="...">` attribute, and
 - the plugin element - matching the `<folder plugin="...">` attribute.
 
 # Service Provider file
@@ -169,7 +173,7 @@ Ensure that this matches your class in your `src/Extension` directory.
 ## Extension Class
 This is the main code of the plugin. Hopefully the comments in the code explain what is going on.
 
-As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
+As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes.md), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
 
 ```php
 [$context, $article, $params, $page] = array_values($event->getArguments());

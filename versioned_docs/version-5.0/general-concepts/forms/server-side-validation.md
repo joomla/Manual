@@ -27,7 +27,11 @@ The `validate="tel"` line triggers the validation on this field, and it will use
 
 You can see the list of validation rules that Joomla provides by looking at the class files in the libraries/src/Form/Rule directory, and choose what validation routine you want to run against the fields in your form. For example, to use the EmailRule you would include `validate="email"` against the email field in your form definition. 
 ### Custom Server-side Validation
-You can define your own validation for a field by writing a custom validation rule. We'll take as an example a custom rule called "custom" which we'll use to replace the Joomla-provided telephone number validation. You can obviously call your own rule whatever you like. Then you have to do 3 things:
+You can define your own validation for a field by writing a custom validation rule. 
+
+The [com_exampleform](../../building-extensions/components/component-examples/example-form-component.md) example component (which can be downloaded from [here](https://github.com/joomla/manual-examples/tree/main/component-exampleform)) provides another working example of server-side validation.
+
+In this section we'll take as an example a custom rule called "custom" which we'll use to replace the Joomla-provided telephone number validation. You can obviously call your own rule whatever you like. Then you have to do 3 things:
 - In your field definition against the field add the attribute `validate="custom"` against your field
 - Write your CustomRule.php file - we'll come to that shortly
 - Tell Joomla where to find your CustomRule class by means of an `addruleprefix` attribute

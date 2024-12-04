@@ -4,10 +4,6 @@ sidebar_position: 1
 
 # New features
 
-:::tip[Developer Note]
-  Since this version of Joomla has not been released yet, this page can change anytime.
-:::
-
 All the new features that have been added to this version.
 Any changes in best practice.
 
@@ -29,4 +25,46 @@ For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/d
 
 PR: https://github.com/joomla/joomla-cms/pull/40150
 
+#### `FormField` new method `collectLayoutData()`
 
+`FormField` class got a new method `collectLayoutData()`, to cache the data from `getLayoutData()`. 
+This was made to prevent a multiple call of this method, which may lead to doubled Queries/Request that may happen in some circumstances.
+
+it is recommended to update your fields to use new method to improve performance. Example:
+```php
+// Old code
+protected function getInput()
+{
+  return $this->getRenderer($this->layout)->render($this->getLayoutData());
+}
+protected function getLabel()
+{
+  $data = $this->getLayoutData();
+  ...
+  return $this->getRenderer($this->renderLabelLayout)->render($data);
+}
+
+```
+
+```php
+// New code
+protected function getInput()
+{
+  return $this->getRenderer($this->layout)->render($this->collectLayoutData());
+}
+protected function getLabel()
+{
+  $data = $this->collectLayoutData();
+  ...
+  return $this->getRenderer($this->renderLabelLayout)->render($data);
+}
+```
+
+PR: https://github.com/joomla/joomla-cms/pull/42709
+
+#### Dark Mode switch and Color scheme API
+
+Added a switch for changing color scheme "Dark"/"Light" for the Atum template.
+More about new [Color scheme API](https://manual.joomla.org/docs/next/building-extensions/templates/color-scheme)
+
+PR: https://github.com/joomla/joomla-cms/pull/42221

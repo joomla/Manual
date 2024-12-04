@@ -2,7 +2,10 @@
 title: The MVC Factory Class
 sidebar_position: 2
 ---
-# MVC Factory Overview
+
+MVC Factory Overview
+====================
+
 The MVC Factory class is used within Joomla to create instances of component Controller, View, Model and Table classes. 
 
 Each component has its own MVCFactory class instance, which is instantiated passing in that component's [namespace prefix](../../../general-concepts/namespaces/defining-your-namespace.md). 
@@ -27,10 +30,10 @@ $model = $this->getModel('example', 'administrator');
 ```
 Note that if your component is running in the front end (site) you can still use the administrator model, and if it's running in the back end (administrator) you can still use the site model. There is no restriction. 
 
-# Creating the MVCFactory class instance
+## Creating the MVCFactory class instance
 Your component's MVCFactory is created by defining it as a dependendency in your services/provider.php file, as described in [Dependency Injection](../../../general-concepts/dependency-injection/index.md), but you don't have to understand all the intricacies of Joomla Dependency Injection to use it effectively.
 
-# Creating your Controller class instance
+## Creating your Controller class instance
 
 As described in [Extension and Dispatcher Classes](../../../general-concepts/extension-and-dispatcher/index.md), your Controller class is instantiated within the `dispatch` function of the ComponentDispatcher class. It has an instance variable pointing to the MVCFactory class and will call:
 ```php
@@ -46,7 +49,7 @@ In this diagram (and in the next):
 - the solid black lines represent method calls
 - the thick solid red lines represent where a Factory class instantiates a class
 
-# Creating your View, Model and Table class instances
+## Creating your View, Model and Table class instances
 
 ![Instantiating View, Model, Table](_assets/mvc-factory.jpg "Instantiating View, Model, Table")
 
@@ -59,7 +62,7 @@ The View can also get the Model via a `getModel` call, but only if the Controlle
 $view->setModel($model);
 ```
 
-# Default names for View, Model and Table classes
+## Default names for View, Model and Table classes
 While the name for the Controller is taken from the *task* parameter, the default names for the View, Model and Table classes are taken from the *view* parameter. These default classes are what will be instantiated if you just call `getView()`, `getModel()` and `getTable()` without any parameters. 
 
 So, for example, the names of the classes created for a request with URL query "?option=com_example&view=viewname" and no *task* parameter will be:
@@ -68,7 +71,7 @@ So, for example, the names of the classes created for a request with URL query "
 - `<namespace>\Model\ViewnameModel`
 - `<namespace>\Table\ViewnameTable`
 
-# Summary
+## Summary
 We've covered a fair bit of background in this section, to give you an understanding of why things work, but it's all to make it easy for you in your MVC classes.
 
 In your Controller, you can create the View and the Model, and give the View a reference to the Model:
@@ -100,7 +103,7 @@ $table = $this->getTable();           // if your Table class matches the view= p
 $table = $this->getTable('example');  // to get the ExampleTable class
 ```
 
-# Issues
+## Issues
 A key reason for the introduction of the MVCFactory class was to remove the use of the `static::getInstance()` calls to obtain an instance of one of the MVC classes. However, you may find one or two problems with the approach.
 
 For example, when saving a database record in the Table class (eg in `Joomla\CMS\Table\Content::store()`), Joomla obtains another instance of that Table class in order to verify that the alias which is about to be saved is unique. However, when the Table instance is created it isn't passed a pointer to the MVCFactory instance, so it can't create another instance using the MVCFactory's `createTable` function. In Joomla 4 the solution was to use the deprecated `getInstance()` function:

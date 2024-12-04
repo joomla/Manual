@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%;
   --ifm-footer-link-hover-color: var(--ifm-color-secondary);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-Footer-link-text-color: #4b8bc3;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -30,6 +31,11 @@
   --ifm-code-font-size: 95%;
   --ifm-footer-link-hover-color: var(--ifm-color-secondary);
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+.theme-doc-markdown.markdown {
+  --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: none;
 }
 
 .theme-doc-markdown.markdown img {
@@ -52,4 +58,9 @@
 
 .line-bottom--pri {
   color: var(--ifm-color-primary);
+}
+
+/* Adding more readable color for JDL Footer Link */
+#JEDL_Footer_Link {
+  color: var(--ifm-Footer-link-text-color);
 }
