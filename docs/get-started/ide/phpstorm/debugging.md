@@ -54,7 +54,7 @@ normally).
 
 So beside your extension development project in PhpStorm open or create a new Project for Debugging inside your local
 Joomla! Installation. This Project should point to the Joomla! Main directory of your local Joomla! Installation. So in
-PhpStorm click on `File` > `New Project form Existing Files`and select your Joomla! Installation. PhpStorm may asks you
+PhpStorm click on `File` > `New Project form Existing Files`and select your Joomla! Installation. PhpStorm may ask you
 if you would like to Trust this Folder, confirm that request.
 
 ### Configure PhpStorm Debugger
@@ -63,7 +63,7 @@ In this new Project select `Run` from the Main Menu and Select `Edit Configurati
 
 ![Edit Configurations Menu](./assets/run_edit_configurations.png)
 
-This will open a new window where you can add configruations.
+This will open a new window where you can add configuration.
 
 ![Empty remote debug](./assets/empty_run_debug_config.png)
 
@@ -89,7 +89,7 @@ key based on entry in the php.ini file See: [Add IDE Key to your PHP INI](#add-i
 
 :::note
 
-The IDE Key is not Case Sensitive but its recommended to write it here exactly the same way as defined in php.ini
+The IDE Key is not Case Sensitive, but it's recommended to write it here exactly the same way as defined in php.ini
 
 :::
 
