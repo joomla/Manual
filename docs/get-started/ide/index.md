@@ -16,7 +16,7 @@ To develop a Joomla extension we recommend that you use an Integrated Developmen
 - Project/Folder management for extension projects
 - Many addons/support for daily coding
 
-The two current leading IDEs are [Visual Studio Code](get-started/ide/visual-studio-code.md) and [phpStorm](get-started/ide/phpstorm.md)
+The two current leading IDEs are [Visual Studio Code](get-started/ide/visual-studio-code.md) and [phpStorm](get-started/ide/phpstorm/index.md)
 
 :::caution TODO
 
