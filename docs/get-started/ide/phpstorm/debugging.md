@@ -3,8 +3,8 @@ Debugging
 
 ## Using MAMP and Xdebug
 
-This section shows you on how to set up your environment in MAMP and PHPStorm to debug your Joomla! extensions.
-It is assumed that PHPStorm is in the current version and that you have a local Joomla! installation in which your
+This section shows you on how to set up your environment in MAMP and PhpStorm to debug your Joomla! extensions.
+It is assumed that PhpStorm is in the current version and that you have a local Joomla! installation in which your
 extension is already installed.
 
 ### Enable Xdebugger in MAMP (Pro)
@@ -45,19 +45,19 @@ Install a Xdebug Extension of your choice in your Browser. Search for Xdebug in 
 and enable the Plugin - Check your Browser's Guide on how to install Plugins. Please note: An installation may require
 a Browser restart.
 
-### Setting up Environments in PHPStorm
+### Setting up Environments in PhpStorm
 
 Mostly you will write your Code in its own Project Folder but when using Joomla! The project will be zipped / installed
 or deployed from inside your IDE into to your Joomla Dev Environment. Which means you cannot use debugger directly
 inside the Project where you write your extension code (because it is not the file which will be run by Joomla!
 normally).
 
-So beside your extension development project in PHPStorm open or create a new Project for Debugging inside your local
+So beside your extension development project in PhpStorm open or create a new Project for Debugging inside your local
 Joomla! Installation. This Project should point to the Joomla! Main directory of your local Joomla! Installation. So in
-PHPStorm click on `File` > `New Project form Existing Files`and select your Joomla! Installation. PHPStorm may asks you
+PhpStorm click on `File` > `New Project form Existing Files`and select your Joomla! Installation. PhpStorm may asks you
 if you would like to Trust this Folder, confirm that request.
 
-### Configure PHPStorm Debugger
+### Configure PhpStorm Debugger
 
 In this new Project select `Run` from the Main Menu and Select `Edit Configurations`.
 
@@ -104,8 +104,8 @@ Environment so in our Project we search for the file we want to debug and add a 
 
 ![Breakpoint set](./assets/add_breakpoint.png)
 
-Now we can either Click on `Run` from the PHPStorm Main Menu and then on `Start listening for PHP Debug Connections` or
-simply click the `Bug Icon` in the Main Window of the Project to let PHPStorm listen.
+Now we can either Click on `Run` from the PhpStorm Main Menu and then on `Start listening for PHP Debug Connections` or
+simply click the `Bug Icon` in the Main Window of the Project to let PhpStorm listen.
 
 ### Enable Debug in your Browser
 
@@ -114,10 +114,10 @@ active and running in your Browser.
 
 ![Debugger in Browser](./assets/enable_debug_inBrowser.png)
 
-When visiting the page you will notice that the site won't get loaded. But PHPStorm jumps in front showing you the Debug
+When visiting the page you will notice that the site won't get loaded. But PhpStorm jumps in front showing you the Debug
 console where you will find the available Variables and its content in the Debugging Console.
 
-![Debugging Console in PHPStorm](./assets/debug_console.png)
+![Debugging Console in PhpStorm](./assets/debug_console.png)
 
 
 

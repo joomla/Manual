@@ -1,8 +1,8 @@
 ---
-title: PHPStorm
+title: PhpStorm
 sidebar_position: 1
 ---
-PHPStorm
+PhpStorm
 ========
 
 ## Indentation with Spaces
