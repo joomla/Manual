@@ -18,7 +18,7 @@ the Extensions section.
 
 Edit php.ini Template inside MAMP, search for the xdebug section and add:
 
-```
+```ini php.ini
 xdebug.idekey=PHPSTORM
 ```
 
