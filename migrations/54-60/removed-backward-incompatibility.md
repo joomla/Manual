@@ -64,3 +64,9 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### Mod_breadcrumbs setSeparator
+- PR: https://github.com/joomla/joomla-cms/pull/44605/
+- File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
+- Description: setSeparator to set the breadcrumbs separator for the breadcrumbs display has not been used since 4.0 and is removed without replacement
+
