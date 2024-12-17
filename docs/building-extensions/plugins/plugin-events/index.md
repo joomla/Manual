@@ -30,6 +30,5 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
 | [onInstallerBeforePackageDownload](./installer.md#oninstallerbeforepackagedownload) | In Installer, before a package is downloaded | Installer     |  before 4.0  |
-
 | [onInstallerBeforeUpdateSiteDownload](./installer.md#oninstallerbeforeupdatesitedownload) | In Installer, before an update site is downloaded | Installer     |  5.3  |
 
