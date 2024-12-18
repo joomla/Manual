@@ -47,7 +47,8 @@ This event will be executed before an update site is downloaded. It allows to mo
 
 ### Event Arguments
 
-The event class \Joomla\CMS\Event\Installer\BeforeUpdateSiteDownloadEvent has the following arguments:
+The event class `\Joomla\CMS\Event\Installer\BeforeUpdateSiteDownloadEvent` has the following arguments:
+
 
 - **`url`** - The url of the update site.
 
