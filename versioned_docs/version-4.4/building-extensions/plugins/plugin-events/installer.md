@@ -19,7 +19,8 @@ This event will be executed before an installable package (zip file) of an exten
 
 ### Event Arguments
 
-The event class \Joomla\CMS\Event\Installer\BeforePackageDownloadEvent has the following arguments:
+The event class  `\Joomla\CMS\Event\Installer\BeforePackageDownloadEvent` has the following arguments:
+
 
 - **`url`** - The url of the package.
 
