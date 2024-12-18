@@ -5,7 +5,8 @@ toc_max_heading_level: 2
 ---
 
 Installer Events
-==============
+================
+
 
 Installer plugin events are triggered when some routines are performed during the install process of extensions or when their update sites are downloaded.
 
