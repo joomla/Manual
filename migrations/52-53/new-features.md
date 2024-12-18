@@ -53,6 +53,7 @@ echo $this->form->renderControlFields();
 ```
 
 #### New before download update site event
+
 A new event is available where an installer plugin can hook in before an update site url is fetched. Similar to what we have for package download of an extension.
 
 PR: https://github.com/joomla/joomla-cms/pull/44516
