@@ -64,3 +64,16 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### JPATH_PLATFORM constant got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44638
+- File: All bootsrapping files
+- Description: The `JPATH_PLATFORM` is an old constant and should not be used if the Joomla core got correctly bootstrapped. Change your checks to `_JEXEC`
+```php
+// Old:
+\defined('JPATH_PLATFORM') or die;
+
+// New:
+\defined('_JEXEC') or die;
+```
