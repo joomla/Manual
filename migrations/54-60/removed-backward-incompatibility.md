@@ -64,3 +64,18 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### createThumbs function got removed from the image class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44663
+- File: libraries/src/Image/Image.php
+- Description: The `createThumbs` function in the `Image` class got removed as the function `createThumbnails` should be used instead. For example you can use 
+```php
+// Old:
+$image = new Image($path);
+$image->createThumbs('50x50');
+
+// New:
+$image = new Image($path);
+$image->createThumbnails('50x50');
+```
