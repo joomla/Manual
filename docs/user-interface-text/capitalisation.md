@@ -12,6 +12,7 @@ Sentence case is preferable but use capitalisation for:
 * Menu Items
 * Labels
 * Buttons
+* Headlines and Subheadlines (e.g. in documentation)
 
 Do not capitalise joining words and words of three characters or less such as and, to, for.
 
