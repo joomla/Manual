@@ -27,9 +27,7 @@ xdebug.idekey=PHPSTORM
 Hint: Use `Ctrl` + `F` and search for "xdebug"
 
 :::note
-
-After you have changed some settings make sure to save & restart your MAMP Server.
-
+  After you have changed some settings make sure to save & restart your MAMP Server.
 :::
 
 ### Check PHP Configuration in your Joomla! Installation
