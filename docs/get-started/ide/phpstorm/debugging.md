@@ -1,5 +1,5 @@
 Debugging
-========
+=========
 
 ## Using MAMP and Xdebug
 
