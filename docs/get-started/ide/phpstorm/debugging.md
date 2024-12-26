@@ -52,7 +52,7 @@ normally).
 
 So beside your extension development project in PhpStorm open or create a new Project for Debugging inside your local
 Joomla! Installation. This Project should point to the Joomla! Main directory of your local Joomla! Installation. So in
-PhpStorm click on `File` > `New Project form Existing Files`and select your Joomla! Installation. PhpStorm may ask you
+PhpStorm click on `File` > `New Project form Existing Files` and select your Joomla! Installation. PhpStorm may ask you
 if you would like to Trust this Folder, confirm that request.
 
 ### Configure PhpStorm Debugger
@@ -61,26 +61,28 @@ In this new Project select `Run` from the Main Menu and Select `Edit Configurati
 
 ![Edit Configurations Menu](_assets/run_edit_configurations.png)
 
-This will open a new window where you can add configuration.
+This will open a new window where you can manage configruations or add a new configuration.
 
 ![Empty remote debug](_assets/empty_run_debug_config.png)
 
-Click on `Add new` here you can then add a new `PHP Remote Debug` Configuration.
+Click on `Add new...` next select to add a new `PHP Remote Debug` Configuration.
 
 ![Select remote debug](_assets/select_php_remote_debug.png)
 
 Name the Configuration as you like but for example "MAMP" (default is Unnamed).
-Tick the option `Filter debug connection by IDE Key` and click on the Button with the three dots beside the Server
+Tick the option `Filter debug connection by IDE Key` Click on the Button `...` with the three dots beside the Server
 Selection.
 
 ![Select remote debug](_assets/start_configuration.png)
 
-This will open a new PopUp window to set up the server settings. Enter here your MAMP's Server Information based on your
-MAMP Settings.
+This will open a new PopUp window to set up the server settings. Enter here your MAMP's Server Information.
 The name can be "MAMP Server" or whatever you like. By Default MAMP Server's are running on Port 8890 use the Port of
-your Server here. In this case here the Joomla! Installation is available on the URL `https://joomla5.localhost:8890` so the
-Host Name is `joomla5.localhost`. Set now the Hostname and Port based on your configuration.
-Click on Apply and OK to close the window. Your Server Configuration should now already be selected, set now your IDE
+your local Server here. In this example the Joomla! installation is available on the URL `https://joomla5.localhost:8890` so the
+Host is `joomla5.localhost`. Set the Host and Port based on your configuration.
+
+![Host Settings in Debugger Profile](_assets/mamp_server_settings.png)
+
+Click on `Apply` and `OK` to close the window. Your new Server Configuration should now already be selected, set now your IDE
 key based on entry in the php.ini file See: [Add IDE Key to your PHP INI](#add-ide-key-to-your-phpini).
 
 ![Enter IDE Key](_assets/edit_mamp_server_settings_phpstorm.png)
@@ -89,7 +91,9 @@ key based on entry in the php.ini file See: [Add IDE Key to your PHP INI](#add-i
 The IDE Key is not Case Sensitive, but it's recommended to write it here exactly the same way as defined in php.ini
 :::
 
+:::note
 Make sure the "Activate tool window" option is ticked then click on Apply & OK
+:::
 
 ### Set Breakpoint in Code
 
@@ -115,28 +119,6 @@ console where you will find the available Variables and its content in the Debug
 
 ![Debugging Console in PhpStorm](_assets/debug_console.png)
 
-## Related articles
-![Debugging with PhpStorm](https://www.jetbrains.com/help/phpstorm/debugging-with-phpstorm-ultimate-guide.html)
-![Xdebug Documentation](https://xdebug.org/docs/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Related external articles
+- [Debugging with PhpStorm](https://www.jetbrains.com/help/phpstorm/debugging-with-phpstorm-ultimate-guide.html)
+- [Xdebug Documentation](https://xdebug.org/docs/)
