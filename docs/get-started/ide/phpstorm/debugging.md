@@ -7,12 +7,12 @@ This section shows you on how to set up your environment in MAMP and PhpStorm to
 It is assumed that PhpStorm is in the current version and that you have a local Joomla! installation in which your
 extension is already installed.
 
-### Enable Xdebugger in MAMP (Pro)
+### Enable Xdebug in MAMP (Pro)
 
 In MAMP open the Settings and switch to the Languages page. Select the PHP Tab and make sure that Xdebug is ticked in
 the Extensions section.
 
-![MAMP PHP Language Settings](./assets/mamp_language_settings.png)
+![MAMP PHP Language Settings](_assets/mamp_language_settings.png)
 
 ### Add IDE Key to your php.ini
 
@@ -22,7 +22,7 @@ Edit php.ini Template inside MAMP, search for the xdebug section and add:
 xdebug.idekey=PHPSTORM
 ```
 
-![MAMP PHP INI Settings](./assets/php_ini_setup.png)
+![MAMP PHP INI Settings](_assets/php_ini_setup.png)
 
 Hint: Use `Ctrl` + `F` and search for "xdebug"
 
@@ -35,7 +35,7 @@ Hint: Use `Ctrl` + `F` and search for "xdebug"
 Check in the PHP Settings in your Joomla! Backend in `System` > `System Information` > `PHP
 Information` and make sure that the Section for Xdebug is visible:
 
-![Joomla! PHP Information](./assets/xdebug_top.jpg)
+![Joomla! PHP Information](_assets/xdebug_top.jpg)
 
 ### Install Xdebug Browser Extension
 
@@ -59,21 +59,21 @@ if you would like to Trust this Folder, confirm that request.
 
 In this new Project select `Run` from the Main Menu and Select `Edit Configurations`.
 
-![Edit Configurations Menu](./assets/run_edit_configurations.png)
+![Edit Configurations Menu](_assets/run_edit_configurations.png)
 
 This will open a new window where you can add configuration.
 
-![Empty remote debug](./assets/empty_run_debug_config.png)
+![Empty remote debug](_assets/empty_run_debug_config.png)
 
 Click on `Add new` here you can then add a new `PHP Remote Debug` Configuration.
 
-![Select remote debug](./assets/select_php_remote_debug.png)
+![Select remote debug](_assets/select_php_remote_debug.png)
 
 Name the Configuration as you like but for example "MAMP" (default is Unnamed).
 Tick the option `Filter debug connection by IDE Key` and click on the Button with the three dots beside the Server
 Selection.
 
-![Select remote debug](./assets/start_configuration.png)
+![Select remote debug](_assets/start_configuration.png)
 
 This will open a new PopUp window to set up the server settings. Enter here your MAMP's Server Information based on your
 MAMP Settings.
@@ -83,12 +83,10 @@ Host Name is `joomla5.local`. Set now the Hostname and Port based on your config
 Click on Apply and OK to close the window. Your Server Configuration should now already be selected, set now your IDE
 key based on entry in the php.ini file See: [Add IDE Key to your PHP INI](#add-ide-key-to-your-phpini).
 
-![Enter IDE Key](./assets/edit_mamp_server_settings_phpstorm.png)
+![Enter IDE Key](_assets/edit_mamp_server_settings_phpstorm.png)
 
 :::note
-
 The IDE Key is not Case Sensitive, but it's recommended to write it here exactly the same way as defined in php.ini
-
 :::
 
 Make sure the "Activate tool window" option is ticked then click on Apply & OK
@@ -100,7 +98,7 @@ Environment so in our Project we search for the file we want to debug and add a 
 
 [Learn here how to set Breakpoints](https://www.jetbrains.com/help/phpstorm/using-breakpoints.html#set-breakpoints)
 
-![Breakpoint set](./assets/add_breakpoint.png)
+![Breakpoint set](_assets/add_breakpoint.png)
 
 Now we can either Click on `Run` from the PhpStorm Main Menu and then on `Start listening for PHP Debug Connections` or
 simply click the `Bug Icon` in the Main Window of the Project to let PhpStorm listen.
@@ -110,12 +108,16 @@ simply click the `Bug Icon` in the Main Window of the Project to let PhpStorm li
 Now we simply need to open our page in your Browser where your Extension gets loaded. Make sure the Debugger Plugin is
 active and running in your Browser.
 
-![Debugger in Browser](./assets/enable_debug_inBrowser.png)
+![Debugger in Browser](_assets/enable_debug_inBrowser.png)
 
 When visiting the page you will notice that the site won't get loaded. But PhpStorm jumps in front showing you the Debug
 console where you will find the available Variables and its content in the Debugging Console.
 
-![Debugging Console in PhpStorm](./assets/debug_console.png)
+![Debugging Console in PhpStorm](_assets/debug_console.png)
+
+## Related articles
+![Debugging with PhpStorm](https://www.jetbrains.com/help/phpstorm/debugging-with-phpstorm-ultimate-guide.html)
+![Xdebug Documentation](https://xdebug.org/docs/)
 
 
 
