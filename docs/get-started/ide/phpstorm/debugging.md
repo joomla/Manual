@@ -78,8 +78,8 @@ Selection.
 This will open a new PopUp window to set up the server settings. Enter here your MAMP's Server Information based on your
 MAMP Settings.
 The name can be "MAMP Server" or whatever you like. By Default MAMP Server's are running on Port 8890 use the Port of
-your Server here. In this case here the Joomla! Installation is available on the URL `https://joomla5.local:8890` so the
-Host Name is `joomla5.local`. Set now the Hostname and Port based on your configuration.
+your Server here. In this case here the Joomla! Installation is available on the URL `https://joomla5.localhost:8890` so the
+Host Name is `joomla5.localhost`. Set now the Hostname and Port based on your configuration.
 Click on Apply and OK to close the window. Your Server Configuration should now already be selected, set now your IDE
 key based on entry in the php.ini file See: [Add IDE Key to your PHP INI](#add-ide-key-to-your-phpini).
 
