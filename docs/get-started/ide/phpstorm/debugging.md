@@ -70,7 +70,7 @@ Click on `Add new...` next select to add a new `PHP Remote Debug` Configuration.
 ![Select remote debug](_assets/select_php_remote_debug.png)
 
 Name the Configuration as you like but for example "MAMP" (default is Unnamed).
-Tick the option `Filter debug connection by IDE Key` Click on the Button `...` beside the Server
+Tick the option `Filter debug connection by IDE Key` Click on the `...` Button beside the Server
 Selection.
 
 ![Select remote debug](_assets/start_configuration.png)
