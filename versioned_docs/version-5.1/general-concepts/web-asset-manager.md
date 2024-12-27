@@ -316,7 +316,7 @@ To override the URI we define the asset item with "foobar" name in our joomla.as
 }
 ...
 ```
-
+>
 Or, register a new asset item with AssetManager:
 
 ```php
