@@ -373,7 +373,7 @@ An inline asset may have a "name" in the same way as other assets, but it is not
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
-// Add an inline content as usual, will be rendered in flow after all _assets
+// Add an inline content as usual, will be rendered in flow after all assets
 $wa->addInlineStyle('content of inline1');
 
 // Add an inline content that will be placed after "foobar" asset
@@ -506,7 +506,7 @@ An inline asset may have a "name" in the same way as other assets, but it is not
 /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
 $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
 
-// Add an inline content as usual, will be rendered in flow after all _assets
+// Add an inline content as usual, will be rendered in flow after all assets
 $wa->addInlineScript('content of inline1');
 
 // Add an inline content that will be placed after "foobar" asset
