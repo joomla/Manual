@@ -20,6 +20,7 @@ COM_EXAMPLE_ADDITIONAL_INFO_LABEL="Additional Information"
 ```
 
 ## Conventions & Specifications for Language Keys
+
 The `KEY` should only use **ASCII characters**. It should only contain capital letters, digits, underscores and hyphens,
 and it should start with a capital letter. Dots (.) are formally allowed, <ins>but do not appear to be completely
 supported</ins>. It is a convention to replace any whitespace in the language string (`KEY`) with underscores.
@@ -36,7 +37,7 @@ So if we have a `Key` for our `Field Label` & `Field Description` which selects 
 the Language Keys like this:
 ```ini
 COM_EXAMPLE_FONT_COLOR_FIELD_LABEL="Font-Color"
-COM_EXAMPLE_FONT_COLOR_FIELD_DESC="Select the Font-Color for xy"
+COM_EXAMPLE_FONT_COLOR_FIELD_DESCRIPTION="Select the Font-Color for xy"
 ```
 And for a Button Label in a `My News Module` the Language Key could be named like this:
 ```ini
@@ -47,10 +48,12 @@ It is recommended and good practice to use your MOD_XY, COM_XY or PLG_XY as Pref
 :::
 
 ## Case Sensitivity when using with Text::
+
 When you use the key in a Text:: call, the case does not matter as strings are folded to upper case before searching
 takes place. So `additional_information`, `Additional_Information` or even `AdDiTiOnAl_InFoRmAtIoN` will be matched.
 
 ## Conventions & Specifications for Language Values
+
 The `Value` should always be surrounded by double-quote characters ("), as in the example. Every double-quote character
 in the value string has to be escaped by using a Backslash (` \ `). For example, to attach the value
 `<span class="red">Warning!</span>` to the key WARNING_TEXT, it can be written like this:
@@ -70,6 +73,7 @@ much easier to avoid mistakes such as forgetting double quotes when they are req
 :::
 
 ### HTML in Language Values
+
 It is not recommended to use HTML in the translations. HTML Syntax should be placed outside the language strings in the
 appropriate place:
 ```ini title="Language File"
@@ -80,6 +84,7 @@ WARNING_TEXT="Warning!"
 ```
 
 ## Errors in Language Files
+
 If there is an error in a language file, the file is not parsed correctly and
 individual translations are missing. It is then helpful to examine the corresponding language file with a code editor
 with syntax highlighting that can process the INI file.
@@ -93,6 +98,7 @@ MOD_EXAMPLE_NOT_WORKING_SUCCESS_MSG="Success!"
 ```
 
 ### Missing Double-Quotes at the end of a Value String
+
 Another common mistake is "forgetting" a double quote at the end of a translation string, as here in line 2:
 ```ini title="Language File Error with missing double-quote on line 2"
 MOD_EXAMPLE_WORKING_HEADING="My Heading"
@@ -101,6 +107,7 @@ MOD_EXAMPLE_NOT_WORKING_SUCCESS_MSG="Success!"
 ```
 
 ### Multi-Line Values
+
 As mentioned above Multiline values are not valid - a correct key="value" pair is only valid if it is single-line.
 ```ini title="Language File Error using Multi-Line"
 MOD_EXAMPLE_WORKING_HEADING="My Heading"
@@ -111,6 +118,7 @@ MOD_EXAMPLE_NOT_WORKING_SUCCESS_MSG="Success!"
 ```
 
 ### Invalid Language Keys
+
 If the language key (constant) does not correspond to the specifications, the key cannot be used:
 ```ini title="Language File Error with invalid language key on line 2"
 MOD_EXAMPLE_WORKING_HEADING="My Heading"
@@ -119,12 +127,13 @@ MOD_EXAMPLE_WORKING_SUCCESS_MSG="Success!"
 ```
 
 ## Updating Language Files while Developing an Extension
+
 Joomla! places the language files in the corresponding folder for language files when installing an extension and
 searches there for the translations for the respective language. If changes are made to language files, the extension
 must be installed again or the language file must be placed manually in the corresponding folder.
 
-| What     | Where |
-|----------| --- |
-| Frontend | root/languages/en-GB/mod_xy.ini |
+| What     | Where                                         |
+| -------- | --------------------------------------------- |
+| Frontend | root/languages/en-GB/mod_xy.ini               |
 | Backend  | root/administrator/languages/en-GB/mod_xy.ini |
 
