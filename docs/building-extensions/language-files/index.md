@@ -52,8 +52,8 @@ takes place. So `additional_information`, `Additional_Information` or even `AdDi
 
 ## Conventions & Specifications for Language Values
 The `Value` should always be surrounded by double-quote characters ("), as in the example. Every double-quote character
-in the value string has to be escaped by using a Forward-Slash (` \ `). For example, to attach the value
-`<span class="red">Warning!</span>` to the key WARNING_TEXT, you can write it like this:
+in the value string has to be escaped by using a Backslash (` \ `). For example, to attach the value
+`<span class="red">Warning!</span>` to the key WARNING_TEXT, it can be written like this:
 ```ini title="Language Strings containing HTML Tags with escaped double Quotes"
 WARNING_TEXT="<span class=\"red\">Warning!</span>"
 ```
