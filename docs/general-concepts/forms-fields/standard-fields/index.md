@@ -27,6 +27,7 @@ As all form fields inherit from the base class `FormField`, the options listed b
 - **~~validate~~** Should not longer been used See [Form Client-Side Validation](/docs/general-concepts/forms/client-side-validation.md) instead
 - **pattern** The pattern (Reg Ex) of value of the form field
 - **class** Whitespace separated list of classnames which will be added to the input element (e.g. "my-custom-class another-custom-class")
+- **data-** Data Attributes for Form Field elements will be added to the fieldset element (usage: data-foo="key:value" or data-bar="someValue")
 
 ## List of Standard Form Fields
 The following is a full list of all supplied form fields available in this release.
