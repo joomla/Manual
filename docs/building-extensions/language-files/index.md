@@ -53,6 +53,65 @@ When you use the key in a Text:: call, the case does not matter as strings are f
 takes place. So `additional_information`, `Additional_Information` or even `AdDiTiOnAl_InFoRmAtIoN` will be matched. 
 Nevertheless, it is a convention and also considered good practice to write the key in capital letters within the PHP or JavaScript code.
 
+## Variables in Language Values
+
+Sometimes it is necessary to use variables within the values. The function `Text::sprintf` makes this possible.
+In this way, the placeholder `%s` can be used for a string within a language string.
+
+### Using Text::sprintf for one Variable
+
+```ini title="Language Strings containing Placeholder for variable"
+COM_EXAMPLE_MY_STRING="The value of my transferred variable is %s and is included in this way."
+```
+
+```php title="Calling the translation and transferring a variable"
+...
+echo Text::sprintf("COM_EXAMPLE_MY_STRING", $someVariable)
+...
+```
+
+Another (practical) example can be found in the contact component:
+
+```ini title="COM_CONTACT Language File"
+COM_CONTACT_CHECKED_OUT_BY="Checked out by %s"
+```
+
+In the PHP code, the call looks like this:
+
+```php title="Calling the translation and transferring the user's name"
+...
+echo Text::sprintf("COM_CONTACT_CHECKED_OUT_BY", $checkoutUser->name)
+...
+```
+
+### Using Text::sprintf for multiple Variables
+
+Several variables can also be transferred to a language string; these are then placed one after the other at the 
+locations defined in the language string. The order of transfer is relevant here and cannot been changed.
+
+```ini title="MOD_EXAMPLE Language File"
+MOD_EXAMPLE_MULTIVAR_STRING="This string contains three placeholders: %s, %s, %s << They are placed in order"
+```
+
+```php title="mod_example Template File"
+$a = "First String";
+$b = "Second String";
+$c = "Third String";
+echo Text::sprintf('MOD_EXAMPLE_MULTIVAR_STRING', $a, $b, $c);
+```
+
+``` title="Result"
+This string contains three placeholders: First String, Second String, Third String << They are placed in order 
+```
+If the positions of `$a` , `$b`, `$c` in the php file are swapped in the call, the placement within the translated 
+language string also changes.
+
+:::warning
+This is a good way to quickly use several variables in a translation, but it must be noted that depending on the 
+language the sentence structure could be different (a good example is e.g. German & English) and the order of the 
+variables within the translation is different.
+:::
+
 ## Conventions & Specifications for Language Values
 
 The `Value` should always be surrounded by double-quote characters ("), as in the example. Every double-quote character
