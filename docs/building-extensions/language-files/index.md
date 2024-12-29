@@ -133,6 +133,33 @@ Joomla! places the language files in the corresponding folder for language files
 searches there for the translations for the respective language. If changes are made to language files, the extension
 must be installed again or the language file must be placed manually in the corresponding folder.
 
+### Language Tags
+
+If language files are written for an extension, these must be stored in a corresponding subfolder (with a language tag) in the extension. 
+Joomla! then moves the files to the correct directories while the extension gets installed / updated.
+
+The folder structure is `languages` / `[languageTag]`/ `*.ini` where the the language tags such as **"en-GB"**, 
+**"de-CH"**, and **"de-AT"** are based on the [**ISO 639-1**](https://en.wikipedia.org/wiki/ISO_639-1) and 
+[**ISO 3166-1**](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes. These represent a combination 
+of a language and a regional or national variant. In Joomla! these language tags are used as subfolders in the languages folders. 
+
+These tags consist of two parts:
+- The first part is the language code from the ISO 639-1 standard, which denotes the language. Examples:
+ - `en` for English
+ - `de` for German
+ - `...`
+- The second part is the country code from the ISO 3166-1 Alpha-2 standard, defining the country or region
+  to distinguish specific dialects or regional settings. Examples:
+  - `GB` for the United Kingdom
+  - `US` for the United States
+  - `CH` for Switzerland
+  - `AT` for Austria
+ 
+
+### Placement of Language Files
+
+Language files for the Joomla! front and back end are stored in different locations:
+
 | What     | Where                                     |
 | -------- | ----------------------------------------- |
 | Frontend | /languages/en-GB/mod_xy.ini               |
