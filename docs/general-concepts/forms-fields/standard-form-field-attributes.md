@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Standard Form Field Attributes
 ---
+import Attributes from './_generic-attributes.md'
 
 Standard Form Field Attributes
 ==============================
@@ -11,10 +12,7 @@ Many of the attributes of the standard form map directly to HTML field attribute
 You can view the available list of general attributes by looking at libraries/src/Form/FormField.php, in the `__set` function. 
 As many of these can be used across the range of Joomla standard form fields, they're often not explicitly cited in the form field detailed description.
 
-These attributes include, for example:
-- **onchange** - in which you can pass a javascript function which should get control when the input element is changed
-- **autofocus** - to specify the input element which should receive focus on page load
-- **data-xxx** - data attributes to be set on the input element
+<Attributes />
 
 ## class
 

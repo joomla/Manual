@@ -2,6 +2,7 @@
 sidebar_position: 2
 title: Accessiblemedia Form Field
 ---
+import Attributes from '../_generic-attributes.md'
 
 Accessiblemedia Form Field
 ==========================
@@ -18,6 +19,8 @@ The **accessiblemedia** form field type provides modal access to the media manag
 - **preview_height** (optional) sets the max-height of preview image (default: "200").
 
 Implemented by: libraries/src/Form/Field/AccessiblemediaField.php
+
+<Attributes />
 
 ## Example XML parameter definition
 
