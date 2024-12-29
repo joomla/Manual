@@ -50,7 +50,8 @@ It is recommended and good practice to use your MOD_XY, COM_XY or PLG_XY as Pref
 ## Case Sensitivity when using with Text::
 
 When you use the key in a Text:: call, the case does not matter as strings are folded to upper case before searching
-takes place. So `additional_information`, `Additional_Information` or even `AdDiTiOnAl_InFoRmAtIoN` will be matched.
+takes place. So `additional_information`, `Additional_Information` or even `AdDiTiOnAl_InFoRmAtIoN` will be matched. 
+Nevertheless, it is a convention and also considered good practice to write the key in capital letters within the PHP or JavaScript code.
 
 ## Conventions & Specifications for Language Values
 
