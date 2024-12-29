@@ -133,8 +133,8 @@ Joomla! places the language files in the corresponding folder for language files
 searches there for the translations for the respective language. If changes are made to language files, the extension
 must be installed again or the language file must be placed manually in the corresponding folder.
 
-| What     | Where                                         |
-| -------- | --------------------------------------------- |
-| Frontend | root/languages/en-GB/mod_xy.ini               |
-| Backend  | root/administrator/languages/en-GB/mod_xy.ini |
+| What     | Where                                     |
+| -------- | ----------------------------------------- |
+| Frontend | /languages/en-GB/mod_xy.ini               |
+| Backend  | /administrator/languages/en-GB/mod_xy.ini |
 
