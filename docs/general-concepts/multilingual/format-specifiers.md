@@ -22,16 +22,73 @@ Format Specifiers
 
 ## Syntax of Directives
 
-| Order | 1.       | 2.   | 3.      | 4.        | 5.    | 6.        |
-|-------|----------|------|---------|-----------|-------|-----------|
-| **%** | Position | Sign | Padding | Alignment | Width | Precision |
+| Order | 1.       | 2.   | 3.        | 4.      | 5.    | 6.        |
+|-------|----------|------|-----------|---------|-------|-----------|
+| **%** | Position | Sign | Alignment | Padding | Width | Precision |
 
 ### Sign
 
-- Possible Values: `+` or `-`
+- Possible Values: `+`
 
 Forces a sign (+ or -) to be used on a number. By default, only the – sign is used on a number if it's negative.
 This specifier forces positive numbers to have the + sign attached as well.
+
+```ìni title="Using the '+' Sign"
+MOD_EXAMPLE_POSITIVE_NEGATIVE_NUMBER="This number %+d has prefixed whether it is positive or negative."
+```
+
+```php
+$positive_num = 42;
+$negative_num = -12;
+
+echo Text::sprintf("MOD_EXAMPLE_POSITIVE_NEGATIVE_NUMBER", $positive_num);
+echo Text::sprintf("MOD_EXAMPLE_POSITIVE_NEGATIVE_NUMBER", $negative_num);
+```
+
+```plaintext title="Result including forced sign display for positive and negative numbers"
+This number +42 has prefixed whether it is positive or negative.
+This number -12 has prefixed whether it is positive or negative. 
+```
+
+### Alignment
+
+- Possible Values: `<null>` or `-`
+
+Determines if the result should be left-justified or right-justified. The default is right-justified; a - character
+here will make it left-justified.
+
+:::info
+A plus sign ('+') means put a '+' before positive numbers (see above) while a minus sign ('-') means left justify. 
+Both can be used together if required.
+:::
+
+```ìni title="Using the '-' Sign to left-justify"
+MOD_EXAMPLE_RIGHT_JUSTIFY="|%+6d|%+6d|"
+MOD_EXAMPLE_LEFT_JUSTIFY="|%-6d|%-6d|"
+MOD_EXAMPLE_FORCE_POSITIVE_LEFT_JUSTIFY="|%+-6d|%+-6d|"
+```
+*Note: The Number **6** used in the example above refers to the Padding size of 6 characters. See [Padding](#padding) 
+for more information.*
+
+```php
+<pre>
+    <?php echo Text::sprintf("MOD_EXAMPLE_RIGHT_JUSTIFY", 42, -42); ?> <br>
+    <?php echo Text::sprintf("MOD_EXAMPLE_LEFT_JUSTIFY", 42, -42); ?> <br>
+    <?php echo Text::sprintf("MOD_EXAMPLE_FORCE_POSITIVE_LEFT_JUSTIFY", 42, -42); ?>
+</pre>
+```
+
+```plaintext title="Result"
+|   +42|   -42| 
+|42    |-42   | 
+|+42   |-42   |
+```
+
+:::note
+The example is encapsulated by a `<pre>` tag so that the browser does not replace the multiple spaces by a single one. 
+Alternatively, the CSS instruction `white-space: pre-wrap` can be used so that the whitespaces are not removed by 
+the browser.
+:::
 
 ### Padding
 
@@ -42,7 +99,7 @@ character). The default is to pad with spaces. An alternative padding character 
 single quote character.
 
 ```ini title="Using Padding"
-MOD_EXAMPLE_PADDING_MSG="The number including Padding is: %'.9d"
+MOD_EXAMPLE_PADDING_MSG = "The number including Padding is: %'.9d"
 ```
 
 ```plaintext title="When the number 500 is given and a dot is used as char"
@@ -52,7 +109,7 @@ The number including Padding is: ......500
 Here we load the number twice by using the position directive too:
 
 ```ini title="Using Padding once"
-MOD_EXAMPLE_PADDING_MSG="The number %1$d including Padding is: %1$':9d"
+MOD_EXAMPLE_PADDING_MSG = "The number %1$d including Padding is: %1$':9d"
 ```
 
 ```plaintext title="When the number 500 is given and a colon is used as char"
@@ -61,14 +118,15 @@ MOD_EXAMPLE_PADDING_MSG="The number %1$d including Padding is: %1$':9d"
 
 #### Using Spaces
 
-By default, `<space>` is used for padding. The following is therefore specified as the format in the translation:
+By default, `<space>` is used for padding. If no `0` or character is specified as shown above, spaces are inserted:
 
 ```ini title="Using space Padding"
-MOD_EXAMPLE_PADDING_MSG="The number including Padding is: %9d"
+MOD_EXAMPLE_PADDING_MSG = "The number including Padding is: %9d"
 ```
 
-For example, when using the number 500, six spaces should be displayed before the number. Most browsers will not 
-display these *superfluous* spaces and will replace it by a single space. To solve that a bit CSS-Magic is required here:
+For example, when using the number 500, six spaces should be displayed before the number. Most browsers will not
+display these *superfluous* spaces and will replace it by a single space. To solve that a bit CSS-Magic is required
+here:
 
 ```css title="CSS to render multiple whitespaces"
 .padding-support {
@@ -85,17 +143,9 @@ echo '<span class="padding-support">' . Text::sprintf("MOD_EXAMPLE_PADDING_MSG",
 The number including Padding is:       500
 ```
 
-
 :::warning
 The c Type specifier ignores padding & width.
 :::
-
-### Alignment
-
-- Possible Values: `<null>` or `-`
-
-Determines if the result should be left-justified or right-justified. The default is right-justified; a - character
-here will make it left-justified.
 
 ### Width
 
