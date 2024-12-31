@@ -151,7 +151,33 @@ The c Type specifier ignores padding & width.
 
 - Possible Values: `<Number>`
 
-Number of characters (minimum) that the conversion should result in.
+Number of characters (minimum) that the conversion should result in. If the field width is specified in a placeholder 
+of `sprintf`, the generated output is filled to the specified minimum width.
+
+```ini title="Setting width to 10 characters"
+MOD_EXAMPLE_WIDTH_MSG="[%10s]"
+```
+
+```php
+<pre>
+    <?php echo Text::sprintf("MOD_EXAMPLE_WIDTH_MSG", "Example"); ?>
+</pre>
+```
+
+```plaintext title="Result"
+[   Example]
+```
+
+Width can be combined with the [Alignment Flag](#alignment):
+
+```ini title="Setting width to 10 characters and align left justified"
+MOD_EXAMPLE_WIDTH_MSG="[%-10s]"
+```
+
+```plaintext title="Result left-justified"
+[Example   ]
+```
+
 
 :::warning
 The c Type specifier ignores padding & width.
