@@ -17,8 +17,8 @@ translated while also allowing formatted fields to be embedded using the same sy
 By using `Text::sprintf`, the placeholder with specifier **s** (%s) can be used for a string-variable within a translation.
 You can use the following specifiers:
 
-:::note
-See [Format Specifiers](./format-specifiers.md) to learn more.
+:::info
+The Page [Format Specifiers](./format-specifiers.md) goes into detail about the various specifiers.
 :::
 
 ## Single Variable
