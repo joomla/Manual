@@ -13,10 +13,11 @@ function outputs a string formatted using embedded formatting instructions. The 
 formatted using the same embedded formatting instructions.
 
 Joomla's `Text` class provides wrapper methods for the printf and sprintf functions allowing static text to be
-translated
-while also allowing formatted fields to be embedded using the same syntax as the PHP functions.
-By using `Text::sprintf`, the placeholder **%s** can be used for a variable string within a translation.
-You can use the following placeholders:
+translated while also allowing formatted fields to be embedded using the same syntax as the PHP functions.
+By using `Text::sprintf`, the placeholder with specifier **s** (%s) can be used for a string-variable within a translation.
+You can use the following specifiers:
+
+### List of Specifiers
 
 - **%b** The argument is treated as an integer and presented as a binary number.
 - **%c** The argument is treated as an integer and presented as the character with that ASCII value.
