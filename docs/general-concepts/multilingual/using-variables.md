@@ -31,8 +31,8 @@ You can use the following placeholders:
 - **%X** The argument is treated as an integer and presented as a hexadecimal number (with uppercase letters).
 
 :::note
-the list above gives a brief overview of the different placeholder value types further details can be found in the
-[Syntax of Format Specifiers](#syntax-of-format-specifiers) section.
+the list above gives an overview of the different placeholder value types. The types become particularly relevant in 
+combination with the [Format Specifiers](./format-specifiers.md).
 :::
 
 ## Single Variable
