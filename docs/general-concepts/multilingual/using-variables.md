@@ -17,23 +17,8 @@ translated while also allowing formatted fields to be embedded using the same sy
 By using `Text::sprintf`, the placeholder with specifier **s** (%s) can be used for a string-variable within a translation.
 You can use the following specifiers:
 
-### List of Specifiers
-
-- **%b** The argument is treated as an integer and presented as a binary number.
-- **%c** The argument is treated as an integer and presented as the character with that ASCII value.
-- **%d** The argument is treated as an integer and presented as a signed decimal number.
-- **%e** The argument is treated as scientific notation (e.g. 1.2e+2).
-- **%u** The argument is treated as an integer and presented as an unsigned decimal number.
-- **%f** The argument is treated as a float and presented as a floating-point number (locale aware).
-- **%F** The argument is treated as a float and presented as a floating-point number (non-locale aware).
-- **%o** The argument is treated as an integer and presented as an octal number.
-- **%s** The argument is treated and presented as a string.
-- **%x** The argument is treated as an integer and presented as a hexadecimal number (with lowercase letters).
-- **%X** The argument is treated as an integer and presented as a hexadecimal number (with uppercase letters).
-
 :::note
-the list above gives an overview of the different placeholder value types. The types become particularly relevant in 
-combination with the [Format Specifiers](./format-specifiers.md).
+See [Format Specifiers](./format-specifiers.md) to learn more.
 :::
 
 ## Single Variable
