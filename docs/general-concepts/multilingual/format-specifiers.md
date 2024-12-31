@@ -22,9 +22,9 @@ Format Specifiers
 
 ## Syntax of Directives
 
-| Order | 1.       | 2.   | 3.        | 4.      | 5.    | 6.        |
-|-------|----------|------|-----------|---------|-------|-----------|
-| **%** | Position | Sign | Alignment | Padding | Width | Precision |
+| Order | 1.   | 2.        | 3.      | 4.    | 5.        | 6.                 |
+|:-----:|------|-----------|---------|-------|-----------|--------------------|
+| **%** | Sign | Alignment | Padding | Width | Precision | **Specifier-Type** |
 
 ### Sign
 
@@ -58,7 +58,7 @@ Determines if the result should be left-justified or right-justified. The defaul
 here will make it left-justified.
 
 :::info
-A plus sign ('+') means put a '+' before positive numbers (see above) while a minus sign ('-') means left justify. 
+A plus sign ('+') means put a '+' before positive numbers (see above) while a minus sign ('-') means left justify.
 Both can be used together if required.
 :::
 
@@ -67,7 +67,8 @@ MOD_EXAMPLE_RIGHT_JUSTIFY="|%+6d|%+6d|"
 MOD_EXAMPLE_LEFT_JUSTIFY="|%-6d|%-6d|"
 MOD_EXAMPLE_FORCE_POSITIVE_LEFT_JUSTIFY="|%+-6d|%+-6d|"
 ```
-*Note: The Number **6** used in the example above refers to the Padding size of 6 characters. See [Padding](#padding) 
+
+*Note: The Number **6** used in the example above refers to the Padding size of 6 characters. See [Padding](#padding)
 for more information.*
 
 ```php
@@ -85,8 +86,8 @@ for more information.*
 ```
 
 :::note
-The example is encapsulated by a `<pre>` tag so that the browser does not replace the multiple spaces by a single one. 
-Alternatively, the CSS instruction `white-space: pre-wrap` can be used so that the whitespaces are not removed by 
+The example is encapsulated by a `<pre>` tag so that the browser does not replace the multiple spaces by a single one.
+Alternatively, the CSS instruction `white-space: pre-wrap` can be used so that the whitespaces are not removed by
 the browser.
 :::
 
@@ -151,11 +152,11 @@ The c Type specifier ignores padding & width.
 
 - Possible Values: `<Number>`
 
-Number of characters (minimum) that the conversion should result in. If the field width is specified in a placeholder 
+Number of characters (minimum) that the conversion should result in. If the field width is specified in a placeholder
 of `sprintf`, the generated output is filled to the specified minimum width.
 
 ```ini title="Setting width to 10 characters"
-MOD_EXAMPLE_WIDTH_MSG="[%10s]"
+MOD_EXAMPLE_WIDTH_MSG = "[%10s]"
 ```
 
 ```php
@@ -171,13 +172,12 @@ MOD_EXAMPLE_WIDTH_MSG="[%10s]"
 Width can be combined with the [Alignment Flag](#alignment):
 
 ```ini title="Setting width to 10 characters and align left justified"
-MOD_EXAMPLE_WIDTH_MSG="[%-10s]"
+MOD_EXAMPLE_WIDTH_MSG = "[%-10s]"
 ```
 
 ```plaintext title="Result left-justified"
 [Example   ]
 ```
-
 
 :::warning
 The c Type specifier ignores padding & width.
