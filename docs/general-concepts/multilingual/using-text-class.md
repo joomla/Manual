@@ -103,6 +103,11 @@ There's a lot of laundry in the laundry basket.
 
 More examples of the use of `sprintf` can be found [here](./using-variables.md).
 
+:::warning
+If the `sprintf` method is called with an invalid number of variables (for example, two arguments are expected but 
+only one is passed) this leads to a fatal PHP error that is not intercepted by Joomla.
+:::
+
 ### External Reference
 
 - [PHP Documentation sprintf](https://www.php.net/manual/en/function.sprintf.php)
@@ -122,6 +127,11 @@ Text::printf("COM_EXAMPLE_MY_STRING", "laundry basket")
 ```plaintext title="Result"
 There's a lot of laundry in the laundry basket.
 ```
+
+:::warning
+If the `printf` method is called with an invalid number of variables (for example, two arguments are expected but
+only one is passed) this leads to a fatal PHP error that is not intercepted by Joomla.
+:::
 
 ### External Reference
 
