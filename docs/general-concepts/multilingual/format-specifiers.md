@@ -6,6 +6,10 @@ title: Format Specifiers
 Format Specifiers
 =================
 
+Joomla!’s `Text::sprintf` method is a wrapper for the PHP `sprintf` method. In principle, all the information on the 
+official page in the PHP Docs can also be used for the use of `sprintf` in Joomla!
+See [sprintf PHP Documentation](https://www.php.net/manual/en/function.sprintf.php).
+
 ## List of Format Specifiers
 
 - **%b** The argument is treated as an integer and presented as a binary number.
