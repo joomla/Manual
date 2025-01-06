@@ -47,6 +47,8 @@ JALL="All together"
 ```
 
 ```php
+use Joomla\CMS\Language\Text;
+
 echo Text::alt('JALL', 'language'); // will generate a 'All' string in English but a "Toutes" string in French
 echo Text::alt('JALL', 'module');   // will generate a 'All' string in English but a "Tous" string in French
 ```
@@ -62,6 +64,8 @@ extension instead of the overwritten constant and its value, this can be achieve
 Automatic use of the correct language constant (pluralised) based on the transferred value.
 
 ```php title="mod_example Template File Plural example"
+use Joomla\CMS\Language\Text;
+
 echo Text::plural('MOD_EXAMPLE_N_ITEMS_FOUND', 2);
 ```
 
@@ -88,6 +92,8 @@ COM_EXAMPLE_MY_STRING="There's a lot of laundry in the %s."
 ```
 
 ```php title="Calling the translation and transferring a variable"
+use Joomla\CMS\Language\Text;
+
 echo Text::sprintf("COM_EXAMPLE_MY_STRING", "laundry basket")
 ```
 
@@ -104,6 +110,8 @@ The difference between `printf` and `sprintf` is that printf outputs the corresp
 **echo** is required.
 
 ```php title="Register the language string for JavaScript"
+use Joomla\CMS\Language\Text;
+
 Text::printf("COM_EXAMPLE_MY_STRING", "laundry basket")
 ```
 
@@ -126,6 +134,8 @@ COM_EXAMPLE_CONFIRM_DELETE="Are you sure you want to delete this item?"
 ```
 
 ```php title="Register the language string for JavaScript"
+use Joomla\CMS\Language\Text;
+
 Text::script('COM_EXAMPLE_CONFIRM_DELETE');
 ```
 
@@ -156,6 +166,8 @@ COM_EXAMPLE_ACTION_FAILED="The action failed. Please try again."
 ```
 
 ```php title="Registering multiple strings"
+use Joomla\CMS\Language\Text;
+
 Text::script('COM_EXAMPLE_CONFIRM_DELETE');
 Text::script('COM_EXAMPLE_SUCCESSFULLY_SAVED');
 Text::script('COM_EXAMPLE_ACTION_FAILED');
