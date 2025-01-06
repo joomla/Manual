@@ -131,3 +131,30 @@ MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG="The %2$s contains %1$s balls, so there are 
 ```txt title="Translated String using variables multiple times"
 The hat contains 7 balls, so there are 7 balls in the hat.
 ```
+
+## Incorrect number of arguments
+
+### Too few arguments / variables passed
+
+If the sprintf method is called with too few arguments than expected, this leads to a fatal php error 
+that **is not intercepted by Joomla**. For example, two variables are expected and defined within the translation but 
+only one is passed. An error message like this will be shown where the given (first) argument will be the language
+constant.
+
+```ini title="Defining language string that awaits two variables"
+MOD_EXAMPLE_INV_ARGS_CRASH="Custom String awaits two variables: %s and %s."
+```
+
+```php title="Calling the method with only one variable"
+use Joomla\CMS\Language\Text;
+
+Text::sprintf("MOD_EXAMPLE_INV_ARGS_CRASH", 12);
+```
+
+Will result in an error (404 - Page not found) in the Frontend containing a message like:
+
+```plaintext title="Error Message Example"
+2 arguments are required, 1 given
+```
+
+The Call Stack will show a language / Text based problem in combination with sprintf or printf.
