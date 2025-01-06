@@ -134,9 +134,17 @@ The hat contains 7 balls, so there are 7 balls in the hat.
 
 ## Incorrect number of arguments
 
+### Too many arguments / variables passed
+
+if the `sprintf` method is called with too many arguments than expected, the surplus variables are ignored.
+
+:::note
+The sprintf and printf methods generally support a ‘surplus’ variable. This can be used to pass options.
+:::
+
 ### Too few arguments / variables passed
 
-If the sprintf method is called with too few arguments than expected, this leads to a fatal php error 
+If the `sprintf` method is called with too few arguments than expected, this leads to a fatal php error 
 that **is not intercepted by Joomla**. For example, two variables are expected and defined within the translation but 
 only one is passed. An error message like this will be shown where the given (first) argument will be the language
 constant.
@@ -158,3 +166,16 @@ Will result in an error (404 - Page not found) in the Frontend containing a mess
 ```
 
 The Call Stack will show a language / Text based problem in combination with sprintf or printf.
+
+## Use Options Array
+
+The last argument can take an array of options where:
+
+- **jsSafe** (default: false) is a boolean to generate a javascript safe strings.
+- **interpretBackSlashes** (default: true) is a boolean to interpret backslashes \\->\, \n->new line, \t->tabulation.
+- **script** (default: false) is a boolean to indicate that the string will be push in the javascript language store.
+
+```php
+array('jsSafe'=>boolean, 'interpretBackSlashes'=>boolean, 'script'=>boolean)
+```
+
