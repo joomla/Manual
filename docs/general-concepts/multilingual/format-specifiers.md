@@ -10,6 +10,12 @@ Joomla!’s `Text::sprintf` method is a wrapper for the PHP `sprintf` method. In
 official page in the PHP Docs can also be used for the use of `sprintf` in Joomla!
 See [sprintf PHP Documentation](https://www.php.net/manual/en/function.sprintf.php).
 
+:::info
+Some of the examples on this page are encapsulated by a `<pre>` tag so that the browser does not replace the multiple 
+spaces by a single one. Alternatively, the CSS instruction `white-space: pre-wrap` can be used so that the whitespaces 
+are not removed by the browser.
+:::
+
 ## List of Format Specifiers
 
 - **%b** The argument is treated as an integer and presented as a binary number.
@@ -88,12 +94,6 @@ for more information.*
 |42    |-42   | 
 |+42   |-42   |
 ```
-
-:::note
-The example is encapsulated by a `<pre>` tag so that the browser does not replace the multiple spaces by a single one.
-Alternatively, the CSS instruction `white-space: pre-wrap` can be used so that the whitespaces are not removed by
-the browser.
-:::
 
 ### Padding
 
