@@ -24,7 +24,7 @@ The Page [Format Specifiers](./format-specifiers.md) goes into detail about the 
 ## Single Variable
 
 ```ini title="Language Strings containing Placeholder for variable"
-COM_EXAMPLE_MY_STRING = "The value of my transferred variable is %s and is included like this."
+COM_EXAMPLE_MY_STRING="The value of my transferred variable is %s and is included like this."
 ```
 
 ```php title="Calling the translation and transferring a variable"
@@ -36,7 +36,7 @@ echo Text::sprintf("COM_EXAMPLE_MY_STRING", $someVariable)
 Another (practical) example can be found in the contact component:
 
 ```ini title="COM_CONTACT Language File"
-COM_CONTACT_CHECKED_OUT_BY = "Checked out by %s"
+COM_CONTACT_CHECKED_OUT_BY="Checked out by %s"
 ```
 
 In the PHP code, the call looks like this:
@@ -53,7 +53,7 @@ Several variables can also be transferred to a language string; these are then p
 locations defined in the language string. The order of transfer is relevant here and cannot been changed.
 
 ```ini title="MOD_EXAMPLE Language File"
-MOD_EXAMPLE_MULTIVAR_STRING = "This string contains three placeholders: %s, %s, %s << They are placed in order"
+MOD_EXAMPLE_MULTIVAR_STRING="This string contains three placeholders: %s, %s, %s << They are placed in order"
 ```
 
 ```php title="mod_example Template File"
@@ -89,7 +89,7 @@ echo Text::sprintf('MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG', $location, $number);
 ```
 
 ```ini title="Translation using variables"
-MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG = "There are %s balls in the %s."
+MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG="There are %s balls in the %s."
 ```
 
 ```txt title="Translated String"
@@ -99,7 +99,7 @@ There are 7 balls in the hat.
 But if the translation is adjusted and should look like this instead, the variables are not set correctly:
 
 ```ini title="New Translation string results in wrong placement of variables"
-MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG = "The %s contains %s balls."
+MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG="The %s contains %s balls."
 ```
 
 ```txt title="Translated String with wrong placed variables"
@@ -110,7 +110,7 @@ This clearly nonsense. Rather than change the code, you can indicate in the tran
 the placeholders refer to. Change the translation to:
 
 ```ini title="New Translation String using placement Indicators"
-MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG = "The %2$s contains %1$s balls."
+MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG="The %2$s contains %1$s balls."
 ```
 
 ```txt title="Translated String with correct placed variables"
@@ -121,7 +121,7 @@ An additional added value of this method is that variables can also be used mult
 to specify them multiple times in the call:
 
 ```ini title="New Translation String using placement Indicators multiple times"
-MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG = "The %2$s contains %1$s balls, so there are %1$s balls in the %2$s."
+MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG="The %2$s contains %1$s balls, so there are %1$s balls in the %2$s."
 ```
 
 ```txt title="Translated String using variables multiple times"
