@@ -28,9 +28,9 @@ COM_EXAMPLE_MY_STRING="The value of my transferred variable is %s and is include
 ```
 
 ```php title="Calling the translation and transferring a variable"
-...
+use Joomla\CMS\Language\Text;
+
 echo Text::sprintf("COM_EXAMPLE_MY_STRING", $someVariable)
-...
 ```
 
 Another (practical) example can be found in the contact component:
@@ -42,9 +42,9 @@ COM_CONTACT_CHECKED_OUT_BY="Checked out by %s"
 In the PHP code, the call looks like this:
 
 ```php title="Calling the translation and transferring the user's name"
-...
+use Joomla\CMS\Language\Text;
+
 echo Text::sprintf("COM_CONTACT_CHECKED_OUT_BY", $checkoutUser->name)
-...
 ```
 
 ## Multiple Variables
@@ -57,6 +57,8 @@ MOD_EXAMPLE_MULTIVAR_STRING="This string contains three placeholders: %s, %s, %s
 ```
 
 ```php title="mod_example Template File"
+use Joomla\CMS\Language\Text;
+
 $a = "First String";
 $b = "Second String";
 $c = "Third String";
@@ -83,6 +85,8 @@ use **%d** for integers.
 :::
 
 ```php title="mod_example template file"
+use Joomla\CMS\Language\Text;
+
 $number = 7;
 $location = "hat";
 echo Text::sprintf('MOD_EXAMPLE_BALLS_IN_THE_BUCKET_MSG', $location, $number);

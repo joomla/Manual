@@ -10,6 +10,8 @@ Joomla language strings support singular & plural. The following example demonst
 call where `$ids` is an array of element id's:
 
 ```php title="mod_example Template File Plural example"
+use Joomla\CMS\Language\Text;
+
 echo Text::plural('MOD_EXAMPLE_N_ITEMS_FOUND', count($ids));
 ```
 
@@ -47,6 +49,8 @@ MOD_EXAMPLE_N_APPLES_MSG_OTHER="There are a lot of apples."
 If the method is now called with a value greater than 5:
 
 ```php title="Calling the Text::plural Method"
+use Joomla\CMS\Language\Text;
+
 $n = 6;
 echo Text::plural("MOD_EXAMPLE_N_APPLES_MSG", $n);
 ```
@@ -71,6 +75,8 @@ MOD_EXAMPLE_N_APPLES_MSG_MORE="There are %d apples."
 ```
 
 ```php title="Calling the Text::plural Method with MORE Constant"
+use Joomla\CMS\Language\Text;
+
 $n = 3;
 echo Text::plural("MOD_EXAMPLE_N_APPLES_MSG", $n);
 ```

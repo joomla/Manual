@@ -48,6 +48,8 @@ MOD_EXAMPLE_POSITIVE_NEGATIVE_NUMBER="This number %+d has prefixed whether it is
 ```
 
 ```php
+use Joomla\CMS\Language\Text;
+
 $positive_num = 42;
 $negative_num = -12;
 
@@ -82,6 +84,8 @@ MOD_EXAMPLE_FORCE_POSITIVE_LEFT_JUSTIFY="|%+-6d|%+-6d|"
 for more information.*
 
 ```php
+use Joomla\CMS\Language\Text;
+...
 <pre>
     <?php echo Text::sprintf("MOD_EXAMPLE_RIGHT_JUSTIFY", 42, -42); ?> <br>
     <?php echo Text::sprintf("MOD_EXAMPLE_LEFT_JUSTIFY", 42, -42); ?> <br>
@@ -140,6 +144,8 @@ here:
 ```
 
 ```php title="Encapsulating the Translation to render multiple whitespaces"
+use Joomla\CMS\Language\Text;
+
 $num = 500;
 echo '<span class="padding-support">' . Text::sprintf("MOD_EXAMPLE_PADDING_MSG", $num) . '</span>';
 ```
@@ -164,6 +170,8 @@ MOD_EXAMPLE_WIDTH_MSG = "[%10s]"
 ```
 
 ```php
+use Joomla\CMS\Language\Text;
+...
 <pre>
     <?php echo Text::sprintf("MOD_EXAMPLE_WIDTH_MSG", "Example"); ?>
 </pre>
@@ -199,6 +207,8 @@ MOD_EXAMPLE_PI_MSG="The number PI is: %.4f"
 ```
 
 ```php text="Example Translation implementation using precisision"
+use Joomla\CMS\Language\Text;
+
 $pi = 3.1415926536
 echo Text::sprintf("MOD_EXAMPLE_PI_MSG", $pi)
 ```

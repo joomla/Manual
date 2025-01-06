@@ -103,6 +103,10 @@ There's a lot of laundry in the laundry basket.
 
 More examples of the use of `sprintf` can be found [here](./using-variables.md).
 
+### External Reference
+
+- [PHP Documentation sprintf](https://www.php.net/manual/en/function.sprintf.php)
+
 ## Using Text::printf
 
 Like the `sprintf` method, the `printf` method is a wrapper for the standard PHP printf function.
@@ -118,6 +122,10 @@ Text::printf("COM_EXAMPLE_MY_STRING", "laundry basket")
 ```plaintext title="Result"
 There's a lot of laundry in the laundry basket.
 ```
+
+### External Reference
+
+- [PHP Documentation printf](https://www.php.net/manual/en/function.printf.php)
 
 ## Using Text::script
 
