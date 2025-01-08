@@ -15,7 +15,7 @@ Joomla aims to achieve and maintain WCAG 2.2 AA conformance. WCAG (Web Content A
 
 To learn more about WCAG 2.2 guidelines, visit the [official WCAG 2.2 documentation](https://www.w3.org/WAI/WCAG22/). 
 
-**ARiA**
+**ARIA**
 In addition to WCAG, ARIA (Accessible Rich Internet Applications) is an important set of technical specifications that enhance web accessibility, particularly for dynamic content and complex user interface elements. ARIA allows developers to add roles, states, and properties to HTML elements to provide better context and interaction for users with disabilities, especially those using screen readers. 
 
 ARIA is crucial for improving accessibility because it helps bridge gaps in accessibility for interactive elements like forms or modals.
