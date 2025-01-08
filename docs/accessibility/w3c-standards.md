@@ -1,11 +1,13 @@
 ---
 sidebar_position: 2
 ---
+
 W3C Standards
-==============
+=============
+
 Web accessibility is based on W3C standards, and Joomla aims to follow them. Here is a very brief explanation.
 
-**WCAG**
+## WCAG
 Joomla aims to achieve and maintain WCAG 2.2 AA conformance. WCAG (Web Content Accessibility Guidelines) is a set of guidelines designed to ensure web content is accessible to all users, including those with disabilities. These guidelines are based on four core principles: Perceivable, Operable, Understandable, and Robust (POUR). 
 
 - **Perceivable**: Information and user interface components must be presented in ways that users can perceive (e.g., text alternatives for non-text content).
@@ -15,7 +17,7 @@ Joomla aims to achieve and maintain WCAG 2.2 AA conformance. WCAG (Web Content A
 
 To learn more about WCAG 2.2 guidelines, visit the [official WCAG 2.2 documentation](https://www.w3.org/WAI/WCAG22/). 
 
-**ARIA**
+## ARIA
 In addition to WCAG, ARIA (Accessible Rich Internet Applications) is an important set of technical specifications that enhance web accessibility, particularly for dynamic content and complex user interface elements. ARIA allows developers to add roles, states, and properties to HTML elements to provide better context and interaction for users with disabilities, especially those using screen readers. 
 
 ARIA is crucial for improving accessibility because it helps bridge gaps in accessibility for interactive elements like forms or modals.
@@ -25,7 +27,7 @@ Joomla supports ARIA in its core, and extension developers are encouraged to use
 
 Extension developers need not master every detail of these guidelines. For commonly used elements and functions we'll provide code examples and snippets demonstrating how Joomla implements accessibility features to meet these standards.
 
-**ATAG**
+## ATAG
 ATAG provides guidelines aimed at making authoring tools, such as Joomla, more accessible. It focuses on ensuring that tools used to create web content are usable by people with disabilities, both for content creation and for maintaining accessibility standards in the final product.
 
 For more information about **ATAG** (Authoring Tool Accessibility Guidelines), you can visit the official W3C documentation:
@@ -34,8 +36,3 @@ For more information about **ATAG** (Authoring Tool Accessibility Guidelines), y
 Extension developers who follow WCAG recommendations and carefully review Joomla's code and our provided snippets contribute to keeping Joomla a fully accessible authoring tool, promoting inclusivity and compliance with accessibility standards.
 Example
 A component developer, such as one creating a form generator, should first ensure that the generator itself is accessible and conforms to WCAG 2.2 AA standards. Then, they must verify that the generated output on the website is fully accessible as well.
-
-
-This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
-
-:::
