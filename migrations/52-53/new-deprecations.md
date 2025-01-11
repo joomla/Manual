@@ -54,6 +54,7 @@ The first line is a docblock comment, which provides a hint for the IDE for the 
 ## Two methods deprecated to facilitate new functionality.
 ### postProcessStore() & batchTag()
 #### Declared in 5.3 for removal in 7.0.
+### PR [#40613](https://github.com/joomla/joomla-cms/pull/40613)
 
 #### Explanation:
 ``` new postStore()
