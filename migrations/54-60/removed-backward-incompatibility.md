@@ -64,3 +64,17 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### None namespaced indexer file removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44646
+- Folder: administrator/components/com_finder/helpers/indexer
+- Description: The files in /administrator/components/com_finder/helpers/indexer were containing the none namespaced classes and are left only for legacy include code. They are empty as class alias do exist for them already. The include code in extensions can be removed and the namespaced classes should be used as they are autoloaded. For example you can use 
+```php
+// Old:
+require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/helper.php';
+FinderIndexerHelper::getFinderPluginId();
+
+// New:
+Joomla\Component\Finder\Administrator\Helper\FinderHelper::getFinderPluginId();
+```
