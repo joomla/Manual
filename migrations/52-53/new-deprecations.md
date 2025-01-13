@@ -51,25 +51,32 @@ public function display($tpl = null)
 ```
 The first line is a docblock comment, which provides a hint for the IDE for the actual model that is used. The second line will retrieve the model set in the view. If you have more than one model in a view, you can provide it with a parameter to select the right model. The last two lines retrieve the actual data from the model. With the first two lines, IDEs can hint at the available methods in the model and now the returned values from those methods, making it possible to find issues further down the line.
 
-## Two methods deprecated to facilitate new functionality.
-### postProcessStore() & batchTag()
-#### Declared in 5.3 for removal in 7.0.
-### PR [#40613](https://github.com/joomla/joomla-cms/pull/40613)
+## AdminModel::postProcessStore()
 
-#### Explanation:
-``` new postStore()
-    public function postStoreProcess(TableInterface $table, $newTags = [], $replace = true)
-    {
-        $this->postStore($table, $newTags, $replace);
-    }
-```
+**namespace**: \Joomla\CMS\MVC\Model;
+
+PR [#40613](https://github.com/joomla/joomla-cms/pull/40613)
+
 postStoreProcess() replaced by postStore() preferred method, adds TableInterface to method.
 
-
-``` new batchTags()
-    protected function batchTag($value, $pks, $contexts)
-    {
-        return $this->batchTags($value, $pks, $contexts);
-    }
+```php title="New method AdminModel::postStore() replaces AdminModelpostStoreProcess()"
+public function postStoreProcess(TableInterface $table, $newTags = [], $replace = true)
+{
+    $this->postStore($table, $newTags, $replace);
+}
 ```
+
+## AdminModel::batchTag()
+
+**namespace**: \Joomla\CMS\MVC\Model;
+
+PR [#40613](https://github.com/joomla/joomla-cms/pull/40613)
+
 batchTag() method replaced with batchTags preferred method providing more accurate descriptive title.
+
+```php title="New method AdminModel::batchTags() replaces AdminModelbatchTag()"
+protected function batchTag($value, $pks, $contexts)
+{
+    return $this->batchTags($value, $pks, $contexts);
+}
+```
