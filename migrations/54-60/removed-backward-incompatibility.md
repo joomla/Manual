@@ -64,3 +64,16 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### App variable is removed in plugins
+
+- PR: https://github.com/joomla/joomla-cms/pull/44647
+- Folder: plugins
+- Description: The `$app` variable is left in some plugins for layout overrides of the plugins/tmpl folder and is not used anymore in the plugin class itself and the respective layouts. The `getApplication` function should be used instead  
+```php
+// Old:
+$app = $this->app;
+
+// New:
+$app = $this->getApplication();
+```
