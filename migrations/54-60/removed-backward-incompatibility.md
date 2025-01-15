@@ -64,3 +64,20 @@ echo $article->get('title');
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
 echo $article->title;
 ```
+
+### Removed isCli function in application classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44611
+- Files: libraries/src/Application/CMSApplicationInterface.php
+- Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+```php
+// Old:
+if ($app->isCli()) {
+    // Do your stuff
+}
+
+// New:
+if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
+    // Do your stuff
+}
+```
