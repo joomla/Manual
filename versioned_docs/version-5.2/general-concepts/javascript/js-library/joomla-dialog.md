@@ -153,7 +153,7 @@ JoomlaDialog.alert('Chase ball of string eat plants, meow', 'Cat Header')
   });
 
 // Confirmation
-JoomlaDialog.confirm('Cheese on toast airedale the big cheese?', Mouse Header')
+JoomlaDialog.confirm('Cheese on toast airedale the big cheese?', 'Mouse Header')
   .then((result) => { 
     console.log(result ? 'Okay' : 'Not okay'); 
   });
