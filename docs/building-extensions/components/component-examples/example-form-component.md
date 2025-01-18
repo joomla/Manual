@@ -125,9 +125,9 @@ Path: components/com_exampleform/src/View/ExampleformReturn/HtmlView.php
 
 This simply has a function to accept the data from the Controller, which it stores locally.
 
-## Site ExampleformReturn tmpl file
+## Site exampleformreturn tmpl file
 
-Path: components/com_exampleform/tmpl/exampleformReturn/default.php
+Path: components/com_exampleform/tmpl/exampleformreturn/default.php
 
 This simply outputs the raw and filtered data which was passed to the view.
 
