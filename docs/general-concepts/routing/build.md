@@ -61,7 +61,7 @@ $url = Route::_('index.php?option=com_content&view=article&id=21&Itemid=6); ?>
 
 but **the router may well ignore this and base the URL on a completely different menuitem**.
 
-However, the flexibility of Joomla is such that if you don't like the way it selects the menuitem then you can write a plugin to override the default functionality with your own defined algorithm, as shown in [system plugin router rules](../../building-extensions/plugins/system-plugin-router-rules.md). 
+However, the flexibility of Joomla is such that if you don't like the way it selects the menuitem then you can write a plugin to override the default functionality with your own defined algorithm, as shown in [system plugin router rules](../../building-extensions/plugins/plugin-examples/system-plugin-router-rules.md). 
 
 The selected menuitem provides the starting segment for our SEF URL, based on the menuitem's Alias field. If the menuitem is in a submenu, then the aliases of the parent menuitems going up through the menu tree are prepended as segments also - this is actually the `route` property of the menuitem, described in [Menus and Menuitems](../menus-menuitems.md#properties-and-parameters).
 

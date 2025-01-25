@@ -1,9 +1,13 @@
 ---
-title: Basic Content Plugin
+title: Plugin Tutorial
 sidebar_position: 3
 ---
+
+Plugin Tutorial
+===============
+
 # Introduction
-In this section we develop a plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
+In this section we develop a basic content plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
 On my Joomla instance {sitename} the default editor is {editor}.
 ```
@@ -169,7 +173,7 @@ Ensure that this matches your class in your `src/Extension` directory.
 ## Extension Class
 This is the main code of the plugin. Hopefully the comments in the code explain what is going on.
 
-As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
+As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes.md), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
 
 ```php
 [$context, $article, $params, $page] = array_values($event->getArguments());

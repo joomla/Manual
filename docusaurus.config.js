@@ -62,6 +62,7 @@ const config = {
   organizationName: 'joomla',
   projectName: 'joomla-cms',
   url: 'https://manual.joomla.org',
+  trailingSlash: true,
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -84,25 +85,35 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.1',
+          lastVersion: '5.2',
           docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi-docs
-          /*lastVersion: '4.3',*/
           versions: {
             'current': {
-              label: '5.2 (upcoming)',
-              banner: 'unreleased'
+              label: '5.3 (Upcoming)',
+              banner: 'unreleased',
+              noIndex: false,
+            },
+            '5.2': {
+              label: '5.2 (Current)',
+              noIndex: false,
             },
             '5.1': {
-              label: '5.1',
+              label: '5.1 (Archived)',
+              banner: 'unmaintained',
+              noIndex: true,
             },
             '5.0': {
-              label: '5.0',
+              label: '5.0 (Archived)',
+              banner: 'unmaintained',
+              noIndex: true,
             },
             '4.4': {
-              label: '4.4',
-            }
+              label: '4.4 (Security)',
+              banner: 'none',
+              noIndex: false,
+            },
           },
-          /*onlyIncludeVersions: ['current', '4.3'], */
+          /* onlyIncludeVersions: ['current', '5.2', '4.4'], */
           remarkPlugins: [
               // Configure the plugin for parsing the API links
               [apiLinkPlugin,{
@@ -182,27 +193,6 @@ const config = {
               },
             ],
             dropdownItemsAfter: [
-              {
-                type: 'html',
-                value: '<hr class="dropdown-separator">',
-              },
-              {
-                type: 'html',
-                className: 'dropdown-archived-versions',
-                value: '<b>Archived versions</b>',
-              },
-              {
-                label: '3.x',
-                href: 'https://docs.joomla.org/Category:Joomla!_3.0',
-              },
-              {
-                label: '2.5',
-                href: 'https://docs.joomla.org/Category:Joomla!_2.5',
-              },
-              {
-                type: 'html',
-                value: '<hr class="dropdown-separator">',
-              },
               {
                 to: '/versions',
                 label: 'All versions',

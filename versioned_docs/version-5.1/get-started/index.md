@@ -12,7 +12,7 @@ In this section we run through the tools and processes required to set up a loca
 the ability to get the most out of the guide as a developer.
 
 ## Quick start
-To get started with developing your own extensions for Joomla you'll need to have a local web environment set up - eg using [WAMP](https://www.wampserver.com/) or [XAMPP](https://www.apachefriends.org/).
+To get started with developing your own extensions for Joomla you'll need to have a local web environment set up - eg using [WAMP](https://www.wampserver.com/), [Bearsampp](https://bearsampp.com) or [XAMPP](https://www.apachefriends.org/).
 
 It's very useful, though not essential, to have git and a [PHP IDE](./ide/index.md) installed as well.
 
