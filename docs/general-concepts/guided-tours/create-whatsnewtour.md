@@ -60,7 +60,7 @@ right
 
 ## Step 3: Install the Guided Tours toolkit
 
-The toolkit can be found at ``https://github.com/joomla-extensions/tours-toolkit``.
+The toolkit can be found at [the toolkit extension GitHub page](https://github.com/joomla-extensions/tours-toolkit).
 
 ## Step 4: Export the tour
 
