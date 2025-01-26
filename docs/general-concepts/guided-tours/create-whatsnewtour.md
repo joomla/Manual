@@ -66,7 +66,7 @@ The toolkit can be found at [the toolkit extension GitHub page](https://github.c
 
 Go to the newly created tour.
 Select Export (in the top right end corner), and select 'SQL + INI Export'.
-This generates the code necessary for importing tours through code.
+This generates the code necessary for importing tours through code. It actually generates the language keys even though the tour was created in plain English.
 The file can be found in your browser's download folder.
 
 ## Step 5: Create the PR
@@ -165,3 +165,8 @@ UPDATE "#__guidedtours" SET "autostart" = 0 WHERE "uid" = 'joomla-whatsnew-X-YY'
 
 where YY is the previous minor release number.
 For instance, if the PR is for the version 5.3, YY is 2.
+
+## Step 6: Test the PR (turn it into a draft)
+
+Make sure all goes according to plan before requesting users to test. Do this by setting the PR to draft, wait until the system validates it and creates downloadable files.
+Use the generated files (don't run a full install or else you won't have the tour included).
