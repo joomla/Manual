@@ -77,3 +77,26 @@ $app = $this->app;
 // New:
 $app = $this->getApplication();
 ```
+
+### JCOMPAT_UNICODE_PROPERTIES constant got removed in FormRule class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44662
+- File: libraries/src/Form/FormRule.php
+- Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
+
+
+### createThumbs function got removed from the image class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44663
+- File: libraries/src/Image/Image.php
+- Description: The `createThumbs` function in the `Image` class got removed as the function `createThumbnails` should be used instead. For example you can use 
+
+```php
+// Old:
+$image = new Image($path);
+$image->createThumbs('50x50');
+
+// New:
+$image = new Image($path);
+$image->createThumbnails('50x50');
+```
