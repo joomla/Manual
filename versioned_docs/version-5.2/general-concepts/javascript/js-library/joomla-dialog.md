@@ -75,8 +75,10 @@ dialog.popupButtons = [
 
 ### Static methods
 
-- `JoomlaDialog.alert(text)` Show a text dialog, with one "okay" button. Returns Promise, that resolves when User closes dialog.
-- `JoomlaDialog.confirm(text)` Show a text dialog, with "Yes/No" buttons. Returns Promise, that resolves when User click one of buttons, with result `true` or `false`.
+- `JoomlaDialog.alert(bodytext, headertext)` Show a text dialog, with one "okay" button. Returns Promise, that resolves when User closes dialog.
+- `JoomlaDialog.confirm(bodytext, headertext)` Show a text dialog, with "Yes/No" buttons. Returns Promise, that resolves when User click one of buttons, with result `true` or `false`.
+
+`.confirm()` and `.alert()` methods take an optional second parameter which will be the header text. If missing the header text defaults to **Info** 
 
 ## Events
 
@@ -145,13 +147,13 @@ dialog.show();
 import JoomlaDialog from 'joomla.dialog';
 
 // Alert
-JoomlaDialog.alert('Chase ball of string eat plants, meow')
+JoomlaDialog.alert('Chase ball of string eat plants, meow', 'Cat Header')
   .then(() => { 
     console.log('All done'); 
   });
 
 // Confirmation
-JoomlaDialog.confirm('Cheese on toast airedale the big cheese?')
+JoomlaDialog.confirm('Cheese on toast airedale the big cheese?', 'Mouse Header')
   .then((result) => { 
     console.log(result ? 'Okay' : 'Not okay'); 
   });
