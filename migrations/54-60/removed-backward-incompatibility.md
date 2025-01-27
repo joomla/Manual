@@ -65,6 +65,13 @@ $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article
 echo $article->title;
 ```
 
+### JCOMPAT_UNICODE_PROPERTIES constant got removed in FormRule class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44662
+- File: libraries/src/Form/FormRule.php
+- Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
+
+
 ### createThumbs function got removed from the image class
 
 - PR: https://github.com/joomla/joomla-cms/pull/44663
