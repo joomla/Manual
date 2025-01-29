@@ -15,7 +15,7 @@ This site holds information for developers of Joomla! extensions: components, mo
 
 The people involved are often the same. With the passage of time, independent developers often become core developers and vice-versa. So this documentation should help any kind of developer. Everything needed to understand Joomla code development should be found here.
 
-However, the documentation is new and incomplete. If you would like to contribute you can do so using one of two approaches:
+However, the documentation is incomplete. If you would like to contribute you can do so using one of two approaches:
 
 ### Simple changes
 
