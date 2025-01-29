@@ -3,18 +3,24 @@ sidebar_position: 0
 title: Introduction
 ---
 
-Welcome to the Joomla! Programmers Documentation for Joomla 5.3
-===============================================================
+Joomla! Programmers Documentation
+=================================
 
-This documentation hold information for developers of templates, modules, plugins, components, libraries.
-In Joomla! context all kind of this software are called extension. People often split extensions in to 2 categories.
+## Welcome
 
-1. Core extension - Extensions which are shipped with Joomla installation package
-2. 3rd party extensions - Extensions developed not by Joomla and installed separately
+This site holds information for developers of Joomla! extensions: components, modules, libraries, plugins and templates. Extensions are sometimes considered to fall into one of two categories:
 
-But basically it shouldn't matter if the extension is provided by Joomla or by an external developer.
+1. **Joomla! Core extensions** are produced by Joomla and shipped with Joomla installation packages.
+2. **Third party extensions** are produced by independent developers and are installed separately.
 
-This manual should help any kind of developer, if you are a template creator or just want to write the next
-Joomla shop system. Everything you need to understand Joomla development should be found here.
-If something is missing (this chance is really since we getting started this new documentation) please don't
-hasitate to contribute with a [github pull request](https://github.com/joomla/Manual/) to improve the manual for all of us.
+The people involved are often the same. With the passage of time, independent developers often become core developers and vice-versa. So this documentation should help any kind of developer. Everything needed to understand Joomla code development should be found here.
+
+However, the documentation is new and incomplete. If you would like to contribute you can do so using on of two approaches:
+
+### Simple changes
+
+At the bottom of each page there is an *Edit this page* link. Select the link to go to the page source on GitHub. If you make changes there GitHub will guide you through committing the changes to your fork of the Manual repository on GitHub and then making a pull request.
+
+### Complex changes
+
+Make your own local clone of your own GitHub fork of the Manual and test your changes before making a pull request. There are instructions on how to do this in the [GitHub Example 1: This Manual](./get-started/git/github-manual.md) page.
