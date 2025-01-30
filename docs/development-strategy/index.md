@@ -3,7 +3,7 @@ title: Development Strategy
 sidebar_position: 1
 ---
 Joomla\! Development Strategy
-=============
+=============================
 
 ## Introduction
 
