@@ -50,3 +50,8 @@ public function display($tpl = null)
 }
 ```
 The first line is a docblock comment, which provides a hint for the IDE for the actual model that is used. The second line will retrieve the model set in the view. If you have more than one model in a view, you can provide it with a parameter to select the right model. The last two lines retrieve the actual data from the model. With the first two lines, IDEs can hint at the available methods in the model and now the returned values from those methods, making it possible to find issues further down the line.
+
+## Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')` 
+
+Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')`. Use WebAssetManager instead.
+PR: https://github.com/joomla/joomla-cms/pull/43396
