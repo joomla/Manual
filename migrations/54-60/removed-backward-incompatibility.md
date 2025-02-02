@@ -116,3 +116,6 @@ $image->createThumbs('50x50');
 $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
+
+### voku/portable-utf8 composer library
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself. If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
