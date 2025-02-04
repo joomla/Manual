@@ -116,3 +116,8 @@ $image->createThumbs('50x50');
 $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
+
+### Client id attribute removed in form models cleanCache function
+
+- PR: https://github.com/joomla/joomla-cms/pull/44637
+- Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
