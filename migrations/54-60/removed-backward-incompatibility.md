@@ -115,6 +115,8 @@ $image->createThumbs('50x50');
 // New:
 $image = new Image($path);
 $image->createThumbnails('50x50');
+```
+
 ### Removed isCli function in application classes
 
 - PR: https://github.com/joomla/joomla-cms/pull/44611
