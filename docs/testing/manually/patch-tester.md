@@ -21,7 +21,7 @@ Download the latest [Patch Tester zip file](https://github.com/joomla-extensions
 
 ## Fetch data
 
-In the *Joomla! Patch Tester* page select the **Fetch Data** button. After a few seconds you will see a list of items for testing (224 at the time of writing, February 2025, but this changes hourly).
+In the *Joomla! Patch Tester* page select the **Fetch Data** button. After a few seconds you will see a list of items for testing (224 in the example screenshot below but this changes hourly).
 
 It is worth spending some time on examination of the list. For example the first issue marked as a **bug** in red does not appear until page 3 today (10 items per page). The following screenshot is of page 4 today:
 

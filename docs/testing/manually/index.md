@@ -67,7 +67,7 @@ The `composer install` and `npm ci` stages generate numerous lines of output inc
 
 Login to the backend using the administrator credentials you set during the installation process. The *Welcome to Joomla!* guided tour should auto-start. You can take the tour, Cancel it or Hide Forever. As this is a test site it is probably best to select *No* to the *Help us make Joomla! better!* message.
 
-In the title bar you will see the installed version. At the time of writing (February 2025) with the above instructions this was 5.3.0-alpha4-dev.
+In the title bar you will see the installed version, for example 5.3.0-alpha4-dev.
 
 You might like to change some Global Configuration values. For example, a default list limit of 10 is probably enough for testing; and you might like to change the Session Lifetime to 60 minutes to give you more time to think.
 
