@@ -3,7 +3,7 @@ sidebar_position: 2
 title: Combo Form Field
 ---
 
-The **combo** form field type provides a text field, which offers a list list of options to select from. The options do not appear as a dropdown list but are filtered and shown as a popover once 2 or more characters are typed.
+The **combo** form field type provides a text field, which offers a list of options to select from. The options do not appear as a dropdown list but are filtered and shown as a popover once 2 or more characters are typed.
 
 - **type** (mandatory) must be *combo*.
 - **name** (mandatory) is the unique name of the field.
@@ -41,7 +41,7 @@ If you wish to have something more like a comboBox where the user can see all th
 
 ## Example override of layout file to use displaylist
 
-This is partial code to replace lines from 52`// Initialize some field attributes.` to the end in your copy of the file `/layouts/joomla/form/field/combo.php` in your component or template `layouts` folder.
+This is partial code to replace  in your copy of the file `/layouts/joomla/form/field/combo.php` lines from 52`// Initialize some field attributes.` to the end in the original file. Your copy should be in your component or template folder `layouts/joomla/form/field/combo.php`
 
 ```php
 // Initialize some field attributes.
@@ -51,7 +51,7 @@ $attr .= !empty($readonly) ? ' readonly' : '';
 $attr .= !empty($disabled) ? ' disabled' : '';
 $attr .= !empty($required) ? ' required' : '';
 $attr .= !empty($description) ? ' aria-describedby="' . ($id ?: $name) . '-desc"' : '';
-$attr .= !empty($hint) ? ' placeholder="'.$hint.'"' : ' placeholder="click or type"';
+$attr .= !empty($hint) ? ' placeholder="'.htmlspecialchars($hint, ENT_QUOTES, 'UTF-8').'"' : ' placeholder="click or type"';
 
 // Initialize JavaScript field attributes.
 $attr .= !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
