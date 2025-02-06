@@ -236,7 +236,7 @@ class HelloworldConsolePlugin extends CMSPlugin implements SubscriberInterface
 ## Command file
 The file below handles the execution of the hello:world command.
 
-```php title="plg_helloworld_cli/src/CliCommand/RunHelloworldCommand.php"
+```php title="plg_helloworld_cli/src/CliCommand/RunHelloCommand.php"
 <?php
 namespace My\Plugin\Console\Helloworld\CliCommand;
 

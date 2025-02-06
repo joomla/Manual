@@ -10,6 +10,7 @@ steps:
     commands:
       - npm install
       - npm run build
+      - mv webserver/.htaccess build
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
@@ -47,6 +48,6 @@ steps:
 
 ---
 kind: signature
-hmac: 3d1303abd175ffda3aec141c6ea71d541f50f3c3e0752a68330fde5560386a58
+hmac: ae910acaafbf7e06bea4e33c509dbabe08e1edaba7f175d91db4a880030c7cc4
 
 ...

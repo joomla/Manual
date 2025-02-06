@@ -65,6 +65,81 @@ $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article
 echo $article->title;
 ```
 
+### None namespaced indexer file removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44646
+- Folder: administrator/components/com_finder/helpers/indexer
+- Description: The files in /administrator/components/com_finder/helpers/indexer were containing the none namespaced classes and are left only for legacy include code. They are empty as class alias do exist for them already. The include code in extensions can be removed and the namespaced classes should be used as they are autoloaded. For example you can use 
+
+```php
+// Old:
+require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/helper.php';
+FinderIndexerHelper::getFinderPluginId();
+
+// New:
+Joomla\Component\Finder\Administrator\Helper\FinderHelper::getFinderPluginId();
+```
+
+### App variable is removed in plugins
+
+- PR: https://github.com/joomla/joomla-cms/pull/44647
+- Folder: plugins
+- Description: The `$app` variable is left in some plugins for layout overrides of the plugins/tmpl folder and is not used anymore in the plugin class itself and the respective layouts. The `getApplication` function should be used instead  
+
+```php
+// Old:
+$app = $this->app;
+
+// New:
+$app = $this->getApplication();
+```
+
+### JCOMPAT_UNICODE_PROPERTIES constant got removed in FormRule class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44662
+- File: libraries/src/Form/FormRule.php
+- Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
+
+
+### createThumbs function got removed from the image class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44663
+- File: libraries/src/Image/Image.php
+- Description: The `createThumbs` function in the `Image` class got removed as the function `createThumbnails` should be used instead. For example you can use 
+
+```php
+// Old:
+$image = new Image($path);
+$image->createThumbs('50x50');
+
+// New:
+$image = new Image($path);
+$image->createThumbnails('50x50');
+```
+
+### Client id attribute removed in form models cleanCache function
+
+- PR: https://github.com/joomla/joomla-cms/pull/44637
+- Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
+
+
+### Removed isCli function in application classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44611
+- Files: libraries/src/Application/CMSApplicationInterface.php
+- Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+```php
+// Old:
+if ($app->isCli()) {
+    // Do your stuff
+}
+
+// New:
+if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
+    // Do your stuff
+}
+```
+
 ### JPATH_PLATFORM constant got removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44638
@@ -76,4 +151,3 @@ echo $article->title;
 
 // New:
 \defined('_JEXEC') or die;
-```

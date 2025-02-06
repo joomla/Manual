@@ -3,12 +3,6 @@ sidebar_position: 4
 title: "GitHub Example 2: Joomla! CMS"
 ---
 
-:::caution TODO
-
-This page is unfinished, but Cliff is working on it!
-
-:::
-
 ## Getting Started
 
 If you would like to contribute to Joomla! core code you will need a [GitHub](https://github.com/) account. It is free and takes moments to set up. You will also need a working [LMWX]AMP stack on your local laptop or workstation. You will almost certainly need an IDE too! 
