@@ -55,3 +55,8 @@ The first line is a docblock comment, which provides a hint for the IDE for the 
 
 Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')`. Use WebAssetManager instead.
 PR: https://github.com/joomla/joomla-cms/pull/43396
+
+## Deprecate the namespace property of the ComponentRecord class
+
+Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
+PR: https://github.com/joomla/joomla-cms/pull/44754

@@ -116,3 +116,26 @@ $image->createThumbs('50x50');
 $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
+
+### Client id attribute removed in form models cleanCache function
+
+- PR: https://github.com/joomla/joomla-cms/pull/44637
+- Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
+
+
+### Removed isCli function in application classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44611
+- Files: libraries/src/Application/CMSApplicationInterface.php
+- Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+```php
+// Old:
+if ($app->isCli()) {
+    // Do your stuff
+}
+
+// New:
+if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
+    // Do your stuff
+}
+```
