@@ -55,6 +55,7 @@ if ($this->item->created !== null) {
 - PR: https://github.com/joomla/joomla-cms/pull/42961
 - File: libraries/src/MVC/Model/AdminModel.php
 - Description: The `AdminModel` class does return a `stdClass` object in the `getItem` function instead of a `CMSObject`. This means that all the deprecated functions of `CMSObject` are not available anymore. Mainly the set and get function should be replaced accordingly as documented in the `CMSObject` class or the respective traits. For example you can use 
+
 ```php
 // Old:
 $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
@@ -128,6 +129,7 @@ $image->createThumbnails('50x50');
 - PR: https://github.com/joomla/joomla-cms/pull/44611
 - Files: libraries/src/Application/CMSApplicationInterface.php
 - Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+
 ```php
 // Old:
 if ($app->isCli()) {
@@ -145,9 +147,11 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/44638
 - File: All bootsrapping files
 - Description: The `JPATH_PLATFORM` is an old constant and should not be used if the Joomla core got correctly bootstrapped. Change your checks to `_JEXEC`
+
 ```php
 // Old:
 \defined('JPATH_PLATFORM') or die;
 
 // New:
 \defined('_JEXEC') or die;
+```
