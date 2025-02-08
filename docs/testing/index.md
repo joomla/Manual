@@ -7,11 +7,18 @@ Testing
 
 ## Overview
 
-Testing Software is an important part of software development. For Joomla! we have different levels of testing:
+Testing is an important part of software development, whether for a bugfix or new functionality. For Joomla! there are two approaches to testing: *Automated Testing* and *Manual Testing*.
 
 ### Automated Testing
 
-For the automated testing we are using a continuous integration (CI) server drone. Any change that is made runs a series of tests on the CI system. We test if the code style for PHP, CSS and javascript is correct, run unit test for the supported PHP versions and run end to end tests. All this not only runs on different PHP version we are also testing different database version. At the end of the test we create an installable package with the changes included to support our manually testing. If something fails we save information about the reason.
+For automated testing a continuous integration (CI) server drone is used. Any proposed change to the code is checked with a series of CI system tests that include:
 
-### Manually Testing
-While automated testing is more focused on making sure that a change doesn't break existing functionality, is manually testing focused on the change itself. Always tow people have to confirm that a change does for what is made. This can be a bugfix or new functionality.
+- Code style validation for PHP, CSS and javascript.
+- Unit tests for supported PHP versions.
+- End to end tests on different PHP versions and different database versions.
+
+At the end of the test run an installable package is created with the changes included. This can be used to support manual testing. Any test failure is reported for the code author to take corrective action.
+
+### Manual Testing
+
+While automated testing is more focused on making sure that a change does not break existing functionality,  manual testing is focused on the change itself. Two testers are required to confirm that a change does what it is supposed to do. The code author may not be one of the testers! 
