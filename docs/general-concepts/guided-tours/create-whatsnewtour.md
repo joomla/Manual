@@ -7,9 +7,11 @@ In the following documentation, we explain how a `What's New tour` can be create
 
 What's New tours are available in major and minor Joomla releases, only for users who update.
 
-Note:
-Replace X and Y with the major and minor version numbers.
-For instance, X_Y is 5_3 if you create a PR for the what's new tour for version 5.3.
+:::note [Developer Note]
+  Replace X and Y with the major and minor version numbers.  
+  For instance, X_Y is 5_3 if you create a PR for the what's new tour for version 5.3.
+:::
+
 
 ## Step 1: Create the What's New tour
 

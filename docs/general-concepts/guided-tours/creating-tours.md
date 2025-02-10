@@ -4,7 +4,7 @@ Go to System (Manage section) -> Guided Tours.
 
 ## Creating a new tour
 
-Starting with Joomla 5, an identifier is provided for each tour. This is not a required field but a value will always be present.
+An identifier is provided for each tour. This is not a required field but a value will always be present.
 This identifier is supposed to:
 
 - allow a tour to be started from anywhere,
@@ -74,7 +74,7 @@ There is no available tour when editing a specific module, plugin or template. T
 
 ### Auto start
 
-Starting with Joomla 5.2, you can set tours to auto start. Those tours will run automatically once a user enters the context of the tour. Once a tour auto starts, the user can hide the tour forever (although the tour can still be run manually), and a cancellation will delay the tour for a later run. Once a specific time has passed (the delay setting can be found in the Global Configuration of the Guided Tours - it defaults to 1 hour), the tour will run again automatically, once in context.
+You can set tours to auto start. Those tours will run automatically once a user enters the context of the tour. Once a tour auto starts, the user can hide the tour forever (although the tour can still be run manually), and a cancellation will delay the tour for a later run. Once a specific time has passed (the delay setting can be found in the Global Configuration of the Guided Tours - it defaults to 1 hour), the tour will run again automatically, once in context.
 
 
 ### Event dispatchers
