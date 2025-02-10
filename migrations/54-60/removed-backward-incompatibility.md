@@ -142,11 +142,11 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 }
 ```
 
-### JPATH_PLATFORM constant got removed
+### JPATH_PLATFORM constant moved to compatibility plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/44638
 - File: All bootsrapping files
-- Description: The `JPATH_PLATFORM` is an old constant and should not be used if the Joomla core got correctly bootstrapped. Change your checks to `_JEXEC`
+- Description: The `JPATH_PLATFORM` is an old constant and should not be used if the Joomla core got correctly bootstrapped. The constant is only available when the compatibility plugin is enabled. Change your checks to `_JEXEC`
 
 ```php
 // Old:
