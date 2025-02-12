@@ -92,7 +92,9 @@ The What’s New in Joomla X.Y! tour is available.
 
 Add images of the tour so that testers can have an idea of what the tour looks like.
 
-### Create files
+### Create the language files
+
+Go to the administrator/language/en-GB folder.
 
 ```
 administrator/language/en-GB/guidedtours.joomla_whatsnew_X_Y.ini
@@ -101,7 +103,7 @@ administrator/language/en-GB/guidedtours.joomla_whatsnew_X_Y_steps.ini
 
 and fill with the generated language keys.
 
-### Create media files
+### Create the media files
 
 If there are images, add them to
 
@@ -109,7 +111,9 @@ If there are images, add them to
 build/media_source/com_guidedtours/images/X_Y
 ```
 
-### Create files
+### Create the SQL files
+
+Go to the administrator/components/com_admin/sql/updates.
 
 ```
 administrator/components/com_admin/sql/updates/mysql/X.Y.0-YEAR-MONTH-DAY.sql
