@@ -148,6 +148,14 @@ UPDATE "#__guidedtours" SET "autostart" = 0 WHERE "uid" = 'joomla-whatsnew-X-YY'
 where YY is the previous minor release number.
 For instance, if the PR is for the version 5.3, YY is 2.
 
+### Go to the Pull Requests tab
+
+Select 'Compare & pull request'.
+
+### Enter the title:
+
+[X.Y] Guided Tours: What's New
+
 ### Enter the description:
 
 ```
