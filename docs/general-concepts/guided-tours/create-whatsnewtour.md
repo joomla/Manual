@@ -64,7 +64,7 @@ The file can be found in your browser's download folder.
 
 ## Step 5: How to create the PR
 
-Open the generated texte file.
+Open the generated text file.
 Create a branch based on the Joomla/X.Y-dev from the forked Joomla repository under your account.
 
 ### Create language files
