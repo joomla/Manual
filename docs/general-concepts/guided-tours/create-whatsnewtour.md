@@ -62,37 +62,12 @@ Select Export (in the top right end corner), and select 'SQL + INI Export'.
 This generates the code necessary for importing tours through code. It actually generates the language keys even though the tour was created in plain English.
 The file can be found in your browser's download folder.
 
-## Step 5: Create the PR
+## Step 5: How to create the PR
 
-Open the generated file.
-Create a PR in a branch you have created from the forked Joomla repository.
+Open the generated texte file.
+Create a branch from the forked Joomla repository under your account.
 
-### Enter the description:
-
-```
-### Summary of Changes
-
-This PR adds a tour that highlights new features introduced in Joomla X.Y.
-
-### Testing Instructions
-
-Download the update package, not the full install as the tour is only available on updates!
-
-It is possible to find the tour in the list of tours at the top of the Joomla dashboard and run it manually.
-Make sure you see images when running the tour (on the first step only) and when editing the tour (System -> Manage -> Guided tours).
-
-### Actual result BEFORE applying this Pull Request
-
-No tour highlighting new features for Joomla X.Y.
-
-### Expected result AFTER applying this Pull Request
-
-The What’s New in Joomla X.Y! tour is available.
-```
-
-Add images of the tour so that testers can have an idea of what the tour looks like.
-
-### Create the language files
+### Create language files
 
 Go to the administrator/language/en-GB folder.
 
@@ -103,7 +78,7 @@ administrator/language/en-GB/guidedtours.joomla_whatsnew_X_Y_steps.ini
 
 and fill with the generated language keys.
 
-### Create the media files
+### Create media file(s)
 
 If there are images, add them to
 
@@ -111,7 +86,7 @@ If there are images, add them to
 build/media_source/com_guidedtours/images/X_Y
 ```
 
-### Create the SQL files
+### Create SQL files
 
 Go to the administrator/components/com_admin/sql/updates.
 
@@ -169,6 +144,31 @@ UPDATE "#__guidedtours" SET "autostart" = 0 WHERE "uid" = 'joomla-whatsnew-X-YY'
 
 where YY is the previous minor release number.
 For instance, if the PR is for the version 5.3, YY is 2.
+
+### Enter the description:
+
+```
+### Summary of Changes
+
+This PR adds a tour that highlights new features introduced in Joomla X.Y.
+
+### Testing Instructions
+
+Download the update package, not the full install as the tour is only available on updates!
+
+It is possible to find the tour in the list of tours at the top of the Joomla dashboard and run it manually.
+Make sure you see images when running the tour (on the first step only) and when editing the tour (System -> Manage -> Guided tours).
+
+### Actual result BEFORE applying this Pull Request
+
+No tour highlighting new features for Joomla X.Y.
+
+### Expected result AFTER applying this Pull Request
+
+The What’s New in Joomla X.Y! tour is available.
+```
+
+Add images of the tour so that testers can have an idea of what the tour looks like.
 
 ## Step 6: Test the PR (turn it into a draft)
 
