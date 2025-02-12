@@ -135,9 +135,8 @@ On a minor release (for instance 5.3), set the previous What's New tour to NOT a
 -- disable autostart for the previous tour
 UPDATE `#__guidedtours` SET `autostart` = 0 WHERE `uid` = 'joomla-whatsnew-X-YY';
 ```
-</TabItem>
+</TabItem>  
 <TabItem value="pgsql" label="PostgreSQL">
-
 ```sql
 -- disable autostart for the previous tour
 UPDATE "#__guidedtours" SET "autostart" = 0 WHERE "uid" = 'joomla-whatsnew-X-YY';
