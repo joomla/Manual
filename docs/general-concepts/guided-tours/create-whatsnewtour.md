@@ -86,6 +86,9 @@ If there are images, add them to
 build/media_source/com_guidedtours/images/X_Y
 ```
 
+Keep the image file names simple (all lowercase).
+In order to create a folder in GitHub and be able to upload the image(s), you may need to create a tada.txt file first (arbitrary name) in that directory (delete it when done).
+
 ### Create SQL files
 
 Go to the administrator/components/com_admin/sql/updates.
