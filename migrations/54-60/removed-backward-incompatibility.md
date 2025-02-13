@@ -139,3 +139,10 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
     // Do your stuff
 }
 ```
+
+
+### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
+
+- PR: https://github.com/joomla/joomla-cms/pull/43777
+- Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
+- Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
