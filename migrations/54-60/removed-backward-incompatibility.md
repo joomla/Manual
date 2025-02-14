@@ -168,3 +168,7 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
 
+### `Joomla\CMS\Changelog\Changelog` has been changed significantly
+
+- PR: https://github.com/joomla/joomla-cms/pull/44897
+- Description: The `Changelog` class was entirely depending on the `LegacyPropertyManagementTrait` and its `->get()` method. This is problematic because the `->get()` method circumvents the complete access protection in PHP and the trait itself is deprecated. In Joomla 6.0 the properties of the class have been mostly changed to public and can be accessed directly and the trait has been removed.
