@@ -167,3 +167,4 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
+
