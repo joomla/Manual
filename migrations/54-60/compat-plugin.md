@@ -18,4 +18,17 @@ The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded
 
 For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/migrations/44-50/compat-plugin).
 
+### CMS BaseApplication and CLI classes
 
+- PR's:
+  - https://github.com/joomla/joomla-cms/pull/42884
+  - https://github.com/joomla/joomla-cms/pull/44926
+- Description: Any reference to the class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` with the respective CLI input classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+
+### CMS Input package
+
+- PR's: 
+  - https://github.com/joomla/joomla-cms/pull/42805
+  - https://github.com/joomla/joomla-cms/pull/42890
+  - https://github.com/joomla/joomla-cms/pull/44925
+- Description: Any reference to the class `\Joomla\CMS\Input\Input` or the other classes in that namespace should be replaced with the [framework `Input`](https://github.com/joomla-framework/input) package and the namespace `\Joomla\Input`. The packages can be used nearly interchangeably.
