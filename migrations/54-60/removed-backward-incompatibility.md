@@ -16,6 +16,7 @@ There should be an explanation of how to mitigate the removals / changes.
 - PR's: 
   - https://github.com/joomla/joomla-cms/pull/42805
   - https://github.com/joomla/joomla-cms/pull/42890
+  - https://github.com/joomla/joomla-cms/pull/44925
 - Folder: libraries/src/Input
 - Description: The Input package of the CMS (`\Joomla\CMS\Input`) has been deprecated. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Input`](https://github.com/joomla-framework/input) package (`\Joomla\Input`). The packages can be used nearly interchangeably.
 
