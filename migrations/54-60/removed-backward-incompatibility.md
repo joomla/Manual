@@ -18,10 +18,13 @@ There should be an explanation of how to mitigate the removals / changes.
   - https://github.com/joomla/joomla-cms/pull/42890
 - Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
 
-### CMS BaseApplication and CLI classes have been removed
+### CMS BaseApplication and CLI classes got moved to the compat plugin
 
-- PR: https://github.com/joomla/joomla-cms/pull/42884
-- Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+- PR's:
+  - https://github.com/joomla/joomla-cms/pull/42884
+  - https://github.com/joomla/joomla-cms/pull/44926
+- Folder: libraries/src/Application
+- Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` with the respective CLI input classes have been deprecated. For Joomla 6.0 they have been moved to the compat plugin and will finally be completely removed in 7.0. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
 
 ### UTC is used instead of GMT
 
@@ -167,4 +170,3 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
-
