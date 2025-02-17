@@ -138,3 +138,32 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
     // Do your stuff
 }
 ```
+
+### CMSObject usage in core has been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/43795
+- PR: https://github.com/joomla/joomla-cms/pull/44655
+- Description: The `CMSObject` class has been problematic for a long time, because it allows to circumvent the visibility setting of object properties. The `CMSObject` class will be removed in Joomla 7.0, but with Joomla 6.0 it is removed everywhere in the core code. The following code is affected:
+  - Smart Search (finder) plugins now use `\stdClass` objects to store the state.
+  - The following models now return `\stdClass` objects instead of `CMSObject`:
+    - `Joomla\Component\Installer\Administrator\Model\UpdatesiteModel`
+    - `\Joomla\Component\Installer\Administrator\Model\UpdatesitesModel`
+    - `\Joomla\Component\Languages\Administrator\Model\LanguageModel`
+    - `\Joomla\Component\Mails\Administrator\Model\TemplateModel`
+    - `\Joomla\Component\Menu\Administrator\Model\MenuModel`
+    - `\Joomla\Component\Menus\Administrator\Model\MenutypesModel`
+    - `\Joomla\Component\Messages\Administrator\Model\ConfigModel`
+    - `\Joomla\Component\Modules\Administrator\Model\ModuleModel`
+    - `\Joomla\Component\Plugins\Administrator\Model\PluginModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TaskModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TasksModel`
+    - `\Joomla\Component\Templates\Administrator\Model\StyleModel`
+    - `\Joomla\Component\Users\Administrator\Model\GroupModel`
+    - `\Joomla\Component\Workflow\Administrator\Model\TransitionModel`
+    - `\Joomla\CMS\Component\Contact\Model\FormModel`
+    - `\Joomla\CMS\Component\Content\Model\FormModel`
+    - `\Joomla\Component\Tags\Site\Model\TagModel`
+  - The code of the installer component is using `\stdClass` objects now. 
+  - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
+  - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
+  - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
