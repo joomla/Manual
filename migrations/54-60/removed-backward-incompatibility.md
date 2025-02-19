@@ -168,3 +168,8 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
 
+
+### CMSObject usage in media manager events have been changed to stdClass
+
+- PR: https://github.com/joomla/joomla-cms/pull/44945
+- Description: The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
