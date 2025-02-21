@@ -11,13 +11,6 @@ sidebar_position: 3
 All the deprecated features than have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
-### CMS Input object switched to Framework Input object
-
-- PR's: 
-  - https://github.com/joomla/joomla-cms/pull/42805
-  - https://github.com/joomla/joomla-cms/pull/42890
-- Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
-
 ### CMS BaseApplication and CLI classes have been removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/42884
@@ -167,4 +160,3 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
-
