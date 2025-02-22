@@ -1,0 +1,167 @@
+---
+id: privacy-requests
+title: "privacy/requests"
+description: "Generated from a curl request:"
+sidebar_label: "privacy/requests"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVMtu2zAQ/BViL24DyXKLnHRqGhR9HWrUKRrANAJaWttMJJIhKceCwH8vVg9XdpN8QE+iqNHu7OzsNuDF1kG6hLmVe5HVsIogR5dZabzUClL4jAqt8JizjdUlEyyrbMEsPlbofMpV+xrfsvmPxQ2bNGvh8K6yRUhMFzHpoRMWf2GT2/ib1mUh4hv9gCpljaj87k4Y+YB16CDXWnlUPr6pDaZMGFPITBCZ5N5pNWFxziYNByyFLDikHDw6/wEPojQFTrXdcog49FnvfG2wReHBaOs5hAlEw9ePOq8hbSDrUtLxIrmgh8t2WAo6UQBIwXkr1RYi6BNBChwazgcinJLwZ8hwosPPCA3onhTnEDhACCFEYIQVJXq01JcGlCgp2VgViEBSa3YocrQQvcg2jOmeKwkhOkZvu2aE3w2h+/MrgakeaTGH1NsKw4punNHKoSP8+9mMHqdeWlRZhs5tKjJQBwYquUS/0zml1c5D1GVP4dxCjhih3Q/SVLYgFbw3Lk2SkehAdBxmlZW+bqFXRn7H+qqiuMvV+POCSuw4j0HHikV7+Y/kvXCnfm6LkWqj2/+lb3XvAOyS/cY1W6Ddywwdu5p/Zde6KDAjbdhGWzbXzpdCwfkEjmB6w14O90nlRkvl3TjalC0Q2aDRVvpdtZ5mukxEgQehcotYSIfJ/eUhFkbG2SmnyuTCo2NC5YwKs2VroClEQG3oCL6bzqYz8oTpK0iPxnqmgyfFjWbv/9w0vYs8HnxiCiFp7DrjNr3Nl4NIf/eSozW8o1lIl9C0lf6yRQh0/VihJU+vItgLK8WaTLZsIJeOzjmkG1E4fEXnNz/70X3LXiI4eF8Rqb0oKnqDCB6wPtkWYRWiYSaIRPf9bFcN/9Nqpck7Tjs1EiJY91u41DnBrHgiJcQTpQwh/AH7ckiO
+sidebar_class_name: "post api-method"
+info_path: docs/web-services/specification/joomla-4-web-services-api-collection-for-postman
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"privacy/requests"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/privacy/requests"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generated from a curl request:
+curl -X POST '\{base_url\}/privacy/request' -H 'X-Joomla-Token: \{auth_apikey\}' -H 'Content-Type: application/json' -d '\{"email":"test@example.org","request_type":"export"\}'
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"base_path","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"*/*"}
+    value={"*/*-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
