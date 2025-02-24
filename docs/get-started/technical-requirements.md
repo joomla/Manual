@@ -22,7 +22,9 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Nginx              | 1.25            | 1.21        |
 | Microsoft IIS      | 10              | 10          |
 
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql<br>
+**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs<br>
+**Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
 
 ### Requirements for Joomla! 4.x
 
@@ -37,7 +39,9 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Nginx              | 1.18            | 1.10        |
 | Microsoft IIS      | 10              | 8           |
 
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql<br>
+**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs<br>
+**Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
 
 ### Requirements for older Versions
 
@@ -45,10 +49,10 @@ If you need the requirements for older Joomla versions please use the Current Re
 
 ## Additional Information
 
-- [PHP](https://www.php.net) The [Forum Post Assistant](https://forumpostassistant.github.io/docs/) can help to diagnose PHP problems with an installed Joomla instance.
+- [PHP](https://www.php.net) A popular general-purpose scripting language that is especially suited to web development.
 - [MySQL](https://www.mysql.com) is available in several editions. It is normal to install a GPL Community Edition for your software platform.
 - [MariaDB](https://mariadb.com) is also available in several editions. It is normal to install a free Community Edition for your software platform.
-- [PostgreSQL](https://www.postgresql.org/) is open source and available in numerous editions. ext/pgsql support in PHP has been removed. It now uses the PostgreSQL PDO Driver.
-- [Apache](https://httpd.apache.org) requires the mod_rewrite extension to use SEO URLs.
-- [Nginx](https://www.nginx.com/resources/)
-- [Microsoft IIS](https://www.iis.net) may need the following:  PHP, MySQL, Microsoft [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) within IIS Manager for SEO URLs only, FastCGI
+- [PostgreSQL](https://www.postgresql.org/) is open source and available in numerous editions.
+- [Apache](https://httpd.apache.org) HTTP Server Project is an effort to develop and maintain an open-source HTTP server for modern operating systems including UNIX and Windows.
+- [Nginx](https://nginx.org) is an HTTP web server, reverse proxy, content cache and load balancer.
+- [Microsoft IIS](https://www.iis.net) (Internet Information Services) for Windows® Server is a flexible, secure and manageable Web server for hosting anything on the Web.
