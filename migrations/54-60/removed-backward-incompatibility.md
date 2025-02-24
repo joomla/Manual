@@ -168,9 +168,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
   - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
 
-### HTMLHelper::Bootstrap('framwork') has been removed
+### HTMLHelper::Bootstrap('framework') has been removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44991
-- Description: The `HTMLHelper::Bootstrap('framwork')` as it was only kept for B/C purposes in the J4/5 versions. Developers should explicitly include **only** the components that are used in their layouts.
+- Description: The `HTMLHelper::Bootstrap('framework')` as it was only kept for B/C purposes in the J4/5 versions. Developers should explicitly include **only** the components that are used in their layouts.
 
 
