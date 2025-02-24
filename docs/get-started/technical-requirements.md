@@ -22,6 +22,8 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Nginx              | 1.25            | 1.21        |
 | Microsoft IIS      | 10              | 10          |
 
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+
 ### Requirements for Joomla! 4.x
 
 | Software           | Recommended     | Minimum     |
@@ -35,13 +37,15 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Nginx              | 1.18            | 1.10        |
 | Microsoft IIS      | 10              | 8           |
 
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+
 ### Requirements for older Versions
 
 If you need the requirements for older Joomla versions please use the Current Releases version switcher in the top right corner to select the [4.4 (Security)](/versioned_docs/version-4.4/get-started/technical-requirements.md) version.
 
 ## Additional Information
 
-- [PHP](https://www.php.net) requires the following modules: json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql.
+- [PHP](https://www.php.net) The [Forum Post Assistant](https://forumpostassistant.github.io/docs/) can help to diagnose PHP problems with an installed Joomla instance.
 - [MySQL](https://www.mysql.com) is available in several editions. It is normal to install a GPL Community Edition for your software platform.
 - [MariaDB](https://mariadb.com) is also available in several editions. It is normal to install a free Community Edition for your software platform.
 - [PostgreSQL](https://www.postgresql.org/) is open source and available in numerous editions. ext/pgsql support in PHP has been removed. It now uses the PostgreSQL PDO Driver.
