@@ -22,34 +22,33 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 - **max** (optional) count of maximum repeating in multiple mode. Default: 1000.
 - **groupByFieldset** (optional) whether to group the subform fields by its fieldset (true or false). Default: false.
 - **buttons** (optional) which buttons to show in multiple mode. Default: add,remove,move.
-- **layout** (optional) the name of the layout to use when displaying subform fields.  
+- **layout** (optional) the name of the layout to use when displaying subform fields.
   Available layouts:
-
-  `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.  
-  `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.  
-  `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.
+  - `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.
+  - `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.
+  - `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.
 - **validate** (optional) should be set to 'Subform' (note that this is case-sensitive!) to ensure that fields in the subform are individually validated. Default: Fields in the subform are not validated, even if validation rules are specified.
 
 Implemented by: libraries/src/Form/SubformField.php
 
 ## Example XML parameter definition for single mode:
 ```xml
-<field 
-        name="field-name" 
+<field
+        name="field-name"
         type="subform"
         formsource="path/to/exampleform.xml"
-        label="Subform Field" 
-        description="Subform Field Description" 
+        label="Subform Field"
+        description="Subform Field Description"
 />
 ```
 ## Example XML parameter definition for multiple mode:
 ```xml
-<field 
-        name="field-name" 
+<field
+        name="field-name"
         type="subform"
-        formsource="path/to/exampleform.xml" 
+        formsource="path/to/exampleform.xml"
         multiple="true"
-        label="Subform Field" 
+        label="Subform Field"
         description="Subform Field Description" />
 ```
 Example XML of exampleform.xml:
@@ -133,7 +132,7 @@ The following form allows up to 8 image files to be uploaded
 ```
 ## Javascript
 
-If a field in your subform has associated JavaScript logic then you may need to consider how to make this work in *multiple="true"* mode, because the subform fields are added dynamically. 
+If a field in your subform has associated JavaScript logic then you may need to consider how to make this work in *multiple="true"* mode, because the subform fields are added dynamically.
 
 To handle this you can capture the 'joomla:updated' event which is triggered when a subform is added dynamically:
 
@@ -146,10 +145,10 @@ document.addEventListener('joomla:updated', (event) => {
 
 If you have javascript validation set in fields of your subform (set by the class="validate-xxx") then this is not triggered when the focus leaves the field, but the validation is run prior to the form being submitted.
 
-This is also true for custom fields which extend SubformField. 
+This is also true for custom fields which extend SubformField.
 
 ## Server-side validation and filters
 
 Server-side validation and filters are applied to the fields of the subform as normal, in the same way as when those fields are not part of a subform.
 
-This is also true for custom fields which extend SubformField. 
+This is also true for custom fields which extend SubformField.
