@@ -19,14 +19,14 @@ The **tag** form field type provides a point where you can enter tags - this is 
 
 You can see the difference between "ajax" mode and "nested" mode by setting the Global Configuration / Tags / Data Entry and then entering data into the Tags field of an existing article.
 
-**Ajax mode** 
+### Ajax mode
 
 - The field searches tags (via Ajax) while the user types them in the tag field.
 - Three min characters are required to launch the first background AJAX search.
-- The field also allows custom tag insertion by writing the new tag and pressing the ENTER key (but no longer the COMMA key). 
+- The field also allows custom tag insertion by writing the new tag and pressing the ENTER key (but no longer the COMMA key).
 - All the new custom tags inserted in the field are created on the fly in the database.
 
-**Nested mode**
+### Nested mode
 
 - The tag dropdown list displays a hierarchical list of tags (shown in a similar way to how categories are shown)
 - You cannot create new tags on the fly
@@ -37,12 +37,12 @@ Implemented by: libraries/src/Form/Field/TagField.php
 
 ```xml
 <field
-        name="tags" 
-        type="tag" 
-        label="JTAG" 
-        description="JTAG_DESC" 
-        mode="ajax" 
-        class="inputbox span12 small" 
+        name="tags"
+        type="tag"
+        label="JTAG"
+        description="JTAG_DESC"
+        mode="ajax"
+        class="inputbox span12 small"
         multiple="true"
 />
 ```
@@ -51,12 +51,12 @@ Implemented by: libraries/src/Form/Field/TagField.php
 
 ```xml
 <field
-        name="tags" 
-        type="tag" 
-        label="JTAG" 
-        description="JTAG_DESC" 
-        mode="nested" 
-        class="inputbox span12 small" 
+        name="tags"
+        type="tag"
+        label="JTAG"
+        description="JTAG_DESC"
+        mode="nested"
+        class="inputbox span12 small"
         multiple="true"
 />
 ```
