@@ -3,7 +3,9 @@ sidebar_position: 2
 title: Tag Form Field
 ---
 
-The **tag** form field type provides a point where you can enter tags - this is either AJAX or nested.
+The **tag** form field type provides a point where you can enter tags in either AJAX or Nested mode.
+
+## Attributes
 
 - **type** (mandatory) must be *tag*.
 - **name** (mandatory) is the unique name of the field.
