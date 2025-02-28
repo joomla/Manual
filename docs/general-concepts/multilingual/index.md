@@ -37,7 +37,7 @@ MOD_EXAMPLE_GOODBYE="Goodbye"
 ```
 
 Place it in the `language/en-GB` directory of your extension. Learn more about Language Files on 
-[this page](./language-files.md).
+the [Language Files page](./language-files.md).
 
 
 ## Implementing Multilingual Support in Your Extension
@@ -109,7 +109,7 @@ To ensure your extension's language files are recognized, include them in the **
 </languages>
 ```
 
-For more details on the manifest file, refer to the [Joomla documentation](https://manual.joomla.org/docs/building-extensions/modules/module-development-tutorial/step4-languages/).
+For more details on the manifest file, refer to [Step 4 in the Module Delevopment Tutorial](https://manual.joomla.org/docs/building-extensions/modules/module-development-tutorial/step4-languages/).
 
 ### Database Schema
 
@@ -163,7 +163,7 @@ their status:
 You may also utilize the **Debug Bar** to view the highlighted strings and identify any untranslated or non-translatable 
 values in your extension.
 
-![img.png](_assets/untranslated_tab_debug_bar.png)
+![debug bar showing the locations of untranslated strings](_assets/untranslated_tab_debug_bar.png)
 
 When the `Debug Bar` with `Debug Language` is enabled, it provides a convenient overview of all debug information, 
 including untranslated language strings, directly on your site. This tool is especially useful for developers when 
@@ -205,7 +205,7 @@ associate translations with each other.
 
 This process is essential for maintaining consistency across different language versions of your site.
 
-How to enable language associations in a component is described in [Joomla documentation](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_Associations).
+How to enable language associations in a component is described in a Joomla documentation article on [Developing an MVC Component](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Adding_Associations).
 
 ### Form Fields
 
