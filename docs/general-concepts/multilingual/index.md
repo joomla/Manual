@@ -36,9 +36,8 @@ MOD_EXAMPLE_HELLO="Hello"
 MOD_EXAMPLE_GOODBYE="Goodbye"
 ```
 
-Place it in the `language/en-GB` directory of your extension. Learn more about Language Files on 
+Place it in the `language/en-GB` directory of your extension. Learn more in
 the [Language Files page](./language-files.md).
-
 
 ## Implementing Multilingual Support in Your Extension
 
