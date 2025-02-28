@@ -109,7 +109,7 @@ To ensure your extension's language files are recognized, include them in the **
 </languages>
 ```
 
-For more details on the manifest file, refer to [Step 4 in the Module Delevopment Tutorial](https://manual.joomla.org/docs/building-extensions/modules/module-development-tutorial/step4-languages/).
+For more details on the manifest file, refer to [Step 4 in the Module Delevopment Tutorial](../../building-extensions/modules/module-development-tutorial/step4-languages/).
 
 ### Database Schema
 
