@@ -57,7 +57,7 @@ $this->attachRule(new NomenuRules($this));
 
 This is how these rules relate to the 3 functions involved in the component router - preprocess(), build() and parse():
 
-|               | preprocess |   build   |   parse   |
+| Rule type     | preprocess |   build   |   parse   |
 | --------------|------------|-----------|-----------|
 | MenuRules     |  &check;   |           |           |
 | StandardRules |            |  &check;  |  &check;  |
