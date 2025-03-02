@@ -63,7 +63,7 @@ PR: https://github.com/joomla/joomla-cms/pull/44754
 
 ## Plugins deprecations
 
-# CMSPlugin: Deprecate use of DispatcherAware and LanguageAware
+### CMSPlugin: Deprecate use of DispatcherAware and LanguageAware
 
 Plugin should use DispatcherAware on its own, when it needs to dispatch an event, like for example content/finder.
 And language cannot be set on plugin while plugin booting, because it is not available until initialisation of the application is completed.
