@@ -18,10 +18,10 @@ In general, components manage the data of the Joomla instance and provide functi
 
 When you navigate to a certain page on a site or perform a certain operation such as login/logout then you're selecting the component which is going to be run. That component is the code which is primarily responsible for handling the HTTP Request, executing the requested operation, and displaying the key data on the web page.
 
-- Examples: Managing articles (com_content), Categories (com_categories), Contacts (com_contact), Images and media files (com_media)
-- Management feature: Admin menu → Components → Contacts (for com_contact)
+- Core component examples: Articles (com_content), Categories (com_categories), Contacts (com_contact), Images and media files (com_media)
+- Third party examples: See the [Joomla Extensions Directory](https://extensions.joomla.org/) for third party extensions for Backup, eCommerce and many other purposes.
 
-Examples of component functionality available from third party extensions include backup utilities and support for eCommerce.
+To read more go to the [Components Index page](components).
 
 ## Modules
 
@@ -31,29 +31,29 @@ A module can often be a companion to the component. For example, if your web pag
 
 However, modules do not need to be linked to components, as a matter of fact they don't even need to be linked to anything and can be just static HTML or text.
 
-- Examples: Latest Articles (mod_articles_latest), Menus (mod_menu), Who's Online (mod_whosonline), Custom HTML (mod_custom)
-- Management feature: Admin menu → Content → Site Modules
+- Core module examples: Latest Articles (mod_articles_latest), Menus (mod_menu), Who's Online (mod_whosonline), Custom HTML (mod_custom).
 
 If you're just beginning with Joomla extension development then developing a module is the easiest place to start.
 
+To read more go to the [Modules Index page](modules).
+
 ## Plugins
 
-Plugins work behind the scenes to modify or enhance the basic Joomla functionality. In the execution of any part of Joomla - be it the core, a module or a component - an event can be triggered. When an event is triggered, plugins which are registered to handle that event execute, and are passed data related to that event. The plugin can then, for example, modify the data and return it to the core Joomla code. For example, a plugin could be used to intercept user-submitted articles and filter out bad words.
+Joomla has over 150 Plugins that work behind the scenes to modify or enhance basic Joomla functionality. A plugin responds to a registered event triggered in the core, a component or a module and modifies the data related to that event. For example, the *Content - Email Cloaking* plugin obfuscates any email address in an output page so that it cannot be harvested by a robot.
 
-- Examples: Content pagenavigation plugin (which generates the Prev and Next links as shown in the screenshot above)
-- Management feature: Admin menu → System → Plugins
+- Core examples: Content - Page Navigation (which generates the Prev and Next links as shown in the screenshot above).
+
+To read more go to the [Plugins Index page](plugins).
 
 ## Templates
 
 A template is basically the design of your Joomla-powered website. With a template you define the look and feel of your website, primarily based on CSS. Templates have certain fields in which the component (just one) and modules (as many as you like) will be shown. Building a complete Joomla template from scratch is difficult because you have to understand the variety of HTML output by the Joomla components, and the CSS classes which are used within them. However, it is relatively easy to customize the Atum (administrator) and Cassiopeia (site) templates which are shipped with Joomla, particularly as you can use the Joomla child template functionality to simply specify deviations from the parent template.
 
-- Management feature: Admin menu → System → Templates
+To read more go to the [Templates Index page](templates).
 
 ## Languages
 
-Probably the most basic extensions are languages. Languages can be packaged in two ways: either as a core package or as an extension package. In essence, both the core and the extension language package files consist of key/value pairs, which provide the translation of static text strings, assigned within the Joomla source code. These language packs will affect both the front and administrator side of your Joomla instance. Note: these language packs also include an XML meta file which describes the language.
-
-- Management feature: Admin menu → System → Manage / Languages
+Probably the most basic extensions are languages, which can be packaged either as a core package or as an extension package. In essence, both the core and the extension language package files consist of key/value pairs, which provide the translation of static text strings, assigned within the Joomla source code. These language packs will affect both the front and administrator side of your Joomla instance. Note: these language packs also include an XML meta file which describes the language.
 
 ## Libraries
 
@@ -69,6 +69,6 @@ Packages are simply a group of any of the above types of extensions. A common us
 
 ## Extension Installation
 
-There are four methods of installing an extension. You can install from the Joomla Extension Directory (Install from Web), upload the zip file of an extension, install from a folder or install from a URL.
+There are four methods of installing an extension: by upload of a zip file, from a folder, from a URL or from the Joomla Extension Directory (Install from Web).
 
 ![Screenshot showing installing an extension](./_assets/screenshot-install-extension.jpg)
