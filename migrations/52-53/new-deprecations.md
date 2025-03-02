@@ -60,3 +60,12 @@ PR: https://github.com/joomla/joomla-cms/pull/43396
 
 Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
 PR: https://github.com/joomla/joomla-cms/pull/44754
+
+
+## Plugins deprecations
+
+### CMSPlugin: deprecation for registerListeners
+
+The PR deprecate CMSPlugin::registerListeners() as no longer needed when plugin will implement SubscriberInterface
+
+PR: https://github.com/joomla/joomla-cms/pull/43395
