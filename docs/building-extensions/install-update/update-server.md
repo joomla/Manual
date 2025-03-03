@@ -18,8 +18,8 @@ Typically this is done by the administrator via the System Dashboard Update / Ex
 
 Joomla also checks automatically for extension updates when an administrator logs onto the back-end.
 
-Each Joomla extension that is updated via an update server has a URL associated with it that points to an XML file containing details of the updates available. 
-This file could be hosted on the extension developer's own website, for example. 
+Each Joomla extension that is updated via an update server has a URL associated with it that points to an XML file containing details of the updates available.
+This file could be hosted on the extension developer's own website, for example.
 If you go to the admin System Dashboard and select Update / Update Sites then you will see this URL in the Update Site column, and you can click on those URLs to see the format of the XML files.
 
 The XML file contains details of what updates are available for that extension, including any restrictions (for example, you may have to be running a certain Joomla version to be able to use it), and the URL of the zip file containing the new version of the extension.
@@ -60,11 +60,11 @@ Whenever an administrator clicks on the Find Updates button, Joomla sends HTTP r
 - compares the version of the update with the version of the extension currently running
 - checks any restrictions (Joomla versions, PHP versions, database versions) with what is currently running.
 
-If it finds it's a valid update for this website, it inserts a record into the `#__updates` table in the database. (You'll find at most one update for each extension, because if there are several possible then Joomla will store only the most recent valid version, i.e. with the highest version number). 
+If it finds it's a valid update for this website, it inserts a record into the `#__updates` table in the database. (You'll find at most one update for each extension, because if there are several possible then Joomla will store only the most recent valid version, i.e. with the highest version number).
 
 ### 2 Extension Update
 
-You store on your update server the zip file of the update for your extension. 
+You store on your update server the zip file of the update for your extension.
 The filename must match the `<downloadurl>` element in your XML file.
 
 ### 3 Tell Joomla where your update server is
@@ -78,7 +78,7 @@ You do this by specifying in your extension's manifest file, for example:
 ```
 
 You can have multiple servers within your `<updateservers>` tag.
-If you have more than one update server, you can set a different priority for each. In that way you can control the order in which the update servers are checked. 
+If you have more than one update server, you can set a different priority for each. In that way you can control the order in which the update servers are checked.
 
 There are 2 types of server: "extension" and "collection" (described in detail below). So you could define your `<updateservers>` as
 
@@ -93,7 +93,7 @@ Don't use a language string for the `name` attribute - for some reason Joomla do
 
 ## Installing Updates
 
-Once an update has been inserted into the `#__updates` table it is visible to the administrator in the Update / Extensions section of the admin System Dashboard. 
+Once an update has been inserted into the `#__updates` table it is visible to the administrator in the Update / Extensions section of the admin System Dashboard.
 When the administrator selects an extension and clicks Update Joomla will
 - once again send an HTTP request to the URL of the update XML file
 - parse the XML file and ensure that conditions for installing that version are still met
@@ -119,9 +119,9 @@ The Joomla Language Pack uses a collection type. If you go to Update / Update Si
 
 If you navigate to one of the detailsurl entries, then you'll see the "extension" type server XML for that language.
 
-All definitions must be defined between `<extensionset>` tags in your update server XML collection. 
+All definitions must be defined between `<extensionset>` tags in your update server XML collection.
 
-The `<extensionset>` tag has two optional parameters; name and description. 
+The `<extensionset>` tag has two optional parameters; name and description.
 
 For each extension that this collection references, a separate `<extension>` tag is required. The `<extension>` tag has the following parameters, all of which are required for updates to properly process:
 
@@ -133,10 +133,10 @@ For each extension that this collection references, a separate `<extension>` tag
 
 ## Extension Server Type
 
-The Extension Server type provides updates for an individual extension. 
+The Extension Server type provides updates for an individual extension.
 All Collection Server types eventually point to an Extension Server type.
 
-Here is an example Extension Server type - for the Joomla 4.4 release: 
+Here is an example Extension Server type - for the Joomla 4.4 release:
 
 ```xml title="https://update.joomla.org/core/j4/default.xml"
 <updates>
@@ -195,15 +195,14 @@ The following section describes the elements of a single update entity.
 - **folder** – Specific to plugins, this tag describes the type of plugin being updated (content, system, etc.) (required for plugins)
 - **client** – The client of the extension. Required for modules and templates. Possible values at this time are "site" or "administrator". Warning! Plugins and front-end modules are automatically installed with a client of site, but you will need to specify the client in an update or it will default to administrator and then found update would not be shown because it would not match any extension. Components are automatically installed with a client of administrator, which is currently the default.
 - **version** – The version of the release (required)
-- **infourl** – A URL to point users to containing information about the update (optional) 
+- **infourl** – A URL to point users to containing information about the update (optional)
 - **downloads** – The section which lists all download locations
     - **downloadurl** – The URL to download the extension from; the `<downloadurl>` tag has two required parameters:
         - **type** – The type of package (full or upgrade)
         - **format** – The format of the package (zip, tar, etc.)
     - **downloadsource** – Optional. Alternative URL to download the extension from when the connection to `<downloadurl>` fails. Multiple `<downloadsource>` tags are allowed. The `<downloadsource>` tag has two required parameters:
         - **type** – The type of package (full or upgrade)
-        - **format** – The format of the package (zip, tar, etc.)
-
+        - **format** – The format of the package (zip, tar, etc.)  
         **NB** – there must be no newline before or after the URL; it needs to all be on one line or you will get Error connecting to the server: malformed when the update is run.
 - **changelogurl** - A link to an xml file holding the changelog. Joomla 4.0 and later will allow you to show a button for the changelog in the extension updater page. More details in how to use it can be found below.
 - **tags** – A list of tags relevant to this version. Joomla! uses this to determine the stability level of the update. The valid tags are:
@@ -211,10 +210,8 @@ The following section describes the elements of a single update entity.
     - **alpha**: Alpha quality software (features not implemented, show-stopper bugs)
     - **beta**: Beta quality software (all features implemented, show-stopper bugs possible, minor bugs almost certain)
     - **rc**: Release Candidate quality software (no show-stopper bugs, minor bugs may still be present)
-    - **stable**: Production quality software All other tags are currently ignored. 
-    
+    - **stable**: Production quality software All other tags are currently ignored.  
     If you provide more than one tag containing one of the aforementioned stability keywords only the LAST tag will be taken into account. If you do not provide any tags Joomla! will assume it is a stable version.
-
 - **maintainer** – The name of the extension maintainer (similar to the `<author>` tag in a manifest) (optional)
 - **maintainerurl** – The website of the extension maintainer (similar to the `<authorUrl>` tag in a manifest) (optional)
 - **section** – Optional (unknown use)
@@ -222,11 +219,10 @@ The following section describes the elements of a single update entity.
     - **name** – The name of the platform dependency; it should ONLY be "joomla"
     - **version** – The version of Joomla! the extension supports, like a regular expression (mandatory). For example `version="4.[1234]"` will run on Joomla 4.1 to 4.4, but not on any Joomla 3 or Joomla 5 instance, `version="4.(2|4)"` will run only on 4.2 or 4.4.
     - **min_dev_level** and **max_dev_level** – These attributes allow you to select a target platform based on the developer level ("z" in x.y.z). They are optional. You can specify either one or both. If omitted, all developer levels are matched. For example, the following matches versions 4.0.0 and 4.0.1. `<targetplatform name="joomla" version="4.0" min_dev_level="0" max_dev_level="1"/>`
-
 - **php_minimum** – a minimum supported PHP version can be supplied in the update stream. If the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements.
 - **supported_databases** – a minimum supported databases + version check can be supplied in the update stream. When the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements. For example:  `<supported_databases mysql="5.5.3" mariadb="10.1" postgresql="9.2" mssql="10.50.1600.1" />`
 - **sha256**, **sha384**, **sha512** – Optional. The checksum of the downloadable extension file, in these various hash formats. The update will stop if a provided checksum doesn't match. You can find online utilities for generating these checksums.
 
 The values of **element**, **type** and **folder** should match those in the table `#_extensions`, and the client_id there should match the **client** (0 for site, 1 for administrator).
 
-**Important for plugins**: Plugins have to include `<folder>` and `<client>` elements to work properly 
+**Important for plugins**: Plugins have to include `<folder>` and `<client>` elements to work properly.
