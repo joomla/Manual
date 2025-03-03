@@ -202,7 +202,7 @@ The following section describes the elements of a single update entity.
         - **format** – The format of the package (zip, tar, etc.)
     - **downloadsource** – Optional. Alternative URL to download the extension from when the connection to `<downloadurl>` fails. Multiple `<downloadsource>` tags are allowed. The `<downloadsource>` tag has two required parameters:
         - **type** – The type of package (full or upgrade)
-        - **format** – The format of the package (zip, tar, etc.)<br>
+        - **format** – The format of the package (zip, tar, etc.)  
         **NB** – there must be no newline before or after the URL; it needs to all be on one line or you will get Error connecting to the server: malformed when the update is run.
 - **changelogurl** - A link to an xml file holding the changelog. Joomla 4.0 and later will allow you to show a button for the changelog in the extension updater page. More details in how to use it can be found below.
 - **tags** – A list of tags relevant to this version. Joomla! uses this to determine the stability level of the update. The valid tags are:
@@ -210,7 +210,7 @@ The following section describes the elements of a single update entity.
     - **alpha**: Alpha quality software (features not implemented, show-stopper bugs)
     - **beta**: Beta quality software (all features implemented, show-stopper bugs possible, minor bugs almost certain)
     - **rc**: Release Candidate quality software (no show-stopper bugs, minor bugs may still be present)
-    - **stable**: Production quality software All other tags are currently ignored.<br>
+    - **stable**: Production quality software All other tags are currently ignored.  
     If you provide more than one tag containing one of the aforementioned stability keywords only the LAST tag will be taken into account. If you do not provide any tags Joomla! will assume it is a stable version.
 - **maintainer** – The name of the extension maintainer (similar to the `<author>` tag in a manifest) (optional)
 - **maintainerurl** – The website of the extension maintainer (similar to the `<authorUrl>` tag in a manifest) (optional)
