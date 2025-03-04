@@ -174,6 +174,6 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
  - jQuery no conflict
- 	- File moved from `media/legacy/js` to `media/vendror/jquery/js`
-  	- PR: https://github.com/joomla/joomla-cms/pull/45020
-   
+	- File moved from `media/legacy/js` to `media/vendror/jquery/js`
+	- PR: https://github.com/joomla/joomla-cms/pull/45020
+ 
