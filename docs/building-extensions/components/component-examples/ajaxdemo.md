@@ -5,17 +5,15 @@ title: Ajax demo component
 Ajaxdemo Component
 ==================
 
-This is an example component which you can download from [com_ajaxdemo](https://github.com/joomla/manual-examples/tree/main/component-ajaxdemo).
+This example component demonstrates the use of Ajax to interact with the server without requiring a page load. For further background see the General Concepts section on [Ajax and JsonResponse](../../../general-concepts/javascript/ajax.md).
 
-It demonstrates the use of Ajax within a Joomla component; 
-for further background see the section [Ajax and JsonResponse](../../../general-concepts/javascript/ajax.md).
+The component can be easily adapted to demonstrate the use of [com_ajax](../../../general-concepts/javascript/com-ajax.md) for plugins and templates. Simply change `url` in media/js/divide.js to point to com_ajax instead of com_ajaxdemo and set the other required URL parameters.
 
-It can be easily adapted to demonstrate the use of [com_ajax](../../../general-concepts/javascript/com-ajax.md) for plugins and templates; 
-simply change the url in media/js/divide.js to point to com_ajax instead of com_ajaxdemo, and set the other required URL parameters.
+An installable ZIP file can be obtained via [DownGit](https://downgit.github.io/#/home?url=https://github.com/joomla/manual-examples/tree/main/component-ajaxdemo/com_ajaxdemo). After installation go to `<your domain>/index.php?option=com_ajaxdemo` to run it in your Joomla instance.
 
-Once you have downloaded the source, zip up the com_ajaxdemo directory and install the component.
+The following screenshot shows the example form with some data added:
 
-Then go to `<your domain>/index.php?option=com_ajaxdemo` to run it on your Joomla instance.
+![example form with added data](_assets/component-example-ajax.png)
 
 The component displays a form to capture two numbers A and B, and a button to calculate A/B. 
 The division is performed by an Ajax call to the server, and if B is zero then an exception is raised.
