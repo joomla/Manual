@@ -174,3 +174,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
  
+
+### CMS Filesystem Package got moved to the compat plugin
+
+- PR: https://github.com/joomla/joomla-cms/pull/44240
+- Folder: libraries/src/Filesystem
+- Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
