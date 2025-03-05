@@ -60,3 +60,7 @@ PR: https://github.com/joomla/joomla-cms/pull/43396
 
 Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
 PR: https://github.com/joomla/joomla-cms/pull/44754
+
+### voku/portable-utf8 dependency
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself anymore. We strongly recommend to not use this library anymore. It will be removed in Joomla 6.0 without a new replacement. If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package. 
+
