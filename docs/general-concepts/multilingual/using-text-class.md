@@ -80,7 +80,7 @@ MOD_EXAMPLE_N_ITEMS_FOUND_2="Two items found."
 Two items found.
 ```
 
-A detailed explanation of the plural method can be found [here](./plural.md).
+A detailed explanation of the plural method can be found in the [Plural article](./plural.md).
 
 ## Using Text::sprintf
 
@@ -101,7 +101,7 @@ echo Text::sprintf("COM_EXAMPLE_MY_STRING", "laundry basket")
 There's a lot of laundry in the laundry basket.
 ```
 
-More examples of the use of `sprintf` can be found [here](./using-variables.md).
+More examples of the use of `sprintf` can be found in the [Using Variables article](./using-variables.md).
 
 :::danger
 If the `sprintf` method is called with too few arguments than expected, this leads to a fatal php error

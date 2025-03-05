@@ -5,8 +5,8 @@ title: Telephone Form Field
 
 The **telephone** form field type provides a text box for telephone number data entry. If the field has a value saved, this value is displayed when the page is first loaded. If not, the default value (if any) is selected. 
 
-* @link   https://html.spec.whatwg.org/multipage/input.html#telephone-state-(type=tel)
-* @see    \Joomla\CMS\Form\Rule\TelRule for telephone number validation
+* See the [HTML Living Standard](https://html.spec.whatwg.org/multipage/input.html#telephone-state-(type=tel)) for technical information.
+* See \Joomla\CMS\Form\Rule\TelRule for telephone number validation (libraries/src/Form/Rule/TelRule.php).
 
 - **type** (mandatory) must be *telephone*.
 - **name** (mandatory) is the unique name of the field.
