@@ -7,7 +7,7 @@ Backward Compatibility Policy
 
 The Joomla project seeks to maintain backward compatibility as long as possible and full backward compatibility is guaranteed within a major series. Backward compatibility may only be broken when a new major series is started or in the case of a security release that can’t be made without breaking backward compatibility.
 
-Clean, maintainable code is important, but as time progresses the need to maintain backward compatibility makes software more complex and less maintainable. This technical debt (see, for example: [http://martinfowler.com/bliki/TechnicalDebt.html](http://martinfowler.com/bliki/TechnicalDebt.html)) can only be relieved in the first release of a new major series.
+Clean, maintainable code is important, but as time progresses the need to maintain backward compatibility makes software more complex and less maintainable. This [technical debt](http://martinfowler.com/bliki/TechnicalDebt.html) can only be relieved in the first release of a new major series.
 
 Sometimes the best way to continue development is to drop support for some element. This process of deprecation must be handled carefully as it can lead to backward compatibility issues.
 
