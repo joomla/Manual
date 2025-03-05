@@ -51,5 +51,16 @@ public function display($tpl = null)
 ```
 The first line is a docblock comment, which provides a hint for the IDE for the actual model that is used. The second line will retrieve the model set in the view. If you have more than one model in a view, you can provide it with a parameter to select the right model. The last two lines retrieve the actual data from the model. With the first two lines, IDEs can hint at the available methods in the model and now the returned values from those methods, making it possible to find issues further down the line.
 
+## Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')` 
+
+Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')`. Use [Web Asset Manager](https://manual.joomla.org/docs/general-concepts/web-asset-manager) instead.
+PR: https://github.com/joomla/joomla-cms/pull/43396
+
+## Deprecate the namespace property of the ComponentRecord class
+
+Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
+PR: https://github.com/joomla/joomla-cms/pull/44754
+
 ### voku/portable-utf8 dependency
 The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself anymore. We strongly recommend to not use this library anymore. It will be removed in Joomla 6.0 without a new replacement. If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package. 
+

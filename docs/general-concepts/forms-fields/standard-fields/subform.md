@@ -23,8 +23,7 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 - **groupByFieldset** (optional) whether to group the subform fields by its fieldset (true or false). Default: false.
 - **buttons** (optional) which buttons to show in multiple mode. Default: add,remove,move.
 - **layout** (optional) the name of the layout to use when displaying subform fields.  
-  Available layouts:
-
+  Available layouts:  
   `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.  
   `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.  
   `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.

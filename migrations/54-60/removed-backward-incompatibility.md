@@ -117,5 +117,70 @@ $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
 
+### Client id attribute removed in form models cleanCache function
+
+- PR: https://github.com/joomla/joomla-cms/pull/44637
+- Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
+
+### Removed isCli function in application classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44611
+- Files: libraries/src/Application/CMSApplicationInterface.php
+- Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+```php
+// Old:
+if ($app->isCli()) {
+    // Do your stuff
+}
+
+// New:
+if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
+    // Do your stuff
+}
+```
+
+### CMSObject usage in core has been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/43795
+- PR: https://github.com/joomla/joomla-cms/pull/44655
+- Description: The `CMSObject` class has been problematic for a long time, because it allows to circumvent the visibility setting of object properties. The `CMSObject` class will be removed in Joomla 7.0, but with Joomla 6.0 it is removed everywhere in the core code. The following code is affected:
+  - Smart Search (finder) plugins now use `\stdClass` objects to store the state.
+  - The following models now return `\stdClass` objects instead of `CMSObject`:
+    - `Joomla\Component\Installer\Administrator\Model\UpdatesiteModel`
+    - `\Joomla\Component\Installer\Administrator\Model\UpdatesitesModel`
+    - `\Joomla\Component\Languages\Administrator\Model\LanguageModel`
+    - `\Joomla\Component\Mails\Administrator\Model\TemplateModel`
+    - `\Joomla\Component\Menu\Administrator\Model\MenuModel`
+    - `\Joomla\Component\Menus\Administrator\Model\MenutypesModel`
+    - `\Joomla\Component\Messages\Administrator\Model\ConfigModel`
+    - `\Joomla\Component\Modules\Administrator\Model\ModuleModel`
+    - `\Joomla\Component\Plugins\Administrator\Model\PluginModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TaskModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TasksModel`
+    - `\Joomla\Component\Templates\Administrator\Model\StyleModel`
+    - `\Joomla\Component\Users\Administrator\Model\GroupModel`
+    - `\Joomla\Component\Workflow\Administrator\Model\TransitionModel`
+    - `\Joomla\CMS\Component\Contact\Model\FormModel`
+    - `\Joomla\CMS\Component\Content\Model\FormModel`
+    - `\Joomla\Component\Tags\Site\Model\TagModel`
+  - The code of the installer component is using `\stdClass` objects now. 
+  - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
+  - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
+  - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
+
+### Legacy/outdated static assets removed
+
+- Tab state
+	- File removed: build/media_source/legacy/js/tabs-state.es5.js
+	- PR: https://github.com/joomla/joomla-cms/pull/45021
+ 
+
+### CMS Filesystem Package got moved to the compat plugin
+
+- PR: https://github.com/joomla/joomla-cms/pull/44240
+- Folder: libraries/src/Filesystem
+- Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
+
 ### voku/portable-utf8 composer library
 The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself. If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
+

@@ -59,7 +59,7 @@ Options:
 
 - `url: ''` Request URL
 - `method: 'GET'` Request method `GET` (default), `POST` etc.
-- `data` Data to be sent, see https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send.
+- `data` Data to be sent. For more information see this [MDN Web Docs](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest/send) article.
 - `promise: false` Whether return a Promise instance.  When is `true` then next options are ignored: `perform`, `onSuccess`, `onError`, `onComplete`.
 - `perform: true` Perform the request immediately or return `XMLHttpRequest` instance and perform it later.
 - `headers: {}` Object of custom headers, eg `{'X-Foo': 'Bar', 'X-Bar': 'Foo'}`.

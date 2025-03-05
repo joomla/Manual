@@ -34,7 +34,7 @@ This will open the media manager with the directory /images/stories/ already sel
 
 Note that if you are using this field on the frontend then permissions restrictions are likely to be in force. If the user is not authorised to view or add media they will see an error page in the modal popup ("403 You are not authorised to view this resource.").
 
-**See also**
+## See also
 
 * [File form field type](file.md)
 * [Imagelist form field type](imagelist.md)

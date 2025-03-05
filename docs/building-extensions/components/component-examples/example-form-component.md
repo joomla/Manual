@@ -6,13 +6,7 @@ title: Example Form Component
 Example Form Component
 ======================
 
-This is an example component which you can download from [com_exampleform](https://github.com/joomla/manual-examples/tree/main/component-exampleform).
-
-Once you have downloaded the source, zip up the com_exampleform directory and install the component.
-
-Then go to `<your domain>/index.php?option=com_exampleform` to run it on your Joomla instance.
-
-It is an MVC component which demonstrates the following:
+This example MVC component demonstrates the following aspects of form manipulation:
 
 - using [Joomla Forms](../../../general-concepts/forms/how-forms-work.md) to capture data in a form
 - using several of the [standard form fields](../../../general-concepts/forms-fields/standard-fields/index.md)
@@ -21,9 +15,13 @@ It is an MVC component which demonstrates the following:
 - writing a [custom client-side validation rule](../../../general-concepts/forms/client-side-validation.md)
 - writing a [custom form filter](../../../general-concepts/forms-fields/standard-form-field-attributes.md#filter)
 
-You can easily adapt it to experiment with other standard fields, simply by including the standard field in the form XML file.
+An installable ZIP file can be obtained via [DownGit](https://downgit.github.io/#/home?url=https://github.com/joomla/manual-examples/tree/main/component-exampleform/com_exampleform). After installation go to `<your domain>/index.php?option=com_exampleform` to run it in your Joomla instance.
 
-There are comments throughout the code to help you understand it, and brief summaries of the main source files are provided below.
+The following screenshot shows the example form with some data added:
+
+![example form with added data](_assets/component-example-form.png)
+
+Brief summaries of the main source files are provided below. There are additional explanatory comments throughout the code.
 
 ## Administrator service provider
 
