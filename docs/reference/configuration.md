@@ -263,7 +263,7 @@ File: `${log_path}/custom-logging.php`
 
 ### log_category_mode
 
-Log category mode: `0`: include, `1`: exclude.
+Log category mode: `0` (include), `1` (exclude).
 
 Default: `0`
 
@@ -480,7 +480,7 @@ Default: `false`
 
 ### sitename_pagetitles
 
-Show site name in page titles: `0` (no), `1` (after), `2` (before).
+Append the site name to page titles in the `<title>` tag of each web page header: `0` (no), `1` (after), `2` (before).
 
 Default: `0`.
 
