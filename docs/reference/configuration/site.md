@@ -27,7 +27,7 @@ Site Settings
   Default: `This site is down for maintenance.<br> Please check back again soon.`
 
   ```php
-  public $offline_message = 'Maintenance'
+  public $offline_message = 'Maintenance';
   ```
   
 - #### display_offline_message
@@ -114,7 +114,7 @@ Site Settings
 
 - #### frontediting
 
-  Enable frontend editing: `0` (none), `1` (modules), `2` (modules &amp; menues)
+  Enable frontend editing: `0` (none), `1` (modules), `2` (modules &amp; menus)
 
   Default: `1`
 

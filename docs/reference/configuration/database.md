@@ -84,7 +84,7 @@ Database Settings
   The path to the SSL/TLS key file used for database connections.
 
   ```php
-  public $dbsslkey = '/path/to/youre/key.crt.pem';
+  public $dbsslkey = '/path/to/your/key.crt.pem';
   ```
 
 - #### dbsslcert
