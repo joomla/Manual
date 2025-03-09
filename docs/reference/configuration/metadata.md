@@ -5,48 +5,48 @@ title: Metadata
 Metadata Settings
 =================
 
-- #### MetaDesc
+### MetaDesc
 
-  Site meta description.
+Site meta description.
 
-  ```php
-  public $MetaDesc = 'Joomla!';
-  ```
+```php
+public $MetaDesc = 'Joomla!';
+```
 
-- #### MetaAuthor
+### MetaAuthor
 
-  Show author meta tag.
+Show author meta tag.
 
-  Default: `true`
+Default: `true`
 
-  ```php
-  public $MetaAuthor = false;
-  ```
+```php
+public $MetaAuthor = false;
+```
 
-- #### MetaVersion
+### MetaVersion
 
-  Show Joomla version in generator meta tag.
+Show Joomla version in generator meta tag.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $MetaVersion = true;
-  ```
+```php
+public $MetaVersion = true;
+```
 
-- #### MetaRights
+### MetaRights
 
-  Content rights meta tag value.
+Content rights meta tag value.
 
-  ```php
-  public $MetaRights = 'Public domain';
-  ```
+```php
+public $MetaRights = 'Public domain';
+```
 
-- #### robots
+### robots
 
-  Robots meta tag value.
+Robots meta tag value.
 
-  Default: `index, follow`
+Default: `index, follow`
 
-  ```php
-  public $robots = 'noindex, nofollow';
-  ```
+```php
+public $robots = 'noindex, nofollow';
+```

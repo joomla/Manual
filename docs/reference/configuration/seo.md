@@ -5,52 +5,53 @@ title: SEO
 SEO Settings
 ============
 
-- #### sef
+### sef
 
-  Enable search engine friendly URLs.
+Enable search engine friendly URLs.
 
-  Default: `true`.
+Default: `true`.
 
-  ```php
-  public $sef = false;
-  ```
+```php
+public $sef = false;
+```
 
-- #### sef_rewrite
+### sef_rewrite
 
-  Enable URL rewriting.
+Enable URL rewriting.
 
-  Default: `false`.
+Default: `false`.
 
-  ```php
-  public $sef_rewrite = true;
-  ```
+```php
+public $sef_rewrite = true;
+```
 
-- #### sef_suffix
+### sef_suffix
 
-  Add an `.html` suffix to URLs.
 
-  Default: `false`.
+Add an `.html` suffix to URLs.
 
-  ```php
-  public $sef_suffix = true;
-  ```
+Default: `false`.
 
-- #### unicodeslugs
+```php
+public $sef_suffix = true;
+```
 
-  Allow Unicode in slugs.
+### unicodeslugs
 
-  Default: `false`
+Allow Unicode in slugs.
 
-  ```php
-  public $unicodeslugs = true;
-  ```
+Default: `false`
 
-- #### sitename_pagetitles
+```php
+public $unicodeslugs = true;
+```
 
-  Show site name in page titles: `0` (no), `1` (after), `2` (before).
+### sitename_pagetitles
 
-  Default: `0`.
+Show site name in page titles: `0` (no), `1` (after), `2` (before).
 
-  ```php
-  public $sitename_pagetitles = 2;
-  ```
+Default: `0`.
+
+```php
+public $sitename_pagetitles = 2;
+```

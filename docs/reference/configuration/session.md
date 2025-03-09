@@ -5,127 +5,127 @@ title: Session
 Session Settings
 ================
 
-- #### session_handler
+### session_handler
 
-  The method used to handle sessions: `file`, `database`, `memcached`, `redis`.
+The method used to handle sessions: `file`, `database`, `memcached`, `redis`.
 
-  Default: `database`
+Default: `database`
 
-  ```php
-  public $session_handler = 'redis';
-  ```
+```php
+public $session_handler = 'redis';
+```
 
-- #### shared_session
+### shared_session
 
-  Enable shared sessions.
+Enable shared sessions.
 
-  Default: `false`
-  ```php
-  public $shared_session = true;
-  ```
+Default: `false`
+```php
+public $shared_session = true;
+```
 
-- #### session_metadata
+### session_metadata
 
-  Track session metadata.
+Track session metadata.
 
-  Default: `true`
+Default: `true`
 
-  ```php
-  public $session_metadata = false;
-  ```
+```php
+public $session_metadata = false;
+```
 
-- #### session_metadata_for_guest
+### session_metadata_for_guest
 
-  Track guest session metadata.
+Track guest session metadata.
 
-  Default: `true`
+Default: `true`
 
-  ```php
-  public $session_metadata_for_guest = false;
-  ```
+```php
+public $session_metadata_for_guest = false;
+```
 
-- #### lifetime
+### lifetime
 
-  Session lifetime (in minutes).
+Session lifetime (in minutes).
 
-  Default: `15`
+Default: `15`
 
-  ```php
-  public $lifetime = 60;
-  ```
+```php
+public $lifetime = 60;
+```
 
-- #### session_filesystem_path
+### session_filesystem_path
 
-  Path for session files.
+Path for session files.
 
-  ```php
-  public $session_filesystem_path = '/var/www/sessions';
-  ```
+```php
+public $session_filesystem_path = '/var/www/sessions';
+```
 
-- #### session_memcached_server_host
- 
-  Memcached server hostname or IP address.
+### session_memcached_server_host
 
-  Default: `localhost`
+Memcached server hostname or IP address.
 
-  ```php
-  public $session_memcached_server_host = '127.0.0.1';
-  ```
+Default: `localhost`
 
-- #### session_memcached_server_port
+```php
+public $session_memcached_server_host = '127.0.0.1';
+```
 
-  Memcached server port.
+### session_memcached_server_port
 
-  Default: `11211`
+Memcached server port.
 
-  ```php
-  public $session_memcached_server_port = 22122;
-  ```
+Default: `11211`
 
-- #### session_redis_server_host
+```php
+public $session_memcached_server_port = 22122;
+```
 
-  Redis server hostname or IP address.
+### session_redis_server_host
 
-  Default: `localhost`
+Redis server hostname or IP address.
 
-  ```php
-  public $session_redis_server_host = '127.0.0.1';
-  ```
+Default: `localhost`
 
-- #### session_redis_server_port
+```php
+public $session_redis_server_host = '127.0.0.1';
+```
 
-  Redis server port.
+### session_redis_server_port
 
-  Default: `6379`
+Redis server port.
 
-  ```php
-  public $session_redis_server_port = 9736;
-  ```
+Default: `6379`
 
-- #### session_redis_server_auth
+```php
+public $session_redis_server_port = 9736;
+```
 
-  Redis server authentication password.
+### session_redis_server_auth
 
-  ```php
-  public $session_redis_server_auth = 'redis_password';
-  ```
+Redis server authentication password.
 
-- #### session_redis_server_db
+```php
+public $session_redis_server_auth = 'redis_password';
+```
 
-  Redis server database index.
+### session_redis_server_db
 
-  Default: `0`
+Redis server database index.
 
-  ```php
-  public $session_redis_server_db = 1;
-  ```
+Default: `0`
 
-- #### session_redis_persist
+```php
+public $session_redis_server_db = 1;
+```
 
-  Enable Redis persistent connections.
+### session_redis_persist
 
-  Default: `true`
+Enable Redis persistent connections.
 
-  ```php
-  public $session_redis_persist = false;
-  ```
+Default: `true`
+
+```php
+public $session_redis_persist = false;
+```

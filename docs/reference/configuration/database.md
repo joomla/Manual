@@ -5,108 +5,108 @@ title: Database
 Database Settings
 =================
 
-- #### dbtype
+### dbtype
 
-  The type of database used: `mysqli`, `mysql`, `pgsql`.
+The type of database used: `mysqli`, `mysql`, `pgsql`.
 
-  Default: `mysqli`
+Default: `mysqli`
 
-  ```php
-  public $dbtype = 'pgsql';
-  ```
+```php
+public $dbtype = 'pgsql';
+```
 
-- #### host
+### host
 
-  The database hostname or IP address.
+The database hostname or IP address.
 
-  Default: `localhost`
+Default: `localhost`
 
-  ```php
-  public $host = '127.0.0.1';
-  ```
+```php
+public $host = '127.0.0.1';
+```
 
-- #### user
+### user
 
-  The username for the database.
+The username for the database.
 
-  ```php
-  public $user = 'joomla_user';
-  ```
+```php
+public $user = 'joomla_user';
+```
 
-- #### password
+### password
 
-  The password for the database.
+The password for the database.
 
-  ```php
-  public $password = 'securepassword123';
-  ```
+```php
+public $password = 'securepassword123';
+```
 
-- #### db
+### db
 
-  The name of the database.
+The name of the database.
 
-  ```php
-  public $db = 'joomla_db';
-  ```
+```php
+public $db = 'joomla_db';
+```
 
-- #### dbprefix
+### dbprefix
 
-  The prefix for database tables.
+The prefix for database tables.
 
-  Default: `jos_`
+Default: `jos_`
 
-  ```php
-  public $dbprefix = 'xyz_';
-  ```
+```php
+public $dbprefix = 'xyz_';
+```
 
-- #### dbencryption
+### dbencryption
 
-  Encrypt database connections: `0` (server controlled), `1` (one-way), `2` (two-way).
+Encrypt database connections: `0` (server controlled), `1` (one-way), `2` (two-way).
 
-  Default: `0`
+Default: `0`
 
-  ```php
-  public $dbencryption = 1;
-  ```
+```php
+public $dbencryption = 1;
+```
 
-- #### dbsslverifyservercert
+### dbsslverifyservercert
 
-  Verify server certificate during SSL/TLS connection.
+Verify server certificate during SSL/TLS connection.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $dbsslverifyservercert = true;
-  ```
+```php
+public $dbsslverifyservercert = true;
+```
 
-- #### dbsslkey
+### dbsslkey
 
-  The path to the SSL/TLS key file used for database connections.
+The path to the SSL/TLS key file used for database connections.
 
-  ```php
-  public $dbsslkey = '/path/to/your/key.crt.pem';
-  ```
+```php
+public $dbsslkey = '/path/to/your/key.crt.pem';
+```
 
-- #### dbsslcert
+### dbsslcert
 
-  The path to the SSL/TLS certificate file used for database connections.
+The path to the SSL/TLS certificate file used for database connections.
 
-  ```php
-  public $dbsslcert = '/path/to/your/certificate.pem';
-  ```
+```php
+public $dbsslcert = '/path/to/your/certificate.pem';
+```
 
-- #### dbsslca
+### dbsslca
 
-  The path to the CA certificate file used for verifying the server's identity.
+The path to the CA certificate file used for verifying the server's identity.
 
-  ```php
-  public $dbsslca = '/path/to/ca_certificate.pem';
-  ```
+```php
+public $dbsslca = '/path/to/ca_certificate.pem';
+```
 
-- #### dbsslcipher
+### dbsslcipher
 
-  The cipher suite to use for SSL/TLS connections.
+The cipher suite to use for SSL/TLS connections.
 
-  ```php
-  public $dbsslcipher = 'ECDHE-RSA-AES256-GCM-SHA384';
-  ```
+```php
+public $dbsslcipher = 'ECDHE-RSA-AES256-GCM-SHA384';
+```

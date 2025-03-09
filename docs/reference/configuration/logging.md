@@ -5,64 +5,64 @@ title: Logging
 Logging Settings
 ================
 
-- #### log_path
+### log_path
 
-  The path to the log directory.
+The path to the log directory.
 
-  ```php
-  public $log_path = '/var/www/html/administrator/logs';
-  ```
+```php
+public $log_path = '/var/www/html/administrator/logs';
+```
 
-- #### log_categories
+### log_categories
 
-  Log categories: `databasequery`, `deprecated`, `deprecation-notes`, `system` and etc.
+Log categories: `databasequery`, `deprecated`, `deprecation-notes`, `system` and etc.
 
-  File: `${log_path}/custom-logging.php`
+File: `${log_path}/custom-logging.php`
 
-  ```php
-  public $log_categories = '';
-  ```
+```php
+public $log_categories = '';
+```
 
-- #### log_category_mode
+### log_category_mode
 
-  Log category mode: `0`: include, `1`: exclude.
+Log category mode: `0`: include, `1`: exclude.
 
-  Default: `0`
+Default: `0`
 
-  ```php
-  public $log_category_mode = 1;
-  ```
+```php
+public $log_category_mode = 1;
+```
 
-- #### log_deprecated
+### log_deprecated
 
-  Log deprecations.
+Log deprecations.
 
-  File: `${log_path}/deprecated.php`
+File: `${log_path}/deprecated.php`
 
-  Default: `0` 
+Default: `0` 
 
-  ```php
-  public $log_deprecated = 1;
-  ```
+```php
+public $log_deprecated = 1;
+```
 
-- #### log_everything
+### log_everything
 
-  Log almost everything.
+Log almost everything.
 
-  File: `${log_path}/everything.php`
+File: `${log_path}/everything.php`
 
-  Default: `0` 
+Default: `0` 
 
-  ```php
-  public $log_everything = 1;
-  ```
+```php
+public $log_everything = 1;
+```
 
-- #### log_priorities
+### log_priorities
 
-  Log priorities.
+Log priorities.
 
-  Default: `array('0' => 'all')`.
+Default: `array('0' => 'all')`.
 
-  ```php
-  public $log_priorities = array('0' => 'critical', '1' => 'emergency');
-  ```
+```php
+public $log_priorities = array('0' => 'critical', '1' => 'emergency');
+```

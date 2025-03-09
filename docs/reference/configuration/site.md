@@ -5,175 +5,175 @@ title: Site
 Site Settings
 =============
 
-- #### sitename
+### sitename
 
-  The name of the website.
+The name of the website.
 
-  ```php
-  public $sitename = 'My Joomla Site';
-  ```
+```php
+public $sitename = 'My Joomla Site';
+```
 
-- #### offline
+### offline
 
-  Enable offline mode.
-  ```php
-  public $offline = true;
-  ```
+Enable offline mode.
+```php
+public $offline = true;
+```
 
-- #### offline_message
+### offline_message
 
-  The message that will be displayed on the site when the site is offline.
+The message that will be displayed on the site when the site is offline.
 
-  Default: `This site is down for maintenance.<br> Please check back again soon.`
+Default: `This site is down for maintenance.<br> Please check back again soon.`
 
-  ```php
-  public $offline_message = 'Maintenance';
-  ```
-  
-- #### display_offline_message
+```php
+public $offline_message = 'Maintenance';
+```
 
-  Display offline message: `0` (hide), `1` (custom message), `2` (default message).
+### display_offline_message
 
-  Default: `1`
+Display offline message: `0` (hide), `1` (custom message), `2` (default message).
 
-  ```php
-  public $display_offline_message = 2;
-  ```
+Default: `1`
 
-- #### offline_image
+```php
+public $display_offline_message = 2;
+```
 
-  The image that will be displayed when the site is offline.
+### offline_image
 
-  ```php
-  public $offline_image = 'images/offline.png';
-  ```
+The image that will be displayed when the site is offline.
 
-- #### editor
+```php
+public $offline_image = 'images/offline.png';
+```
 
-  The default editor for content creation: `tinymce`, `codemirror`, `none`.
+### editor
 
-  Default: `tinymce`
+The default editor for content creation: `tinymce`, `codemirror`, `none`.
 
-  ```php
-  public $editor = 'codemirror';
-  ```
+Default: `tinymce`
 
-- #### captcha
+```php
+public $editor = 'codemirror';
+```
 
-  The default Captcha.
+### captcha
 
-  ```php
-  public $captcha = 0;
-  ```
+The default Captcha.
 
-- #### list_limit
+```php
+public $captcha = 0;
+```
 
-  The number of items displayed per page in the admin panel.
+### list_limit
 
-  Default: `20`
+The number of items displayed per page in the admin panel.
 
-  ```php
-  public $list_limit = 50;
-  ```
+Default: `20`
 
-- #### live_site
+```php
+public $list_limit = 50;
+```
 
-  The full URL of the site (optional).
+### live_site
 
-  ```php
-  public $live_site = 'https://www.example.com';
-  ```
+The full URL of the site (optional).
 
-- #### secret
+```php
+public $live_site = 'https://www.example.com';
+```
 
-  A secret key used for security purposes.
+### secret
 
-  ```php
-  public $secret = 'your_secret_key';
-  ```
+A secret key used for security purposes.
 
-- #### force_ssl
+```php
+public $secret = 'your_secret_key';
+```
 
-  Force SSL/TLS for the site or admin area: `0` (none), `1` (admin), `2` (entire site).
+### force_ssl
 
-  Default: `0`
+Force SSL/TLS for the site or admin area: `0` (none), `1` (admin), `2` (entire site).
 
-  ```php
-  public $force_ssl = 2;
-  ```
+Default: `0`
 
-- #### access
+```php
+public $force_ssl = 2;
+```
 
-  The default access level for newly created items: `1` (public), `2` (registered), `3` (special), `5` (guest), `6` (super users).
+### access
 
-  Default: `1`
+The default access level for newly created items: `1` (public), `2` (registered), `3` (special), `5` (guest), `6` (super users).
 
-  ```php
-  public $access = 2;
-  ```
+Default: `1`
 
-- #### frontediting
+```php
+public $access = 2;
+```
 
-  Enable frontend editing: `0` (none), `1` (modules), `2` (modules &amp; menus)
+### frontediting
 
-  Default: `1`
+Enable frontend editing: `0` (none), `1` (modules), `2` (modules &amp; menus)
 
-  ```php
-  public $frontediting = 2;
-  ```
+Default: `1`
 
-- #### feed_limit
+```php
+public $frontediting = 2;
+```
 
-  The number of content items to be shown in any RSS news feeds set up on the website.
+### feed_limit
 
-  Default: `10`
+The number of content items to be shown in any RSS news feeds set up on the website.
 
-  ```php
-  public $feed_limit = 20;
-  ```
+Default: `10`
 
-- #### feed_email
- 
-  Feed email: `none`, `author`, `site`.
+```php
+public $feed_limit = 20;
+```
 
-  Default: `none`
+### feed_email
 
-  ```php
-  public $feed_email = 'author';
-  ```
+Feed email: `none`, `author`, `site`.
 
-- #### cookie_domain
+Default: `none`
 
-  Cookie domain.
+```php
+public $feed_email = 'author';
+```
 
-  ```php
-  public $cookie_domain = 'example.com';
-  ```
+### cookie_domain
 
-- #### cookie_path
+Cookie domain.
 
-  Cookie path.
+```php
+public $cookie_domain = 'example.com';
+```
 
-  ```php
-  public $cookie_path = '/subfolder';
-  ```
+### cookie_path
 
-- #### helpurl
+Cookie path.
 
-  Help URL.
+```php
+public $cookie_path = '/subfolder';
+```
 
-  Default: `https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}`
+### helpurl
 
-  ```php
-  public $helpurl = 'https://example.com/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
-  ```
+Help URL.
 
-- #### asset_id
-  
-  Asset ID.
+Default: `https://help.joomla.org/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}`
 
-  Default: `1`
+```php
+public $helpurl = 'https://example.com/proxy?keyref=Help{major}{minor}:{keyref}&lang={langcode}';
+```
 
-  ```php
-  public $asset_id = 42;
-  ```
+### asset_id
+
+Asset ID.
+
+Default: `1`
+
+```php
+public $asset_id = 42;
+```

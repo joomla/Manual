@@ -5,42 +5,42 @@ title: CORS
 CORS Settings
 =============
 
-- #### cors
+### cors
 
-  Enable CORS.
+Enable CORS.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $cors = true;
-  ```
+```php
+public $cors = true;
+```
 
-- #### cors_allow_headers
+### cors_allow_headers
 
-  HTTP headers that are allowed in response to a preflight request.
+HTTP headers that are allowed in response to a preflight request.
 
-  Default: `Content-Type,X-Joomla-Token`
+Default: `Content-Type,X-Joomla-Token`
 
-  ```php
-  public $cors_allow_headers = 'Content-Type,X-Joomla-Token,Authorization';
-  ```
+```php
+public $cors_allow_headers = 'Content-Type,X-Joomla-Token,Authorization';
+```
 
-- #### cors_allow_methods
+### cors_allow_methods
 
-  HTTP methods (e.g., GET, POST, PUT) that are permitted for cross-origin requests.
+HTTP methods (e.g., GET, POST, PUT) that are permitted for cross-origin requests.
 
-  Default: `''` (all methods available for the requested route)
+Default: `''` (all methods available for the requested route)
 
-  ```php
-  public $cors_allow_methods = 'GET,POST';
-  ```
+```php
+public $cors_allow_methods = 'GET,POST';
+```
 
-- #### cors_allow_origin
+### cors_allow_origin
 
-  Origins (domains) that are allowed to access the resource.
+Origins (domains) that are allowed to access the resource.
 
-  Default: `*`
+Default: `*`
 
-  ```php
-  public $cors_allow_origin = 'https://example.com,https://another-domain.com';
-  ```
+```php
+public $cors_allow_origin = 'https://example.com,https://another-domain.com';
+```

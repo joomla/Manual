@@ -5,44 +5,44 @@ title: Proxy
 Proxy Settings
 ==============
 
-- #### proxy_enable
+### proxy_enable
 
-  Enable HTTP proxy.
+Enable HTTP proxy.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $proxy_enable = true;
-  ```
+```php
+public $proxy_enable = true;
+```
 
-- #### proxy_host
+### proxy_host
 
-  The HTTP proxy hostname or IP address.
+The HTTP proxy hostname or IP address.
 
-  ```php
-  public $proxy_host = 'example.com';
-  ```
+```php
+public $proxy_host = 'example.com';
+```
 
-- #### proxy_port
+### proxy_port
 
-  HTTP proxy port.
+HTTP proxy port.
 
-  ```php
-  public $proxy_port = 8080;
-  ```
+```php
+public $proxy_port = 8080;
+```
 
-- #### proxy_user
+### proxy_user
 
-  HTTP proxy user.
+HTTP proxy user.
 
-  ```php
-  public $proxy_user = 'proxy_user';
-  ```
+```php
+public $proxy_user = 'proxy_user';
+```
 
-- #### proxy_pass
+### proxy_pass
 
-  HTTP proxy password.
+HTTP proxy password.
 
-  ```php
-  public $proxy_pass = 'proxy_password';
-  ```
+```php
+public $proxy_pass = 'proxy_password';
+```

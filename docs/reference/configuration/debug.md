@@ -5,40 +5,40 @@ title: Debug
 Debug Settings
 ==============
 
-- #### debug
+### debug
 
-  Enable debug mode.
+Enable debug mode.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $debug = true;
-  ```
+```php
+public $debug = true;
+```
 
-- #### debug_lang
+### debug_lang
 
-  Enable language debug mode.
+Enable language debug mode.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $debug_lang = true;
-  ```
+```php
+public $debug_lang = true;
+```
 
-- #### debug_lang_const
+### debug_lang_const
 
-  Enable language constants debug mode.
+Enable language constants debug mode.
 
-  Default: `true`
+Default: `true`
 
-  ```php
-  public $debug_lang_const = false;
-  ```
+```php
+public $debug_lang_const = false;
+```
 
-- #### error_reporting
+### error_reporting
 
-  The level of error reporting: `default`, `simple`, `maximum`, `none`.
+The level of error reporting: `default`, `simple`, `maximum`, `none`.
 
-  ```php
-  public $error_reporting = 'default';
-  ```
+```php
+public $error_reporting = 'default';
+```

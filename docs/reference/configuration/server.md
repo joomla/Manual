@@ -5,40 +5,40 @@ title: Server
 Server Settings
 ===============
 
-- #### tmp_path
+### tmp_path
 
-  The path to the temporary directory.
+The path to the temporary directory.
 
-  Default: `/tmp`.
+Default: `/tmp`.
 
-  ```php
-  public $tmp_path = '/var/www/html/tmp';
-  ```
+```php
+public $tmp_path = '/var/www/html/tmp';
+```
 
-- #### gzip
+### gzip
 
-  Enable GZIP compression.
+Enable GZIP compression.
 
-  Default: `false`.
-  ```php
-  public $gzip = true;
-  ```
+Default: `false`.
+```php
+public $gzip = true;
+```
 
-- #### offset
+### offset
 
-  The server's timezone offset.
+The server's timezone offset.
 
-  Default: `UTC`.
+Default: `UTC`.
 
-  ```php
-  public $offset = 'Asia/Vladivostok';
-  ```
+```php
+public $offset = 'Asia/Vladivostok';
+```
 
-- #### behind_loadbalancer
+### behind_loadbalancer
 
-  Behind load balancer.
+Behind load balancer.
 
-  Default: `false`.
-  ```php
-  public $behind_loadbalancer = true;
-  ```
+Default: `false`.
+```php
+public $behind_loadbalancer = true;
+```

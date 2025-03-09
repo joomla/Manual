@@ -5,110 +5,110 @@ title: Mail
 Mail Settings
 =============
 
-- #### mailonline
+### mailonline
 
-  Enable email sending.
+Enable email sending.
 
-  Default: `true`
+Default: `true`
 
-  ```php
-  public $mailonline = false;
-  ```
+```php
+public $mailonline = false;
+```
 
-- #### mailer
+### mailer
 
-  The method used to send emails: `mail`, `sendmail`, `smtp`.
+The method used to send emails: `mail`, `sendmail`, `smtp`.
 
-  ```php
-  public $mailer = 'smtp';
-  ```
+```php
+public $mailer = 'smtp';
+```
 
-- #### mailfrom
+### mailfrom
 
-  The email address used to send emails.
+The email address used to send emails.
 
-  ```php
-  public $mailfrom = 'admin@example.com';
-  ```
+```php
+public $mailfrom = 'admin@example.com';
+```
 
-- #### fromname
+### fromname
 
-  The name displayed in the "From" field of emails.
+The name displayed in the "From" field of emails.
 
-  ```php
-  public $fromname = 'My Joomla Site';
-  ```
+```php
+public $fromname = 'My Joomla Site';
+```
 
-- #### massmailoff
+### massmailoff
 
-  Disable mass mailings.
+Disable mass mailings.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $massmailoff = true;
-  ```
+```php
+public $massmailoff = true;
+```
 
-- #### sendmail
+### sendmail
 
-  Path to sendmail binary.
+Path to sendmail binary.
 
-  Default: `/usr/sbin/sendmail`
+Default: `/usr/sbin/sendmail`
 
-  ```php
-  public $sendmail = '/usr/local/sbin/sendmail';
-  ```
+```php
+public $sendmail = '/usr/local/sbin/sendmail';
+```
 
-- #### smtpauth
+### smtpauth
 
-  Enable SMTP authentication.
+Enable SMTP authentication.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $smtpauth = true;
-  ```
+```php
+public $smtpauth = true;
+```
 
-- #### smtpuser
+### smtpuser
 
-  The username for SMTP authentication.
+The username for SMTP authentication.
 
-  ```php
-  public $smtpuser = 'smtp_user';
-  ```
+```php
+public $smtpuser = 'smtp_user';
+```
 
-- #### smtppass
+### smtppass
 
-  The password for SMTP authentication.
+The password for SMTP authentication.
 
-  ```php
-  public $smtppass = 'smtp_password';
-  ```
+```php
+public $smtppass = 'smtp_password';
+```
 
-- #### smtphost
+### smtphost
 
-  The SMTP server hostname or IP address.
+The SMTP server hostname or IP address.
 
-  ```php
-  public $smtphost = 'smtp.example.com';
-  ```
+```php
+public $smtphost = 'smtp.example.com';
+```
 
-- #### smtpsecure
+### smtpsecure
 
-  The encryption method for SMTP: `none`, `ssl`, `tls`.
+The encryption method for SMTP: `none`, `ssl`, `tls`.
 
-  Default: `none`
+Default: `none`
 
-  ```php
-  public $smtpsecure = 'tls';
-  ```
+```php
+public $smtpsecure = 'tls';
+```
 
-- #### smtpport
+### smtpport
 
-  The port used for SMTP.
+The port used for SMTP.
 
-  Default: `25`
+Default: `25`
 
-  ```php
-  public $smtpport = 465;
-  ```
+```php
+public $smtpport = 465;
+```

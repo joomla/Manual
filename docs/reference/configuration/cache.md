@@ -5,130 +5,130 @@ title: Cache
 Cache Settings
 ==============
 
-- #### caching
+### caching
 
-  Enable caching: `0` (disabled), `1` (conservative), `2` (progressive).
+Enable caching: `0` (disabled), `1` (conservative), `2` (progressive).
 
-  Default: `0`
+Default: `0`
 
-  ```php
-  public $caching = 1;
-  ```
+```php
+public $caching = 1;
+```
 
-- #### cache_handler
+### cache_handler
 
-  The caching mechanism used: `file`, `apcu`, `memcached`, `redis`.
+The caching mechanism used: `file`, `apcu`, `memcached`, `redis`.
 
-  Default: `file`
+Default: `file`
 
-  ```php
-  public $cache_handler = 'redis';
-  ```
+```php
+public $cache_handler = 'redis';
+```
 
-- #### cachetime
+### cachetime
 
-  The time (in minutes) before cached content expires.
+The time (in minutes) before cached content expires.
 
-  Default: `15`
+Default: `15`
 
-  ```php
-  public $cachetime = 60;
-  ```
+```php
+public $cachetime = 60;
+```
 
-- #### cache_platformprefix
+### cache_platformprefix
 
-  Enable platform prefix for caching.
+Enable platform prefix for caching.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $cache_platformprefix = true;
-  ```
+```php
+public $cache_platformprefix = true;
+```
 
-- #### memcached_persist
+### memcached_persist
 
-  Enable Memcached.
+Enable Memcached.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $memcached_persist = true;
-  ```
+```php
+public $memcached_persist = true;
+```
 
-- #### memcached_compress
+### memcached_compress
 
-  Enable Memcached compression.
+Enable Memcached compression.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $memcached_compress = true;
-  ```
+```php
+public $memcached_compress = true;
+```
 
-- #### memcached_server_host
+### memcached_server_host
 
-  Memcached server hostname or IP address.
+Memcached server hostname or IP address.
 
-  Default: `localhost`
+Default: `localhost`
 
-  ```php
-  public $memcached_server_host = '127.0.0.1';
-  ```
+```php
+public $memcached_server_host = '127.0.0.1';
+```
 
-- #### memcached_server_port
+### memcached_server_port
 
-  Memcached server port.
+Memcached server port.
 
-  Default: `11211`
+Default: `11211`
 
-  ```php
-  public $memcached_server_port = 22122;
-  ```
+```php
+public $memcached_server_port = 22122;
+```
 
-- #### redis_server_host
+### redis_server_host
 
-  Redis server hostname or IP address.
+Redis server hostname or IP address.
 
-  Default: `localhost`
+Default: `localhost`
 
-  ```php
-  public $redis_server_host = '127.0.0.1';
-  ```
+```php
+public $redis_server_host = '127.0.0.1';
+```
 
-- #### redis_server_port
+### redis_server_port
 
-  Redis server port.
+Redis server port.
 
-  Default: `6379`
+Default: `6379`
 
-  ```php
-  public $redis_server_port = 9736;
-  ```
+```php
+public $redis_server_port = 9736;
+```
 
-- #### redis_server_auth
+### redis_server_auth
 
-  Redis server authentication key.
+Redis server authentication key.
 
-  ```php
-  public $redis_server_auth = 'redis_secret';
-  ```
+```php
+public $redis_server_auth = 'redis_secret';
+```
 
-- #### redis_server_db
+### redis_server_db
 
-  Redis database index.
+Redis database index.
 
-  Default: `0`
+Default: `0`
 
-  ```php
-  public $redis_server_db = 1;
-  ```
+```php
+public $redis_server_db = 1;
+```
 
-- #### redis_persist
+### redis_persist
 
-  Enable Redis persistent connections.
+Enable Redis persistent connections.
 
-  Default: `false`
+Default: `false`
 
-  ```php
-  public $redis_persist = true;
-  ```
+```php
+public $redis_persist = true;
+```
