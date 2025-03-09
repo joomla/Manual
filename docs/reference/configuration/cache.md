@@ -2,8 +2,8 @@
 title: Cache
 ---
 
-Cache Settings
-==============
+Cache 
+=====
 
 ### caching
 

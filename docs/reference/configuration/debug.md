@@ -2,8 +2,8 @@
 title: Debug
 ---
 
-Debug Settings
-==============
+Debug
+=====
 
 ### debug
 

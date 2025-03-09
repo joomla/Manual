@@ -2,8 +2,8 @@
 title: Database
 ---
 
-Database Settings
-=================
+Database
+========
 
 ### dbtype
 

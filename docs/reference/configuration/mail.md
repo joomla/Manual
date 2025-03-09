@@ -2,8 +2,8 @@
 title: Mail
 ---
 
-Mail Settings
-=============
+Mail
+====
 
 ### mailonline
 

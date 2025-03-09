@@ -2,8 +2,8 @@
 title: Logging
 ---
 
-Logging Settings
-================
+Logging 
+=======
 
 ### log_path
 

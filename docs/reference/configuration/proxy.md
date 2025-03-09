@@ -2,8 +2,8 @@
 title: Proxy
 ---
 
-Proxy Settings
-==============
+Proxy
+=====
 
 ### proxy_enable
 

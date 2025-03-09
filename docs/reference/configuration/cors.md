@@ -2,8 +2,8 @@
 title: CORS
 ---
 
-CORS Settings
-=============
+CORS 
+====
 
 ### cors
 

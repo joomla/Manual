@@ -2,8 +2,8 @@
 title: SEO
 ---
 
-SEO Settings
-============
+SEO
+===
 
 ### sef
 

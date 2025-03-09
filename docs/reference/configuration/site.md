@@ -2,8 +2,8 @@
 title: Site
 ---
 
-Site Settings
-=============
+Site
+====
 
 ### sitename
 

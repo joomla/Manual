@@ -2,8 +2,8 @@
 title: Session
 ---
 
-Session Settings
-================
+Session
+=======
 
 ### session_handler
 

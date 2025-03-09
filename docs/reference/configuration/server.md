@@ -2,8 +2,8 @@
 title: Server
 ---
 
-Server Settings
-===============
+Server
+======
 
 ### tmp_path
 

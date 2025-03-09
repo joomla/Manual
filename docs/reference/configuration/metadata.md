@@ -2,8 +2,8 @@
 title: Metadata
 ---
 
-Metadata Settings
-=================
+Metadata
+========
 
 ### MetaDesc
 
