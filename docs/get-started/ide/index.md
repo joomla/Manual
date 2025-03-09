@@ -26,17 +26,17 @@ To develop a Joomla extension we recommend that you use an Integrated Developmen
 - Many addons/support for daily coding
 
 The two current leading IDEs are:
-- [Visual Studio Code](get-started/ide/visual-studio-code.md)
+- [Visual Studio Code](/get-started/ide/visual-studio-code.md)
   - Lightweight and highly customizable with extensions.
   - Built-in Git support, debugging, and IntelliSense for PHP, JavaScript, and CSS.
-  - Extensions like PHP Intelephense, Joomla Snippets, and Joomla API Helper enhance Joomla    development.
+  - Extensions like PHP Intelephense, Joomla Snippets, and Joomla API Helper enhance Joomla development.
 
-- [phpStorm](get-started/ide/phpstorm/index.md)
+- [phpStorm](/get-started/ide/phpstorm/index.md)
   - Advanced PHP IDE with deep code analysis and powerful refactoring tools.
   - Provides built-in tools for database management, version control, and debugging.
   - Supports Joomla-specific coding assistance and inspections.
  
-Although you don’t need an IDE to develop for Joomla, but it can make your life a lot easier. Whether you go with VS Code for its flexibility or PhpStorm for its power, the right IDE will help you write better code, faster.
+You don’t need an IDE to develop for Joomla, but it can make your life a lot easier. Whether you go with VS Code for its flexibility or PhpStorm for its power, the right IDE will help you write better code, faster.
 
 
 
