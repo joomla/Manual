@@ -86,6 +86,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
           lastVersion: '5.2',
+          docItemComponent: "@theme/ApiItem", // Derived from docusaurus-theme-openapi-docs
           versions: {
             'current': {
               label: '5.3 (Upcoming)',
@@ -264,8 +265,39 @@ const config = {
         darkTheme: darkCodeTheme,
         additionalLanguages: ['php', 'ini', 'json'],
       },
+      languageTabs: [
+        {
+          highlight: "php",
+          language: "php",
+          logoClass: "php",
+          variant: "curl",
+          variants: ["curl","guzzle","pecl_http","http_request2"],
+        },
+        {
+          highlight: "bash",
+          language: "curl",
+          logoClass: "bash",
+        },
+        {
+          highlight: "javascript",
+          language: "nodejs",
+          logoClass: "nodejs",
+          variant: "axios",
+        },
+        {
+          highlight: "go",
+          language: "go",
+          logoClass: "go",
+        },
+        {
+          highlight: "python",
+          language: "python",
+          logoClass: "python",
+        },
+      ],
     }),
   plugins: [
+      /*
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
@@ -273,6 +305,7 @@ const config = {
         language: "en",
       },
     ],
+      */
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
@@ -294,7 +327,25 @@ const config = {
         showLastUpdateTime: true,
       }),
     ],
+    [
+      'docusaurus-plugin-openapi-docs',
+      {
+        id: "apiDocs",
+        docsPluginId: "classic",
+        config: {
+          joomla: {
+            specPath: "docs/web-services/specification/_assets/webservices-openapi.yaml",
+            outputDir: "docs/web-services/specification",
+            sidebarOptions: {
+              groupPathsBy: "tag",
+              categoryLinkSource: "tag",
+            },
+          }
+        }
+      },
+    ],
   ],
+  themes: ["docusaurus-theme-openapi-docs"], // Allows use of @theme/ApiItem and other components
 };
 
 module.exports = config;
