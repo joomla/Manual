@@ -24,14 +24,16 @@ Note: Media API calls still handle base64 encoded images, which still uses PHP m
 It is recommended to update existing Filesystem Adapter:
 ```php
 // Before:
-public function createFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data): string
+{
     ...
     File::write($dstPath, $data);
     ...
 }
 
 // After:
-public function createFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data): string
+{
     ...
     if ($data instanceof TmpFileUpload) {
         File::upload($data->getUri(), $localPath);
@@ -42,7 +44,8 @@ public function createFile(string $name, string $path, $data){
 }
 
 // Or:
-public function createFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data): string
+{
     ...
     if ($data instanceof TmpFileUpload) {
         $data = fopen($data->getUri(), 'r');
