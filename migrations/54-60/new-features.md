@@ -11,7 +11,7 @@ sidebar_position: 1
 All the new features that have been added to this version.
 Any changes in best practice.
 
-## Filesystem adapter changes
+## Filesystem adapter
 
 ### Improving large files handling
 
