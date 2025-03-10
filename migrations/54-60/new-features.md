@@ -19,7 +19,7 @@ Starting from 6.0 Media manager introduces new class `TmpFileUpload` that repres
 which is a reference to temporary file (that was just uploaded), without keeping whole file in the memory. 
 This allows to upload large files without violation PHP max_memory limits.
 
-Note: API calls still handle base64 encoded images, which still uses PHP memory directly.
+Note: Media API calls still handle base64 encoded images, which still uses PHP memory directly.
 
 It is recommended to update existing Filesystem Adapter:
 ```php
@@ -38,6 +38,17 @@ public function updateFile(string $name, string $path, $data){
     } else {
         File::write($dstPath, $data);
     }    
+    ...
+}
+
+// Or:
+public function updateFile(string $name, string $path, $data){
+    ...
+    if ($data instanceof TmpFileUpload) {
+        $data = fopen($data->getUri(), 'r');
+    }
+    
+    File::write($dstPath, $data);
     ...
 }
 ```
