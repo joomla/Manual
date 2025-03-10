@@ -24,14 +24,14 @@ Note: Media API calls still handle base64 encoded images, which still uses PHP m
 It is recommended to update existing Filesystem Adapter:
 ```php
 // Before:
-public function updateFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data){
     ...
     File::write($dstPath, $data);
     ...
 }
 
 // After:
-public function updateFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data){
     ...
     if ($data instanceof TmpFileUpload) {
         File::upload($data->getUri(), $localPath);
@@ -42,7 +42,7 @@ public function updateFile(string $name, string $path, $data){
 }
 
 // Or:
-public function updateFile(string $name, string $path, $data){
+public function createFile(string $name, string $path, $data){
     ...
     if ($data instanceof TmpFileUpload) {
         $data = fopen($data->getUri(), 'r');
@@ -52,5 +52,6 @@ public function updateFile(string $name, string $path, $data){
     ...
 }
 ```
+The same for `updateFile()` method.
 
 PR: https://github.com/joomla/joomla-cms/pull/44848
