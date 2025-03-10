@@ -36,7 +36,7 @@ public function createFile(string $name, string $path, $data): string
 {
     ...
     if ($data instanceof TmpFileUpload) {
-        File::upload($data->getUri(), $localPath);
+        File::upload($data->getUri(), $dstPath);
     } else {
         File::write($dstPath, $data);
     }    
