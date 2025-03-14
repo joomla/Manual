@@ -17,12 +17,10 @@ steps:
     depends_on:
       - build
     environment:
-      REMOTE_PRIVATE_KEY:
-        from_secret: REMOTE_PRIVATE_KEY
-      developer_host:
-        from_secret: developer_host
-      sftp_user:
-        from_secret: sftp_user
+      CLOUDFLARE_ACCOUNT_ID:
+        from_secret: CLOUDFLARE_ACCOUNT_ID
+      CLOUDFLARE_API_TOKEN:
+        from_secret: CLOUDFLARE_API_TOKEN
       GITHUB_TOKEN:
         from_secret: github_token
     commands:
