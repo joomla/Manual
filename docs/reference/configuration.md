@@ -480,7 +480,7 @@ Default: `false`
 
 ### sitename_pagetitles
 
-Append the site name to page titles in the `<title>` tag of each web page header: `0` (no), `1` (after), `2` (before).
+Append the site name to the `<title>` tag of each page header: `0` (no), `1` (after), `2` (before).
 
 Default: `0`.
 
