@@ -1,0 +1,177 @@
+---
+id: menus-app-menu-id
+title: "menus/{app}/{menu_id}"
+description: "Generated from a curl request:"
+sidebar_label: "menus/{app}/{menu_id}"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVU1v2zAM/SsCL9kKJc6GnXTLimHdhg7F0mEF4qBQbCZRa0uqJKcNDP33gf4InK7tYRh62MWWaPrxkXyiaghy40Es4Bx15WHJIUefOWWDMhoEfEaNTgbM2dqZkkmWVa5gDu8q9EGkutmOr9jF7PL0jI3qlfR4XbkiJiUBJrW0NiY1ba5VHkdsfMZGV+OvxpSFHF+aW9SC1bIK22tp1S3uO5dTowPqML7cWxRMWluoTBKn5MYbPWLjnI3qFAg37C2mINpNCjyFoELRmr7jPTtvzHEEHDreH02+B1FD1gah5UlyQi+fbbGUtCJUEOCDU3oDHPBBlrYgUwp1mg5CpxSpM9Cb06Ol0H860EhTiClAjDFysNLJEgM6akANWpYEP8wcOCjqwhZljg74s/zikODjakHkB/SmP1aGbQ/drV8ApqIphzmI4CocYElr/wFKJ42/RlqSxVujPXryfz+d0utYxvMqy9D7dUXabZ2BWlBi2Jq8DZtR3Ca8gKfVS7zQ7fqGVa6g3oRgvUiSrv4T4zZApDxmlVNh37jOrPqG+1lF4Ivl8POcEm2ZD50OecvG+IcQuuIdn6QmJaXXpvmfFAgCWgf2gf3CFZuj26kMPZtdfGGnpigwowqxtXHswvhQSg2PR8DAzazZ83CfdG6N0sEP0SZsjsj6Gm1U2FarSWbKRBb4IHXuEAvlMbn58DCWVo2zY06VzWVAz6TOGSXmykbWE+BAbWgJvptMJ1NShu0yEEfieqqNRxkOBsF/Nu86DQV8CIktpKJR0Mq27pS+aEsEHER7nEV/HpcctsYHcqmbNH+6IkYy31XoSNZLDjvplFyRzhY15MrTOgexloXHF6r85kd3ht+y51j28tek/Z0sKtoBh1vcH40xmiSvGJiK9Moh+4bEZeT9AKByt18fXRf933Sf0Zg5DLhGsMBh1d19pcnJz8l7uhflPUWMMf4GzD68+w==
+sidebar_class_name: "patch api-method"
+info_path: docs/web-services/specification/joomla-4-web-services-api-collection-for-postman
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"menus/\\{app\\}/\\{menu_id\\}"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"patch"}
+  path={"/menus/{app}/{menu_id}"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generated from a curl request:
+curl -X PATCH '\{base_url\}/menus/\{app\}/\{menu_id\}' -H 'X-Joomla-Token: \{auth_apikey\}' -H 'Content-Type: application/json' -d '\{"menutype":"menu","title":"New Menu"\}'
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"base_path","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"app","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem><ParamsItem
+        className={"paramsItem"}
+        param={{"name":"menu_id","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"*/*"}
+    value={"*/*-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
