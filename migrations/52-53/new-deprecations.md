@@ -60,3 +60,8 @@ PR: https://github.com/joomla/joomla-cms/pull/43396
 
 Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
 PR: https://github.com/joomla/joomla-cms/pull/44754
+
+## Dependency Deprecations
+
+### TYPO3/phar-stream-wrapper
+PHP 7 had a security issue with .phar packages. To circumvent the issue, the TYPO3 project created this wrapper. In PHP 8.0 this has been fixed in PHP and the whole wrapper is not needed anymore. This package will be removed in 6.0.
