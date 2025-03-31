@@ -13,3 +13,6 @@ With the release of PHP 8.4, some new deprecations have been released like the [
 - [typo3/phar-stream-wrapper](https://github.com/joomla/joomla-cms/pull/44808) from version 3.1 to 4.0
 - [php-debugbar/php-debugbar](https://github.com/joomla/joomla-cms/pull/44806) from version 1.23 to 2.1
 - [wamania/php-stemmer](https://github.com/joomla/joomla-cms/pull/44657) from version 3.0 to 4.0
+- [algo26-matthias/idna-convert](https://github.com/joomla/joomla-cms/pull/45140) from version 3.1 to 4.0
+
+Beside the production dependencies are some developer dependencies also updated with [pr 45138](https://github.com/joomla/joomla-cms/pull/45138) which are needed for building or testing joomla.
