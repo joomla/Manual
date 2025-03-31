@@ -20,30 +20,35 @@ Implemented by: libraries/src/Form/Field/CheckboxField.php
 
 ```xml
 <field
-        name="show_title" 
-        type="checkbox" 
-        label="Show title" 
-        description="Show the title of the item" 
+        name="show_title"
+        type="checkbox"
+        label="Show title"
+        description="Show the title of the item"
         value="1"
 />
 ```
 
-## Example XML parameter definition (with Checkbox checked)
+## With Checkbox checked
 
 ```xml
 <field
-        name="show_title" 
-        type="checkbox" 
-        label="Show title" 
-        description="Show the title of the item" 
+        name="show_title"
+        type="checkbox"
+        label="Show title"
+        description="Show the title of the item"
         value="1"
         checked="1"
 />
 ```
 
-:::warning 
-  Special care needs to be taken with saving a checkbox from a form!! This is a common mistake.
-You see, on saving a form with a checkbox that is unchecked, there is no variable for it in the POST information and this is standard browser behaviour.
+## Form Processing
 
-See Discussion on [this page](https://docs.joomla.org/Talk:Checkbox_form_field_type) for some suggestions for how you might like to handle this.
+:::warning
+  Special care needs to be taken when saving a checkbox in a form!
 :::
+
+A checkbox that is unchecked is absent from the POST information sent by the browser on form submission. This is standard browser behaviour.
+
+If the form data is stored in the `params` field of a table the unchecked checkbox will be absent. This is not usually a problem.
+
+If the checkbox state is stored in its own field special action is required on submission: test for the presence of the field in the form data and if absent explicitly set it to the unchecked value, usually 0, before storage. Otherwise, unchecking a previously checked checkbox may appear to have no effect.

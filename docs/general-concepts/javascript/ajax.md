@@ -160,4 +160,4 @@ echo new JsonResponse($result, Text::_('COM_EXAMPLE_AJAX_SUCCESS'), null, true);
 
 The [com_ajaxdemo](../../building-extensions/components/component-examples/ajaxdemo.md) component demonstrates many of the features discussed in this section.
 
-You can download com_ajaxdemo from [com_ajaxdemo](https://github.com/joomla/manual-examples/tree/main/component-ajaxdemo).
+You can download com_ajaxdemo from the [Manual examples](https://github.com/joomla/manual-examples/tree/main/component-ajaxdemo) site.
