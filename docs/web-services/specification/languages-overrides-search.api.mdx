@@ -1,0 +1,167 @@
+---
+id: languages-overrides-search
+title: "languages/overrides/search"
+description: "Generated from a curl request:"
+sidebar_label: "languages/overrides/search"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVd9v0zAQ/leseymgtBmIp7yVMaAwsWodMKmpqmtybb0ltrGdsiry/44uP0o7tIl3nuzY57vvu7vvUoPHjYNkDpeoNhVuyIkZoc22sIggJ5dZabzUChL4SIosesrF2upSoMgqWwhLPytyPklV8zm8FdOr2Y0Y1Ct0tKxsEeKidx3rHVkrc3Kxa4IMxPCTGNwOP2tdFji80fekElFj5bdLNPKe9qE1OdfKk/LDm72hRKAxhcyQccV3TquBGOZiUKfQenXeSrVJIUnh8+Xk3XI8nV5Ozsc3k6uvy4vr66vr5Wz8/WL5YTy5vHifQtS/83tDzatMK+dR+RTCACLoKL7T+R6Smm8ZC29fxa94cdmWSuQdu4AEWgQQAT1gaQo+SqFO00cIU46W/hPKlHGmJ0j71we0aQohBQghhAgMWizJk+Xq1qCwZBTHeYQIJNd1S5iThehJGuGYx+PcQ4gO3puSG/Tb3nW3f8Yx51ZayiHxtqKw4BNntHLk2P7N2Rkvp404q7KMnFtX3H2tMTDlkvxW5xxWOw9RGz2BZ/qPsZHd9UmqbMH58N64JI47ziNtN8DAHGWVlX7fmI6N/EL7ccUR5ovj6xmTbdEfGx24Y3P4V/K7FJ5qoaEl1Vo376VvKtAaiLfiB63EjOxOZuTEeDoR57ooKOMsibW2YqqdL1HBYyEfmem1eNrdhcqNlsq7Y28jMSMSfY420m+r1SjTZYwFPaDKLVEhHcV3bx+GaOQwO8VUmRw9OYEqF0zMlk0rjSACLkML8PXobHTG3WE6BsmhxZ6t5QnNI6H+v6Or6zlPDz42BUqWa9vmdSeP+Z+UQgQHlo0y+v/AlvWUzKFuMvPNFiHw8c+KLKthEcEOrcQVt+e8hlw63ueQrLFw9ExdXlx38n8pngLbq0axZHZYVPwFEdzT/mTihEWIejUxiPb+0bzr3/PcZs0eJgYXHiJYdSO+1DmbWfzF4x9/ccgQwm8euXNl
+sidebar_class_name: "post api-method"
+info_path: docs/web-services/specification/joomla-4-web-services-api-collection-for-postman
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"languages/overrides/search"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/languages/overrides/search"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generated from a curl request:
+curl -X POST '\{base_url\}/languages/overrides/search' -H 'X-Joomla-Token: \{auth_apikey\}' -H 'Content-Type: application/json' -d '\{"searchstring":"JLIB_APPLICATION_ERROR_SAVE_FAILED","searchtype":"constant"\}'
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"base_path","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"*/*"}
+    value={"*/*-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
