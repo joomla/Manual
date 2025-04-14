@@ -65,3 +65,9 @@ public function onInstallerBeforeUpdateSiteDownload(\Joomla\CMS\Event\Installer\
     $event->updateUrl($event->getUrl() . '?auth=foo');
 }
 ```
+
+#### Media: allow thumbnail for any file type
+
+The changes allow to add thumbnail for any file type: video, pdf, audio etc. Previously it was worked only for images.
+
+PR: https://github.com/joomla/joomla-cms/pull/44847
