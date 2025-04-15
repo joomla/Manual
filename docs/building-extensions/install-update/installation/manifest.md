@@ -501,6 +501,10 @@ The key is added before the `onInstallerBeforePackageDownload` event is triggere
 
 This documents which manifest elements are supported during which installation of an extension.
 
+:::warning[Out of date]
+  The following table needs to be validated. Some tags are wrong and needs carefully validated and this document needs to be updated.
+:::
+
 | Component | File | Language | Library | Module | Package | Plugin | Template |
 | :-------: | :--: | :------: | :-----: | :----: | :-----: | :----: | :------: |
 | `<sql>` | yes | yes | no | no | yes | no | yes | no |
