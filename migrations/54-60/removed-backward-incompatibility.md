@@ -189,3 +189,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Folder: libraries/src/Filesystem
 - Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
 
+### HTMLHelper::Bootstrap('framework') has been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44991
+- Description: The `HTMLHelper::Bootstrap('framework')` as it was only kept for B/C purposes in the J4/5 versions. Developers should explicitly include **only** the components that are used in their layouts.
+
+
