@@ -51,7 +51,17 @@ public function display($tpl = null)
 ```
 The first line is a docblock comment, which provides a hint for the IDE for the actual model that is used. The second line will retrieve the model set in the view. If you have more than one model in a view, you can provide it with a parameter to select the right model. The last two lines retrieve the actual data from the model. With the first two lines, IDEs can hint at the available methods in the model and now the returned values from those methods, making it possible to find issues further down the line.
 
+## Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')` 
+
+Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')`. Use [Web Asset Manager](https://manual.joomla.org/docs/general-concepts/web-asset-manager) instead.
+PR: https://github.com/joomla/joomla-cms/pull/43396
+
 ## Deprecate the namespace property of the ComponentRecord class
 
 Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
 PR: https://github.com/joomla/joomla-cms/pull/44754
+
+## Dependency Deprecations
+
+### TYPO3/phar-stream-wrapper
+PHP 7 had a security issue with .phar packages. To circumvent the issue, the TYPO3 project created this wrapper. In PHP 8.0 this has been fixed in PHP and the whole wrapper is not needed anymore. This package will be removed in 6.0.

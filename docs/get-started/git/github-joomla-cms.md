@@ -157,4 +157,4 @@ origin	https://github.com/joomla/Manual.git (push)
 
 This allows you keep your own fork and clone up to date from your local computer. You just need to pull and merge the original source into your local clone and then push your local clone to your remote fork. The following diagram illustrates the process:
 
-<img alt="Github work flow joomla.png" src="https://docs.joomla.org/images/a/a4/Github_work_flow_joomla.png" decoding="async" data-file-width="1101" data-file-height="798" width="1101" height="798"/>
+![Github work flow for joomla](_assets/github-workflow-for-joomla.png)

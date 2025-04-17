@@ -6,7 +6,7 @@ sidebar_position: 3
 Plugin Tutorial
 ===============
 
-# Introduction
+## Introduction
 In this section we develop a basic content plugin to provide a feature similar to the shortcodes feature in Wordpress. With this we can include in an article a reference to a field:
 ```
 On my Joomla instance {sitename} the default editor is {editor}.
@@ -25,7 +25,7 @@ You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the dif
 
 The diagram shows the plugin files to write, or you can download a zip file of the plugin from [shortcodes plugin download](_assets/plg_shortcodes.zip).
 
-# Manifest File
+## Manifest File
 For general information on manifest files see [Manifest Files](https://docs.joomla.org/Manifest_files).
 
 ```xml title="plg_shortcodes/shortcodes.xml"
@@ -52,7 +52,7 @@ For general information on manifest files see [Manifest Files](https://docs.joom
 
 Joomla is quite particular when it comes to plugin manifest files, and it's easy to get something wrong and wonder why your plugin isn't working. Here are a number of things which you must get right.
 
-## Plugin type/group
+### Plugin type/group
 
 ```xml
 <extension method="upgrade" type="plugin" group="content">
@@ -60,7 +60,7 @@ Joomla is quite particular when it comes to plugin manifest files, and it's easy
 
 Previous sections described plugin types as 'content', 'system', etc but here the `type` is "plugin" (as it's the type of the extension) and the `group` refers to the plugin type.
 
-## Language constants
+### Language constants
 
 ```xml
 <name>PLG_CONTENT_SHORTCODES</name>
@@ -69,7 +69,7 @@ Previous sections described plugin types as 'content', 'system', etc but here th
 
 You don't have to use language strings here, but if you do then you should provide the values of them in your language `.sys.ini` file. (The name and description are displayed in the administrator plugins form).
 
-## Namespacing
+### Namespacing
 
 ```xml
 <namespace path="src">My\Plugin\Content\Shortcodes</namespace>
@@ -89,7 +89,7 @@ and that all your classes are under the `/src` folder specified in the `path` at
 
 If you run into namespacing problems then it can be useful to check the `administrator/cache/autoload_psr4.php` to verify that your plugin's namespace prefix is pointing to where you expect. This cached file is regenerated whenever you install any extension (provided the `Extension - Namespace Updater` plugin is enabled), but if you're making changes directly in your Joomla site code then you may need to delete the cached file; it will be regenerated when you next navigate to your Joomla instance.
 
-## Plugin entry point
+### Plugin entry point
 
 ```xml
 <files>
@@ -102,7 +102,7 @@ Ensure that you specify where the entry point of your plugin is by using the `pl
 
 Ensure that the name of your manifest XML file matches this plugin attribute (ie it must be named `shortcodes.xml`). Otherwise Joomla will install your plugin ok, but it won't build your namespace correctly. 
 
-## Language Files
+### Language Files
 
 ```xml
 <languages>
@@ -115,7 +115,7 @@ Ensure that your plugin language files are named correctly. You must include in 
 - the plugin type - matching the `<extension group="...">` attribute, and
 - the plugin element - matching the `<folder plugin="...">` attribute.
 
-# Service Provider file
+## Service Provider file
 
 ```php title="plg_shortcodes/services/provider.php"
 <?php
@@ -170,7 +170,7 @@ $plugin = new Shortcode($subject, $config);
 
 Ensure that this matches your class in your `src/Extension` directory.
 
-## Extension Class
+### Extension Class
 This is the main code of the plugin. Hopefully the comments in the code explain what is going on.
 
 As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes.md), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
@@ -290,7 +290,7 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
 }
 ```
 
-# Language Files
+## Language Files
 Language constants which are used in the manifest file:
 
 ```php title="plg_shortcodes/language/en-GB/plg_content_shortcodes.sys.ini"
@@ -304,7 +304,7 @@ Language constants which are used in the plugin code:
 PLG_CONTENT_SHORTCODES_NO_MATCH="Error: no match for shortcode found"
 ```
 
-# Installation
+## Installation
 Once you have copied the files into your local filesystem you can zip up the directory and install the extension. Remember to enable the plugin!
 
 Write an article with some text like:

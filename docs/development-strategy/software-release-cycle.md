@@ -121,10 +121,8 @@ The supported upgrade path to the next sequential major release assumes that the
 
 As an example, suppose that the current fully-patched supported releases are 4.4.2, 5.4.3 and 6.2.3. Assume also that the latest patch for the 4.4 minor release was 4.4.2. We have a site on 4.2.9 which is to be updated to the latest 6.2.3 release. Then the supported upgrade path comprises the following sequence of individual upgrade steps:
 
-1\. Apply patches from 4.2.9 to 4.4.2.
-
-2\. Update from 4.4.2 to 5.4.3.
-
-4\. Update from 5.4.3 to 6.2.3.
+1. Apply patches from 4.2.9 to 4.4.2.
+2. Update from 4.4.2 to 5.4.3.
+3. Update from 5.4.3 to 6.2.3.
 
 Note that updates from end of life releases are not, by definition, supported. However, it is highly likely that the last supported update path will continue to work.
