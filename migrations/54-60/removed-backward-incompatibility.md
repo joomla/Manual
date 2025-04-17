@@ -101,7 +101,6 @@ if ($this->item->created !== null) {
 }
 ```
 
-
 ### None namespaced indexer file removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44646
@@ -136,7 +135,6 @@ $app = $this->getApplication();
 - PR: https://github.com/joomla/joomla-cms/pull/44662
 - File: libraries/src/Form/FormRule.php
 - Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
-
 
 ### createThumbs function got removed from the image class
 
@@ -181,7 +179,6 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Tab state
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
- 
 
 ### CMS Filesystem Package got moved to the compat plugin
 
@@ -193,3 +190,32 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 
 - PR: https://github.com/joomla/joomla-cms/pull/45256
 - Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
+
+### None namespaced helper classes got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45339
+- Files:
+  - administrator/components/com_banners/helpers/banners.php
+  - administrator/components/com_categories/helpers/categories.php
+  - administrator/components/com_contact/helpers/contact.php
+  - administrator/components/com_content/helpers/content.php
+  - administrator/components/com_contenthistory/helpers/contenthistory.php
+  - administrator/components/com_fields/helpers/fields.php
+  - administrator/components/com_finder/helpers/language.php
+  - administrator/components/com_installer/helpers/installer.php
+  - administrator/components/com_media/helpers/media.php
+  - administrator/components/com_menus/helpers/menus.php
+  - administrator/components/com_modules/helpers/modules.php
+  - administrator/components/com_newsfeeds/helpers/newsfeeds.php
+  - administrator/components/com_plugins/helpers/plugins.php
+  - administrator/components/com_redirect/helpers/redirect.php
+  - administrator/components/com_templates/helpers/template.php
+  - administrator/components/com_templates/helpers/templates.php
+  - administrator/components/com_users/helpers/debug.php
+  - administrator/components/com_users/helpers/users.php
+  - components/com_contact/helpers/route.php
+  - components/com_content/helpers/icon.php
+  - components/com_finder/helpers/route.php
+  - components/com_newsfeeds/helpers/route.php
+  - components/com_tags/helpers/route.php
+- Description: The files are legacy helper files which got replaced by a namespaced one and where there for backwards compatibility reasons. The namespaced ones should be used instead.
