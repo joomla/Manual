@@ -176,6 +176,13 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 }
 ```
 
+### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
+
+- PR: https://github.com/joomla/joomla-cms/pull/43777
+- Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
+- Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
+
+
 ### Legacy/outdated static assets removed
 
 - Tab state
@@ -193,3 +200,4 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 
 - PR: https://github.com/joomla/joomla-cms/pull/45256
 - Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
+
