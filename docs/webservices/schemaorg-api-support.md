@@ -1,9 +1,16 @@
+
+---
+id: schemaorg-api-support
+title: Schema.org Plugin API Documentation
+description: Guide for using the Schema.org plugin via Joomla REST API
+slug: /webservices/schemaorg-api-support
+---
+
+
 # Schema.org Plugin API Documentation
 
 ## Introduction
 This document provides details about the Schema.org system plugin's API support in Joomla CMS. This guide outlines the API endpoints, payload structure, and testing instructions.
-
----
 
 
 ### POST /content
@@ -35,7 +42,7 @@ Creates a new content item with Schema.org metadata.
 ```
 
 
-### PATCH /content/{id}
+### PATCH `/content/{id}`
 Updates an existing content item with  Schema.org metadata.
   ```json
   {
