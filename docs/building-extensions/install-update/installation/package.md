@@ -85,7 +85,7 @@ When you uninstall a package Joomla looks for a manifest file named `pkg_<packag
 
 Within the `<file>` element of each constituent extension the `id` attribute must match the `element` column of that extension's record in the `#__extensions` table. 
 
-(See the [Metadata](manifest.md#metadata) and [Front-end Files](manifest.md#front-end-files) sections for some explanation of how this `element` field is set).
+(See the [Metadata](manifest.md#metadata) and [Front-end Files](manifest.md#frontend-files) sections for some explanation of how this `element` field is set).
 
 When you uninstall a package Joomla uses this information in the manifest file to perform a database lookup in the `#__extensions` table to find each constituent extension. If you don't set this correctly then Joomla will not uninstall that constituent extension.
 
