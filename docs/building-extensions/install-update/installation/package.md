@@ -18,7 +18,7 @@ A package extension is created by zipping all .zip files of the indivudal extens
 - system plugin helloworld
 - template helloworld
 
-then the package should have the following tree within the `pkg_helloworld` folder: 
+then the package should have the following tree within the `pkg_helloworld` folder:
 
 ```
 pkg_helloworld
@@ -33,7 +33,7 @@ pkg_helloworld
 
 ```
 
-The `pkg_helloworld.xml` manifest file could have the following contents: 
+The `pkg_helloworld.xml` manifest file could have the following contents:
 
 ```xml title="pkg_helloworld.xml"
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -60,7 +60,7 @@ The `pkg_helloworld.xml` manifest file could have the following contents:
 </extension>
 ```
 
-You then zip up the `pkg_helloworld` folder and install the package extension in the normal way. 
+You then zip up the `pkg_helloworld` folder and install the package extension in the normal way.
 When you go to Manage Extensions you will then see:
 - an entry for the overall helloworld package, and,
 - entries for each of the constituent extensions within the package.
@@ -81,9 +81,9 @@ So in this case the manifest file must be named `pkg_helloworld.xml`.
 
 When you uninstall a package Joomla looks for a manifest file named `pkg_<packagename>.xml` and if you don't name it correctly then the uninstall will fail with Joomla reporting that it can't find the manifest file.
 
-### `id` attribute 
+### `id` attribute
 
-Within the `<file>` element of each constituent extension the `id` attribute must match the `element` column of that extension's record in the `#__extensions` table. 
+Within the `<file>` element of each constituent extension the `id` attribute must match the `element` column of that extension's record in the `#__extensions` table.
 
 (See the [Metadata](manifest.md#metadata) and [Front-end Files](manifest.md#frontend-files) sections for some explanation of how this `element` field is set).
 
@@ -91,15 +91,15 @@ When you uninstall a package Joomla uses this information in the manifest file t
 
 ### Plugin `group` attribute
 
-The `group` attribute is required for the package installer to locate the plugin for uninstall. 
+The `group` attribute is required for the package installer to locate the plugin for uninstall.
 
-Group refers to the `group` attribute specified within the `<extension>` element of the plugin manifest file, and matches the subfolder name under the Joomla /plugins directory. 
+Group refers to the `group` attribute specified within the `<extension>` element of the plugin manifest file, and matches the subfolder name under the Joomla /plugins directory.
 
 ### `blockChildUninstall` tag
 
 Use this tag to prevent an administrator from uninstalling individually a constituent extension of your package.
 
-If you omit this tag or have 
+If you omit this tag or have
 
 ```xml
 <blockChildUninstall>false</blockChildUninstall>
