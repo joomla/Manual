@@ -193,3 +193,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 
 - PR: https://github.com/joomla/joomla-cms/pull/45256
 - Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
+
+### CMS DatabaseAwareTrait class got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45340
+- File: libraries/src/MVC/Model/DatabaseAwareTrait.php
+- Description: The trait `Joomla\Database\DatabaseAwareTrait` should be used instead as they both contain the same functionality.
