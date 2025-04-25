@@ -55,6 +55,8 @@ If showtime is true then you will need to include some time fields, for example,
   upper limit for the year selection. The user cannot select a year after this limit. If zero,
   which is the default, there is no limit.
 
+- **default** (optional): a default date can be specified in `Y-m-d` format. You can default to the current date by using `default="now"`
+
 Implemented by: libraries/src/Form/Field/CalendarField.php
 
 ## Example XML parameter definition for a light DatePicker
