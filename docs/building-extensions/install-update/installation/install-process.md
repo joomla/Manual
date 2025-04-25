@@ -102,7 +102,7 @@ return new class () implements ServiceProviderInterface {
          *
          * @var    string
          */
-        protected $minimumJoomla = '6.0.0;
+        protected $minimumJoomla = '6.0.0';
 
         /**
          * A list of files to be deleted
