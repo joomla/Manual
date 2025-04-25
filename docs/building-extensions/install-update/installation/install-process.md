@@ -48,7 +48,7 @@ When you go to install extensions and select a zip file of an extension to insta
 ## Example Script File
 
 The easiest way to write a script file is to use the \Joomla\CMS\Installer\InstallerScriptInterface definition in libraries/src/Installer/InstallerScriptInterface.php.
-You simply have to return an instance of a class which implements the 5 installer functions. 
+You simply have to return an instance of a class which implements the 5 installer functions. You can use the \Joomla\CMS\Installer\InstallerScriptTrait trait from libraries/src/Installer/InstallerScriptTrait.php to benefit from pre-defined functionality like a PHP and Joomla minimum version check or creating a dashboard preset menu module.
 
 You can either
 1. Return an anonymous Script File class which implements InstallerScriptInterface, or
@@ -64,6 +64,7 @@ For an example of the first approach see the [Module Tutorial Step 6](../../modu
 use Joomla\CMS\Application\AdministratorApplication;
 use Joomla\CMS\Installer\InstallerAdapter;
 use Joomla\CMS\Installer\InstallerScriptInterface;
+use Joomla\CMS\Installer\InstallerScriptTrait;
 use Joomla\CMS\Language\Text;
 use Joomla\Database\DatabaseInterface;
 use Joomla\DI\Container;
@@ -84,8 +85,38 @@ return new class () implements ServiceProviderInterface {
       $container->get(AdministratorApplication::class),
       $container->get(DatabaseInterface::class)
       ) implements InstallerScriptInterface {
+        use InstallerScriptTrait;
+
         private AdministratorApplication $app;
         private DatabaseInterface $db;
+
+        /**
+         * Minimum PHP version required to install the extension
+         *
+         * @var    string
+         */
+        protected $minimumPhp = '8.4';
+
+        /**
+         * Minimum Joomla! version required to install the extension
+         *
+         * @var    string
+         */
+        protected $minimumJoomla = '6.0.0;
+
+        /**
+         * A list of files to be deleted
+         *
+         * @var    array
+         */
+        protected $deleteFiles = [];
+    
+        /**
+         * A list of folders to be deleted
+         *
+         * @var    array
+         */
+        protected $deleteFolders = [];
 
         public function __construct(AdministratorApplication $app, DatabaseInterface $db)
         {
@@ -114,33 +145,21 @@ return new class () implements ServiceProviderInterface {
           return true;
         }
 
-        public function preflight(string $type, InstallerAdapter $parent): bool
+        public function customPreflight(string $type, InstallerAdapter $parent): bool
         {
+          // Your custom preflight code
+
+          // Custom Dashboard Menu Module
+          // $this->addDashboardMenuModule('example', 'example');
+
           return true;
         }
 
-        public function postflight(string $type, InstallerAdapter $parent): bool
+        public function customPostflight(string $type, InstallerAdapter $parent): bool
         {
-          $this->deleteUnexistingFiles();
+          // Your custom postflight code
 
           return true;
-        }
-
-        private function deleteUnexistingFiles()
-        {
-          $files = [];  // overwrite this line with your files to delete
-
-          if (empty($files)) {
-            return;
-          }
-
-          foreach ($files as $file) {
-            try {
-              File::delete(JPATH_ROOT . $file);
-            } catch (\FilesystemException $e) {
-              echo Text::sprintf('FILES_JOOMLA_ERROR_FILE_FOLDER', $file) . '<br>';
-            }
-          }
         }
       }
     );
