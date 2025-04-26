@@ -85,7 +85,10 @@ return new class () implements ServiceProviderInterface {
       $container->get(AdministratorApplication::class),
       $container->get(DatabaseInterface::class)
       ) implements InstallerScriptInterface {
-        use InstallerScriptTrait;
+        use InstallerScriptTrait {
+            InstallerScriptTrait::preflight as iScriptTraitPre;
+            InstallerScriptTrait::postflight as iScriptTraitPost;
+        };
 
         private AdministratorApplication $app;
         private DatabaseInterface $db;
@@ -145,8 +148,11 @@ return new class () implements ServiceProviderInterface {
           return true;
         }
 
-        public function customPreflight(string $type, InstallerAdapter $parent): bool
+        public function preflight(string $type, InstallerAdapter $parent): bool
         {
+          // Run trait preflight code
+          $this->iScriptTraitPre();
+
           // Your custom preflight code
 
           // Custom Dashboard Menu Module
@@ -155,8 +161,11 @@ return new class () implements ServiceProviderInterface {
           return true;
         }
 
-        public function customPostflight(string $type, InstallerAdapter $parent): bool
+        public function postflight(string $type, InstallerAdapter $parent): bool
         {
+           // Run trait postflight code
+           $this->iScriptTraitPost();
+
           // Your custom postflight code
 
           return true;
