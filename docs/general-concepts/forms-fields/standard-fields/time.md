@@ -50,7 +50,7 @@ Attribute **step** can also affect whether seconds are displayed. If the value o
 
 In this case the step will affect the seconds value; not changing the minutes but wrapping around 60 seconds. For most browsers the up/down arrow keys will step the value. The step values will **not** be represented in the popup selector, and it will still be possible to enter an arbitary value as text, but using the arrow keys will force it to the next step value. 
 
-In the same way if the step value represents a whole number of minutes that is a factor of 60 (ie a whole number fraction of an hour) the the step will be applied to the minutes. In this case if seconds are displayed (eg if the default value includes seconds) the the seonds text display will be greyed out and not selectable and the seconds dial will not be shown in the popup.
+In the same way if the step value represents a whole number of minutes that is a factor of 60 (ie a whole number fraction of an hour) the step will be applied to the minutes. In this case if seconds are displayed (eg if the default value includes seconds) the the seconds text display will be greyed out and not selectable and the seconds dial will not be shown in the popup.
 
 The same considerations apply to step values that are a whole number of hours that are a factor of 24 (ie a whole number fraction of a day - 2,3,4,6,8, or 12 hours)
 
