@@ -54,50 +54,6 @@ In the same way if the step value represents a whole number of minutes that is a
 
 The same considerations apply to step values that are a whole number of hours that are a factor of 24 (ie a whole number fraction of a day - 2,3,4,6,8, or 12 hours)
 
-The simplest solution to achieving the effect you might expect, or want, from max, min and step settings, is to provide a javascript function called by `onchange="myfunc()"` in the field xml definition which enforces the behaviour you want by correcting any inconsistent values.
+The simplest solution to achieving the effect you might expect, or want, from max, min and step settings, is to provide a javascript function called by `onchange="myfunc(this)"` in the field xml definition which enforces the behaviour you want by correcting any inconsistent values. Passing 'this' as a parameter gives you access to the field's attributes in the javascript.
 
-For example correcting values outside the min-max range to be at the min or max, and correcting intermediate values that are not on the desired step to the previous step value. See example below.
-
-### Example javascript function to 'correct' out of range values
-
-```php
-/**
- * @param el refers to the form field in the document
- * use 'onchange="steptime(this);" in the xml field definition
- */
-function steptime(el) {
-	var hms = el.value;
-	var timeend =  19; //the end of the desired time substring in toISOString()
-	//if it is only HH:MM we need to append :00 secs
-	if (hms.length == 5) {
-		hms = hms + ":00";
-                //also adjust the end position to return just HH:MM
-		timeend = 16;
-	}
-	//convert the time string to seconds	
-	var a = hms.split(':'); // split it at the colons
-	var secs =  (+a[0]) * 3600 + (+a[1]) * 60 + (+a[2]); 
-        //if the value is greater than max constrain it to max
-	var max = el.getAttribute('max');
-	if (max > 0) {
-		if (secs > max) secs = max;
-	}
-	//if value is less than min constrain to min
-	var min = el.getAttribute('min');
-	if (min > 0) {
-		if (secs < min) secs = min;
-                //temporarily adjust the time so it is based on zero
-		secs = secs - min;
-	}
-	//if we have a step value we'll force value to the nearest lower step value counting from min
-	var step = el.getAttribute('step');
-	if (step != null) secs = step * (Math.trunc(secs/step));
-	//put back the zero adjustment if we made it
-	if (min > 0) secs = secs + min;
-	//NB if duration is more than 24hrs gives the time after midnight
-	hms = new Date(secs * 1000).toISOString().substring(11, timeend)
-	el.value = hms;
-}
-```
-Use a funtion like the above by setting `onchange="steptime(this);"` in the field xml definition. Don't forget to make sure that the function is accesible from any pages using the TimeField. Obviously adjust the corrections to meet your specific requirements.
 
