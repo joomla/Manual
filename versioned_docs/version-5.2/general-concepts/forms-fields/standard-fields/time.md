@@ -32,7 +32,7 @@ Implemented by: libraries/src/Form/Field/TimeField.php
 
 A default value can be specified as a string time with colon separators in either `HH:MM:SS` or `HH:MM` format. If seconds are included in the default then the display will include a seconds field and a seconds selector in the clock popup. If only hours and minutes are specified then no seconds will be available for either text entry or from the selector - *unless* they are required by the value of max, min or step (see below)
 
-Unlike the calendar field it is **not** possible to use the string "now" to set the default to the current time. This can be achieved by overriding the `__set()` function in a custom field which inherits the TimeField class - see example below.
+Unlike the calendar field it is **not** possible to use the string "now" to set the default to the current time. 
 
 ### Note: Using **max**, **min**, &amp; **step** and when seconds get included.
 
@@ -40,7 +40,7 @@ The TimeField renders as HTML `<input type="time" ... >`. Text entry is provided
 
 The styling and layout of the control is defined by the browser and almost all current browsers have some limitations which you may need to be aware of - in particular the selector values shown when the clock icon is clicked generally do not respect the **min**, **max**, or **step** attributes, and their styling can not be changed.
 
-Furthermore the implementation of these attributes in most current browsers internally inconsistent - text entry and selector values can override the max and min settings, and step values may not behave as you expect.
+Furthermore the implementation of these attributes in most current browsers is internally inconsistent - text entry and selector values can override the max and min settings, and step values may not behave as you expect.
 
 By default (with no **default**, **max**, **min** or **step** attributes specified) only hours and minutes are displayed. The max, min and step values are specified in seconds whether or not seconds are actually displayed and returned in the value.
 
@@ -57,39 +57,6 @@ The same considerations apply to step values that are a whole number of hours th
 The simplest solution to achieving the effect you might expect, or want, from max, min and step settings, is to provide a javascript function called by `onchange="myfunc()"` in the field xml definition which enforces the behaviour you want by correcting any inconsistent values.
 
 For example correcting values outside the min-max range to be at the min or max, and correcting intermediate values that are not on the desired step to the previous step value. See example below.
-
-### Example Custom Field override to allow "now" default for time value
-
-```php
-/**
- * this simply replicates the __set() function from TimeField
- * with the addition of logic to detect default="now" and set the value
- */
-use Joomla\CMS\Form\Field\TimeField;
-
-class XbtimeField extends TimeField
-{
-    public function __set($name, $value)
-    {
-        switch ($name) {
-            case 'max':
-            case 'min':
-            case 'step':
-                $this->$name = (int) $value;
-                break;
-            case 'default':
-                if ($value == 'now') {
-                    $this->value = date('H:i'); //use 'H:i:s' to include seconds
-                }
-                break;
-            default:
-                parent::__set($name, $value);
-        }
-    }       
-}
-```
-If using this in a custom component then be sure to include the appropriate namespace and in the form xml file include the `addfieldprefix="..."` and change the xml field type from `time` to `xbtime`
-All other time field functions will work as normal.
 
 ### Example javascript function to 'correct' out of range values
 
@@ -111,7 +78,7 @@ function steptime(el) {
 	var a = hms.split(':'); // split it at the colons
 	var secs =  (+a[0]) * 3600 + (+a[1]) * 60 + (+a[2]); 
         //if the value is greater than max constrain it to max
-	var max = el.getAttrinute('max');
+	var max = el.getAttribute('max');
 	if (max > 0) {
 		if (secs > max) secs = max;
 	}
