@@ -201,3 +201,14 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/45256
 - Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
 
+### buildVotingQuery function in QueryHelper got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45389
+- File: components/com_content/src/Helper/QueryHelper.php
+- Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
+
+### BufferStreamHandler does not auto register stream
+
+- PR: https://github.com/joomla/joomla-cms/pull/45402
+- File: libraries/src/Utility/BufferStreamHandler.php
+- Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
