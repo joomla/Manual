@@ -436,12 +436,16 @@ class FtpAdapter implements AdapterInterface
                 $obj->modified_date = $obj->create_date;
                 $obj->modified_date_formatted = $obj->create_date_formatted;
                 $obj->mime_type = $file['type'] == 'file' ? $this->extension_mime_mapper(strrchr($file['name'], ".")) : "directory";
-                if ($obj->mime_type == 'image/png' || $obj->mime_type == 'image/jpeg') {
-                    $obj->thumb_path = Uri::root() . "images/powered_by.png";
-                }
                 $obj->width     = 0;
                 $obj->height    = 0;
-                
+
+                // Add thumbnail preview when possible. Recomended size: should fit in to 200x200px box.
+                // Relative or full path.
+                $obj->thumb_path = Uri::root(true) . '/images/powered_by.png';
+                // Optional, an actual size of thumbnail to enable lazy loading
+                $obj->thumb_width = 200;
+                $obj->thumb_height = 44;
+
                 return $obj;
             }
         }
@@ -520,12 +524,16 @@ class FtpAdapter implements AdapterInterface
                         $obj->modified_date = $obj->create_date;
                         $obj->modified_date_formatted = $obj->create_date_formatted;
                         $obj->mime_type = $file['type'] == 'file' ? $this->extension_mime_mapper(strrchr($file['name'], ".")) : "directory";
-                        if ($obj->mime_type == 'image/png' || $obj->mime_type == 'image/jpeg') {
-                            $obj->thumb_path = Uri::root() . "images/powered_by.png";
-                        }
                         $obj->width     = 0;
                         $obj->height    = 0;
-                        
+
+                        // Add thumbnail preview when possible. Recomended size: should fit in to 200x200px box.
+                        // Relative or full path.
+                        $obj->thumb_path = Uri::root(true) . '/images/powered_by.png';
+                        // Optional, an actual size of thumbnail to enable lazy loading
+                        $obj->thumb_width = 200;
+                        $obj->thumb_height = 44;
+
                         $results[] = $obj;
                         return $results;
                     } else {
@@ -553,11 +561,15 @@ class FtpAdapter implements AdapterInterface
             $obj->modified_date = $obj->create_date;
             $obj->modified_date_formatted = $obj->create_date_formatted;
             $obj->mime_type = $file['type'] == 'file' ? $this->extension_mime_mapper(strrchr($file['name'], ".")) : "directory";
-            if ($obj->mime_type == 'image/png' || $obj->mime_type == 'image/jpeg') {
-                $obj->thumb_path = Uri::root() . "images/powered_by.png";
-            }
             $obj->width     = 0;
             $obj->height    = 0;
+            
+            // Add thumbnail preview when possible. Recomended size: should fit in to 200x200px box.
+            // Relative or full path.
+            $obj->thumb_path = Uri::root(true) . '/images/powered_by.png';
+            // Optional, an actual size of thumbnail to enable lazy loading
+            $obj->thumb_width = 200;
+            $obj->thumb_height = 44;
             
             $results[] = $obj;
         }

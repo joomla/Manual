@@ -176,6 +176,13 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 }
 ```
 
+### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
+
+- PR: https://github.com/joomla/joomla-cms/pull/43777
+- Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
+- Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
+
+
 ### Legacy/outdated static assets removed
 
 - Tab state
@@ -205,3 +212,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/45399
 - File: components/com_users/src/View/Login/HtmlView.php
 - Description: The `tfa` is not used in the login view anymore as it is a leftover from the old two factor authentication system.
+
+### BufferStreamHandler does not auto register stream
+
+- PR: https://github.com/joomla/joomla-cms/pull/45402
+- File: libraries/src/Utility/BufferStreamHandler.php
+- Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
