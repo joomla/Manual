@@ -199,3 +199,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/45389
 - File: components/com_content/src/Helper/QueryHelper.php
 - Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
+
+### tfa property in login view got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45399
+- File: components/com_users/src/View/Login/HtmlView.php
+- Description: The `tfa` is not used in the login view anymore as it is a leftover from the old two factor authentication system.
