@@ -199,3 +199,9 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/45389
 - File: components/com_content/src/Helper/QueryHelper.php
 - Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
+
+### BufferStreamHandler does not auto register stream
+
+- PR: https://github.com/joomla/joomla-cms/pull/45402
+- File: libraries/src/Utility/BufferStreamHandler.php
+- Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
