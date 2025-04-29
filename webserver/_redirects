@@ -1,0 +1,3 @@
+# Cloudflare redirects file
+# Workaround for trailing slashes bug https://github.com/facebook/docusaurus/issues/6282
+/assets/fields/*/ /assets/fields/:splat

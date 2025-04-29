@@ -11,6 +11,7 @@ steps:
       - npm install
       - npm run build
       - mv webserver/.htaccess build
+      - mv webserver/_redirects build
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
