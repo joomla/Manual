@@ -1,0 +1,167 @@
+---
+id: languages-content
+title: "languages/content"
+description: "Generated from a curl request:"
+sidebar_label: "languages/content"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVc2O4zYMfhWBl8ws7Dhb7Mm36aKzPy3QwWSKLhAFAWMziTa25JXk7ASGn6cP0hcr6P9MOnvuoYfEEklR5Ed+VAUe9w7iFfyGel/inhysA0jJJVYVXhkNMXwgTRY9pWJnTS5QJKXNhKVvJTkfS91swy/i4fflk5hVW3S0KW1WR1nvM0qM9qT9TIQfxexL+NmYPMPwyRxJx6LC0h82WKgjnevW5H1rHz6dC4oFFkWmEuRwoq/O6JkIUzGrJGCSkHMS4reBnAYtIZYgIZCgctxTs93Zzf1jI+OwNolJe3nYyXPyyE7G0yw50nkUGJuSVXrfXVmU20y5A6US4kUgwdGu9XlsrJ3ypDGn8bxXPmu395Z0chA394+3o2aj0atTb4D6779QOXHDy4RuJdQzCKAD/meTniGuoIOWl2+iN/xxyYFy5JU/FwQxOM8xQwD0jHmRsUhCJeUAoGzzkZcgspT/+NcoWzB7cQtorxtBHfXhRD+Ae+W1B/lKMYA9hjcCLlvIZQv6cOdxOD2Af+W3LUIvnhbiwqIvxmh4VRApoZYAdV3XARRoMSdPlvlUAd8NMUw7GQJQTKgDYUoWglcrVU9L9bL7oQ4G7w3XCvSH3nW3/oFjbh9lKYXY25LqNUtcYbQjx/Y/LRb8uZwAy7Lpk13JtG+NgVPOyR9Mytca5yFob4/hmvgcEtlTj01pM4bB+8LFUdSlOjd2DxyPo6S0yp8b07tC/Urnu5Idr9ZT9ZJzbIOeGg0pYyO8wrxD7nIINdkovTPNea4+xNAaiHfiT9qKJdmTSsiJu4dP4r3JMkoYHLEzVjwY53PU8HJwTszMTrzu7hedFkZp76be5mJJJHqM9sofyu08MXmEGT2jTi1RphxFX989h1ioMLmMqSxS9OQE6lRwYjZvOmgOAXAZ2gDfzhfzBTdF0WUQD531byW8yG4yef5/If5bL0RHAE/PPioyVDwyWs5VHUVXY30hGAq5DuDARI5XUDVF+sNmdc3ibyVZ5uM6gBNahVsmyKqCVDlepxDvMHP0gxa5eezmzq14LcKet5pJe8Ks5B0EcKTzxair13XQ85mDaPUvBm1/nt9EnhrDqOIehAC23fOZm5TNLH7npxW/85V1Xf8DMQYP5w==
+sidebar_class_name: "post api-method"
+info_path: docs/web-services/specification/joomla-4-web-services-api-collection-for-postman
+custom_edit_url: null
+---
+
+import ApiTabs from "@theme/ApiTabs";
+import DiscriminatorTabs from "@theme/DiscriminatorTabs";
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import SecuritySchemes from "@theme/ApiExplorer/SecuritySchemes";
+import MimeTabs from "@theme/MimeTabs";
+import ParamsItem from "@theme/ParamsItem";
+import ResponseSamples from "@theme/ResponseSamples";
+import SchemaItem from "@theme/SchemaItem";
+import SchemaTabs from "@theme/SchemaTabs";
+import Markdown from "@theme/Markdown";
+import Heading from "@theme/Heading";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"languages/content"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/languages/content"}
+>
+  
+</MethodEndpoint>
+
+
+
+Generated from a curl request:
+curl -X POST '\{base_url\}/languages/content' -H 'X-Joomla-Token: \{auth_apikey\}' -H 'Content-Type: application/json' -d '\{"access":1,"description":"","image":"fr_FR","lang_code":"fr-FR","metadesc":"","metakey":"","ordering":1,"published":0,"sef":"fk","sitename":"","title":"French (FR)","title_native":"Français (France)"\}'
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Path Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"base_path","in":"path","schema":{"type":"string"},"required":true}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><details
+  style={{"marginBottom":"1rem"}}
+  className={"openapi-markdown__details"}
+  data-collapsed={false}
+  open={true}
+>
+  <summary
+    style={{}}
+  >
+    <h3
+      className={"openapi-markdown__details-summary-header-params"}
+    >
+      Header Parameters
+    </h3>
+  </summary><div>
+    <ul>
+      <ParamsItem
+        className={"paramsItem"}
+        param={{"name":"Content-Type","in":"header","schema":{"type":"string"},"example":"application/json"}}
+      >
+        
+      </ParamsItem>
+    </ul>
+  </div>
+</details><MimeTabs
+  className={"openapi-tabs__mime"}
+>
+  <TabItem
+    label={"*/*"}
+    value={"*/*-schema"}
+  >
+    <details
+      style={{}}
+      className={"openapi-markdown__details mime"}
+      data-collapsed={false}
+      open={true}
+    >
+      <summary
+        style={{}}
+        className={"openapi-markdown__details-summary-mime"}
+      >
+        <h3
+          className={"openapi-markdown__details-summary-header-body"}
+        >
+          Body
+        </h3>
+      </summary><div
+        style={{"textAlign":"left","marginLeft":"1rem"}}
+      >
+        
+      </div><ul
+        style={{"marginLeft":"1rem"}}
+      >
+        <div
+          style={{"marginTop":".5rem","marginBottom":".5rem"}}
+        >
+          
+          
+          string
+          
+          
+        </div>
+      </ul>
+    </details>
+  </TabItem>
+</MimeTabs><div>
+  <div>
+    <ApiTabs
+      label={undefined}
+      id={undefined}
+    >
+      <TabItem
+        label={"200"}
+        value={"200"}
+      >
+        <div>
+          
+          
+          Successful response
+          
+          
+        </div><div>
+          
+        </div>
+      </TabItem>
+    </ApiTabs>
+  </div>
+</div>
+      
