@@ -11,7 +11,12 @@ steps:
       - npm install
       - npm run build
       - echo "Prepare Workaround for trailing slashes bug https://github.com/facebook/docusaurus/issues/6282 on Cloudflare Pages"
-      - "find build/assets/files -maxdepth 1 -type f | sed -E 's|build(/assets/files/[^/]+)|\1/ \1 301|' > build/_redirects"
+      - >
+        for f in build/assets/files/*; do
+          [ -f "$f" ] || continue;
+          filename=$(basename "$f");
+          echo "/assets/files/$filename/ /assets/files/$filename 301";
+        done > build/_redirects
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
