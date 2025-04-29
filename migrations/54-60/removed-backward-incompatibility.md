@@ -61,7 +61,6 @@ echo $article->title;
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
   - The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
 
-
 ### CMS Input object switched to Framework Input object
 
 - PR's: 
@@ -101,7 +100,6 @@ if ($this->item->created !== null) {
 }
 ```
 
-
 ### None namespaced indexer file removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44646
@@ -137,7 +135,6 @@ $app = $this->getApplication();
 - File: libraries/src/Form/FormRule.php
 - Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
 
-
 ### createThumbs function got removed from the image class
 
 - PR: https://github.com/joomla/joomla-cms/pull/44663
@@ -153,6 +150,11 @@ $image->createThumbs('50x50');
 $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
+
+### Mod_breadcrumbs setSeparator
+- PR: https://github.com/joomla/joomla-cms/pull/44605/
+- File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
+- Description: setSeparator to set the breadcrumbs separator for the breadcrumbs display has not been used since 4.0 and is removed without replacement
 
 ### Client id attribute removed in form models cleanCache function
 
@@ -182,7 +184,6 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
 - Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
 
-
 ### Legacy/outdated static assets removed/moved
 
 - Tabs State (js)
@@ -192,7 +193,6 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
 	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
-
 ### CMS Filesystem Package got moved to the compat plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/44240
@@ -226,3 +226,4 @@ If you need UTF8-compatible string functions from PHP, have a look at the [jooml
 - PR: https://github.com/joomla/joomla-cms/pull/45402
 - File: libraries/src/Utility/BufferStreamHandler.php
 - Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
+
