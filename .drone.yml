@@ -6,12 +6,12 @@ clone:
 
 steps:
   - name: build
-    image: node:18-bullseye-slim
+    image: node:20-bookworm-slim
     commands:
       - npm install
       - npm run build
       - echo "Prepare Workaround for trailing slashes bug https://github.com/facebook/docusaurus/issues/6282 on Cloudflare Pages"
-      - find build/assets/files -maxdepth 1 -type f | sed -E 's|build(/assets/files/[^/]+)|\1/ \1 301|' > build/_redirects
+      - find build/assets/files -maxdepth 1 -type f | sed -E 's|build(/assets/files/[^/]+)|\\1/ \\1 301|' > build/_redirects
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
