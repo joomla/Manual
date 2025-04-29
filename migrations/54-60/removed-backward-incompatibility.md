@@ -11,6 +11,56 @@ sidebar_position: 3
 All the deprecated features than have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
+
+### Removal of the CMSObject class usage
+The `CMSObject` (`JObject`) contains various functions in one single class which made sense at the time it was introduced in Joomla 1.7. PHP has evolved and many use cases are now built into the core language or are replaced and not anymore up to date. Therefore the class got [deprecated in 4.0](https://github.com/joomla/joomla-cms/pull/4910) and will be removed in an upcoming major release (currently 7.0). Over time, the maintainers removed the usage in core and with the following chapters are the last traces removed, which couldn't be done in a backwards compatible way.
+
+#### getItem returns a stdClass instead of CMSObject
+
+- PR: https://github.com/joomla/joomla-cms/pull/42961
+- File: libraries/src/MVC/Model/AdminModel.php
+- Description: The `AdminModel` class does return a `stdClass` object in the `getItem` function instead of a `CMSObject`. This means that all the deprecated functions of `CMSObject` are not available anymore. Mainly the set and get function should be replaced accordingly as documented in the `CMSObject` class or the respective traits. For example you can use 
+```php
+// Old:
+$article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
+echo $article->get('title');
+
+// New:
+$article = $app->bootComponent('content')->getMVCFactory()->createModel('Article', 'Administrator')->getItem(1);
+echo $article->title;
+```
+
+#### CMSObject usage in core has been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/43795
+- PR: https://github.com/joomla/joomla-cms/pull/44655
+- PR: https://github.com/joomla/joomla-cms/pull/44945
+- Description: The `CMSObject` class has been problematic for a long time, because it allows to circumvent the visibility setting of object properties. The `CMSObject` class will be removed in Joomla 7.0, but with Joomla 6.0 it is removed everywhere in the core code. The following code is affected:
+  - Smart Search (finder) plugins now use `\stdClass` objects to store the state.
+  - The following models now return `\stdClass` objects instead of `CMSObject`:
+    - `Joomla\Component\Installer\Administrator\Model\UpdatesiteModel`
+    - `\Joomla\Component\Installer\Administrator\Model\UpdatesitesModel`
+    - `\Joomla\Component\Languages\Administrator\Model\LanguageModel`
+    - `\Joomla\Component\Mails\Administrator\Model\TemplateModel`
+    - `\Joomla\Component\Menu\Administrator\Model\MenuModel`
+    - `\Joomla\Component\Menus\Administrator\Model\MenutypesModel`
+    - `\Joomla\Component\Messages\Administrator\Model\ConfigModel`
+    - `\Joomla\Component\Modules\Administrator\Model\ModuleModel`
+    - `\Joomla\Component\Plugins\Administrator\Model\PluginModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TaskModel`
+    - `\Joomla\Component\Scheduler\Administrator\Model\TasksModel`
+    - `\Joomla\Component\Templates\Administrator\Model\StyleModel`
+    - `\Joomla\Component\Users\Administrator\Model\GroupModel`
+    - `\Joomla\Component\Workflow\Administrator\Model\TransitionModel`
+    - `\Joomla\CMS\Component\Contact\Model\FormModel`
+    - `\Joomla\CMS\Component\Content\Model\FormModel`
+    - `\Joomla\Component\Tags\Site\Model\TagModel`
+  - The code of the installer component is using `\stdClass` objects now. 
+  - `\Joomla\CMS\Access\Rules::getAllowed()` now returns a `stdClass`
+  - `\Joomla\CMS\MVC\Controller\ApiController` uses a `Registry` object for the model state.
+  - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
+  - The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
+
 ### CMS Input object switched to Framework Input object
 
 - PR's: 
@@ -49,3 +99,131 @@ if ($this->item->created !== null) {
 	echo $this->item->created;
 }
 ```
+
+### None namespaced indexer file removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44646
+- Folder: administrator/components/com_finder/helpers/indexer
+- Description: The files in /administrator/components/com_finder/helpers/indexer were containing the none namespaced classes and are left only for legacy include code. They are empty as class alias do exist for them already. The include code in extensions can be removed and the namespaced classes should be used as they are autoloaded. For example you can use 
+
+```php
+// Old:
+require_once JPATH_ADMINISTRATOR . '/components/com_finder/helpers/indexer/helper.php';
+FinderIndexerHelper::getFinderPluginId();
+
+// New:
+Joomla\Component\Finder\Administrator\Helper\FinderHelper::getFinderPluginId();
+```
+
+### App variable is removed in plugins
+
+- PR: https://github.com/joomla/joomla-cms/pull/44647
+- Folder: plugins
+- Description: The `$app` variable is left in some plugins for layout overrides of the plugins/tmpl folder and is not used anymore in the plugin class itself and the respective layouts. The `getApplication` function should be used instead  
+
+```php
+// Old:
+$app = $this->app;
+
+// New:
+$app = $this->getApplication();
+```
+
+### JCOMPAT_UNICODE_PROPERTIES constant got removed in FormRule class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44662
+- File: libraries/src/Form/FormRule.php
+- Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
+
+### createThumbs function got removed from the image class
+
+- PR: https://github.com/joomla/joomla-cms/pull/44663
+- File: libraries/src/Image/Image.php
+- Description: The `createThumbs` function in the `Image` class got removed as the function `createThumbnails` should be used instead. For example you can use 
+
+```php
+// Old:
+$image = new Image($path);
+$image->createThumbs('50x50');
+
+// New:
+$image = new Image($path);
+$image->createThumbnails('50x50');
+```
+
+### Mod_breadcrumbs setSeparator
+- PR: https://github.com/joomla/joomla-cms/pull/44605/
+- File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
+- Description: setSeparator to set the breadcrumbs separator for the breadcrumbs display has not been used since 4.0 and is removed without replacement
+
+### Client id attribute removed in form models cleanCache function
+
+- PR: https://github.com/joomla/joomla-cms/pull/44637
+- Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
+
+### Removed isCli function in application classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44611
+- Files: libraries/src/Application/CMSApplicationInterface.php
+- Description: The deprecated `isCli` got removed from the application classes. It was introduced as transient flag which was deprecated right from the beginning and should never be used anyway. If an extension was still using it, then adapt the code as described below
+```php
+// Old:
+if ($app->isCli()) {
+    // Do your stuff
+}
+
+// New:
+if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
+    // Do your stuff
+}
+```
+
+### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
+
+- PR: https://github.com/joomla/joomla-cms/pull/43777
+- Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
+- Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
+
+### Legacy/outdated static assets removed/moved
+
+- Tabs State (js)
+	- File removed: build/media_source/legacy/js/tabs-state.es5.js
+	- PR: https://github.com/joomla/joomla-cms/pull/45021
+ - jQuery No Conflict (js)
+	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
+	- PR: https://github.com/joomla/joomla-cms/pull/45020
+ 
+### CMS Filesystem Package got moved to the compat plugin
+
+- PR: https://github.com/joomla/joomla-cms/pull/44240
+- Folder: libraries/src/Filesystem
+- Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
+
+### voku/portable-utf8 composer library
+
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself.
+If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
+
+### TYPO3/phar-stream-wrapper
+
+- PR: https://github.com/joomla/joomla-cms/pull/45256
+- Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
+
+### buildVotingQuery function in QueryHelper got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45389
+- File: components/com_content/src/Helper/QueryHelper.php
+- Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
+
+### tfa property in login view got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45399
+- File: components/com_users/src/View/Login/HtmlView.php
+- Description: The `tfa` is not used in the login view anymore as it is a leftover from the old two factor authentication system.
+
+### BufferStreamHandler does not auto register stream
+
+- PR: https://github.com/joomla/joomla-cms/pull/45402
+- File: libraries/src/Utility/BufferStreamHandler.php
+- Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
+
