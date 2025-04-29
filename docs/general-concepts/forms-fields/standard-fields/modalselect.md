@@ -3,44 +3,36 @@ sidebar_position: 2
 title: ModalSelect Field
 ---
 
-The **modal select** form field type provides a "modal" or "modal window" to allow the user to select an item in a row from a page displaying multiple rows. 
+The **modal select** form field type provides a "modal" or "modal window" to allow the user to select an item in a row from a page displaying multiple rows.
 
 (An example of a modal is when you are creating a menuitem pointing to a Single Article.
-When you press select to choose the article, then Joomla displays a modal with multiple articles (in an iframe)
-and allows you to select the article for the menuitem).
+When you press select to choose the article, then Joomla displays a modal with multiple articles (in an iframe) and allows you to select the article for the menuitem).
 
 - **type** (mandatory) must be *ModalSelect*.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the field html label.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **required** (optional) Whether the field is required or not
-- **hint** (optional) The HTML placeholder text 
-
-- **select** set to "true" if you want to be able to select an item 
+- **hint** (optional) The HTML placeholder text
+- **select** set to "true" if you want to be able to select an item
 - **iconSelect** the [icon](../../icons.md) to display beside the "Select". Default is "icon-file"
 - **titleSelect** the text (translatable) to display at the top of the Select modal
 - **urlSelect** the URL for the iframe for the select modal window
-
 - **sql_title_table**, **sql_title_column**, **sql_title_key** you'll probably need to set these fields for your ModalSelect field to work properly.
-They're necessary if you're redisplaying a form after a submit. 
+They're necessary if you're redisplaying a form after a submit.
 This is because in the submit POST parameters there's only room for the modal select field id, but when it's redisplayed it shows the associated title also.
 So these fields are used to obtain the title from the id, by performing a SQL query on the database table.
-
-- **clear** set to "true" if you want to allower users to cancel the selection of an item 
+- **clear** set to "true" if you want to allower users to cancel the selection of an item
 This causes the Clear button to be displayed when an item is selected.
-
 - **new** set to "true" if you want to be able to create a new item
 This causes the Create button to be displayed when no item is selected.
 - **titleNew** the text (translatable) to display at the top of the Create modal
 - **urlNew** the URL for the iframe for the create modal
-
 - **edit** set to "true" if you want to be able to edit a selected item
 This causes the Edit button to be displayed when an item is selected.
 - **titleEdit** the text (translatable) to display at the top of the Edit modal
 - **urlEdit** the URL for the iframe for the edit modal
-
 - **urlCheckin** the URL to use to check-in an item
-
 - **onchange** if you're using the ModalSelectField inside filter fields then you'll probably want
 to set this to "this.form.submit();".
 This means that once an item is selected the filter fields form is submitted to redisplay the
@@ -57,7 +49,7 @@ The first part consists of the fields which are shown in the main window:
 
 Here you can see the HTML elements which are displayed in the main window:
 - the label
-- an asterisk next to the label, arising from the "required" attribute 
+- an asterisk next to the label, arising from the "required" attribute
 - the placeholder text "Select an Article", arising from the "hint" attribute
 - a Select button - from the attribute `select="true"`
 - a Create button - from the attribute `new="true"`
@@ -72,7 +64,7 @@ This modal is implemented by a [Joomla Dialog](../../javascript/js-library/jooml
 
 When you click on an article then the Joomla Dialog code does the following:
 - identifies the article you clicked on (based on the nearest HTML element with the attribute 'data-content-select' set)
-- reads the other 'data-...' attributes from that HTML element. 
+- reads the other 'data-...' attributes from that HTML element.
 You should set the 'data-id' and 'data-title' attributes as a minimum.
 - passes the data attribute values to the main window in a postMessage message.
 
@@ -86,7 +78,7 @@ Here you can see:
 - the title of the selected article (p4)
 - the Edit button, from the `edit="true"` attribute
 - the Clear button, from the `clear="true"` attribute
-- There's also a hidden field which contains the id of the selected article, 
+- There's also a hidden field which contains the id of the selected article,
 which will be sent to the server within the HTTP POST parameters
 
 The Select and Create buttons are shown only if no item has been selected.
@@ -118,13 +110,13 @@ However, you can use this [exampleform component](../../../building-extensions/c
 By navigating to "/index.php?option=com_exampleform" on your site front-end, this will display a ModalSelect field which will allow you to select an article.
 
 After clicking the "Select" button the field will open a Joomla Dialog containing a iframe.
-The content of the iframe comes from `urlSelect` which is 
+The content of the iframe comes from `urlSelect` which is
 ```
 "index.php?option=com_content&amp;view=articles&amp;layout=modal&amp;tmpl=component"
 ```
 and this displays the list of articles to select from.
 
-In this example, on the front-end 
+In this example, on the front-end
 the com_content view will assign the `modal` layout from the administrator back-end.
 This is because in the front-end com_content DisplayController constructor it has:
 
@@ -135,9 +127,9 @@ if ($this->input->get('view') === 'articles' && $this->input->get('layout') === 
     }
 ```
 
-and this results in the administrator Articles view being displayed. 
+and this results in the administrator Articles view being displayed.
 
-If you use the ModalSelect field on the administrator back-end to select an article, 
+If you use the ModalSelect field on the administrator back-end to select an article,
 then com_content will use the administrator Articles `modal` layout directly.
 
 (The display looks a bit different on the site front-end because the site template (by default cassiopeia)
@@ -147,7 +139,7 @@ is different from the administrator template (by default atum)).
 
 If you want to enable a ModalSelect for your custom component, then you need to do the following.
 
-For your equivalent of the administrator com_content articles view you need to write your equivalent of 
+For your equivalent of the administrator com_content articles view you need to write your equivalent of
 administrator/components/com_content/tmpl/articles/modal.php.
 
 This differs from articles.php (in the same folder) in the following key details, which you should replicate:
@@ -158,7 +150,7 @@ This differs from articles.php (in the same folder) in the following key details
 $this->document->getWebAssetManager()->useScript('modal-content-select');
 ```
 
-- specify '&tmpl=component' within the `<form action="...">` URL. 
+- specify '&tmpl=component' within the `<form action="...">` URL.
 This means that the display will use the template component.php file instead of index.php file within the iframe,
 and will avoid displaying the Joomla toolbar, for example.
 
@@ -190,7 +182,7 @@ These will then be run within the iframe of the Joomla Dialog, and will cause a 
 However, you have extra work to do because the edited/created item has to be injected back into the ModalSelectField as the item selected.
 
 To do this, you can take the following approach:
-- inside your Controller which handles the `save()`, after you have saved the record check if you're in the context of a modal, 
+- inside your Controller which handles the `save()`, after you have saved the record check if you're in the context of a modal,
 and if so then get the record id and redirect to a "modalreturn" layout:
 
 
@@ -222,13 +214,13 @@ $this->document->addScriptOptions('content-select-on-load', $data, false);
 ```
 
 If the modal-content-select.js code finds data within the 'content-select-on-load' datastore,
-then it immediately passes the data in a postMessage to the main window. 
+then it immediately passes the data in a postMessage to the main window.
 The message listener in the main window receives the message and sets the passed id and title in the modal select field.
 It then closes the Joomla Dialog.
 
 If you get stuck you can follow the example of com_content:
-- administrator/components/com_content/src/Controller/ArticleController.php - com_content uses 
-the save() method of the MVC library FormController class, 
+- administrator/components/com_content/src/Controller/ArticleController.php - com_content uses
+the save() method of the MVC library FormController class,
 so the relevant code is in the postSaveHook() method,
 which gets called at the end of FormController::save().
 - administrator/components/com_content/tmpl/article/modalreturn.php - this also displays the title
