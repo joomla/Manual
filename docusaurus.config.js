@@ -62,6 +62,7 @@ const config = {
   organizationName: 'joomla',
   projectName: 'joomla-cms',
   url: 'https://manual.joomla.org',
+  trailingSlash: true,
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -84,26 +85,35 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.2',
+          lastVersion: '5.3',
           versions: {
             'current': {
-              label: '5.3 (Upcoming)',
-              banner: 'unreleased'
+              label: '5.4 (Upcoming)',
+              banner: 'unreleased',
+              noIndex: false,
+            },
+            '5.3': {
+              label: '5.3 (Current)',
+              noIndex: false,
             },
             '5.2': {
-              label: '5.2 (Current)',
+              label: '5.2 (Archived)',
+              noIndex: true,
             },
             '5.1': {
               label: '5.1 (Archived)',
-              banner: 'unmaintained'
+              banner: 'unmaintained',
+              noIndex: true,
             },
             '5.0': {
               label: '5.0 (Archived)',
-              banner: 'unmaintained'
+              banner: 'unmaintained',
+              noIndex: true,
             },
             '4.4': {
               label: '4.4 (Security)',
-              banner: 'none'
+              banner: 'none',
+              noIndex: false,
             },
           },
           /* onlyIncludeVersions: ['current', '5.2', '4.4'], */

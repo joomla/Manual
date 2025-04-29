@@ -25,7 +25,7 @@ With the output template given above, the JS provided by the user will be output
 ### Prevention
 #### Filter/validate the user input
 In the example above, the provided subject should be filtered and/or validated to only allow required characters - and it should disallow characters that are needed to create HTML tags, i.e. the `<` and `>` characters.
-If the user input can contain HTML markup, the markup itself has to be filtered to make sure it only contains safe markup. See [the chapter about input handling](input-handling) for more information.
+If the user input can contain HTML markup, the markup itself has to be filtered to make sure it only contains safe markup. See [the chapter about input handling](input-handling.md) for more information.
 
 #### Escape the output
 Unless user generated markup is specifically needed (i.e. because the user can use a WYSIWYG editor) it's highly recommended to escape each and every snippet of user provided content.
@@ -36,7 +36,7 @@ To escape user content in Joomla, use the ```echo $this->escape($evilString)``` 
 ## SQL injections / SQLi
 A SQL injection attack is a type of vulnerability where an attacker is able to manipulate a SQL query by injecting user controlled content.
 
-Learn more about this attack scenario and the prevention in [the chapter about secure DB queries](secure-db-queries).
+Learn more about this attack scenario and the prevention in [the chapter about secure DB queries](secure-db-queries.md).
 
 ## Unrestricted file uploads
 Uploading user provided files to a webservers is a potentially dangerous task as it exposes multiple attack vectors at once:
@@ -50,4 +50,4 @@ Therefore file uploads must be very carefully implemented. Check the ```canUploa
 CSRF is an attack type where an HTML form on an external, attacker-controlled site is used to perform an attack against a target site. 
 
 ### Prevention
-Learn more about this in the [CSRF chapter](csrf-protection) of this manual.
+Learn more about this in the [CSRF chapter](csrf-protection.md) of this manual.

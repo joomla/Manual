@@ -17,14 +17,15 @@ To display such an icon you can use:
 
 ```php
 ?>
-<span class="icon-cancel"></span> <?php echo Text::_('JCANCEL') ?> 
+<span class="icon-cancel" aria-hidden="true"></span> <?php echo Text::_('JCANCEL') ?> 
 ```
+The attribute aria-hidden="true" hides the icon from screen readers and improves accessibility. 
 
 You can also display FontAwesome icons which aren't used in Joomla, but you have to include an additional CSS class.
 According to [fa style names](https://docs.fontawesome.com/web/setup/upgrade/whats-changed#full-style-names) the CSS classes should be "fa-solid" or "fa-brands":
 
 ```php
 ?>
-<span class="fa-solid fa-bomb"></span> <?php echo Text::_('JSAVE') ?> 
-<span class="fa-brands fa-facebook"></span> <?php echo 'facebook' ?> 
+<span class="fa-solid fa-bomb" aria-hidden="true"></span> <?php echo Text::_('JSAVE') ?> 
+<span class="fa-brands fa-facebook" aria-hidden="true"></span> <?php echo 'facebook' ?> 
 ```

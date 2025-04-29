@@ -3,6 +3,9 @@ sidebar_position: 2
 title: Accessiblemedia Form Field
 ---
 
+Accessiblemedia Form Field
+==========================
+
 The **accessiblemedia** form field type provides modal access to the media manager for the choice of an image (like the media field) and allows the user to specify associated Alt Text. Users with appropriate permissions will be able to upload files.
 
 - **type** (mandatory) must be *accessiblemedia*.
@@ -29,7 +32,8 @@ Implemented by: libraries/src/Form/Field/AccessiblemediaField.php
 This will open the media manager with the directory /images/stories/ already selected. 
 It will allow the user to select a media item and to specify the associated Alt Text. 
 
-![](\img\accessiblemedia.jpg)
+![Screenshot of accessible media field with alt input field](_assets/accessiblemedia/accessiblemedia.jpg)
+
 The one the right is an Accessible Media Field.
 
 Note that if you are using this field on the frontend then permissions restrictions are likely to be in force. If the user is not authorized to view or add media they will see an error page in the modal popup ("403 You are not authorized to view this resource."). 
