@@ -118,3 +118,8 @@ PR: https://github.com/joomla/joomla-cms/pull/43430
 PHP 7 had a security issue with .phar packages. To circumvent the issue, the TYPO3 project created this wrapper.
 In PHP 8.0 this has been fixed in PHP and the whole wrapper is not needed anymore. This package will be removed in 6.0.
 
+### voku/portable-utf8 dependency
+
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself anymore.
+We strongly recommend to not use this library anymore. It will be removed in Joomla 6.0 without a new replacement.
+If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package. 

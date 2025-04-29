@@ -199,6 +199,11 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Folder: libraries/src/Filesystem
 - Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
 
+### voku/portable-utf8 composer library
+
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself.
+If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
+
 ### TYPO3/phar-stream-wrapper
 
 - PR: https://github.com/joomla/joomla-cms/pull/45256
