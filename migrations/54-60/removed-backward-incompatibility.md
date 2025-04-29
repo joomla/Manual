@@ -183,11 +183,14 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
 
 
-### Legacy/outdated static assets removed
+### Legacy/outdated static assets removed/moved
 
-- Tab state
+- Tabs State (js)
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
+ - jQuery No Conflict (js)
+	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
+	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
 
 ### CMS Filesystem Package got moved to the compat plugin
