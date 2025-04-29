@@ -85,15 +85,19 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.2',
+          lastVersion: '5.3',
           versions: {
             'current': {
-              label: '5.3 (Upcoming)',
+              label: '5.4 (Upcoming)',
               banner: 'unreleased',
               noIndex: false,
             },
+            '5.3': {
+              label: '5.3 (Current)',
+              noIndex: false,
+            },
             '5.2': {
-              label: '5.2 (Current)',
+              label: '5.2 (Archived)',
               noIndex: false,
             },
             '5.1': {
