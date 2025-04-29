@@ -98,7 +98,7 @@ const config = {
             },
             '5.2': {
               label: '5.2 (Archived)',
-              noIndex: false,
+              noIndex: true,
             },
             '5.1': {
               label: '5.1 (Archived)',
