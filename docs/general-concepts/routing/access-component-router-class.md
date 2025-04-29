@@ -168,12 +168,13 @@ latter class implements `RouterInterface`. You provide the `RouterView` configur
 described in [RouterView Configurations](router-view.md).
 
 ## Using the Site Router in the Joomla back-end
-There may be occasions where you want to display on the administrator back-end the result of building a SEF URL which
-will be present on the site front-end. To enable this, Joomla provides the [`link()`](cms-api://classes/Joomla-CMS-Router-Route.html) method within 
-the `Joomla\CMS\Router\Route` class. It's basically the same as the `Route::_()` function, except that it has an 
-additional parameter "client" at p1, which you would set to "site" to enable a site SEF URL to be built.
+There may be occasions when you want to display in the administrator backend the result of building a SEF URL which
+will be present in the site frontend. To enable this, Joomla provides the `link()` method within 
+the `Joomla\CMS\Router\Route` class. It is similar to the `Route::_()` function, except that it has an 
+additional parameter `client` at p1, which you would set to `site` to enable a site SEF URL to be built. 
+You can compare these functions in the [class API documentation](cms-api://classes/Joomla-CMS-Router-Route.html).
 
-However to get this to work in your component you do need to do some extra work.
+To get this to work in your component you do need to do some extra work.
 
 If you're using a traditional router with preprocess, build and parse functions then the only change you're probably
 going to have to make is how you obtain the set of site menuitems. When you're running the site application you can use:
