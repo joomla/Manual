@@ -183,11 +183,14 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
 
 
-### Legacy/outdated static assets removed
+### Legacy/outdated static assets removed/moved
 
-- Tab state
+- Tabs State (js)
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
+ - jQuery No Conflict (js)
+	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
+	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
 
 ### CMS Filesystem Package got moved to the compat plugin
@@ -195,6 +198,11 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/44240
 - Folder: libraries/src/Filesystem
 - Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
+
+### voku/portable-utf8 composer library
+
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself.
+If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
 
 ### TYPO3/phar-stream-wrapper
 
