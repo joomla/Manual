@@ -29,8 +29,11 @@ See numbers
 ## Check
 See select.
 
+## Click
+See select.
+
 ## Colour codes
-Hex colours are case insensitive so it doesnt matter if we use upper or lowercase. However we should be consistent in our usage. As the color selector fields uses lowercase then the text should also user lowercase for consistency.
+Hex colours are case insensitive so it doesn't matter if we use upper or lowercase. However we should be consistent in our usage. As the color selector fields uses lowercase then the text should also user lowercase for consistency.
 
 ## Contractions
 Use contractions sparingly eg can't. Avoid using you'll, you've, should've, could've, would've etc – these are hard to read.
@@ -95,11 +98,15 @@ Always use the hyphenated word. Multi-factor must always be a single hyphenated 
 * "Enter the **number** of hits to increase the counter by."
 * "Limit the **amount** of text to display"
 
+## Press
+See select.
+
 ## Seasons
 Try to avoid using them as they are not global. spring, summer, autumn, winter are lowercase.
 
 ## Select
-Select a check box item not check a check box item.
+Select a check box item not check a check box item. Select a button not click on a button. Select a button not press on a button.
+By using **select** we ensure that the text is device agnostic and not reliant on using a mouse.
 
 ## Sentence length
 Don't use long sentences – check any sentences with more than 25 words to see if you can split them to make them clearer.
