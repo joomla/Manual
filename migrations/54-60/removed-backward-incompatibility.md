@@ -151,6 +151,7 @@ $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
 
+
 ### Mod_breadcrumbs setSeparator
 - PR: https://github.com/joomla/joomla-cms/pull/44605/
 - File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
@@ -227,3 +228,16 @@ If you need UTF8-compatible string functions from PHP, have a look at the [jooml
 - File: libraries/src/Utility/BufferStreamHandler.php
 - Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
 
+
+### Table objects are instantiated directly instead of via Table::getInstance()
+
+- PR: https://github.com/joomla/joomla-cms/pull/44090
+- Description: `Table` objects in the core code have been instantiated with `Table::getInstance()` in the past. Starting with Joomla 6.0, you should use the explicit table class directly instead. After this change it is not possible to override the table class by calling `Table::addIncludePath()` anymore. At the same time it simplifies code handling a lot and especially allows IDEs to properly understand the code properly.
+
+```php
+// Old:
+$table = Table::getInstance('content');
+
+// New:
+$table = new \Joomla\CMS\Table\Content($db);
+```
