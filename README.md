@@ -8,7 +8,7 @@ The Documentation can be found at [https://manual.joomla.org](https://manual.joo
 
 This manual is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator. If you want to contribute to it then this page will help you get started.
 
-Updates to the documentation is managed via this repository, so you should initially fork it into your own github account. 
+Updates to the documentation are managed via this repository, so you should initially fork it into your own GitHub account. 
 Then you can make changes to the documentation files and submit a pull request to the Joomla manual. 
 Ensure that you continue to sync your fork branches with the Joomla manual `main` branch. 
 
@@ -20,7 +20,7 @@ To make documentation changes you'll probably find it easiest to use one of two 
 
 ### Install Docusaurus Locally
 
-To install Docusaurus on your own machine you should initialise a local git repository and clone the manual from the forked copy in your githut repository into this git instance. 
+To install Docusaurus on your own machine you should initialize a local git repository and clone the manual from the forked copy in your githut repository into this git instance. 
 
 Then change directory to your local git repository and do:
 
@@ -77,7 +77,7 @@ If your documentation changes relate to multiple versions of Joomla then you sho
 
 Other versions may be present within /versioned_docs but are not updated with the changes, even if the documentation is true for those Joomla versions. 
 
-To minimise changes it's recommended that you initially just make changes within the /docs area, and then raise the pull request. 
+To minimize changes it's recommended that you initially just make changes within the /docs area, and then raise the pull request. 
 This allows team members to review the documentation, and for you to fix any issues without having to replicate changes to multiple versions. 
 Then when the review process is complete the changes can be replicated to the other versions prior to merging. 
 
