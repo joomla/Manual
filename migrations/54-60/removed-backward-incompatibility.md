@@ -93,7 +93,6 @@ if ($this->item->created !== null) {
 }
 ```
 
-
 ### None namespaced indexer file removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44646
@@ -129,7 +128,6 @@ $app = $this->getApplication();
 - File: libraries/src/Form/FormRule.php
 - Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
 
-
 ### createThumbs function got removed from the image class
 
 - PR: https://github.com/joomla/joomla-cms/pull/44663
@@ -145,6 +143,12 @@ $image->createThumbs('50x50');
 $image = new Image($path);
 $image->createThumbnails('50x50');
 ```
+
+
+### Mod_breadcrumbs setSeparator
+- PR: https://github.com/joomla/joomla-cms/pull/44605/
+- File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
+- Description: setSeparator to set the breadcrumbs separator for the breadcrumbs display has not been used since 4.0 and is removed without replacement
 
 ### Client id attribute removed in form models cleanCache function
 
@@ -168,18 +172,31 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 }
 ```
 
-### Legacy/outdated static assets removed
+### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
 
-- Tab state
+- PR: https://github.com/joomla/joomla-cms/pull/43777
+- Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
+- Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
+
+### Legacy/outdated static assets removed/moved
+
+- Tabs State (js)
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
 	- PR: https://github.com/joomla/joomla-cms/pull/45021
+ - jQuery No Conflict (js)
+	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
+	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
-
 ### CMS Filesystem Package got moved to the compat plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/44240
 - Folder: libraries/src/Filesystem
 - Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
+
+### voku/portable-utf8 composer library
+
+The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself.
+If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
 
 ### TYPO3/phar-stream-wrapper
 
@@ -191,3 +208,29 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 - PR: https://github.com/joomla/joomla-cms/pull/45389
 - File: components/com_content/src/Helper/QueryHelper.php
 - Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
+
+### tfa property in login view got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45399
+- File: components/com_users/src/View/Login/HtmlView.php
+- Description: The `tfa` is not used in the login view anymore as it is a leftover from the old two factor authentication system.
+
+### BufferStreamHandler does not auto register stream
+
+- PR: https://github.com/joomla/joomla-cms/pull/45402
+- File: libraries/src/Utility/BufferStreamHandler.php
+- Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
+
+
+### Table objects are instantiated directly instead of via Table::getInstance()
+
+- PR: https://github.com/joomla/joomla-cms/pull/44090
+- Description: `Table` objects in the core code have been instantiated with `Table::getInstance()` in the past. Starting with Joomla 6.0, you should use the explicit table class directly instead. After this change it is not possible to override the table class by calling `Table::addIncludePath()` anymore. At the same time it simplifies code handling a lot and especially allows IDEs to properly understand the code properly.
+
+```php
+// Old:
+$table = Table::getInstance('content');
+
+// New:
+$table = new \Joomla\CMS\Table\Content($db);
+```
