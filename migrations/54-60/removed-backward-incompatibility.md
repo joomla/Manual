@@ -232,6 +232,7 @@ If you need UTF8-compatible string functions from PHP, have a look at the [jooml
 ```php
 // Old:
 $table = Table::getInstance('content');
+```
 
 // New:
 $table = new \Joomla\CMS\Table\Content($db);
