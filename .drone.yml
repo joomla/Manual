@@ -6,37 +6,35 @@ clone:
 
 steps:
   - name: build
-    image: node:18-bullseye-slim
+    image: node:20-bookworm-slim
     commands:
       - npm install
       - npm run build
-      - mv webserver/.htaccess build
 
   - name: deployment
     image: joomlaprojects/docker-images:packager
     depends_on:
       - build
     environment:
-      REMOTE_PRIVATE_KEY:
-        from_secret: REMOTE_PRIVATE_KEY
-      developer_host:
-        from_secret: developer_host
-      sftp_user:
-        from_secret: sftp_user
+      CLOUDFLARE_ACCOUNT_ID:
+        from_secret: CLOUDFLARE_ACCOUNT_ID
+      CLOUDFLARE_API_TOKEN:
+        from_secret: CLOUDFLARE_API_TOKEN
       GITHUB_TOKEN:
         from_secret: github_token
     commands:
-      - mkdir -p ~/.ssh
-      - eval $(ssh-agent -s)
-      - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
-      - echo "$REMOTE_PRIVATE_KEY" > ~/.ssh/id_rsa
-      - chmod 600 ~/.ssh/id_rsa
-      - ssh-add
-      - rclone config create server sftp host $developer_host user $sftp_user port 22
-      - if [ -z "$${DRONE_PULL_REQUEST}" ]; then export TARGET=public_html; else export TARGET=wildcard.manual.joomlacode.org/sites/pr-$${DRONE_PULL_REQUEST}; fi
-      - rclone -v sync build server:$TARGET
+      - echo "Prepare Workaround for trailing slashes bug https://github.com/facebook/docusaurus/issues/6282 on Cloudflare Pages"
+      - >
+        for f in build/assets/files/*; do
+          [ -f "$f" ] || continue;
+          filename=$(basename "$f");
+          echo "/assets/files/$filename/ /assets/files/$filename 301";
+        done > build/_redirects
+      - node_modules/.bin/wrangler pages deploy ./build --commit-dirty=true --project-name manual --branch="$${DRONE_SOURCE_BRANCH}" | tee /tmp/output.log
+      - export PREVIEW_UNIQUE_URL=`grep Deployment /tmp/output.log | awk '{ print $9 }'`
+      - export PREVIEW_URL=`grep "Deployment alias URL" /tmp/output.log | awk '{ print $5 }'`
       - chmod +x test.sh
-      - if [ ! -z "$${DRONE_PULL_REQUEST}" ]; then /bin/add_github_status.sh "Preview" "Generated preview for this pull request" "http://pr-$${DRONE_PULL_REQUEST}.manual.joomlacode.org" ; fi;
+      - if [ ! -z "$${DRONE_PULL_REQUEST}" ]; then /bin/add_github_status.sh "Preview" "Generated preview for this pull request" "$${PREVIEW_URL}" ; fi;
     when:
       branch:
         main
@@ -48,6 +46,6 @@ steps:
 
 ---
 kind: signature
-hmac: ae910acaafbf7e06bea4e33c509dbabe08e1edaba7f175d91db4a880030c7cc4
+hmac: fd23674d231f74d54696c996b77acceb14a19d2d5d800c7050bdaee2f9be5b4b
 
 ...
