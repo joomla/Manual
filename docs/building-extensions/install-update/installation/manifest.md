@@ -66,10 +66,10 @@ or if you don't yet use a services/provider.php file:
 **File**, **Library**, **Package**: you can use any name, but libraries are usually named lib_example.xml and packages pkg_example.xml.
 
 For components, modules and plugins the manifest file must match the 'element' field of your extension's record in the `#__extensions` table (except that for components the "com_" prefix may be omitted).
-The 'element' is the internal name within Joomla of the extension. 
+The 'element' is the internal name within Joomla of the extension.
 
-In priority order the 'element' database field is set 
-- from the `<element>` in the manifest file, or 
+In priority order the 'element' database field is set
+- from the `<element>` in the manifest file, or
 - from the "module=" or "plugin=" attribute in the `<files>`, or
 - from the `<name>` (after the text is cleaned).
 
@@ -83,21 +83,21 @@ The primary tag of the installation file is
 </extension>
 ```
 
-This starting and closing tag is the same for all extensions. The following attributes are allowed within the tag: 
+This starting and closing tag is the same for all extensions. The following attributes are allowed within the tag:
 
 | Attribute                         | Values           | Applicable To    | Description                                              |
 | --------------------------------- | ---------------- | ---------------- | -------------------------------------------------------- |
 | type | component<br/>file<br/>language<br/>library<br/>module<br/>package<br/>plugin<br/>template | All extensions | |
-| method | install<br/>upgrade | All extensions | The install value (default) means the installer will gracefully stop if it finds any existing file/folder of the new extension<br/>The upgrade value allows you to install an upgraded version on top of the existing version | 
-| client | site<br/>administrator | Modules | Defines whether the module is a front-end site module or back-end administrator module |
+| method | install<br/>upgrade | All extensions | The install value (default) means the installer will gracefully stop if it finds any existing file/folder of the new extension<br/>The upgrade value allows you to install an upgraded version on top of the existing version |
+| client | site<br/>administrator | Modules | Defines whether the module is a frontend site module or backend administrator module |
 | group | *string* | Plugins | The group name specifies for which group of plugins the new plugin is available.<br/>The existing groups are the folder names within the directory /plugins.<br/>The installer will create new folder names for group names that do not exist yet. |
 
 ## Metadata
 
-The following elements can be used to insert metadata. Although not strictly required, you should define at least the `<name>`, `<author>`, `<version>` and `<description>` tags, all of which are used on the default administrator Manage Extensions form. 
+The following elements can be used to insert metadata. Although not strictly required, you should define at least the `<name>`, `<author>`, `<version>` and `<description>` tags, all of which are used on the default administrator Manage Extensions form.
 
 ```xml
-<name> – extension name (e.g. com_banners). 
+<name> – extension name (e.g. com_banners).
 <author> – author's name (e.g. Joomla! Project)
 <creationDate> – date of creation or release (e.g. April 2006)
 <copyright> – a copyright statement (e.g. (C) 2020 - 2030 Open Source Matters. All rights reserved.)
@@ -109,9 +109,9 @@ The following elements can be used to insert metadata. Although not strictly req
 <element> – the internal name of the component. If omitted, name will be cleaned and used
 ```
 
-The `<name>` and `<description>` fields are translatable. If you use language strings for these elements then they should be defined in your language .sys.ini file AND your .ini file. 
+The `<name>` and `<description>` fields are translatable. If you use language strings for these elements then they should be defined in your language .sys.ini file AND your .ini file.
 
-## Front-end Files
+## Frontend Files
 
 ```xml
 <files folder="from-folder">
@@ -120,16 +120,16 @@ The `<name>` and `<description>` fields are translatable. If you use language st
 </files>
 ```
 
-This is used to copy files from your development "from-folder" into the front-end directory of your installed extension. 
+This is used to copy files from your development "from-folder" into the frontend directory of your installed extension.
 You can either identify files individually using `<filename>` or copy a complete directory using `<folder>`.
 
 For plugins and modules you should identify the entry point of your code.
 If you are using dependency injection within your module or plugin and have a services/provider.php file then use
 
 ```xml
-    <folder module="mod_example">services</folder> 
+    <folder module="mod_example">services</folder>
 or
-    <folder plugin="example">services</folder> 
+    <folder plugin="example">services</folder>
 ```
 
 Here "mod_example" / "example" is the internal name (aka 'element') of your module / plugin.
@@ -137,9 +137,9 @@ Here "mod_example" / "example" is the internal name (aka 'element') of your modu
 If you are not using a services/provider.php file then point to the specific filename:
 
 ```xml
-    <filename module="mod_example">mod_example.php</folder> 
+    <filename module="mod_example">mod_example.php</folder>
 or
-    <filename plugin="example">example.php</folder> 
+    <filename plugin="example">example.php</folder>
 ```
 
 ## Media Files
@@ -151,7 +151,7 @@ This categories covers:
 
 (For an example of these sorts of images, consider the flag symbols in media/mod_languages/images/ which are used by the language switcher.)
 
-In your development area you should store these in separate folders: js/, css/, images/ then use 
+In your development area you should store these in separate folders: js/, css/, images/ then use
 
 ```xml
 <media folder="media" destination="com_example">
@@ -163,7 +163,7 @@ In your development area you should store these in separate folders: js/, css/, 
 
 The installer will move these folders into media/com_example/js, media/com_example/css and media/com_example/images, creating the com_example folder if required.
 
-This media folder is used for both the site front-end and the administrator back-end.
+This media folder is used for both the site frontend and the administrator backend.
 
 ## Administration section
 
@@ -173,11 +173,11 @@ This media folder is used for both the site front-end and the administrator back
 </administration>
 ```
 
-The administration section is defined in the `<administration>` element. Since only components apply to both the site and the administrator, only component manifests can include this element. 
+The administration section is defined in the `<administration>` element. Since only components apply to both the site and the administrator, only component manifests can include this element.
 
-### Administrator Back-end Files
+### Administrator Backend Files
 
-Files to copy below the administrator directory should be placed in the `<files>` element under the `<administration>` and can be used to copy individual files or complete folders, as described above for front-end files. 
+Files to copy below the administrator directory should be placed in the `<files>` element under the `<administration>` and can be used to copy individual files or complete folders, as described above for frontend files.
 
 ### Administrator Menu Links and Submenus
 
@@ -197,7 +197,7 @@ This maps to menu and submenu links for your component in the administrator side
 </administration>
 ```
 
-Each `<menu>` item can define the following attributes: 
+Each `<menu>` item can define the following attributes:
 
 | Attribute          | Description                                                              |
 | ------------------ | ------------------------------------------------------------------------ |
@@ -224,14 +224,14 @@ You create a dashboard for your component using
 </dashboards>
 ```
 
-When your component is installed then you can navigate to your dashboard using 
+When your component is installed then you can navigate to your dashboard using
 
 ```
 administrator/index.php?option=com_cpanel&view=cpanel&dashboard=example
 ```
 
-This will display at the top the `title` and `icon`, but will initially be empty. 
-You can define items for your dashboard using a preset and / or by adding administrator modules to it using the position `cpanel-example`, as described in [Dashboard](../../../general-concepts/dashboard.md). 
+This will display at the top the `title` and `icon`, but will initially be empty.
+You can define items for your dashboard using a preset and / or by adding administrator modules to it using the position `cpanel-example`, as described in [Dashboard](../../../general-concepts/dashboard.md).
 
 To create a link to your dashboard use (in your administrator menu section):
 
@@ -249,10 +249,10 @@ The text "example" within the `<dashboard>` tags must match the text within the 
 
 ## Configuration
 
-For modules, plugins and templates you can define configuration using a `<config>` section. 
+For modules, plugins and templates you can define configuration using a `<config>` section.
 Within the `<config>` tags you specify the configuration fields as described in [Form Fields](../../../general-concepts/forms-fields/index.md).
 
-There are many examples among the Joomla extensions, see mod_breadcrumbs for example. 
+There are many examples among the Joomla extensions, see mod_breadcrumbs for example.
 
 The configuration is defined by navigating to the administrator Manage Modules / Manage Plugins / Template Styles functionality.
 
@@ -271,14 +271,14 @@ Define the namespace prefix for your extension using:
 <namespace path="src">Mycompany\Component\Example</namespace>
 ```
 
-See the manual [Namespace](../../../general-concepts/namespaces/index.md) section for details. 
+For more details see the [Namespaces articles](../../../general-concepts/namespaces/index.md) in the General Concepts section.
 
 ## SQL
 
-The SQL section (primarily used by components) enables you to make changes to the database data owned by your extension. 
+The SQL section (primarily used by components) enables you to make changes to the database data owned by your extension.
 
 There are 3 types of changes:
-1. **Install** Initial database setup for your extension, for the first version of your extension (or, at least, the first version which configures the database). 
+1. **Install** Initial database setup for your extension, for the first version of your extension (or, at least, the first version which configures the database).
 2. **Update** Database changes to be applied upgrading to this version from the previous version
 3. **Uninstall** Database changes to be applied when the extension is uninstalled.
 
@@ -287,7 +287,7 @@ For each type of database (eg mysql) you will have:
 - 1 SQL file for the uninstall
 - a folder containing several update SQL files, each enabling upgrading from the previous version to the current
 
-Each SQL file contains a series of SQL statements, with table names using the '#__' prefix, eg '#__categories'. 
+Each SQL file contains a series of SQL statements, with table names using the '#__' prefix, eg '#__categories'.
 
 By convention all these sql files are stored in a folder called "sql" within the administrator folder, which you must define within your administrator files section, eg
 
@@ -338,9 +338,9 @@ where, for example, sql/updates/mysql contains a series of files, eg:
 
 If the first version you install is eg 0.0.4 then Joomla will use the initial example.install.sql file, and then apply in order the update files to arrive at v0.0.4.
 
-If you install one version of the extension then skip some versions before installing the next, then Joomla applies each of the update sql files to go from your previous version to the one you're installing. 
+If you install one version of the extension then skip some versions before installing the next, then Joomla applies each of the update sql files to go from your previous version to the one you're installing.
 
-The currently installed version is maintained in the `#__schemas` table. 
+The currently installed version is maintained in the `#__schemas` table.
 You can find a worked example in [Developing an MVC Component/Using the database](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Using_the_database).
 
 :::note[TODO]
@@ -361,7 +361,7 @@ language
        └─── mod_hello.sys.ini
 ```
 
-The subfolder name (eg en-GB) must match the language code of the language your extension is supporting. 
+The subfolder name (eg en-GB) must match the language code of the language your extension is supporting.
 You can find the list of all languages supported by Joomla (together with their language codes) via the [Joomla Language Downloads](https://downloads.joomla.org/language-packs).
 
 (For historical reasons Joomla also supports the language file names being prefixed with the language code, eg en-GB.mod_hello.ini).
@@ -378,8 +378,8 @@ There are 2 ways which you can use to install your extension's language files.
 ```
 
 Joomla will copy your language files (from the folder specified in the 'folder' attribute) into the appropriate Joomla language folder:
-- under /language for the site front-end (site modules, site templates and components when the `<languages>` tag is immediately inside `<extension>`).
-- under /administrator/language for the administrator back-end (plugins, administrator modules, administrator templates and components when the `<languages>` tag is inside `<administration>`).
+- under /language for the site frontend (site modules, site templates and components when the `<languages>` tag is immediately inside `<extension>`).
+- under /administrator/language for the administrator backend (plugins, administrator modules, administrator templates and components when the `<languages>` tag is inside `<administration>`).
 
 In your code you can then load your .ini language file using (eg for mod_example):
 
@@ -412,7 +412,7 @@ Factory::getApplication()->getLanguage()->load('mod_example', JPATH_BASE . '/mod
 
 The advantage of this second approach is that the language files continue to be closely associated with your extension.
 
-If an administrator uninstalls a language then 
+If an administrator uninstalls a language then
 - for option 1 your extension's language files will be deleted
 - for option 2 your extension's language files will remain.
 
@@ -449,7 +449,7 @@ If your company has several libraries and you want to group them together under 
 ```
 
 These libraries will then be installed in the JPATH_SITE/libraries/mycompany/mylib1 and JPATH_SITE/libraries/mycompany/mylib2 folders.
-Uninstalling mylib1 will still leave mylib2 installed on your site. 
+Uninstalling mylib1 will still leave mylib2 installed on your site.
 
 ## Update Server
 
@@ -470,14 +470,14 @@ Specify the URL of the changelog description for this version of your extension:
 <changelogurl>https://example.com/updates/changelog.xml</changelogurl>
 ```
 
-The URL in the `<changelogurl>` tag must not have any spaces or line breaks before or after it. 
+The URL in the `<changelogurl>` tag must not have any spaces or line breaks before or after it.
 
 See the section on [ChangeLogs](./change-log.md).
 
 ## Download Keys
 
-Users can enter their download keys via the Update Sites list, which provides a single place to manage them. 
-When a user is going to update an extension, Joomla will check if there is a download key. If there is a download key, Joomla will add the download key to the update URL. 
+Users can enter their download keys via the Update Sites list, which provides a single place to manage them.
+When a user is going to update an extension, Joomla will check if there is a download key. If there is a download key, Joomla will add the download key to the update URL.
 
 To support download keys you must include the dlid tag in the manifest file. The dlid tag takes 2 arguments:
 - prefix
@@ -495,16 +495,20 @@ The prefix will be added before the download key and the suffix after the downlo
 dlid=KEY&amp;dummy=my.zip
 ```
 
-The key is added before the `onInstallerBeforePackageDownload` event is triggered, so the full URL will be passed to the event. 
+The key is added before the `onInstallerBeforePackageDownload` event is triggered, so the full URL will be passed to the event.
 
 ## Summary
 
 This documents which manifest elements are supported during which installation of an extension.
 
+:::warning[Out of date]
+  The following table needs to be validated. Some tags are wrong and needs carefully validated and this document needs to be updated.
+:::
+
 | Component | File | Language | Library | Module | Package | Plugin | Template |
-| :-------: | :--: | :------: | :-----: | :----: | :-----: | :----: | :------: | 
+| :-------: | :--: | :------: | :-----: | :----: | :-----: | :----: | :------: |
 | `<sql>` | yes | yes | no | no | yes | no | yes | no |
-| `<languages>` | yes | yes | no | yes | yes | yes | yes | yes | 
+| `<languages>` | yes | yes | no | yes | yes | yes | yes | yes |
 | `<tag>` | no | no | yes | no | no | no | no | no |
 | `<media>` | yes | no | yes | yes | yes | no | yes | yes |
 | `<config>` | no | no | no | no | yes | no | yes | yes |

@@ -5,7 +5,7 @@ title: Mail
 Mail
 ====
 
-This section describes how you can send emails from your extension, 
+This section describes how you can send emails from your extension,
 using either the Joomla `Mail` class or the `MailTemplate` class.
 
 To get this to work you should ensure that your Joomla instance is configured correctly in Global Configuration / Server tab,
@@ -16,9 +16,9 @@ Instructions for use are at the bottom of this page.
 
 ## Sending an Email
 
-### Getting the Joomla Mail instance
+### Get the Joomla Mail instance
 
-First of all you must get the Joomla `Mail` instance. The easiest way is 
+First of all you must get the Joomla `Mail` instance. The easiest way is
 
 ```php
 use Joomla\CMS\Factory;
@@ -31,10 +31,10 @@ When Joomla initialises it sets into the Dependency Injection Container an entry
 - key - MailerFactoryInterface::class (ie the fully qualified name of this class, as a string)
 - value - code which will return a `MailerFactory` instance.
 
-Here we're getting that `MailerFactory` instance from the DIC, and calling `createMailer()` on it to give us a Joomla `Mail` instance. 
+Here we're getting that `MailerFactory` instance from the DIC, and calling `createMailer()` on it to give us a Joomla `Mail` instance.
 
 Alternatively, if you're writing code in a component Controller or Model class which has been created using the `MVCFactory`,
-then you can get the `MVCFactory` to provide you with the `MailerFactory` instance. 
+then you can get the `MVCFactory` to provide you with the `MailerFactory` instance.
 
 Your Controller/Model needs to:
 - provide a getter and setter for the `MailerFactory` - you use the `MailerFactoryAwareTrait` to do this
@@ -50,7 +50,7 @@ use Joomla\CMS\Mail\MailerFactoryAwareInterface;
 class MyController extends ... implements MailerFactoryAwareInterface
 {
     use MailerFactoryAwareTrait;
-    
+
     public function sendMail()
     {
         $mailer = $this->getMailerFactory()->createMailer();
@@ -58,13 +58,13 @@ class MyController extends ... implements MailerFactoryAwareInterface
 ```
 
 When `MVCFactory` creates your Controller it checks if it implements MailerFactoryAwareInterface,
-and if so it uses your setter to set the `MailerFactory` in your class. 
+and if so it uses your setter to set the `MailerFactory` in your class.
 
 You can then use your getter to get the `MailerFactory` and call `createMailer()` to create the `Mail` instance.
 
-### Sending an email 
+### Send the email
 
-Once you have the `Mail` instance (`$mailer` above) you can use the [Mail API](cms-api://classes/Joomla-CMS-Mail-Mail.html) to configure aspects of the email. 
+Once you have the `Mail` instance (`$mailer` above) you can use the [Mail API](cms-api://classes/Joomla-CMS-Mail-Mail.html) to configure aspects of the email.
 
 The `Mail` instance takes as defaults the data defined in the Global Configuration / Server tab.
 So, for example, if you don't set a sender then it will take the sender data from Global Configuration.
@@ -79,9 +79,9 @@ $mailer->addRecipient('someone@example.com');
 $mailer->setSubject('test');
 $mailer->setBody('Hello!');
 
-try 
+try
 {
-    $mailer->send(); 
+    $mailer->send();
     $this->app->enqueueMessage("Mail successfully sent", 'info');
 }
 catch (\Exception $e)
@@ -103,12 +103,12 @@ and this should mean that you will see in your log file the low level interactio
 
 (You may see a lot of lines containing Error messages, but they're not really errors!)
 
-Even so, the source of the problem may not be obvious. 
+Even so, the source of the problem may not be obvious.
 For example, after setting `$mailer->isHtml()` to send an email in HTML, I found this returned from the server:
 
 ```
 550-We're sorry, but we can't send your email.  Either the subject matter, a link, or an attachment potentially contains
-550 spam, or phishing or malware.  Please check or edit your message and try sending it again. 
+550 spam, or phishing or malware.  Please check or edit your message and try sending it again.
 ```
 
 The SMTP server didn't allow emails with Content-Type text/html.
@@ -129,7 +129,7 @@ Look also at the effects of changing the Mail Templates Configuration Options.
 
 Joomla doesn't provide functionality for creating mail templates.
 
-Instead, you should create them in your code, for example in your installation script file, 
+Instead, you should create them in your code, for example in your installation script file,
 using the [Mail Template APIs](cms-api://classes/Joomla-CMS-Mail-MailTemplate.html).
 
 The APIs provide static functions:
@@ -137,15 +137,15 @@ The APIs provide static functions:
 - updateTemplate
 - deleteTemplate
 
-and the data maps to the `#__mail_templates` database table. 
+and the data maps to the `#__mail_templates` database table.
 
 For each template you define:
 - the template key - including your extension, for example 'com_sendmail.example'
 - the text for the email subject - defined as a language constant
-- the text for the email body - defined as a language constant 
+- the text for the email body - defined as a language constant
 - an array of tags - fields in the email subject and body which will be replaced by values
 
-You will need to define these email subject and body language constants in your .ini language file 
+You will need to define these email subject and body language constants in your .ini language file
 (site or administrator, depending upon where you send the email from).
 
 You can define the email body text in HTML as well as in plain text.
@@ -167,7 +167,7 @@ as these are also shown when you view/edit a single mail template.
 
 ### Configuring Mail Templates
 
-Once you have created your mail template an administrator can edit it, 
+Once you have created your mail template an administrator can edit it,
 using the functionality within the administrator Mail Templates area.
 
 An administrator can change the text of the email subject and body,
@@ -179,7 +179,7 @@ The HTML body (if set) is shown only if the Mail Templates configuration option 
 If the Mail Templates configuration option Per Template Mail Settings is set
 then you an administrator can set further options via the Options tab (when editing a mail template).
 
-Although when you create a mail template you define the email subject and body as a language constant, 
+Although when you create a mail template you define the email subject and body as a language constant,
 when the template is displayed those language constants are translated, and shown in a specific language.
 
 If an administrator changes and saves a template, then it is stored in the `#__mail_templates` database table
@@ -189,13 +189,13 @@ This means that in the `#__mail_templates` database table you can have multiple 
 - one record for the mail template as you created it, with the language field set to a blank string, and,
 - one record for each language where an administrator has modified the template for that language.
 
-When you use a template in your extension's code to send an email you have to specify the language. 
+When you use a template in your extension's code to send an email you have to specify the language.
 Joomla will first of all look for a record with your specified language (one which an administrator has edited),
 and if it doesn't find one then it drops back to the default one which your component created.
 
 ### Emailing Using the Mail Template
 
-The `MailTemplate` acts like a wrapper round the `Mail` class, 
+The `MailTemplate` acts like a wrapper round the `Mail` class,
 so you can add recipients, attachments, reply-to address and send the email via the [Mail Template APIs](cms-api://classes/Joomla-CMS-Mail-MailTemplate.html).
 
 You initially get the `Mail` instance as described above, but thereafter use the `MailTemplate` instance:
@@ -222,7 +222,7 @@ $mailTemplate->addTemplateData(
             ]
         );
 
-// Send the email using the MailTemplate as well. If it fails it will raise an exception 
+// Send the email using the MailTemplate as well. If it fails it will raise an exception
 try {
     $mailTemplate->send();
 } catch (\Exception $e) {
@@ -233,7 +233,7 @@ try {
 ## Example com_sendmail Component
 
 You can download and install [this example com_sendmail component](./_assets/com_sendmail.zip).
-It demonstrates sending emails both using the `Mail` class and the `MailTemplate` class. 
+It demonstrates sending emails both using the `Mail` class and the `MailTemplate` class.
 
 As part of its installation `com_sendmail` creates a MailTemplate with a key of 'com_sendmail.example',
 which you can then view and edit via the administrator Mail Templates functionality.
@@ -245,4 +245,4 @@ The component will display a form which will:
 - capture the data appropriate to your choice.
 
 You can also ensure that logging is set on via Global Configuration / Logging
-and view the low level mail interactions in the log file. 
+and view the low level mail interactions in the log file.

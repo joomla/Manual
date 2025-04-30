@@ -81,13 +81,13 @@ final class HoneypotCaptchaProvider implements CaptchaProviderInterface
     /**
      * Validate the input data
      *
-     * @param   string  $code  Answer provided by user
+     * @param   ?string  $code  Answer provided by user
      *
      * @return  bool    If the answer is correct, false otherwise
      *
      * @throws  \RuntimeException
      */
-    public function checkAnswer(string $code = null): bool
+    public function checkAnswer(?string $code = null): bool
     {
         return !$code;
     }
