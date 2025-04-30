@@ -8,7 +8,7 @@ The Documentation can be found at [https://manual.joomla.org](https://manual.joo
 
 This manual is built using [Docusaurus 3](https://docusaurus.io/), a modern static website generator. If you want to contribute to it then this page will help you get started.
 
-Updates to the documentation are managed via this repository, so you should initially fork it into your own GitHub account. 
+Updates to the documentation is managed via this repository, so you should initially fork it into your own GitHub account. 
 Then you can make changes to the documentation files and submit a pull request to the Joomla manual. 
 Ensure that you continue to sync your fork branches with the Joomla manual `main` branch. 
 
@@ -16,11 +16,11 @@ The documentation uses the [Markdown](https://www.markdownguide.org/) syntax, wi
 
 To make documentation changes you'll probably find it easiest to use one of two options:
 1. Install Docusaurus on your own machine, and make changes there
-2. Use [github dev](https://github.com/github/dev) to make the changes on the github server. 
+2. Use [github dev](https://github.com/github/dev) to make the changes on the GitHub server. 
 
 ### Install Docusaurus Locally
 
-To install Docusaurus on your own machine you should initialize a local git repository and clone the manual from the forked copy in your githut repository into this git instance. 
+To install Docusaurus on your own machine you should initialise a local git repository and clone the manual from the forked copy in your githut repository into this git instance. 
 
 Then change directory to your local git repository and do:
 
@@ -49,7 +49,7 @@ To use github dev go to your repository and press the "." (dot) key, as describe
 - create new files and folders, modify and delete existing files, upload files
 - preview files (right-click on the file tab) - this will show interpreted markdown, but will not interpret Docusaurus additions
 - commit and push changes
-- return to github repository (by clicking on GitHub in bottom left, or by replacing github.dev by github.com in the URL)
+- return to GitHub repository (by clicking on GitHub in bottom left, or by replacing github.dev by github.com in the URL)
 
 ### Preview for pull request
 
@@ -63,9 +63,9 @@ This link will be added to the "checks" section in the pull request as "preview"
 
 The Joomla Manual contains documentation for multiple versions of the Joomla software. 
 
-The mapping between the versions of the manual in github and the live manual is:
+The mapping between the versions of the manual in GitHub and the live manual is:
 
-| github manual (development)      | Live Docusaurus manual                               |
+| GitHub manual (development)      | Live Docusaurus manual                               |
 | -------------------------------- |------------------------------------------------------|
 | /docs                            | "upcoming" release  (shown as /docs/next in the URL) |
 | /versioned_docs/version-m.n      | version m.n (under "Current releases")               |
@@ -77,7 +77,7 @@ If your documentation changes relate to multiple versions of Joomla then you sho
 
 Other versions may be present within /versioned_docs but are not updated with the changes, even if the documentation is true for those Joomla versions. 
 
-To minimize changes it's recommended that you initially just make changes within the /docs area, and then raise the pull request. 
+To minimise changes it's recommended that you initially just make changes within the /docs area, and then raise the pull request. 
 This allows team members to review the documentation, and for you to fix any issues without having to replicate changes to multiple versions. 
 Then when the review process is complete the changes can be replicated to the other versions prior to merging. 
 
