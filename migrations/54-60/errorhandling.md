@@ -17,7 +17,7 @@ to check this flag and if the flag is set, will throw an exception. If it is not
 
 You can set the flag by calling `setUseExceptions(true)` on the object which should use the new system. To query the flag
 call `shouldUseExceptions()`. The legacy code when encountering an error looked like this:
-```
+```php
 if ($errorConditionEvaluatingToFalse) {
     $this->setError($table->getError());
 
@@ -25,7 +25,7 @@ if ($errorConditionEvaluatingToFalse) {
 }
 ```
 The new code in the core would look similar to this:
-```
+```php
 if ($errorConditionEvaluatingToFalse) {
     if ($this->shouldUseExceptions()) {
         throw new \Exception($table->getError());
