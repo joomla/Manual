@@ -48,7 +48,7 @@ status of the `shouldUseExceptions()` flag to the new object as well.
 The plan is to implement proper exceptions everywhere in the core code during the time of Joomla 6.x in parallel with the
 legacy system. In Joomla 7.0, the core will remove calls to `setError()` and the checks for `shouldUseExceptions()`.
 At that point in time, the Joomla core would be entirely transitioned to exceptions. It is still up for discussion if
-the calls to `shouldUseException()` should then also default to `true` instead of `false` like right now. The trait itself 
+the calls to `shouldUseExceptions()` should then also default to `true` instead of `false` like right now. The trait itself 
 is planned to be dropped in Joomla 8.0.
 
 ## What should third party developers do?
