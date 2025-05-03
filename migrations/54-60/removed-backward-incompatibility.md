@@ -236,3 +236,9 @@ $table = Table::getInstance('content');
 // New:
 $table = new \Joomla\CMS\Table\Content($db);
 ```
+
+### WebApplication has no $item_associations property anymore
+
+- PR: https://github.com/joomla/joomla-cms/pull/45425
+- File: libraries/src/Application/WebApplication.php
+- Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.
