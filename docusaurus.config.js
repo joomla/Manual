@@ -188,6 +188,10 @@ const config = {
             activeBaseRegex: `/migrations/`,
           },
           {
+            type: 'search',
+            position: 'left',
+          },
+          {
             href: 'https://api.joomla.org',
             label: 'API',
             position: 'right',
