@@ -4,8 +4,8 @@ This documentation
 This [Joomla development manual](https://manual.joomla.org/docs/) is built using [Docusaurus 3](https://docusaurus.io/), 
 a modern static website generator. If you want to contribute to it then this page will help you get started.
 
-Updates to the documentation is managed via the [Joomla manual github repository](https://github.com/joomla/Manual), 
-so you should initially fork this repository into your own github account. Then you can make changes to the documentation
+Updates to the documentation is managed via the [Joomla manual GitHub repository](https://github.com/joomla/Manual), 
+so you should initially fork this repository into your own GitHub account. Then you can make changes to the documentation
 files and submit a pull request to the Joomla manual. Ensure that you continue to sync your fork branches 
 with the Joomla manual `main` branch. 
 
@@ -18,7 +18,7 @@ To make documentation changes you'll probably find it easiest to use one of two 
 ## Install Docusaurus Locally
 
 To install Docusaurus on your own machine you should initialise a local git repository and clone the manual from the
-forked copy in your githut repository into this git instance. 
+forked copy in your GitHub repository into this git instance. 
 
 Then change directory to your local git repository and do:
 
@@ -43,7 +43,7 @@ This command generates static content into the `build` directory and can be serv
 
 ## Use GitHub dev
 
-To use github dev go to your repository and press the "." (dot) key, as described within the 
+To use GitHub dev go to your repository and press the "." (dot) key, as described within the 
 [github.dev guide](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor). You can then:
 
 - create a new git branch for your changes
