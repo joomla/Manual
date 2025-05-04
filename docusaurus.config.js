@@ -159,35 +159,8 @@ const config = {
         },
         items: [
           {
-            type: 'doc',
-            docId: 'index',
-            position: 'left',
-            label: 'Documentation',
-          },
-          {
-            href: 'https://api.joomla.org',
-            label: 'API',
-            position: 'left',
-          },
-          {
-            href: 'https://framework.joomla.org',
-            label: 'Framework',
-            position: 'left',
-          },
-          {
-            href: 'https://docs.joomla.org',
-            label: 'Using the CMS',
-            position: 'left',
-          },
-          {
-            to: '/migrations',
-            label: 'Migrations',
-            position: 'right',
-            activeBaseRegex: `/migrations/`,
-          },
-          {
             type: 'docsVersionDropdown',
-            position: 'right',
+            position: 'left',
             dropdownItemsBefore: [
               {
                 type: 'html',
@@ -201,6 +174,39 @@ const config = {
                 label: 'All versions',
               },
             ],
+          },
+          {
+            type: 'doc',
+            docId: 'index',
+            position: 'left',
+            label: 'Documentation',
+          },
+          {
+            to: '/migrations',
+            label: 'Migrations',
+            position: 'left',
+            activeBaseRegex: `/migrations/`,
+          },
+          {
+            href: 'https://api.joomla.org',
+            label: 'API',
+            position: 'right',
+          },
+          {
+            href: 'https://framework.joomla.org',
+            label: 'Framework',
+            position: 'right',
+          },
+          {
+            href: 'https://docs.joomla.org',
+            label: 'Using the CMS',
+            position: 'right',
+          },
+          {
+            to: '/about',
+            label: 'About',
+            position: 'right',
+            activeBaseRegex: `/about/`,
           },
           {
             href: 'https://github.com/joomla/manual',
@@ -294,6 +300,27 @@ const config = {
         },
         editCurrentVersion: true,
         sidebarPath: require.resolve('./sidebarsMigrations.js'),
+        showLastUpdateAuthor: true,
+        showLastUpdateTime: true,
+      }),
+    ],
+    [
+      'content-docs',
+      /** @type {import('@docusaurus/plugin-content-docs').Options} */
+      ({
+        id: 'about',
+        path: 'about',
+        routeBasePath: 'about',
+        editUrl: ({locale, versionDocsDirPath, docPath}) => {
+          /* if we need to support more languages this is an example
+          if (locale !== 'en') {
+            return `https://crowdin.com/project/docusaurus-v2/${locale}`;
+          }
+           */
+          return `https://github.com/joomla/manual/edit/main/${versionDocsDirPath}/${docPath}`;
+        },
+        editCurrentVersion: true,
+        sidebarPath: require.resolve('./sidebarsAbout.js'),
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),
