@@ -16,16 +16,17 @@ Compatibility Plugin
 ## Joomla 5 Compatibility Plugin
 
 As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility between Joomla 5 and 4. 
-Please check the [Backward Compatibility Plugin](../44-50/compat-plugin.md) for more details.
+Please check the [Backward Compatibility Plugin](https://manual.joomla.org/migrations/44-50/compat-plugin.md) for more details.
 
-For more detail check [Compatibility Plugin Joomla! 5.0](../44-50/compat-plugin).
+For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/migrations/44-50/compat-plugin).
 
 ## Joomla 6 Compatibility Plugin
 
 In Joomla! 6.0 the Compatibility Plugin introduced in Joomla! 5.0 will be replaced by a new plugin
 called "Behaviour - Backward Compatibility 6".
 
-The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded before any other plugin is loaded.
+Despite the warning about the potential removal of the `behaviour` plugin type, this compatibility plugin still uses
+this type to ensure it loads before any other plugin, as this is critical for backward compatibility functionality.
 
 
 ### CMS BaseApplication and CLI classes
