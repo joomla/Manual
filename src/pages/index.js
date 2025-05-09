@@ -11,42 +11,42 @@ import * as FaIconName from 'react-icons/fa'; // Bootstrap does not have any acc
 import styles from './index.module.css';
 const quickaccess = [
   {
-    title: <>Get started</>,
+    title: <>Iniciação</>,
     href: "/docs/get-started",
     iconName: <IconName.BsPlayCircle className="icon--3x" />,
     description: (
       <>
-        Find out how to get set up for Joomla development, and how to get help from your Joomla colleagues when you get stuck.
+        Saiba como se preparar para o desenvolvimento do Joomla e como obter ajuda dos seus colegas do Joomla quando fica preso.
       </>
     ),
   },
   {
-    title: <>Tutorials</>,
+    title: <>Tutoriais</>,
     href: "/docs/building-extensions/modules/module-development-tutorial/",
     iconName: <IconName.BsBook className="icon--3x" />,
     description: (
       <>
-        Learn the basics of Joomla through following the Module Development Tutorial. 
+        Aprenda o básico do Joomla através do seguinte "Tutorial do Desenvolvimento do Módulo". 
       </>
     ),
   },
   {
-    title: <>Plugins</>,
+    title: <>Plug-ins</>,
     href: "/docs/building-extensions/plugins/",
     iconName: <IconName.BsPlug className="icon--3x" />,
     description: (
       <>
-        Learn how Joomla plugins work. Download and install the different example plugins, all with detailed explanations to help you understand what's going on.
+        Saiba como funcionam os ''plug-ins'' do Joomla. Transfira e instale diferentes ''plug-ins'' de exemplo, todos com explicações detalhadas para o ajudar a saber o que se passa.
       </>
     ),
   },
   {
-    title: <>Concepts</>,
+    title: <>Conceitos</>,
     href: "/docs/general-concepts/",
     iconName: <IconName.BsGear className="icon--3x" />,
     description: (
         <>
-          Read about Joomla Forms, Web Asset Manager, Namespacing and lots more. All the ways that Joomla makes it easy for you to achieve your aims.
+          Leia acerca dos Formulários Joomla, Gestor de Ativos da Web, Espaço de nomes e muito mais. Todas as maneiras pelas quais o Joomla facilita para você alcançar os seus objetivos.
         </>
     ),
   },
@@ -85,9 +85,9 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Get started with the ${siteConfig.title}`}
-      description="Comprehensive Joomla! developer manual with full documentation for creating custom extensions and components.">
-      <HomepageHeader />
+      title={`Começar com o ${siteConfig.title}`}
+      description="Joomla Abrangente! Manual do programador com documentação completa para criar extensões e componentes personalizados.">
+      <HomepageHeader />0
       <main>
         {quickaccess && quickaccess.length > 0 && (
             <section className={clsx('margin-bottom--xl', styles.quickaccess)}>
