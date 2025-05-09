@@ -1,12 +1,12 @@
-# Joomla! Programmers documentation
+# Joomla! Documentação dos Programadores
 
-This repository should hold all Joomla! documentation needed to develop extensions.
+Este repositório deverá conter toda a documentação do Joomla! necessária para desenvolver extensões.
 
-The Documentation can be found at [https://manual.joomla.org](https://manual.joomla.org)
+A «Documentation» pode ser encontrada [https://manual.joomla.org](https://manual.joomla.org)
 
-## Contributing
+## Contribuição
 
-This manual is self documenting, you can find the documentation at
+Este manual é auto documentado, pode encontrar a documentação em
 [manual.joomla.org/about](https://manual.joomla.org/about/).
 
-The markdown files for the this documentation are in the `about` folder.
+Os ficheiros de marcação para esta documentação estão na pasta de `about`.
