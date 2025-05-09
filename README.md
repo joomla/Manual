@@ -2,7 +2,7 @@
 
 Este repositório deverá conter toda a documentação do Joomla! necessária para desenvolver extensões.
 
-A «Documentation» pode ser encontrada [https://manual.joomla.org](https://manual.joomla.org)
+A «Documentação» pode ser encontrada [https://manual.joomla.org](https://manual.joomla.org)
 
 ## Contribuição
 
