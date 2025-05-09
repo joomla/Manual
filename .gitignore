@@ -1,4 +1,4 @@
-# IDE & System Related Files
+# IDE e Ficheiros Relacionados com o Sistema
 .buildpath
 .project
 .settings
@@ -16,17 +16,17 @@ node_modules/
 Thumbs.db
 Desktop.ini
 
-# Dependencies
+# Dependências
 /node_modules
 
-# Production
+# Produção
 /build
 
-# Generated files
+# Ficheiros Gerados
 .docusaurus
 .cache-loader
 
-# Misc
+# Diversos
 .env.local
 .env.development.local
 .env.test.local
