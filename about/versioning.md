@@ -2,14 +2,14 @@
 sidebar_position: 4
 ---
 
-Versions
+Versões
 ========
 
 The Joomla Manual contains documentation for multiple versions of the Joomla software.
 
 The mapping between the versions of the manual in GitHub and the live manual is:
 
-| GitHub manual (development) | Live Docusaurus manual                               |
+| Manual do GitHub (desenvolvimento) | Manual Live de Docusaurus                               |
 |-----------------------------|------------------------------------------------------|
 | /docs                       | "upcoming" release  (shown as /docs/next in the URL) |
 | /versioned_docs/version-m.n | version m.n (under "Current releases")               |
@@ -34,7 +34,7 @@ updated Joomla manual `main`.
 
 
 
-Versioning the documentation
+Versioning a documentação
 ============================
 
 :::note[Versioning the documentation]
@@ -43,7 +43,7 @@ Versioning the documentation
 The documentation should reflect the current releases of Joomla!. For each minor version we will have a tagged version
 in the documentation and update the version dropdown in this documentation.
 
-## Command to run
+## Comando para executar
 When we release a new minor Joomla! version, the documentation will be frozen and the version will be tagged. Use
 
 ```bash title="npm"
@@ -53,6 +53,6 @@ npm run docusaurus docs:version 5.4.0
 to tag a version. The current state of the documentation will be copied to the ```versioned_docs``` 
 folder and the ```versions.js``` is updated.
 
-## Update the Versions dropdown
+## Atualizar as Versões dropdown
 In the ```docusaurus.config.js``` the key ```onlyIncludeVersions``` has to be updated to the latest stable version.
 Also, the ```lastVersion``` has to be updated properly and the ```versions``` labels should be set.
