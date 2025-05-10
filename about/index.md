@@ -5,15 +5,15 @@ sidebar_position: 1
 import BrowserWindow from '@site/src/components/BrowserWindow';
 import IframeWindow from '@site/src/components/BrowserWindow/IframeWindow';
 
-About this Documentation
+Sobre esta Documentação
 ========================
 
-This [Joomla development manual](https://manual.joomla.org/docs/) is built using [Docusaurus](https://docusaurus.io/), 
-a modern static website generator. If you want to contribute to it then this page will help you get started.
+Este [manual de desenvolvimento do Joomla](https://manual.joomla.org/docs/) foi criado com [Docusaurus](https://docusaurus.io/), 
+um gerador de <i>site</i> da Web estático moderno. Se quiser contribuir para o mesmo, então esta página irá ajudá-lo a começar.
 
-Updates to the documentation is managed via the [Joomla manual GitHub repository](https://github.com/joomla/Manual), 
-so you should initially fork this repository into your own GitHub account. Then you can make changes to the documentation
-files and submit a pull request to the Joomla manual. Ensure that you continue to sync your fork branches 
-with the Joomla manual `main` branch. 
+As atualziações para a documentação sáo geridas através do [repositório do Github manual do Joomla](https://github.com/joomla/Manual), 
+então deveria inicialmente clonar este repositório na sua própria conta do GitHub. Depois, pode efetuar alterações nos ficheiros da 
+documentação e submeter um pedido de "envio" (<i>pull</i) para o manual do Joomla. Certifique-se que continua a sincronizar as suas 
+ramificações da clonagem com o ramo `main`do manual do Joomla. 
 
-The documentation uses the [Markdown](https://www.markdownguide.org/) syntax, with additional features which Docusaurus provides.
+A documentaação utiliza a sintaxe de [Marcação (Markdown)](https://www.markdownguide.org/), com funcionalidades adicionais que Docusaurus fornece.
