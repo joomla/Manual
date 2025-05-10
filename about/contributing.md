@@ -2,13 +2,13 @@
 sidebar_position: 3
 ---
 
-Contributing
+Contribuição
 ============
 
 How to contribute to the Joomla! documentation. First it's important to understand how to write documentation,
 which is handeled in the [Writing documentation](./writing.md) page.
 
-## Install Docusaurus Locally
+## Instalar Docusaurus Localmente
 
 To install Docusaurus on your own machine you should initialise a local git repository and clone the manual from the
 forked copy in your GitHub repository into this git instance.
@@ -34,7 +34,7 @@ npm run build
 
 This command generates static content into the `build` directory and can be served using any static contents hosting service.
 
-## Use GitHub dev
+## Utilizar GitHub dev
 
 To use GitHub dev go to your repository and press the "." (dot) key, as described within the
 [github.dev guide](https://docs.github.com/en/codespaces/the-githubdev-web-based-editor). You can then:
@@ -45,7 +45,7 @@ To use GitHub dev go to your repository and press the "." (dot) key, as describe
 - commit and push changes
 - return to GitHub repository (by clicking on GitHub in bottom left, or by replacing github.dev by github.com in the URL)
 
-## Pull Requests
+## Pedidos de Envio (Pull)
 
 Once you raise a pull request on the [Joomla manual](https://github.com/joomla/Manual) a test build is run to identify
 any problems with your documentation. If you find a check has failed then click on the Details of the check which failed,
