@@ -25,7 +25,7 @@ All recommended versions are based on the latest released version of each series
 
 :::danger End of Life
 
-Support for this version of Joomla! ended on 31 December 2014
+Support for this version of Joomla! ended on 17 August 2023
 
 :::
 
