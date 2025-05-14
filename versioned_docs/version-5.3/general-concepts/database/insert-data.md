@@ -68,10 +68,10 @@ $query
 
 // Bind values
 $query
-    ->bind(':user_id', 1001, Joomla\Database\ParameterType::INTEGER)
+    ->bind(':user_id', $db->quote(1001), \Joomla\Database\ParameterType::INTEGER)
     ->bind(':profile_key', 'custom.message')
     ->bind(':profile_value', 'Inserting a record using insert()')
-    ->bind(':ordering', 1, Joomla\Database\ParameterType::INTEGER);
+    ->bind(':ordering', $db->quote(1), \Joomla\Database\ParameterType::INTEGER);
 
 // Set the query using our newly populated query object and execute it.
 $db->setQuery($query);
