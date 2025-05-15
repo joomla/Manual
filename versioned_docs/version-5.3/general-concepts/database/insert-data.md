@@ -51,7 +51,7 @@ The `DatabaseQuery` class provides a number of methods for building insert queri
 the most common being insert, columns and values.
 
 ```php
-// Variables are defined before using the bind function.
+// Define variables passed to the bind function.
 $user_id       = 1001;
 $profile_key   = 'custom.message';
 $profile_value = 'Inserting a record using insert()';
