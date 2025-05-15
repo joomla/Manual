@@ -51,6 +51,12 @@ The `DatabaseQuery` class provides a number of methods for building insert queri
 the most common being insert, columns and values.
 
 ```php
+// Variables are defined before using the bind function.
+$user_id       = 1001;
+$profile_key   = 'custom.message';
+$profile_value = 'Inserting a record using insert()';
+$ordering      = 1;
+
 // Get a db connection.
 $db = Factory::getContainer()->get('DatabaseDriver');
 
@@ -68,10 +74,10 @@ $query
 
 // Bind values
 $query
-    ->bind(':user_id', $db->quote(1001), \Joomla\Database\ParameterType::INTEGER)
-    ->bind(':profile_key', 'custom.message')
-    ->bind(':profile_value', 'Inserting a record using insert()')
-    ->bind(':ordering', $db->quote(1), \Joomla\Database\ParameterType::INTEGER);
+    ->bind(':user_id', $user_id, \Joomla\Database\ParameterType::INTEGER)
+    ->bind(':profile_key', $profile_key)
+    ->bind(':profile_value', $profile_value)
+    ->bind(':ordering', $ordering, \Joomla\Database\ParameterType::INTEGER);
 
 // Set the query using our newly populated query object and execute it.
 $db->setQuery($query);
