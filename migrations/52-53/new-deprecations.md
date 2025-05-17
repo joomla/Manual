@@ -66,6 +66,6 @@ PR: https://github.com/joomla/joomla-cms/pull/44754
 
 ### CMSPlugin: deprecation for registerListeners
 
-Deprecate `CMSPlugin::registerListeners()` as no longer needed when plugin will implement `SubscriberInterface`
+Deprecate `CMSPlugin::registerListeners()` as no longer needed when plugin will implement `SubscriberInterface`.
 
 PR: https://github.com/joomla/joomla-cms/pull/43395
