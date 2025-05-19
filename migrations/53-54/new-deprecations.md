@@ -10,10 +10,16 @@ sidebar_position: 2
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-## Plugins deprecations
+## Plugin deprecations
 
 ### CMSPlugin: deprecation for registerListeners
 
-Deprecate `CMSPlugin::registerListeners()` as no longer needed when plugin will implement `SubscriberInterface`.
+* [43395](https://github.com/joomla/joomla-cms/pull/43395) Deprecate `CMSPlugin::registerListeners()` as no longer needed when plugin will implement `SubscriberInterface`.
 
-PR: https://github.com/joomla/joomla-cms/pull/43395
+## Forward compatibility
+
+### Replace table _db with DatabaseAwareTrait 
+
+* [45165](https://github.com/joomla/joomla-cms/pull/45165) Introduces **`setDatabase()`** and **`getDatabase()`**
+  in a backward compatibility (B/C) way, in case the `_db` variable and the `setDbo()` and `getDbo()` methods
+  are removed in the future.
