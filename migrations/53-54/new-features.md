@@ -14,7 +14,7 @@ All the new features that have been added to version 5.4, along with any changes
 
 * [45371](https://github.com/joomla/joomla-cms/pull/45371) New '**Behaviour - Backward Compatibility 6**' plugin added
   in preparation for the Joomla 6 update.
-  * On Joomla 5.4 the plugin does not do anything except of being there and being enabled,
+  * On Joomla 5.4 the plugin does not do anything except existing and being enabled,
     so that when we update the code to Joomla 6 it can immediately run with the updated code,
     and 3rd party extensions which would require that plugin being enabled in 6 will not cause the update to break.
 * [45232](https://github.com/joomla/joomla-cms/pull/45232) New '**- None -**' author filter option in the article view
