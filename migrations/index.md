@@ -6,7 +6,7 @@ About Migrations Documentation
 ==============================
 
 An explanation of the code changes for each version of Joomla.
-The Migrations Documentation is separate from the [Development Documentation](../docs/next), as it is intended to be version-independent.
+The Migrations Documentation is separate from the [Development Documentation](/docs/), as it is intended to be version-independent.
 Since the Development Documentation only reflects the current CMS version, it makes little sense to view only the deprecations and improvements up to that point.
 
 Joomla! is trying to follow SemVer as much as possible but some parts of SemVer doesn't fit into the lifecycle of the CMS.
