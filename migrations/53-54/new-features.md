@@ -13,6 +13,7 @@ All the new features that have been added to version 5.4, along with any changes
 
 ## Admin backend
 
+* [45143](https://github.com/joomla/joomla-cms/pull/45143) **Automated Core Updates**
 * [45371](https://github.com/joomla/joomla-cms/pull/45371) New '**Behaviour - Backward Compatibility 6**' plugin added
   in preparation for the Joomla 6 update.
   * On Joomla 5.4 the plugin does not do anything except existing and being enabled,
