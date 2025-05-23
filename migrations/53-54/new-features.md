@@ -8,12 +8,13 @@ All the new features that have been added to version 5.4, along with any changes
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  Currently, it lists the features already merged for 5.4.0-alpha1-dev.
+  Currently, it lists the new features for 5.4.0-alpha1.
 :::
 
 ## Admin backend
 
 * [45143](https://github.com/joomla/joomla-cms/pull/45143) **Automated Core Updates**
+  * [45517](https://github.com/joomla/joomla-cms/pull/45517) Automated Updates information
 * [45371](https://github.com/joomla/joomla-cms/pull/45371) New '**Behaviour - Backward Compatibility 6**' plugin added
   in preparation for the Joomla 6 update.
   * On Joomla 5.4 the plugin does not do anything except existing and being enabled,
