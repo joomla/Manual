@@ -14,7 +14,7 @@ All the new features that have been added to version 5.4, along with any changes
 ## Admin backend
 
 <details>
-  <summary>**Automated Core Updates**</summary>
+  <summary><strong>Automated Core Updates</strong></summary>
 * [45143](https://github.com/joomla/joomla-cms/pull/45143) Automated Core Updates client functionality.
 * [45517](https://github.com/joomla/joomla-cms/pull/45517) Automated Updates information
 </details>
