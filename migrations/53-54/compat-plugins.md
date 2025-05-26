@@ -15,6 +15,8 @@ and third-party extensions that require the plugin to be enabled in Joomla 6 wil
 
 * [45371](https://github.com/joomla/joomla-cms/pull/45371) New 'Behaviour - Backward Compatibility 6' plugin added
   in preparation for the Joomla 6 update.
+* [45525](https://github.com/joomla/joomla-cms/pull/45525) Making sure that the plugins'
+  options are enabled on update to Joomla 6.
 
 ## Joomla 5 Compatibility Plugin
 
