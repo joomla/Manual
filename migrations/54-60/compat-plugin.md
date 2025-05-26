@@ -37,3 +37,11 @@ For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.o
 // New:
 \defined('_JEXEC') or die;
 ```
+
+### CMS Input package
+
+- PR's: 
+  - https://github.com/joomla/joomla-cms/pull/42805
+  - https://github.com/joomla/joomla-cms/pull/42890
+  - https://github.com/joomla/joomla-cms/pull/44925
+- Description: Any reference to the class `\Joomla\CMS\Input\Input` or the other classes in that namespace should be replaced with the [framework `Input`](https://github.com/joomla-framework/input) package and the namespace `\Joomla\Input`. The packages can be used nearly interchangeably.
