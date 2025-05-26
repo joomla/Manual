@@ -61,8 +61,6 @@ echo $article->title;
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
   - The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
 
-on: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
-=======
 ### CMS Input object switched to Framework Input object
 
 - PR's: 
