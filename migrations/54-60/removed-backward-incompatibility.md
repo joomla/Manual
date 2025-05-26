@@ -61,10 +61,14 @@ echo $article->title;
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
   - The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
 
-### CMS BaseApplication and CLI classes have been removed
+on: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+=======
+### CMS Input object switched to Framework Input object
 
-- PR: https://github.com/joomla/joomla-cms/pull/42884
-- Description: The class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` respective CLI input classes have been removed. The CMS core code has been switched to use the Application package of the Joomla Framework. Any reference to these classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+- PR's: 
+  - https://github.com/joomla/joomla-cms/pull/42805
+  - https://github.com/joomla/joomla-cms/pull/42890
+- Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
 
 ### UTC is used instead of GMT
 
@@ -234,3 +238,9 @@ $table = Table::getInstance('content');
 // New:
 $table = new \Joomla\CMS\Table\Content($db);
 ```
+
+### WebApplication has no $item_associations property anymore
+
+- PR: https://github.com/joomla/joomla-cms/pull/45425
+- File: libraries/src/Application/WebApplication.php
+- Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.

@@ -18,6 +18,13 @@ The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded
 
 For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/migrations/44-50/compat-plugin).
 
+### CMS BaseApplication and CLI classes
+
+- PR's:
+  - https://github.com/joomla/joomla-cms/pull/42884
+  - https://github.com/joomla/joomla-cms/pull/44926
+- Description: Any reference to the class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` with the respective CLI input classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
+
 ### JPATH_PLATFORM constant
 
 - PR: https://github.com/joomla/joomla-cms/pull/44638
