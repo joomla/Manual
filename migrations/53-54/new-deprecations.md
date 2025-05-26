@@ -14,7 +14,7 @@ All the new deprecations that should be aware of and what you should now be usin
 
 ### CMSPlugin: deprecation for registerListeners
 
-* [43395](https://github.com/joomla/joomla-cms/pull/43395) The `registerListeners()`method is now deprecated
+* [43395](https://github.com/joomla/joomla-cms/pull/43395) The `registerListeners()` method is now deprecated
   in the `CMSPlugin` class and the `PluginInterface` interface.
   This method is no longer required when a plugin implements the **`SubscriberInterface`**.
 
