@@ -11,6 +11,8 @@ The **status** form field type provides a list box of statuses. This field exten
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 - **required** (optional) if set to true, the first field option should be empty, see last example.
+- **optionsFilter** (optional) Comma-separated list of values to be displayed.
+- **class** (optional) add the classname `form-select-color-state` to add color feedback for the selected state.
 
 Implemented by: libraries/src/Form/Field/StatusField.php
 
@@ -25,9 +27,29 @@ Implemented by: libraries/src/Form/Field/StatusField.php
 />
 ```
 
-Based on the source code this returns the following entries in a list:  
-Trashed - JTRASHED  
-Disabled - JDISABLED    
-Enabled - JENABLED  
-Archived - JARCHIVED  
-All - JALL
+## Available options
+Based on the source code this returns the following entries in a list: 
+
+| Value | Text         |
+| ----- | ------------ |
+| -2    | JTRASHED     |
+| 0     | JUNPUBLISHED |
+| 1     | JPUBLISHED   |
+| 2     | JARCHIVED    |
+| *     | JALL         |
+
+## Filter options
+If this field is used in the element context and not as a filter, the *All* option is not required, for example.
+In such a case, the **optionsFilter** attribute can be used to select which options should be selectable.
+
+```xml
+<field
+        name="mystatus" 
+        type="status"
+        label="Choose" 
+        description=""
+        optionsFilter="0,1"
+/>
+```
+
+The field now only loads the options JPUBLISHED and JUNPUBLISHED.
