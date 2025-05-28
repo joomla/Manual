@@ -33,7 +33,7 @@ It is worth spending some time on examination of the list. For example the first
 
 - **Pull ID** is used to sort the list in descending order so the most recent are at the top.
 - The **View on GitHub** and **View on Joomla! Issue Tracker** links open those sites in new windows. The latter is used to look for testing instructions and reporting results.
-- The coloured labels contain information about the pull request, such as *bug* or *Feature* and whether a test has an *NPM Resource Changed*.
+- The coloured labels contain information about the pull request, such as *bug* or *Feature* and whether a test has an *NPM Resource Changed*. A list of labels can be found in the [Labels page](https://github.com/joomla/joomla-cms/labels) of the `joomla-cms` GitHub repository.
 - The **Branch** shows which Joomla branch the pull request was created for. You will see all pull requests for all branches in the list. Some pull requests may require testing against a specific branch but this is not always so.
 - The **Apply Patch** button applies the patch created in the pull request to your test installation. This button is initially absent for patches that involve an *NPM Resource Change*, *Composer Dependency Change* or are *RTC*.
     - Advanced users: to enable the missing *Apply Patch* buttons set **Advanced Mode** to **Yes** in the *Options* and then use the command line to run `npm ci` or `npm run build:css` if the change only affects CSS files or `npm run build:js` if the change only affects JavaScript files. 
