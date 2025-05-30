@@ -3,7 +3,8 @@ sidebar_position: 2
 ---
 
 New Deprecations
-===============
+================
+
 All the new deprecations that should be aware of and what you should now be using instead.
 :::caution TODO
 
