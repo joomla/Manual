@@ -2,7 +2,8 @@
 sidebar_position: 2
 ---
 
-# New Deprecations
+New Deprecations
+================
 
 :::tip[Developer Note]
   Since this version of Joomla has not been released yet, this page can change anytime.

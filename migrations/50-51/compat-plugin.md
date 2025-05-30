@@ -2,7 +2,8 @@
 sidebar_position: 4
 ---
 
-# Compatibility Plugin
+Compatibility Plugin
+====================
 
 As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility between Joomla 5 and 4.
 The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded before any other plugin is loaded.
