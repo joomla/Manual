@@ -1,8 +1,10 @@
 ---
 sidebar_position: 991
+title: 5.3 to 5.4
 ---
 
-# 5.3 to 5.4
+Joomla 5.3 to 5.4 Upgrade Notes
+===============================
 
 An explanation of the code changes from Joomla version 5.3 to Joomla version 5.4.
 
