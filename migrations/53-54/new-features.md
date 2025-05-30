@@ -2,7 +2,8 @@
 sidebar_position: 1
 ---
 
-# New features
+New Features
+============
 
 All the new features that have been added to version 5.4, along with any changes to best practices.
 
@@ -11,7 +12,7 @@ All the new features that have been added to version 5.4, along with any changes
   Currently, it lists the new features for 5.4.0-alpha1.
 :::
 
-## Admin backend
+## Admin Backend
 
 <details>
   <summary><strong>Automated Core Updates</strong></summary>
@@ -20,7 +21,7 @@ All the new features that have been added to version 5.4, along with any changes
 </details>
 
 <details>
-  <summary>Use of None in various filter options and list views</summary>
+  <summary>Use of 'None' in Various Filter Options and List Views</summary>
 * [45232](https://github.com/joomla/joomla-cms/pull/45232) New '- None -' author filter option in the Articles view
   to select articles associated with deleted user entries.
 * [45274](https://github.com/joomla/joomla-cms/pull/45274) New '- None -' tag filter option in the Articles view
@@ -38,7 +39,7 @@ All the new features that have been added to version 5.4, along with any changes
 </details>
 
 <details>
-  <summary>More links for user-friendliness</summary>
+  <summary>More Links for User-Friendliness</summary>
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the
   'System – Maintenance – Database' view from the Pre-Update Check.
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the

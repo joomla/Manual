@@ -2,12 +2,13 @@
 sidebar_position: 1
 ---
 
-New features
+New Features
 ===============
 All the new features that have been added to this version.
 Any changes in best practice.
 
-### Mailer interface, factory and service
+## Mailer Interface, Factory and Service
+
 - PR: https://github.com/joomla/joomla-cms/pull/40560
 - Description: There is a new mailer interface which allows extension developers to implement their own mailer. A respective factory is delivered through the DI container to create these mailer instances. There is an aware trait and interface where MVC classes (or others) can get easy access to the factory.
 
