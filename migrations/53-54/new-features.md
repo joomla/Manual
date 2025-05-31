@@ -21,7 +21,7 @@ All the new features that have been added to version 5.4, along with any changes
 
 ---
 
-You can pre-test an automated update with Jommla 5.4.0 alpha versions by installing the
+You can pre-test an automated update with Joomla 5.4.0 alpha versions by installing the
 '[System - Alpha Update Server](https://github.com/joomla/joomla-cms/issues/45540)' plugin.
 Please ensure the test instance is accessible from the Internet
 (for example, by using [Launch your Joomla! site](https://launch.joomla.org/)) and
