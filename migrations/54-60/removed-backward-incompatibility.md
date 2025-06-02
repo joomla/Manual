@@ -244,7 +244,7 @@ $table = new \Joomla\CMS\Table\Content($db);
 - File: libraries/src/Application/WebApplication.php
 - Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.
 
-## dispatchEvent proxy functions removed in view and model
+## `dispatchEvent` Proxy Functions Removed in View and Model
 
 - PR: https://github.com/joomla/joomla-cms/pull/45431
 - Files: 
