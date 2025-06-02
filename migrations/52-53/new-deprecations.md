@@ -2,21 +2,17 @@
 sidebar_position: 2
 ---
 
-New deprecations
+New Deprecations
 ================
-
-:::tip[Developer Note]
-  Since this version of Joomla has not been released yet, this page can change anytime.
-:::
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-## Class deprecations
+## Class Deprecations
 
 Planned to be removed in Joomla! 7.0.
 
-### AbstractView::get()
-#### Short version
+### `AbstractView::get()`
+#### Short Version
 `AbstractView::get()` is deprecated and will be removed in 7.0. Use the following code instead:
 ```php
 $model = $this->getModel();
@@ -62,7 +58,7 @@ The last two lines retrieve the actual data from the model. With the first two l
 and now the returned values from those methods, making it possible to find issues further down the line.
 
 
-## AdminModel::postProcessStore()
+## `AdminModel::postProcessStore()`
 
 **namespace**: \Joomla\CMS\MVC\Model;
 
@@ -77,7 +73,7 @@ public function postStoreProcess(TableInterface $table, $newTags = [], $replace 
 }
 ```
 
-## AdminModel::batchTag()
+## `AdminModel::batchTag()`
 
 **namespace**: \Joomla\CMS\MVC\Model;
 
@@ -92,19 +88,19 @@ protected function batchTag($value, $pks, $contexts)
 }
 ```
 
-## Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')` 
+## Deprecated `HTMLHelper::_('script')` and `HTMLHelper::_('stylesheet')` Methods
 
 Deprecate `HTMLHelper::_('script')`, `HTMLHelper::_('stylesheet')`. Use [Web Asset Manager](https://manual.joomla.org/docs/general-concepts/web-asset-manager) instead.
 PR: https://github.com/joomla/joomla-cms/pull/43396
 
-## Deprecate the namespace property of the ComponentRecord class
+## Deprecates the Namespace Property of the `ComponentRecord` Class
 
 Deprecate the namespace property of the ComponentRecord class. The property were never initialised.
 PR: https://github.com/joomla/joomla-cms/pull/44754
 
-## Plugins deprecations
+## Plugin Deprecations
 
-### CMSPlugin: Deprecate use of DispatcherAware and LanguageAware
+### `CMSPlugin`: Deprecate Use of `DispatcherAware` and `LanguageAware`
 
 Plugin should use DispatcherAware on its own, when it needs to dispatch an event, like for example content/finder.
 And language cannot be set on plugin while plugin booting, because it is not available until initialisation of the application is completed.
@@ -118,7 +114,7 @@ PR: https://github.com/joomla/joomla-cms/pull/43430
 PHP 7 had a security issue with .phar packages. To circumvent the issue, the TYPO3 project created this wrapper.
 In PHP 8.0 this has been fixed in PHP and the whole wrapper is not needed anymore. This package will be removed in 6.0.
 
-### voku/portable-utf8 dependency
+### voku/portable-utf8 Dependency
 
 The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself anymore.
 We strongly recommend to not use this library anymore. It will be removed in Joomla 6.0 without a new replacement.

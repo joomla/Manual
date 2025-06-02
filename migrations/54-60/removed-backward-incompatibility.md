@@ -2,7 +2,8 @@
 sidebar_position: 3
 ---
 
-# Removed and backward incompatibility
+Removed and Backward Incompatibility
+====================================
 
 :::tip[Developer Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
@@ -12,10 +13,10 @@ All the deprecated features than have now been removed and any backward incompat
 There should be an explanation of how to mitigate the removals / changes.
 
 
-### Removal of the CMSObject class usage
+## Removal of the `CMSObject` Class Usage
 The `CMSObject` (`JObject`) contains various functions in one single class which made sense at the time it was introduced in Joomla 1.7. PHP has evolved and many use cases are now built into the core language or are replaced and not anymore up to date. Therefore the class got [deprecated in 4.0](https://github.com/joomla/joomla-cms/pull/4910) and will be removed in an upcoming major release (currently 7.0). Over time, the maintainers removed the usage in core and with the following chapters are the last traces removed, which couldn't be done in a backwards compatible way.
 
-#### getItem returns a stdClass instead of CMSObject
+## `getItem` returns a `stdClass` Instead of `CMSObject`
 
 - PR: https://github.com/joomla/joomla-cms/pull/42961
 - File: libraries/src/MVC/Model/AdminModel.php
@@ -30,7 +31,7 @@ $article = $app->bootComponent('content')->getMVCFactory()->createModel('Article
 echo $article->title;
 ```
 
-#### CMSObject usage in core has been removed
+## Removed `CMSObject` Usage in Core
 
 - PR: https://github.com/joomla/joomla-cms/pull/43795
 - PR: https://github.com/joomla/joomla-cms/pull/44655
@@ -61,24 +62,24 @@ echo $article->title;
   - `\Joomla\CMS\User\UserHelper::getProfile()` returns a `stdClass` object now.
   - The save/delete events when a media file is uploaded or a folder is created/deleted are sending now an object of type `stdClass` and not anymore `CMSObject`.
 
-### CMS Input object switched to Framework Input object
+## `CMS\Input` Object Switched to Framework `Input` Object
 
 - PR's: 
   - https://github.com/joomla/joomla-cms/pull/42805
   - https://github.com/joomla/joomla-cms/pull/42890
 - Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
 
-### UTC is used instead of GMT
+## UTC Used Instead of GMT
 
 - PR: https://github.com/joomla/joomla-cms/pull/43912
 - Description: To unify the code base, all instances do use or fallback to UTC timezone. Make sure that your code doesn't do a check against GMT string.
 
-### Removed legacy b/c code in \Joomla\CMS\Date\Date Class
+## Removed Legacy B/C Code in `\Joomla\CMS\Date\Date` Class
 
 - PR: https://github.com/joomla/joomla-cms/pull/43959
 - Description: Removed Date::$gmt and Date::$stz variables and related code. If you extend the \Joomla\CMS\Date\Date class make sure not to depend on them any longer.
 
-### View classes do not have a database reference
+## View Classes No Longer Have a Database Reference
 
 - PR: https://github.com/joomla/joomla-cms/pull/42962
 - Description: In Joomla 3 some views had a reference to the global database instance to check if a date is a special null date (0000-00-00 00:00:00). Since Joomla 4 all these dates are real null values and the database check is not used anymore. If there are some old template overrides in place with these checks, they can be removed.
@@ -95,7 +96,7 @@ if ($this->item->created !== null) {
 }
 ```
 
-### None namespaced indexer file removed
+## None-Namespaced Indexer File Removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/44646
 - Folder: administrator/components/com_finder/helpers/indexer
@@ -110,7 +111,7 @@ FinderIndexerHelper::getFinderPluginId();
 Joomla\Component\Finder\Administrator\Helper\FinderHelper::getFinderPluginId();
 ```
 
-### App variable is removed in plugins
+## `$app` Variable is Removed in `plugins`
 
 - PR: https://github.com/joomla/joomla-cms/pull/44647
 - Folder: plugins
@@ -124,13 +125,13 @@ $app = $this->app;
 $app = $this->getApplication();
 ```
 
-### JCOMPAT_UNICODE_PROPERTIES constant got removed in FormRule class
+## `JCOMPAT_UNICODE_PROPERTIES` Constant Removed in `FormRule` Class
 
 - PR: https://github.com/joomla/joomla-cms/pull/44662
 - File: libraries/src/Form/FormRule.php
 - Description: The `FormRule` class has a deprecated `JCOMPAT_UNICODE_PROPERTIES` constant which is not used anymore and got removed without a replacement. If the constant is still be used in an extension, copy the code from the FormRule class to your extension.
 
-### createThumbs function got removed from the image class
+## `createThumbs` Function Removed from the `image` Class
 
 - PR: https://github.com/joomla/joomla-cms/pull/44663
 - File: libraries/src/Image/Image.php
@@ -147,17 +148,17 @@ $image->createThumbnails('50x50');
 ```
 
 
-### Mod_breadcrumbs setSeparator
+## `Mod_breadcrumbs setSeparator`
 - PR: https://github.com/joomla/joomla-cms/pull/44605/
 - File: modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
 - Description: setSeparator to set the breadcrumbs separator for the breadcrumbs display has not been used since 4.0 and is removed without replacement
 
-### Client id attribute removed in form models cleanCache function
+## `$clientId` Attribute Removed in Form Models `cleanCache` Function
 
 - PR: https://github.com/joomla/joomla-cms/pull/44637
 - Description: The `cleanCache` function doesn't use the `$clientId` attribute anymore since 4.0. This pr removes the leftovers in various models which do extend the `BaseDatabaseModel` `cleanCache` function. If you extend one of these models and do overwrite the `cleanCache` function, remove the `$clientId` attribute.
 
-### Removed isCli function in application classes
+## Removed `isCli` Function in Application Classes
 
 - PR: https://github.com/joomla/joomla-cms/pull/44611
 - Files: libraries/src/Application/CMSApplicationInterface.php
@@ -174,13 +175,13 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 }
 ```
 
-### Remove LegacyErrorHandlingTrait from CategoryNode & Changelog class
+## Removed `LegacyErrorHandlingTrait` from `CategoryNode` and `Changelog` Class
 
 - PR: https://github.com/joomla/joomla-cms/pull/43777
 - Files: libraries/src/Categories/CategoryNode.php, libraries/src/Changelog/Changelog.php
 - Description: The `CategoryNode` class and the `Changelog` class both contained the `LegacyErrorHandlingTrait`, but both didn't use it. Since the trait is deprecated, it has been removed from these two classes in 6.0 without replacement.
 
-### Legacy/outdated static assets removed/moved
+## Legacy and Outdated Static Assets Removed or Moved
 
 - Tabs State (js)
 	- File removed: build/media_source/legacy/js/tabs-state.es5.js
@@ -189,42 +190,42 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
 	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
-### CMS Filesystem Package got moved to the compat plugin
+## CMS Filesystem Package Moved to the Backward Compatibility Plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/44240
 - Folder: libraries/src/Filesystem
 - Description: The Filesystem package of the CMS (`\Joomla\CMS\Filesystem`) has been deprecated for a long time. For Joomla 6.0 it has been moved to the compat plugin and will finally be completely removed in 7.0. Please use the [framework `Filesystem`](https://github.com/joomla-framework/filesystem) package (`\Joomla\Filesystem`). The packages can be used nearly interchangeably, with the exception of `File::exists()` and `Folder::exists()`. Please use `is_file()` and `is_dir()` directly.
 
-### voku/portable-utf8 composer library
+## `voku/portable-utf8` Composer Library Removed
 
 The [voku/portable-utf8](https://github.com/voku/portable-utf8) package seems to be abandoned and is also not used in Joomla itself.
 If you need UTF8-compatible string functions from PHP, have a look at the [joomla/string](https://github.com/joomla-framework/string) package.
 
-### TYPO3/phar-stream-wrapper
+## `TYPO3/phar-stream-wrapper` Removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/45256
 - Description: The TYPO3/phar-stream-wrapper dependency fixes a security issue in PHP 7, which has been fixed in PHP 8.0. This means that this package isn't necessary at all in Joomla and can be removed entirely.
 
-### buildVotingQuery function in QueryHelper got removed
+## `buildVotingQuery` Function in `QueryHelper` Removed
 
 - PR: https://github.com/joomla/joomla-cms/pull/45389
 - File: components/com_content/src/Helper/QueryHelper.php
 - Description: The `buildVotingQuery` is not used in core. If the extension needs that functionality, copy it from the 5.3 branch.
 
-### tfa property in login view got removed
+## `tfa` Property Removed from Login View
 
 - PR: https://github.com/joomla/joomla-cms/pull/45399
 - File: components/com_users/src/View/Login/HtmlView.php
 - Description: The `tfa` is not used in the login view anymore as it is a leftover from the old two factor authentication system.
 
-### BufferStreamHandler does not auto register stream
+## `BufferStreamHandler` No Longer Automatically Registers the Stream
 
 - PR: https://github.com/joomla/joomla-cms/pull/45402
 - File: libraries/src/Utility/BufferStreamHandler.php
 - Description: The `BufferStreamHandler` does not auto register the stream anymore. An extension should do it now by itself by calling `BufferStreamHandler::stream_register();`.
 
 
-### Table objects are instantiated directly instead of via Table::getInstance()
+## Table Objects Now Instantiated Directly Instead of via `Table::getInstance()`
 
 - PR: https://github.com/joomla/joomla-cms/pull/44090
 - Description: `Table` objects in the core code have been instantiated with `Table::getInstance()` in the past. Starting with Joomla 6.0, you should use the explicit table class directly instead. After this change it is not possible to override the table class by calling `Table::addIncludePath()` anymore. At the same time it simplifies code handling a lot and especially allows IDEs to properly understand the code properly.
@@ -237,13 +238,13 @@ $table = Table::getInstance('content');
 $table = new \Joomla\CMS\Table\Content($db);
 ```
 
-### WebApplication has no $item_associations property anymore
+## `WebApplication` No Longer Has `$item_associations` Property
 
 - PR: https://github.com/joomla/joomla-cms/pull/45425
 - File: libraries/src/Application/WebApplication.php
 - Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.
 
-### dispatchEvent proxy functions removed in view and model
+## dispatchEvent proxy functions removed in view and model
 
 - PR: https://github.com/joomla/joomla-cms/pull/45431
 - Files: 
@@ -254,7 +255,22 @@ $table = new \Joomla\CMS\Table\Content($db);
 ```php
 // Old in extending class from the BaseDatabaseModel or AbstractView classes:
 $this->dispatchEvent($event);
+```
 
 // New:
 $this->getDispatcher()->dispatch($event->getName(), $event);
+
+## `getLogContentTypeParams` Method Removed from of `ActionlogsHelper`
+
+- PR: https://github.com/joomla/joomla-cms/pull/45434
+- File: administrator/components/com_actionlogs/src/Helper/ActionlogsHelper.php
+- Description: The `getLogContentTypeParams` function in the the `ActionlogsHelper` class got removed as the one in the model should be used:
+
+```php
+// Old:
+ActionlogsHelper::getLogContentTypeParams('context');
+
+// New:
+Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
+    ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```

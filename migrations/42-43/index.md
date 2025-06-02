@@ -1,9 +1,10 @@
 ---
 sidebar_position: 997
+title: 4.2 to 4.3
 ---
 
-4.2 to 4.3
-==========
+Joomla 4.2 to 4.3 Upgrade Notes
+===============================
 
 :::caution TODO
 

@@ -24,9 +24,7 @@ All recommended versions are based on the latest released version of each series
 ### Requirements for Joomla! 3.x
 
 :::danger End of Life
-
-Support for this version of Joomla! ended on 31 December 2014
-
+  Support for this version of Joomla! ended on 17 August 2023, Extended LTS Version ended on 17 February 2025
 :::
 
 | Software              | Recommended    | Minimum      | More Information                                                                                                                                                            |
@@ -46,9 +44,7 @@ Please see https://docs.joomla.org/Joomla_Browser_Support for a list of browsers
 ### Requirements for Joomla! 1.6, 1.7, & 2.5
 
 :::danger End of Life
-
-Support for this version of Joomla! ended on 31 December 2014
-
+  Support for this version of Joomla! ended on 31 December 2014
 :::
 
 | Software              | Recommended    | Minimum      | More Information                                                     |
@@ -65,9 +61,7 @@ Support for this version of Joomla! ended on 31 December 2014
 ### Requirements for Joomla! 1.5
 
 :::danger End of Life
-
-Support for this version of Joomla! ended on 31 December 2012
-
+  Support for this version of Joomla! ended on 31 December 2012
 :::
 
 | Software              | Recommended | Minimum | More Information                                                     |
@@ -83,9 +77,7 @@ Support for this version of Joomla! ended on 31 December 2012
 ### Requirements for Joomla! 1.0
 
 :::danger End of Life
-
-Support for this version of Joomla! ended on 22 July 2009
-
+  Support for this version of Joomla! ended on 22 July 2009
 :::
 
 | Software              | Recommended | Minimum | More Information                                                     |
