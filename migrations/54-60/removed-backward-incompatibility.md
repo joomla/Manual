@@ -249,7 +249,7 @@ $table = new \Joomla\CMS\Table\Content($db);
 - Files: 
   - libraries/src/MVC/Model/BaseDatabaseModel.php
   - libraries/src/MVC/View/AbstractView.php
-- Description: The `dispatchEvent` proxy functions are removed in the `BaseDatabaseModel` and `AbstractView` classes. The `getDispatcher` function therefor requires no a dispatcher injected, which is the default, when the component is booted through the application.
+- Description: The `dispatchEvent` proxy functions are removed in the `BaseDatabaseModel` and `AbstractView` classes. The `getDispatcher` function therefore requires now a dispatcher injected, which is the default when the component is booted through the application.
 
 ```php
 // Old in extending class from the BaseDatabaseModel or AbstractView classes:
