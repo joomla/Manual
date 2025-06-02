@@ -255,10 +255,10 @@ $table = new \Joomla\CMS\Table\Content($db);
 ```php
 // Old in extending class from the BaseDatabaseModel or AbstractView classes:
 $this->dispatchEvent($event);
-```
 
 // New:
 $this->getDispatcher()->dispatch($event->getName(), $event);
+```
 
 ## `getLogContentTypeParams` Method Removed from of `ActionlogsHelper`
 
