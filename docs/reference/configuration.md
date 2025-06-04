@@ -1063,7 +1063,7 @@ Feed email: `none`, `author`, `site`.
 
 Default: `none`
 
-Env: `JOOMLE_SITE_FEED_EMAIL`
+Env: `JOOMLA_SITE_FEED_EMAIL`
 
 ### Example
 
@@ -1102,5 +1102,5 @@ JOOMLA_SITE_OFFLINE_MESSAGE_DISPLAY=2
 JOOMLA_SITE_OFFLINE_IMAGE=images/offline.png
 
 JOOMLA_SITE_FEED_LIMIT=20
-JOOMLE_SITE_FEED_EMAIL=author
+JOOMLA_SITE_FEED_EMAIL=author
 ```
