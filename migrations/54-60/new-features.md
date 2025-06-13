@@ -12,7 +12,7 @@ New Features
 All the new features that have been added to this version.
 Any changes in best practice.
 
-## Tags: Remove a Tag From via Batch Processing
+## Tags: Remove a Tag via Batch Processing
 This PR introduces the possibility to remove/unassign one tag from the selected articles. It also extends batch processing for categories, contacts and news feeds.
 
 PR: [40613](https://github.com/joomla/joomla-cms/pull/40613)
