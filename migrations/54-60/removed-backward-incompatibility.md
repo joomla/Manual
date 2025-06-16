@@ -258,3 +258,20 @@ ActionlogsHelper::getLogContentTypeParams('context');
 Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
     ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```
+
+## Removal of old `com_search`-related methods from Language class
+- PR: https://github.com/joomla/joomla-cms/pull/42892
+- File: libraries/src/Language/Language.php
+- Description: The `\Joomla\CMS\Language\Language` class contained special methods for the old `com_search` component, which should have been removed in 4.0. These methods are removed without replacement. The following methods have been removed:
+  - `getIgnoredSearchWords()`
+  - `getIgnoredSearchWordsCallback()`
+  - `setIgnoredSearchWordsCallback()`
+  - `getLowerLimitSearchWord()`
+  - `getLowerLimitSearchWordCallback()`
+  - `setLowerLimitSearchWordCallback()`
+  - `getUpperLimitSearchWord()`
+  - `getUpperLimitSearchWordCallback()`
+  - `setUpperLimitSearchWordCallback()`
+  - `getSearchDisplayedCharactersNumber()`
+  - `getSearchDisplayedCharactersNumberCallback()`
+  - `setSearchDisplayedCharactersNumberCallback()`
