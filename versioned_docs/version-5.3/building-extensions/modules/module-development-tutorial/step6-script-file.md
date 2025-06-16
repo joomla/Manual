@@ -3,8 +3,8 @@ sidebar_position: 6
 title: Step 6 Adding a Script File
 ---
 
-Step 6 Adding a Script File
-===========================
+Step 6 Adding an Installation Script File
+=========================================
 
 ## Introduction
 
