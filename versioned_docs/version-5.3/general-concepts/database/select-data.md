@@ -103,6 +103,19 @@ $query
     ->from($db->quoteName('#__user_profiles'))
     ->setLimit('10');
 ```
+:::warning[Developer Note]
+By default, Joomla limits the number of items returned in list models to the value set in the "**Default List Limit**" configuration, which is typically **20**. This is controlled by the `list.limit` state in your model, usually set in the `populateState()` method.
+To remove the limit and retrieve all rows (i.e., disable pagination), set the `list.limit` state to `0` **after** calling the parent populateState() method in your model. Here’s how you can do it:
+```php
+protected function populateState($ordering = 'word', $direction = 'ASC')
+{
+    parent::populateState($ordering, $direction);
+
+    // Set limit to 0 to show all items
+    $this->setState('list.limit', 0);
+}
+```
+:::
 
 ## Selecting Records from Multiple Tables
 
