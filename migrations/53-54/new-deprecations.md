@@ -28,3 +28,9 @@ All the new deprecations you should be aware of — and what you should use inst
   $db = $this->getDatabase();
   $this->setDatabase($db);
   ```
+
+## Language String Deprecation
+
+Planned to be removed in Joomla! 6.0 is the language string:
+* [45564](https://github.com/joomla/joomla-cms/pull/45564) – Deprecate language string
+  * ❌ `COM_JOOMLAUPDATE_VIEW_DEFAULT_UPDATES_INFO_TESTING`
