@@ -30,3 +30,16 @@ For more details, see [Compatibility Plugin Joomla! 5.0](https://manual.joomla.o
 > Although it is recommended to disable the Joomla 5 'Behaviour - Backward Compatibility' plugin,
 > __do not__ disable other Behaviour plugins such as 'Behaviour - Taggable' or 'Behaviour - Versionable',
 > as you will silently lose functionality such as tagging or version history.
+
+## Pre-Update Check
+
+Two new checks have been added to the *Required Settings* section of the pre-update checker,
+shown when an update to the next major version 6 is available:
+
+* Check that the '**Behaviour - Backward Compatibility**' plugin from the current major version 5 is disabled.
+* Check that the '**Behaviour - Backward Compatibility 6**' plugin from the next major version 6 is enabled.
+
+If either of these checks fails, updating from Joomla 5 to Joomla 6 via Live Update is not possible.
+
+* [45493](https://github.com/joomla/joomla-cms/pull/45493)
+  – Add pre-update checks for backward compatibility plugins for update to Joomla 6
