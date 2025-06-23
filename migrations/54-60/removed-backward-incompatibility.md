@@ -69,6 +69,21 @@ echo $article->title;
   - https://github.com/joomla/joomla-cms/pull/42890
 - Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
 
+## Removed `LegacyPropertyManagementTrait` from MVC classes
+
+- PR: https://github.com/joomla/joomla-cms/pull/44907
+- Description: The models and views of the Joomla MVC used the `LegacyPropertyManagementTrait` with the generic `set()` and `get()` methods. Since the trait is deprecated, its usage in the Joomla core is removed where possible. This affects all models and views, which will not contain a generic `set()` method anymore and in the case of the models also no generic `get()` method. You should instead write to the attributes directly. The views still contain a `get()` method, since that is overridden by the view class itself.
+
+```php
+// Old:
+$this->set('key', 'value');
+$var = $this->get('key', 'defaultValue');
+
+// New:
+$this->key = 'value';
+$var = $this->key ?? 'defaultValue';
+```
+
 ## UTC Used Instead of GMT
 
 - PR: https://github.com/joomla/joomla-cms/pull/43912
