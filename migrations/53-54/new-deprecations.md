@@ -11,6 +11,21 @@ New Deprecations
 
 All the new deprecations you should be aware of — and what you should use instead.
 
+## Class deprecations
+
+Planned to be removed in Joomla! 7.0.
+
+### Deprecation of UCM system
+In Joomla 3.2, the `Unified Content Model` was introduced, which was supposed to be a universal system for all content in Joomla. The concept turned out to be not viable and the remnants of this have now been deprecated for removal in Joomla 7.0. The following classes have been deprecated without replacement:
+
+- `Joomla\CMS\Table\Ucm`
+- `Joomla\CMS\UCM\UCM`
+- `Joomla\CMS\UCM\UCMBase`
+- `Joomla\CMS\UCM\UCMContent`
+- `Joomla\CMS\UCM\UCMType`
+
+Related PR: https://github.com/joomla/joomla-cms/pull/44910
+
 ## Deprecation of `registerListeners()`
 [43395](https://github.com/joomla/joomla-cms/pull/43395) – CMSPlugin: deprecation for registerListeners
 
