@@ -244,6 +244,22 @@ $table = new \Joomla\CMS\Table\Content($db);
 - File: libraries/src/Application/WebApplication.php
 - Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.
 
+## `dispatchEvent` Proxy Functions Removed in View and Model
+
+- PR: https://github.com/joomla/joomla-cms/pull/45431
+- Files: 
+  - libraries/src/MVC/Model/BaseDatabaseModel.php
+  - libraries/src/MVC/View/AbstractView.php
+- Description: The `dispatchEvent` proxy functions are removed in the `BaseDatabaseModel` and `AbstractView` classes. The `getDispatcher` function therefore requires now a dispatcher injected, which is the default when the component is booted through the application.
+
+```php
+// Old in extending class from the BaseDatabaseModel or AbstractView classes:
+$this->dispatchEvent($event);
+
+// New:
+$this->getDispatcher()->dispatch($event->getName(), $event);
+```
+
 ## `getLogContentTypeParams` Method Removed from of `ActionlogsHelper`
 
 - PR: https://github.com/joomla/joomla-cms/pull/45434
