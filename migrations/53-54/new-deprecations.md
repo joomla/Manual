@@ -26,13 +26,13 @@ In Joomla 3.2, the `Unified Content Model` was introduced, which was supposed to
 
 Related PR: https://github.com/joomla/joomla-cms/pull/44910
 
-## Deprecation of `registerListeners()`
+### Deprecation of `registerListeners()`
 [43395](https://github.com/joomla/joomla-cms/pull/43395) – CMSPlugin: deprecation for registerListeners
 
 - ❌ `registerListeners()` is deprecated in both `Joomla\CMS\Extension\PluginInterface` and `Joomla\CMS\Plugin\CMSPlugin`.
 - ✅ Instead, implement the `SubscriberInterface`. The method is no longer required in this case.
 
-## Deprecation of `$_db`, `getDbo()`, and `setDbo()`
+### Deprecation of `$_db`, `getDbo()`, and `setDbo()`
 [45165](https://github.com/joomla/joomla-cms/pull/45165) – Replace table _db with DatabaseAwareTrait
 
 - ❌ Do not access the `Joomla\CMS\Table\Table::_db` property directly — it will be removed in the future.
@@ -43,6 +43,11 @@ Related PR: https://github.com/joomla/joomla-cms/pull/44910
   $db = $this->getDatabase();
   $this->setDatabase($db);
   ```
+
+### Deprecation of `$app` Property in Fields Plugin
+
+File: administrator/components/com_fields/src/Plugin/FieldsPlugin.php
+Replacement: The `$this->app` property is deprecated in the fields plugins. Instead, use `$this->getApplication()` when the plugin is converted to service providers.
 
 ## Language String Deprecation
 
