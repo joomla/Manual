@@ -14,4 +14,4 @@ All the new deprecations that should be aware of and what you should now be usin
 ## Deprecation of `$app` Property in Fields Plugin
 
 File: administrator/components/com_fields/src/Plugin/FieldsPlugin.php
-Replacement: The `$this->app` property is deprecated in the fields plugins. Instead of use `$this->getApplication()` when the plugin is converted to service providers.
+Replacement: The `$this->app` property is deprecated in the fields plugins. Instead, use `$this->getApplication()` when the plugin is converted to service providers.
