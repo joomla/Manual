@@ -28,16 +28,26 @@ tpl_atum.ini
 tpl_atum.sys.ini
 ```
 
-The PHP script used for translation is shown in full below. It was intended initially for one-time use only so was not *polished* for public eyes. It is run from the command line:
+The PHP script used for translation is shown in full below. It was intended initially for one-time use only so was not *polished* for public eyes. It is run from the command line. Example input and output:
 
 ```
 php initrans.php
+Client (one of api, admin or site): api
+Processing api/language/en-GB/com_media.ini
+Processing api/language/en-GB/joomla.ini
+Total = 2
 ```
 
-Two parameters are hard-coded:
+Some parameters are hard-coded:
 
-- A personal api key on line 13 or thereabout.
-- The client list to process (admin, api or site) right at the end of the file.
+- The path to a Joomla 5 installation on the computer running this script.
+- The path to location to receive translated .ini files.
+- The language code of the target language.
+- The language name of the target language.
+
+Not hard coded:
+
+- Your personal openai.com api key is read from an environment variable.
 
 The script processes each English .ini file in turn, breaks it into short sections of up to 25 lines and sends each section to openai.com for translation. The translated sections are then reassembled and output to a new language .ini file.
 
@@ -53,22 +63,46 @@ Lots of improvements are possible:
 ```php
 <?php
 
+/**
+ * Class to translate Joomla core .ini files into other languages using openai.com.
+ * This example is for Scottish Gaelic.
+ *
+ * The class variables are used for configuration. Edit them to suit the site and target language.
+ * The $base_in and $base_out folders must exist.
+ */
 class ChatGPTIniTranslate {
 
     /**
      * Base path for ini files in an existing Joomla installation.
      */
-    public $base = '/Users/ceford/Sites/joomla-cms5/';
+    protected $base_in = '/Users/ceford/Sites/joomla-cms5/';
 
     /**
-     * Personal openai api key: https://platform.openai.com/account/api-keys
+     * Base path for translated ini files, typically a local git repo.
      */
-    private static $open_ai_key = 'your_api_key_goes_here';
+    protected $base_out = '/Users/ceford/git/cefjdemos-pkg-gd-gb/';
+
+    /**
+     * Language code used in path settings.
+     */
+    protected $language_code = 'gd-GB';
+
+    /**
+     * Language name passed to openai.com.
+     */
+    protected $language_name = 'Scottish Gaelic';
 
     /**
      * URL of current version of the API endpoint.
      */
     private static $open_ai_url = 'https://api.openai.com/v1';
+
+    /**
+     * Personal openai api key: https://platform.openai.com/account/api-keys
+     * Use an environment variable set from the command line or shell config. Example:
+     * export OPENAI_API_KEY="your key here"
+     */
+    protected $openai_api_key;
 
     /**
      * Process one of the client ini folders
@@ -78,22 +112,30 @@ class ChatGPTIniTranslate {
      * @return void
      */
     public function go($folder) {
+        $this->openai_api_key = getenv('OPENAI_API_KEY');
+
+        if (!$this->openai_api_key) {
+            exit("\API key not set in environment variable.\n");
+        }
 
         switch ($folder) {
             case 'api':
                 $source = "api/language/en-GB/";
-                $sink   = "/Users/ceford/git/cefjdemos-pkg-gd-gb/gd-GB/api_gd-GB/";
+                $sink   = "{$this->base_out}{$this->language_code}/api_{$this->language_code}/";
+                $this->check_source_and_sink($source, $sink);
                 break;
             case 'admin':
                 $source = "administrator/language/en-GB/";
-                $sink   = "/Users/ceford/git/cefjdemos-pkg-gd-gb/gd-GB/admin_gd-GB";
+                $sink   = "{$this->base_out}{$this->language_code}/admin_{$this->language_code}";
+                $this->check_source_and_sink($source, $sink);
                 break;
             case 'site':
                 $source  = "language/en-GB/";
-                $sink   = "/Users/ceford/git/cefjdemos-pkg-gd-gb/gd-GB/site_gd-GB/";
+                $sink   = "{$this->base_out}{$this->language_code}/site_{$this->language_code}/";
+                $this->check_source_and_sink($source, $sink);
                 break;
             default:
-                die("unkown folder: {$folder}\n");
+                exit("unkown folder: {$folder}\n");
         }
 
         // Read in the list of source files.
@@ -115,7 +157,7 @@ class ChatGPTIniTranslate {
             file_put_contents($sink . $line, "");
 
             // Read in the English ini file.
-            $inifile = file_get_contents($this->base . $source . $line);
+            $inifile = file_get_contents($this->base_in . $source . $line);
             echo "Processing {$source}{$line}\n";
             $inilines = explode(PHP_EOL, $inifile);
             $inicount = 0;
@@ -159,6 +201,21 @@ class ChatGPTIniTranslate {
     }
 
     /**
+     * Check the source and sink folders both exist
+     *
+     * @param string $source The absolute path to the folder with English .ini files.
+     * @param string $sink The folder to which the output ini files are to be written.
+     */
+    protected function check_source_and_sink($source, $sink) {
+        if (!is_dir($this->base_in . $source)) {
+            exit("\nThe ini source folder does not exist: {$this->base_in}{$source}\n\n");
+        }
+        if (!is_dir($sink)) {
+            exit("\nThe ini destination folder does not exist: {$sink}\n\n");
+        }
+    }
+
+    /**
      * Prepare a batch of lines for translation
      *
      * @param array $batch The array of lines so far.
@@ -167,7 +224,7 @@ class ChatGPTIniTranslate {
         $text = implode("\n", $batch);
 
         // submit a batch of lines to openai.com for translation.
-        $translation = $this->getTranslation('Scottish Gaelic', $text);
+        $translation = $this->getTranslation($text);
 
         return "{$translation}\n";
     }
@@ -175,21 +232,20 @@ class ChatGPTIniTranslate {
     /**
      * Compose the message to be sent to openai.com
      *
-     * @param   string  $language_name      The name of the destination language in English
      * @param   string  $paragraphBuffer    The text to be translated.
      *
      * @return  string  The translated text or the original text with comments.
      */
-    protected function getTranslation($language_name, $paragraphBuffer) {
-        $instruction = "Please translate the following ini file text from English to {$language_name}";
-        if ($language_name == 'German') {
+    protected function getTranslation($paragraphBuffer) {
+        $instruction = "Please translate the following ini file text from English to {$this->language_name}";
+        if ($this->language_name == 'German') {
             $instruction .= ' Please use the word Beiträge rather than Artikel. ';
         }
 
         $messages = [
             [
                 "role" => "system",
-                "content" => "You are a translator who translates text from English to {$language_name}. " .
+                "content" => "You are a translator who translates text from English to {$this->language_name}. " .
                 "Provide only the translated text, without any comments or explanations. " .
                 "The text is in ini file format with a key followed by the value to be translated in double quotes" .
                 "The translated value must be on one line."
@@ -261,7 +317,7 @@ class ChatGPTIniTranslate {
      *
      * @return object The response to the request.
      */
-    private static function _sendMessage($endpoint, $data = '', $method = 'post') {
+    protected function _sendMessage($endpoint, $data = '', $method = 'post') {
         $apiEndpoint = self::$open_ai_url.$endpoint;
 
         $curl = curl_init();
@@ -280,7 +336,7 @@ class ChatGPTIniTranslate {
                 CURLOPT_HTTPHEADER => array(
                   "content-type: application/json",
                   "accept: application/json",
-                  "authorization: Bearer ".self::$open_ai_key
+                  "authorization: Bearer " . $this->openai_api_key
                 )
             );
             curl_setopt_array($curl, $params);
@@ -299,7 +355,7 @@ class ChatGPTIniTranslate {
                 CURLOPT_HTTPHEADER => array(
                   "content-type: application/json",
                   "accept: application/json",
-                  "authorization: Bearer ".self::$open_ai_key
+                  "authorization: Bearer " . $this->openai_api_key
                 )
             );
             curl_setopt_array($curl, $params);
@@ -316,7 +372,11 @@ class ChatGPTIniTranslate {
     }
 }
 
-$client = new ChatGPTIniTranslate;
-$client->go('api');
-
+$client = readline("Client (one of api, admin or site: ");
+if ($client === 'api' || $client === 'admin' || $client === 'site') {
+    $chat = new ChatGPTIniTranslate;
+    $chat->go($client);
+} else {
+    echo "Unrecognised client: {$client}. Please start again.\n";
+}
 ```
