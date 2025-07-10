@@ -313,7 +313,7 @@ class ChatGPTIniTranslate {
      *
      * @param string $endpoint  Endpoint obtained from the openai url
      * @param string $data      The json encoded data to be sent.
-     * @param string $method    Deafults to post.
+     * @param string $method    Defaults to post.
      *
      * @return object The response to the request.
      */
