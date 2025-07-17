@@ -17,3 +17,4 @@ With the release of PHP 8.4, some new deprecations have been released like the [
 - [algo26-matthias/idna-convert](https://github.com/joomla/joomla-cms/pull/45140) from version 3.1 to 3.2
 
 Beside the production dependencies are some developer dependencies also updated with [pr 45138](https://github.com/joomla/joomla-cms/pull/45138) which are needed for building or testing joomla.
+delete
