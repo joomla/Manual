@@ -9,16 +9,18 @@ All the new features that have been added to version 5.4, along with any changes
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  Currently, it lists the new features for 5.4.0-alpha1.
+  The new features up to and including 5.4.0-alpha3 are listed.
 :::
 
 ## Admin Backend
 
 <details>
   <summary><strong>Automated Core Updates</strong></summary>
-* [45143](https://github.com/joomla/joomla-cms/pull/45143) Automated Core Updates client functionality.
-* [45517](https://github.com/joomla/joomla-cms/pull/45517) Automated Updates information added.
-* [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve autoupdate UX for local site
+* [45143](https://github.com/joomla/joomla-cms/pull/45143) Add Automated Core Updates client functionality
+* [45517](https://github.com/joomla/joomla-cms/pull/45517) Add Automated Updates information as fieldset description
+* [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve Automated Update UX for local sites
+* [45685](https://github.com/joomla/joomla-cms/pull/45685) Notify all super users of Automated Updates
+* [45669](https://github.com/joomla/joomla-cms/pull/45669) Improve Automated Update Quickicon language keys and icon
 
 ---
 
