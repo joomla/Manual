@@ -68,3 +68,8 @@ Planned to be removed in Joomla! 6.0 are the language keys:
 * [45727](https://github.com/joomla/joomla-cms/pull/45727) – Deprecate language string Mis_typed
   * ❌ Avoid using the `JERROR_LAYOUT_MIS_TYPED_ADDRESS` language key.
     * ✅ Use `JERROR_LAYOUT_MISTYPED_ADDRESS` instead.
+* [45706](https://github.com/joomla/joomla-cms/pull/45706) – configurated
+  * ❌ Avoid using the `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURATED` language key.
+    * ✅ Use `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURED` instead.
+  * ❌ Avoid using the `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURATED_ADMIN` language key.
+    * ✅ Use `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURED_ADMIN` instead.
