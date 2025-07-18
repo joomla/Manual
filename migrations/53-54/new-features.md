@@ -16,6 +16,11 @@ All the new features that have been added to version 5.4, along with any changes
 
 <details>
   <summary><strong>Automated Core Updates</strong></summary>
+
+Automated Updates implements *The Update Framework* (TUF), a secure software update distribution system
+designed to prevent supply chain attacks when automatically updating Joomla core minor versions.
+This is especially important for applying security fixes quickly and reliably.
+
 * [45143](https://github.com/joomla/joomla-cms/pull/45143) Add Automated Core Updates client functionality
 * [45517](https://github.com/joomla/joomla-cms/pull/45517) Add Automated Updates information as fieldset description
 * [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve Automated Update UX for local sites
@@ -34,6 +39,9 @@ Please ensure the test instance is accessible from the Internet
 
 <details>
   <summary>Use of 'None' in Various Filter Options and List Views</summary>
+
+New *None* options improve filtering and display of items without authors, tags, users or field groups.
+
 * [45232](https://github.com/joomla/joomla-cms/pull/45232) New '- None -' author filter option in the Articles view
   to select articles associated with deleted user entries.
 * [45274](https://github.com/joomla/joomla-cms/pull/45274) New '- None -' tag filter option in the Articles view
@@ -52,6 +60,9 @@ Please ensure the test instance is accessible from the Internet
 
 <details>
   <summary>More Links for User-Friendliness</summary>
+
+  New links make it easier to access related views directly from update notifications and checks.
+
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the
   'System – Maintenance – Database' view from the Pre-Update Check.
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the
