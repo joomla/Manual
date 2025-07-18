@@ -9,16 +9,23 @@ All the new features that have been added to version 5.4, along with any changes
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  Currently, it lists the new features for 5.4.0-alpha1.
+  The new features up to and including 5.4.0-alpha3 are listed.
 :::
 
 ## Admin Backend
 
 <details>
   <summary><strong>Automated Core Updates</strong></summary>
-* [45143](https://github.com/joomla/joomla-cms/pull/45143) Automated Core Updates client functionality.
-* [45517](https://github.com/joomla/joomla-cms/pull/45517) Automated Updates information added.
-* [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve autoupdate UX for local site
+
+Automated Updates implements *The Update Framework* (TUF), a secure software update distribution system
+designed to prevent supply chain attacks when automatically updating Joomla core minor versions.
+This is especially important for applying security fixes quickly and reliably.
+
+* [45143](https://github.com/joomla/joomla-cms/pull/45143) Add Automated Core Updates client functionality
+* [45517](https://github.com/joomla/joomla-cms/pull/45517) Add Automated Updates information as fieldset description
+* [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve Automated Update UX for local sites
+* [45685](https://github.com/joomla/joomla-cms/pull/45685) Notify all super users of Automated Updates
+* [45669](https://github.com/joomla/joomla-cms/pull/45669) Improve Automated Update Quickicon language keys and icon
 
 ---
 
@@ -32,6 +39,9 @@ Please ensure the test instance is accessible from the Internet
 
 <details>
   <summary>Use of 'None' in Various Filter Options and List Views</summary>
+
+New *None* options improve filtering and display of items without authors, tags, users or field groups.
+
 * [45232](https://github.com/joomla/joomla-cms/pull/45232) New '- None -' author filter option in the Articles view
   to select articles associated with deleted user entries.
 * [45274](https://github.com/joomla/joomla-cms/pull/45274) New '- None -' tag filter option in the Articles view
@@ -50,6 +60,9 @@ Please ensure the test instance is accessible from the Internet
 
 <details>
   <summary>More Links for User-Friendliness</summary>
+
+  New links make it easier to access related views directly from update notifications and checks.
+
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the
   'System – Maintenance – Database' view from the Pre-Update Check.
 * [45318](https://github.com/joomla/joomla-cms/pull/45318) Added a link to more easily open the
