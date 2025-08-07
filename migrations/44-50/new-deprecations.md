@@ -2,11 +2,12 @@
 sidebar_position: 2
 ---
 
-# New deprecations
+New Deprecations
+================
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-# Language strings
+## Language Strings
 
 File: administrator/language/en-GB/com_joomlaupdate.ini  
 Strings: INSTL_MB_STRING_OVERLOAD_OFF, INSTL_NOTICEMBSTRINGOVERLOAD
@@ -49,11 +50,11 @@ Example:
 $canCreate = \Joomla\CMS\Helper\ContentHelper::getActions('com_content')->get('core.create');
 ```
 
-# Class deprecations
+## Class Deprecations
 
 Planned to be removed in Joomla! 6.0
 
-### Filesystem CMS package
+## Filesystem `CMS` Package
 The CMS Filesystem package can be found in libraries/src/Filesystem and will be completely replaced in 6.0 with the [Joomla Framework Filesystem](https://github.com/joomla-framework/filesystem) package. The CMS package and the Framework package are nearly 1-to-1 replacements for each other, however the Framework package uses Exceptions where appropriate instead of the old `setError` and `getError` which the CMS package uses.
 
 In most cases you only have to change the namespace from `Joomla\CMS\Filesystem\*` to `Joomla\Filesystem\*`. To properly handle error cases, you will have to go through your code and catch the exceptions where necessary.
