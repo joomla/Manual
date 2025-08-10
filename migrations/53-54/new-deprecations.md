@@ -45,6 +45,18 @@ Related PR: [44910](https://github.com/joomla/joomla-cms/pull/44910) – Depreca
 - ❌ `registerListeners()` is deprecated in both `Joomla\CMS\Extension\PluginInterface` and `Joomla\CMS\Plugin\CMSPlugin`.
   - ✅ Instead, implement the `SubscriberInterface`. The method is no longer required in this case.
 
+### Support for deprecated event API were extended from Joomla 6 to Joomla 7.
+
+[45818](https://github.com/joomla/joomla-cms/pull/45818) Support for deprecated event API were extended from Joomla 6 to Joomla 7.
+Support for events without event class will be stoped in Joomla 7 instead of Joomla 6.
+
+### Support for deprecated Editor and Captcha API were extended from Joomla 6 to Joomla 7.
+[45819](https://github.com/joomla/joomla-cms/pull/45819) Support for deprecated Editor and Captcha API were extended from Joomla 6 to Joomla 7.
+Links for an examples with new API:
+ - [Editors Plugin](/docs/building-extensions/plugins/plugin-examples/editors-plugin/)
+ - [Editors Buttons (XTD) Plugin](/docs/building-extensions/plugins/plugin-examples/editors-xtd-plugin/)
+ - [Captcha Plugin](/docs/building-extensions/plugins/plugin-examples/captcha-plugin/)
+
 ### Deprecation of `$_db`, `getDbo()`, and `setDbo()`
 [45165](https://github.com/joomla/joomla-cms/pull/45165) – Replace table _db with DatabaseAwareTrait
 
@@ -56,6 +68,8 @@ Related PR: [44910](https://github.com/joomla/joomla-cms/pull/44910) – Depreca
     $db = $this->getDatabase();
     $this->setDatabase($db);
     ```
+
+
 
 ## Language String Deprecation
 
