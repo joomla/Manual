@@ -1,3 +1,5 @@
+# Creating and launching tours
+
 The simplest way to create tours for your organization or extensions is to create those tours with the tools provided in Joomla.
 
 Go to System (Manage section) -> Guided Tours.
