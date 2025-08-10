@@ -56,6 +56,12 @@ Example implementations using the new APIs:
  - [Editors Plugin](/docs/building-extensions/plugins/plugin-examples/editors-plugin/)
  - [Editors Buttons (XTD) Plugin](/docs/building-extensions/plugins/plugin-examples/editors-xtd-plugin/)
  - [Captcha Plugin](/docs/building-extensions/plugins/plugin-examples/captcha-plugin/)
+
+### Support for the deprecated `register` method of the `JLoader` class was extended from Joomla 6 to Joomla 7.
+
+[45878](https://github.com/joomla/joomla-cms/pull/45878): Support for the deprecated `JLoader::register()` method was extended from Joomla 6 to Joomla 7.
+The `JLoader::register()` method will be removed in Joomla 7 instead of Joomla 6.
+
 ### Deprecation of `$_db`, `getDbo()`, and `setDbo()`
 [45165](https://github.com/joomla/joomla-cms/pull/45165) – Replace table _db with DatabaseAwareTrait
 
