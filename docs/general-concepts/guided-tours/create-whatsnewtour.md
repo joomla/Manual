@@ -128,10 +128,10 @@ DELETE FROM "#__guidedtours"
 </Tabs>
 
 Note that a better approach, to ensure none of the user's Guided Tours is removed by mistake, is to replace the LIKE with an IN, naming each tour specifically.
-For instance, 
+For instance, in MySQL, 
 
-```
-IN ('joomla-whatsnew-5.2', 'joomla-whatsnew-5.3', 'joomla-whatsnew-5.4')
+```sql
+SELECT `id` FROM `#__guidedtours` WHERE `uid` IN ('joomla-whatsnew-5.2', 'joomla-whatsnew-5.3', 'joomla-whatsnew-5.4')
 ```
 
 On a minor release (for instance 5.3), set the previous What's New tour to NOT autostart:
