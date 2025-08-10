@@ -57,6 +57,11 @@ Related PR: [44910](https://github.com/joomla/joomla-cms/pull/44910) – Depreca
     $this->setDatabase($db);
     ```
 
+### Deprecation of `$app` Property in Fields Plugin
+
+File: administrator/components/com_fields/src/Plugin/FieldsPlugin.php
+Replacement: The `$this->app` property is deprecated in the fields plugins. Instead, use `$this->getApplication()` when the plugin is converted to service providers.
+
 ## Language String Deprecation
 
 Planned to be removed in Joomla! 6.0 are the language keys:
