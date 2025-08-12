@@ -22,7 +22,7 @@ that runs directly in your browser.
 - **Fast & Simple:** Your testing environment is ready in just a few minutes with a single click.
 - **Consistent & Reliable:** Everyone uses the same setup, which reduces errors and "it works on my machine" problems.
 
-For a step-by-step guide, please see the **[Testing PRs with GitHub Codespaces](./github-codespaces.md)** documentation.
+For a step-by-step guide, please see the **[Testing PRs with GitHub Codespaces](/testing/manually/github-codespaces)** documentation.
 
 ### Local Environment
 

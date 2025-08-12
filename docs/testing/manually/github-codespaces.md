@@ -21,7 +21,7 @@ development environment, including installing dependencies and running the Jooml
 ## The Codespace Environment
 
 Once the setup is complete, you will be in a Visual Studio Code environment within your browser. A file named `codespace-details.txt` will be available, 
-containing all the necessary credentials access the Joomla installation.
+containing all the necessary credentials to access the Joomla installation.
 
 ![vscode initial setup](_assets/initial-vscode-setup.png)
 
@@ -32,8 +32,7 @@ The `codespace-details.txt` file provides you with:
 *   **Joomla Admin Credentials:** Username and password for the administrator account.
 *   **phpMyAdmin Credentials:** Username and password for phpMyAdmin.
 
-To access these, navigate to the **Ports** tab in VS Code. You will find forwarded ports for the Web Server and Cypress GUI. Click the 
-globe icon next to the "Web Server" to open the Joomla site in a new tab.
+To access these, navigate to the **Ports** tab in VS Code. You will find forwarded ports (e.g., "Web Server", "Cypress"). Click the globe icon next to the HTTP(S) forwarded URL for the web server to open the Joomla site in a new tab.
 
 ![github-code](_assets/github-codespaces-ports.png)
 
