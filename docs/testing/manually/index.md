@@ -9,6 +9,23 @@ Testers are individuals who know how to use Joomla! and have some time available
 
 ## Testing Environment
 
+To test pull requests, you need a working Joomla! installation. You have two main options for setting up your environment: a fully automated cloud
+environment with GitHub Codespaces, or a traditional local setup on your own computer.
+
+### GitHub Codespaces
+
+The easiest and fastest way to get started with testing is to use GitHub Codespaces. It provides a complete, pre-configured development environment
+that runs directly in your browser.
+
+**Why use Codespaces?**
+- **No Local Setup:** You don't need to install a web server, PHP, a database, or any other tool on your computer.
+- **Fast & Simple:** Your testing environment is ready in just a few minutes with a single click.
+- **Consistent & Reliable:** Everyone uses the same setup, which reduces errors and "it works on my machine" problems.
+
+For a step-by-step guide, please see the **[Testing PRs with GitHub Codespaces](./github-codespaces.md)** documentation.
+
+### Local Environment
+
 To get started you need an environment in which you can easily create multiple Joomla installations. This is because tests are often based on a specific branch, such as 5.2-dev, 5.3-dev or 6.0-dev. You could put different installations in subfolders with names such as jcms-test-52 or jcms-test-60 or whatever. This is a summary of what you need:
 
 - A laptop or desktop computer with a web server, database and PHP installed.
