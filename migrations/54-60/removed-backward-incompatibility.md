@@ -274,3 +274,9 @@ ActionlogsHelper::getLogContentTypeParams('context');
 Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
     ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```
+
+## CMS DatabaseAwareTrait class got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45340
+- File: libraries/src/MVC/Model/DatabaseAwareTrait.php
+- Description: The trait `Joomla\Database\DatabaseAwareTrait` should be used instead as they both contain the same functionality.
