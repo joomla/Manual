@@ -49,8 +49,8 @@ JALL="All together"
 ```php
 use Joomla\CMS\Language\Text;
 
-echo Text::alt('JALL', 'language'); // will generate a 'All' string in English but a "Toutes" string in French
-echo Text::alt('JALL', 'module');   // will generate a 'All' string in English but a "Tous" string in French
+echo Text::alt('JALL', 'language'); // will generate a 'All' string
+echo Text::alt('JALL', 'module');   // will generate a 'All together' string
 ```
 
 :::info
