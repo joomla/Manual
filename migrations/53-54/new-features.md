@@ -32,7 +32,7 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45697](https://github.com/joomla/joomla-cms/pull/45697) Allow opt-out from automated updates during installation
 </details>
 
-You can pre-test an automated update with Joomla 5.4.0 alpha versions by installing the
+You can pre-test an automated update with Joomla 5.4.0 beta versions by installing the
 '[System - Alpha Update Server](https://github.com/joomla/joomla-cms/issues/45540)' plugin.
 Please ensure the test instance is accessible from the Internet
 (for example, by using [Launch your Joomla! site](https://launch.joomla.org/)) and

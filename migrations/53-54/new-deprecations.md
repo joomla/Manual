@@ -14,9 +14,10 @@ New deprecations to be aware of — and the recommended alternatives.
 For previously existing deprecations where the Joomla version in which they take effect has changed,
 see the [Changed Deprecations](../changed-deprecations) page.
 
-## Class Deprecations
+## New Class Deprecations
 
-New class deprecations, planned for removal in Joomla 7.0.
+The following classes are marked as deprecated in Joomla 5.4 and are scheduled for removal in Joomla 7.0.
+Where no alternative is listed, the functionality is considered obsolete and should not be relied upon in future code.
 
 ### UCM System
 
@@ -69,9 +70,9 @@ File: `administrator/components/com_fields/src/Plugin/FieldsPlugin.php`
 - ❌ The `$this->app` property is deprecated in the fields plugins.
   - ✅ Instead, use `$this->getApplication()` when the plugin is converted to service providers.
 
-## Language String Deprecation
+## New Language String Deprecations
 
-New language string deprecations, planned for removed in Joomla! 6.0, are the following language keys:
+New language string deprecations, planned for removal in Joomla! 6.0, are the following language keys:
 * [45564](https://github.com/joomla/joomla-cms/pull/45564) – Deprecate language string
   * ❌ Avoid using the `COM_JOOMLAUPDATE_VIEW_DEFAULT_UPDATES_INFO_TESTING` language key.
 * [45725](https://github.com/joomla/joomla-cms/pull/45725) – Deprecate language string
