@@ -86,5 +86,3 @@ Please ensure the test instance is accessible from the Internet
   3. New parameter *Year Sort Order* for archived articles.
      * [45841](https://github.com/joomla/joomla-cms/pull/45841) Add year filter order parameter for archived articles
 </details>
-
-
