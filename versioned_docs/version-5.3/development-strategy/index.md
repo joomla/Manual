@@ -27,14 +27,14 @@ This document is not long, but with all the information in other documents it is
 These are the key points of this strategy:
 
 * The version numbering scheme is your key to understanding the degree of change inherent in a release. The version number is in three parts separated by dots: \[major\].\[minor\].\[patch\]. For example, 5.3.2 has a major number of 5, a minor number of 3 and a patch number of 2\. A release which increments the major number is referred to as a major release; one that increments only the minor number is a minor release; and one that increments only the patch number is a patch release. Refer to our Release Policy for further details.
-* A release is said to be "backward compatible" with an earlier release if your system continues to work correctly when updated to that release even when other parts of your system were not updated at the same time. However, there are limits to what is covered by backward compatibility and you should read the Backward Compatibility Policy for the full details.
+* A release is said to be "backward compatible" with an earlier release if your system continues to work correctly when updated to that release even when other parts of your system were not updated at the same time. However, there are limits to what is covered by backward compatibility and you should read the [Backward Compatibility Policy](/docs/development-strategy/backward-compatibility-policy.md) for the full details.
 * A major release is the only kind of release where backward compatibility can be intentionally broken. A minor release may add new features and capabilities but it must be backward compatible with the release it replaces. Patch releases are for bug and security fixes only and will not break backward compatibility. A needed security fix can break backward compatibility of any kind of release.
-* Releases are either supported or they are not supported. When we say that a release is supported, we mean that all major issues and most minor issues will be addressed in a subsequent release. Refer to Support Policy for further information.
+* Releases are either supported or they are not supported. When we say that a release is supported, we mean that all major issues and most minor issues will be addressed in a subsequent release. Refer to [Support Policy](/docs/development-strategy/software-release-cycle.md/#support-phase) for further information.
 * Within each major series, only the most recent minor release is supported. As soon as a new minor release is made, support for the previous minor release ends.
 * A major series may be declared end-of-life (and hence become unsupported) only after at least 2 years have elapsed since the most recent minor release in that series. What this means is that each time a minor release is made it resets the support clock for that series, thus ensuring that a major series will enjoy extended life for as long as there is sufficient interest in producing minor releases for it. Patch releases do not reset the support clock.
-* There will always be a supported upgrade path from one version to any other subsequent version. By clearly defining what that upgrade path is, users can be more certain of a successful upgrade and developers will know exactly which upgrade paths must be tested. Refer to the Upgrade Policy for full details.
-* We take security very seriously and we have a special team, the JSST, who review all reported issues and take the necessary action to mitigate or fix each confirmed issue. Refer to Security Policy for further information.
-* We welcome contributions, individual, collaborative or corporate, that will enhance our products for the benefit of the community. Refer to our Contributor Policy for full details.
+* There will always be a supported upgrade path from one version to any other subsequent version. By clearly defining what that upgrade path is, users can be more certain of a successful upgrade and developers will know exactly which upgrade paths must be tested. Refer to the [Upgrade Policy](/docs/development-strategy/software-release-cycle.md/#upgrades) for full details.
+* We take security very seriously and we have a special team, the JSST, who review all reported issues and take the necessary action to mitigate or fix each confirmed issue. Refer to [Security Policy](/docs/development-strategy/security-policy.md) for further information.
+* We welcome contributions, individual, collaborative or corporate, that will enhance our products for the benefit of the community. Refer to our [Contributor Policy](/about/contributing.md) for full details.
 
 ## Mission
 
@@ -50,7 +50,7 @@ To make it easy for developers to contribute code and documentation to the proje
 
 ## Principles
 
-Joomla tries to follow the slogan “power through simplicity” for all its developments. For this, we have five major principles inherent to the Joomla development strategy aimed at achieving our goals:
+Joomla tries to follow the slogan “**Power Through Simplicity**” for all its developments. For this, we have five major principles inherent to the Joomla development strategy aimed at achieving our goals:
 
 ### Stability
 
