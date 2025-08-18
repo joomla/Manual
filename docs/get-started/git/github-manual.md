@@ -2,7 +2,6 @@
 sidebar_position: 3
 title: "GitHub Example 1: This Manual"
 ---
-
 ## Getting Started
 
 GitHub is a web site that offers repository hosting. Private repos are charged a commercial fee but public repos, such as Joomla, are hosted free of charge. As the name implies, GitHub is based on using Git for repo management. If you want to contribute to Joomla development you need a GitHub account. It only takes a few moments to create one so Give it a try: [GitHub](https://github.com/). You just need your email address to start. You could try it out by contributing content for this documentation.
@@ -17,7 +16,7 @@ That will make a complete copy of the Manual repo as it exists at this time in y
 
 ## Clone your Github fork locally
 
-For local testing of any web site content you will need to install Apache, MySQL, PHP and phpMyAdmin on your laptop or desktop computer. This collection of separate software items is often referred to as a stack. You may see the words LAMP, MAMP, WAMP or XAMP - the first character indicating Linux, Mac, Windows, or All three. Stack installation is covered elsewhere. 
+For local testing of any web site content you will need to install Apache, MySQL, PHP and phpMyAdmin on your laptop or desktop computer. This collection of separate software items is often referred to as a stack. You may see the words LAMP, MAMP, WAMP or XAMP - the first character indicating Linux, Mac, Windows, or All three. Stack installation is covered elsewhere.
 
 Your local Apache web server uses a specific folder for individual web sites. For example, on a Mac it may be /Users/username/Sites. You may have many sites for testing and developing different projects, each in a separate subfolder. The clone process will create a folder within your current folder so first open a terminal window and switch to your sites folder:
 
@@ -65,17 +64,41 @@ drwxr-xr-x    3 ceford  staff      96 26 Aug 12:36 static
 -rw-r--r--    1 ceford  staff      59 26 Aug 12:36 versionsArchived.json
 ```
 
-That is your copy of the Joomla Programmers Manual. It is a Docusaurus application that needs Node.js installed to run. That is covered elsewhere. To get going you should read the README.md file, where you will find the following commands:
+That is your copy of the Joomla Programmers Manual. It is a Docusaurus application that needs Node.js installed to run. That is covered elsewhere. To get going you should read the README.md file. At the moment is file doesn't contain any useful information.
+
+Before you run 'npm install' delete package-lock.json
+
+```
+rm -rf node_modules package-lock.json
+```
+
+If you run the manual on a local computer, run this command to disable the SSL certificate check:
+
+```
+npm config set strict-ssl false
+```
+
+Now you can run the following command:
 
 ```
 npm install
+```
 
+For some more feedback during the installation you can use:
+
+```
+npm install --verbose
+```
+
+After the installation is completed, you can run:
+
+```
 npm run start
 ```
 
 And bingo, your browser will spring to life with your local copy of the Joomla! Programmers Documentation.
 
-If you go back to your terminal, open a new window and type `git branch --list` you will see there is only one branch named 'main'. This is something to keep in mind. A local repo created with git will have `master` as the name of the primary branch whereas a repo created on GitHub may have a different primary branch name. 
+If you go back to your terminal, open a new window and type `git branch --list` you will see there is only one branch named 'main'. This is something to keep in mind. A local repo created with git will have `main` as the name of the primary branch whereas a repo created on GitHub may have a different primary branch name.
 
 ## Bringing up to date
 
@@ -88,11 +111,11 @@ There are several different ways to keep your repo up to date with the original 
 
 If you would like to contribute to the Joomla Programmers Manual you need to progress through the following stages:
 
-- **Create and Checkout a branch** in your local repo. This is very important! It will contain a record of the changes you propose to make to the original.
-- **Make Changes** by adding or changing folders or files, and adding images.
-- **Commit** your changes to your local repo.
-- **Push** your changes from your local repo to your remote GitHub repo.
-- **Make a Pull request** in your remote repo to ask for your branch to be **merged** into the main branch.
+* **Create and Checkout a branch** in your local repo. This is very important! It will contain a record of the changes you propose to make to the original.
+* **Make Changes** by adding or changing folders or files, and adding images.
+* **Commit** your changes to your local repo.
+* **Push** your changes from your local repo to your remote GitHub repo.
+* **Make a Pull request** in your remote repo to ask for your branch to be **merged** into the main branch.
 
 ### Create and Checkout a branch
 
@@ -101,7 +124,7 @@ In the terminal window, make sure you are in the root of your site, then:
 * git branch ceffixgit
 * git checkout ceffixgit
 
-where ceffixgit is some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose: `ceffixgit`.
+where ceffixgit is some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose: `ceffixgit` where cef are the initials.
 
 You may wish to list the branches in your repo:
 
@@ -110,7 +133,6 @@ git branch --list
 * ceffixgit
   main
 ```
-That is a reminder that the main branch is named `main` rather than `master`.
 
 ## Time for an IDE?
 
@@ -118,25 +140,27 @@ During preparation of this article I created a folder, moved an article into tha
 
 ![VSCode Source Control](git-manual-vsc-sc.png)
 
-The moved document shows up marked with a red `D` for Deleted. The added documents show up with a green `U` for Unstaged. In each case I can click the adjacent `+` sign to stage the file to make it ready to commit. As each `+` is clicked it moves from a `Changes ` list into a `Staged Changes` list.
+The moved document shows up marked with a red `D` for Deleted. The added documents show up with a green `U` for Unstaged. In each case I can click the adjacent `+` sign to stage the file to make it ready to commit. As each `+` is clicked it moves from a `Changes` list into a `Staged Changes` list.
 
 ## Local Testing
 
 It is essential that you test your proposed changes locally before making a pull request. You will have been checking your local docusaurus site to see that it appears to work properly. However, you also need to check the build stage. This is when static html pages are generated and it can reveal all sorts of additional problems such as broken links or invalid source content. So go back to your terminal window and enter:
 
 ```
-$ npm run build
+npm run build
 ```
+
 If it works without error you are ready to make a pull request.
 
 ### Commit and Push
 
 Easy with an IDE. In VSCode:
-- Select the Source Control icon at the left.
-- Add a Commit message: a very brief statement of what changed in this commit.
-- Either select the `+` button in the Changes list to stage the changes.
-- Or select the `Commit` button to commit the changes to the local repository. 
-- Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
+
+* Select the Source Control icon at the left.
+* Add a Commit message: a very brief statement of what changed in this commit.
+* Either select the `+` button in the Changes list to stage the changes.
+* Or select the `Commit` button to commit the changes to the local repository.
+* Select the Source Control `...` button followed by Pull, Push / Push To... / and then select your own remote repo to push the changes from your local repo to your remote repo.
 
 ### Make a Pull Request
 
@@ -172,16 +196,16 @@ git branch --delete ceffixgit
 
 ## Keeping up to date
 
-Tomorrow, next week, next month, you may want to contribute some more documentation. But in the meantime the original `main` branch of the documentation may have changed with contributions from others. Those contributions may even have changed your last contribution. So before starting anything new you need to bring your local copy of the original repo up to date. 
+Tomorrow, next week, next month, you may want to contribute some more documentation. But in the meantime the original `main` branch of the documentation may have changed with contributions from others. Those contributions may even have changed your last contribution. So before starting anything new you need to bring your local copy of the original repo up to date.
 
 First go to your GitHub account and open your fork of this Manual: username/Manual. Then click the `Sync fork` button. That should bring your fork up to date.
 
 Then in your terminal window, change to the folder containing your local clone of your remote fork and issue the git pull command:
 
- ```
+```
  cd ~/Sites/Manual
  git pull
- ```
+```
 
  That is exactly the same as **Bringing up to date** above.
 
