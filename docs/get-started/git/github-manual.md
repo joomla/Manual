@@ -124,7 +124,7 @@ In the terminal window, make sure you are in the root of your site, then:
 * git branch ceffixgit
 * git checkout ceffixgit
 
-where ceffixgit is some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose: `ceffixgit` where cef are the initials.
+where ceffixgit is some short distinctive piece of text that allows you and others to distinguish between various branches. For example, it could start with your initials and finish with a succinct description of its main purpose: `ceffixgit` where 'cef' are the initials.
 
 You may wish to list the branches in your repo:
 
