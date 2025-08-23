@@ -274,3 +274,30 @@ ActionlogsHelper::getLogContentTypeParams('context');
 Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
     ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```
+## Remove deprecated BaseApplication and CLI classes
+- PR: https://github.com/joomla/joomla-cms/pull/42884
+- Files: `libraries/src/Application/BaseApplication.php`, `libraries/src/Application/CLI.php`
+- Description: These legacy classes have been removed.  
+  Use `\Joomla\CMS\Application\ConsoleApplication` or framework equivalents instead.  
+  **(more detail needed: migration examples)**
+
+## Move JPATH_PLATFORM constant to compat plugin
+- PR: https://github.com/joomla/joomla-cms/pull/44638
+- Description: The `JPATH_PLATFORM` constant is no longer globally defined.  
+  It is only available if the Backward Compatibility plugin is enabled.  
+  Extensions should avoid using this constant.  
+  **(more detail needed: code examples and alternatives)**
+
+## Remove fetchExtensionCompatibility in UpdateController
+- PR: https://github.com/joomla/joomla-cms/pull/45436
+- File: `administrator/components/com_installer/src/Controller/UpdateController.php`
+- Description: The `fetchExtensionCompatibility` method has been removed.  
+  Extensions or scripts that called this method will break and need to be updated to use the new update handling logic.  
+  **(more detail needed: replacement approach)**
+
+## Extend versioning, save related information in history table and restore historical data
+- PR: https://github.com/joomla/joomla-cms/pull/45515
+- Description: The versioning system now stores additional related data in the history table.  
+  Restoring historical versions also restores linked metadata.  
+  Extensions interacting with `#__ucm_history` may require schema or API updates.  
+  **(more detail needed: schema differences and migration examples)**
