@@ -34,6 +34,8 @@ The `codespace-details.txt` file provides you with:
 
 To access these, navigate to the **Ports** tab in VS Code. You will find forwarded ports (e.g., "Web Server", "Cypress"). Click the globe icon next to the HTTP(S) forwarded URL for the web server to open the Joomla site in a new tab.
 
+You can access Joomla webserver using HTTPS on port 443 (**The Recommended and Default**), but you can also access it using HTTP on port 80
+
 ![github-code](_assets/github-codespaces-ports.png)
 
 ### Managing the Database with phpMyAdmin
