@@ -33,7 +33,7 @@ These are the key points of this strategy:
 * Within each major series, only the most recent minor release is supported. As soon as a new minor release is made, support for the previous minor release ends.
 * A major series may be declared end-of-life (and hence become unsupported) only after at least 2 years have elapsed since the most recent minor release in that series. What this means is that each time a minor release is made it resets the support clock for that series, thus ensuring that a major series will enjoy extended life for as long as there is sufficient interest in producing minor releases for it. Patch releases do not reset the support clock.
 * There will always be a supported upgrade path from one version to any other subsequent version. By clearly defining what that upgrade path is, users can be more certain of a successful upgrade and developers will know exactly which upgrade paths must be tested. Refer to the [Upgrade Policy](software-release-cycle#upgrades) for full details.
-* We take security very seriously and we have a special team, the JSST, who review all reported issues and take the necessary action to mitigate or fix each confirmed issue. Refer to [Security Policy](security-policy.md) for further information.
+* We take security very seriously and we have a special team, the JSST, who review all reported issues and take the necessary action to mitigate or fix each confirmed issue. Refer to [Security Policy](security-policy) for further information.
 * We welcome contributions, individual, collaborative or corporate, that will enhance our products for the benefit of the community. Refer to our [Contributor Policy](/about/contributing) for full details.
 
 ## Mission
