@@ -15,7 +15,9 @@ Download the latest [Patch Tester zip file](https://github.com/joomla-extensions
 2. Select the **Options** button from the Toolbar.
 3. Select the **GitHub Authentication** tab.
 4. In the **GitHub Token** field paste in the API Token you obtained for your GitHub account.
-5. **Save & Close**
+5. **Optional** If you are an advanced user and know how to test patches that have *NPM Resource Changed*, *Composer Dependency Changed*, or are *RTC*:
+    - Select the **Patch Tester** tab and set the *Advanced* option to *Yes*.
+6. **Save & Close**
 
 ![patch tester options for github authentication](_assets/patch-tester-settings-authentication.png)
 
@@ -23,7 +25,7 @@ Download the latest [Patch Tester zip file](https://github.com/joomla-extensions
 
 In the *Joomla! Patch Tester* page select the **Fetch Data** button. After a few seconds you will see a list of items for testing (224 in the example screenshot below but this changes hourly).
 
-It is worth spending some time on examination of the list. For example the first issue marked as a **bug** in red does not appear until page 3 today (10 items per page). The following screenshot is of page 4 today:
+It is worth spending some time on examination of the list. For example the first issue marked as a **bug** in red does not appear until page 2 today (10 items per page):
 
 ![patch tester list of issues](_assets/patch-tester-list.png)
 
@@ -31,9 +33,12 @@ It is worth spending some time on examination of the list. For example the first
 
 - **Pull ID** is used to sort the list in descending order so the most recent are at the top.
 - The **View on GitHub** and **View on Joomla! Issue Tracker** links open those sites in new windows. The latter is used to look for testing instructions and reporting results.
-- The coloured labels contain information about the pull request, such as *bug* or *Feature* and whether a test has an *NPM Resource Changed*.
+- The coloured labels contain information about the pull request, such as *bug* or *Feature* and whether a test has an *NPM Resource Changed*. A list of labels can be found in the [Labels page](https://github.com/joomla/joomla-cms/labels) of the `joomla-cms` GitHub repository.
 - The **Branch** shows which Joomla branch the pull request was created for. You will see all pull requests for all branches in the list. Some pull requests may require testing against a specific branch but this is not always so.
-- The **Apply Patch** button applies the patch created in the pull request to your test installation. If the patch involves an NPM Resource Change you need to use the command line to run `npm ci` or `npm run build:css` if the change only affects CSS files or `npm run build:js` if the change only affects JavaScript files. You can then follow the Test Instructions in the Issue Tracker to test the patch. When finished, *Revert* the patch and rerun `npm ci` if the patch involves an NPM Resource Change.
+- The **Apply Patch** button applies the patch created in the pull request to your test installation. This button is initially absent for patches that involve an *NPM Resource Change*, *Composer Dependency Change* or are *RTC*.
+    - Advanced users: to enable the missing *Apply Patch* buttons set **Advanced Mode** to **Yes** in the *Options* and then use the command line to run `npm ci` or `npm run build:css` if the change only affects CSS files or `npm run build:js` if the change only affects JavaScript files. 
+- Follow the Test Instructions in the Issue Tracker to test the patch. When finished, *Revert* the patch.
+    - Advanced users: rerun `npm ci` if the patch involved an NPM Resource Change.
 
 ### Filter Options
 

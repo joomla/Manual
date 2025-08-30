@@ -2,12 +2,13 @@
 sidebar_position: 1
 ---
 
-# New features
+New Features
+============
 
 All the new features that have been added to this version.
 Any changes in best practice.
 
-#### Media: a new folder for documents and other non image files
+## Media: New Folder for Documents and Other Non-Image Files
 Until now by default Joomla had only `/images` folder in Media manager for upload.
 Starting from 5.3 version Joomla have additional `/files` folder for non image files, for new installations.
 
@@ -19,7 +20,7 @@ To add it to existing installation, need to:
 
 PR: https://github.com/joomla/joomla-cms/pull/43532
 
-#### Form control fields
+## Form Control Fields
 
 New methods to manage form control fields.
 More detail at [Form Control fields](https://manual.joomla.org/docs/general-concepts/forms/manipulating-forms.md#control-fields)
@@ -48,7 +49,7 @@ $this->form
 echo $this->form->renderControlFields();
 ```
 
-#### New before download update site event
+## New `BeforeUpdateSiteDownloadEvent`
 
 A new event is available where an installer plugin can hook in before an update site url is fetched. Similar to what we have for package download of an extension.
 
@@ -62,14 +63,14 @@ public function onInstallerBeforeUpdateSiteDownload(\Joomla\CMS\Event\Installer\
 }
 ```
 
-#### Media: allow thumbnail for any file type
+## Media: Allow Thumbnails for Any File Type
 
 The changes allow to add thumbnail for any file type: video, pdf, audio etc. Previously it was worked only for images.
 
 PR: https://github.com/joomla/joomla-cms/pull/44847
 
 
-#### com_ajax support Stringable result
+## com_ajax: Support for Stringable Result
 
 Allows to customise the response for com_ajax, with help of `Joomla\CMS\String\StringableInterface`.
 
