@@ -7,7 +7,7 @@ New Deprecations
 
 :::tip[Developer Note]
   This version of Joomla has not yet been released, so this page is subject to change at any time.
-  Deprecations added up to and including version 5.4.0-beta1 are listed below.
+  Deprecations added up to and including version 5.4.0-beta2 are listed below.
 :::
 
 New deprecations to be aware of — and the recommended alternatives.

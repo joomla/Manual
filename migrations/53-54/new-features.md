@@ -9,7 +9,7 @@ All new functions that have been added to version 5.4, as well as all enhancemen
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  The new features up to and including 5.4.0-beta1 are listed.
+  The new features up to and including 5.4.0-beta2 are listed.
 :::
 
 ## Automated Core Updates
@@ -30,6 +30,8 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45685](https://github.com/joomla/joomla-cms/pull/45685) Notify all super users of Automated Updates
 * [45669](https://github.com/joomla/joomla-cms/pull/45669) Improve Automated Update Quickicon language keys and icon
 * [45697](https://github.com/joomla/joomla-cms/pull/45697) Allow opt-out from automated updates during installation
+* [45721](https://github.com/joomla/joomla-cms/pull/45721) Autoupdate email groups
+* [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
 </details>
 
 You can pre-test an automated update with Joomla 5.4.0 beta versions by installing the
