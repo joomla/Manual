@@ -88,6 +88,11 @@ const config = {
           lastVersion: '5.3',
           versions: {
             'current': {
+              label: '6.0 (Upcoming)',
+              banner: 'unreleased',
+              noIndex: false,
+            },
+            '5.4': {
               label: '5.4 (Upcoming)',
               banner: 'unreleased',
               noIndex: false,
