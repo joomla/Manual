@@ -26,7 +26,7 @@ Joomla! version. The *Minimum* versions are guaranteed to work. Older versions m
 **Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
 **Recommended PHP Modules:** mbstring  
 **Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
-**Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
+**Optional Microsoft IIS Modules:** [URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite) to use SEO URLs
 
 ### Requirements for Joomla! 5.x
 
