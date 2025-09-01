@@ -2,13 +2,16 @@
 sidebar_position: 3
 ---
 
+Removed Backward Incompatibility
+================================
+
 :::caution TODO
 
 This page is unfinished, please use the **Edit this Page** link at the bottom of this page to help make it more useful.
 
 :::
 
-## Removed files
+## Removed Files
 
 The following files hasn't been removed to prevent code which directly include
 these files to thru an fatal error.
@@ -30,9 +33,9 @@ to be continued
 
 :::
 
-## Modified function signatures
+## Modified Function Signatures
 
-##### Removed second parameter `$clientId = 0` in function cleanCache this parameter is no longer used
+Removed second parameter `$clientId = 0` in function cleanCache this parameter is no longer used.
 
 * administrator/components/com_categories/src/Model/CategoryModel.php
 * administrator/components/com_content/src/Model/ArticleModel.php

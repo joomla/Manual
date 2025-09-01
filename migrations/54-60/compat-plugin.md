@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 Compatibility Plugin
@@ -28,15 +28,14 @@ called "Behaviour - Backward Compatibility 6".
 Despite the warning about the potential removal of the `behaviour` plugin type, this compatibility plugin still uses
 this type to ensure it loads before any other plugin, as this is critical for backward compatibility functionality.
 
-
-### CMS BaseApplication and CLI classes
+### CMS BaseApplication and CLI Classes
 
 - PR's:
   - https://github.com/joomla/joomla-cms/pull/42884
   - https://github.com/joomla/joomla-cms/pull/44926
 - Description: Any reference to the class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication` with the respective CLI input classes should be replaced with the namespace `\Joomla\Application`. Cli apps should be replaced by console plugins.
 
-### JPATH_PLATFORM constant
+### `JPATH_PLATFORM` Constant
 
 - PR: https://github.com/joomla/joomla-cms/pull/44638
 - File: All bootstrapping files
@@ -48,3 +47,11 @@ this type to ensure it loads before any other plugin, as this is critical for ba
 // New:
 \defined('_JEXEC') or die;
 ```
+
+### CMS Input Package
+
+- PR's: 
+  - https://github.com/joomla/joomla-cms/pull/42805
+  - https://github.com/joomla/joomla-cms/pull/42890
+  - https://github.com/joomla/joomla-cms/pull/44925
+- Description: Any reference to the class `\Joomla\CMS\Input\Input` or the other classes in that namespace should be replaced with the [framework `Input`](https://github.com/joomla-framework/input) package and the namespace `\Joomla\Input`. The packages can be used nearly interchangeably.

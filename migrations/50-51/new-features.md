@@ -2,12 +2,13 @@
 sidebar_position: 1
 ---
 
-# New features
+New Features
+============
 
 All the new features that have been added to this version.
 Any changes in best practice.
 
-#### Implementation of JoomlaDialog script
+## Implementation of Joomla Dialog Script
 
 Implementation of newly introduced JoomlaDialog javascript module (5.0) into standard modal fields, batch windows and multilanguage status overview.
 
@@ -25,7 +26,7 @@ For more detail check [Joomla Dialog (popup) script](https://manual.joomla.org/d
 
 PR: https://github.com/joomla/joomla-cms/pull/40150
 
-#### `FormField` new method `collectLayoutData()`
+## New `collectLayoutData()` Method for `FormField` Class
 
 `FormField` class got a new method `collectLayoutData()`, to cache the data from `getLayoutData()`. 
 This was made to prevent a multiple call of this method, which may lead to doubled Queries/Request that may happen in some circumstances.
@@ -62,7 +63,7 @@ protected function getLabel()
 
 PR: https://github.com/joomla/joomla-cms/pull/42709
 
-#### Dark Mode switch and Color scheme API
+## Dark Mode Switch and Color Scheme API
 
 Added a switch for changing color scheme "Dark"/"Light" for the Atum template.
 More about new [Color scheme API](https://manual.joomla.org/docs/next/building-extensions/templates/color-scheme)
