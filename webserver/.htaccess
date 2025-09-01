@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Workaround for trailing slashes bug https://github.com/facebook/docusaurus/issues/6282
+RewriteCond %{REQUEST_URI} ^/assets/files/(.+)\.(\w+)/$
+RewriteRule ^ /assets/files/%1.%2 [L,R=301]

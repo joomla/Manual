@@ -11,8 +11,7 @@ sidebar_position: 2
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-
-# Class deprecations
+## Class Deprecations
 
 ### `Joomla\CMS\Http` is deprecated
 

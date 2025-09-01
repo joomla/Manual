@@ -1,15 +1,16 @@
 ---
 sidebar_position: 1000
+title: 3.10 to 4.0
 ---
 
-3.10 to 4.0
-===========
+Joomla 3.10 to 4.0 Upgrade Notes
+================================
+
 An explanation of the code changes for each version of Joomla.
 If you follow from the version of your current code until the version you
 want to support you should come across all the changes you need to make.
 
-Updated System Requirements
----------------------------
+## Updated System Requirements
 
 Beside changed to the code base itself we also increased the minimum
 system requirements.

@@ -238,7 +238,7 @@ It demonstrates sending emails both using the `Mail` class and the `MailTemplate
 As part of its installation `com_sendmail` creates a MailTemplate with a key of 'com_sendmail.example',
 which you can then view and edit via the administrator Mail Templates functionality.
 
-To run the component you should navigate to `<your domain>/index.php/component/sendmail`.
+To run the component you should navigate to `<your domain>/index.php?option=com_sendmail`.
 
 The component will display a form which will:
 - let you select whether you want to send the email using `Mail` or `MailTemplate`, and,

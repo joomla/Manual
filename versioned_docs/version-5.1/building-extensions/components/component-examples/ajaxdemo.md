@@ -15,7 +15,7 @@ simply change the url in media/js/divide.js to point to com_ajax instead of com_
 
 Once you have downloaded the source, zip up the com_ajaxdemo directory and install the component.
 
-Then go to `<your domain>/index.php/component/ajaxdemo` to run it on your Joomla instance.
+Then go to `<your domain>/index.php?option=com_ajaxdemo` to run it on your Joomla instance.
 
 The component displays a form to capture two numbers A and B, and a button to calculate A/B. 
 The division is performed by an Ajax call to the server, and if B is zero then an exception is raised.
@@ -41,7 +41,7 @@ Based on this the default Dispatcher will instantiate this component's AjaxContr
 
 Path: components/com_ajaxdemo/src/Controller/DisplayController.php
 
-This controller's display method is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php/component/ajaxdemo`).
+This controller's display method is what is run when you go to your site page which displays the form (ie navigate to the URL `.../index.php?option=com_ajaxdemo`).
 
 It gets the associated Model and View classes, and calls display() on the View instance.
 
@@ -63,7 +63,7 @@ Path: components/com_ajaxdemo/tmpl/ajaxdemo/default.php
 
 This uses the [Web Asset Manager](../../../general-concepts/web-asset-manager.md) to attach the JavaScript divide.js which initiates the Ajax call.
 
-It passes the root URL of your Joomla instance to the JavaScript code using [passing variables to Javascript](../../../general-concepts/javascript/adding-javascript#passing-variables-to-javascript)
+It passes the root URL of your Joomla instance to the JavaScript code using [passing variables to Javascript](../../../general-concepts/javascript/adding-javascript.md#passing-variables-to-javascript)
 as this makes the job of forming the URLs easier.
 
 Then it outputs the `<form>` html, including the button with the onclick listener to run the divide.js code.
