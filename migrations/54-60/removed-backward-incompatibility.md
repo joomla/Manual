@@ -274,6 +274,13 @@ ActionlogsHelper::getLogContentTypeParams('context');
 Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
     ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```
+
+
+### CMS Adapter classes have been remoed
+
+- PR: https://github.com/joomla/joomla-cms/pull/43794
+- Description: The classes `\Joomla\CMS\Adapter\Adapter` and `\Joomla\CMS\Adapter\AdapterInstance` have been removed without replacement.
+
 ## Remove deprecated BaseApplication and CLI classes
 - PR: https://github.com/joomla/joomla-cms/pull/42884
 - Files: `libraries/src/Application/BaseApplication.php`, `libraries/src/Application/CLI.php`
