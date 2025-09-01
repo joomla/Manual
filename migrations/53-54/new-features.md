@@ -27,7 +27,6 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45143](https://github.com/joomla/joomla-cms/pull/45143) Add Automated Core Updates client functionality
 * [45517](https://github.com/joomla/joomla-cms/pull/45517) Add Automated Updates information as fieldset description
 * [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve Automated Update UX for local sites
-* [45685](https://github.com/joomla/joomla-cms/pull/45685) Notify all super users of Automated Updates
 * [45669](https://github.com/joomla/joomla-cms/pull/45669) Improve Automated Update Quickicon language keys and icon
 * [45697](https://github.com/joomla/joomla-cms/pull/45697) Allow opt-out from automated updates during installation
 * [45721](https://github.com/joomla/joomla-cms/pull/45721) Autoupdate email groups
