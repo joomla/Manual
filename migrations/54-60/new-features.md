@@ -12,6 +12,9 @@ New Features
 All the new features that have been added to this version.
 Any changes in best practice.
 
+### Batched tag enhancement
+
+It is now possible to batch remove a tag. PR: https://github.com/joomla/joomla-cms/pull/40613
 
 ## Modification fields header tag & module tag add custom options in XML
 - **PR**: [#35184](https://github.com/joomla/joomla-cms/pull/35184) by **korenevskiy**  
@@ -318,4 +321,3 @@ Any changes in best practice.
 - **Impact**: Standardises layout hidden fields via Form API.
 
 ---
-
