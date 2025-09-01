@@ -35,3 +35,27 @@ Factory::getApplication()->input->get('foo');
 $app->getInput()->get('foo');
 Factory::getApplication()->getInput()->get('foo');
 ```
+
+### Featured articles are integrated into articles 
+
+Since the first Joomla version, the code for featured articles was a duplicate of the articles code, with only minor differences.
+Now, featured articles are integrated into articles. This change affects only the administrator.
+
+PR: https://github.com/joomla/joomla-cms/pull/43907
+
+Deprecated: `Joomla\Component\Content\Administrator\Model\FeaturedModel`
+Use `Joomla\Component\Content\Administrator\Model\ArticlesModel` with `filter.featured = 1` instead.
+
+New code:
+```php
+        $model = $app->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Administrator', ['ignore_request' => true]);
+        $model->setState('filter.featured', '1');
+```
+
+New menu link to featured articles: `administrator/index.php?option=com_content&view=articles&filter[featured]=1`
+ 
+	
+Deprecated: `Joomla\Component\Content\Administrator\Controller\FeaturedController`
+Use `Joomla\Component\Content\Administrator\Controller\ArticlesController` instead.
+ 
+Deprecated without replacement: `HtmlView` - View class for a list of featured articles
