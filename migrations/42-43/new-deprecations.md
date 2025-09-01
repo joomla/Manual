@@ -2,8 +2,9 @@
 sidebar_position: 2
 ---
 
-New deprecations
-===============
+New Deprecations
+================
+
 All the new deprecations that should be aware of and what you should now be using instead.
 
 :::caution TODO
@@ -12,7 +13,7 @@ This page is unfinished, please use the **Edit this Page** link at the bottom of
 
 :::
 
-# File deprecations
+## File Deprecations
 
 As part of restructuring it's possible that files get moved or classes get a namespace.
 Normally when a class get a namespace or gets moved to a new directory we also remove
@@ -23,7 +24,7 @@ for legacy reasons. For example in Joomla 4 component helpers get moved from
 get a namespace `\Joomla\Component\Banners\Administrator\Helper\BannersHelper`.
 
 The class will be aliased in `libraries/classmap.php` or `libraries/extensions.classmap.php`.
-In the next major version all aliases will be moved to the combat plugin. The file will be
+In the next major version all aliases will be moved to the compat plugin. The file will be
 kept till the next major version, in this version file and alias will be removed.
 
 :::caution TODO
@@ -32,7 +33,7 @@ The section above should be moved to the deprecation strategy.
 
 :::
 
-Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
+Planned to be removed in Joomla! 6.0 alias added to the compat plugin in 5.0.
 
 * administrator/components/com_banners/helpers/banners.php
 * administrator/components/com_categories/helpers/categories.php
@@ -56,7 +57,7 @@ Planned to be removed in Joomla! 6.0 alias added to the combat plugin in 5.0.
 * components/com_newsfeeds/helpers/route.php
 * components/com_tags/helpers/route.php
 
-# Classes made final
+## Classes Made Final
 
 ##### \Joomla\CMS\Log\DelegatingPsrLogger
 File: libraries/src/Log/DelegatingPsrLogger.php
@@ -66,7 +67,7 @@ Class becomes final and marked internal, therefore it cannot be overridden ([rea
 * libraries/src/Image/Image.php
 
 
-# Class deprecations
+## Class Deprecations
 
 Planned to be removed in Joomla! 6.0
 
@@ -171,12 +172,12 @@ File: components/com_tags/helpers/route.php
 Replacement: Joomla\Component\Tags\Site\Helper\RouteHelper  
 
 
-# Language strings
+## Language Strings
 
 File: administrator/language/en-GB/com_users.ini  
 Strings: COM_USERS_MAIL_PLEASE_FILL_IN_THE_FORM_CORRECTLY, COM_USERS_MAIL_PLEASE_FILL_IN_THE_MESSAGE, COM_USERS_MAIL_PLEASE_FILL_IN_THE_SUBJECT, COM_USERS_MAIL_PLEASE_SELECT_A_GROUP
 
-# Method deprecations
+## Method Deprecations
 
 Planned to be removed in Joomla! 6.0
 

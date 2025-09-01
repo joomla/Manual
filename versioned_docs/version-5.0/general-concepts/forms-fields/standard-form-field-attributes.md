@@ -86,7 +86,7 @@ addfilterprefix="My\Component\Example\Site\Filter"
 
 3. Use your filter against a field by specifying the attribute filter="myfilter".
 
-The [com_exampleform](../../building-extensions/components/example-form-component.md) component whose code you can find at [Example Form Component](https://github.com/joomla/manual-examples/tree/main/component-exampleform) contains an example of a custom filter.
+The [com_exampleform](../../building-extensions/components/component-examples/example-form-component.md) component whose code you can find at [Example Form Component](https://github.com/joomla/manual-examples/tree/main/component-exampleform) contains an example of a custom filter.
 
 ## hint
 

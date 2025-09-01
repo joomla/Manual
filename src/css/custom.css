@@ -33,6 +33,11 @@
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
 }
 
+.theme-doc-markdown.markdown {
+  --ifm-link-decoration: underline;
+  --ifm-link-hover-decoration: none;
+}
+
 .theme-doc-markdown.markdown img {
   filter: drop-shadow(0.35rem 0.35rem 0.23rem #4A5568);
 }

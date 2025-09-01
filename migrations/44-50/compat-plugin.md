@@ -2,7 +2,8 @@
 sidebar_position: 4
 ---
 
-# Compatibility Plugin
+Compatibility Plugin
+====================
 
 As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility between Joomla 5 and 4.
 The plugin is implemented as "Behaviour" plugin type to guarantee that is loaded before any other plugin is loaded.
@@ -23,7 +24,7 @@ code to the current standard.
 
 Starting with Joomla 6 it's planned that deprecated code get removed finally. Especially for code provided by this plugin.
 
-## Why should you try to disable the plugin?
+## Why Should You Try to Disable the Plugin?
 
 The plugin loads additional code which impacts page load times. The numbers for the options are:
 
@@ -46,7 +47,7 @@ again. This can be achieved by editing the `enabled` column in the `#__extension
 
 :::
 
-We are urging extension developers to test there extension with the combat plugin disabled.
+We are urging extension developers to test there extension with the compat plugin disabled.
 
 :::warning Disabling the compatibility plugin
 
@@ -601,7 +602,7 @@ will be moved to this plugin.
 * JHtmlTel => \Joomla\CMS\HTML\Helpers\Telephone
 * JHtmlUser => \Joomla\CMS\HTML\Helpers\User
 
-## Class Aliases which will not be moved to the plugin
+## Class Aliases That Will Not Be Moved to the Plugin
 
 Some class aliases can't be removed at this version because they are use in core or saved in the database
 
@@ -609,7 +610,7 @@ TODO Evaluate this alias, it's used in all xml files for filterText
 
 * JComponentHelper => \Joomla\CMS\Component\ComponentHelper
 
-## Webassets es5 entries
+## Webassets `es5` Entries
 
 The es5 entries has been removed in 5.0 since no browser which doesn't support es6+ is maintained any more.
 The way our Webassetmanager works doesn't allow us to simply remove assets. For this reason we have all 
@@ -701,7 +702,7 @@ Removed entries:
 * template.atum-es5
 * keepalive.es5
 
-## Webasset com_scheduler.admin-view-select-task-css entry
+## Webasset `com_scheduler.admin-view-select-task-css` Entry
 
 The `com_scheduler.admin-view-select-task-css` has been removed in 5.0 and is provided as empty shim if an 
 extension depends on this webasset.
