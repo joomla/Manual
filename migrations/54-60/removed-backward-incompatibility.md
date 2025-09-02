@@ -244,6 +244,21 @@ $table = new \Joomla\CMS\Table\Content($db);
 - File: libraries/src/Application/WebApplication.php
 - Description: The `$item_associations` was added to the `WebApplication` class for improved PHP 8.2 compatibility and is not used at all.
 
+
+### fetchExtensionCompatibility of the UpdateController got removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/45436
+- File: administrator/components/com_joomlaupdate/src/Controller/UpdateController.php
+- Description: The `fetchExtensionCompatibility` function in the the `UpdateController` class got removed as the `batchextensioncompatibility` should be used:
+
+```php
+// Old:
+$updateController->fetchExtensionCompatibility();
+
+// New:
+$updateController->batchextensioncompatibility();
+```
+
 ## `dispatchEvent` Proxy Functions Removed in View and Model
 
 - PR: https://github.com/joomla/joomla-cms/pull/45431
@@ -274,7 +289,6 @@ ActionlogsHelper::getLogContentTypeParams('context');
 Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
     ->createModel('ActionlogConfig', 'Administrator')->getLogContentTypeParams('context');
 ```
-
 
 ### CMS Adapter classes have been remoed
 
@@ -308,3 +322,4 @@ Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
   Restoring historical versions also restores linked metadata.  
   Extensions interacting with `#__ucm_history` may require schema or API updates.  
   **(more detail needed: schema differences and migration examples)**
+
