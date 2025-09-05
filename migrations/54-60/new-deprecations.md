@@ -53,7 +53,7 @@ Replacement: New `batchTags` function which has an additional optional parameter
 ### Featured articles are integrated into articles 
 
 Since the first Joomla version, the code for featured articles was a duplicate of the articles code, with only minor differences.
-Now, featured articles are integrated into articles. This change affects only the administrator.
+Featured articles are integrated into articles. Changes only affect the backend; nothing changes in the frontend. 
 
 PR: https://github.com/joomla/joomla-cms/pull/43907
 
@@ -63,7 +63,7 @@ Use `Joomla\Component\Content\Administrator\Model\ArticlesModel` with `filter.fe
 New code:
 ```php
         $model = Factory::getApplication()->bootComponent('com_content')->getMVCFactory()->createModel('Articles', 'Administrator', ['ignore_request' => true]);
-        $model->setState('filter.featured', '1');
+        $model->setState('filter.featured', 1);
 ```
 
 New menu link to featured articles: `administrator/index.php?option=com_content&view=articles&filter[featured]=1`
