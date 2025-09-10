@@ -30,4 +30,4 @@ The resulting value includes the year, month, and day, but not the time. The tim
 
 ## Screenshot
 
-[Example form containing a date field](./_assets/date-time-fields.png)
+![Example form containing a date field](./_assets/date-time-fields.png)

@@ -1,13 +1,12 @@
 ---
 sidebar_position: 2
-title: Date-Time Local Form Field
+title: Datetime Form Field
 ---
 
-Date-Time Local Form Field
-==========================
+Datetime Form Field
+===================
 
-`<input>` elements of type datetime-local create input controls that let the user easily enter both a date and a time, including the year, month, and day as well as the time in hours and minutes.
-
+`<input>` elements of type datetime create input controls that let the user easily enter both a date and a time, including the year, month and day as well as the time in hours and minutes. Filters are available to set the date and time to either the Server or User timezone.
 
 ## Fields
 
@@ -15,6 +14,7 @@ Date-Time Local Form Field
 - **name** any name to distinguish field this from all others.
 - **label** the translatable label displayed for data entry.
 - **description** the translatable description displayed for data entry.
+- **filter** may be *SERVER_UTC* or *USER_UTC*. The default is *SERVER_UTC*.
 
 ## Example XML parameter definition
 
@@ -30,4 +30,4 @@ Date-Time Local Form Field
 
 ## Screenshot
 
-[Example form containing a date-time field](./_assets/date-time-fields.png)
+![Example form containing a date-time field](./_assets/date-time-fields.png)
