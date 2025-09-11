@@ -295,16 +295,6 @@ It is now possible to batch remove a tag. PR: https://github.com/joomla/joomla-c
 
 ---
 
-## Extend versioning, save related information in history table
-- **PR**: [#45515](https://github.com/joomla/joomla-cms/pull/45515) by **rdeutz**  
-- **Usage**:
-  ```php
-  class MyModel extends AdminModel implements VersionableModelInterface { use VersionableModelTrait; }
-  ```  
-- **Impact**: Versioning now restores custom fields & tags.
-
----
-
 ## Improve ListView toolbar & components
 - **PR**: [#45521](https://github.com/joomla/joomla-cms/pull/45521) by **bembelimen**  
 - **Usage**: Extend `ListView` base for custom components.  

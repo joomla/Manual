@@ -316,10 +316,3 @@ Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
   Extensions or scripts that called this method will break and need to be updated to use the new update handling logic.  
   **(more detail needed: replacement approach)**
 
-## Extend versioning, save related information in history table and restore historical data
-- PR: https://github.com/joomla/joomla-cms/pull/45515
-- Description: The versioning system now stores additional related data in the history table.  
-  Restoring historical versions also restores linked metadata.  
-  Extensions interacting with `#__ucm_history` may require schema or API updates.  
-  **(more detail needed: schema differences and migration examples)**
-
