@@ -3,23 +3,42 @@ sidebar_position: 2
 title: Moduletag Form Field
 ---
 
-The **moduletag** form field type provides a dropdown list of html5 elements (used to wrap a module in).
+The **moduletag** form field type provides a dropdown list of tags for a module wrapper. The preset list of tags includes address, article, aside, details, div, footer, header, main, nav, search, section and summary. Custom modules may specify additional tags.
 
-- **type** (mandatory) must be *moduletag*.
-- **name** (mandatory) is the unique name of the field.
-- **label** (mandatory) (translatable) is the field html label.
-- **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
+- **type** must be *moduletag*.
+- **name** is the unique name of the field.
+- **label** is a translatable label for the field.
+- **description** is an optional translatable [field description](../standard-form-field-attributes.md#description).
+- **default** is an optional default value.
 
 Implemented by: libraries/src/Form/Field/ModuletagField.php
 
-## Example XML parameter definition
+## Example XML parameter definitions
+
+Example definition that displays the preset list of module tags to choose from:
 
 ```xml
 <field
-        ame="module_tag" 
+        name="module_tag" 
         type="moduletag"
         label="COM_MODULES_FIELD_MODULE_TAG_LABEL"
         description="COM_MODULES_FIELD_MODULE_TAG_DESC"
         default="div"
 />
+```
+
+Example definition that displays the preset list of module tags with additional options:
+
+```xml
+    <field
+        name="module_tag" 
+        type="moduletag"
+        label="COM_MODULES_FIELD_MODULE_TAG_LABEL"
+        description="COM_MODULES_FIELD_MODULE_TAG_DESC"
+        default="div"
+    >
+        <option value="figure">figure</option> 
+        <option value="fieldset">fieldset</option>
+        <option value="li">li</option> 
+    </field>
 ```
