@@ -9,7 +9,7 @@ All new functions that have been added to version 5.4, as well as all enhancemen
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  The new features up to and including 5.4.0-beta2 are listed.
+  The new features up to and including 5.4.0-beta3 are listed.
 :::
 
 ## Automated Core Updates
@@ -62,6 +62,7 @@ Please ensure the test instance is accessible from the Internet
 1. New *None* options improve filtering and display of items without authors, tags, users or field groups.
 2. New *Checked_out* filter for articles in the administrator backend and API.
 3. New parameter *Year Sort Order* for archived articles.
+4. New GitHub Codespace provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access.
 
 <details>
   <summary>Pull Requests in Detail</summary>
@@ -86,4 +87,8 @@ Please ensure the test instance is accessible from the Internet
 
   3. New parameter *Year Sort Order* for archived articles.
      * [45841](https://github.com/joomla/joomla-cms/pull/45841) Add year filter order parameter for archived articles
+
+  4. New GitHub Codespace provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access.
+     * [45950](https://github.com/joomla/joomla-cms/pull/45950) Add Support for GitHub Codespaces
+     * See [Testing/Manual Testing/GitHub Codespaces](https://manual.joomla.org/docs/5.4/testing/manually/github-codespaces/)
 </details>
