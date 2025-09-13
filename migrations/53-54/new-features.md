@@ -62,7 +62,7 @@ Please ensure the test instance is accessible from the Internet
 1. New *None* options improve filtering and display of items without authors, tags, users or field groups.
 2. New *Checked_out* filter for articles in the administrator backend and API.
 3. New parameter *Year Sort Order* for archived articles.
-4. New GitHub Codespace provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access.
+4. New cloud-based development and testing environment using GitHub Codespaces.
 
 <details>
   <summary>Pull Requests in Detail</summary>
@@ -88,7 +88,7 @@ Please ensure the test instance is accessible from the Internet
   3. New parameter *Year Sort Order* for archived articles.
      * [45841](https://github.com/joomla/joomla-cms/pull/45841) Add year filter order parameter for archived articles
 
-  4. New GitHub Codespace provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access.
+  4. New cloud-based development and testing environment using GitHub Codespaces.
      * [45950](https://github.com/joomla/joomla-cms/pull/45950) Add Support for GitHub Codespaces
-     * See [Testing/Manual Testing/GitHub Codespaces](https://manual.joomla.org/docs/5.4/testing/manually/github-codespaces/)
+     * This provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access, see [Testing/Manual Testing/GitHub Codespaces](https://manual.joomla.org/docs/5.4/testing/manually/github-codespaces/).
 </details>
