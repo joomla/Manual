@@ -21,7 +21,7 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 - `popupType` (string) The popup type, supported: `inline`, `iframe`, `image`, `ajax`.
 - `src` (string) Source path for iframe, image, ajax.
 - `popupContent` (string|HTMLElement|HTMLTemplateElement) Content for inline type popup.
-- `cancelable` (boolean) Whether popup can be closed by `Esc` button.
+- `cancelable` (boolean) Whether popup can be closed by `Esc` button. (default = true)
 - `textClose` (string) An optional text for close button. Applied when no Buttons provided.
 - `textHeader` (string) An optional text for header.
 - `iconHeader` (string) An optional Class names for header icon.
