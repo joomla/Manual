@@ -19,9 +19,9 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 ## Properties
 
 - `popupType` (string) The popup type, supported: `inline`, `iframe`, `image`, `ajax`.
-- `src` (string) Source path for iframe, image, ajax.
+- `src` (string) Source path for iframe, image, ajax, or query for HTML element (for `inline` type).
 - `popupContent` (string|HTMLElement|HTMLTemplateElement) Content for inline type popup.
-- `cancelable` (boolean) Whether popup can be closed by `Esc` button. (default = true)
+- `cancelable` (boolean) Whether popup can be closed by `Esc` button. (default `true`)
 - `textClose` (string) An optional text for close button. Applied when no Buttons provided.
 - `textHeader` (string) An optional text for header.
 - `iconHeader` (string) An optional Class names for header icon.
@@ -139,6 +139,25 @@ const dialog = new JoomlaDialog({
 });
 dialog.show();
 
+```
+
+#### Example for `inline` content from `<template>` element:
+
+```html
+<template id="my-inline-content">
+    <p class="p-3">Cat ipsum dolor sit amet, meow go back to sleep owner brings food and water tries to pet on head</p>
+</template>
+```
+```javascript
+import JoomlaDialog from 'joomla.dialog';
+
+// Inline 
+const dialog = new JoomlaDialog({
+  type: 'inline',
+  textHeader: 'The header',
+  src: '#my-inline-content',
+});
+dialog.show();
 ```
 
 
