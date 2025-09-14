@@ -152,8 +152,8 @@ dialog.show();
 import JoomlaDialog from 'joomla.dialog';
 
 // Inline 
-const dialog = new JoomlaDialog({
-  type: 'inline',
+const dialog = new JoomlaDialog(
+  popupType: 'inline',
   textHeader: 'The header',
   src: '#my-inline-content',
 });
