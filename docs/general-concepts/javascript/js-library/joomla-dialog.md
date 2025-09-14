@@ -141,21 +141,35 @@ dialog.show();
 
 ```
 
-#### Example for `inline` content from `<template>` element:
+#### Example for `inline` content from `<template>` and `<div>` element:
 
 ```html
-<template id="my-inline-content">
-    <p class="p-3">Cat ipsum dolor sit amet, meow go back to sleep owner brings food and water tries to pet on head</p>
+<template id="my-inline-content-from-template">
+    <p class="p-3">Cat ipsum dolor sit amet, 
+        meow go back to sleep owner brings food and water tries to pet on head</p>
 </template>
+
+<div id="my-inline-content-from-div">
+	<p class="p-3">Cat ipsum dolor sit amet, 
+        meow go back to sleep owner brings food and water tries to pet on head</p>
+</div>
 ```
 ```javascript
 import JoomlaDialog from 'joomla.dialog';
 
-// Inline 
+// Inline from <template>
 const dialog = new JoomlaDialog(
   popupType: 'inline',
   textHeader: 'The header',
-  src: '#my-inline-content',
+  src: '#my-inline-content-from-template',
+});
+dialog.show();
+
+// Inline from <div>
+const dialog = new JoomlaDialog(
+    popupType: 'inline',
+    textHeader: 'The header',
+    src: '#my-inline-content-from-div',
 });
 dialog.show();
 ```
