@@ -143,6 +143,9 @@ dialog.show();
 
 #### Example for `inline` content from `<template>` and `<div>` element:
 
+For inline content it possible to use `<template>` (or existing element on the page) instead of adding large amount of HTML in to `popupContent` parameter.
+For common use is preferable to use `<template>` element. Use an existing elements only when you need to show existing element in popup (example hidden part of the form). 
+
 ```html
 <template id="my-inline-content-from-template">
     <p class="p-3">Cat ipsum dolor sit amet, 
