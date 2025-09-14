@@ -167,9 +167,9 @@ dialog.show();
 
 // Inline from <div>
 const dialog = new JoomlaDialog(
-    popupType: 'inline',
-    textHeader: 'The header',
-    src: '#my-inline-content-from-div',
+  popupType: 'inline',
+  textHeader: 'The header',
+  src: '#my-inline-content-from-div',
 });
 dialog.show();
 ```
