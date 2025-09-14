@@ -19,7 +19,7 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 ## Properties
 
 - `popupType` (string) The popup type, supported: `inline`, `iframe`, `image`, `ajax`.
-- `src` (string) Source path for iframe, image, ajax, or query for HTML element (for `inline` type).
+- `src` (string) Source path for iframe, image, ajax, or CSS selector for HTML element (for `inline` type).
 - `popupContent` (string|HTMLElement|HTMLTemplateElement) Content for inline type popup.
 - `cancelable` (boolean) Whether popup can be closed by `Esc` button. (default `true`)
 - `textClose` (string) An optional text for close button. Applied when no Buttons provided.
@@ -143,8 +143,8 @@ dialog.show();
 
 #### Example for `inline` content from `<template>` and `<div>` element:
 
-For inline content it possible to use `<template>` (or existing element on the page) instead of adding large amount of HTML in to `popupContent` parameter.
-For common use is preferable to use `<template>` element. Use an existing elements only when you need to show existing element in popup (example hidden part of the form). 
+For inline content it is possible to use `<template>` (or existing element on the page) instead of adding large amount of HTML in to `popupContent` parameter.
+For common use it is preferable to use `<template>` element. Use an existing elements only when you need to show existing element in popup (example hidden part of the form). 
 
 ```html
 <template id="my-inline-content-from-template">
