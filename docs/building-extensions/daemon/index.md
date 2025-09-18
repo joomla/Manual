@@ -68,7 +68,7 @@ class MyDaemon extends \Joomla\CMS\Application\DaemonApplication
         parent::__construct(null, $config);
     }
 
-    // This function needs to be implmented since it's required by the CMSApplicationInterface  
+    // This function needs to be implemented since it's required by the CMSApplicationInterface  
     public function getName() {
       return $this->name;
    }
