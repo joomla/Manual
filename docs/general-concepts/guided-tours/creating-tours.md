@@ -39,7 +39,7 @@ On save or duplicate, a suggested identifier string is created.
 
 ### The language files
 
-Not all tours need language files, especially if you are only targetting a one-language audience.
+Not all tours need language files, especially if you are only targeting a one-language audience.
 But if you do need them, the files need to follow the new convention didacted by the identifier.
 
 For instance, for the tour with identifier `joomla-welcome`, the language files will be:
