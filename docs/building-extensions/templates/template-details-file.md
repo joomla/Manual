@@ -28,8 +28,8 @@ The sections are defined as:
 </extension>
 ```
 
-Since 5.1 in the config section the Menu Assignement tab can be overriden through the config part of the templateDetails.xml.
-So an example entry as the following will override the Menu Assignement tab contents with a field named menus:
+Since 5.1 in the config section the Menu Assignment tab can be overridden through the config part of the templateDetails.xml.
+So an example entry as the following will override the Menu Assignment tab contents with a field named menus:
 
 ```xml
 <fields name="assigned">
