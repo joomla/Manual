@@ -10,7 +10,7 @@ A package is a special type of Joomla extension which is used to install multipl
 
 ## Creating a Package
 
-A package extension is created by zipping all .zip files of the indivudal extensions together with a package xml manifest file. For example, if you have a package composed of the following constituents:
+A package extension is created by zipping all .zip files of the individual extensions together with a package xml manifest file. For example, if you have a package composed of the following constituents:
 
 - component helloworld
 - module helloworld
