@@ -40,14 +40,14 @@ The properties of Joomla Dialog are immutable, they can be set only before rende
 Any property can be set as instance property or in class constructor. This two is equal:
 
 ```javascript
-// Proprty in class constructor
+// Property in class constructor
 const dialog = new JoomlaDialog({
   textHeader: 'The header',
   popupContent: '<p class="p-3">Popup content text</p>',
 });
 dialog.show();
 
-// Proprty in to class instance
+// Property in to class instance
 const dialog = new JoomlaDialog();
 dialog.textHeader = 'The header';
 dialog.popupContent = '<p class="p-3">Popup content text</p>';
