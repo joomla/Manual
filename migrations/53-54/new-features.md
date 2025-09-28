@@ -9,7 +9,7 @@ All new functions that have been added to version 5.4, as well as all enhancemen
 
 :::tip[Developer & Tester Note]
   Since this version of Joomla has not been released yet, this page can change anytime.
-  The new features up to and including 5.4.0-beta3 are listed.
+  The new features up to and including 5.4.0-rc1 are listed.
 :::
 
 ## Automated Core Updates
