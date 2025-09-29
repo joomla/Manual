@@ -18,8 +18,7 @@ Setting some of the user attributes impacts the user's ability to log on – e.g
 To get the User object for the currently logged-on user:
 
 ```php
-use Joomla\CMS\Factory;
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 ```
 
 If no user is logged on then `Factory::getApplication()->getIdentity()` returns a "blank" user object, with the `id` field set to 0 (zero).
@@ -27,23 +26,23 @@ If no user is logged on then `Factory::getApplication()->getIdentity()` returns 
 To get information about any other registered user you can use functions of the [UserFactory](cms-api://classes/Joomla-CMS-User-UserFactory.html) class (which you get from the Dependency Injection Container)
 
 ```
-use Joomla\CMS\User\UserFactoryInterface;
-...
 // Get the UserFactory 
-$userFactory = Factory::getContainer()->get(UserFactoryInterface::class);
+$userFactory = Factory::getContainer()->get(\Joomla\CMS\User\UserFactoryInterface::class);
 // to get User object for user with id = 99
 $user = $userFactory->loadUserById(99);
 // to get User object for user with username = "joomuser"
 $user = $userFactory->loadUserByUsername("joomuser");
 ```
 
+:::note[Developer Note]
+  Do not instance the object directly, use the factory from the container for future prove code.
+:::
+
 Another way commonly used within the Joomla code to get a User object is by instantiating it directly. If you pass the id of a user then it will load that User object:
 
 ```php
-use Joomla\CMS\User\User;
-...
 $id = 99;
-$user = new User($id);
+$user = new \Joomla\CMS\User\User($id);
 ```
 
 However instantiating classes like this (rather than via factory methods obtained from the Dependency Injection Container) does make it harder for you to mock classes for unit testing. 
@@ -91,8 +90,7 @@ The user attributes that are stored in the `params` field in the database, and t
 For example, to get the user's preferred front-end language call the `getParam()` member function of the `User` object, passing in the name of the parameter you want (i.e. 'language') along with a default value in case it is blank.
 
 ```php
-use Joomla\CMS\Factory;
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 $language = $user->getParam('language', 'the default');
 
 echo "<p>Your Frontend language is set to {$language}.</p>";
@@ -103,7 +101,7 @@ echo "<p>Your Frontend language is set to {$language}.</p>";
 Frequently, you will just want to make sure the user is logged in before continuing. The `guest` property will be set to '1' when the current user is not logged in. When the user is authenticated, `guest` will be set to '0'.
 
 ```php
-$user = JFactory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 if ($user->guest) {
 	echo "<p>You must login to see this content.</p>";
 } else {
@@ -124,7 +122,7 @@ There are 4 method calls in the User API relating to privileges
 The `authorise()` member function can be used to determine if the current user has permission to do a certain task. The first parameter is used to identify which task we wish to check being allowed. The second represents the component we wish to retrieve the ACL information from.
 
 ```php
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 
 if ($user->authorise('core.edit', 'com_content'))
 {
@@ -205,7 +203,7 @@ You can similarly use the above mechanism to insert new user records, the only d
 To delete a user record you first load it from the database then use the `delete()` method, eg:
 
 ```php
-$user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById(99);
+$user = \Joomla\CMS\Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById(99);
 $user->delete();
 ```
 

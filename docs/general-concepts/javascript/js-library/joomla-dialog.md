@@ -19,9 +19,9 @@ Provides helper to bind page button/anchor to show the popup, for basic stuff, w
 ## Properties
 
 - `popupType` (string) The popup type, supported: `inline`, `iframe`, `image`, `ajax`.
-- `src` (string) Source path for iframe, image, ajax.
+- `src` (string) Source path for iframe, image, ajax, or CSS selector for HTML element (for `inline` type).
 - `popupContent` (string|HTMLElement|HTMLTemplateElement) Content for inline type popup.
-- `cancelable` (boolean) Whether popup can be closed by `Esc` button.
+- `cancelable` (boolean) Whether popup can be closed by `Esc` button. (default `true`)
 - `textClose` (string) An optional text for close button. Applied when no Buttons provided.
 - `textHeader` (string) An optional text for header.
 - `iconHeader` (string) An optional Class names for header icon.
@@ -40,14 +40,14 @@ The properties of Joomla Dialog are immutable, they can be set only before rende
 Any property can be set as instance property or in class constructor. This two is equal:
 
 ```javascript
-// Proprty in class constructor
+// Property in class constructor
 const dialog = new JoomlaDialog({
   textHeader: 'The header',
   popupContent: '<p class="p-3">Popup content text</p>',
 });
 dialog.show();
 
-// Proprty in to class instance
+// Property in to class instance
 const dialog = new JoomlaDialog();
 dialog.textHeader = 'The header';
 dialog.popupContent = '<p class="p-3">Popup content text</p>';
@@ -139,6 +139,43 @@ const dialog = new JoomlaDialog({
 });
 dialog.show();
 
+```
+
+### Example for `inline` content from `<template>` and `<div>` element:
+
+For inline content it is possible to use [`<template>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/template) (or existing element on the page) instead of adding large amount of HTML in to `popupContent` parameter.
+The `<template>` creates a copy of the content and other elements uses the content directly from the DOM.
+For common cases it is preferable to use `<template>` element.
+
+```html
+<template id="my-inline-content-from-template">
+    <p class="p-3">Cat ipsum dolor sit amet, 
+        meow go back to sleep owner brings food and water tries to pet on head</p>
+</template>
+
+<div id="my-inline-content-from-div">
+	<p class="p-3">Cat ipsum dolor sit amet, 
+        meow go back to sleep owner brings food and water tries to pet on head</p>
+</div>
+```
+```javascript
+import JoomlaDialog from 'joomla.dialog';
+
+// Inline from <template>
+const dialog = new JoomlaDialog(
+  popupType: 'inline',
+  textHeader: 'The header',
+  src: '#my-inline-content-from-template',
+});
+dialog.show();
+
+// Inline from <div>
+const dialog = new JoomlaDialog(
+  popupType: 'inline',
+  textHeader: 'The header',
+  src: '#my-inline-content-from-div',
+});
+dialog.show();
 ```
 
 
