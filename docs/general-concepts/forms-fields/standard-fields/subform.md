@@ -21,7 +21,7 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 - **min** (optional) count of minimum repeating in multiple mode. Default: 0.
 - **max** (optional) count of maximum repeating in multiple mode. Default: 1000.
 - **groupByFieldset** (optional) whether to group the subform fields by its fieldset (true or false). Default: false.
-- **buttons** (optional) which buttons to show in multiple mode. Default: add,remove,move. Empty string sets default, to have no buttons set `buttons="none"`
+- **buttons** (optional) which buttons to show in multiple mode. Default: add,remove,move. `buttons=""` sets default, to have no buttons set `buttons="none"`
 - **layout** (optional) the name of the layout to use when displaying subform fields.  
   Available layouts:  
   `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.  
