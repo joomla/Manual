@@ -292,7 +292,7 @@ It is now possible to batch remove a tag. PR: https://github.com/joomla/joomla-c
 - **PR**: [#45426](https://github.com/joomla/joomla-cms/pull/45426) by **Fedik**  
 - **Usage**: Subscribe to `onBeforeExecute` to hook before app runs.  
 - **Impact**: Enables pre-routing plugins.
-- **Note**: The language available only onAfterInitialise event, and if you're trying to use language in the plugin constructor consider to move this logic in to the even callback.
+- **Note**: The language available only onAfterInitialise event, and if you're trying to use language in the plugin constructor consider to move this logic in to the event callback.
 
 ---
 
