@@ -5,11 +5,6 @@ sidebar_position: 2
 New Deprecations
 ================
 
-:::tip[Developer Note]
-  This version of Joomla has not yet been released, so this page is subject to change at any time.
-  Deprecations added up to and including version 5.4.0-rc1 are listed below.
-:::
-
 New deprecations to be aware of — and the recommended alternatives.
 For previously existing deprecations where the Joomla version in which they take effect has changed,
 see the [Changed Deprecations](../changed-deprecations) page.

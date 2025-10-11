@@ -7,11 +7,6 @@ New Features
 
 All new functions that have been added to version 5.4, as well as all enhancements to existing functionality.
 
-:::tip[Developer & Tester Note]
-  Since this version of Joomla has not been released yet, this page can change anytime.
-  The new features up to and including 5.4.0-rc1 are listed.
-:::
-
 ## Automated Core Updates
 
 Joomla 5.4 introduces Automated Core Updates for minor, patch and security releases.
@@ -33,11 +28,11 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
 </details>
 
-You can pre-test an automated update with Joomla 5.4.0 beta versions by installing the
+You can test an automated update with Joomla 5.4 by installing the
 '[System - Alpha Update Server](https://github.com/joomla/joomla-cms/issues/45540)' plugin.
 Please ensure the test instance is accessible from the Internet
 (for example, by using [Launch your Joomla! site](https://launch.joomla.org/)) and
-**do not** use the beta release for production sites.
+**do not** use the Alpha Update Server for production sites.
 
 ## More Links for User-Friendliness
 
@@ -54,7 +49,8 @@ Please ensure the test instance is accessible from the Internet
        'Mail Templates' view from the Update Notification.
 
   2. Adding support for customisable registration menu link.
-      * [45715](https://github.com/joomla/joomla-cms/pull/45715) Add support for custom registration menu link in com_users login menu item
+      * [45715](https://github.com/joomla/joomla-cms/pull/45715) Add support for custom registration menu link
+        in com_users login menu item
 </details>
 
 ## Additional Enhancements
@@ -76,8 +72,8 @@ Please ensure the test instance is accessible from the Internet
        to select contacts without tags.
      * [45460](https://github.com/joomla/joomla-cms/pull/45460) New '- None -' tag filter option in the News Feeds view
        to select news feed entries without tags.
-     * [45461](https://github.com/joomla/joomla-cms/pull/45461) New '- None -' tag filter option in the Articles: Categories view
-       to select categories without tags.
+     * [45461](https://github.com/joomla/joomla-cms/pull/45461) New '- None -' tag filter option in the Articles:
+       Categories view to select categories without tags.
      * [45201](https://github.com/joomla/joomla-cms/pull/45201) Shows '[ None ]' in the field group column for a field
        unassigned to any field group.
      * [45223](https://github.com/joomla/joomla-cms/pull/45223) Shows '[ None ]' in the user column for a user note
@@ -90,5 +86,6 @@ Please ensure the test instance is accessible from the Internet
 
   4. New cloud-based development and testing environment using GitHub Codespaces.
      * [45950](https://github.com/joomla/joomla-cms/pull/45950) Add Support for GitHub Codespaces
-     * This provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access, see [Testing/Manual Testing/GitHub Codespaces](https://manual.joomla.org/docs/5.4/testing/manually/github-codespaces/).
+     * This provides Joomla, phpMyAdmin, interactive Cypress tests, VS Code and command-line access, see
+       [Testing/Manual Testing/GitHub Codespaces](https://manual.joomla.org/docs/5.4/testing/manually/github-codespaces/).
 </details>
