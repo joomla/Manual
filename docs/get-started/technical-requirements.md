@@ -17,7 +17,7 @@ Joomla! version. The *Minimum* versions are guaranteed to work. Older versions m
 | **Databases**      |             |         |          |
 | MySQL              | 8.4         | 8.0.13  | 8.0.13   |
 | MariaDB            | 12.0        | 10.6    | 10.4     |
-| PostgreSQL         | 17.6        | 14.0    | 12.0     |
+| PostgreSQL         | 17.6        | 14.0    | 14.0     |
 | **Web Servers**    |             |         |          |
 | Apache             | 2.4         | 2.4     |          |
 | Nginx              | 1.29        | 1.26    |          |
