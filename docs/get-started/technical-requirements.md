@@ -7,7 +7,7 @@ Technical Requirements
 ## Requirements for Supported Software
 
 In the following tables the *Recommended* versions of supporting software are known to work with the specified 
-Joomla! version. The *Minimum* versions are guaranteed to work and required for upgrading from previous Joomla versions.
+Joomla! version. The *Minimum* versions are guaranteed to work and required for upgrading from previous Joomla! versions.
 The *Required* versions may work for new installs. Older versions may work but are not supported.
 
 ### Requirements for Joomla! 6.x
