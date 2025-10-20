@@ -11,7 +11,7 @@ Joomla! version. The *Minimum* versions are guaranteed to work. Older versions m
 
 ### Requirements for Joomla! 6.x
 
-| Software           | Recommended | Minimum | Required |
+| Software           | Recommended | Supported | Minimum |
 |--------------------|-------------|---------|----------|
 | PHP                | 8.4         | 8.3.0   | 8.3.0    |
 | **Databases**      |             |         |          |
