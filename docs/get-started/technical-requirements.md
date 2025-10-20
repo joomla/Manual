@@ -5,6 +5,9 @@ Technical Requirements
 ======================
 
 ## Requirements for Supported Software
+- You should use at least the version listed in the **Recommended"**.
+- The minimum supported version is listed in the **Supported** column.
+- The version in the **Minimum** column is the absolute minimum, but it is not supported — if you choose to use it, you are responsible for resolving any issues that may arise.
 
 ### Requirements for Joomla! 6.x
 
