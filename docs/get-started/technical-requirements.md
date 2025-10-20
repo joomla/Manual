@@ -6,8 +6,6 @@ Technical Requirements
 
 ## Requirements for Supported Software
 
-The *Minimum* versions will work but they are not supported.
-
 ### Requirements for Joomla! 6.x
 
 | Software           | Recommended | Supported | Minimum |
