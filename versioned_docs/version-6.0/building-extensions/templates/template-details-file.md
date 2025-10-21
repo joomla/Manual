@@ -1,0 +1,175 @@
+templateDetails.xml
+==================
+
+The `templateDetails.xml` is the file that defines the installation instructions, the module positions and the style form for the template.
+The sections are defined as:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="template" client="site">
+	<name><!-- Name of the template go here --></name>
+	<version><!-- Version of the template go here --></version>
+	<creationDate><!-- Date of creation of the template go here --></creationDate>
+	<author><!-- Author's name of the template go here --></author>
+	<authorEmail><!-- Author's email of the template go here --></authorEmail>
+	<copyright>><!-- Copyright of the template go here --></copyright>
+	<description><!-- Description of the template go here --></description>
+  <namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
+	<inheritable>1</inheritable>
+	<files><!-- Files/Folders for the template folder entries go here --></files>
+	<media destination="templates/site/cassiopeia" folder="media"><!-- Folders for the static assets entries go here --></media>
+	<positions><!-- Positions entries go here --></positions>
+	<languages folder="language"><!-- Languages entries go here --></languages>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced"><!-- Fields definitions go here --></fieldset>
+		</fields>
+	</config>
+</extension>
+```
+
+Since 5.1 in the config section the Menu Assignment tab can be overridden through the config part of the templateDetails.xml.
+So an example entry as the following will override the Menu Assignment tab contents with a field named menus:
+
+```xml
+<fields name="assigned">
+  <fieldset name="assigned" addfieldprefix="YourNamespace\Templates\Field">
+    <field name="assigned" type="menus" />
+  </fieldset>
+</fields>
+```
+
+A sample code for the field `menus` follows:
+
+<details>
+<summary>`templates/templateName/src/Field/MenusField.php`</summary>
+
+```php
+<?php
+namespace YourNamespace\Templates\Field;
+
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Field\TextField;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\Component\Menus\Administrator\Helper\MenusHelper;
+
+
+// phpcs:disable PSR1.Files.SideEffects
+\defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
+
+
+class MenusField extends TextField
+{
+    protected $type = 'Menus';
+
+    public function setup(\SimpleXMLElement $element, $value, $group = null)
+    {
+        // Make sure there is a valid FormField XML element.
+        if ((string) $element->getName() !== 'field'){
+            return false;
+        }
+
+        // Reset the input and label values.
+        $this->input = null;
+        $this->label = null;
+
+        // Set the XML element object.
+        $this->element = $element;
+
+        // Set the group of the field.
+        $this->group = $group;
+
+        $attributes = [
+        'multiple', 'name', 'id', 'hint', 'class', 'description', 'labelclass', 'onchange', 'onclick', 'validate', 'pattern', 'validationtext',
+        'default', 'required', 'disabled', 'readonly', 'autofocus', 'hidden', 'autocomplete', 'spellcheck', 'translateHint', 'translateLabel',
+        'translate_label', 'translateDescription', 'translate_description', 'size', 'showon'];
+
+        $this->default = isset($element['value']) ? (string) $element['value'] : $this->default;
+
+        // Set the field default value.
+        $this->value = $value;
+
+        // Lets detect miscellaneous data attribute. For eg, data-*
+        foreach ($this->element->attributes() as $key => $value) {
+            if (strpos($key, 'data-') === 0) {
+                // Data attribute key value pair
+                $this->dataAttributes[$key] = $value;
+            }
+        }
+
+        foreach ($attributes as $attributeName) {
+            $this->__set($attributeName, $element[$attributeName]);
+        }
+
+        // Allow for repeatable elements
+        // $repeat = (string) $element['repeat'];
+        // $this->repeat = ($repeat === 'true' || $repeat === 'multiple' || (!empty($this->form->repeat) && $this->form->repeat == 1));
+
+        // Set the visibility.
+        $this->hidden = ($this->hidden || strtolower((string) $this->element['type']) === 'hidden');
+
+        $this->parentclass = isset($this->element['parentclass']) ? (string) $this->element['parentclass'] : $this->parentclass;
+
+        // Add required to class list if field is required.
+        if ($this->required) {
+            $this->class = trim($this->class . ' required');
+        }
+
+        // Hide the label
+        $this->hiddenLabel = true;
+        $this->hidden = true;
+
+        return true;
+    }
+
+    public function getInput() {
+        // Initialise related data.
+        $menuTypes = MenusHelper::getMenuLinks();
+        $user      = $this->getCurrentUser();
+        $app       = Factory::getApplication();
+        $currentId = $app->input->getInt('id');
+
+        /** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+        $wa = Factory::getApplication()->getDocument()->getWebAssetManager();
+        $wa->useScript('com_templates.admin-template-toggle-assignment');
+
+        $html = '<label id="jform_menuselect-lbl" for="jform_menuselect">'. Text::_('JGLOBAL_MENU_SELECTION') . '</label>'
+        .  '<div class="btn-toolbar">'
+        .    '<button class="btn btn-sm btn-secondary jform-rightbtn" type="button" onclick="Joomla.toggleAll()">'
+        .    '<span class="icon-square" aria-hidden="true"></span> ' . Text::_('JGLOBAL_SELECTION_INVERT_ALL') . '</button>'
+        .  '</div>'
+        .  '<div id="menu-assignment" class="menu-assignment">'
+        .    '<ul class="menu-links">';
+
+        foreach ($menuTypes as &$type) {
+            $html .= '<li>'
+            . '<div class="menu-links-block">'
+            .   '<button class="btn btn-sm btn-secondary jform-rightbtn mb-2" type="button" onclick=\'Joomla.toggleMenutype("' . $type->menutype . '")\'>'
+            .   '<span class="icon-square" aria-hidden="true"></span> ' . Text::_('JGLOBAL_SELECTION_INVERT') . '</button>'
+            .   '<h5>' . $type->title ?: $type->menutype . '</h5>';
+
+            foreach ($type->links as $link) {
+                $html .= '<label class="checkbox small" for="link' . (int) $link->value . '" >'
+                . '<input type="checkbox" name="jform[assigned][]" value="'
+                . (int) $link->value . '" id="link' . (int) $link->value . '"'
+                . (($link->template_style_id == $currentId) ? ' checked="checked"' : '')
+                . (($link->checked_out && $link->checked_out != $user->id) ? ' disabled="disabled"' : ' class="form-check-input chk-menulink menutype-' . $type->menutype . '"')
+                . '/>';
+
+                $html .= LayoutHelper::render('joomla.html.treeprefix', ['level' => $link->level]) . $link->text;
+                $html .='</label>';
+            }
+
+            $html .= '</div></li>';
+        }
+
+        $html .= '</ul></div>';
+
+        return $html;
+    }
+}
+
+```
+</details>

@@ -87,20 +87,25 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.3',
+          lastVersion: '6.0',
           versions: {
             'current': {
-              label: '6.0 (Upcoming)',
+              label: '6.1 (Upcoming)',
+              banner: 'unreleased',
+              noIndex: false,
+            },
+            '6.0': {
+              label: '6.0 (Current)',
               banner: 'unreleased',
               noIndex: false,
             },
             '5.4': {
-              label: '5.4 (Upcoming)',
+              label: '5.4 (Legacy)',
               banner: 'unreleased',
               noIndex: false,
             },
             '5.3': {
-              label: '5.3 (Current)',
+              label: '5.3 (Archived)',
               noIndex: false,
             },
             '5.2': {
