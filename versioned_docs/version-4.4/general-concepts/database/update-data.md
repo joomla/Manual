@@ -11,7 +11,7 @@ The `DatabaseQuery` class also provides methods for building update queries, in 
 update and set. We also reuse another method which we used when creating select statements, the where method.
 
 ```php
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
 $query = $db->getQuery(true);
 
@@ -56,7 +56,7 @@ $object->title = 'My Custom Record';
 $object->description = 'A custom record being updated in the database.';
 
 // Update their details in the users table using id as the primary key.
-$result = Factory::getContainer()->get('DatabaseDriver')->updateObject('#__custom_table', $object, 'id');
+$result = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class)->updateObject('#__custom_table', $object, 'id');
 ```
 
 Just like `insertObject`, `updateObject` takes care of escaping table names for us.

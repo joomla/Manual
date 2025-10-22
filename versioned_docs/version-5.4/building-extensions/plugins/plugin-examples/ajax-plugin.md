@@ -165,7 +165,7 @@ class Jobs extends CMSPlugin implements SubscriberInterface
     {
         $db = Factory::getContainer()->get(DatabaseInterface::class);
         
-        $query = $db->getQuery(true)
+        $query = $db->createQuery()
                 ->select('type, count(*) as count')
                 ->from($db->quoteName('#__extensions'))
                 ->group('type');

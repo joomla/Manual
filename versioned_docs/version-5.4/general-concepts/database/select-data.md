@@ -19,9 +19,9 @@ use Joomla\CMS\Factory;
 $db = $this->getDatabase();
 
 // When used in other places
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 ```
 
 :::warning[Developer Note]
@@ -51,10 +51,10 @@ easily readable and portable:
 use Joomla\CMS\Factory;
 
 // Get a db connection.
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
 // Create a new query object.
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 
 // Select all records from the user profile table where key begins with "custom.".
 // Order it by the ordering field.
@@ -117,10 +117,10 @@ Also note that the table alias is used in all methods which reference table colu
 use Joomla\CMS\Factory;
 
 // Get a db connection.
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
 // Create a new query object.
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 
 // Select all articles for users who have a username which starts with 'a'.
 // Order it by the created date.
@@ -202,7 +202,7 @@ statements we introduced some helper functions and allow to use arrays in severa
 query with prepared statements.
 
 ```php
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'))
 	->where($this->db->quoteName('username') . ' = :username')
@@ -217,7 +217,7 @@ always be a reference. A nice side effect of this, is that you can manipulate th
 ```php
 $listOfUsernames = [ 'admin', 'user1' ];
 
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'))
 	->where($this->db->quoteName('username') . ' = :username')
@@ -238,7 +238,7 @@ which is only true for load* functions). The result will be multiple queries wit
 values. We can use arrays to add multiple variables at once.
 
 ```php
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'))
 	->where($this->db->quoteName('username') . ' = :username')
@@ -254,7 +254,7 @@ We add **username** and **id** as bind parameter and set the correct ParameterTy
 It's also possible to use one variable for all bind values and ParameterTypes.
 
 ```php
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'))
 	->where($this->db->quoteName('username') . ' = :username')
@@ -270,7 +270,7 @@ specifying the placeholder.
 ```php
 $userids = [1,2,3,4];
 
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'));
 

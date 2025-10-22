@@ -9,9 +9,9 @@ Deleting a Record
 Use the delete method to remove records from the database.
 
 ```php
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 
 // delete all custom keys for user 1001.
 $query->delete($db->quoteName('#__user_profiles'))

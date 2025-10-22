@@ -14,7 +14,7 @@ is now the recommended method for building database queries (although string que
 Query chaining refers to a method of connecting a number of methods, one after the other, with each method
 returning an object that can support the next method, improving readability and simplifying code.
 
-To obtain a new instance of the `DatabaseQuery` class we use the `DatabaseDriver` `getQuery` method:
+To obtain a new instance of the `DatabaseQuery` class we use the `DatabaseInterface` `createQuery` method:
 
 ```php
 use Joomla\CMS\Factory;
@@ -23,9 +23,9 @@ use Joomla\CMS\Factory;
 $db = $this->getDatabase();
 
 // When used in other places
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
-$query = $db->getQuery(true);
+$query = $db->createQuery(true);
 ```
 
 :::warning[Developer Note]
@@ -33,7 +33,10 @@ $query = $db->getQuery(true);
   ~~$db = Factory::getDbo();~~
 :::
 
-The `DatabaseDriver::getQuery` takes an optional argument, $new, which can be true or false (the default being false).
+:::note[Developer Note]
+  Do **NOT** use the `DatabaseDriver::getQuery(true)` method to get a new query object anymore.
+  Use the `DatabaseInterface::createQuery()` method instead.
+:::
 
 To query our data source we can call a number of `DatabaseQuery` methods; these methods encapsulate the data
 source's query language (in most cases SQL), hiding query-specific syntax from the developer and increasing
@@ -58,10 +61,10 @@ $profile_value = 'Inserting a record using insert()';
 $ordering      = 1;
 
 // Get a db connection.
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
 // Create a new query object.
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 
 // Insert columns.
 $columns = array('user_id', 'profile_key', 'profile_value', 'ordering');
@@ -99,7 +102,7 @@ $profile->profile_value='Inserting a record using insertObject()';
 $profile->ordering=1;
 
 // Insert the object into the user profile table.
-$result = Factory::getContainer()->get('DatabaseDriver')->insertObject('#__user_profiles', $profile);
+$result = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class)->insertObject('#__user_profiles', $profile);
 ```
 
 Notice here that we do not need to escape the table name; the `insertObject` method does this for us.
