@@ -325,7 +325,7 @@ class ModuleModel extends \Joomla\CMS\MVC\Model\BaseDatabaseModel
      */
     protected function getModuleQuery($db, $mid): \Joomla\Database\QueryInterface
     {
-        $query  = $db->getQuery(true);
+        $query  = $db->createQuery();
 
         $query->select('*')
             ->from($db->quoteName('#__modules'))

@@ -9,7 +9,7 @@ A SQL injection attack is a type of vulnerability where an attacker is able to m
 Consider the following code snippet:
 
 ```php
-$query = $this->db->getQuery(true);
+$query = $this->db->createQuery();
 $username = $user->username;
 $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 
@@ -52,7 +52,7 @@ So, by separating queries and injected values from each other, an injection beco
 Implementing prepared statements in Joomla is very simple and is cross-platform:
 
 ```php
-$query = $this->db->getQuery(true)
+$query = $this->db->createQuery()
 	->select($this->db->quoteName(array('id', 'password')))
 	->from($this->db->quoteName('#__users'))
 	->where($this->db->quoteName('username') . ' = :username')
@@ -79,7 +79,7 @@ Learn more:
 By escaping characters that are considered as control-characters in SQL queries, it's also possible to prevent an attacker from "escaping" from the double-quote-prison that you have built in a query:
 
 ```php
-$query = $this->db->getQuery(true);
+$query = $this->db->createQuery();
 $username = $user->username;
 $newPassword = password_hash($newPassword, PASSWORD_DEFAULT);
 

@@ -9,7 +9,7 @@ Deleting a Record
 Use the delete method to remove records from the database.
 
 ```php
-$db = Factory::getContainer()->get('DatabaseDriver');
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
 
 $query = $db->getQuery(true);
 

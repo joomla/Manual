@@ -200,7 +200,7 @@ public function countAjax()
     }
 
     $db    = Factory::getContainer()->get(DatabaseInterface::class);
-    $query = $db->getQuery(true)
+    $query = $db->createQuery()
         ->select('COUNT(*)')
         ->from('#__session AS s')
         ->where('s.guest = 0');
