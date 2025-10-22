@@ -22,8 +22,9 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Nginx              | 1.25            | 1.21        |
 | Microsoft IIS      | 10              | 10          |
 
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
-**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql<br />
+**Required PHP Configuration:** Don't disable the `parse_ini_string` core function.<br />
+**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs<br />
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
 
 ### Requirements for Joomla! 4.x
