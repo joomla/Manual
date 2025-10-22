@@ -23,9 +23,10 @@ Technical Requirements
 | Nginx              | 1.29        | 1.26    |          |
 | Microsoft IIS      | 10          | 10      |          |
 
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
-**Recommended PHP Modules:** mbstring  
-**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+**Required PHP Configuration:** Don't disable the `parse_ini_string` core function.
+**Recommended PHP Modules:** mbstring
+**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite) to use SEO URLs
 
 ### Requirements for Joomla! 5.x
@@ -42,8 +43,9 @@ Technical Requirements
 | Nginx              | 1.25            | 1.21        |
 | Microsoft IIS      | 10              | 10          |
 
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
-**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
+**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql
+**Required PHP Configuration:** Don't disable the `parse_ini_string` core function.
+**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
 
 ### Requirements for older Versions
