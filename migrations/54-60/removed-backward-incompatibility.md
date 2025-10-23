@@ -307,3 +307,7 @@ Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
   Extensions interacting with `#__ucm_history` may require schema or API updates.  
   **(more detail needed: schema differences and migration examples)**
 
+### `Joomla\CMS\Changelog\Changelog` has been changed significantly
+
+- PR: https://github.com/joomla/joomla-cms/pull/44897
+- Description: The `Changelog` class was entirely depending on the `LegacyPropertyManagementTrait` and its `->get()` method. This is problematic because the `->get()` method circumvents the complete access protection in PHP and the trait itself is deprecated. In Joomla 6.0 the properties of the class have been mostly changed to public and can be accessed directly and the trait has been removed.
