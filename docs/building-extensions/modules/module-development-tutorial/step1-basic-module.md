@@ -103,6 +103,7 @@ class Dispatcher implements DispatcherInterface
     {
         echo '<h4>Hello</h4>';
     }
+}
 ```
 
 The `_JEXEC` check at the start is a security feature. If someone enters a URL which points directly at this PHP source file, then the PHP interpreter will start running the code. 
@@ -182,5 +183,6 @@ So how do you know which one to choose?
 If you're using the default Joomla site template Cassiopeia then you can view the template positions [here](https://docs.joomla.org/J4.x:Cassiopeia_Template_Customisation#Cassiopeia_Template_Positions).
 
 Also a useful trick is to go to the Administrator System / Global Configuration, select Templates, and set the Preview Module Positions option to Enabled, and then Save your change. 
+
 
 Then go to your site and add the URL query parameter `?tp=1` to the URL (for example, `http://localhost/joomsite/index.php?tp=1`). The template positions will then be shown. 
