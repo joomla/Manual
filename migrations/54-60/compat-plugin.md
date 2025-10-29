@@ -48,7 +48,9 @@ Avoid creating your own plugin within the *Behaviour* group, as this group may b
 Introduced in Joomla! 5.0, the **‘Behaviour – Backward Compatibility’**
 plugin improves compatibility between Joomla 5 and 4.
 
-When upgrading from Joomla! 5.4 to Joomla! 6.x, this plugin must be disabled.
-If a site crashes during the upgrade process, it can usually be recovered by temporarily re-enabling
-this plugin in Joomla 5.4. However, the underlying issues causing the errors must then be identified and
-resolved before proceeding with the upgrade.
+When upgrading from Joomla! 5.4 to Joomla! 6.x, this plugin must be disabled before starting the upgrade.
+If the site fails to load after disabling it in Joomla 5.4, simply re-enable the plugin to restore functionality.
+The errors should then be investigated and resolved while still running Joomla 5.4, before attempting the upgrade again.
+
+This approach ensures that any incompatibilities are detected and fixed safely in the Joomla 5.4 environment,
+avoiding partial or corrupted upgrades that may occur if the site crashes during the upgrade process.
