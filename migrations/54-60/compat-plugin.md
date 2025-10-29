@@ -18,7 +18,7 @@ a critical requirement for ensuring backward compatibility.
 
 For upgrades from Joomla! 5.4 to Joomla! 6.x, it is mandatory that this plugin is both installed and enabled.
 To review which backward compatibility cases have been removed, see
-[Removed and Backward Incompatibility](removed-backward-incompatibility).
+[Removed and Backward Incompatibility](../removed-backward-incompatibility).
 
 :::tip NEW INSTALLATIONS
 For new Joomla! 6.0 installations, the **‘Behaviour – Backward Compatibility 6’**
