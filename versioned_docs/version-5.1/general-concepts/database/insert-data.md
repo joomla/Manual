@@ -23,7 +23,7 @@ use Joomla\CMS\Factory;
 $db = $this->getDatabase();
 
 // When used in other places
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 $query = $db->getQuery(true);
 ```
@@ -52,7 +52,7 @@ the most common being insert, columns and values.
 
 ```php
 // Get a db connection.
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 // Create a new query object.
 $query = $db->getQuery(true);
@@ -93,7 +93,7 @@ $profile->profile_value='Inserting a record using insertObject()';
 $profile->ordering=1;
 
 // Insert the object into the user profile table.
-$result = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class)->insertObject('#__user_profiles', $profile);
+$result = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class)->insertObject('#__user_profiles', $profile);
 ```
 
 Notice here that we do not need to escape the table name; the `insertObject` method does this for us.
