@@ -8,7 +8,7 @@ title: Delete Data from the Database
 Use the delete method to remove records from the database.
 
 ```php
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 $query = $db->getQuery(true);
 

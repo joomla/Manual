@@ -24,7 +24,7 @@ This is often the result of a 'count' query to get the number of records:
 
 ```php
 use Joomla\CMS\Factory;
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 $query = $db->getQuery(true);
 $query->select('COUNT(*)');
 $query->from($db->quoteName('#__my_table'));
@@ -41,7 +41,7 @@ or where you are just looking for a single field from a single row of the table
 
 ```php
 use Joomla\CMS\Factory;
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 $query = $db->getQuery(true);
 $query->select('field_name');
 $query->from($db->quoteName('#__my_table'));

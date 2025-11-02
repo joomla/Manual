@@ -18,7 +18,7 @@ use Joomla\CMS\Factory;
 $db = $this->getDatabase();
 
 // When used in other places
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 $query = $db->getQuery(true);
 ```
@@ -50,7 +50,7 @@ easily readable and portable:
 use Joomla\CMS\Factory;
 
 // Get a db connection.
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 // Create a new query object.
 $query = $db->getQuery(true);
@@ -116,7 +116,7 @@ Also note that the table alias is used in all methods which reference table colu
 use Joomla\CMS\Factory;
 
 // Get a db connection.
-$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface:class);
+$db = Factory::getContainer()->get(\Joomla\Database\DatabaseInterface::class);
 
 // Create a new query object.
 $query = $db->getQuery(true);
