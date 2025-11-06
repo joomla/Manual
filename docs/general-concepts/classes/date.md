@@ -12,7 +12,11 @@ timestamp calculation, and also provides helper methods for working in different
 ## Creating a Date Instance
 
 All the date helper methods require an instance of the Date class. To begin, you must create one. A Date object may
-be created in two ways. One is the typical native method of simply creating a new instance:
+be created in three ways.
+
+### Native Method
+
+The native method is the most straightforward and is shown below:
 
 ```php
 use Joomla\CMS\Date\Date;
@@ -20,7 +24,20 @@ use Joomla\CMS\Date\Date;
 $date = new Date(); // Creates a new Date object equal to the current time.
 ```
 
-You may also create an instance using the static method defined in Date:
+### Factory::getDate() Method
+
+There is no difference between these methods, as Date::getDate simply creates a new instance of Date exactly like
+the first method shown.
+
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate();
+```
+
+### Static Method (Legacy)
+
+You may also create an instance using the legacy static method defined in Date:
 
 ```php
 // Legacy
@@ -29,29 +46,64 @@ use Joomla\CMS\Date\Date;
 $date = Date::getInstance(); // Alias of 'new Date();'
 ```
 
-:::caution Legacy
+:::info Legacy
 
-The static method is deprecated and will be removed in a future release.
+The static method is only still available for backward compatibility and should no longer be used in new projects.
 
 :::
 
+## Using Timezone
 
-There is no difference between these methods, as Date::getInstance simply creates a new instance of Date exactly like
-the first method shown. Alternatively, you may also retrieve the current date (as a Date object) from the Application
-object by using:
+If no time zone has been defined, the Date class uses the UTC time zone.
+
+### Using the timezone from Global Configuration
+
+To use the configured time zone of the global configuration, you can use the following (recommended) code:
 
 ```php
+use Joomla\CMS\Html\HtmlHelper;
+use Joomla\CMS\Language\Text;
+
+// Get Timezone from Global Configuration
+$config = Factory::getApplication()->getConfig();
+$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
+
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
+```
+
+Or using the Factory::getDate() method, setting the timezone manually and formatting the date:
+
+```php
+
 use Joomla\CMS\Factory;
 
-$date = Factory::getDate();
+// Get Timezone from Global Configuration
+$config = Factory::getApplication()->getConfig();
+$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
+
+// Catch a potential error and set to UTC as fallback.
+try
+{
+	$siteTimezone = new DateTimeZone($timezoneString);
+}
+catch (DateInvalidTimeZoneException $e)
+{
+	$siteTimezone = new DateTimeZone('UTC');
+}
+
+echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
 ```
+
 
 ## Arguments
 
-The Date constructor (and getInstance static method) accepts two optional parameters: A date string to format and a
+The Date constructor accepts two optional parameters: A date string to format and a
 timezone. Not passing a date string will create a Date object with the current date and time, while not passing a
 timezone will allow the Date object to use the default timezone set. The first argument, if used, should be a string
-that can be parsed using PHP's native DateTime constructor. For example:
+that can be parsed using PHP's native DateTime constructor.
+
+### Using the native Method with the default timezone
 
 ```php
 use Joomla\CMS\Date\Date;
@@ -66,11 +118,78 @@ $plusTimeToTime = new Date('now -1 hour +30 minutes +3 seconds'); // Current dat
 $combinedTimeToTime = new Date('now -1 hour -30 minutes 23 seconds'); // Current date and time, - 1 hour, +30 minutes and +23 seconds
 
 $date = new Date('2025-12-1 15:20:00'); // 3:20 PM, December 1st, 2025
+$dateFromTimestamp = new Date(1764599400); // 3:30 PM, December 1st, 2025
 ```
 
-A Unix timestamp (in seconds) can also be passed as the first argument, in which case it will be internally uplifted
-into a date. If a timezone has been specified as the second argument to the constructor, it will be converted to that
-timezone.
+### Using the native Method with a custom timezone
+
+```php
+use Joomla\CMS\Date\Date;
+
+$tz = new DateTimeZone('Australia/Melbourne');
+
+$currentTime = new Date('now', $tz); // Current date and time
+$tomorrowTime = new Date('now +1 day', $tz); // Current date and time, + 1 day.
+$plus1MonthTime = new Date('now +1 month', $tz); // Current date and time, + 1 month.
+$plus1YearTime = new Date('now +1 year', $tz); // Current date and time, + 1 year.
+$plus1YearAnd1MonthTime = new Date('now +1 year +1 month', $tz); // Current date and time, + 1 year and 1 month.
+$plusTimeToTime = new Date('now +1 hour +30 minutes +3 seconds', $tz); // Current date and time, + 1 hour, 30 minutes and 3 seconds
+$plusTimeToTime = new Date('now -1 hour +30 minutes +3 seconds', $tz); // Current date and time, + 1 hour, 30 minutes and 3 seconds
+$combinedTimeToTime = new Date('now -1 hour -30 minutes 23 seconds', $tz); // Current date and time, - 1 hour, +30 minutes and +23 seconds
+
+$date = new Date('2025-12-1 15:20:00', $tz); // 3:20 PM, December 1st, 2025
+$dateFromTimestamp = new Date(1764599400, $tz); // 3:30 PM, December 1st, 2025
+```
+
+:::note
+
+See Outputting Dates for more information on time zones.
+
+:::
+
+### Using the Factory Method with the default timezone
+
+```php
+use Joomla\CMS\Factory;
+
+$currentTime = Factory::getDate('now'); // Current date and time
+$tomorrowTime = Factory::getDate('now +1 day'); // Current date and time, + 1 day.
+$plus1MonthTime = Factory::getDate('now +1 month'); // Current date and time, + 1 month.
+$plus1YearTime = Factory::getDate('now +1 year'); // Current date and time, + 1 year.
+$plus1YearAnd1MonthTime = Factory::getDate('now +1 year +1 month'); // Current date and time, + 1 year and 1 month.
+$plusTimeToTime = Factory::getDate('now +1 hour +30 minutes +3 seconds'); // Current date and time, + 1 hour, 30 minutes and 3 seconds
+$plusTimeToTime = Factory::getDate('now -1 hour +30 minutes +3 seconds'); // Current date and time, + 1 hour, 30 minutes and 3 seconds
+$combinedTimeToTime = Factory::getDate('now -1 hour -30 minutes 23 seconds'); // Current date and time, - 1 hour, +30 minutes and +23 seconds
+
+$date = Factory::getDate('2025-12-1 15:20:00'); // 3:20 PM, December 1st, 2025
+$dateFromTimestamp = Factory::getDate(1764599400); // 3:30 PM, December 1st, 2025
+```
+
+### Using the Factory Method with a custom timezone
+
+```php
+use Joomla\CMS\Factory;
+
+$tz = new DateTimeZone('Australia/Melbourne');
+
+$currentTime = Factory::getDate('now', $tz); // Current date and time in Melbourne.
+$tomorrowTime = Factory::getDate('now +1 day', $tz); // Current date and time in Melbourne, + 1 day.
+$plus1MonthTime = Factory::getDate('now +1 month', $tz); // Current date and time in Melbourne, + 1 month.
+$plus1YearTime = Factory::getDate('now +1 year', $tz); // Current date and time in Melbourne, + 1 year.
+$plus1YearAnd1MonthTime = Factory::getDate('now +1 year +1 month', $tz); // Current date and time in Melbourne, + 1 year and 1 month.
+$plusTimeToTime = Factory::getDate('now +1 hour +30 minutes +3 seconds', $tz); // Current date and time in Melbourne, + 1 hour, 30 minutes and 3 seconds
+$plusTimeToTime = Factory::getDate('now -1 hour +30 minutes +3 seconds', $tz); // Current date and time in Melbourne, + 1 hour, 30 minutes and 3 seconds
+$combinedTimeToTime = Factory::getDate('now -1 hour -30 minutes 23 seconds', $tz); // Current date and time in Melbourne, - 1 hour, +30 minutes and +23 seconds
+
+$date = Factory::getDate('2025-12-1 15:20:00', $tz); // 3:20 PM, December 1st, 2025
+$dateFromTimestamp = Factory::getDate(1764599400, $tz); // 3:30 PM, December 1st, 2025
+```
+
+:::note
+
+See Outputting Dates for more information on time zones.
+
+:::
 
 ## Outputting Dates
 
@@ -112,8 +231,18 @@ for the current user's timezone settings. As such, this is the recommended metho
 use Joomla\CMS\Html\HtmlHelper;
 use Joomla\CMS\Language\Text;
 
+$tz = new DateTimeZone('Australia/Melbourne');
+$date = Factory::getDate(1764599400, $tz);
+
+echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6')); // date and time in Melbourne for the given timestamp.
+```
+
+```php
+use Joomla\CMS\Html\HtmlHelper;
+use Joomla\CMS\Language\Text;
+
 $myDateString = '2025-12-1 15:20:00';
-echo HtmlHelper::date($myDateString, Text::_('DATE_FORMAT_FILTER_DATETIME'));
+echo HtmlHelper::date($myDateString, Text::_('DATE_FORMAT_LC6'));
 ```
 
 ### Using Date::format() Method
@@ -121,6 +250,14 @@ echo HtmlHelper::date($myDateString, Text::_('DATE_FORMAT_FILTER_DATETIME'));
 Another option is to format the Date manually. If this method is used, you will have to also manually retrieve and set
 the user's timezone. This method is more useful for formatting dates outside the user interface, such as in system
 logs or API calls.
+
+The Date::format() method accepts up to three parameters: 
+
+1. Date Formatting string
+2. Boolean that indicating whether to use the configured timezone from the date object (default false)
+3. Boolean to translate localised strings (default true). 
+
+The formatting string is the same as the one used by the HtmlHelper::date() method.
 
 ```php
 use Joomla\CMS\Language\Text;
@@ -132,7 +269,42 @@ $timezone = Factory::getUser()->getTimezone();
 
 $date = new Date($myDateString);
 $date->setTimezone($timezone);
-echo $date->format(Text::_('DATE_FORMAT_FILTER_DATETIME'));
+echo $date->format(Text::_('DATE_FORMAT_LC6'), true, true);
+```
+
+:::caution Using Custom Timezones
+
+If you are using a custom timezone, you will need to set the second parameter to true. Otherwise, the Date object will
+use the GMT timezone by default, which may result in the wrong date being output.
+
+:::
+
+### Outputting Dates in ISO 8601 Format
+
+```php
+$date = new Date('2025-12-1 15:20:00');
+$isoDate = $date->toISO8601(); // 20251201T152000Z
+```
+
+### Outputting Dates in RFC 822 Format
+
+```php
+$date = new Date('2025-12-1 15:20:00');
+$rfcDate = $date->toRFC822(); // Sat, 01 Dec 2025 15:20:00 +0000
+```
+
+### Outputting Dates in SQL Date-Time Format
+
+```php
+$date = new Date('20251201T152000Z');
+$sqlDate = $date->toSQL(); // 2025-12-01 15:20:00
+```
+
+### Outputting Dates as Unix Timestamps
+
+```php
+$date = new Date('20251201T153000Z');
+$unixTime = $date->toUnix(); // 1764599400
 ```
 
 ## Other Useful Code Examples
@@ -150,10 +322,34 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 
 // These two are functionally equivalent
-echo HtmlHelper::date('now', Text::_('DATE_FORMAT_FILTER_DATETIME'));
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'));
 
-$timezone = Factory::getUser()->getTimezone();
-echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_FILTER_DATETIME'));
+echo Factory::getDate()->format(Text::_('DATE_FORMAT_LC6'));
+
+// Or, if you want to output the current time in a different timezone
+$timezone = new DateTimeZone('Australia/Melbourne');
+$date = Factory::getDate('now', $timezone);
+
+echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6'));
+
+echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
+
+```
+
+### Using the current user's timezone
+
+```php
+use Joomla\CMS\Factory;
+use Joomla\CMS\Language\Text;
+
+$userTimezone = Factory::getUser()->getTimezone();
+$dateInUsersTimezone = Factory::getDate('now', $userTimezone);
+
+echo HtmlHelper::date($dateInUsersTimezone, Text::_('DATE_FORMAT_LC6'));
+
+echo Factory::getDate()->setTimezone($userTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
 ```
 
 ### Adding and Subtracting from Dates
@@ -185,32 +381,4 @@ echo $date1->toSQL(); // 2026-12-02 15:20:00
 $date2 = new Date('2025-12-1 15:20:00');
 $date2->sub($interval);
 echo $date2->toSQL(); // 2024-11-30 15:20:00
-```
-
-### Outputting Dates in ISO 8601 Format
-
-```php
-$date = new Date('2025-12-1 15:20:00');
-$date->toISO8601(); // 20251201T152000Z
-```
-
-### Outputting Dates in RFC 822 Format
-
-```php
-$date = new Date('2025-12-1 15:20:00');
-$date->toRFC822(); // Sat, 01 Dec 2025 15:20:00 +0000
-```
-
-### Outputting Dates in SQL Date-Time Format
-
-```php
-$date = new Date('20251201T152000Z');
-$date->toSQL(); // 2025-12-01 15:20:00
-```
-
-### Outputting Dates as Unix Timestamps
-
-```php
-$date = new Date('20251201T153000Z');
-$date->toUnix(); // 1764599400
 ```
