@@ -52,82 +52,6 @@ The static method is only still available for backward compatibility and should 
 
 :::
 
-## Using Timezone
-
-If no time zone has been defined, the Date class uses the UTC time zone.
-
-### Using the timezone from Global Configuration
-
-To use the configured time zone of the global configuration, you can use the following (recommended) code:
-
-```php
-use Joomla\CMS\Html\HtmlHelper;
-use Joomla\CMS\Language\Text;
-
-// Get Timezone from Global Configuration
-$config = Factory::getApplication()->getConfig();
-$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
-
-echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
-```
-
-Or using the Factory::getDate() method, setting the timezone manually and formatting the date:
-
-```php
-
-use Joomla\CMS\Factory;
-
-// Get Timezone from Global Configuration
-$config = Factory::getApplication()->getConfig();
-$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
-
-// Catch a potential error and set to UTC as fallback.
-try
-{
-    $siteTimezone = new DateTimeZone($timezoneString);
-}
-catch (DateInvalidTimeZoneException $e)
-{
-	$siteTimezone = new DateTimeZone('UTC');
-}
-
-echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
-```
-
-### Using the timezone from the User Object
-
-You can also use the timezone of the current user. By getting the user's timezone from the user object, you can then
-use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
-timezone of the Date object.
-
-```php
-use Joomla\CMS\Factory;
-use Joomla\CMS\Html\HtmlHelper;
-use Joomla\CMS\Language\Text;
-
-// Get Timezone from the current User or Global Configuration as a fallback.
-$user = Factory::getApplication()->getIdentity();
-$timezone = $user->getTimezone(); // Returns DateTimeZone object
-$timezoneString = $timezone->getName(); // e.g. 'Australia/Melbourne'
-
-echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
-```
-
-Using the Factory::getDate() method, setting the timezone manually and formatting the date:
-
-```php
-
-use Joomla\CMS\Factory;
-
-// Get Timezone from the current User or Global Configuration as a fallback.
-$user = Factory::getApplication()->getIdentity();
-$timezone = $user->getTimezone(); // Returns DateTimeZone object
-
-echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
-```
-
 ## Arguments
 
 The Date constructor accepts two optional parameters: A date string to format and a
@@ -135,7 +59,7 @@ timezone. Not passing a date string will create a Date object with the current d
 timezone will allow the Date object to use the default timezone set. The first argument, if used, should be a string
 that can be parsed using PHP's native DateTime constructor.
 
-### Using the native Method with the default timezone
+### Using the native Method with the Default Time Zone
 
 ```php
 use Joomla\CMS\Date\Date;
@@ -153,7 +77,7 @@ $date = new Date('2025-12-1 15:20:00'); // 3:20 PM, December 1st, 2025
 $dateFromTimestamp = new Date(1764599400); // 3:30 PM, December 1st, 2025
 ```
 
-### Using the native Method with a custom timezone
+### Using the native Method with a custom Time Zone
 
 ```php
 use Joomla\CMS\Date\Date;
@@ -337,6 +261,82 @@ $sqlDate = $date->toSQL(); // 2025-12-01 15:20:00
 ```php
 $date = new Date('20251201T153000Z');
 $unixTime = $date->toUnix(); // 1764599400
+```
+
+## Using Different Time Zones
+
+If no time zone has been defined, the Date class uses the UTC time zone.
+
+### Using the timezone from Global Configuration
+
+To use the configured time zone of the global configuration, you can use the following (recommended) code:
+
+```php
+use Joomla\CMS\Html\HtmlHelper;
+use Joomla\CMS\Language\Text;
+
+// Get Timezone from Global Configuration
+$config = Factory::getApplication()->getConfig();
+$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
+
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
+```
+
+Or using the Factory::getDate() method, setting the timezone manually and formatting the date:
+
+```php
+
+use Joomla\CMS\Factory;
+
+// Get Timezone from Global Configuration
+$config = Factory::getApplication()->getConfig();
+$timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
+
+// Catch a potential error and set to UTC as fallback.
+try
+{
+    $siteTimezone = new DateTimeZone($timezoneString);
+}
+catch (DateInvalidTimeZoneException $e)
+{
+	$siteTimezone = new DateTimeZone('UTC');
+}
+
+echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
+```
+
+### Using the timezone from the User Object
+
+You can also use the timezone of the current user. By getting the user's timezone from the user object, you can then
+use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
+timezone of the Date object.
+
+```php
+use Joomla\CMS\Factory;
+use Joomla\CMS\Html\HtmlHelper;
+use Joomla\CMS\Language\Text;
+
+// Get Timezone from the current User or Global Configuration as a fallback.
+$user = Factory::getApplication()->getIdentity();
+$timezone = $user->getTimezone(); // Returns DateTimeZone object
+$timezoneString = $timezone->getName(); // e.g. 'Australia/Melbourne'
+
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
+```
+
+Using the Factory::getDate() method, setting the timezone manually and formatting the date:
+
+```php
+
+use Joomla\CMS\Factory;
+
+// Get Timezone from the current User or Global Configuration as a fallback.
+$user = Factory::getApplication()->getIdentity();
+$timezone = $user->getTimezone(); // Returns DateTimeZone object
+
+echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
 ```
 
 ## Other Useful Code Examples
