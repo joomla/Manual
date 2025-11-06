@@ -550,7 +550,7 @@ try
 }
 catch (DateInvalidTimeZoneException $e)
 {
-	$siteTimezone = new DateTimeZone('UTC');
+    $siteTimezone = new DateTimeZone('UTC');
 }
 
 echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
