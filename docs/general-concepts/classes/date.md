@@ -55,11 +55,11 @@ The static method is only still available for backward compatibility and should 
 ## Arguments
 
 The Date constructor accepts two optional parameters: A date string to format and a
-timezone. Not passing a date string will create a Date object with the current date and time, while not passing a
-timezone will allow the Date object to use the default timezone set. The first argument, if used, should be a string
+time zone. Not passing a date string will create a Date object with the current date and time, while not passing a
+time zone will allow the Date object to use the default time zone set. The first argument, if used, should be a string
 that can be parsed using PHP's native DateTime constructor.
 
-### Using the native Method with the Default Time Zone
+### Using the native Method with the default Time Zone
 
 ```php
 use Joomla\CMS\Date\Date;
@@ -103,7 +103,7 @@ See Outputting Dates for more information on time zones.
 
 :::
 
-### Using the Factory Method with the default timezone
+### Using the Factory Method with the default Time Zone
 
 ```php
 use Joomla\CMS\Factory;
@@ -121,7 +121,7 @@ $date = Factory::getDate('2025-12-1 15:20:00'); // 3:20 PM, December 1st, 2025
 $dateFromTimestamp = Factory::getDate(1764599400); // 3:30 PM, December 1st, 2025
 ```
 
-### Using the Factory Method with a custom timezone
+### Using the Factory Method with a custom Time Zone
 
 ```php
 use Joomla\CMS\Factory;
@@ -143,7 +143,7 @@ $dateFromTimestamp = Factory::getDate(1764599400, $tz); // 3:30 PM, December 1st
 
 :::note
 
-See Outputting Dates for more information on time zones.
+See Outputting dates for more information on time zones.
 
 :::
 
@@ -181,7 +181,7 @@ DATE_FORMAT_FILTER_DATETIME = "Y-m-d H:i:s"
 
 As with many common output items, the HtmlHelper class is here to... help! HtmlHelper's date() method will take any
 date-time string that the Date constructor would accept, along with a formatting string, and output the date appropriate
-for the current user's timezone settings. As such, this is the recommended method for outputting dates for the user.
+for the current user's time zone settings. As such, this is the recommended method for outputting dates for the user.
 
 ```php
 use Joomla\CMS\Html\HtmlHelper;
@@ -204,13 +204,13 @@ echo HtmlHelper::date($myDateString, Text::_('DATE_FORMAT_LC6'));
 ### Using Date::format() Method
 
 Another option is to format the Date manually. If this method is used, you will have to also manually retrieve and set
-the user's timezone. This method is more useful for formatting dates outside the user interface, such as in system
+the user's time zone. This method is more useful for formatting dates outside the user interface, such as in system
 logs or API calls.
 
 The Date::format() method accepts up to three parameters:
 
 1. Date Formatting string
-2. Boolean that indicating whether to use the configured timezone from the date object (default false)
+2. Boolean that indicating whether to use the configured time zone from the date object (default false)
 3. Boolean to translate localised strings (default true).
 
 The formatting string is the same as the one used by the HtmlHelper::date() method.
@@ -228,10 +228,10 @@ $date->setTimezone($timezone);
 echo $date->format(Text::_('DATE_FORMAT_LC6'), true, true);
 ```
 
-:::caution Using Custom Timezones
+:::caution Using Custom Time Zones
 
-If you are using a custom timezone, you will need to set the second parameter to true. Otherwise, the Date object will
-use the GMT timezone by default, which may result in the wrong date being output.
+If you are using a custom time zone, you will need to set the second parameter to true. Otherwise, the Date object will
+use the GMT time zone by default, which may result in the wrong date being output.
 
 :::
 
@@ -267,7 +267,7 @@ $unixTime = $date->toUnix(); // 1764599400
 
 If no time zone has been defined, the Date class uses the UTC time zone.
 
-### Using the timezone from Global Configuration
+### Using the Time Zone from Global Configuration
 
 To use the configured time zone of the global configuration, you can use the following (recommended) code:
 
@@ -282,7 +282,7 @@ $timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
 echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
 ```
 
-Or using the Factory::getDate() method, setting the timezone manually and formatting the date:
+Or using the Factory::getDate() method, setting the time zone manually and formatting the date:
 
 ```php
 
@@ -306,11 +306,11 @@ echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT
 
 ```
 
-### Using the timezone from the User Object
+### Using the Time Zone from the User Object
 
-You can also use the timezone of the current user. By getting the user's timezone from the user object, you can then
+You can also use the time zone of the current user. By getting the user's time zone from the user object, you can then
 use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
-timezone of the Date object.
+time zone of the Date object.
 
 ```php
 use Joomla\CMS\Factory;
@@ -325,7 +325,7 @@ $timezoneString = $timezone->getName(); // e.g. 'Australia/Melbourne'
 echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
 ```
 
-Using the Factory::getDate() method, setting the timezone manually and formatting the date:
+Using the Factory::getDate() method, setting the time zone manually and formatting the date:
 
 ```php
 
@@ -358,7 +358,7 @@ echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'));
 
 echo Factory::getDate()->format(Text::_('DATE_FORMAT_LC6'));
 
-// Or, if you want to output the current time in a different timezone
+// Or, if you want to output the current time in a different time zone
 $timezone = new DateTimeZone('Australia/Melbourne');
 $date = Factory::getDate('now', $timezone);
 
@@ -369,7 +369,7 @@ echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6
 
 ```
 
-### Using the current user's timezone
+### Using the current User's Time Zone
 
 ```php
 use Joomla\CMS\Factory;
