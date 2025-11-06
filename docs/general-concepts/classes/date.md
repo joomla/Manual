@@ -263,9 +263,33 @@ $date = new Date('20251201T153000Z');
 $unixTime = $date->toUnix(); // 1764599400
 ```
 
-## Using Different Time Zones
+## Other Useful Code Examples
 
-If no time zone has been defined, the Date class uses the UTC time zone.
+### Quickly Outputting the Current Time
+
+There are two easy ways of doing this.
+
+1. The HtmlHelper's date() method, if no date value is provided, will default to the current time.
+2. Factory::getDate() gets the current date as a Date object, which we can then format.
+
+```php
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+
+// These two are functionally equivalent
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'));
+
+echo Factory::getDate()->format(Text::_('DATE_FORMAT_LC6'));
+
+// Or, if you want to output the current time in a different time zone
+$timezone = new DateTimeZone('Australia/Melbourne');
+$date = Factory::getDate('now', $timezone);
+
+echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6'));
+
+echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+```
 
 ### Using the Time Zone from Global Configuration
 
@@ -303,10 +327,9 @@ catch (DateInvalidTimeZoneException $e)
 }
 
 echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
 ```
 
-### Using the Time Zone from the User Object
+### Using the current User's Time Zone
 
 You can also use the time zone of the current user. By getting the user's time zone from the user object, you can then
 use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
@@ -336,51 +359,6 @@ $user = Factory::getApplication()->getIdentity();
 $timezone = $user->getTimezone(); // Returns DateTimeZone object
 
 echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
-```
-
-## Other Useful Code Examples
-
-### Quickly Outputting the Current Time
-
-There are two easy ways of doing this.
-
-1. The HtmlHelper's date() method, if no date value is provided, will default to the current time.
-2. Factory::getDate() gets the current date as a Date object, which we can then format.
-
-```php
-use Joomla\CMS\Factory;
-use Joomla\CMS\HTML\HTMLHelper;
-use Joomla\CMS\Language\Text;
-
-// These two are functionally equivalent
-echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'));
-
-echo Factory::getDate()->format(Text::_('DATE_FORMAT_LC6'));
-
-// Or, if you want to output the current time in a different time zone
-$timezone = new DateTimeZone('Australia/Melbourne');
-$date = Factory::getDate('now', $timezone);
-
-echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6'));
-
-echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
-
-```
-
-### Using the current User's Time Zone
-
-```php
-use Joomla\CMS\Factory;
-use Joomla\CMS\Language\Text;
-
-$userTimezone = Factory::getUser()->getTimezone();
-$dateInUsersTimezone = Factory::getDate('now', $userTimezone);
-
-echo HtmlHelper::date($dateInUsersTimezone, Text::_('DATE_FORMAT_LC6'));
-
-echo Factory::getDate()->setTimezone($userTimezone)->format(Text::_('DATE_FORMAT_LC6'), true);
 
 ```
 
@@ -414,3 +392,8 @@ $date2 = new Date('2025-12-1 15:20:00');
 $date2->sub($interval);
 echo $date2->toSQL(); // 2024-11-30 15:20:00
 ```
+
+## Related external References
+
+- [PHP DateTime](https://www.php.net/manual/en/class.datetime.php)
+- [PHP Time Zones](https://www.php.net/manual/en/timezones.php)
