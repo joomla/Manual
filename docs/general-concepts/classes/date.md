@@ -62,7 +62,8 @@ used with the other methods as well.
 
 ### Adding and Subtracting from Dates
 
-One of the easiest of these methods to modify a date is the modify() method, which accepts any relative modification string that
+One of the easiest of these methods to modify a date is the modify() method, which accepts any relative modification
+string that
 the PHP [strtotime()](https://www.php.net/manual/en/function.strtotime.php) method would accept as shown below.
 
 ```php
@@ -139,7 +140,8 @@ echo $interval->format('%R%a days'); // +400 days
 :::info Nice to know
 
 The diff() method returns a DateInterval object, which can be used to get the difference between two dates in a
-human-readable format. The format string used in the example above is a standard PHP format string, more examples can be found
+human-readable format. The format string used in the example above is a standard PHP format string, more examples can be
+found
 [here](https://www.php.net/manual/en/dateinterval.format.php).
 
 :::
@@ -238,6 +240,111 @@ $dateFromTimestamp = Factory::getDate(1764599400, $tz); // 3:30 PM, December 1st
 See Outputting dates for more information on time zones.
 
 :::
+
+## Dynamic Properties
+
+The Date object has a number of dynamic properties that can be used to get information about the date.
+
+### Get count of Days in a Month
+
+```php
+use Joomla\CMS\Factory;
+
+$date = new Date();
+// Factory example with different date for example purposes.
+$dateFromFactory = Factory::getDate('now + 1 month');
+
+echo $date->__get('daysinmonth'); // 30
+echo $dateFromFactory->__get('daysinmonth'); // 31
+```
+
+### Get Day of Week
+
+```php
+use Joomla\CMS\Factory;
+
+$date = new Date();
+// Factory example with different date for example purposes.
+$dateFromFactory = Factory::getDate('now + 1 month');
+
+echo $date->__get('dayofweek'); // 4
+echo $dateFromFactory->__get('dayofweek'); // 6
+```
+
+### Get Day of Year
+
+```php
+use Joomla\CMS\Factory;
+
+$date = new Date();
+// Factory example with different date for example purposes.
+$dateFromFactory = Factory::getDate('now + 1 month');
+
+echo $date->__get('dayofyear'); // 309
+echo $dateFromFactory->__get('dayofyear'); // 339
+```
+
+### Checking for Leap Year
+
+```php
+use Joomla\CMS\Factory;
+
+$date = new Date();
+// Factory example with different date for example purposes.
+$dateFromFactory = Factory::getDate('now + 3 years');
+
+// Note: Returns a boolean.
+echo var_export($date->__get('isleapyear'), 1); // false
+echo var_export($dateFromFactory->__get('isleapyear'), 1); // true
+```
+
+### Getting Year / Month / Week / Day / Hour / Minute / Second
+
+```php
+use Joomla\CMS\Factory;
+
+$date = new Date();
+// Factory example with different date for example purposes.
+$dateFromFactory = Factory::getDate('now + 2 months + 5 days + 1 hour + 12 minutes + 42 seconds');
+
+echo $date->__get('year'); // 2025
+echo $dateFromFactory->__get('year'); // 2026
+
+echo $date->__get('month'); // 11
+echo $dateFromFactory->__get('month'); // 02
+
+echo $date->__get('week'); // 45
+echo $dateFromFactory->__get('week'); // 02
+
+echo $date->__get('day'); // 06
+echo $dateFromFactory->__get('day'); // 11
+
+echo $date->__get('hour'); // 13
+echo $dateFromFactory->__get('hour'); // 16
+
+echo $date->__get('minute'); // 18
+echo $dateFromFactory->__get('minute'); // 31
+
+echo $date->__get('second'); // 35
+echo $dateFromFactory->__get('second'); // 17
+```
+
+### Get Ordinal Suffix
+
+The ordinal property returns the English suffix for ordinal numbers based on the day of the month. For example, if the
+date is the 4th, it returns “th”, if it’s the 21st, it returns “st”. You can use this to format dates in English like
+“Today is the 4th of November”.
+
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate('01-01-2025');
+echo $date->__get('ordinal'); // st
+
+$date = Factory::getDate('02-01-2025');
+echo $date->__get('ordinal'); // nd
+
+```
 
 ## Outputting Dates
 
@@ -449,7 +556,15 @@ $timezone = $user->getTimezone(); // Returns DateTimeZone object
 echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
 ```
 
+### Day to String
 
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate('now');
+echo $date->dayToString(1, false); // Monday
+echo $date->dayToString(2, true); // Tue
+```
 
 ## Related external References
 
