@@ -26,7 +26,8 @@ $date = new Date(); // Creates a new Date object equal to the current time.
 
 ### Factory::getDate() Method
 
-There is no difference between these methods, as Date::getDate simply creates a new instance of Date exactly like
+You may also create an instance using the `Factory::getDate()` method:
+There is no difference between these methods, as `Factory::getDate()` simply creates a new instance of Date exactly like
 the first method shown.
 
 ```php
@@ -57,8 +58,7 @@ The static method is only still available for backward compatibility and should 
 Since the Joomla! Date class inherits directly from PHP's DateTime class, various native methods of the PHP class are
 available for modification. The full list of methods is available in the PHP documentation, which can be
 found [here](https://www.php.net/manual/en/class.datetime.php). The following is a list of the most commonly used
-methods as well as some examples of their use in Joomla! in combination with the Factory::getDate() method but can be
-used with the other methods as well.
+methods as well as some examples of their use in Joomla!.
 
 ### Adding and Subtracting from Dates
 
@@ -74,7 +74,8 @@ $date->modify('+1 year');
 echo $date->toSQL(); // 2026-12-01 15:20:00
 ```
 
-There are also separate add() and sub() methods, for adding or subtracting time from a date object respectively. These
+There are also separate `add()` and `sub()` methods, for adding or subtracting time from a date object respectively.
+These
 accept PHP-standard DateInterval objects:
 
 ```php
@@ -139,7 +140,7 @@ echo $interval->format('%R%a days'); // +400 days
 
 :::info Nice to know
 
-The diff() method returns a DateInterval object, which can be used to get the difference between two dates in a
+The `diff()` method returns a DateInterval object, which can be used to get the difference between two dates in a
 human-readable format. The format string used in the example above is a standard PHP format string, more examples can be
 found
 [here](https://www.php.net/manual/en/dateinterval.format.php).
@@ -348,11 +349,11 @@ echo $date->__get('ordinal'); // nd
 
 ## Outputting Dates
 
-One note of caution when outputting Date objects in a user context: do not simply print them to the screen. The Date
-object's toString() method simply calls its parent's format() method, without consideration for time zones or localized
-date formatting. This will not result in a good user experience and will lead to inconsistencies between the formatting
-in your extension, and elsewhere in Joomla. Instead, you should always output Dates using the methods shown below.
-
+One note of caution when outputting Date objects in a user context: do not print them to the screen. The Date
+object's toString() method simply calls its parent's `format() method, without consideration for time zones or
+localised date formatting. This will not result in a good user experience and will lead to inconsistencies between the
+formatting in your extension, and elsewhere in Joomla!. Instead, you should always output Dates using the methods shown
+below.
 
 ### Common Date and Time Format Codes
 
@@ -379,17 +380,19 @@ echo $date->format('Y-m-d H:i:s'); // 2025-01-06 15:05:05
 ```
 
 :::info
+
 Check the official [PHP DateTime documentation](https://www.php.net/manual/en/datetime.format.php)
 for a full list of available formats.
+
 :::
 
 ### Predefined Common Date Formats
 
-A number of date formats are predefined in Joomla as part of the base language packs. This is beneficial because it
-means date formats can be easily internationalised. A sample of the available format strings is below, from the en-GB
-language pack. It is highly recommended to utilise these formatting strings when outputting dates so that your dates
-will be automatically re-formatted according to a user's locale. They can be retrieved in the same way as any language
-string.
+A number of date formats are predefined in Joomla! as part of the base language packs. This is beneficial because it
+means date formats can be easily internationalised. A sample of the available format strings from the
+en-GB language pack is listed below. It is highly recommended to use these formatting strings when outputting dates so
+that your dates will be automatically re-formatted according to a user's locale. They can be retrieved in the same way
+as any language string.
 
 ```ini
 DATE_FORMAT_LC = "l, d F Y"
@@ -408,7 +411,7 @@ DATE_FORMAT_FILTER_DATETIME = "Y-m-d H:i:s"
 
 ### Using HtmlHelper Method (Recommended)
 
-HtmlHelper's date() method will take any date-time string that the Date constructor would accept, along with a
+HtmlHelper's `date()` method will take any date-time string that the Date constructor would accept, along with a
 formatting string, and output the date appropriate for the current user's time zone settings. As such, this is the
 recommended method for outputting dates for the user.
 
@@ -441,7 +444,7 @@ The Date::format() method accepts up to three parameters:
 2. Boolean that indicating whether to use the configured time zone from the date object (default false)
 3. Boolean to translate localised strings (default true).
 
-The formatting string is the same as the one used by the HtmlHelper::date() method.
+The formatting string is the same as the one used by the `HtmlHelper::date()` method.
 
 ```php
 use Joomla\CMS\Language\Text;
@@ -497,8 +500,8 @@ $unixTime = $date->toUnix(); // 1764599400
 
 There are two easy ways of doing this.
 
-1. The HtmlHelper's date() method, if no date value is provided, will default to the current time.
-2. Factory::getDate() gets the current date as a Date object, which we can then format.
+1. The HtmlHelper's `date()` method, if no date value is provided, will default to the current time.
+2. `Factory::getDate()` gets the current date as a Date object, which we can then format.
 
 ```php
 use Joomla\CMS\Factory;
@@ -534,7 +537,7 @@ $timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
 echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
 ```
 
-Or using the Factory::getDate() method, setting the time zone manually and formatting the date:
+Or using the `Factory::getDate()` method, setting the time zone manually and formatting the date:
 
 ```php
 use Joomla\CMS\Factory;
@@ -559,7 +562,7 @@ echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT
 ### Using the current User's Time Zone
 
 You can also use the time zone of the current user. By getting the user's time zone from the user object, you can then
-use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
+use the time zone name as a string in the HtmlHelper::date method or the Date object's `setTimezone()` method to set the
 time zone of the Date object.
 
 ```php
@@ -575,7 +578,7 @@ $timezoneString = $timezone->getName(); // e.g. 'Australia/Melbourne'
 echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
 ```
 
-Using the Factory::getDate() method, setting the time zone manually and formatting the date:
+Using the `Factory::getDate()` method, setting the time zone manually and formatting the date:
 
 ```php
 
