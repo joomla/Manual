@@ -52,6 +52,98 @@ The static method is only still available for backward compatibility and should 
 
 :::
 
+## Modifying a Date Instance
+
+Since the Joomla! Date class inherits directly from PHP's DateTime class, various native methods of the PHP class are
+available for modification. The full list of methods is available in the PHP documentation, which can be
+found [here](https://www.php.net/manual/en/class.datetime.php). The following is a list of the most commonly used
+methods as well as some examples of their use in Joomla! in combination with the Factory::getDate() method but can be
+used with the other methods as well.
+
+### Adding and Subtracting from Dates
+
+One of the easiest of these methods to modify a date is the modify() method, which accepts any relative modification string that
+the PHP [strtotime()](https://www.php.net/manual/en/function.strtotime.php) method would accept as shown below.
+
+```php
+use Joomla\CMS\Date\Date;
+
+$date = new Date('2025-12-1 15:20:00');
+$date->modify('+1 year');
+echo $date->toSQL(); // 2026-12-01 15:20:00
+```
+
+There are also separate add() and sub() methods, for adding or subtracting time from a date object respectively. These
+accept PHP-standard DateInterval objects:
+
+```php
+use Joomla\CMS\Date\Date;
+
+$interval = new \DateInterval('P1Y1D'); // Interval represents 1 year and 1 day
+
+$date1 = new Date('2025-12-1 15:20:00');
+$date1->add($interval);
+echo $date1->toSQL(); // 2026-12-02 15:20:00
+
+$date2 = new Date('2025-12-1 15:20:00');
+$date2->sub($interval);
+echo $date2->toSQL(); // 2024-11-30 15:20:00
+```
+
+### Set Time on Date Objects
+
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate();
+echo $date->toSql() // 2025-12-01 15:20:00
+
+$date->setTime( 12, 0, 0 );
+echo $date->toSql(); // 2025-12-01 12:00:00
+```
+
+### Set Timestamp on Date Objects
+
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate();
+$date->setTimestamp(1764599400); // Mon Dec 01 2025 14:30:00 UTC+0000
+
+echo $date->format('Y-m-d H:i:s'); // 2025-12-01 14:30:00 
+```
+
+### Get Offset from UTC Time Zone
+
+```php
+use Joomla\CMS\Factory;
+
+$date = Factory::getDate();
+$date->setTimezone(new DateTimeZone('Europe/Berlin'));
+
+echo $date->getOffset(); // 3600
+```
+
+### Get the difference between two Dates
+
+```php
+use Joomla\CMS\Factory;
+
+$date1 = Factory::getDate('now');
+$date2 = Factory::getDate('+1 year +35 days');
+$interval = $date1->diff($date2);
+
+echo $interval->format('%R%a days'); // +400 days
+```
+
+:::info Nice to know
+
+The diff() method returns a DateInterval object, which can be used to get the difference between two dates in a
+human-readable format. The format string used in the example above is a standard PHP format string, more examples can be found
+[here](https://www.php.net/manual/en/dateinterval.format.php).
+
+:::
+
 ## Arguments
 
 The Date constructor accepts two optional parameters: A date string to format and a
@@ -228,7 +320,7 @@ echo $date->format(Text::_('DATE_FORMAT_LC6'), true, true);
 :::caution Using Custom Time Zones
 
 If you are using a custom time zone, you will need to set the second parameter to true. Otherwise, the Date object will
-use the GMT time zone by default, which may result in the wrong date being output.
+use the GMT / UTC time zone by default, which may result in the wrong date being output.
 
 :::
 
@@ -357,38 +449,10 @@ $timezone = $user->getTimezone(); // Returns DateTimeZone object
 echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
 ```
 
-### Adding and Subtracting from Dates
 
-Because the Joomla Date object extends the PHP DateTime object, it provides methods for adding and subtracting from
-dates. The easiest of these methods to use is the modify() method, which accepts any relative modification string that
-the PHP [strtotime()](https://www.php.net/manual/en/function.strtotime.php) method would accept. For example:
-
-```php
-use Joomla\CMS\Date\Date;
-
-$date = new Date('2025-12-1 15:20:00');
-$date->modify('+1 year');
-echo $date->toSQL(); // 2026-12-01 15:20:00
-```
-
-There are also separate add() and sub() methods, for adding or subtracting time from a date object respectively. These
-accept PHP-standard DateInterval objects:
-
-```php
-use Joomla\CMS\Date\Date;
-
-$interval = new \DateInterval('P1Y1D'); // Interval represents 1 year and 1 day
-
-$date1 = new Date('2025-12-1 15:20:00');
-$date1->add($interval);
-echo $date1->toSQL(); // 2026-12-02 15:20:00
-
-$date2 = new Date('2025-12-1 15:20:00');
-$date2->sub($interval);
-echo $date2->toSQL(); // 2024-11-30 15:20:00
-```
 
 ## Related external References
 
 - [PHP DateTime](https://www.php.net/manual/en/class.datetime.php)
 - [PHP Time Zones](https://www.php.net/manual/en/timezones.php)
+- [PHP DateInterval::format](https://www.php.net/manual/en/dateinterval.format.php)
