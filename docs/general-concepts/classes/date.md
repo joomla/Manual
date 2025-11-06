@@ -84,7 +84,7 @@ $timezoneString = $config->get('offset'); // e.g. 'Australia/Melbourne'
 // Catch a potential error and set to UTC as fallback.
 try
 {
-	$siteTimezone = new DateTimeZone($timezoneString);
+    $siteTimezone = new DateTimeZone($timezoneString);
 }
 catch (DateInvalidTimeZoneException $e)
 {
@@ -95,6 +95,38 @@ echo Factory::getDate()->setTimezone($siteTimezone)->format(Text::_('DATE_FORMAT
 
 ```
 
+### Using the timezone from the User Object
+
+You can also use the timezone of the current user. By getting the user's timezone from the user object, you can then
+use the time zone name as a string in the HtmlHelper::date method or the Date object's setTimezone() method to set the
+timezone of the Date object.
+
+```php
+use Joomla\CMS\Factory;
+use Joomla\CMS\Html\HtmlHelper;
+use Joomla\CMS\Language\Text;
+
+// Get Timezone from the current User or Global Configuration as a fallback.
+$user = Factory::getApplication()->getIdentity();
+$timezone = $user->getTimezone(); // Returns DateTimeZone object
+$timezoneString = $timezone->getName(); // e.g. 'Australia/Melbourne'
+
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
+```
+
+Using the Factory::getDate() method, setting the timezone manually and formatting the date:
+
+```php
+
+use Joomla\CMS\Factory;
+
+// Get Timezone from the current User or Global Configuration as a fallback.
+$user = Factory::getApplication()->getIdentity();
+$timezone = $user->getTimezone(); // Returns DateTimeZone object
+
+echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
+
+```
 
 ## Arguments
 
@@ -251,11 +283,11 @@ Another option is to format the Date manually. If this method is used, you will 
 the user's timezone. This method is more useful for formatting dates outside the user interface, such as in system
 logs or API calls.
 
-The Date::format() method accepts up to three parameters: 
+The Date::format() method accepts up to three parameters:
 
 1. Date Formatting string
 2. Boolean that indicating whether to use the configured timezone from the date object (default false)
-3. Boolean to translate localised strings (default true). 
+3. Boolean to translate localised strings (default true).
 
 The formatting string is the same as the one used by the HtmlHelper::date() method.
 
