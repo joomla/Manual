@@ -23,10 +23,18 @@ $date = new Date(); // Creates a new Date object equal to the current time.
 You may also create an instance using the static method defined in Date:
 
 ```php
+// Legacy
 use Joomla\CMS\Date\Date;
 
 $date = Date::getInstance(); // Alias of 'new Date();'
 ```
+
+:::caution Legacy
+
+The static method is deprecated and will be removed in a future release.
+
+:::
+
 
 There is no difference between these methods, as Date::getInstance simply creates a new instance of Date exactly like
 the first method shown. Alternatively, you may also retrieve the current date (as a Date object) from the Application
