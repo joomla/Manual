@@ -353,7 +353,37 @@ object's toString() method simply calls its parent's format() method, without co
 date formatting. This will not result in a good user experience and will lead to inconsistencies between the formatting
 in your extension, and elsewhere in Joomla. Instead, you should always output Dates using the methods shown below.
 
-### Common Date Formats
+
+### Common Date and Time Format Codes
+
+```php
+use Joomla\CMS\Factory;
+$date = Factory::getDate('2025-01-06 15:05:05');
+
+echo $date->format('D'); // Mo
+echo $date->format('l'); // Monday
+echo $date->format('M'); // Jan
+echo $date->format('F'); // January
+echo $date->format('d'); // 06 day of month
+echo $date->format('H'); // 15 hour of day (24-hour clock)
+echo $date->format('h'); // 03 hour of day (12-hour clock)
+echo $date->format('a'); // pm or am based on the hour of day
+echo $date->format('i'); // 05 minutes
+echo $date->format('s'); // 05 seconds
+echo $date->format('u'); // 000000 microseconds
+echo $date->format('Y'); // 2025 year
+echo $date->format('y'); // 25 year
+echo $date->format('Y-m-d'); // 2025-01-06
+echo $date->format('Y-m-d H:i'); // 2025-01-06 15:05
+echo $date->format('Y-m-d H:i:s'); // 2025-01-06 15:05:05
+```
+
+:::info
+Check the official [PHP DateTime documentation](https://www.php.net/manual/en/datetime.format.php)
+for a full list of available formats.
+:::
+
+### Predefined Common Date Formats
 
 A number of date formats are predefined in Joomla as part of the base language packs. This is beneficial because it
 means date formats can be easily internationalised. A sample of the available format strings is below, from the en-GB
@@ -393,8 +423,10 @@ echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6')); // date and time in Me
 use Joomla\CMS\Html\HtmlHelper;
 use Joomla\CMS\Language\Text;
 
-$myDateString = '2025-12-1 15:20:00';
-echo HtmlHelper::date($myDateString, Text::_('DATE_FORMAT_LC6'));
+$date = new Date(1764599400);
+echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6')); // 2025-12-1 15:30:00
+echo HtmlHelper::date($date, Text::_('D')); // Mon
+echo HtmlHelper::date($date, Text::_('l')); // Monday
 ```
 
 ### Using Date::format() Method
@@ -569,5 +601,6 @@ echo $date->dayToString(2, true); // Tue
 ## Related external References
 
 - [PHP DateTime](https://www.php.net/manual/en/class.datetime.php)
+- [PHP DateTime Formats](https://www.php.net/manual/en/datetime.format.php)
 - [PHP Time Zones](https://www.php.net/manual/en/timezones.php)
 - [PHP DateInterval::format](https://www.php.net/manual/en/dateinterval.format.php)
