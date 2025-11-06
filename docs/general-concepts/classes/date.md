@@ -179,18 +179,15 @@ DATE_FORMAT_FILTER_DATETIME = "Y-m-d H:i:s"
 
 ### Using HtmlHelper Method (Recommended)
 
-As with many common output items, the HtmlHelper class is here to... help! HtmlHelper's date() method will take any
-date-time string that the Date constructor would accept, along with a formatting string, and output the date appropriate
-for the current user's time zone settings. As such, this is the recommended method for outputting dates for the user.
+HtmlHelper's date() method will take any date-time string that the Date constructor would accept, along with a
+formatting string, and output the date appropriate for the current user's time zone settings. As such, this is the
+recommended method for outputting dates for the user.
 
 ```php
 use Joomla\CMS\Html\HtmlHelper;
 use Joomla\CMS\Language\Text;
 
-$tz = new DateTimeZone('Australia/Melbourne');
-$date = Factory::getDate(1764599400, $tz);
-
-echo HtmlHelper::date($date, Text::_('DATE_FORMAT_LC6')); // date and time in Melbourne for the given timestamp.
+echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6')); // date and time in Melbourne for the given timestamp.
 ```
 
 ```php
