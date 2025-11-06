@@ -309,7 +309,6 @@ echo HtmlHelper::date('now', Text::_('DATE_FORMAT_LC6'), $timezoneString);
 Or using the Factory::getDate() method, setting the time zone manually and formatting the date:
 
 ```php
-
 use Joomla\CMS\Factory;
 
 // Get Timezone from Global Configuration
@@ -359,7 +358,6 @@ $user = Factory::getApplication()->getIdentity();
 $timezone = $user->getTimezone(); // Returns DateTimeZone object
 
 echo Factory::getDate()->setTimezone($timezone)->format(Text::_('DATE_FORMAT_LC6'), true);
-
 ```
 
 ### Adding and Subtracting from Dates
