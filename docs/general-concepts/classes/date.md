@@ -166,7 +166,7 @@ $plus1YearTime = new Date('now +1 year'); // Current date and time, + 1 year.
 $plus1YearAnd1MonthTime = new Date('now +1 year +1 month'); // Current date and time, + 1 year and 1 month.
 $plusTimeToTime = new Date('now +1 hour +30 minutes +3 seconds'); // Current date and time, + 1 hour, 30 minutes and 3 seconds
 $plusTimeToTime = new Date('now -1 hour +30 minutes +3 seconds'); // Current date and time, + 1 hour, 30 minutes and 3 seconds
-$combinedTimeToTime = new Date('now -1 hour -30 minutes 23 seconds'); // Current date and time, - 1 hour, +30 minutes and +23 seconds
+$combinedTimeToTime = new Date('now -1 hour -30 minutes +23 seconds'); // Current date and time, - 1 hour, +30 minutes and +23 seconds
 
 $date = new Date('2025-12-1 15:20:00'); // 3:20 PM, December 1st, 2025
 $dateFromTimestamp = new Date(1764599400); // 3:30 PM, December 1st, 2025
@@ -477,7 +477,7 @@ $isoDate = $date->toISO8601(); // 20251201T152000Z
 
 ```php
 $date = new Date('2025-12-1 15:20:00');
-$rfcDate = $date->toRFC822(); // Sat, 01 Dec 2025 15:20:00 +0000
+$rfcDate = $date->toRFC822(); // Mon, 01 Dec 2025 15:20:00 +0000
 ```
 
 ### Outputting Dates in SQL Date-Time Format
