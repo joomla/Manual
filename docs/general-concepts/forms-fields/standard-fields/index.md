@@ -11,6 +11,24 @@ Joomla provides an extensive range of type of fields which you can use in your f
 
 To try out a standard form field you can download the `com_exampleform` component from [Exampleform component](https://github.com/joomla/manual-examples/tree/main/component-exampleform), and edit the /site/forms/example_form.xml to include the field you want to investigate.
 
+## Options available along all Form Field Types
+As all form fields inherit from the base class `FormField`, the options listed below are **optional** and available to all form fields in addition to the field specific options:
+- **autocomplete** (default: on) If 'off' element will not be automatically autocompleted by the Browser.
+- **spellcheck** (default: true) The spellcheck state for the form field.
+- **autofocus** (default: false) The autofocus request for the form field.  If true element will be automatically focused on document load.
+- **hidden** (default: false) A field can be hidden temporary or as feature toggle by setting this option to true.
+- **hiddenLabel** (default: false) If this value is defined as `true`, no label is rendered for the corresponding form field.
+- **hiddenDescription** (default: false) Should the description be hidden when rendering the form field? This may be useful if you have the description rendering in your form field itself for e.g. note fields.
+- **translateLabel** (default: true) Define if the Label should be translated.
+- **translateDescription** (default: true) Define if the Description should be translated.
+- **translateHint** (default: true) Define if the Hint text should be translated.
+- **disabled** (default: false) If true then the field will be disabled and user can't interact with the field.
+- **readonly** (default: false) If true then the field will be readonly.
+- **~~validate~~** Should not longer been used See [Form Client-Side Validation](/docs/general-concepts/forms/client-side-validation.md) instead
+- **pattern** The pattern (Reg Ex) of value of the form field
+- **class** Whitespace separated list of classnames which will be added to the input element (e.g. "my-custom-class another-custom-class")
+- **data-** Data Attributes for Form Field elements will be added to the fieldset element (usage: data-foo="key:value" or data-bar="someValue")
+
 ## List of Standard Form Fields
 The following is a full list of all supplied form fields available in this release.
 
