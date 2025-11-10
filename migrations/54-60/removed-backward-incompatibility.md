@@ -5,10 +5,6 @@ sidebar_position: 3
 Removed and Backward Incompatibility
 ====================================
 
-:::tip[Developer Note]
-  Since this version of Joomla has not been released yet, this page can change anytime.
-:::
-
 All the deprecated features than have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
@@ -67,7 +63,13 @@ echo $article->title;
 - PR's: 
   - https://github.com/joomla/joomla-cms/pull/42805
   - https://github.com/joomla/joomla-cms/pull/42890
-- Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed. The CMS core code has switched the code to the Framework Input library with the namespace `\Joomla\Input`, which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes, which now use the framework class. Make sure that your code imports the correct class.
+  - https://github.com/joomla/joomla-cms/pull/44925
+- Description: The CMS Input namespace `\Joomla\CMS\Input` has been removed.
+  It is only available if the 'Behaviour - Backward Compatibility 6' plugin is enabled.
+  The CMS core code has switched the code to the Framework Input
+  [framework `Input`](https://github.com/joomla-framework/input) package with the namespace `\Joomla\Input`,
+  which is very much a drop-in replacement. This is especially of relevance if you are using the MVC classes,
+  which now use the framework class. Make sure that your code imports the correct class.
 
 ## UTC Used Instead of GMT
 
@@ -190,7 +192,7 @@ if ($app instanceof \Joomla\CMS\Application\ConsoleApplication) {
 	- File moved from `media/legacy/js` to `media/vendor/jquery/js`
 	- PR: https://github.com/joomla/joomla-cms/pull/45020
  
-## CMS Filesystem Package Moved to the Backward Compatibility Plugin
+## CMS Filesystem Package Moved to the 'Behaviour - Backward Compatibility 6' Plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/44240
 - Folder: libraries/src/Filesystem
@@ -279,19 +281,32 @@ Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
 - PR: https://github.com/joomla/joomla-cms/pull/43794
 - Description: The classes `\Joomla\CMS\Adapter\Adapter` and `\Joomla\CMS\Adapter\AdapterInstance` have been removed without replacement.
 
-## Remove deprecated BaseApplication and CLI classes
-- PR: https://github.com/joomla/joomla-cms/pull/42884
+## Remove CMS BaseApplication and CLI classes
+- PRs
+  - https://github.com/joomla/joomla-cms/pull/42884
+  - https://github.com/joomla/joomla-cms/pull/44926
 - Files: `libraries/src/Application/BaseApplication.php`, `libraries/src/Application/CLI.php`
 - Description: These legacy classes have been removed.  
-  Use `\Joomla\CMS\Application\ConsoleApplication` or framework equivalents instead.  
+  Any reference to the class `\Joomla\CMS\Application\BaseApplication` and `\Joomla\CMS\Application\CliApplication`
+  with the respective CLI input classes should be replaced with the namespace `\Joomla\Application`.
+  Cli apps should be replaced by console plugins.
+  Use `\Joomla\CMS\Application\ConsoleApplication` or framework equivalents instead.
   **(more detail needed: migration examples)**
 
-## Move JPATH_PLATFORM constant to compat plugin
+## Remove JPATH_PLATFORM Constant
 - PR: https://github.com/joomla/joomla-cms/pull/44638
+- Files: All bootstrapping files
 - Description: The `JPATH_PLATFORM` constant is no longer globally defined.  
-  It is only available if the Backward Compatibility plugin is enabled.  
-  Extensions should avoid using this constant.  
-  **(more detail needed: code examples and alternatives)**
+  It is only available if the 'Behaviour - Backward Compatibility 6' plugin is enabled.
+  Extensions should avoid using this constant.
+  Change your checks to `_JEXEC`:
+  ```php
+  // Old:
+  \defined('JPATH_PLATFORM') or die;
+
+  // New:
+  \defined('_JEXEC') or die;
+  ```
 
 ## Remove fetchExtensionCompatibility in UpdateController
 - PR: https://github.com/joomla/joomla-cms/pull/45436
