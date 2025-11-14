@@ -51,11 +51,31 @@ guidedtours.joomla_welcome_steps.ini
 
 where the first file only contains 2 keys, one for the tour name and one for its description and the second file contains all step keys.
 
-All language files need to start with 'extensionname', 'com_extensionname', 'mod_modulename', 'plg_[group]_pluginname' or 'tpl_templatename', end with `.ini` or `_steps.ini`.
+All language files need to start with `guidedtours.` and end with `.ini` or `_steps.ini`.
 
-Reminder: the language keys can be anything BUT need to contain GUIDEDTOUR in the key. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
+Reminder: the language keys can be anything BUT need to contain GUIDEDTOUR in the key name. This is to allow the tour and step views to properly distinguish what is a language key and what is just regular content.
+
+#### Language files inside an extension
 
 Language files do not need to be placed into administrator/language/[language]/. You can leave the files inside the extension's file structure.
+
+In that case, the tour's uid needs to start with the name of the extension and be followed by the rest of the tour's name.
+
+For instance, use the tour's uid:
+`com_patchtester.configuration-part1`
+to create a configuration tour (part 1) for the Patch Tester extension.
+
+Tour uids need to start with 'com_extensionname.', 'mod_modulename.', 'plg_[group]_pluginname.' or 'tpl_templatename.' to be recognized properly.
+
+All language files need to start with 'com_extensionname.', 'mod_modulename.', 'plg_[group]_pluginname.' or 'tpl_templatename.', and end with `.ini` or `_steps.ini`.
+
+For instance, following the previous example for the Patch Tester extension, we would have: 
+
+```
+com_patchtester.configuration_part1.ini
+com_patchtester.configuration_part1_steps.ini
+```
+alongside the other extension's language files.
 
 
 ### The tour context
