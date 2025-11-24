@@ -73,7 +73,7 @@ In priority order the 'element' database field is set
 - from the "module=" or "plugin=" attribute in the `<files>`, or
 - from the `<name>` (after the text is cleaned).
 
-## Root Element
+## Root 
 
 The primary tag of the installation file is
 
@@ -97,19 +97,19 @@ This starting and closing tag is the same for all extensions. The following attr
 The following elements can be used to insert metadata. Although not strictly required, you should define at least the `<name>`, `<author>`, `<version>` and `<description>` tags, all of which are used on the default administrator Manage Extensions form.
 
 ```xml
-<name> – extension name (e.g. com_banners).
-<author> – author's name (e.g. Joomla! Project)
-<creationDate> – date of creation or release (e.g. April 2006)
-<copyright> – a copyright statement (e.g. (C) 2020 - 2030 Open Source Matters. All rights reserved.)
-<license> – a license statement (e.g. GNU General Public License version 3 or later; see LICENSE.txt)
-<authorEmail> – author's email address (e.g. admin@joomla.org)
-<authorUrl> – URL to the author's website (e.g. www.joomla.org)
-<version> – the version number of the extension (e.g. 1.6.0)
-<description> – the description of the component (may be shown as a tooltip on the admin Manage Extensions page)
-<element> – the internal name of the component. If omitted, name will be cleaned and used
+<name> – extension name (e.g. com_banners);
+<author> – author's name (e.g. Joomla! Project);
+<creationDate> – date of creation or release (e.g., April 2006);
+<copyright> – a copyright statement (e.g., (C) 2020 - 2030 Open Source Matters. All rights reserved.);
+<license> – a license statement (e.g., GNU General Public License version 3 or later; see LICENSE.txt);
+<authorEmail> – author's email address (e.g., admin@joomla.org);
+<authorUrl> – URL to the author's website (e.g., www.joomla.org);
+<version> – the version number of the extension (e.g., 1.6.0);
+<description> – the description of the component (may be shown as a tooltip on the admin Manage Extensions page);
+<element> – the internal name of the component. If omitted, the file name (without extension) will be cleaned and used.
 ```
 
-The `<name>` and `<description>` fields are translatable. If you use language strings for these elements then they should be defined in your language .sys.ini file AND your .ini file.
+The `<name>` and `<description>` fields are translatable. If you use language strings for these elements, then they should be defined in your language .sys.ini file AND your .ini file.
 
 ## Frontend Files
 
