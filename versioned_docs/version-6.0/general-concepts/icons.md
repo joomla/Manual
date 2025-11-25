@@ -15,8 +15,9 @@ This is a remnant of the old coding style of FontAwesome; its latest versions us
 
 To display such an icon, you can use:
 
+```
     <span class="icon-cancel" aria-hidden="true"></span> <?php echo Text::_('JCANCEL') ?> 
-
+```
 The attribute aria-hidden="true" hides the icon from screen readers and improves accessibility. 
 
 In case you want to display other icons not included in the Joomla pack, you have several options, one of which is to use additional FontAwesome icons.
@@ -28,11 +29,11 @@ This can be achieved in different ways depending on your needs:
 
 According to [How To Add Icons](https://docs.fontawesome.com/web/add-icons/how-to), the CSS classes are prefixed "fa-" as "fa-solid" or "fa-brands".
 The preferred way is to use classes inside the `<i>` element:
-
+```
     <i class="fa-solid fa-calendar" aria-hidden="true"></i>
-
+```
 But the span element can also do the job:
-
+```
     <span class="fa-solid fa-bomb" aria-hidden="true"></span> <?php echo Text::_('JSAVE') ?> 
     <span class="fa-brands fa-facebook" aria-hidden="true"></span> <?php echo 'Facebook' ?> 
-
+```
