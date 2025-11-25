@@ -242,8 +242,8 @@ then Joomla checks that none of the subtree nodes are checked out to other users
 If you delete a node in the tree then you must consider what to do with the child nodes in the subtree below it.
 
 ```php
-$table->($pk, true);   // deletes the node identified by $pk, and deletes all of its children as well
-$table->($pk, false);  // deletes the node identified by $pk, and moves all of its children up a level in the tree
+$table->delete($pk, true);   // deletes the node identified by $pk, and deletes all of its children as well
+$table->delete($pk, false);  // deletes the node identified by $pk, and moves all of its children up a level in the tree
 ```
 
 ## Rearranging a tree
