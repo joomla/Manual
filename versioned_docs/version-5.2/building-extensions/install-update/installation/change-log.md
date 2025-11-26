@@ -40,10 +40,6 @@ To enable this you must specify in the extension[ update server](../update-serve
 <changelogurl>https://example.com/updates/changelog.xml</changelogurl>
 ```
 
-:::note[Joomla Issue]
-  This feature does not currently work; see [Joomla issue 43505](https://issues.joomla.org/tracker/joomla-cms/43505).
-:::
-
 ## The Changelog File
 
 An example of a changelog file is below:
