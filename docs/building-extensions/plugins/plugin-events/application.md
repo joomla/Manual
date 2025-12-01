@@ -54,16 +54,17 @@ If you would like further information then you may find it helpful to watch the 
 ## Application Events overview
 
 The application event classes can be found in libraries/src/Event/Application. 
-In general they have a single parameter `subject` which is usually set to `$this` in the code which dispatches the event.
-There is no getter method for `subject` so you have to use something like:
+In general they have a single parameter `subject` which is set to the Application instance,
+and the getter method for this parameter is `getApplication`, for example:
 
 ```php
-use Joomla\Event\Event;
+use Joomla\CMS\Event\Application\AfterInitialiseEvent;
 
-public function onAfterInitialise(Event $event)
+public function onAfterInitialise(AfterInitialiseEvent $event): void
 {
     $args = $event->getArguments();
-    $subject = $args['subject'];
+    $app = $args['subject'];           // these two
+    $app = $event->getApplication();   // are equivalent
 }
 ```
 
@@ -123,21 +124,22 @@ so if your plugin uses the Joomla\CMS\Router\SiteRouterAwareTrait trait
 then you can access the router instance and add rules to affect how URLs are built and parsed:
 
 ```php
-    use Joomla\CMS\Router\SiteRouterAwareTrait;
+use Joomla\CMS\Router\SiteRouterAwareTrait;
+use Joomla\CMS\Event\Application\AfterInitialiseEvent;
 
-    public function onAfterInitialise()
-    {
-        $router = $this->getSiteRouter();
-        $router->attachBuildRule(<callback object and method>, <build process stage>);
-        ...
-    }
+public function onAfterInitialise(AfterInitialiseEvent $event): void
+{
+    $router = $this->getSiteRouter();
+    $router->attachBuildRule(<callback object and method>, <build process stage>);
+    ...
+}
 ```
 
 ### Event Arguments
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -155,7 +157,7 @@ You can use this event, for example, to tidy up aspects after the routing functi
 
 The event class \Joomla\CMS\Event\Application\AfterRouteEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -173,7 +175,7 @@ You can use this event, to set aspects of the Document.
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseDocumentEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 - **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
 
@@ -191,7 +193,7 @@ This event is triggered after Joomla has run the main component and buffered its
 
 The event class \Joomla\CMS\Event\Application\AfterDispatchEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -208,7 +210,7 @@ to fill in the `<jdoc:include>` tags.
 
 The event class \Joomla\CMS\Event\Application\BeforeRenderEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -226,7 +228,7 @@ You can use this to include other items within the `<head>`, via the [Web Asset 
 
 The event class \Joomla\CMS\Event\Application\BeforeCompileHeadEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 - **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
 
@@ -242,15 +244,21 @@ This event is triggered after Joomla has generated the output (eg HTML document)
 You can use this to make any final modifications to the HTML document, which you can access using
 
 ```php
-$event->getApplication()->getDocument();   // or
-$event->getApplication()->getBody();       // just to get the HTML body
+use Joomla\CMS\Event\Application\AfterRenderEvent;
+
+public function onAfterRender(AfterRenderEvent $event): void
+{
+    $doc = $event->getApplication()->getDocument();   // to get the Document, or
+    $body = $event->getApplication()->getBody();      // to get just the HTML body
+    ...
+}
 ```
 
 ### Event Arguments
 
 The event class \Joomla\CMS\Event\Application\AfterRenderEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -266,7 +274,7 @@ This event is triggered just before Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\BeforeRespondEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -282,7 +290,7 @@ This event is triggered just after Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\AfterRespondEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, available also via `$event->getApplication()`
 
 ### Return Value
 
@@ -302,7 +310,7 @@ which could be used by the extension's `boot()` method (which is run when the ex
 
 The event class \Joomla\CMS\Event\BeforeExtensionBootEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, but note that this is **not** available via `$event->getApplication()`
 
 - **`type`** - This is the type of extension being booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
@@ -350,7 +358,7 @@ then com_content will run your MVC classes instead of its own.
 
 The event class \Joomla\CMS\Event\AfterExtensionBootEvent has the following arguments:
 
-- **`subject`** - set to `$this` in the method which triggered the event
+- **`subject`** - the Application instance, but note that this is **not** available via `$event->getApplication()`
 
 - **`type`** - This is the type of extension booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
