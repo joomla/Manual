@@ -137,7 +137,7 @@ then you can access the router instance and add rules to affect how URLs are bui
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -155,7 +155,7 @@ You can use this event, for example, to tidy up aspects after the routing functi
 
 The event class \Joomla\CMS\Event\Application\AfterRouteEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -173,7 +173,7 @@ You can use this event, to set aspects of the Document.
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseDocumentEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 - **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
 
@@ -191,7 +191,7 @@ This event is triggered after Joomla has run the main component and buffered its
 
 The event class \Joomla\CMS\Event\Application\AfterDispatchEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -208,7 +208,7 @@ to fill in the `<jdoc:include>` tags.
 
 The event class \Joomla\CMS\Event\Application\BeforeRenderEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -226,7 +226,7 @@ You can use this to include other items within the `<head>`, via the [Web Asset 
 
 The event class \Joomla\CMS\Event\Application\BeforeCompileHeadEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 - **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
 
@@ -250,7 +250,7 @@ $event->getApplication()->getBody();       // just to get the HTML body
 
 The event class \Joomla\CMS\Event\Application\AfterRenderEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -266,7 +266,7 @@ This event is triggered just before Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\BeforeRespondEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -282,7 +282,7 @@ This event is triggered just after Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\AfterRespondEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 ### Return Value
 
@@ -292,6 +292,8 @@ None
 
 ### Description
 
+See the section on [onBeforeExtensionBoot and onAfterExtensionBoot events](application.md#onbeforeextensionboot-and-onafterextensionboot-events) above.
+
 This event is triggered just before Joomla boots an extension.
 You could use this event to enter a dependency into the child container, for example,
 which could be used by the extension's `boot()` method (which is run when the extension is booted).
@@ -300,7 +302,7 @@ which could be used by the extension's `boot()` method (which is run when the ex
 
 The event class \Joomla\CMS\Event\BeforeExtensionBootEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 - **`type`** - This is the type of extension being booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
@@ -330,6 +332,8 @@ None
 
 ### Description
 
+See the section on [onBeforeExtensionBoot and onAfterExtensionBoot events](application.md#onbeforeextensionboot-and-onafterextensionboot-events) above.
+
 This event is triggered just after Joomla boots an extension.
 
 This enables one of Joomla's most powerful points of flexibility. 
@@ -346,7 +350,7 @@ then com_content will run your MVC classes instead of its own.
 
 The event class \Joomla\CMS\Event\AfterExtensionBootEvent has the following arguments:
 
-- **`subject`** - This will be the PHP instance which triggered this event
+- **`subject`** - set to `$this` in the method which triggered the event
 
 - **`type`** - This is the type of extension booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
