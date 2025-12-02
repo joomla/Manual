@@ -33,7 +33,6 @@ If you would like further information then you may find it helpful to watch the 
 - Route - to work out the main component, and associated parameters (view, layout, etc)
 - trigger *onAfterRoute*
 - Instantiate the Document object representing the output - normally HtmlDocument
-- trigger *onAfterInitialiseDocument*
 - run the component - the output from the component is stored in a buffer
 - trigger *onAfterDispatch*
 - reads and parses the template file (eg templates/cassiopeia/index.php) which forms the basis of what is returned to the client
@@ -53,18 +52,12 @@ If you would like further information then you may find it helpful to watch the 
 
 ## Application Events overview
 
-The application event classes can be found in libraries/src/Event/Application. 
-In general they have a single parameter `subject` which is set to the Application instance,
-and the getter method for this parameter is `getApplication`, for example:
+The application event classes can be found in libraries/src/Event/Application (for Joomla 5+). 
+In general they have a single parameter `subject` which is set to the Application instance.
 
-```php
-use Joomla\CMS\Event\Application\AfterInitialiseEvent;
-
-public function onAfterInitialise(AfterInitialiseEvent $event): void
-{
-    $app = $event->getApplication(); 
-}
-```
+For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), 
+where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) 
+and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
 
 The documentation below does not cover all of the application events, 
 only the main ones which are triggered during Joomla handling a web HTTP request.
@@ -117,23 +110,11 @@ Also, at this stage the Router object will have been instantiated,
 so if your plugin uses the Joomla\CMS\Router\SiteRouterAwareTrait trait
 then you can access the router instance and add rules to affect how URLs are built and parsed:
 
-```php
-use Joomla\CMS\Router\SiteRouterAwareTrait;
-use Joomla\CMS\Event\Application\AfterInitialiseEvent;
-
-public function onAfterInitialise(AfterInitialiseEvent $event): void
-{
-    $router = $this->getSiteRouter();
-    $router->attachBuildRule(<callback object and method>, <build process stage>);
-    ...
-}
-```
-
 ### Event Arguments
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -151,27 +132,7 @@ You can use this event, for example, to tidy up aspects after the routing functi
 
 The event class \Joomla\CMS\Event\Application\AfterRouteEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
-
-### Return Value
-
-None
-
-## onAfterInitialiseDocument
-
-### Description
-
-This event is triggered after Joomla has initialised the Document object. 
-
-You can use this event, to set aspects of the Document.
-
-### Event Arguments
-
-The event class \Joomla\CMS\Event\Application\AfterInitialiseDocumentEvent has the following arguments:
-
-- **`subject`** - the Application instance, available via `$event->getApplication()`
-
-- **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -187,7 +148,7 @@ This event is triggered after Joomla has run the main component and buffered its
 
 The event class \Joomla\CMS\Event\Application\AfterDispatchEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -204,7 +165,7 @@ to fill in the `<jdoc:include>` tags.
 
 The event class \Joomla\CMS\Event\Application\BeforeRenderEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -222,9 +183,9 @@ You can use this to include other items within the `<head>`, via the [Web Asset 
 
 The event class \Joomla\CMS\Event\Application\BeforeCompileHeadEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
-- **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
+- **`document`** - The Document
 
 ### Return Value
 
@@ -235,24 +196,13 @@ None
 ### Description
 
 This event is triggered after Joomla has generated the output (eg HTML document), but before the HTTP response has been sent. 
-You can use this to make any final modifications to the HTML document, which you can access using
-
-```php
-use Joomla\CMS\Event\Application\AfterRenderEvent;
-
-public function onAfterRender(AfterRenderEvent $event): void
-{
-    $doc = $event->getApplication()->getDocument();   // to get the Document, or
-    $body = $event->getApplication()->getBody();      // to get just the HTML body
-    ...
-}
-```
+You can use this to make any final modifications to the HTML document.
 
 ### Event Arguments
 
 The event class \Joomla\CMS\Event\Application\AfterRenderEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -268,7 +218,7 @@ This event is triggered just before Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\BeforeRespondEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
@@ -284,7 +234,7 @@ This event is triggered just after Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\AfterRespondEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`subject`** - the Application instance
 
 ### Return Value
 
