@@ -14,6 +14,17 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 
 | Event Name                        | Short Description                            | Group            | From Release |
 | --------------------------------- | --------------------------------------- | ---------------- | ------------ |
+| [onAfterInitialise](application.md#onafterinitialise) | After Joomla initialisation | Application / System |  before 4.0  |
+| [onAfterRoute](application.md#onafterroute) | After the router has completed | Application / System |  before 4.0  |
+| [onAfterInitialiseDocument](application.md#onafterinitialisedocument) | After the Document has been instantiated | Application / System |  5.0  |
+| [onAfterDispatch](application.md#onafterdispatch) | After the main component has been run | Application / System |  before 4.0  |
+| [onBeforeRender](application.md#onbeforerender) | Before processing the template file | Application / System |  before 4.0  |
+| [onBeforeCompileHead](application.md#onbeforecompilehead) | Before Joomla renders the `<head>` section | Application / System |  before 4.0  |
+| [onAfterRender](application.md#onafterrender) | After the output has been prepared | Application / System |  before 4.0  |
+| [onBeforeRespond](application.md#onbeforerespond) | Before Joomla sends the HTTP response | Application / System |  before 4.0  |
+| [onAfterRespond](application.md#onafterrespond) | After Joomla sends the HTTP response | Application / System |  before 4.0  |
+| [onBeforeExtensionBoot](application.md#onbeforeextensionboot) | Before an extension is booted | Application / System |  4.0  |
+| [onAfterExtensionBoot](application.md#onafterextensionboot) | After an extension is booted | Application / System |  4.0  |
 | [onContentPrepare](content.md#oncontentprepare) | Modifying content displayed in a View | Content          |  before 4.0  |
 | [onContentAfterTitle](./content.md#oncontentaftertitle) | Injecting HTML after the title | Content          |  before 4.0  |
 | [onContentBeforeDisplay](./content.md#oncontentbeforedisplay) | Injecting HTML before the main page content | Content          |  before 4.0  |
