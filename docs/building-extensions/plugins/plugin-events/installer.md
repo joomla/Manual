@@ -13,9 +13,7 @@ Installer plugin events are triggered when some routines are performed during th
 For an overview of how a number of these events fit into the installation process see [Install Process](../../install-update/installation/install-process.md).
 (Note that the onExtensionBeforeInstall and onExtensionAfterInstall events aren't covered here).
 
-For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), 
-where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) 
-and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
+For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
 
 ## onInstallerAddInstallationTab
 
