@@ -46,6 +46,8 @@ class MyPlugin extends CMSPlugin implements SubscriberInterface
 
 It's important that you state that your plugin `implements SubscriberInterface`.
 
+(Note that you can also set a priority for each event and handler - see [Priority of Events](./advanced-features.md#priority-of-events)).
+
 ## Your handler function
 
 Here is an example based on the [onContentPrepare event](./plugin-events/content.md#oncontentprepare): 
@@ -58,9 +60,10 @@ public function modifyContent(ContentPrepareEvent $event): void
     if (!$this->getApplication()->isClient('site')) {
         return;
     }
-    $args = $event->getArguments();
-    $item = $event->getItem();
-    if ($context = $event['context']) {
+    $item = $event->getItem();        // preferred way to get the event arguments
+    $args = $event->getArguments();   // fallback mechanism
+    $context = $event['context'];     // using PHP Array Access
+    if ($context) {
         ...
     }
 }
@@ -109,12 +112,28 @@ if (!$this->getApplication()->isClient('site')) {
 
 The [getApplication](#getapplication) function is an inherited method, as described below.
 
-### Arguments
+### Getter Functions
 
 Each Event instance has a number of arguments which are documented in the detailed plugin event pages
 (and sometimes in the source code of the event class).
- 
-You can obtain these by:
+
+You should use the event getter functions to obtain the event arguments, for example
+
+```php
+$context = $event->getContext();
+$item = $event->getItem();
+$params = $event->getParams();
+$page = $event->getPage();
+```
+
+The getter function matches the name of the argument in the documentation. 
+
+`$event->getName()` returns the name of the event.
+
+### Arguments
+
+Occasionally you may find that there isn't a getter function for a particular argument.
+In this case you can obtain the event arguments by: 
 
 ```php
 $args = $event->getArguments();
@@ -127,24 +146,8 @@ The returned value is an associative array mapping the arguments to their values
  "params" => <article params as a Registry class instance>, "page" => 0]
 ```
 
-### Getter Functions
-
-The preferred way is to get the arguments using the specific getter functions, for example
-
-```php
-$context = $event->getContext();
-$item = $event->getItem();
-$params = $event->getParams();
-$page = $event->getPage();
-```
-
-The getter function usual matches the name of the argument **but this is not always the case**.
-
-For example, for ContentPrepareEvent the 'subject' argument is obtained using `getItem()`.
-
-Some arguments don't have a getter function at all, and you have to use the argument array index approach.
-
-These situations will be highlighted in the detailed plugin events pages.
+(Note that the array element index doesn't always match the argument in the documentation pages.
+For example, for ContentPrepareEvent the 'item' argument is given by the "subject" element in the array.)
 
 ### Array Access
 
@@ -156,7 +159,8 @@ use \Joomla\CMS\Event\Content\ContentPrepareEvent;
 
     public function modifyContent(ContentPrepareEvent $event): void
     {
-        if ($context = $event['context']) {
+        $context = $event['context'];
+        if ($context) {
             ...
         }
     }
@@ -237,6 +241,11 @@ protected $autoloadLanguage = true;
 ```
 
 and Joomla will load your plugin's language constants for you.
+
+:::warning
+  This feature has a negative effect on performance, as it means that your language constants are processed even when they're not used.
+  You should always load them manually.
+:::
 
 ### Injected Dependencies
 
