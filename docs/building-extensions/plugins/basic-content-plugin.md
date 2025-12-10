@@ -19,7 +19,8 @@ In addition, the plugin demonstrates the use of:
 - language constants - both in the manifest file and in the plugin code
 - returning a value from a plugin method - through the use of the `onContentAfterTitle` event. The plugin code adds some text after the article title.
 
-The diagram below the plugin files to write, or you can download a zip file of the plugin from [shortcodes plugin download](_assets/plg_shortcodes.zip).
+The diagram below lists the plugin files to write, or you can download the plugin
+from the Joomla Manual Examples repo [shortcodes plugin](https://github.com/joomla/manual-examples/tree/main/plugin-example-shortcode).
 
 ```
 plg_shortcodes
@@ -283,6 +284,7 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
         if (!$this->getApplication()->isClient('site')) return;
         
         $context = $event->getContext();
+        $this->loadLanguage();
         if ($context === "com_content.article" || $context === "com_content.featured") 
         {
             $event->addResult(Text::_('PLG_CONTENT_SHORTCODES_PROCESSED'));
