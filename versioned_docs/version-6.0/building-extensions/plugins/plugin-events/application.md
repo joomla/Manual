@@ -54,7 +54,7 @@ If you would like further information then you may find it helpful to watch the 
 ## Application Events overview
 
 The application event classes can be found in libraries/src/Event/Application. 
-In general they have a single parameter `subject` which is set to the Application instance,
+In general they have a single parameter `application` which is set to the Application instance,
 and the getter method for this parameter is `getApplication`, for example:
 
 ```php
@@ -133,7 +133,7 @@ public function onAfterInitialise(AfterInitialiseEvent $event): void
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -151,7 +151,7 @@ You can use this event, for example, to tidy up aspects after the routing functi
 
 The event class \Joomla\CMS\Event\Application\AfterRouteEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -169,9 +169,9 @@ You can use this event, to set aspects of the Document.
 
 The event class \Joomla\CMS\Event\Application\AfterInitialiseDocumentEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
-- **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
+- **`document`** - The Document, available via `$event->getDocument()`
 
 ### Return Value
 
@@ -187,7 +187,7 @@ This event is triggered after Joomla has run the main component and buffered its
 
 The event class \Joomla\CMS\Event\Application\AfterDispatchEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -204,7 +204,7 @@ to fill in the `<jdoc:include>` tags.
 
 The event class \Joomla\CMS\Event\Application\BeforeRenderEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -222,9 +222,9 @@ You can use this to include other items within the `<head>`, via the [Web Asset 
 
 The event class \Joomla\CMS\Event\Application\BeforeCompileHeadEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
-- **`document`** - The Document. You can use the getter method `$doc = $event->getDocument();` to get this.
+- **`document`** - The Document, available via `$event->getDocument()`
 
 ### Return Value
 
@@ -252,7 +252,7 @@ public function onAfterRender(AfterRenderEvent $event): void
 
 The event class \Joomla\CMS\Event\Application\AfterRenderEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -268,7 +268,7 @@ This event is triggered just before Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\BeforeRespondEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -284,7 +284,7 @@ This event is triggered just after Joomla sends the HTTP response.
 
 The event class \Joomla\CMS\Event\Application\AfterRespondEvent has the following arguments:
 
-- **`subject`** - the Application instance, available via `$event->getApplication()`
+- **`application`** - the Application instance, available via `$event->getApplication()`
 
 ### Return Value
 
@@ -304,7 +304,7 @@ which could be used by the extension's `boot()` method (which is run when the ex
 
 The event class \Joomla\CMS\Event\BeforeExtensionBootEvent has the following arguments:
 
-- **`subject`** - the Application instance, but note that there is no getter function for this. Instead you can use:
+- **`application`** - the Application instance, but note that there is no getter function for this. Instead you can use:
 
 ```php
 use \Joomla\CMS\Event\BeforeExtensionBootEvent;
@@ -315,14 +315,9 @@ public function onBeforeExtensionBoot(BeforeExtensionBootEvent $event): void
 }
 ```
 
-- **`type`** - This is the type of extension being booted, 
+- **`extensionType`** - This is the type of extension being booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
-
-Note that the getter function for this argument is getExtensionType rather than getType:
-
-```php
-$type = $event->getExtensionType();
-```
+Available via `$event->getExtensionType()`
 
 - **`extensionName`** - The extension name, available via `$event->getExtensionName()`:
 
@@ -361,7 +356,7 @@ then com_content will run your MVC classes instead of its own.
 
 The event class \Joomla\CMS\Event\AfterExtensionBootEvent has the following arguments:
 
-- **`subject`** - the Application instance, but note that there is no getter function for this. Instead you can use:
+- **`application`** - the Application instance, but note that there is no getter function for this. Instead you can use:
 
 ```php
 use \Joomla\CMS\Event\AfterExtensionBootEvent;
@@ -372,10 +367,9 @@ public function onBeforeExtensionBoot(AfterExtensionBootEvent $event): void
 }
 ```
 
-- **`type`** - This is the type of extension booted, 
+- **`extensionType`** - This is the type of extension being booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
-
-Note that the getter function for this argument is getExtensionType rather than getType:
+Available via `$event->getExtensionType()`
 
 ```php
 $type = $event->getExtensionType();

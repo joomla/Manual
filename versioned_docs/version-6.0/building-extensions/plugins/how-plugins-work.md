@@ -2,6 +2,12 @@
 title: How Plugins Work
 sidebar_position: 1
 ---
+
+How Plugins Work
+================
+
+## Overview
+
 ![Plugins Overview](_assets/plugin-overview.jpg "Plugins Overview")
 
 The diagram shows how Joomla plugins work.
@@ -20,6 +26,8 @@ The process of involving the plugins comprises 2 steps:
 1. Import all plugins of a given type
 2. Trigger an event
 
+## Importing a Plugin
+
 Importing a plugin type is implemented by the code:
 ```php
 PluginHelper::importPlugin($pluginType, …);
@@ -36,11 +44,15 @@ Importing a plugin type involves:
 
 Splitting the plugins by plugin type in this way makes Joomla more performant - it doesn't need to process plugins which aren't going to be interested in the event which will be triggered next.
 
+## Triggering an Event
+
 The second step is triggering an event via a call to the event dispatcher. Joomla looks through its store of `Listeners` to determine which plugins have subscribed to that event type. It then calls the associated method of the subscribing plugin, and passes the event data to it, often allowing that data to be modified by the plugin code. 
 
 Each plugin which has subscribed to that event is called in turn (based on a priority scheme), and any results returned by the plugins are collated into an array associated with the event. 
 
 As an example, after Joomla is initialised system plugins are imported and the event `onAfterInitialise` is triggered. The "Remember Me" plugin (in plugins/system/remember) receives notification of this, and can log in a user who has previously checked the "Remember Me" checkbox on the login form. 
+
+## Subsequent Events
 
 Once a plugin has been imported and its subscriptions logged in the `Listeners` data store, then it continues to receive notifications for all the events it has subscribed to. For example, consider the following scenario:
 - system plugins are imported, and the `onAfterInitialise` event is triggered
@@ -49,6 +61,8 @@ Once a plugin has been imported and its subscriptions logged in the `Listeners` 
 The system plugins imported in the first step can subscribe to the `onContentPrepare` event ok, even though it's associated with content plugins, and will receive the `onContentPrepare` event if they have subscribed to it, without having to be imported again.
 
 You should also be aware that unlike components and modules, there aren't different site plugins and administrator plugins. The plugins which you install are run for all the different contexts - site, administrator and API applications - so it's a good idea to in your plugins to check the application context.
+
+## Sequence Diagram
 
 For those who wish a more detailed picture of how plugins work, see the sequence diagram below.
 

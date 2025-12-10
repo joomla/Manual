@@ -75,17 +75,7 @@ This event is triggered at the beginning of an installation operation.
 
 The event class `\Joomla\CMS\Event\Installer\BeforeInstallationEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
-
-Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerBeforeInstallation(\Joomla\CMS\Event\Installer\BeforeInstallationEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
+- **`model`** - This will be the instance of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
 
 - **`package`** - This is null. 
 
@@ -111,17 +101,9 @@ but before Joomla has started to process the extension's installation files.
 
 The event class `\Joomla\CMS\Event\Installer\BeforeInstallerEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
+- **`model`** - This will be the instance of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
 
 Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerBeforeInstaller(\Joomla\CMS\Event\Installer\BeforeInstallerEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
 
 - **`package`** - This is an array of 4 elements, which in the case of uploading a zip file will contain:
  
@@ -154,17 +136,9 @@ This event is triggered after extension has been installed.
 
 The event class `\Joomla\CMS\Event\Installer\AfterInstallerEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
+- **`model`** - This will be the instance of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
 
 Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerAfterInstaller(\Joomla\CMS\Event\Installer\AfterInstallerEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
 
 - **`package`** - The package which has been installed, in the form described in onInstallerBeforeInstaller above.
 
