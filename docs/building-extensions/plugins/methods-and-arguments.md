@@ -173,7 +173,7 @@ so you can use this to check if an argument exists. No PHP warning is generated 
 
 The documentation will state whether any arguments are modifiable, or whether a result should be returned.
 
-For example, ContentPrepareEvent passes a 'subject' argument (available via `getItem()`) which you can modify.
+For example, ContentPrepareEvent passes an 'item' argument which you can modify.
 Depending upon the 'context' argument this item may be an article, a contact, a user, etc., 
 and you can set properties of this object. 
 
@@ -244,7 +244,7 @@ and Joomla will load your plugin's language constants for you.
 
 :::warning
   This feature has a negative effect on performance, as it means that your language constants are processed even when they're not used.
-  You should always load them manually.
+  You should always load them manually using `$this->loadLanguage()` instead.
 :::
 
 ### Injected Dependencies
