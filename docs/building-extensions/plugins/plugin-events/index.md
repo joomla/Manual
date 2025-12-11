@@ -8,8 +8,6 @@ List of Plugin Events
 
 The list of events below includes the event name and a short description of its use, together with a link to the detailed description.
 
-As described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), Joomla events have changed from being strings with associated parameters to "concrete" event classes specific to each event, sometimes via a "generic" event class. Some concrete event classes were introduced in Joomla 4 and others in Joomla 5. If you want your plugin to support both concrete and generic event classes then you need to code it as described in [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md).
-
 The event Group refers to the group of plugins which Joomla ensures are imported prior to dispatching that event. 
 
 | Event Name                        | Short Description                            | Group            | From Release |

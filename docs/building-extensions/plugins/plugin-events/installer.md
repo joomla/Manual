@@ -13,9 +13,7 @@ Installer plugin events are triggered when some routines are performed during th
 For an overview of how a number of these events fit into the installation process see [Install Process](../../install-update/installation/install-process.md).
 (Note that the onExtensionBeforeInstall and onExtensionAfterInstall events aren't covered here).
 
-For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), 
-where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) 
-and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
+For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
 
 ## onInstallerAddInstallationTab
 
@@ -29,7 +27,11 @@ The event class `\Joomla\CMS\Event\Installer\AddInstallationTabEvent` has no arg
 
 ### Return Value
 
-Return the contents of the additional tab which you want to include in the options for install.
+Return the contents of the additional tab which you want to include in the options for install using, eg 
+
+```php
+$event->addResult($tabHTML);
+```
 
 ### Examples
 
@@ -103,17 +105,7 @@ This event is triggered at the beginning of an installation operation.
 
 The event class `\Joomla\CMS\Event\Installer\BeforeInstallationEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
-
-Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerBeforeInstallation(\Joomla\CMS\Event\Installer\BeforeInstallationEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
+- **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
 
 - **`package`** - This is null. 
 
@@ -138,17 +130,7 @@ but before Joomla has started to process the extension's installation files.
 
 The event class `\Joomla\CMS\Event\Installer\BeforeInstallerEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
-
-Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerBeforeInstaller(\Joomla\CMS\Event\Installer\BeforeInstallerEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
+- **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
 
 - **`package`** - This is an array of 4 elements, which in the case of uploading a zip file will contain:
  
@@ -188,21 +170,11 @@ This event is triggered after extension has been installed.
 
 The event class `\Joomla\CMS\Event\Installer\AfterInstallerEvent` has the following arguments:
 
-- **`subject`** - This will be the FQN of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
-
-Note that there is no getter for the subject argument. Instead you should use:
-
-```php
-public function onInstallerAfterInstaller(\Joomla\CMS\Event\Installer\AfterInstallerEvent $event): void
-{
-    $args = $event->getArguments();
-    $subject = $args['subject'];
-}
-```
+- **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
 
 - **`package`** - The package which has been installed, in the form described in onInstallerBeforeInstaller above.
 
-- **`installer`** - The installer class - Joomla sets this to "Joomla\CMS\Installer\Installer"
+- **`installer`** - The instance of installer class (\Joomla\CMS\Installer\Installer)
 
 - **`installerResult`** - true or false, depending upon whether the package was successfully installed or not 
 
