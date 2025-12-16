@@ -44,7 +44,11 @@ You can define whatever categories you like, but it is best to define them to av
 Using your extension's name is fine.
 
 :::note
+`jerror` is a special category that is used to show a message to a user.
 If you log a message with 'jerror' as the category then the message will also be displayed in the message area on the web page.
+So you can use this method to display a message there, 
+rather than having to find the Application instance and use `$app->enqueueMessage()`,
+provided that you recognise that the message will also appear in the usual log files (if logging enabled).
 :::
 
 The logging is controller by the administrator functionality, so to see the logged message you must switch logging on.
@@ -70,10 +74,14 @@ Joomla will write to a file `custom-logging.php` any messages which:
 
 when the Log Category Mode is set to Include.
 
-(These messages are still written to `everything.php` as well).
-
 So if you set your message category or categories to be similar to the name of your extension,
 then you can easily get a log of your extension's messages, separate from all the others.
+
+If the Log Almost Everything switch is set to Yes 
+then these messages are written to `everything.php` as well.
+However, you don't have to have Log Almost Everything enabled to do custom logging - the 2 aspects are independent. 
+
+You don't need to do anything in your extension code to enable custom logging with your log categories - Joomla looks after it all.
 
 ## Debug Console
 
@@ -170,15 +178,24 @@ In addition, the following values can be used:
 
 ### text_file_no_php
 
-This specifies whether the log file is prepended with the usual prefix of: 
+Usually log files are given a .php extension, and are prepended with: 
 
-```php
+```
 #
 #<?php die('Forbidden.'); ?>
 ```
 
-By default it is set to false, and usually you should not set this to true. 
-Log files should not be readable from the outside as they can provide valuable information about your system for attackers.
+This means that attempts to read them via the web server will fail. 
+(In general, log files should not be readable from the outside 
+as they can provide valuable information about your system for attackers).
+
+If you set the option:
+
+```php
+'text_file_no_php' => true
+```
+
+then the log entries will not be prepended by these 2 lines. 
 
 ### text_file_path
 
