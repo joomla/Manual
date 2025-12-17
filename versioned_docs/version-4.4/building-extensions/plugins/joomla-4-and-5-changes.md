@@ -172,6 +172,23 @@ class ContentPrepareEvent extends ContentEvent
     protected $legacyArgumentsOrder = ['context', 'subject', 'params', 'page'];
 ```
 
+### ArrayAccess
+
+The Joomla Event class supports the [PHP ArrayAccess interface](https://www.php.net/manual/en/class.arrayaccess.php). 
+So you can use this method to obtain the arguments for both generic events and concrete events:
+
+```php
+use Joomla\Event\Event;
+
+  public function myOnContentPrepare(Event $event)
+  {
+    $context = $event['context'];
+  }
+```
+
+If the 'context' array element / argument doesn't exist then `$event['context']` returns null,
+so you can use this to check if an argument exists. 
+
 ### Traditional Legacy Method
 
 You will be using this method if you developed your plugin before Joomla 4.0. In this case, you're probably better to continue this approach until concrete event classes are available for all the events your plugin listens for.

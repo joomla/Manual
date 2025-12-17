@@ -136,7 +136,7 @@ use My\Plugin\Ajax\AjaxJobs\Extension\Jobs;
 ```
 
 ### Jobs file
-This is where you write your code for your ad hoc jobs. The result is returned as described in [Joomla 4 and 5 Changes](../joomla-4-and-5-changes.md).
+This is where you write your code for your ad hoc jobs. 
 
 ```php title="plg_ajax_jobs/src/Extension/Jobs.php"
 <?php
@@ -177,13 +177,7 @@ class Jobs extends CMSPlugin implements SubscriberInterface
             $output .= "{$extension}:{$count}<br>";
         }
 
-        if ($event instanceof ResultAwareInterface) {
-            $event->addResult($output);
-        } else {
-            $result = $event->getArgument('result') ?? [];
-            $result[] = $output;
-            $event->setArgument('result', $result);
-        }
+        $event->addResult($output);
     }
 }
 ```
