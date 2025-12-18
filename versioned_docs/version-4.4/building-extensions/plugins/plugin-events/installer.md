@@ -103,7 +103,7 @@ The event class `\Joomla\CMS\Event\Installer\BeforeInstallerEvent` has the follo
 
 - **`model`** - This will be the instance of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
 
-Note that there is no getter for the subject argument. Instead you should use:
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`package`** - This is an array of 4 elements, which in the case of uploading a zip file will contain:
  
@@ -138,7 +138,7 @@ The event class `\Joomla\CMS\Event\Installer\AfterInstallerEvent` has the follow
 
 - **`model`** - This will be the instance of the install model class Joomla\Component\Installer\Administrator\Model\InstallModel
 
-Note that there is no getter for the subject argument. Instead you should use:
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`package`** - The package which has been installed, in the form described in onInstallerBeforeInstaller above.
 

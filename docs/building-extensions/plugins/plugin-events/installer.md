@@ -107,6 +107,8 @@ The event class `\Joomla\CMS\Event\Installer\BeforeInstallationEvent` has the fo
 
 - **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`package`** - This is null. 
 
 ### Return Value
@@ -131,6 +133,8 @@ but before Joomla has started to process the extension's installation files.
 The event class `\Joomla\CMS\Event\Installer\BeforeInstallerEvent` has the following arguments:
 
 - **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`package`** - This is an array of 4 elements, which in the case of uploading a zip file will contain:
  
@@ -171,6 +175,8 @@ This event is triggered after extension has been installed.
 The event class `\Joomla\CMS\Event\Installer\AfterInstallerEvent` has the following arguments:
 
 - **`model`** - The instance of the install model class (\Joomla\Component\Installer\Administrator\Model\InstallModel)
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`package`** - The package which has been installed, in the form described in onInstallerBeforeInstaller above.
 

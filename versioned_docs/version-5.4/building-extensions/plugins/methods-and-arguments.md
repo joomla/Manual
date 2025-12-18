@@ -141,13 +141,20 @@ $args = $event->getArguments();
 
 The returned value is an associative array mapping the arguments to their values, eg:
 
-```php
-["context" => "com_content.article", "subject" => <the article class instance>, 
- "params" => <article params as a Registry class instance>, "page" => 0]
+```
+["context" => "com_content.article", 
+ "subject" => <the article class instance>, 
+ "params" => <article params as a Registry class instance>, 
+ "page" => 0]
 ```
 
-(Note that the array element index doesn't always match the argument in the documentation pages.
-For example, for ContentPrepareEvent the 'item' argument is given by the "subject" element in the array.)
+Note that the array element index doesn't always match the argument in the documentation pages.
+For example, for ContentPrepareEvent the `item` argument is given by the "subject" element in the array.
+These exceptions will be noted in the documentation pages for the events.
+
+If you are reading the arguments then it's best to use the getter functions.
+
+If you are dispatching an event in your code then you must use the argument names associated with the array format. 
 
 ### Array Access
 
