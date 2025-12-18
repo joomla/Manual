@@ -21,6 +21,8 @@ If you have a PHP syntax error in a system plugin then you will get locked out o
 and will have to go into phpmyadmin (or equivalent) to set to 0 the `enabled` field within the plugin record in the `#__extensions` table. 
 :::
 
+For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
+
 ## Joomla overview
 
 The overview below of how Joomla handles an HTTP request on the front-end of a website
@@ -135,6 +137,8 @@ The event class \Joomla\CMS\Event\Application\AfterInitialiseEvent has the follo
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 None
@@ -152,6 +156,8 @@ You can use this event, for example, to tidy up aspects after the routing functi
 The event class \Joomla\CMS\Event\Application\AfterRouteEvent has the following arguments:
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 ### Return Value
 
@@ -171,6 +177,8 @@ The event class \Joomla\CMS\Event\Application\AfterInitialiseDocumentEvent has t
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`document`** - The Document, available via `$event->getDocument()`
 
 ### Return Value
@@ -189,6 +197,8 @@ The event class \Joomla\CMS\Event\Application\AfterDispatchEvent has the followi
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 None
@@ -205,6 +215,8 @@ to fill in the `<jdoc:include>` tags.
 The event class \Joomla\CMS\Event\Application\BeforeRenderEvent has the following arguments:
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 ### Return Value
 
@@ -223,6 +235,8 @@ You can use this to include other items within the `<head>`, via the [Web Asset 
 The event class \Joomla\CMS\Event\Application\BeforeCompileHeadEvent has the following arguments:
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`document`** - The Document, available via `$event->getDocument()`
 
@@ -254,6 +268,8 @@ The event class \Joomla\CMS\Event\Application\AfterRenderEvent has the following
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 None
@@ -270,6 +286,8 @@ The event class \Joomla\CMS\Event\Application\BeforeRespondEvent has the followi
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 None
@@ -285,6 +303,8 @@ This event is triggered just after Joomla sends the HTTP response.
 The event class \Joomla\CMS\Event\Application\AfterRespondEvent has the following arguments:
 
 - **`application`** - the Application instance, available via `$event->getApplication()`
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 ### Return Value
 
@@ -318,6 +338,8 @@ public function onBeforeExtensionBoot(BeforeExtensionBootEvent $event): void
 - **`extensionType`** - This is the type of extension being booted, 
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
 Available via `$event->getExtensionType()`
+
+(This is actually the 'type' element in the array returned by `$event->getArguments()`.)
 
 - **`extensionName`** - The extension name, available via `$event->getExtensionName()`:
 
@@ -371,9 +393,7 @@ public function onBeforeExtensionBoot(AfterExtensionBootEvent $event): void
 identified by the interface it supports, eg "Joomla\CMS\Extension\PluginInterface".
 Available via `$event->getExtensionType()`
 
-```php
-$type = $event->getExtensionType();
-```
+(This is actually the 'type' element in the array returned by `$event->getArguments()`.)
 
 - **`extensionName`** - The extension name, available via `$event->getExtensionName()`:
 
