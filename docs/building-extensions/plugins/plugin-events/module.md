@@ -171,7 +171,7 @@ $event->updateAttributes($attributes);
 
 Changing the style attribute will change the module style to apply.
 
-Change the name attribute will have no affect.
+Change the name attribute will have no effect.
 
 You can also change the module content directly:
 
@@ -223,8 +223,6 @@ This event is triggered after Joomla has rendered all of the modules for a given
 The event class \Joomla\CMS\Event\Module\AfterRenderModulesEvent has the following arguments:
 
 - **`content`** - the HTML content for the module position, available via `$event->getContent()`
-
-(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`attributes`** - the array of attributes, available via `$event->getAttributes()`
 The `$attributes` array contains the elements:
