@@ -21,6 +21,6 @@ Any changes in best practice.
       "version": "nocache"
     }
   ```  
-- **Impact**: Assets can no be loaded with a cache-busting string during development to ensure the latest version is always loaded.
+- **Impact**: Assets can now be loaded with a cache-busting string during development to ensure the latest version is always loaded.
 
 ---
