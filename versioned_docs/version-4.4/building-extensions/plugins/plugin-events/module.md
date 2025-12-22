@@ -17,7 +17,9 @@ If you have a PHP syntax error in a system plugin then you will get locked out o
 and will have to go into phpmyadmin (or equivalent) to set to 0 the `enabled` field within the plugin record in the `#__extensions` table. 
 :::
 
-For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
+For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), 
+where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) 
+and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
 
 ## Joomla Overview
 
