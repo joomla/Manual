@@ -44,4 +44,10 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onInstallerBeforeInstallation](./installer.md#oninstallerbeforeinstallation) | At the beginning of the installation of a package / extension | Installer     |  before 4.0  |
 | [onInstallerBeforeInstaller](./installer.md#oninstallerbeforeinstaller) | After zip files extracted, before extension installation | Installer     |  before 4.0  |
 | [onInstallerAfterInstaller](./installer.md#oninstallerafterinstaller) | After extension installation | Installer     |  before 4.0  |
+| [onPrepareModuleList](./module.md#onpreparemodulelist) | Before getting the list of modules | System (Module)|  before 4.0  |
+| [onAfterModuleList](./module.md#onaftermodulelist) | After getting the list of modules, but before cleaning | System (Module)     |  before 4.0  |
+| [onAfterCleanModuleList](./module.md#onaftercleanmodulelist) | After getting the cleaned list of modules | System (Module)     |  before 4.0  |
+| [onRenderModule](./module.md#onrendermodule) | After getting the raw module output | System (Module)     |  before 4.0  |
+| [onAfterRenderModule](./module.md#onafterrendermodule) | After the module style has been applied to the module raw output | System (Module)     |  before 4.0  |
+| [onAfterRenderModules](./module.md#onafterrendermodules) | After rendering of all modules for a template position  | System (Module)     |  before 4.0  |
 
