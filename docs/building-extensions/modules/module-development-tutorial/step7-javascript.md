@@ -54,6 +54,11 @@ If you're not familiar with the Web Asset Manager then you should read [this man
 
 For our js code file we create an asset in mod_hello/media/joomla.asset.json, as described in [Web Asset Manager Definition](https://manual.joomla.org/docs/general-concepts/web-asset-manager#definition):
 
+:::note[Developer Note]
+  For development you can use `nocache` which adds a random string to the uri. 
+  For production you should use the value `auto` or `x.y.z`.
+:::
+
 ```json title="mod_hello/media/joomla.asset.json"
 {
   "$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
