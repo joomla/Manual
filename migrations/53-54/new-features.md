@@ -5,7 +5,8 @@ sidebar_position: 1
 New Features
 ============
 
-All new functions that have been added to version 5.4, as well as all enhancements to existing functionality.
+The main new features are documented in this section.
+It provides an overview of key additions and improvements in Joomla 5.4.
 
 ## Automated Core Updates
 
@@ -15,7 +16,6 @@ an important step towards improving the security and maintainability of Joomla w
 Automated Core Updates use *The Update Framework* (TUF), a secure software update distribution system
 designed to prevent supply chain attacks when automatically updating Joomla core.
 
-
 <details>
   <summary>Pull Requests in Detail</summary>
 
@@ -23,16 +23,21 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45517](https://github.com/joomla/joomla-cms/pull/45517) Add Automated Updates information as fieldset description
 * [45547](https://github.com/joomla/joomla-cms/pull/45547) Improve Automated Update UX for local sites
 * [45669](https://github.com/joomla/joomla-cms/pull/45669) Improve Automated Update Quickicon language keys and icon
+* [45673](https://github.com/joomla/joomla-cms/pull/45673) Fix handling of responses from autoupdate server
+* [45685](https://github.com/joomla/joomla-cms/pull/45685) Send Automated Update Notifications to all super users
+* [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
 * [45697](https://github.com/joomla/joomla-cms/pull/45697) Allow opt-out from automated updates during installation
 * [45721](https://github.com/joomla/joomla-cms/pull/45721) Autoupdate email groups
-* [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
+* [45900](https://github.com/joomla/joomla-cms/pull/45900) Autoupdates - Improve download logging
+* [45966](https://github.com/joomla/joomla-cms/pull/45966) Adjust status code of com_joomlaupdate APIs if automated updates are disabled
+* [46050](https://github.com/joomla/joomla-cms/pull/46050) Use correct language for autoupdate notification mails
+* [46493](https://github.com/joomla/joomla-cms/pull/46493) Expose finalization errors in autoupdate API response
 </details>
 
-You can test an automated update with Joomla 5.4 by installing the
-'[System - Alpha Update Server](https://github.com/joomla/joomla-cms/issues/45540)' plugin.
-Please ensure the test instance is accessible from the Internet
-(for example, by using [Launch your Joomla! site](https://launch.joomla.org/)) and
-**do not** use the Alpha Update Server for production sites.
+You can test Automated Updates by installing Joomla! [5.4.0](https://github.com/joomla/joomla-cms/releases/tag/5.4.0)
+and enabling Automated Updates on an instance accessible from the internet.
+Your instance will be updated to a higher patch version without interaction,
+and you will receive an email with the result.
 
 ## More Links for User-Friendliness
 
@@ -51,6 +56,30 @@ Please ensure the test instance is accessible from the Internet
   2. Adding support for customisable registration menu link.
       * [45715](https://github.com/joomla/joomla-cms/pull/45715) Add support for custom registration menu link
         in com_users login menu item
+</details>
+
+## Support for PHP 8.5
+
+Joomla 5.4 adds support for PHP 8.5, ensuring compatibility with the latest PHP release and allowing sites
+to benefit from ongoing performance improvements, language enhancements and security updates provided by PHP.
+The Joomla Continuous Integration (CI) environment has been extended to run tests with PHP 8.5.
+
+<details>
+  <summary>Pull Requests in Detail</summary>
+
+  * [46134](https://github.com/joomla/joomla-cms/pull/46134) PHP8.5 deprecated code
+  * [46136](https://github.com/joomla/joomla-cms/pull/46136) PHP8.5 Deprecations
+  * [46137](https://github.com/joomla/joomla-cms/pull/46137) PHP8.5 deprecated code
+  * [46198](https://github.com/joomla/joomla-cms/pull/46198) PHP8.5 curl_close() function has been deprecated
+  * [46199](https://github.com/joomla/joomla-cms/pull/46199) PHP8.5 xml_parser_free() function has been deprecated
+  * [46200](https://github.com/joomla/joomla-cms/pull/46200) PHP8.5 imagedestroy() function has been deprecated
+  * [46201](https://github.com/joomla/joomla-cms/pull/46201) PHP8.5 Using null as an array offset is now deprecated
+  * [46202](https://github.com/joomla/joomla-cms/pull/46202) PHP8.5 setAccessible() methods of various Reflection objects have been deprecated
+  * [46203](https://github.com/joomla/joomla-cms/pull/46203) PHP8.5 Using null as an array offset is now deprecated (unit tests)
+  * [46223](https://github.com/joomla/joomla-cms/pull/46223) Add php 8.5 to unit and integration tests
+  * [46301](https://github.com/joomla/joomla-cms/pull/46301) PHP8.5 Composer update joomla/http to 3.1.3 to fix PHP 8.5 deprecation of curl_close()
+  * [46309](https://github.com/joomla/joomla-cms/pull/46309) PHP8.5 Composer update joomla/test to 3.0.4 to fix PHP 8.5 deprecation of reflection setAccessible()
+  * [46480](https://github.com/joomla/joomla-cms/pull/46480) php 8.5 version check
 </details>
 
 ## Additional Enhancements
