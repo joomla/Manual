@@ -28,7 +28,6 @@ designed to prevent supply chain attacks when automatically updating Joomla core
 * [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
 * [45697](https://github.com/joomla/joomla-cms/pull/45697) Allow opt-out from automated updates during installation
 * [45721](https://github.com/joomla/joomla-cms/pull/45721) Autoupdate email groups
-* [45696](https://github.com/joomla/joomla-cms/pull/45696) Implement autoupdate plugin events
 * [45900](https://github.com/joomla/joomla-cms/pull/45900) Autoupdates - Improve download logging
 * [45966](https://github.com/joomla/joomla-cms/pull/45966) Adjust status code of com_joomlaupdate APIs if automated updates are disabled
 * [46050](https://github.com/joomla/joomla-cms/pull/46050) Use correct language for autoupdate notification mails
