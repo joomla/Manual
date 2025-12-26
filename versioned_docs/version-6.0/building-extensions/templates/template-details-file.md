@@ -12,7 +12,7 @@ The sections are defined as:
 	<creationDate><!-- Date of creation of the template go here --></creationDate>
 	<author><!-- Author's name of the template go here --></author>
 	<authorEmail><!-- Author's email of the template go here --></authorEmail>
-	<copyright>><!-- Copyright of the template go here --></copyright>
+	<copyright><!-- Copyright of the template go here --></copyright>
 	<description><!-- Description of the template go here --></description>
   <namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
 	<inheritable>1</inheritable>
