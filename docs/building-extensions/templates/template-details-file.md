@@ -14,7 +14,7 @@ The sections are defined as:
 	<authorEmail><!-- Author's email of the template go here --></authorEmail>
 	<copyright><!-- Copyright of the template go here --></copyright>
 	<description><!-- Description of the template go here --></description>
-  <namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
+	<namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
 	<inheritable>1</inheritable>
 	<files><!-- Files/Folders for the template folder entries go here --></files>
 	<media destination="templates/site/<!-- Name of the template go here -->" folder="media"><!-- Folders for the static assets entries go here --></media>
