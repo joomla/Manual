@@ -112,7 +112,16 @@ Entries in the [Joomla JavaScript Library](./js-library/index.md) may help, but 
 
 These two joomla.asset.json files are always processed by Joomla, so their assets are always available.
 
-**version** - the version you want to apply to your JavaScript code. 
+**version** - A string representing the version of your JavaScript code. Additionally, you can use special values:
+* `auto` - Joomla will use the Joomla MediaVersion as the version string.
+* `nocache` - Joomla will add a random string as the version, to prevent browser caching.
+
+:::note[Developer Note]
+  For development you can use `nocache` which adds a random string to the uri.
+  For production you should use the value `auto` or `x.y.z`.
+:::
+
+the version you want to apply to your JavaScript code. 
 When you update your code then if you increase the version number then Joomla will force the browser to reload your code, instead of using a cached copy.
 (It does this by adding your version as a query parameter in the URL of your js file).
 
