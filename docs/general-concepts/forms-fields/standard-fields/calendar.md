@@ -19,7 +19,7 @@ the text box. Otherwise the default value, if any, is displayed.
 - **class** (optional) is a CSS class name for the HTML form field.
 - **format** (optional) is the date format to be used. This is in the format used by PHP to specify date string formats (see below). 
   - If no format argument is given, '%Y-%m-%d' is assumed (giving dates like '2017-05-15'). 
-  - If showtime is true then you will need to include some time fields, for example, '%Y-%m-%d %H:%i:%s'.
+  - If showtime is true then you will need to include some time fields, for example, '%Y-%m-%d %H:%M:%S'.
 - **filter** (optional) is time zone to be used. There are two main values: "server_utc" and "user_utc". The first one is server time zone and the later is user time zone as configured in global configuration and user information respectively. There is also a value of none which must be used if the server time zone is set to something other than UTC and showtime is false.
 - **translateformat** (optional) If set to true, the calendar will use the DATE_FORMAT_CALENDAR_DATE language key (if showtime is true) or DATE_FORMAT_CALENDAR_DATETIME (if showtime is false) to determine the format. The format attribute is ignored. If false, the format attribute is used but note that the format string must include time fields for the time to be recorded. Defaults to false.
 - **showtime** (optional) If set to true and translateformat is true, the language key DATE_FORMAT_CALENDAR_DATETIME is used, otherwise DATE_FORMAT_CALENDAR_DATE. Defaults to false.
