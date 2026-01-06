@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-New deprecations
-===============
+New Deprecations
+================
 
 Joomla! 4.0 is a special version which introduces a new timebased release cycle. This
 cycle allow us to remove old code every 2 years. Based on motion 

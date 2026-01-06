@@ -41,7 +41,7 @@ To enable this you must specify in the extension[ update server](../update-serve
 ```
 
 :::note[Joomla Issue]
-  This feature does not currently work; see [Joomla issue 43505](https://issues.joomla.org/tracker/joomla-cms/43505).
+  This feature does not currently work; see [Joomla issue 43505](https://issues.joomla.org/tracker/joomla-cms/43505). Fixed in Joomla 5.2
 :::
 
 ## The Changelog File

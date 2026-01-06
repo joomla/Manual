@@ -2,18 +2,19 @@
 sidebar_position: 3
 ---
 
-# Removed and backward incompatibility
+Removed and Backward Compatibility
+==================================
 
 All the deprecated features than have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
-### Replacing .tar.bz2 with .tar.zstd
+## Replacing `.tar.bz2` with `.tar.zstd`
 
-Starting with the final release of Joomla! 5.0.0 we no longer create .tar.bz2 packages. Instead we use .tar.zstd packages.
+Starting with the final release of Joomla! 5.0.0 we no longer create `.tar.bz2` packages. Instead we use `.tar.zstd` packages.
 This allows us to create download packages which are about 3 MiB smaller then bzip2 compressed files and about 11 MiB smaller
 files then zip compressed files.
 
-### PSR-3 upgraded to version 3
+## PSR-3 upgraded to version 3
 
 The PSR-3 (Logging) is upgraded to [version 3](https://github.com/php-fig/log/tree/3.0.0) of the specification.
 
@@ -23,7 +24,7 @@ If you are using your own logger, you want to preserve compatibility with Joomla
 
 If you only need to maintain compatibility with PSR-3 to use an logger external to your component, such as Joomla's logger, you can still typehint against `\Psr\Log\LoggerInterface`. Please note that the external logger you are using must be compatible with PSR-3 version 1 on Joomla 4 and PSR-3 version 3 on Joomla 5. If you are providing a third party, external logger yourself you may need to include two versions of the logger with your extension and only load the correct one for each Joomla version.
 
-### Framework Update
+## Framework Update
 
 Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking changes:
 
@@ -32,7 +33,7 @@ Joomla! 5.0 uses the Joomla! Framework 3.0, this might have it own breaking chan
   Description: It is possible to override services in child containers. This allows to override protected services, like the form factory one, in the containers of an extension when they are booted.
 
 
-### Database must be injected in constructor model
+## Database Must Be Injected in Constructor of Model
 - PR: https://github.com/joomla/joomla-cms/pull/38511
 - Description: The database instance in the model should be injected through the `$this->setDatabase()` or the deprecated function `$this->setDbo()`  configuration in the constructor to make it available in the base class. Like that it is ensured that calls to `$this->getDatabase()` and the deprecated function `$this->getDbo()` will point to the same instance.
 
@@ -45,14 +46,14 @@ class MyModel extends ListModel {
 }
 ```
 
-### Drop -es5.js files
+## Drop ES5 Files
 - PR: https://github.com/joomla/joomla-cms/pull/39618
-- Descriptions: The build tools won't produce es5 files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed (the actual entries for the -es5.js were kept for B/C but the URLs are empty, the files won't be loaded). The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributiong anymore `IE11` compatible scripts!
-.
-### CSS removals
+- Descriptions: The build tools won't produce `es5.js` files (IIFE, transpiled to ES5) anymore. Further more the dependencies in all the assets.json files that were pointing to these (es5) files were removed (the actual entries for the -es5.js were kept for B/C but the URLs are empty, the files won't be loaded). The .es6.js files are transpiled to ES2018 and specifically the minimum browser versions are the ones from [caniuse: es6-module](https://caniuse.com/es6-module). 3rd PD code that used the `type=module`/`nomodule` to load modern/legacy code will still work as it did before but the core is not distributing anymore `IE11` compatible scripts!
+
+## CSS Removals
 The CSS class ".ie11" was removed [via PR #39018](https://github.com/joomla/joomla-cms/pull/39018)
 
-### Javascript removals
+## Javascript Removals
 The following Javascript assets were removed [via PR #40302](https://github.com/joomla/joomla-cms/pull/40302):
 - `/media/com_templates/js/admin-template-compare.js` - Not used anymore by the core since version 4.3.0, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
 
@@ -66,10 +67,10 @@ To fix these layout overrides for Joomla 5, change your layout override in the s
 
 Eg for the template manager's side-by-side comparison view, [see PR #38823](https://github.com/joomla/joomla-cms/pull/38823).
 
-### Return Types
+## Return Types
 All return types have been updated to match the PHP 8.1 return type signatures. This addresses any class utilising the ArrayAccess, Datetime or the JsonSerializable interfaces. If you extend from any of the affected classes and require compatibility with both Joomla 4.x and 5.x you should add the `#[\ReturnTypeWillChange]` annotation to your code.
 
-#### administrator/components/com_users/src/DataShape/DataShapeObject.php
+### `administrator/components/com_users/src/DataShape/DataShapeObject.php`
 
 ```php
 public function __isset(...)      --> public function __isset(...): bool
@@ -79,20 +80,20 @@ public function offsetSet(...)    --> public function offsetSet(...): void
 public function offsetUnset(...)  --> public function offsetUnset(...): void
 ```
 
-#### libraries/src/Date/Date.php
+### `libraries/src/Date/Date.php`
 
 ```php
 public function format(...)      --> public function format(...): string
 public function setTimezone(...) --> public function setTimezone(...): \Datetime
 ```
 
-#### libraries/src/Document/JsonapiDocument.php
+### `libraries/src/Document/JsonapiDocument.php`
 
 ```php
 public function jsonSerialize(...) --> public function jsonSerialize(...): mixed
 ```
 
-#### libraries/src/Feed/Feed.php
+### `libraries/src/Feed/Feed.php`
 
 ```php
 public function count(...)        --> public function count(...): int
@@ -102,7 +103,7 @@ public function offsetSet(...)    --> public function offsetSet(...): void
 public function offsetUnset(...)  --> public function offsetUnset(...): void
 ```
 
-#### libraries/src/Language/Language.php
+### `libraries/src/Language/Language.php`
 
 \Joomla\CMS\Language\Language extends now from \Joomla\Language\Language
 
@@ -112,15 +113,15 @@ Duplicated code which is extended from the framework has been removed
 public function debugFile(...) --> public function debugFile(string $filename): int
 ```
 
-### Menus controller resync function got removed
+## `resync` Function Removed from `MenusController`
 - PR: https://github.com/joomla/joomla-cms/pull/40336
 - Description: The resync function in the administrator MenusController class is only used for the 1.5 to 1.6 upgrade routine.
 
-### User changes
+## User Changes
 - PR: https://github.com/joomla/joomla-cms/pull/41048
 - Description: Removed message "Cannot load user X", for removed users.  
 
-### Some core classes are not anymore of type CMSObject
+## Some Core Classes Are No Longer of Type `CMSObject`
 
 PR: https://github.com/joomla/joomla-cms/pull/40999
 Files:
@@ -136,7 +137,7 @@ Files:
 
 Description: These classes do not extend anymore from `CMSObject`, but are including the `LegacyErrorHandlingTrait` and `LegacyPropertyManagementTrait` legacy traits as the `CMSObject` does too. Like that does the functionality not change. Keep in mind that the functions of these traits are deprecated and exceptions should be thrown or proper getter and setters should be created.
 
-### DIC Service Provider Changes
+## DIC Service Provider Changes
 PR: https://github.com/joomla/joomla-cms/pull/36499
 
 The input object is now available in the DIC. You should NOT use it directly in your extensions and should continue to
@@ -146,20 +147,20 @@ get the input via the application object.
 reliably set inside the includes/app.php file of each Application. It is not expected for this change to affect
 extension developers as there are no extension hooks this early in the Joomla Application lifecycle.
 
-### Session Object Changes
+## Session Object Changes
 In the unusual case of creating a full custom session object of `\Joomla\CMS\Session\Storage\JoomlaStorage` the
 cookie domain and cookie path should now be set in the options object when creating the class. They will not be fetched
 from the application object to fix various circular dependency issues. As we expect all extensions to use the principal
 session created by the CMS in the application this is not expected to have a practical effect on end users.
 
-### Error reporting options in global configuration
+## Error Reporting Options in Global Configuration
 The option to set error reporting to **development** in global configuration has been removed, as obsolete. Since php 5.4 error_reporting(-1) and error_reporting(E_ALL) have the same behavior. 
 See https://www.php.net/manual/en/function.error-reporting
 
-### Wincache has been removed
+## Wincache Has Been Removed
 WinCache is abandoned and not supported from PHP 8 onwards. Removed without replacement.
 
-### Toolbar popupButton now use JoomlaDialog
+## Toolbar `popupButton` Now Use `JoomlaDialog`
 
 Toolbar popupButton now use JoomlaDialog, for popup rendering. Legacy Bootstrap modals still works. PR: https://github.com/joomla/joomla-cms/pull/40359
 
@@ -218,17 +219,17 @@ $toolbar->popupButton('example', 'Example iframe')
     ->textHeader('Optional iframe title');
 ```
 
-### Plugins
+## Plugins
 
-#### Demo task plugin got removed
+### Demo Task Plugin Got Removed
 - PR: https://github.com/joomla/joomla-cms/pull/40147
 - Description: The demo task plugin got removed as it was intended for demonstration purposes only.
 
-#### Recaptcha plugin is removed, Invisible Captcha is unlocked
+### Recaptcha Plugin is Removed, Invisible Captcha is Unlocked
 - PR: https://github.com/joomla/joomla-cms/pull/41530
 - Description: Outdated Recaptcha plugin is removed. Invisible Captcha is unlocked and can be removed manually. It is recommended to install a new captcha from https://extensions.joomla.org/.
 
-#### Codemirror plugin
+### Codemirror Plugin
 
 PR: https://github.com/joomla/joomla-cms/pull/41070
 
@@ -245,7 +246,7 @@ import { createFromTextarea } from 'codemirror';
 const editor = await createFromTextarea(textAreaElement, options);
 ```
 
-#### Captcha plugin now have to use `onCaptchaSetup` event
+### Captcha Plugin Now Have to Use `onCaptchaSetup` Event
 
 PR: https://github.com/joomla/joomla-cms/pull/39657
 
@@ -275,7 +276,7 @@ Captcha provider is a class that provide an abstract access to your captcha. It 
 
 Legacy plugins will continue to function until next major release.
 
-#### Editor plugin now have to use `onEditorSetup` event
+### Editor Plugin Now Have to Use `onEditorSetup` Event
 
 PR: https://github.com/joomla/joomla-cms/pull/40082
 
@@ -303,7 +304,7 @@ Editor provider is a class that provide an abstract access to your editor. It ha
 
 Legacy plugins will continue to function until next major release.
 
-#### Editor XTD buttons plugin now have to use `onEditorButtonsSetup` event
+### Editor XTD Buttons Plugin Now Have to Use `onEditorButtonsSetup` Event
 
 PR: https://github.com/joomla/joomla-cms/pull/40082
 
@@ -337,7 +338,7 @@ $event->getButtonsRegistry()->add($button);
 
 Legacy plugins will continue to function until next major release.
 
-### Plugin constructor doesn't contain the assignment operator
+### Plugin Constructor Doesn't Contain an Assignment Operator
 - PR: https://github.com/joomla/joomla-cms/pull/40746
 - Description: The constructor of the `CMSPlugin` class doesn't contain now the extra assign operator for the dispatcher as objects are always passed by reference. So constructors in plugins should now be written in the following way:  
 ```php
@@ -349,7 +350,9 @@ public function __construct(DispatcherInterface $dispatcher, array $config, more
 }
 ```
 
-### Module event `onRenderModule` backward compatibility
+## Changes to Module Events
+
+### Module Event `onRenderModule` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780 https://github.com/joomla/joomla-cms/pull/41413
 - Description: `onRenderModule` should now use `$event->getAttributes()` and `$event->updateAttributes($attributes)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -370,7 +373,7 @@ function onRenderModule(Joomla\CMS\Event\Module\BeforeRenderModuleEvent $event){
 }
 ```
 
-### Module event `onAfterRenderModules` backward compatibility
+### Module Event `onAfterRenderModules` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41413
 - Description: `onAfterRenderModules` should now use `$event->getContent()` and `$event->updateContent($content)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -390,7 +393,7 @@ function onAfterRenderModules(Joomla\CMS\Event\Module\AfterRenderModulesEvent $e
 }
 ```
 
-### Module events `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` backward compatibility
+### Module Events `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList` should now use `$event->getModules()` and `$event->updateModules($module)`, instead of modification by reference. The referencing still works but will be removed in the future. The modules argument is now always initialised with an empty array. This is needed for consistency (typehint) and to allow references for legacy plugins.
@@ -411,7 +414,7 @@ function onAfterModuleList(Joomla\CMS\Event\Module\AfterModuleListEvent $event){
 }
 ```
 
-### Custom Fields event `onCustomFieldsAfterPrepareField` backward compatibility
+## Custom Fields Event `onCustomFieldsAfterPrepareField` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41495
 - Description: `onCustomFieldsAfterPrepareField` should now use `$event->getValue()` and `$event->updateValue($value)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -431,7 +434,9 @@ function onCustomFieldsAfterPrepareField(Joomla\CMS\Event\CustomFields\AfterPrep
 }
 ```
 
-### Installer event `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` backward compatibility
+## Events Backward Compatibility
+
+### Installer Events `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`, `onInstallerAfterInstaller` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41518
 - Description: `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller` should now use `$event->getPackage()` and `$event->updatePackage($package)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -453,7 +458,7 @@ function onInstallerBeforeInstaller(Joomla\CMS\Event\Installer\BeforeInstallerEv
 
 Additionally `onInstallerAfterInstaller`, should use `$event->getInstallerResult()`, `$event->updateInstallerResult($result)`, and `$event->getMessage()`, `$event->updateMessage($message)`.
 
-### Installer event `onInstallerBeforePackageDownload` backward compatibility
+### Installer Event `onInstallerBeforePackageDownload` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41518
 - Description: `onInstallerBeforePackageDownload` should now use `$event->getUrl()` and `$event->updateUrl($url)`, `$event->getHeaders()` and `$event->updateHeaders($headers)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -477,7 +482,7 @@ function onInstallerBeforePackageDownload(Joomla\CMS\Event\Installer\BeforePacka
 }
 ```
 
-### Content event `onContentBeforeValidateData` backward compatibility
+### Content Event `onContentBeforeValidateData` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onContentBeforeValidateData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -497,7 +502,7 @@ function onContentBeforeValidateData(Joomla\CMS\Event\Model\BeforeValidateDataEv
 }
 ```
 
-### Content event `onContentPrepareData` backward compatibility
+### Content Event `onContentPrepareData` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onContentPrepareData` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -518,12 +523,12 @@ function onContentPrepareData(Joomla\CMS\Event\Model\PrepareDataEvent $event){
 }
 ```
 
-### Contact event `onValidateContact` backward compatibility
+### Contact Event `onValidateContact` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Data modification in `onValidateContact` event is not allowed, use `onSubmitContact` event instead.
 
-### Contact event `onSubmitContact` backward compatibility
+### Contact Event `onSubmitContact` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onSubmitContact` should now use `$event->getData()` and `$event->updateData($data)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -543,7 +548,7 @@ function onSubmitContact(Joomla\CMS\Event\Contact\SubmitContactEvent $event){
 }
 ```
 
-### Menu event `onPreprocessMenuItems` backward compatibility
+### Menu Event `onPreprocessMenuItems` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onPreprocessMenuItems` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -564,7 +569,7 @@ function onPreprocessMenuItems(Joomla\CMS\Event\Menu\PreprocessMenuItemsEvent $e
 }
 ```
 
-### Menu event `onAfterGetMenuTypeOptions` backward compatibility
+### Menu Event `onAfterGetMenuTypeOptions` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41780
 - Description: `onAfterGetMenuTypeOptions` should now use `$event->getItems()` and `$event->updateItems($items)`, instead of modification by reference. The referencing still works but will be removed in the future.
@@ -585,7 +590,7 @@ function onAfterGetMenuTypeOptions(Joomla\CMS\Event\Menu\AfterGetMenuTypeOptions
 }
 ```
 
-### User group event `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` backward compatibility
+## User Group Events `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` Backward Compatibility
 
 - PR: https://github.com/joomla/joomla-cms/pull/41916
 - Description: `onUserBeforeDeleteGroup` and `onUserAfterDeleteGroup` is now compatible with `onContentBeforeDelete` and `onContentAfterDelete` events. Old attributes still work but will be removed in the future.
@@ -603,12 +608,12 @@ function onUserBeforeDeleteGroup(Joomla\CMS\Event\User\UserGroupBeforeDeleteEven
 }
 ```
 
-### CategoryFeedView Inheritance
+## `CategoryFeedView` Inheritance
 `\Joomla\CMS\MVC\View\CategoryFeedView` extends directly `\Joomla\CMS\MVC\View\AbstractView` (previously it extended `\Joomla\CMS\MVC\View\HtmlView` which in turn inherited from `AbstractView`) as it isn't rendering any HTML. We do not expect this to have a major influence on extensions.
 
-### Removed 3rd party libraries
+## Removed Third-Party Libraries
 
-## Joomla\Ldap
+### `Joomla\Ldap`
 
 Our own LDAP library is no longer compatible with Joomla 5, it has been removed.
 As part of this we removed the following class aliases from the b/c plugin:
@@ -618,9 +623,9 @@ As part of this we removed the following class aliases from the b/c plugin:
 
 Joomla 4 and 5 includes the symfony Ldap package.
 
-### Change ordered lists in com_content links to unordered lists
+## Change Ordered Lists in `com_content` Links to Unordered Lists
 The links in com_content > category > blog-links.php and com_content > featured > default-links.php use `<ul></ul>` instead of `<ol></ol>`.
 Changes made [via PR #40629](https://github.com/joomla/joomla-cms/pull/40629) 
 
-### TinyMCE
+## TinyMCE
 CSS classes defined in the editor.css file of a template are no longer displayed in the formats dropdown menu or button. They can be displayed if you wish by enabling the **new** TinyMCE plugin option CSS Classes Menu.

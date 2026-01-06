@@ -12,12 +12,12 @@ The sections are defined as:
 	<creationDate><!-- Date of creation of the template go here --></creationDate>
 	<author><!-- Author's name of the template go here --></author>
 	<authorEmail><!-- Author's email of the template go here --></authorEmail>
-	<copyright>><!-- Copyright of the template go here --></copyright>
+	<copyright><!-- Copyright of the template go here --></copyright>
 	<description><!-- Description of the template go here --></description>
-  <namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
+	<namespace><!-- Description of the template go here, usually CompanyNamespace\Templates\Templatename --></namespace>
 	<inheritable>1</inheritable>
 	<files><!-- Files/Folders for the template folder entries go here --></files>
-	<media destination="templates/site/cassiopeia" folder="media"><!-- Folders for the static assets entries go here --></media>
+	<media destination="templates/site/<!-- Name of the template go here -->" folder="media"><!-- Folders for the static assets entries go here --></media>
 	<positions><!-- Positions entries go here --></positions>
 	<languages folder="language"><!-- Languages entries go here --></languages>
 	<config>
@@ -28,8 +28,8 @@ The sections are defined as:
 </extension>
 ```
 
-Since 5.1 in the config section the Menu Assignement tab can be overriden through the config part of the templateDetails.xml.
-So an example entry as the following will override the Menu Assignement tab contents with a field named menus:
+Since 5.1 in the config section the Menu Assignment tab can be overridden through the config part of the templateDetails.xml.
+So an example entry as the following will override the Menu Assignment tab contents with a field named menus:
 
 ```xml
 <fields name="assigned">

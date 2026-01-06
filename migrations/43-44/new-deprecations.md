@@ -2,11 +2,12 @@
 sidebar_position: 2
 ---
 
-New deprecations
-===============
+New Deprecations
+================
+
 All the new deprecations that should be aware of and what you should now be using instead.
 
-#### Workflow requires database and application
+## Workflow Requires Database and Application
 
 File: libraries/src/Workflow/Workflow.php
 Replacement: The application and database will be mandatory
@@ -25,7 +26,7 @@ class Foo {
 }
 ```
 
-#### countMenuChildren in HtmlDocument is deprecated
+## `countMenuChildren` in HtmlDocument is Deprecated
 
 File: libraries/src/Document/HtmlDocument.php
 Replacement: Load the active menu item directly from the application and count the children with the php `count` function.
@@ -34,12 +35,12 @@ Example:
 $app->getMenu()->getActive() ? count($app->getMenu()->getActive()->getChildren()) : 0;
 ```
 
-#### com_search-specific methods in Language are deprecated
+## `com_search`-specific Methods in Language are Deprecated
 
 File: libraries/src/Language/Language.php
 Replacement: com_search will not be supported in Joomla 6.0 anymore and there is no replacement for these methods.
 
-#### JPATH_PLATFORM variable is deprecated
+## `JPATH_PLATFORM` Variable is Deprecated
 
 File: libraries/bootstrap.php
 Replacement: The variable `JPATH_PLATFORM` should not be used anymore to check if the CMS is correctly initialized, use `_JEXEC` instead.
@@ -48,12 +49,12 @@ Example:
 defined('_JEXEC') or die;
 ```
 
-#### The function emailToPunycode in the PunycodeHelper class is not accepting null values
+## The Function `emailToPunycode` in the PunycodeHelper Class Is Not Accepting Null Values
 
 File: libraries/src/String/PunycodeHelper.php
 Replacement: The function throws a deprecated message when a `NULL` email address is passed to the function.
 
-#### The aid property of the User class is deprecated
+#### The `$aid` Property of the User Class Is Deprecated
 
 File: libraries/src/User/User.php
 Replacement: The $aid property will be removed with no replacement as the user roles are defined through an access level.

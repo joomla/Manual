@@ -2,11 +2,12 @@
 sidebar_position: 2
 ---
 
-# New deprecations
+New Deprecations
+================
 
 All the new deprecations that should be aware of and what you should now be using instead.
 
-# Language strings
+## Language Strings
 
 Strings will be removed in 6.0:
 
@@ -158,16 +159,16 @@ Handled from the dependency Sa11y itself, no more own translations are needed.
 [Sa11y - Github Repository](https://github.com/ryersondmp/sa11y)
 
 
-#### ActionLog plugin app and db property is deprecated
+## Deprecation of `$app` and `$db` Properties in ActionLog Plugin
 
 File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
 Replacement: The `$this->app` and `$this->db` property is deprecated in the actionlog plugins. Instead of use `$this->getApplication()` and `$this->getDatabase()` when the plugin is converted to service providers.
 
-# Class deprecations
+## Class Deprecations
 
 Planned to be removed in Joomla! 7.0.
 
-### Banner component helper
+### Banner Component Helper
 
 File: `components/com_banners/src/Helper/BannerHelper.php`
 
@@ -178,7 +179,7 @@ The function `BannerHelper::isImage($url)` has been replaced with a combination 
 `Joomla\CMS\Helper\MediaHelper::getMimeType($url) === 'image/svg+xml'` for vector based image files
 after being sanitized with the helper function `Joomla\CMS\HTML\HTMLHelper::cleanImageURL($imageurl)`
 
-### getItem function returns \stdClass in AdminModel
+### `getItem` Function Returns `\stdClass` in `AdminModel`
 
 PR: https://github.com/joomla/joomla-cms/pull/42717
 File: libraries/src/MVC/Model/AdminModel.php
