@@ -51,6 +51,8 @@ $levels = $user->getAuthorisedViewLevels();
 $canView = in_array($item->access, $levels);
 ```
 
+It's important to note that the `core.edit.own` permission does not inherently check if the user created the item. This can be accomplished by combining checking this permission with the item's created_by value, such as with `$user->authorise('core.edit.own', 'com_example.item.' . $this->item->id) && $this->item->created_by == $user->id`
+
 However, note that Super Users should be able to see all items, regardless of the Access Level, so generally there's another check:
 ```php
  if ($user->authorise('core.admin')) {
