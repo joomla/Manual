@@ -26,7 +26,6 @@ Any changes in best practice.
 ---
 
 ## New grid layout for `subform` field
-A new layout `joomla.form.field.subform.repeatable-grid` that rendering subforms fields in Grid (which partially mimic the table look).
-Which make it more responsive compared to table layout.
+A new layout `joomla.form.field.subform.repeatable-grid` that renders subform fields in a grid (partially mimicking the table look), making it more responsive compared to the table layout.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42347
