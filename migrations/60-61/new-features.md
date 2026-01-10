@@ -24,3 +24,9 @@ Any changes in best practice.
 - **Impact**: Assets can now be loaded with a cache-busting string during development to ensure the latest version is always loaded.
 
 ---
+
+## New grid layout for `subform` field
+A new layout `joomla.form.field.subform.repeatable-grid` that rendering subforms fields in Grid (which partially mimic the table look).
+Which make it more responsive compared to table layout.
+
+- PR: https://github.com/joomla/joomla-cms/pull/42347

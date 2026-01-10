@@ -25,8 +25,9 @@ The Field has two "predefined" layouts for displaying the subform as either a ta
 - **layout** (optional) the name of the layout to use when displaying subform fields.  
   Available layouts:  
   `joomla.form.field.subform.default` - render the subform in a div container, without support of repeating. Default for single mode.  
-  `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.  
-  `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.
+  `joomla.form.field.subform.repeatable` - render the subform in a div container, used for multiple mode. Support groupByFieldset.
+  `joomla.form.field.subform.repeatable-grid` - render the subform in a div container as grid, used for multiple mode. Support groupByFieldset. Each field is rendered as a grid cell.
+  `joomla.form.field.subform.repeatable-table` -  render the subform as a table, used for multiple mode. Supports groupByFieldset. By default, each field is rendered as a table column, but if `groupByFieldset=true` then each fieldset is rendered as a table column.
 - **validate** (optional) should be set to 'Subform' (note that this is case-sensitive!) to ensure that fields in the subform are individually validated. Default: Fields in the subform are not validated, even if validation rules are specified.
 
 Implemented by: libraries/src/Form/SubformField.php
