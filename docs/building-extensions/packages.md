@@ -19,6 +19,6 @@ To define a package you have
 See [Installating Extensions - Package](./install-update/installation/package.md) for details of 
 the package manifest file and how to organise the constituents of the package.
 
-An example package can be found in [Manual Examples - maps package](tbd)
+An example package can be found in [Manual Examples - maps package](https://github.com/joomla/manual-examples/pull/51)
 and described in [Example Maps Module](./modules/module-examples/map-module.md#maps-package).
 This package bundles together a site module and a plugin.

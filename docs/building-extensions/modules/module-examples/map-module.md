@@ -421,7 +421,7 @@ and the uninstall operation has to be performed at the package level.
 
 ## Maps Package
 
-The source code for the map package is available at [Manual Examples - map package](tbd).
+The source code for the map package is available at [Manual Examples - map package](https://github.com/joomla/manual-examples/pull/51).
 However, the functionality for using the API key is currently commented out in the javascript file.
 
 To use the package with the API key do the following:
