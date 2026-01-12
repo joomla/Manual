@@ -1,6 +1,6 @@
 ---
-sidebar_position: 2
-title: Example Basic Module
+sidebar_position: 1
+title: Output a Text String
 ---
 
 Basic Module

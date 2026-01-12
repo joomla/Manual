@@ -30,7 +30,6 @@ pkg_helloworld
  │     ├─── plg_sys_helloworld.zip
  │     └─── tpl_helloworld.zip
  └─── pkg_script.xml
-
 ```
 
 The `pkg_helloworld.xml` manifest file could have the following contents:
@@ -51,7 +50,7 @@ The `pkg_helloworld.xml` manifest file could have the following contents:
     <scriptfile>pkg_script.php</scriptfile>
     <blockChildUninstall>true</blockChildUninstall>
     <files folder="constituents">
-        <file type="component" id="com_helloworld" >com_helloworld.zip</file>
+        <file type="component" id="com_helloworld">com_helloworld.zip</file>
         <file type="module" id="helloworld" client="site">mod_helloworld.zip</file>
         <file type="library" id="helloworld">lib_helloworld.zip</file>
         <file type="plugin" id="helloworld" group="system">plg_sys_helloworld.zip</file>
@@ -66,6 +65,21 @@ When you go to Manage Extensions you will then see:
 - entries for each of the constituent extensions within the package.
 
 These match the associated rows in the Joomla `#__extensions` table.
+
+You don't have to use zip files for the constituents, and can have the extensions in their normal file structure.
+
+In this case you set
+
+```xml
+    <files folder="constituents">
+        <file type="component" id="com_helloworld">com_helloworld</file>
+        ...
+    </files>
+```
+
+and then use the Administrator Install Extensions page Install from Folder tab, 
+specifying the directory where the package manifest file is located.
+Joomla identifies the file (com_helloworld) as a directory and installs the extension from that folder.
 
 Listed below are a number of items you have to make sure that you get right in order for the package install / uninstall process to work as you expect.
 
