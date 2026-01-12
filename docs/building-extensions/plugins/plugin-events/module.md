@@ -182,6 +182,11 @@ $module->content = "<some html>"
 
 If you set the `$module->content` to an empty string then Joomla will not attempt to add a module style (chrome wrapper).
 
+### Examples
+
+The plugin associated with the [Maps Module](../../modules/module-examples/map-module.md#using-an-api-key)
+shows an example of a plugin listening for onRenderModule.
+
 ## onAfterRenderModule
 
 ### Description

@@ -1,19 +1,19 @@
 ---
-sidebar_position: 2
-title: Example Basic Module
+sidebar_position: 1
+title: Output a Text String
 ---
 
 Basic Module
 ============
 
-If you're completely new to Joomla development you'll probably find it easier to go through the [Module Tutorial](./module-development-tutorial/index.md), 
+If you're completely new to Joomla development you'll probably find it easier to go through the [Module Tutorial](../module-development-tutorial/index.md), 
 which explains in more detail what you need to do.
 
 In this section we will create a simple module to output a text string in the frontend.
 
 ## Manifest File
 
-For general information on manifest files see [Manifest Files](../install-update/installation/manifest.md).
+For general information on manifest files see [Manifest Files](../../install-update/installation/manifest.md).
 
 ```xml title="mod_example/mod_example.xml"
 <?xml version="1.0" encoding="utf-8"?>
