@@ -6,7 +6,7 @@ Contributing
 ============
 
 How to contribute to the Joomla! documentation. First it's important to understand how to write documentation,
-which is handeled in the [Writing documentation](./writing.md) page.
+which is handled in the [Writing documentation](./writing.md) page.
 
 ## Install Docusaurus Locally
 
