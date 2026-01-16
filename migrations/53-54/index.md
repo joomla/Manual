@@ -17,3 +17,4 @@ An explanation of the code changes from Joomla version 5.3 to Joomla version 5.4
 * New in Joomla 5.4 is the '*Behaviour - Backward Compatibility 6*' plugin.
   For this and the still-existing Joomla 4 to 5 compatibility plugin,
   see the [Compatibility Plugins](compat-plugins) section.
+* Important known issues and workarounds are documented in the [Known Issues](known-issues) section.
