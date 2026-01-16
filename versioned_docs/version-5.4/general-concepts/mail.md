@@ -5,6 +5,10 @@ title: Mail
 Mail
 ====
 
+:::danger
+  Regression found in Joomla! **5.4.2** using `\Joomla\CMS\Mail\Mail`, please Check [the regression notice](/migrations/54-60/known-issues/6.0.2/#issue-46643--mailer-setsender-does-not-work).
+:::
+
 This section describes how you can send emails from your extension,
 using either the Joomla `Mail` class or the `MailTemplate` class.
 
