@@ -29,3 +29,8 @@ Any changes in best practice.
 A new layout `joomla.form.field.subform.repeatable-grid` that renders subform fields in a grid (partially mimicking the table look), making it more responsive compared to the table layout.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42347
+
+## New event for `subform` field
+Added `subform-order-changed` event when order is changed in subform field.
+
+- PR: https://github.com/joomla/joomla-cms/pull/46093
