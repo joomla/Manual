@@ -74,9 +74,9 @@ fetch('/foobar/page')
     return res.text();
   })
   .then(function(data) {
-    someContainer.dispatchEvent(new CustomEvent('joomla:removed', { bubbles: true });
+    someContainer.dispatchEvent(new CustomEvent('joomla:removed', { bubbles: true }));
     someContainer.innerHTML = data;
-    someContainer.dispatchEvent(new CustomEvent('joomla:updated', { bubbles: true });
+    someContainer.dispatchEvent(new CustomEvent('joomla:updated', { bubbles: true }));
   });
 ```
 
