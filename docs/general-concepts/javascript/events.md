@@ -84,4 +84,5 @@ Example removing row of a dynamic table:
 ```javascript
 const row = myTable.querySelector('.row-to-remove');
 row.dispatchEvent(new CustomEvent('joomla:removed', { bubbles: true }));
+row.parentNode.removeChild(row);
 ```
