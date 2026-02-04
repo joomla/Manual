@@ -60,28 +60,71 @@ class CacheService
 
     /**
      * Get cached data or execute callback
+     *
+     * @param   string    $cacheId   Unique cache identifier
+     * @param   callable  $callback  Function to execute if cache miss
+     * @param   array     $args      Arguments to pass to callback
+     *
+     * @return  mixed     Cached or fresh data
      */
     public function get(string $cacheId, callable $callback, array $args = []): mixed
     {
-        return $this->cache->get($callback, $args, $cacheId);
+        try {
+            return $this->cache->get($callback, $args, $cacheId);
+        } catch (\Exception $e) {
+            // Log error but don't break the application
+            Factory::getApplication()->getLogger()->error(
+                'Cache retrieval failed: ' . $e->getMessage(),
+                ['exception' => $e]
+            );
+            
+            // Fallback: Execute callback directly
+            return call_user_func_array($callback, $args);
+        }
     }
 
     /**
      * Remove specific cache item
+     *
+     * @param   string       $cacheId  Cache identifier
+     * @param   string|null  $group    Cache group (optional)
+     *
+     * @return  bool         True on success
      */
     public function remove(string $cacheId, ?string $group = null): bool
     {
-        $group = $group ?? $this->defaultGroup;
-        return $this->cache->cache->remove($cacheId, $group);
+        try {
+            $group = $group ?? $this->defaultGroup;
+            return $this->cache->cache->remove($cacheId, $group);
+        } catch (\Exception $e) {
+            Factory::getApplication()->getLogger()->warning(
+                'Cache removal failed: ' . $e->getMessage(),
+                ['cacheId' => $cacheId, 'group' => $group]
+            );
+            return false;
+        }
     }
 
     /**
      * Clean entire cache group
+     *
+     * @param   string|null  $group  Cache group (optional)
+     * @param   string       $mode   Cleaning mode ('group' or 'all')
+     *
+     * @return  bool         True on success
      */
     public function clean(?string $group = null, string $mode = 'group'): bool
     {
-        $group = $group ?? $this->defaultGroup;
-        return $this->cache->cache->clean($group, $mode);
+        try {
+            $group = $group ?? $this->defaultGroup;
+            return $this->cache->cache->clean($group, $mode);
+        } catch (\Exception $e) {
+            Factory::getApplication()->getLogger()->warning(
+                'Cache cleaning failed: ' . $e->getMessage(),
+                ['group' => $group, 'mode' => $mode]
+            );
+            return false;
+        }
     }
 }
 ```
