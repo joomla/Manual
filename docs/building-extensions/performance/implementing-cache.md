@@ -95,7 +95,7 @@ class CacheService
     {
         try {
             $group = $group ?? $this->defaultGroup;
-            return $this->cache->cache->remove($cacheId, $group);
+            return $this->cache->remove($cacheId, $group);
         } catch (\Exception $e) {
             Factory::getApplication()->getLogger()->warning(
                 'Cache removal failed: ' . $e->getMessage(),
@@ -117,7 +117,7 @@ class CacheService
     {
         try {
             $group = $group ?? $this->defaultGroup;
-            return $this->cache->cache->clean($group, $mode);
+            return $this->cache->clean($group, $mode);
         } catch (\Exception $e) {
             Factory::getApplication()->getLogger()->warning(
                 'Cache cleaning failed: ' . $e->getMessage(),
@@ -355,12 +355,9 @@ class ItemModel extends AdminModel
                 CacheHelper::generateKey('item', $id)
             );
           
-            // Clear all lists (item may appear in filtered lists)
-            $this->cacheService->clean('com_mycomponent.list', 'group');
-          
-            // Clear related caches
-            $this->cacheService->clean('com_mycomponent.filter', 'group');
-            $this->cacheService->clean('com_mycomponent.count', 'group');
+            // Clear all component caches (item may appear in multiple cached lists/filters)
+            // Note: This invalidates all cached data for the component
+            $this->cacheService->clean('com_mycomponent', 'group');
         }
 
         return $result;
@@ -382,8 +379,8 @@ class ItemModel extends AdminModel
                 );
             }
           
-            // Clear lists
-            $this->cacheService->clean('com_mycomponent.list', 'group');
+            // Clear all component caches
+            $this->cacheService->clean('com_mycomponent', 'group');
         }
 
         return $result;
