@@ -103,6 +103,7 @@ class Dispatcher implements DispatcherInterface
     {
         echo '<h4>Hello</h4>';
     }
+}
 ```
 
 The `_JEXEC` check at the start is a security feature. If someone enters a URL which points directly at this PHP source file, then the PHP interpreter will start running the code. 
