@@ -184,7 +184,7 @@ Ensure that this matches your class in your `src/Extension` directory.
 :::tip
 Since Joomla 6.1 it is possible to use [PHP 8.4 Lazy Objects](https://www.php.net/manual/en/language.oop5.lazy-objects.php) for Plugins. This helps to improve overall CMS performance.
 
-To do so, update service provider to use `$container->lazy()` as in following example:
+To do so, update service provider to use `$container->lazy(<PluginClassName>, <Service callback>)` as in following example:
 
 ```php
 return new class() implements ServiceProviderInterface
