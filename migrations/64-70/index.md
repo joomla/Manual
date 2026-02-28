@@ -1,6 +1,6 @@
 ---
 sidebar_position: 989
-title: 6.0 to 6.1
+title: 6.4 to 7.0
 ---
 
 Joomla 6.4 to 7.0 Upgrade Notes
