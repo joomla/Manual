@@ -12,5 +12,5 @@ New Deprecations
 All the new deprecations that should be aware of and what you should now be using instead.
 
 :::tip[Reader Note]
-  No deprecations have been introduced in Joomla 6.1 yet
+  No deprecations have been introduced in Joomla 7.0 yet
 :::
