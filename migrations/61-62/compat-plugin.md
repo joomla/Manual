@@ -10,7 +10,7 @@ Compatibility Plugin
 :::
 
 :::warning[Developer Note]
-  Heads-up, don't create a plugin as `behaviour` plugin because it's possible that this group get removed at some point.
+  Heads-up, don't create a plugin as a `behaviour` plugin because it's possible that this group may be removed at some point.
 :::
 
 ## Joomla 5 Compatibility Plugin
