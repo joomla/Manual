@@ -13,5 +13,5 @@ All the new features that have been added to this version.
 Any changes in best practice.
 
 :::tip[Reader Note]
-No new features have been introduced in Joomla 6.1 yet
+No new features have been introduced in Joomla 6.2 yet
 :::
