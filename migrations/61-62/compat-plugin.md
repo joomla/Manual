@@ -22,7 +22,7 @@ For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.o
 
 ## Joomla 6 Compatibility Plugin
 
-In Joomla! 6.0 the Compatibility Plugin introduced in Joomla! 5.0 will be replaced by a new plugin
+In Joomla! 6.0 the Compatibility Plugin introduced in Joomla! 5.0 is replaced by a new plugin
 called "Behaviour - Backward Compatibility 6".
 
 Despite the warning about the potential removal of the `behaviour` plugin type, this compatibility plugin still uses
