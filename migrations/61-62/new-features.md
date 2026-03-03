@@ -6,7 +6,7 @@ New Features
 ============
 
 :::tip[Developer Note]
-Since this version of Joomla has not been released yet, this page can change anytime.
+  Since this version of Joomla has not been released yet, this page can change anytime.
 :::
 
 All the new features that have been added to this version.
