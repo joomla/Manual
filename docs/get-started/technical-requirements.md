@@ -5,13 +5,13 @@ Technical Requirements
 ======================
 
 ## Requirements for Supported Software
-
-In the following tables the *Recommended* versions of supporting software are known to work with the specified 
-Joomla! version. The *Minimum* versions are guaranteed to work. Older versions may work but are not supported.
+- You should use at least the version listed in the **Recommended"**.
+- The minimum supported version is listed in the **Supported** column.
+- The version in the **Minimum** column is the absolute minimum, but it is not supported — if you choose to use it, you are responsible for resolving any issues that may arise.
 
 ### Requirements for Joomla! 6.x
 
-| Software           | Recommended | Minimum | Required |
+| Software           | Recommended | Supported | Minimum |
 |--------------------|-------------|---------|----------|
 | PHP                | 8.4         | 8.3.0   | 8.3.0    |
 | **Databases**      |             |         |          |

@@ -5,13 +5,12 @@ sidebar_position: 1
 New Features
 ============
 
-:::tip[Developer Note]
-  Since this version of Joomla has not been released yet, this page can change anytime.
-:::
-
 All the new features that have been added to this version.
 Any changes in best practice.
 
+### Batched tag enhancement
+
+It is now possible to batch remove a tag. PR: https://github.com/joomla/joomla-cms/pull/40613
 
 ## Modification fields header tag & module tag add custom options in XML
 - **PR**: [#35184](https://github.com/joomla/joomla-cms/pull/35184) by **korenevskiy**  
@@ -289,6 +288,7 @@ Any changes in best practice.
 - **PR**: [#45426](https://github.com/joomla/joomla-cms/pull/45426) by **Fedik**  
 - **Usage**: Subscribe to `onBeforeExecute` to hook before app runs.  
 - **Impact**: Enables pre-routing plugins.
+- **Note**: The language is available only onAfterInitialise event. If you're trying to use language in the plugin constructor, consider to move this logic into the event callback.
 
 ---
 
@@ -318,4 +318,3 @@ Any changes in best practice.
 - **Impact**: Standardises layout hidden fields via Form API.
 
 ---
-

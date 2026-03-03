@@ -50,9 +50,14 @@ document.querySelectorAll('.mod_hello').forEach(element => {
 
 ## Web Asset Manager
 
-If you're not familar with the Web Asset Manager then you should read [this manual section](../../../general-concepts/web-asset-manager.md). 
+If you're not familiar with the Web Asset Manager then you should read [this manual section](../../../general-concepts/web-asset-manager.md). 
 
-Fur our js code file we create an asset in mod_hello/media/joomla.asset.json, as described in [Web Asset Manager Definition](https://manual.joomla.org/docs/general-concepts/web-asset-manager#definition):
+For our js code file we create an asset in mod_hello/media/joomla.asset.json, as described in [Web Asset Manager Definition](https://manual.joomla.org/docs/general-concepts/web-asset-manager#definition):
+
+:::note[Developer Note]
+  For development you can use `nocache` which adds a random string to the uri. 
+  For production you should use the value `auto` or `x.y.z`.
+:::
 
 ```json title="mod_hello/media/joomla.asset.json"
 {
@@ -195,3 +200,5 @@ You can use the Web Asset Manager to add CSS files in a similar manner. For a fi
 ```php
 $wa->useStyle('mod_hello.example');
 ```
+
+

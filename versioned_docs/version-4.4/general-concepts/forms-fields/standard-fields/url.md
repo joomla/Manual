@@ -32,7 +32,7 @@ Implemented by: libraries/src/Form/Field/UrlField.php
 
 ```xml
 <field
-        ame="mytextvalue" 
+        name="mytextvalue" 
         type="url" 
         default="http://www.example.com" 
         label="Enter a URL" 

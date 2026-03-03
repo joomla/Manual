@@ -5,7 +5,7 @@ sidebar_position: 1
 # Writing Documentation
 
 
-## One lanuage
+## One language
 
 Joomla! and the Joomla! documentation is written in British English. If you want to contribute to the documentation,
 please do so in British English. There might be exceptions for some terms.

@@ -65,11 +65,13 @@ const config = {
   trailingSlash: true,
   baseUrl: '/',
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    }
   },
 
   i18n: {
@@ -85,39 +87,46 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '5.3',
+          lastVersion: '6.0',
           versions: {
             'current': {
-              label: '6.0 (Upcoming)',
+              label: '6.1 (Upcoming)',
               banner: 'unreleased',
               noIndex: false,
             },
+            '6.0': {
+              label: '6.0 (Current)',
+              banner: 'none',
+              noIndex: true,
+            },
             '5.4': {
-              label: '5.4 (Upcoming)',
-              banner: 'unreleased',
+              label: '5.4 (Legacy)',
+              banner: 'none',
               noIndex: false,
             },
             '5.3': {
-              label: '5.3 (Current)',
+              label: '5.3 (Archived)',
+              banner: 'unmaintained',
               noIndex: false,
             },
             '5.2': {
               label: '5.2 (Archived)',
-              noIndex: true,
+              banner: 'unmaintained',
+              noIndex: false,
             },
             '5.1': {
               label: '5.1 (Archived)',
               banner: 'unmaintained',
-              noIndex: true,
+              noIndex: false,
             },
             '5.0': {
               label: '5.0 (Archived)',
               banner: 'unmaintained',
-              noIndex: true,
+              noIndex: false,
             },
             '4.4': {
               label: '4.4 (Security)',
-              banner: 'none',
+              banner: 'unmaintained',
               noIndex: false,
             },
           },
@@ -129,11 +138,13 @@ const config = {
                     'default': 'https://api.joomla.org/cms-5/',
                     '4': 'https://api.joomla.org/cms-4/',
                     '5': 'https://api.joomla.org/cms-5/',
+                    '6': 'https://api.joomla.org/cms-6/',
                   },
                   frameworkMap: {
                     'default': 'https://api.joomla.org/framework-3/',
                     '4': 'https://api.joomla.org/framework-2/',
                     '5': 'https://api.joomla.org/framework-3/',
+                    '6': 'https://api.joomla.org/framework-4/',
                   }
                 }]
           ],

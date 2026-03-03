@@ -77,7 +77,7 @@ $app->getLanguage()->load('lib_joomla', JPATH_ADMINISTRATOR);
 // Write below here what you want your script to do
 $db = $container->get(Joomla\Database\DatabaseInterface::class);
 
-$query = $db->getQuery(true);
+$query = $db->createQuery();
 $query->select('count(*)')
     ->from('#__content');
 

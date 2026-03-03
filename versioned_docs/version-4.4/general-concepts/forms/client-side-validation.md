@@ -139,13 +139,16 @@ You should store all js files within the media folder, eg as media/js/no-upperca
 $this->document()->getWebAssetManager()->useScript('com_example.validate-no-uppercase');
 ```
 
-4. In your form definition XML file specify the field to which this validation should be applied. The class attribute "validate-noUppercase" should match the parameter to setHandler in step 1, after the prefix "validate-" is removed. 
+4. In your form definition XML file specify the field to which this validation should be applied. 
+The class attribute "validate-noUppercase" should match the parameter to setHandler in step 1, after the prefix "validate-" is removed. 
+You can define a custom error message by specifying the data-validation-text attribute.
 
 ```xml
 <field 
     name="message"
     type="text"
     class="inputbox validate-noUppercase"
+    data-validation-text="Error: No uppercase letters are allowed"
     ... />
 ```
 

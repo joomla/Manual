@@ -15,7 +15,7 @@ They are triggered during the process of:
 
 The sections below give a brief description of each content event, what the event parameters / arguments are, and any examples of their use which are available in the Joomla Manual.
 
-For background on Joomla transitioning to using classes for events see [Joomla 4 and 5 changes](../joomla-4-and-5-changes.md), where you can also find explanations for [accessing the arguments](../joomla-4-and-5-changes.md#summary---accessing-event-arguments) and [returning values](../joomla-4-and-5-changes.md#summary---returning-values). 
+For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
 
 ## onContentPrepare
 
@@ -33,6 +33,8 @@ The event class \Joomla\CMS\Event\Content\ContentPrepareEvent has the following 
 - **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
 You can access properties of this object using, for example, `$item->title`; the properties available will depend on what type of `item` is being passed.
 If you set any of these properties then they will be carried through to the webpage output, but not persisted in the database.
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). Any values which you set can affect the webpage output, but are not persisted in the database.
 
@@ -60,6 +62,8 @@ Although `item` and `params` are passed by reference, this is not the event to m
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
 - **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
@@ -92,6 +96,8 @@ Although `item` and `params` are passed by reference, this is not the event to m
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
 - **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
@@ -128,6 +134,8 @@ Although `item` and `params` are passed by reference, this is not the event to m
 - **`context`** - The context of the content being passed to the plugin. This is the component name and view - or name of module (e.g. com_content.article, com_contact.contact, com_users.user). Use this to check whether you are in the desired context for the plugin.
 
 - **`item`** - The item which is being rendered by the view, for example, an article, contact or user. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`params`** - A reference to an associative array of the item parameters (usually the `params` field in the item's database record, but the `attribs` database field for com_content). 
 
@@ -195,6 +203,8 @@ The event class \Joomla\CMS\Event\Model\PrepareFormEvent has the following argum
 - **`form`** - The Form object. The `name` object of this object (which you can get via `$form->getName()`) will be of the form 'com_content.article', 'com_contact.contact', and you can use this to check whether you are in the desired context for the plugin.
 You can then modify this `form` object using methods of the [Form API](cms-api://classes/Joomla-CMS-Form-Form.html).
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`data`** - The pre-fill data in the fields of the submitted form, passed as a PHP object. You can access properties of this object using, for example, `$data->title`; the properties available will depend on what type of `data` is being passed. If you set any of these properties then they will be modified in the form data which is presented to the user.
 
 If the event is triggered in the process of handling the POST from a form then the `data` will be empty and modifying it will have no effect.
@@ -223,6 +233,8 @@ If you set any of these properties then they will be modified in the form data, 
 
 - **`form`** - The Joomla `Form` instance, as described in [how Joomla forms work](../../../general-concepts/forms/how-forms-work.md).
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 None.
@@ -237,6 +249,8 @@ You can use this event to modify the submitted data, or (probably less likely) t
 The event class \Joomla\CMS\Event\Model\BeforeValidateDataEvent has the following arguments:
 
 - **`form`** - The Form object. The `name` object of this object (which you can get via `$form->getName()`) will be of the form 'com_content.article', 'com_contact.contact', and you can use this to check whether you are in the desired context for the plugin.
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`data`** - The submitted form data, passed by reference as an associative array. The array elements available will depend on the form. If you set any of these elements then they will be modified prior to the data validation being applied.
 
@@ -273,6 +287,8 @@ The event class \Joomla\CMS\Event\Model\BeforeSaveEvent has the following argume
 
 - **`item`** - The `Table` object containing the data to be stored. 
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`isNew`** - A boolean which is set to `true` if the content is about to be created (as opposed to updated)
 
 - **`data`** - The data which is about to be saved, passed as an associative array. 
@@ -302,6 +318,8 @@ The event class \Joomla\CMS\Event\Model\AfterSaveEvent has the following argumen
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
 - **`item`** - The `Table` object containing the data which was stored. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`isNew`** - A boolean which is set to `true` if the content was created (as opposed to updated)
 
@@ -336,6 +354,8 @@ The event class \Joomla\CMS\Event\Model\BeforeDeleteEvent has the following argu
 
 - **`item`** - The `Table` object containing the data to be deleted. 
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 ### Return Value
 
 Return `false` to abort the delete. 
@@ -360,6 +380,8 @@ The event class \Joomla\CMS\Event\Model\AfterDeleteEvent has the following argum
 - **`context`** - The context of the content being passed to the plugin. This is the component name and name of item (e.g. com_content.article, com_contact.contact). Use this to check whether you are in the desired context for the plugin.
 
 - **`item`** - The `Table` object containing the data which was deleted. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 ### Return Value
 
@@ -396,6 +418,8 @@ The event class \Joomla\CMS\Event\Model\BeforeChangeStateEvent has the following
 
 - **`pks`** - An array of the primary keys of the records whose state is going to be changed. 
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`value`** - The value of the published state which is to be applied (0: Unpublished, 1: Published, 2: Archived, -2: Trashed).
 
 ### Return Value
@@ -422,6 +446,8 @@ The event class \Joomla\CMS\Event\Model\AfterChangeStateEvent has the following 
 
 - **`pks`** - An array of the primary keys of the records whose state was changed. 
 
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
+
 - **`value`** - The value of the published state which was applied (0: Unpublished, 1: Published, 2: Archived, -2: Trashed).
 
 ### Return Value
@@ -447,6 +473,8 @@ The event class \Joomla\CMS\Event\Model\AfterCategoryChangeStateEvent has the fo
 - **`context`** - The context of the content being passed to the plugin. This is the component associated with the categories (e.g. com_content, com_contact). Use this to check whether you are in the desired context for the plugin.
 
 - **`pks`** - An array of the primary keys of the categories records whose state was changed. 
+
+(This is actually the 'subject' element in the array returned by `$event->getArguments()`.)
 
 - **`value`** - The value of the published state which was applied (0: Unpublished, 1: Published, 2: Archived, -2: Trashed).
 

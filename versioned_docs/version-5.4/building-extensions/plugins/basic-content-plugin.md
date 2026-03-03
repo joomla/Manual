@@ -19,14 +19,25 @@ In addition, the plugin demonstrates the use of:
 - language constants - both in the manifest file and in the plugin code
 - returning a value from a plugin method - through the use of the `onContentAfterTitle` event. The plugin code adds some text after the article title.
 
-You can test this plugin on both Joomla 4 and Joomla 5 instances, to see the differences in obtaining the parameters and returning the result (as described in [Joomla 4 and 5 changes](joomla-4-and-5-changes.md)). 
+The diagram below lists the plugin files to write, or you can download the plugin
+from the Joomla Manual Examples repository [shortcodes plugin](https://github.com/joomla/manual-examples/tree/main/plugin-example-shortcode).
 
-![Shortcodes plugin files](_assets/shortcodes.jpg "Shortcodes plugin files")
-
-The diagram shows the plugin files to write, or you can download a zip file of the plugin from [shortcodes plugin download](_assets/plg_shortcodes.zip).
+```
+plg_shortcodes
+ ├─── language
+ │     └─── en-GB
+ │           ├─── plg_content_shortcodes.ini
+ │           └─── plg_content_shortcodes.sys.ini
+ ├─── services
+ │     └─── provider.php
+ ├─── src
+ │     └─── Extension
+ │           └─── Shortcode.php
+ └─── shortcodes.xml
+```
 
 ## Manifest File
-For general information on manifest files see [Manifest Files](https://docs.joomla.org/Manifest_files).
+For general information on manifest files see [Manifest Files](../install-update/installation/manifest.md).
 
 ```xml title="plg_shortcodes/shortcodes.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -36,7 +47,7 @@ For general information on manifest files see [Manifest Files](https://docs.joom
     <description>PLG_CONTENT_SHORTCODES_DESCRIPTION</description>
     <author>Me</author>
     <creationDate>Today</creationDate>
-    <copyright>(C) 2024 Open Source Matters, Inc.</copyright>
+    <copyright>(C) 2025 Open Source Matters, Inc.</copyright>
     <license>GNU General Public License version 2 or later</license>
     <namespace path="src">My\Plugin\Content\Shortcodes</namespace>
     <files>
@@ -58,7 +69,7 @@ Joomla is quite particular when it comes to plugin manifest files, and it's easy
 <extension method="upgrade" type="plugin" group="content">
 ```
 
-Previous sections described plugin types as 'content', 'system', etc but here the `type` is "plugin" (as it's the type of the extension) and the `group` refers to the plugin type.
+Here the `type` is "plugin" (as it's the type of the extension) and the `group` refers to the plugin type.
 
 ### Language constants
 
@@ -156,7 +167,7 @@ This is pretty much boilerplate code for obtaining your plugin from the Dependen
 use My\Plugin\Content\Shortcodes\Extension\Shortcode;
 ```
 
-Ensure that this aligns with your `<namespace>` in the manifest file and your `namespace` statement and class name in the Extension class file. .
+Ensure that this aligns with your `<namespace>` in the manifest file and your `namespace` statement and class name in the Extension class file.
 
 ```php
 $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
@@ -172,16 +183,7 @@ Ensure that this matches your class in your `src/Extension` directory.
 
 ### Extension Class
 This is the main code of the plugin. Hopefully the comments in the code explain what is going on.
-
-As explained in [Joomla 4 and 5 changes](./joomla-4-and-5-changes.md), code which triggers the Events can use a `GenericEvent` or a concrete Event, eg `ContentPrepareEvent`. In both these cases you can get the arguments using
-
-```php
-[$context, $article, $params, $page] = array_values($event->getArguments());
-```
-
-but you have to check in your code how to return the result. 
-
-Using this approach means that you don't need to change your plugin code if the code which is triggering the event changes from using a generic Event class to a concrete event class. 
+For further details see the page on [Plugin Methods and Arguments](./methods-and-arguments.md).
 
 ```php title="plg_shortcodes/src/Extension/Shortcode.php"
 <?php
@@ -191,11 +193,10 @@ namespace My\Plugin\Content\Shortcodes\Extension;
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Plugin\CMSPlugin;
-use Joomla\Event\Event;
+use Joomla\CMS\Event\Content\ContentPrepareEvent;
+use Joomla\CMS\Event\Content\AfterTitleEvent;
 use Joomla\Event\SubscriberInterface;
-use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
-use Joomla\CMS\Event\Result\ResultAwareInterface;
 
 class Shortcode extends CMSPlugin implements SubscriberInterface
 {
@@ -208,29 +209,33 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
     }
 
     // this will be called whenever the onContentPrepare event is triggered
-    public function replaceShortcodes(Event $event)
+    public function replaceShortcodes(ContentPrepareEvent $event): void
     {
         /* This function processes the text of an article being presented on the site.
          * It replaces any text of the form "{configname}" (where configname is the name 
          * of a config parameter in configuration.php) with the value of the parameter.
-         *
-         * This is similar to shortcodes functionality within wordpress
          */
-
-        // The line below restricts the functionality to the site (ie not on api)
+        
+        // We used setApplication on our plugin instance inside services/provider.php to set the Application instance
+        // Now we can retrieve it here using getApplication.
+        // getApplication and setApplication are inherited from CMSPlugin
+        $app = $this->getApplication();
+        
+        // The line below restricts the functionality to the front-end site (ie not admin/api/console job)
         // You may not want this, so you need to consider this in your own plugins
-        if (!$this->getApplication()->isClient('site')) {
+        if (!$app->isClient('site')) {
             return;
         }
-         
-        // use this format to get the arguments for both Joomla 4 and Joomla 5
-        // In Joomla 4 a generic Event is passed
-        // In Joomla 5 a concrete ContentPrepareEvent is passed
-        [$context, $article, $params, $page] = array_values($event->getArguments());
+        
+        // Find out if this event relates to an article or something else (eg contact, user)
+        $context = $event->getContext();
         if ($context !== "com_content.article" && $context !== "com_content.featured") return;
         
+        // If we've reached here then it's an article - get the 'text' property
+        $article = $event->getItem();
         $text = $article->text; // text of the article
-        $config = Factory::getApplication()->getConfig()->toArray();  // config params as an array
+        
+        $config = $app->getConfig()->toArray();  // config params as an array
             // (we can't do a foreach over the config params as a Registry because they're protected)
         
         // the following is just code to replace {configname} with the parameter value
@@ -269,22 +274,22 @@ class Shortcode extends CMSPlugin implements SubscriberInterface
         $article->text = $text;
     }
     
-    public function addShortcodeSubtitle(Event $event)
+    public function addShortcodeSubtitle(AfterTitleEvent $event): void
     {
-        if (!$this->getApplication()->isClient('site')) {
-            return;
-        }
-        [$context, $article, $params, $page] = array_values($event->getArguments());
-        if ($context !== "com_content.article" && $context !== "com_content.featured") return;
+        /* This function adds a subtitle to a page on the site front end:
+         * "Processed for shortcodes" - if the page is an article
+         * "Not processed for shortcodes" - if the page is a contact, etc.
+         */
+         
+        if (!$this->getApplication()->isClient('site')) return;
         
-        $eventType = method_exists($event, 'getContext') ? "concrete event class" : "generic event class";
-        
-        if ($event instanceof ResultAwareInterface) {
-            $event->addResult("{$eventType} via addResult");
+        $context = $event->getContext();
+        $this->loadLanguage();
+        if ($context === "com_content.article" || $context === "com_content.featured") 
+        {
+            $event->addResult(Text::_('PLG_CONTENT_SHORTCODES_PROCESSED'));
         } else {
-            $result = $event->getArgument('result') ?? [];
-            $result[] = "{$eventType} via setArgument";
-            $event->setArgument('result', $result);
+            $event->addResult(Text::_('PLG_CONTENT_SHORTCODES_NOT_PROCESSED'));
         }
     }
 }
@@ -302,6 +307,8 @@ Language constants which are used in the plugin code:
 
 ```php title="plg_shortcodes/language/en-GB/plg_content_shortcodes.ini"
 PLG_CONTENT_SHORTCODES_NO_MATCH="Error: no match for shortcode found"
+PLG_CONTENT_SHORTCODES_PROCESSED="Processed for shortcodes"
+PLG_CONTENT_SHORTCODES_NOT_PROCESSED="Not processed for shortcodes"
 ```
 
 ## Installation
@@ -313,4 +320,6 @@ On my Joomla instance {sitename} the default editor is {editor}.
 ```
 Then navigate to a Joomla site menuitem which displays this article, either as a single article or as one of the featured articles. 
 
-The code should work on both Joomla 4 and Joomla 5, and should also display after the article title information about the type of event class used, and how the value is returned. 
+Include a non-existent configuration parameter in your shortcode to display the error text.
+
+Also compare the subtitle shown for a page displaying an article with a page displaying a contact.
