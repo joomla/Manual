@@ -15,7 +15,7 @@ Compatibility Plugin
 
 ## Joomla 5 Compatibility Plugin
 
-As part of Joomla! 5.0 a plugin was introduced which enhance backward compatibility between Joomla 5 and 4.
+As part of Joomla! 5.0 a plugin was introduced which enhances backward compatibility between Joomla 5 and 4.
 Please check the [Backward Compatibility Plugin](https://manual.joomla.org/migrations/44-50/compat-plugin.md) for more details.
 
 For more detail check [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/migrations/44-50/compat-plugin).
