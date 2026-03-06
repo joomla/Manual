@@ -62,7 +62,7 @@ We have a published release plan with concrete dates for releases.
 
 ### Strong backward compatibility support
 
-Backward compatibility for any software platform is a high priority.
+[Backward compatibility](backward-compatibility-policy) for any software platform is a high priority.
 
 ### Sound security policy
 
