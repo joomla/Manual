@@ -1,0 +1,28 @@
+---
+sidebar_position: 4
+---
+
+Compatibility Plugin
+====================
+
+:::tip[Developer Note]
+  Since this version of Joomla has not been released yet, this page can change anytime.
+:::
+
+:::warning[Developer Note]
+  Heads-up, don't create a plugin as `behaviour` plugin because it's possible that this group get removed at some point.
+:::
+
+## Joomla 7 Compatibility Plugin
+
+In Joomla! 7.0 the Compatibility Plugin introduced in Joomla! 6.0 will be replaced by a new plugin
+called "Behaviour - Backward Compatibility 7".
+
+Despite the warning about the potential removal of the `behaviour` plugin type, this compatibility plugin still uses
+this type to ensure it loads before any other plugin, as this is critical for backward compatibility functionality.
+
+### Detailed documentation
+
+:::warning[Reader Note]
+  Please read the [Compatibility Plugin 6.0](../64-70/compat-plugin.md) section
+:::
