@@ -24,5 +24,5 @@ this type to ensure it loads before any other plugin, as this is critical for ba
 ### Detailed documentation
 
 :::warning[Reader Note]
-  Please read the [Compatibility Plugin 6.0](../54-60/compat-plugin.md) section
+  Please read the [Compatibility Plugin 6.0](../64-70/compat-plugin.md) section
 :::
