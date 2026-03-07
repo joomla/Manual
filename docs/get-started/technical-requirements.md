@@ -25,6 +25,7 @@ Technical Requirements
 
 **Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
 **Recommended PHP Modules:** mbstring  
+**Recommended PHP Memory Limit:** 256KB  
 **Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://www.iis.net/downloads/microsoft/url-rewrite) to use SEO URLs
 
@@ -43,6 +44,7 @@ Technical Requirements
 | Microsoft IIS      | 10              | 10          |
 
 **Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
+**Recommended PHP Memory Limit:** 256KB  
 **Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
 
