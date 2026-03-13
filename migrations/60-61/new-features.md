@@ -29,3 +29,11 @@ Any changes in best practice.
 A new layout `joomla.form.field.subform.repeatable-grid` that renders subform fields in a grid (partially mimicking the table look), making it more responsive compared to the table layout.
 
 - PR: https://github.com/joomla/joomla-cms/pull/42347
+
+## Support Plugin lazy loading for PHP >= 8.4
+
+Added a possibility to load plugin class on demand (lazy loading) when the event dispatched. 
+For servers with PHP version >= 8.4. This helps to improve overall CMS performance.
+
+- PR https://github.com/joomla/joomla-cms/pull/45062
+- PR https://github.com/joomla/joomla-cms/pull/46862
