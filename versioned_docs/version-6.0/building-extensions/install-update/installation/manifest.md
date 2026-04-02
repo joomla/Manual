@@ -343,6 +343,11 @@ If you install one version of the extension then skip some versions before insta
 The currently installed version is maintained in the `#__schemas` table.
 You can find a worked example in [Developing an MVC Component/Using the database](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Using_the_database).
 
+:::warning[Important]
+   When the corresponding component is initially installed, the update scripts are not executed. 
+   The `example.install.sql` must contain the current status of all database changes and thus describe the current status.
+:::
+
 :::note[TODO]
   Update the above link when the MVC Component Tutorial is included in the manual.
 :::
