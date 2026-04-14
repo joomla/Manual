@@ -7,15 +7,15 @@ Client side JavaScript events
 
 ## Concept
 
-When writing a complex site with many scripts, components, plugins it is become important that every script is able to talk each other. For this Joomla! introduces Client Side event convention.
+When writing a complex site with many scripts it is important that scripts are able to talk to one another. For this Joomla! uses a Client Side event convention.
 
 ## The basics
 
-The extensions should use [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) to talk to each other and to Joomla! core. The event should be dispatched to modified Element or to window (global)
+The extensions should use [`CustomEvent`](https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent) to talk to each other and to Joomla! core. The event should be dispatched on a modified Element or on window (global)
 
-The event name should have at least two part, separated ":", eg `foo:bar`, `myshop:add-to-cart`. Where the first part is the event provider, and the second part is the event name which happened. Which is allows us to avoid possible collisions with another scripts and native DOM events. All Joomla! events should start from `joomla:`.
+The event name should have two parts, separated by ":", eg `foo:bar`, `myshop:add-to-cart`. The first part is the event provider, and the second part is the event name. You should use your extension name as the event provider to avoid possible collisions with another script and native DOM events. All Joomla! events should start with `joomla:`.
 
-Example telling that User added something to the shopping cart:
+Example notifying that a user added something to the shopping cart:
 ```javascript
 // Shop extension:
 window.dispatchEvent(new CustomEvent('myshop:add-to-cart', {
@@ -25,23 +25,23 @@ window.dispatchEvent(new CustomEvent('myshop:add-to-cart', {
 });
 ```
 
-Then 3rd script can listen to it:
+Then another script can listen for it:
 ```javascript
 window.addEventListener('myshop:add-to-cart', function(event) {
   console.log(event.detail)
 });
 ```
 
-## List of Joommla! core JavaScirpt events
+## List of Joomla! core JavaScript events
 
 ### `joomla:updated`
-Dispatched over the changed container after its content was changed, example after ajax call. 
+Dispatched on a container after its content has changed, for example, after an AJAX response.
 Joomla listen to this event to update or initialize its scripts accordingly to new content (example in a subform field).
 
 Example of updating the content with AJAX:
 
 ```javascript
-const someContainer = document.querySelector('.my-dinamic-container');
+const someContainer = document.querySelector('.my-dynamic-container');
 fetch('/foobar/page')
   .then(function(res) {
     return res.text();
@@ -51,7 +51,7 @@ fetch('/foobar/page')
     someContainer.dispatchEvent(new CustomEvent('joomla:updated', { bubbles: true });
   });
 ```
-The extensions can listen to this event also, example for initialization for modified part of the page:
+Extensions can listen for this event, for example, to be notified when a page is initialized or part of a page is modified:
 
 ```javascript
 document.addEventListener('joomla:updated', function(event){
@@ -62,13 +62,13 @@ document.addEventListener('joomla:updated', function(event){
 
 ### `joomla:removed`
 
-Dispatched over the changed container before its content will be removed or replaced.
-For complex scripts it is preferable to `joomla:removed` together with `joomla:updated` and dispatch `joomla:removed` before replacing/removing the content.
+Dispatched on the container before its content is removed or replaced.
+For complex scripts it is preferable to use `joomla:removed` together with `joomla:updated`, and to dispatch `joomla:removed` before replacing/removing the content.
 
 Example of updating the content with AJAX:
 
 ```javascript
-const someContainer = document.querySelector('.my-dinamic-container');
+const someContainer = document.querySelector('.my-dynamic-container');
 fetch('/foobar/page')
   .then(function(res) {
     return res.text();
