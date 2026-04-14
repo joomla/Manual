@@ -36,7 +36,7 @@ window.addEventListener('myshop:add-to-cart', function(event) {
 
 ### `joomla:updated`
 Dispatched on a container after its content has changed, for example, after an AJAX response.
-Joomla listen to this event to update or initialize its scripts accordingly to new content (example in a subform field).
+Joomla listens for this event in order to update or initialize its scripts to match new content (for example, in a subform field).
 
 Example of updating the content with AJAX:
 
