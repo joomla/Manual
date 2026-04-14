@@ -156,7 +156,7 @@ This is also true for custom fields which extend SubformField.
 - `joomla:removed` Event dispatched before removing the row. Target: affected row element.
 - `subform-order-changed` Event dispatched after rows ordering has been changed. Target: subform element. CustomEvent detail property contain affected row: `detail.row`, index of original position: `detail.fromPosition`, index of final position: `detail.toPosition`.
 
-All events are bubbles up in DOM.
+All events bubble up in DOM.
 
 ## Server-side validation and filters
 
