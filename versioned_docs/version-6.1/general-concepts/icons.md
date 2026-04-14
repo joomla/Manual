@@ -15,7 +15,7 @@ This is a remnant of the old coding style of FontAwesome; its latest versions us
 
 To display such an icon, you can use:
 
-```html
+```php
     <span class="icon-cancel" aria-hidden="true"></span> <?php echo Text::_('JCANCEL') ?> 
 ```
 
@@ -36,7 +36,7 @@ The preferred way is to use classes inside the `<i>` element:
 
 But the span element can also do the job:
 
-```html
+```php
     <span class="fa-solid fa-bomb" aria-hidden="true"></span> <?php echo Text::_('JSAVE') ?> 
     <span class="fa-brands fa-facebook" aria-hidden="true"></span> <?php echo 'Facebook' ?> 
 ```
