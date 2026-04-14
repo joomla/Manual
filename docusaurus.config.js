@@ -87,15 +87,20 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/joomla/manual/tree/main/',
-          lastVersion: '6.0',
+          lastVersion: '6.1',
           versions: {
             'current': {
-              label: '6.1 (Upcoming)',
+              label: '6.2 (Upcoming)',
               banner: 'unreleased',
               noIndex: false,
             },
+            '6.1': {
+              label: '6.1 (Current)',
+              banner: 'none',
+              noIndex: true,
+            },
             '6.0': {
-              label: '6.0 (Current)',
+              label: '6.0 (Archived)',
               banner: 'none',
               noIndex: true,
             },
@@ -130,7 +135,7 @@ const config = {
               noIndex: false,
             },
           },
-          onlyIncludeVersions: ['current', '6.0', '5.4', '4.4'],
+          onlyIncludeVersions: ['current', '6.1', '5.4', '4.4'],
           remarkPlugins: [
               // Configure the plugin for parsing the API links
               [apiLinkPlugin,{
