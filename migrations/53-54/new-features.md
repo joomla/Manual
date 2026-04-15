@@ -80,6 +80,7 @@ The Joomla Continuous Integration (CI) environment has been extended to run test
   * [46301](https://github.com/joomla/joomla-cms/pull/46301) PHP8.5 Composer update joomla/http to 3.1.3 to fix PHP 8.5 deprecation of curl_close()
   * [46309](https://github.com/joomla/joomla-cms/pull/46309) PHP8.5 Composer update joomla/test to 3.0.4 to fix PHP 8.5 deprecation of reflection setAccessible()
   * [46480](https://github.com/joomla/joomla-cms/pull/46480) php 8.5 version check
+  * [46736](https://github.com/joomla/joomla-cms/pull/46736) PHP8.5 Using null as the key parameter for array_key_exists() is deprecated
 </details>
 
 ## Additional Enhancements
