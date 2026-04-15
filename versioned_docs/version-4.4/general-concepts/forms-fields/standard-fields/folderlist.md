@@ -15,7 +15,7 @@ is followed by '- Use Default -' (also translatable) given the value '0'.
 - **directory** (mandatory) is the filesystem path to the directory containing the folders to be listed.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) is the default folder name.
-- **filter** (Joomla 3.x) or **fileFilter** (Joomla 4.0 and later) (optional) is a regular expression string which is
+- **filter** (Joomla 3.x) or **folderFilter** (Joomla 4.0 and later) (optional) is a regular expression string which is
   used to filter the list of folders selected for inclusion in the drop-down list. If omitted, all folders in the
   directory are included. The filter argument expression is applied before the exclude argument expression. For
   information on constructing regular expressions
@@ -44,7 +44,7 @@ Implemented by: libraries/src/Form/Field/FolderlistField.php
         default=""
         label="Select a folder"
         directory="administrator"
-        filter=""
+        folderFilter=""
         exclude=""
         stripext=""
 />
