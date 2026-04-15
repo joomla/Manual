@@ -30,6 +30,8 @@ the text box. Otherwise the default value, if any, is displayed.
 - **filltable** (optional): if set to true, dates of the previous and next month are added at the top and bottom of the current month to fill the grid. Defaults to true.
 - **minyear** (optional): set a signed integer for a number of years (-10, -2, 0, 7, 12, ...) to define the relative lower limit for the year selection. The user cannot select a year before this limit. If zero, which is the default, there is no limit.
 - **maxyear** (optional): set a signed integer for a number of years (-10, -2, 0, 7, 12, ...) to define the relative upper limit for the year selection. The user cannot select a year after this limit. If zero, which is the default, there is no limit.
+- **default** (optional): a default date can be specified in `Y-m-d` format. You can default to the current date by using `now` as the xml attribute value.
+  You can also directly set the date to the current day by typing the word "now" into the rendered text box instead of pressing the "Today" button
 
 Implemented by: libraries/src/Form/Field/CalendarField.php
 
