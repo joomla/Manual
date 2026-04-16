@@ -106,7 +106,7 @@ The following elements can be used to insert metadata. Although not strictly req
 <authorUrl> – URL to the author's website (e.g. www.joomla.org)
 <version> – the version number of the extension (e.g. 1.6.0)
 <description> – the description of the component (may be shown as a tooltip on the admin Manage Extensions page)
-<element> – the internal name of the component. If omitted, name will be cleaned and used
+<element> – the internal name of the component. If omitted, the value from the <name> tag will be cleaned and used
 ```
 
 The `<name>` and `<description>` fields are translatable. If you use language strings for these elements then they should be defined in your language .sys.ini file AND your .ini file.
