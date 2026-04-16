@@ -372,11 +372,11 @@ For example, if there are the following SQL update files present:
 ```
 1.0.1.sql
 1.0.2.sql
-1.0.3a.sql
+1.0.3.sql
 ```
 
 then Joomla will order these in numerical order (ie the order they're listed above),
-and will enter "1.0.3a" as the `version_id` within this extension's record in the `#__schemas` table.
+and will enter "1.0.3" as the `version_id` within this extension's record in the `#__schemas` table.
 
 ### Installing an update
 
@@ -388,6 +388,7 @@ In this case Joomla does the following:
 - it retrieves the extension's latest SQL version from its `#__schemas` record
 
 - it reads all the filenames in the SQL updates directory, and organises them in numerically increasing order
+(numerically in the sense that 9.0.1.sql will come before 10.0.0.sql - it's not in alphanumeric order)
 
 - it processes in order the update files which have filenames numerically after the current schema version
 
