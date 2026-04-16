@@ -278,18 +278,18 @@ For more details see the [Namespaces articles](../../../general-concepts/namespa
 The SQL section (primarily used by components) enables you to make changes to the database data owned by your extension.
 
 There are 3 types of changes:
-1. **Install** Initial database setup for your extension, for the first version of your extension (or, at least, the first version which configures the database).
-2. **Update** Database changes to be applied upgrading to this version from the previous version
-3. **Uninstall** Database changes to be applied when the extension is uninstalled.
+1. **Install** - Initial database setup for your extension, for when your extension is first installed on a Joomla instance
+2. **Update** - Database changes to be applied upgrading to this version from the previously installed version
+3. **Uninstall** - Database changes to be applied when the extension is uninstalled.
 
 For each type of database (eg mysql) you will have:
 - 1 SQL file for the install
 - 1 SQL file for the uninstall
-- a folder containing several update SQL files, each enabling upgrading from the previous version to the current
+- a folder containing several update SQL files, each enabling upgrading from the previously installed version to the current
 
 Each SQL file contains a series of SQL statements, with table names using the '#__' prefix, eg '#__categories'.
 
-By convention all these sql files are stored in a folder called "sql" within the administrator folder, which you must define within your administrator files section, eg
+By convention all these SQL files are stored in a folder called "sql" within the administrator folder, which you must define within your administrator files section, eg
 
 ```xml
 <administration>
@@ -332,20 +332,110 @@ For your update files:
 ```
 
 where, for example, sql/updates/mysql contains a series of files, eg:
-- 0.0.2.sql (for upgrading to v0.0.2)
-- 0.0.3.sql (for upgrading from v0.0.2 to v0.0.3), etc.
-- 0.0.4.sql (for upgrading from v0.0.3 to v0.0.4), etc.
+- 0.0.2.sql (for upgrading to v0.0.2),
+- 0.0.3.sql (for upgrading from v0.0.2 to v0.0.3), 
+- 0.0.4.sql (for upgrading from v0.0.3 to v0.0.4).
 
-If the first version you install is eg 0.0.4 then Joomla will use the initial example.install.sql file, and then apply in order the update files to arrive at v0.0.4.
+These SQL update files can be empty files. 
 
-If you install one version of the extension then skip some versions before installing the next, then Joomla applies each of the update sql files to go from your previous version to the one you're installing.
+### SQL Schema Numbering
 
-The currently installed version is maintained in the `#__schemas` table.
-You can find a worked example in [Developing an MVC Component/Using the database](https://docs.joomla.org/J3.x:Developing_an_MVC_Component/Using_the_database).
+Joomla keeps track of 2 version numbers associated with an extension:
 
-:::note[TODO]
-  Update the above link when the MVC Component Tutorial is included in the manual.
-:::
+1. The version number specified in the `<version>` tag within the metadata in the extension manifest file. 
+This is stored in the `manifest_cache` column of the `#__extensions` table,
+and displayed in the administrator Manage / Extensions form.
+
+2. The version number associated with your extension's SQL, stored within the `version_id` column of the `#__schemas` table.
+
+It is important to note that **these are completely distinct from Joomla's perspective - it does not perform any correlation between them**.
+Having said that, you will find it easier to keep these 2 versions in sync.
+
+The following describes how Joomla manages the extension's SQL version, and uses it to apply your SQL updates.
+
+### Initial Install
+
+When you first install a component which involves applying SQL, 
+then Joomla looks inside the `<updates>` folder for any SQL update files.
+
+If there are none then Joomla doesn't create any record in the `#__schemas` table.
+
+If there are some SQL update files, then Joomla orders them in numerically increasing order.
+It takes the highest value filename and stores the filename (without the sql extension) in the 
+extension's record in the `#__schemas` table.
+
+Note that on first install of an extension none of the SQL update files are run;
+Joomla just notes the name of the latest update file. 
+
+For example, if there are the following SQL update files present:
+
+```
+1.0.1.sql
+1.0.2.sql
+1.0.3a.sql
+```
+
+then Joomla will order these in numerical order (ie the order they're listed above),
+and will enter "1.0.3a" as the `version_id` within this extension's record in the `#__schemas` table.
+
+### Installing an update
+
+When you install an extension which is already installed in the Joomla instance,
+then this is treated as an update.
+
+In this case Joomla does the following:
+
+- it retrieves the extension's latest SQL version from its `#__schemas` record
+
+- it reads all the filenames in the SQL updates directory, and organises them in numerically increasing order
+
+- it processes in order the update files which have filenames numerically after the current schema version
+
+- it updates the `#__schemas` record to store the filename of the last update file which it processed.
+
+It's quite often the case that administrators will skip versions of extensions, 
+so upgrading from, say, version 1.4 to 1.7 there may be several SQL update files to execute.
+
+### Example
+
+As an example, consider what happens when versions of a fictitious com_example are installed.
+
+**Initial Install** - let's assume the `<version>` in the manifest file is 1.0.1 and there are no SQL update files.
+
+Because this is an initial install Joomla doesn't execute any of the update SQL files anyway, 
+but does look for them to find the highest numerical filename, in order to store this in the `#__schemas` table.
+As there are no SQL update files there is no record written for this extension in the `#__schemas` table.
+
+**Re-install of version 1.0.1** - let's assume the `<version>` in the manifest file is still 1.0.1 
+(Joomla doesn't require the version number to be updated),
+and there is a SQL update file 1.0.1.sql.
+
+Because this is an update, Joomla will seek to run appropriate files in the SQL update directory. 
+As there is no record for this extension in the `#__schemas` table, 
+it will run all the SQL update files it finds, after putting them in numerical order.
+
+In this case there is only one file, so Joomla executes the SQL in 1.0.1.sql 
+and stores a record in `#__schemas` with this extension's id and version_id of "1.0.1".
+
+**Update Install of version 1.0.2** - let's assume the `<version>` in the manifest file is 1.0.2 
+and there are SQL update files 1.0.1.sql, 1.0.2.sql and 1.0.3.sql.
+
+Because this is an update, Joomla will seek to run appropriate files in the SQL update directory. 
+It finds the extension's record in the `#__schemas` table, and that the last update processed was 1.0.1.
+
+It orders the SQL update files numerically, 
+and selects the filenames higher in numerical order than 1.0.1.sql,
+namely 1.0.2.sql and 1.0.3.sql.
+
+It executes the SQL in 1.0.2.sql, followed by 1.0.3.sql, and stores "1.0.3" in the `#__schemas` record.
+
+**Conclusions**
+
+This example, although rather far-fetched, is meant to underline the fact that
+the `<version>` in the manifest file has nothing to do with how Joomla processes the SQL update files.
+
+However, it also demonstrates why it's strongly recommended to maintain your `<version>` in the manifest file
+and your SQL update files in sync, as otherwise unintended errors can easily occur.
 
 ## Languages
 
