@@ -37,3 +37,9 @@ For servers with PHP version >= 8.4. This helps to improve overall CMS performan
 
 - PR https://github.com/joomla/joomla-cms/pull/45062
 - PR https://github.com/joomla/joomla-cms/pull/46862
+
+## New event for `subform` field
+Added `subform-order-changed` event when order is changed in subform field.
+
+- PR: https://github.com/joomla/joomla-cms/pull/46093
+
