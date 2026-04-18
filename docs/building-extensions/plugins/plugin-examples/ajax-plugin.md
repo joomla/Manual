@@ -30,6 +30,10 @@ language:9
 ```
 
 ## Writing an Ajax plugin
+:::danger
+The Ajax component does not apply kind of ACL checks. You have to manually implement permission and/or access level checks in your handler methods, otherwise those handlers will be publicly accessible!
+:::
+
 To write a plugin which handles the URL
 
 ```

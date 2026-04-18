@@ -81,6 +81,9 @@ The is the code which is run when the Divide button is pressed.
 It initiates the Ajax call and handles the response.
 
 ## Ajax Controller
+:::danger
+The Ajax component does not apply kind of ACL checks. You have to manually implement permission and/or access level checks in your handler methods, otherwise those handlers will be publicly accessible!
+:::
 
 Path: components/com_ajaxdemo/src/Controller/AjaxController.php
 
