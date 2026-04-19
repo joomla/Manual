@@ -252,8 +252,8 @@ use My\Plugin\Content\Shortcodes\Extension\Shortcode;
 
 This `register()` function is called whenever Joomla [imports the plugin](./how-plugins-work.md#importing-a-plugin).
 
-The code creates an entry in the [Dependency Injection container](../../../general-concepts/dependency-injection/DIC.md), 
-specifically in this plugin's [child container](../../../general-concepts/dependency-injection/extension-child-containers.md).
+The code creates an entry in the [Dependency Injection container](../../general-concepts/dependency-injection/DIC.md), 
+specifically in this plugin's [child container](../../general-concepts/dependency-injection/extension-child-containers.md).
 
 The entry is then read from the DIC, and this results in running the `function (Container $container) { ... }`,
 which instantiates the plugin.
