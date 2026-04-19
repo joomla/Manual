@@ -38,7 +38,7 @@ For example, after Joomla is initialised the system plugins are imported (ie tho
 
 Importing a plugin type involves:
 - finding from the database all the plugins associated with a particular type - the type matches the associated subfolder of the `/plugins` folder in the file system. In the diagram these plugins are shown as `plugin1`, `plugin2` and `plugin3`, 
-- instantiating each of these plugins,
+- instantiating each of these plugins (in specific terms, executing the services/provider.php file of each plugin)
 - determining which events each plugin wants to subscribe to. 
 - writing the subscriptions to a data store represented by the `Listeners` box in the diagram.
 
@@ -60,7 +60,7 @@ Once a plugin has been imported and its subscriptions logged in the `Listeners` 
 
 The system plugins imported in the first step can subscribe to the `onContentPrepare` event ok, even though it's associated with content plugins, and will receive the `onContentPrepare` event if they have subscribed to it, without having to be imported again.
 
-You should also be aware that unlike components and modules, there aren't different site plugins and administrator plugins. The plugins which you install are run for all the different contexts - site, administrator and API applications - so it's a good idea to in your plugins to check the application context.
+You should also be aware that, unlike components and modules, there aren't different site plugins and administrator plugins. The plugins which you install are run for all the different contexts - site, administrator and API applications - so it's a good idea to in your plugins to check the application context.
 
 ## Sequence Diagram
 
@@ -74,7 +74,7 @@ sequenceDiagram
     Note over PluginHelper, Plugins Table: Only once at runtime, and <br>result is cached in memory
     Plugins Table-->>PluginHelper: Return all active
     PluginHelper-->>Dispatcher: Import only <br>group of $type <br>(once at runtime)
-    PluginHelper->>Plugin: Instantiate plugin
+    PluginHelper->>Plugin: Execute each plugin's service/provider.php
     Dispatcher->>Plugin: Call $plugin->getSubscribedEvents() <br>for each plugin in group
     Plugin->>Dispatcher: Return list of listeners
     Code->>Dispatcher: dispatch('onFooBar', <br>$eventObject)

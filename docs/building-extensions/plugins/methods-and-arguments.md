@@ -13,7 +13,7 @@ There are 2 functions which you must implement within your plugin:
 
 1. The `getSubscribedEvents()` method. You tell Joomla
   - which events you want to subscribe to
-  - the code to run when one of those events is triggered
+  - the code (handler function) to run when one of those events is triggered
 
 2. The handler function which Joomla should call when one of those events is triggered.
 
@@ -217,6 +217,147 @@ public function onInstallerBeforeInstaller(\Joomla\CMS\Event\Installer\BeforeIns
     $event->updatePackage($newpkg);
 }
 ```
+
+## Instantiating your Plugin Class
+
+You should instantiate your plugin in your services/provider.php file. 
+Here is an example of such a file which would instantiate the shortcodes plugin in the [plugin tutorial](./basic-content-plugin.md)
+
+```php title="plg_shortcodes/services/provider.php"
+<?php
+
+use Joomla\CMS\Extension\PluginInterface;
+use Joomla\CMS\Plugin\PluginHelper;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+use My\Plugin\Content\Shortcodes\Extension\Shortcode;
+
+    return new class() implements ServiceProviderInterface
+    {
+        public function register(Container $container)
+        {
+            $container->set(
+                PluginInterface::class,
+                function (Container $container) {
+    
+                    $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
+                    $plugin = new Shortcode($config);
+
+                    return $plugin;
+                }
+            );
+        }
+    };
+```
+
+This `register()` function is called whenever Joomla [imports the plugin](./how-plugins-work.md#importing-a-plugin).
+
+The code creates an entry in the [Dependency Injection container](../../../general-concepts/dependency-injection/DIC.md), 
+specifically in this plugin's [child container](../../../general-concepts/dependency-injection/extension-child-containers.md).
+
+The entry is then read from the DIC, and this results in running the `function (Container $container) { ... }`,
+which instantiates the plugin.
+
+### Lazy Objects
+
+Since version 8.4 PHP supports the concept of [lazy objects](https://www.php.net/manual/en/language.oop5.lazy-objects.php),
+where the object is instantiated only whenever one of its properties is accessed.
+
+This is particularly useful for plugins because only a subset of plugins are actually triggered in handling an HTTP request.
+If plugins are implemented as lazy objects then this avoids many of them being instantiated unnecessarily,
+because they're instantiated only if one of their handler functions is called.
+
+(Note that calling the plugin's `getSubscribedEvents()` function does not cause the lazy object to be instantiated because it's a static function).
+
+To define as plugin as a lazy object you can use the Dependency Injection Container's `lazy()` function:
+
+```php
+$callable = $container->lazy(Shortcode::class, 
+                             function (Container $container) {
+                                $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
+                                $plugin = new Shortcode($config);
+                                return $plugin;
+                            });
+```
+
+You pass 2 parameters:
+
+1. Shortcode::class - really just a shorthand for the string of the class's FQN: "My\Plugin\Content\Shortcodes\Extension\Shortcode"
+
+2. The initializer of the class - the function which instantiates the plugin
+
+The returned `$callable` is what you then set in the DIC:
+
+```php
+$container->set(PluginInterface::class, $callable);
+```
+
+When the entry is retrieved from the DIC (which happens when the plugin is imported) then the `$callable` is run, 
+which is the `lazy()` function above, and this creates the lazy proxy.
+
+When a property of the Shortcode::class object is accessed (ie when one of the plugin handler functions is called), 
+then PHP runs the initializer function (2nd parameter of the `lazy()` function),
+and this instantiates the plugin object. 
+
+### Performance Considerations
+
+If you use lazy plugins and your plugin is not triggered 
+then the time that you save is the time which would have been taken to instantiate your plugin 
+(specifically the plugin Extension class instance):
+
+- allocation of memory for your plugin and its properties
+
+- executing of your plugin's constructor (by default, the constructor in CMSPlugin).
+
+Your plugin code is still read and processed by PHP, whenever Joomla imports plugins of that type. 
+
+However the use of lazy objects does have some overhead - PHP needs to instantiate a ReflectionClass,
+but as this is a standard PHP class its instantiation will be optimised.
+
+So the key question to answer is this: 
+
+**Once my plugin's type is imported, how likely is it that one of my plugin's events will be triggered?**
+
+If it's highly likely then don't use lazy instantiation, otherwise do use it.
+
+For example, if your plugin is just listening for onContentPrepareForm 
+then you should definitely use lazy objects because content plugins are imported for any page displaying an article, contact, etc,
+but most pages will not display a form.
+
+On the other hand, the system onAfterInitialise event is dispatched pretty much for every HTTP request,
+so if your plugin is a system plugin listening for this event then you should definitely not use a lazy object.
+If you use a lazy object here then not only will your plugin be instantiated anyway,
+but also you will have the overhead of instantiating ReflectionClass as well, so you will actually slow your site down.
+
+Console plugins are imported only if Joomla is running a console job,
+and in this case the \Joomla\Application\ApplicationEvents::BEFORE_EXECUTE event is always dispatched,
+so for best performance don't use lazy plugins for console jobs.
+
+[Ajax plugins](./plugin-examples/ajax-plugin.md) are imported when there is an Ajax request to com_ajax, 
+but if your plugin is likely to be handling only one of several com_ajax requests,
+it makes sense to use lazy instantiation for your Ajax plugins. 
+
+If in doubt, you're probably best to use lazy plugins by default. 
+
+If your plugin is, for example, only appropriate to the administrator functionality,
+then you can also check the application context in the static `getSubscribedEvents` function,
+and register for events only if the context is 'administrator':
+
+```php
+public static function getSubscribedEvents(): array
+{
+    if (\Joomla\CMS\Factory::getApplication()->isClient('administrator')) {
+        return [
+                'onModuleRender' => 'checkAdminModule',  
+                ];
+    } else {
+        return [];
+    }
+}
+```
+
+This enhances the performance of your site, 
+because your plugin won't be instantiated for HTTP requests to your "site" application.
 
 ## Methods available to Plugins
 

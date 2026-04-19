@@ -128,6 +128,8 @@ Ensure that your plugin language files are named correctly. You must include in 
 
 ## Service Provider file
 
+In this example we implement the plugin class as a [lazy object](./methods-and-arguments.md#lazy-objects). 
+
 ```php title="plg_shortcodes/services/provider.php"
 <?php
 
@@ -136,7 +138,6 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\DI\Container;
 use Joomla\DI\ServiceProviderInterface;
-use Joomla\Event\DispatcherInterface;
 use My\Plugin\Content\Shortcodes\Extension\Shortcode;
 
     return new class() implements ServiceProviderInterface
@@ -145,17 +146,16 @@ use My\Plugin\Content\Shortcodes\Extension\Shortcode;
         {
             $container->set(
                 PluginInterface::class,
-                function (Container $container) {
-    
-                    $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
-                    $subject = $container->get(DispatcherInterface::class);
-                    $app = Factory::getApplication();
+                $container->lazy(Shortcode::class, 
+                                 function (Container $container) {
+                                    $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
+                                    $app = Factory::getApplication();
+                                    $plugin = new Shortcode($config);
+                                    $plugin->setApplication($app);
                     
-                    $plugin = new Shortcode($subject, $config);
-                    $plugin->setApplication($app);
-    
-                    return $plugin;
-                }
+                                    return $plugin;
+                                }
+                            );
             );
         }
     };
@@ -176,32 +176,14 @@ $config = (array) PluginHelper::getPlugin('content', 'shortcodes');
 Ensure that this contains your plugin type and element, matching the manifest file.
 
 ```php
-$plugin = new Shortcode($subject, $config);
+$plugin = new Shortcode($config);
 ```
 
 Ensure that this matches your class in your `src/Extension` directory.
 
-:::tip
-Since Joomla 6.1 it is possible to use [PHP 8.4 Lazy Objects](https://www.php.net/manual/en/language.oop5.lazy-objects.php) for Plugins. This helps to improve overall CMS performance.
-
-To do so, update service provider to use `$container->lazy(<PluginClassName>, <Service callback>)` as in following example:
-
-```php
-return new class() implements ServiceProviderInterface
-{
-    public function register(Container $container)
-    {
-        $container->set(
-            PluginInterface::class,
-            $container->lazy(Shortcode::class, function (Container $container) {
-                // ... existing code
-            })
-        );
-    }
-};
-```
-
-:::
+The plugin uses [lazy instantiation](../methods-and-arguments/#lazy-objects), 
+which means that the plugin's Extension class will be instantiated 
+only if one of the events to which it subscribes is triggered. 
 
 ### Extension Class
 This is the main code of the plugin. Hopefully the comments in the code explain what is going on.
