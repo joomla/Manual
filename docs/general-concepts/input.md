@@ -395,7 +395,7 @@ class Dispatcher implements DispatcherInterface
     
     public function dispatch()
     {
-    if ($this->input->exists('p1'))
+        if ($this->input->exists('p1'))
         {
             $v1 = $this->input->get('p1', 0, "INT");  // rhs equivalent to $input->getInt('p1', 0);
             echo "<p>Int value of p1 is $v1</p>";
