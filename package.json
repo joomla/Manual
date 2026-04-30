@@ -15,10 +15,10 @@
   },
   "dependencies": {
     "@cmfcmf/docusaurus-search-local": "2.0.1",
-    "@docusaurus/core": "3.9.2",
-    "@docusaurus/plugin-sitemap": "3.9.2",
-    "@docusaurus/preset-classic": "3.9.2",
-    "@docusaurus/theme-mermaid": "3.9.2",
+    "@docusaurus/core": "3.10.1",
+    "@docusaurus/plugin-sitemap": "3.10.1",
+    "@docusaurus/preset-classic": "3.10.1",
+    "@docusaurus/theme-mermaid": "3.10.1",
     "@mdx-js/react": "^3.1.1",
     "clsx": "^2.1.1",
     "prism-react-renderer": "^2.4.1",
@@ -28,7 +28,7 @@
     "wrangler": "^4.43.0"
   },
   "devDependencies": {
-    "@docusaurus/module-type-aliases": "3.9.2"
+    "@docusaurus/module-type-aliases": "3.10.1"
   },
   "browserslist": {
     "production": [
