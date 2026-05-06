@@ -15,6 +15,10 @@ and it will pass control to your extension based on parameters within the Ajax H
   to support defining a URL for [ad hoc jobs](../../building-extensions/plugins/plugin-examples/ajax-plugin.md). 
 :::
 
+:::danger
+The Ajax component does not apply any kind of ACL checks. You have to manually implement permission and/or access level checks in your handler methods, otherwise those handlers will be publicly accessible!
+:::
+
 ## Modules
 
 To pass an Ajax call to a module you need to set within the URL of the Ajax HTTP request
