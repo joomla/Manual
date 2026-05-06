@@ -112,3 +112,10 @@ Similarly, if you use a function, then PHP will try to find that function under 
 if it doesn't find the function under your namespace it will revert back to looking for it in the global namespace. 
 So it's marginally more performant if you tell PHP not to bother looking in your namespace by prefixing the function 
 name with a backslash, eg `\strlen(...)`. You will see this present at times in the Joomla PHP code.
+
+:::note[Developer Note]
+Attention: The first character of the namespace name is restricted to "a-zA-Z_" with some additionals. See
+[PHP valid variable names](https://www.php.net/manual/en/language.variables.basics.php)  
+So be careful of company or extension names beginning with a number or other restricted characters. Recommendation: Use '_' as the first character instead.  
+Joomla does not check the extension name in the installation process. However, errors are reported later when the PHP code is executed.
+:::

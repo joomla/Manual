@@ -29,7 +29,7 @@ pkg_helloworld
  │     ├─── lib_helloworld.zip
  │     ├─── plg_sys_helloworld.zip
  │     └─── tpl_helloworld.zip
- └─── pkg_script.xml
+ └─── pkg_script.php
 
 ```
 
