@@ -74,10 +74,10 @@ The other types of cache controllers are:
 - output - if data is just being stored in cache, but there's no callback
 
 - page - used by Joomla for storing page cache
-(as described in [Page Cache](./caching-views-modules.md#page-cache]))
+(as described in [Page Cache](./caching-views-modules.md#page-cache))
 
 - view - used by Joomla for storing the output of views 
-(as described in [Component View Cache](./caching-views-modules.md#component-view-cache]))
+(as described in [Component View Cache](./caching-views-modules.md#component-view-cache))
 
 An overview of the Joomla Caching classes is shown below:
 
@@ -202,7 +202,7 @@ to avoid the whole module output being cached.)
 You can override this for your own purposes by specifying the `$options` when you create the CacheController:
 
 ```php
-$cacheController = $cacheControllerFactory->createCacheController('callback', array('caching' => true, 'lifetime' => 2);
+$cacheController = $cacheControllerFactory->createCacheController('callback', array('caching' => true, 'lifetime' => 2));
 ```
 
 where 'lifetime' refers to the cache expiration time in minutes. 
