@@ -331,7 +331,7 @@ For your update files:
 </update>
 ```
 
-where, for example, sql/updates/mysql contains a series of files, eg:
+where, for example, sql/updates/mysql contains a series of files, e.g.
 - 0.0.2.sql (for upgrading to v0.0.2),
 - 0.0.3.sql (for upgrading from v0.0.2 to v0.0.3), 
 - 0.0.4.sql (for upgrading from v0.0.3 to v0.0.4).
