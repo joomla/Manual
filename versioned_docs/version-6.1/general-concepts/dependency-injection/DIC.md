@@ -29,3 +29,21 @@ You get things out of the container by calling `get()` passing the key of the re
 - return the class instance to you
 
 You can also define aliases for each key in the container, which means that you call `get()` passing either the key or an alias of the key. 
+
+## Lazy Objects
+
+Since version 8.4 PHP supports the concept of [lazy objects](https://www.php.net/manual/en/language.oop5.lazy-objects.php),
+and you can store entries in the DIC to create lazy objects.
+
+The container [`lazy()`](framework-api://classes/Joomla-DI-Container.html#method_lazy) function 
+provides a mechanism for storing in the DIC an entry which creates a PHP lazy proxy object.
+
+You pass the name of your class and the initializer function to instantiate your class (as described in the PHP manual).
+
+It returns the callable which you then `set` in the DIC.
+
+This is particularly useful for plugins, because in handling a particular HTTP request many of them will not get triggered.
+If they are implemented as lazy objects then this avoids the expense of instantiating them, 
+hence improving the site performance.
+
+See [Instantiating your Plugin Class - Lazy Objects](../../building-extensions/plugins/methods-and-arguments.md#lazy-objects) for more details. 
