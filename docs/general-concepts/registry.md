@@ -217,8 +217,8 @@ but items are identified using a path, which is a concatenation of the keys desc
 Using the above example:
 
 ```php
-$location0 = (array) $registry->get("pins.pins0"]; // returns the array of pins0
-$lat0 = $registry->get("pins.pins0.pinlat"];       // returns "54.17982"
+$location0 = (array) $registry->get("pins.pins0"); // returns the array of pins0
+$lat0 = $registry->get("pins.pins0.pinlat");       // returns "54.17982"
 ```
 
 The `count` method returns the number of elements at the top level, 
@@ -254,7 +254,7 @@ Array ( [pins1] => Array ( [pinlat] => 54.17 [pinlong] => -5.94 )
         [pins2] => Array ( [pinlat] => 54.3 [pinlong] => -5.93 ) )
 ```
 
-With `recursive` set to false, the structure below the "pins" key is traversed,
+With `recursive` set to true, the structure below the "pins" key is traversed,
 and the merge performed at a lower level:
 
 ```php
