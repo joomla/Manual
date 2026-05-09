@@ -258,7 +258,7 @@ With `recursive` set to true, the structure below the "pins" key is traversed,
 and the merge performed at a lower level:
 
 ```php
-$registry->merge($registry2, false);
+$registry->merge($registry2, true);
 print_r($registry["pins"]);
 // output is
 stdClass Object ( 
