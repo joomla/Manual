@@ -104,7 +104,7 @@ A standard manifest file for a plugin:
 ```
 
 ### Service Provider file
-A standard service provider file for instantiating a plugin via the dependency injection container:
+A standard service provider file for instantiating a [lazy plugin](../methods-and-arguments.md#lazy-objects) via the dependency injection container:
 
 ```php title="plg_ajax_jobs/services/provider.php"
 <?php
@@ -123,17 +123,15 @@ use My\Plugin\Ajax\AjaxJobs\Extension\Jobs;
         {
             $container->set(
                 PluginInterface::class,
-                function (Container $container) {
-    
-                    $config = (array) PluginHelper::getPlugin('ajax', 'jobs');
-                    $subject = $container->get(DispatcherInterface::class);
-                    $app = Factory::getApplication();
+                $container->lazy(Jobs::class, 
+                                function (Container $container) {
                     
-                    $plugin = new Jobs($subject, $config);
-                    $plugin->setApplication($app);
-    
-                    return $plugin;
-                }
+                                    $config = (array) PluginHelper::getPlugin('ajax', 'jobs');
+                                    $plugin = new Jobs($config);
+                    
+                                    return $plugin;
+                                }
+                            )
             );
         }
     };

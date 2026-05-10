@@ -20,7 +20,8 @@ In addition, the plugin demonstrates the use of:
 - returning a value from a plugin method - through the use of the `onContentAfterTitle` event. The plugin code adds some text after the article title.
 
 The diagram below lists the plugin files to write, or you can download the plugin
-from the Joomla Manual Examples repository [shortcodes plugin](https://github.com/joomla/manual-examples/tree/main/plugin-example-shortcode).
+from the Joomla Manual Examples repository [shortcodes plugin](https://github.com/joomla/manual-examples/tree/main/plugin-example-shortcode),
+but note that the version in the repository is designed to work on Joomla 6.1 or later.
 
 ```
 plg_shortcodes
