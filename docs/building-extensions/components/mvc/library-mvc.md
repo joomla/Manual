@@ -69,7 +69,7 @@ Apart from the CategoryFeedView, which is used for generating a [feed](https://d
 
 The two classes ListView and FormView seem to be aimed at functionality for displaying a list of records (like the `com_content` administrator View\Articles\HtmlView) and a form for editing a record (like the `com_content` administrator View\Article\HtmlView). However, at time of writing (Joomla 5 alpha has recently appeared), they aren't used by any of the Joomla components, so I wouldn't recommend using them, at least not yet.
 
-### Higher-level Model Classes
+## Higher-level Model Classes
 The diagram shows the inheritance tree of the Joomla library MVC models. 
 ![Model Class Hierarchy](_assets/model-hierarchy.jpg "Model Class Hierarchy")
 
@@ -77,9 +77,9 @@ The diagram shows the inheritance tree of the Joomla library MVC models.
 
 In addition to `getStoreId()`, **ListModel** has capability relating to obtaining a set of records for display on a web page, including support for pagination. Note that the pagination capability may still be slightly different between the front end and the back end. The ListModel is useful for supporting Action 1 in the diagrams in the [Post/Request/Get pattern](post-redirect-get.md) section.
 
-**FormModel** includes support for Joomla forms, both for setting up the form so that it can be displayed, and also so that the form data sent in the POST can be validated. In addition, it has methods for implementing checkin and checkout of database records. So it's suitable for handling Actions 3 and 4 in the diagrams.
+**FormModel** includes support for Joomla forms, both for setting up the form so that it can be displayed, and also so that the form data sent in the POST can be validated. In addition, it has methods for implementing checkin and checkout of database records. So it's suitable for handling Actions 3 and 4 in the diagrams in the [Post/Request/Get pattern](post-redirect-get.md) section.
 
-**AdminModel** extends FormModel, so it has all the capability for handling forms, but in addition has methods for handling database updates – including capability for adding, updating and deleting records – as well as support for handling operations in batch. So it's suitable for handling Actions 2 and 5 in the diagrams. As with the AdminController, this model is not just appropriate for the administrator functionality, but can be used on the front end as well.
+**AdminModel** extends FormModel, so it has all the capability for handling forms, but in addition has methods for handling database updates – including capability for adding, updating and deleting records – as well as support for handling operations in batch. So it's suitable for handling Actions 2 and 5 in the diagrams in the [Post/Request/Get pattern](post-redirect-get.md) section. As with the AdminController, this model is not just appropriate for the administrator functionality, but can be used on the front end as well.
 
 However, although the FormModel and AdminModel support different cases in the flow associated with editing a record, in practice it's common to use the same model for all the different steps of the flow. All the Joomla core components use the same model across these steps, and so they all extend AdminModel instead of FormModel.
 
