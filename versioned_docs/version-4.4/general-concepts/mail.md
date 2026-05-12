@@ -158,7 +158,7 @@ $result = MailTemplate::createTemplate(
                         'com_sendmail.example', 
                         'COM_SENDMAIL_SUBJECT', 
                         'COM_SENDMAIL_BODY',
-                        array('name', 'team')
+                        array('name', 'p1', 'p2')
                     );
 ```
 
@@ -167,7 +167,7 @@ You will need to define these email subject and body language constants in your 
 
 ```ini
 COM_SENDMAIL_SUBJECT="Welcome!"
-COM_SENDMAIL_BODY="Hello {NAME},\n\nWelcome to our service!\n\nBest regards from {TEAM}."
+COM_SENDMAIL_BODY="Hello {NAME},\n\nWelcome to our {P1} service - you're number {P2}!\n\nBest regards from the team."
 ```
 
 You can define the email body text in HTML as well as in plain text.
