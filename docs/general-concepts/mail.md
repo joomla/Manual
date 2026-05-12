@@ -11,7 +11,9 @@ using either the Joomla `Mail` class or the `MailTemplate` class.
 To get this to work you should ensure that your Joomla instance is configured correctly in Global Configuration / Server tab,
 and that Send Test Mail works ok.
 
-There is also a sample `com_sendmail` component which you can download and run to experiment with Joomla Mail.
+There is also a sample `com_sendmail` component available in the 
+[Joomla Manual Examples repository](https://github.com/joomla/manual-examples/tree/main/component-sendmail)
+which you can download and run to experiment with Joomla Mail.
 Instructions for use are at the bottom of this page.
 
 ## Sending an Email
@@ -127,10 +129,12 @@ Look also at the effects of changing the Mail Templates Configuration Options.
 
 ### Defining Mail Templates
 
-Joomla doesn't provide functionality for creating mail templates.
+The Joomla back-end doesn't provide functionality to allow administrators to create mail templates.
 
 Instead, you should create them in your code, for example in your installation script file,
 using the [Mail Template APIs](cms-api://classes/Joomla-CMS-Mail-MailTemplate.html).
+The [example com_sendmail](#example-com_sendmail-component) below
+demonstrates creating a mail template in its installation script.php file.
 
 The APIs provide static functions:
 - createTemplate
@@ -145,8 +149,26 @@ For each template you define:
 - the text for the email body - defined as a language constant
 - an array of tags - fields in the email subject and body which will be replaced by values
 
+For example:
+
+```php
+use Joomla\CMS\Mail\MailTemplate;
+...
+$result = MailTemplate::createTemplate(
+                        'com_sendmail.example', 
+                        'COM_SENDMAIL_SUBJECT', 
+                        'COM_SENDMAIL_BODY',
+                        array('name', 'p1', 'p2')
+                    );
+```
+
 You will need to define these email subject and body language constants in your .ini language file
-(site or administrator, depending upon where you send the email from).
+(site or administrator, depending upon where you send the email from), for example:
+
+```ini
+COM_SENDMAIL_SUBJECT="Welcome!"
+COM_SENDMAIL_BODY="Hello {NAME},\n\nWelcome to our {P1} service - you're number {P2}!\n\nBest regards from the team."
+```
 
 You can define the email body text in HTML as well as in plain text.
 
@@ -157,7 +179,7 @@ For "com_sendmail.example" you will need in your administrator .sys.ini language
 - COM_SENDMAIL_MAIL_EXAMPLE_DESC
 - COM_SENDMAIL
 
-which are all shown in the administrator Mail Templates form.
+which are all shown in the administrator Mail Templates form (System / Templates / Mail Templates).
 
 In your administrator .ini language files you will need (repeated):
 - COM_SENDMAIL_MAIL_EXAMPLE_TITLE
@@ -232,7 +254,7 @@ try {
 
 ## Example com_sendmail Component
 
-You can download and install [this example com_sendmail component](./_assets/com_sendmail.zip).
+You can download and install [this example com_sendmail component](https://github.com/joomla/manual-examples/tree/main/component-sendmail).
 It demonstrates sending emails both using the `Mail` class and the `MailTemplate` class.
 
 As part of its installation `com_sendmail` creates a MailTemplate with a key of 'com_sendmail.example',
