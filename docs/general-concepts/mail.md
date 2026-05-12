@@ -165,7 +165,7 @@ $result = MailTemplate::createTemplate(
 You will need to define these email subject and body language constants in your .ini language file
 (site or administrator, depending upon where you send the email from), for example:
 
-```php
+```ini
 COM_SENDMAIL_SUBJECT="Welcome!"
 COM_SENDMAIL_BODY="Hello {NAME},\n\nWelcome to our service!\n\nBest regards from {TEAM}."
 ```
