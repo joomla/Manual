@@ -11,6 +11,10 @@ New Deprecations
 
 This page lists all the new deprecations you should be aware of and what you should now be using instead.
 
-:::tip[Reader Note]
-  No deprecations have been introduced in Joomla 6.2 yet
-:::
+## Class Deprecations
+
+### `Joomla\CMS\Crypt` is deprecated
+
+The whole `Joomla\CMS\Crypt` package is deprecated in Joomla 6.2 and will be removed in 8.0. Please use the Joomla Framework `Joomla\Crypt` package instead. The Framework package is a complete drop-in replacement.
+
+PR: https://github.com/joomla/joomla-cms/pull/47443
