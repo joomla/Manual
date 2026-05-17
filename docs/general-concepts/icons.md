@@ -38,7 +38,7 @@ The icon name part begins with ```fa-``` and the name. Example:
 
 ### Brand icons
 
-The prefix part is ```fab``` which is short for ```fa-brand``` which can be used instead
+The prefix part is ```fab``` which is short for ```fa-brands``` which can be used instead
 
 Example: 
 ```php
