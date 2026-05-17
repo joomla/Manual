@@ -194,7 +194,7 @@ These can arise within Joomla if you have a form which includes
 fields with the `multiple` attribute, 
 or [`subform`](./forms-fields/standard-fields/subform.md) fields. 
 
-For example, the [Maps Package](../building-extensions/modules/module-examples/map-module.md#maps-package) 
+For example, the [Maps Package](https://github.com/joomla/manual-examples/tree/main/package-example-maps) 
 contains a [maps module](https://github.com/joomla/manual-examples/tree/main/package-example-maps/constituents/mod_example_maps)
 which displays a map. 
 The config defined in the manifest file allows the administrator 
