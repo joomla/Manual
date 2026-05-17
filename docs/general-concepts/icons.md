@@ -2,7 +2,7 @@
 title: Icons
 ---
 
-Icons
+Standard Joomla! Icons 
 =====
 
 ## Overview
