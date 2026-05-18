@@ -322,3 +322,9 @@ Factory::getApplication()->bootComponent('actionlogs')->getMVCFactory()
   Extensions interacting with `#__ucm_history` may require schema or API updates.  
   **(more detail needed: schema differences and migration examples)**
 
+### HTMLHelper::Bootstrap('framework') has been removed
+
+- PR: https://github.com/joomla/joomla-cms/pull/44991
+- Description: The `HTMLHelper::Bootstrap('framework')` as it was only kept for B/C purposes in the J4/5 versions. Developers should explicitly include **only** the components that are used in their layouts.
+
+
