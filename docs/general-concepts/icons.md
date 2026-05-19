@@ -11,12 +11,12 @@ which are implemented as [CSS pseudo-elements](https://docs.fontawesome.com/web/
 
 Joomla implemented the free standard icons, brand icons and supports a subset "icon-..." to be compatible with J!3x and following versions
 
-The source list of available icons can be found in joomla file ```media/templates/administrator/atum/css/vendor/fontawesome-free.css```. A visible representation of all icons with additional information see our [guide.joomla.org](https://guide.joomla.org/user-manual/templates/standard-icons?highlight=WyJpY29ucyJd)
+The source list of available icons can be found in joomla file `media/templates/administrator/atum/css/vendor/fontawesome-free.css`. A visible representation of all icons with additional information see our [guide.joomla.org](https://guide.joomla.org/user-manual/templates/standard-icons?highlight=WyJpY29ucyJd)
 
 ## Fontawesome icons
 Fontawesome icons can be used for HTML in following forms:
 
-```php
+```html
 <i style="font-size: 2rem;" class="fa fa-!name!"></i>
 <span class="fa fa-!name! "></span>
 ```
@@ -31,7 +31,7 @@ Add attribute ```aria-hidden="true"``` for hiding the icon from screen readers a
 The Prefix part is ```fa``` which is short for ```fas``` which is short for ```fa-solid``` which can be used instead.
 
 The icon name part begins with ```fa-``` and the name. Example: 
-```php
+```html
 <i class="fa fa-envelope"></i>
 <i class="fa-solid fa-save" aria-hidden="true"></i> <?php echo Text::_('JSAVE') ?> 
 ```
@@ -41,7 +41,7 @@ The icon name part begins with ```fa-``` and the name. Example:
 The prefix part is ```fab``` which is short for ```fa-brands``` which can be used instead
 
 Example: 
-```php
+```html
 <i class="fab fa-joomla"></i>
 <i class="fa-brands fa-facebook" aria-hidden="true"></i> <?php echo 'Facebook' ?> 
 ```
@@ -58,7 +58,7 @@ Form: ```<i class="icon-name"></i>```. The name has to be exchanged for icon nam
 Add attribute aria-hidden="true" for hiding the icon from screen readers and improves accessibility. 
 
 Example: 
-```php
+```html
 <i class="icon-joomla" style="font-size: 48px;" ></i>
 <i class="icon-joomla"  aria-hidden="true" style="font-size: 48px;" ></i>
 ```
@@ -68,13 +68,13 @@ Example:
 For example in HtmlView.php of a component the ToolBarHelper:: functions accept a icon name from this icon set.
 
 Example: 
-```php
+```html
 ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'envelope');
 ```
 
 :::tip
 Instead of using an 'icon' name of the icon class (see above) a fontawesome icon may be used instead in following form. It is helpful when the required symbol is not available — or looks better.
-```php
+```html
 ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 ```
 With 'none' given internally a 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
