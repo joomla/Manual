@@ -11,7 +11,7 @@ which are implemented as [CSS pseudo-elements](https://docs.fontawesome.com/web/
 
 Joomla implemented the free standard icons, brand icons and supports a subset "icon-..." to be compatible with J!3x and following versions
 
-The source list of available icons can be found in joomla file `media/templates/administrator/atum/css/vendor/fontawesome-free.css`. A visible representation of all icons with additional information see our [guide.joomla.org](https://guide.joomla.org/user-manual/templates/standard-icons?highlight=WyJpY29ucyJd)
+The source list of available icons can be found in joomla file `media/templates/administrator/atum/css/vendor/fontawesome-free.css`. A visible representation of all icons with additional information see our [guide.joomla.org](https://guide.joomla.org/user-manual/templates/standard-icons)
 
 ## Fontawesome icons
 Fontawesome icons can be used for HTML in following forms:
