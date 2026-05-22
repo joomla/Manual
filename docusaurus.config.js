@@ -203,10 +203,10 @@ const config = {
             label: 'Documentation',
           },
           {
-            to: '/migrations',
-            label: 'Migrations',
+            to: '/updates',
+            label: 'Updates & Upgrades',
             position: 'left',
-            activeBaseRegex: `/migrations/`,
+            activeBaseRegex: `/updates/`,
           },
           {
             type: 'search',
@@ -302,6 +302,18 @@ const config = {
     }),
   plugins: [
     [
+      '@docusaurus/plugin-client-redirects',
+      {
+        createRedirects(existingPath) {
+          if (existingPath.startsWith('/updates')) {
+            return existingPath.replace('/updates', '/migrations');
+          }
+
+          return undefined;
+        },
+      },
+    ],
+    [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
         indexBlog: false,
@@ -312,9 +324,9 @@ const config = {
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
       ({
-        id: 'migrations',
-        path: 'migrations',
-        routeBasePath: 'migrations',
+        id: 'updates',
+        path: 'updates',
+        routeBasePath: 'updates',
         editUrl: ({locale, versionDocsDirPath, docPath}) => {
           /* if we need to support more languages this is an example
           if (locale !== 'en') {
@@ -324,7 +336,7 @@ const config = {
           return `https://github.com/joomla/manual/edit/main/${versionDocsDirPath}/${docPath}`;
         },
         editCurrentVersion: true,
-        sidebarPath: require.resolve('./sidebarsMigrations.js'),
+        sidebarPath: require.resolve('./sidebarsUpdates.js'),
         showLastUpdateAuthor: true,
         showLastUpdateTime: true,
       }),

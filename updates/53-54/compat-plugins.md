@@ -25,7 +25,7 @@ The plugin is implemented as *Behaviour* plugin type to ensure it is loaded befo
 
 > Just a heads-up – avoid creating your own plugin as a Behaviour plugin, as this group may be removed in a future release.
 
-For more details, see [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/migrations/44-50/compat-plugin).
+For more details, see [Compatibility Plugin Joomla! 5.0](https://manual.joomla.org/updates/44-50/compat-plugin).
 
 > Although it is recommended to disable the Joomla 5 'Behaviour - Backward Compatibility' plugin,
 > __do not__ disable other Behaviour plugins such as 'Behaviour - Taggable' or 'Behaviour - Versionable',
