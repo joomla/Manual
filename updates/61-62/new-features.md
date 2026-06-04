@@ -16,7 +16,7 @@ Any changes in best practice.
 
 The Joomla asset build pipeline has been completely overhauled. The old monolithic build scripts (`compilecss.mjs`, `compilejs.mjs`, `compress.mjs`) have been replaced with a modular, per-extension builder architecture under `build/build-modules-js/`.
 
-Source files previously located in `build/media_source/` have been moved to `/media_source/` at the repository root for consistent relative includes.
+Source files previously located in `build/media_source/` have been moved to `media_source/` at the repository root for consistent relative includes.
 Vendor library build configuration is now centralized in `build/build-modules-js/settings.json`.
 
 - **PR**: [#46879](https://github.com/joomla/joomla-cms/pull/46879)
