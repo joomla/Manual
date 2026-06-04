@@ -19,7 +19,7 @@ The Joomla asset build pipeline has been completely overhauled. The old monolith
 Source files previously located in `build/media_source/` have been moved to `/media_source/` at the repository root for consistent relative includes.
 Vendor library build configuration is now centralized in `build/build-modules-js/settings.json`.
 
-- **PR**: [#46879](https://github.com/joomla/joomla-cms/pull/46879) by **Fedik**
+- **PR**: [#46879](https://github.com/joomla/joomla-cms/pull/46879)
 - **PR**: [#47815](https://github.com/joomla/joomla-cms/pull/47815)
 - **What changed**: Developers can compile or watch a single extension without triggering a full rebuild.
 With the `--all` flag it is possible to watch all builders at once.
