@@ -25,7 +25,7 @@ There should be an explanation of how to mitigate the removals / changes.
 ## `CMSPlugin` db and app properties removed
 - PR: https://github.com/joomla/joomla-cms/pull/47881
 - File: libraries/src/Plugin/CMSPlugin.php
-- Description: The autodetection and fill of the `$app` and `$db` properties in the `CMSPlugin` got removed. Inject the database and application in the provider.php. If it is not possible to use the aware trait or inject the application, then use `$this->app = Factory::getApplication();` and `$this->db = Factory::getDbo();` in the constructor of your plugin. For example you can use:
+- Description: The autodetection and fill of the `$app` and `$db` properties in the `CMSPlugin` got removed. Inject the database and application in the provider.php. If it is not possible to use the aware trait or inject the application, then use `$this->app = Factory::getApplication();` and `$this->db = Factory::getContainer()->get(DatabaseInterface::class);` in the constructor of your plugin. For example you can use:
 ```php
 // Old:
 $this->app;
