@@ -25,7 +25,7 @@ There should be an explanation of how to mitigate the removals / changes.
 Removed Files
 =============
 
-Removed unused and deprecated files
+Removed unused and deprecated files by [PR #47884](https://github.com/joomla/joomla-cms/pull/47884)
 
 - layouts/joomla/content/icons/create.php
 - layouts/joomla/html/batch/user.php
