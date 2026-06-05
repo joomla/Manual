@@ -22,8 +22,7 @@ There should be an explanation of how to mitigate the removals / changes.
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
 
-Removed Files
-=============
+## Removed Files
 
 Removed unused and deprecated files by [PR #47884](https://github.com/joomla/joomla-cms/pull/47884)
 
