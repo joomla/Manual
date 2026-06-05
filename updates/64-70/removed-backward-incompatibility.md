@@ -21,3 +21,11 @@ There should be an explanation of how to mitigate the removals / changes.
   - `UserModel::isValidOtep()`
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
+
+Removed Files
+=============
+
+Removed unused and deprecated files
+
+- layouts/joomla/content/icons/create.php
+- layouts/joomla/html/batch/user.php
