@@ -210,3 +210,10 @@ $app->bootPlugin('debug', 'system)->logger();
   - /plugins/editors-xtd/pagebreak/src/Extension/PageBreak.php
   - /plugins/editors-xtd/readmore/src/Extension/ReadMore.php
 - Description: Removes the `onDisplay()` method and added a private 'getButton()' method
+
+## Removed deprecated layout files
+- PR: https://github.com/joomla/joomla-cms/pull/47884
+- Files:
+- /layouts/joomla/content/icons/create.php
+- /layouts/joomla/html/batch/user.php
+- Description: Removed unused layout files, there is no replacement for them.
