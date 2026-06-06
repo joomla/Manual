@@ -146,6 +146,15 @@ $this->getDatabase();
   - /media_source/templates/site/cassiopeia/scss/global/colors_standard.scss
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
+## Removed unused methods from localise 
+- PR: https://github.com/joomla/joomla-cms/pull/47897
+- File: /administrator/language/en-GB/localise.php
+- Description: Unused filters removed: 
+`--getIgnoredSearchWords`
+`--getLowerLimitSearchWord`
+`--getUpperLimitSearchWord`
+`--getSearchDisplayedCharactersNumber`
+
 ## Removed legacy stubs for component helpers
 - PR's:
   - https://github.com/joomla/joomla-cms/pull/45856
