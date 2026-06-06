@@ -21,6 +21,26 @@ There should be an explanation of how to mitigate the removals / changes.
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
 
+## Removed deprecated getList() method from module helpers
+- PR: https://github.com/joomla/joomla-cms/pull/47891
+- Files: 
+    - /modules/mod_articles_archive/src/Helper/ArticlesArchiveHelper.php
+    - /modules/mod_articles_categories/src/Helper/ArticlesCategoriesHelper.php
+    - /modules/mod_articles_category/src/Helper/ArticlesCategoryHelper.php
+    - /modules/mod_articles_latest/src/Helper/ArticlesLatestHelper.php
+    - /modules/mod_articles_news/src/Helper/ArticlesNewsHelper.php
+    - /modules/mod_articles_popular/src/Helper/ArticlesPopularHelper.php
+- Description: Since 4.3 we use the non-static method for getting there respective Model in Helper Classes. These Methods are now removed and extensions use for example:
+```php
+// Old:
+ArticlesNewsHelper::getArticles($params);
+
+// New:
+Factory::getApplication()->bootModule('mod_articles_news', 'site')
+  ->getHelper('ArticlesNewsHelper')
+  ->getArticles($params, Factory::getApplication());
+```
+
 ## `ActionLogPlugin` db and app properties removed
 - PR: https://github.com/joomla/joomla-cms/pull/47880
 - File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
