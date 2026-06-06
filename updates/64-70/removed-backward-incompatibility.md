@@ -108,6 +108,19 @@ $this->app;
 
 // New:
 $this->getApplication();
+
+```
+## `PrivacyPlugin` db property removed
+- PR: https://github.com/joomla/joomla-cms/pull/47880
+- File: /administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
+- Description: The `$db` property in the `abstract class PrivacyPlugin extends CMSPlugin
+` got removed. Inject the database in the provider.php. For example you can use:
+```php
+// Old:
+$this->db;
+
+// New:
+$this->getDatabase();
 ```
 
 ## `LogcreatorField` class removed
