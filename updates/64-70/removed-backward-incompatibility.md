@@ -10,6 +10,9 @@ There should be an explanation of how to mitigate the removals / changes.
 
 ## Removed legacy OTP code from `UserModel` and `ProfileModel`
 - PR: https://github.com/joomla/joomla-cms/pull/47457
+- Files:
+  - /administrator/components/com_users/src/Model/UserModel.php
+  - /components/com_users/src/Model/ProfileModel.php
 - Description: With the introduction of multi-factor authentication in Joomla 4.2, several methods for the one-time-password feature were made obsolete and deprecated. They were not working since 4.2 anyway, but with 7.0 they have been removed entirely. The following methods in the administrator part of `com_users` were removed:
   - `UserModel::getOtpConfig()`
   - `UserModel::setOtpConfig()`
@@ -98,7 +101,10 @@ $this->getDatabase();
 ```
 
 ## The CSS custom property `--cassiopeia-link-color` removal
-- PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
+- PR: https://github.com/joomla/joomla-cms/pull/47883
+- Files:
+  - /media_source/templates/site/cassiopeia/scss/global/colors_alternative.scss
+  - /media_source/templates/site/cassiopeia/scss/global/colors_standard.scss
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
 ## Removed legacy stubs for component helpers
