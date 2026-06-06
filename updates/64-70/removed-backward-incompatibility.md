@@ -70,6 +70,20 @@ Factory::getApplication()->bootModule('mod_articles_news', 'site')
   ->getArticles($params, Factory::getApplication());
 ```
 
+## `CMSPlugin` db and app properties detection removed
+- PR: https://github.com/joomla/joomla-cms/pull/47881
+- File: libraries/src/Plugin/CMSPlugin.php
+- Description: The autodetection and fill of the `$app` and `$db` properties in the `CMSPlugin` got removed. Inject the database and application in the provider.php. If it is not possible to use the aware trait or inject the application, then use `$this->app = Factory::getApplication();` and `$this->db = Factory::getContainer()->get(DatabaseInterface::class);` in the constructor of your plugin. For example you can use:
+```php
+// Old:
+$this->app;
+$this->db;
+
+// New:
+$this->getApplication();
+$this->getDatabase();
+```
+
 ## `ActionLogPlugin` db and app properties removed
 - PR: https://github.com/joomla/joomla-cms/pull/47880
 - File: /administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
