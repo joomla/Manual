@@ -197,3 +197,16 @@ $app->bootPlugin('debug', 'system)->logger();
 // New:
 \Joomla\CMS\Log\Log::add();
 ```
+
+## Make onDisplay methods private in editor button plugins
+- PR: https://github.com/joomla/joomla-cms/pull/47902
+- Files: 
+  - /plugins/editors-xtd/article/src/Extension/Article.php
+  - /plugins/editors-xtd/contact/src/Extension/Contact.php
+  - /plugins/editors-xtd/fields/src/Extension/Fields.php
+  - /plugins/editors-xtd/image/src/Extension/Image.php
+  - /plugins/editors-xtd/menu/src/Extension/Menu.php
+  - /plugins/editors-xtd/module/src/Extension/Module.php
+  - /plugins/editors-xtd/pagebreak/src/Extension/PageBreak.php
+  - /plugins/editors-xtd/readmore/src/Extension/ReadMore.php
+- Description: Removes the `onDisplay()` method and added a private 'getButton()' method
