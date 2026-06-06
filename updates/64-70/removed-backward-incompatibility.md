@@ -199,24 +199,8 @@ $app->bootPlugin('debug', 'system)->logger();
 ```
 
 ## Removed deprecated layout files
-  - PR: https://github.com/joomla/joomla-cms/pull/47884
-  - Files:
-    - /layouts/joomla/content/icons/create.php
-    - /layouts/joomla/html/batch/user.php
-  - Description: The deprecated layout files `joomla.content.icons.create` and `joomla.html.batch.user` have been
-  removed in Joomla 7.0. They were deprecated before Joomla 7.0 and are not used by Joomla core anymore.
-
-    There is no direct replacement for these layouts. Extensions, template overrides, or custom code that render either
-    layout with `LayoutHelper::render()` or `JLayoutHelper::render()` must stop using them and provide their own markup
-    where needed.
-
-    For article create links, use the content icon HTML service instead of rendering `joomla.content.icons.create`
-    directly:
-
-    ```php
-    use Joomla\CMS\HTML\HTMLHelper;
-
-    echo HTMLHelper::_('contenticon.create', $category, $params, $attribs);
-
-  For batch user selection, define the user field or select list in the component's own batch layout or form instead of
-  relying on joomla.html.batch.user.
+- PR: https://github.com/joomla/joomla-cms/pull/47884
+- Files:
+- /layouts/joomla/content/icons/create.php
+- /layouts/joomla/html/batch/user.php
+- Description: Removed unused layout files, there is no replacement for them.
