@@ -149,7 +149,6 @@ BannersHelper::function();
 ```
 
 ## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
-
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
 - Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0. 
@@ -164,4 +163,12 @@ BannersHelper::function();
 
 ## Removed local log entry functionality in debug plugin
 - PR: https://github.com/joomla/joomla-cms/pull/47900
-- Description: Remove the `logger()` in `\Joomla\Plugin\System\Debug\Extension\Debug::class` use `\Joomla\CMS\Log\Log::add()` instead 
+- File: /plugins/system/debug/src/Extension/Debug.php
+- Description: Removes the `logger()` function in the `\Joomla\Plugin\System\Debug\Extension\Debug::class` in the debug system plugin.
+```php
+// Old:
+$app->bootPlugin('debug', 'system)->logger();
+
+// New:
+\Joomla\CMS\Log\Log::add();
+```
