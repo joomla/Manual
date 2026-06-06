@@ -58,7 +58,17 @@ $this->getDatabase();
 ## Removed legacy stubs for admin component helpers
 
 - PR: https://github.com/joomla/joomla-cms/pull/45856
-- Description: The non-namespaced helper classes in the `helpers/` folder of several administrator components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. The following classes were removed:
+- Description: The non-namespaced helper classes in the `helpers/` folder of several administrator components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+
+```
+// Find
+BannersHelper
+
+// Replace
+\Joomla\Component\Banners\Administrator\Helper\BannersHelper
+```
+
+- The following classes were removed:
   - `BannersHelper` — use `\Joomla\Component\Banners\Administrator\Helper\BannersHelper` instead
   - `CategoriesHelper` — use `\Joomla\Component\Categories\Administrator\Helper\CategoriesHelper` instead
   - `ContactHelper` — use `\Joomla\Component\Contact\Administrator\Helper\ContactHelper` instead
@@ -79,22 +89,4 @@ $this->getDatabase();
 
   Note that two classes were also renamed when they moved, so update the class name as well as the namespace: `FinderHelperLanguage` became `LanguageHelper`, and `UsersHelperDebug` became `DebugHelper`.
 
-## Removed deprecated getList() method from module helpers
 
-- PR: https://github.com/joomla/joomla-cms/pull/47891
-- Description: Since 4.3 we use the non-static method for getting there respective Model in Helper Classes. These Methods are now removed and extensions use for example:
-
-```php
-Factory::getApplication()->bootModule('mod_articles_news', 'site')
-  ->getHelper('ArticlesNewsHelper')
-  ->getArticles($params, Factory::getApplication());
-```
-
-The getList() method is removed in following files:
-
-- `/modules/mod_articles_archive/src/Helper/ArticlesArchiveHelper.php`
-- `/modules/mod_articles_categories/src/Helper/ArticlesCategoriesHelper.php`
-- `/modules/mod_articles_category/src/Helper/ArticlesCategoryHelper.php`
-- `/modules/mod_articles_latest/src/Helper/ArticlesLatestHelper.php`
-- `/modules/mod_articles_news/src/Helper/ArticlesNewsHelper.php`
-- `/modules/mod_articles_popular/src/Helper/ArticlesPopularHelper.php`
