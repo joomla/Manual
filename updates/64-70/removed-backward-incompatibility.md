@@ -231,11 +231,24 @@ BannersHelper::function();
 - Description: Removes the `logger()` function in the `\Joomla\Plugin\System\Debug\Extension\Debug::class` in the debug system plugin.
 ```php
 // Old:
-$app->bootPlugin('debug', 'system)->logger();
+$app->bootPlugin('debug', 'system')->logger();
 
 // New:
 \Joomla\CMS\Log\Log::add();
 ```
+
+## Make onDisplay methods private in editor button plugins
+- PR: https://github.com/joomla/joomla-cms/pull/47902
+- Files: 
+  - /plugins/editors-xtd/article/src/Extension/Article.php
+  - /plugins/editors-xtd/contact/src/Extension/Contact.php
+  - /plugins/editors-xtd/fields/src/Extension/Fields.php
+  - /plugins/editors-xtd/image/src/Extension/Image.php
+  - /plugins/editors-xtd/menu/src/Extension/Menu.php
+  - /plugins/editors-xtd/module/src/Extension/Module.php
+  - /plugins/editors-xtd/pagebreak/src/Extension/PageBreak.php
+  - /plugins/editors-xtd/readmore/src/Extension/ReadMore.php
+- Description: Removes the `onDisplay()` method and added a private 'getButton()' method
 
 ## Removed deprecated layout files
 - PR: https://github.com/joomla/joomla-cms/pull/47884
@@ -254,3 +267,31 @@ $app->bootPlugin('debug', 'system)->logger();
 - PR: https://github.com/joomla/joomla-cms/pull/47908
 - File: /media_source/legacy/js/toolbar.es5.js
 - Description: The function `Joomla.popupWindow` is not used and got removed. To create popup windows use browser native call instead.
+
+## Removed the window.Calendar instance in calendar.js
+- PR: https://github.com/joomla/joomla-cms/pull/47907
+- File: /media_source/system/js/fields/calendar.es5.js
+- Description: In Javascript should the `JoomlaCalendar` instance be used and not anymore `window.calendar`.
+```php
+// Old:
+window.Calendar.setup();
+
+// New:
+JoomlaCalendar.init();
+```
+
+## Removed Methods from models
+- PR: https://github.com/joomla/joomla-cms/pull/47501
+- Files:
+  - /administrator/components/com_joomlaupdate/src/Model/UpdateModel.php
+  - /administrator/components/com_modules/src/Service/HTML/Modules.php
+  - /components/com_content/src/Model/ArchiveModel.php
+- Description: The method to get the archived article list `getData()` is removed, use `getItems()` instead. The method to get the positions list `positionList()` is removed without replacement. The method `createRestorationFil()` is removed, use `createUpdateFile()` instead.
+// Old:
+$updateModel->createRestorationFile();
+$archiveModel->getData();
+
+// New:
+$updateModel->createUpdateFile();
+$archiveModel->getItems();
+```
