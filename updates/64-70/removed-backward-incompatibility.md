@@ -147,7 +147,8 @@ $this->getDatabase();
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
 ## Removed unused methods from localise 
-- PR: [https://github.com/joomla/joomla-cms/pull/47897]
+- PR: https://github.com/joomla/joomla-cms/pull/47897
+- File: /administrator/language/en-GB/localise.php
 - Description: Unused filters removed: 
 `--getIgnoredSearchWords`
 `--getLowerLimitSearchWord`
