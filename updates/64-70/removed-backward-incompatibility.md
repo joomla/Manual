@@ -236,3 +236,15 @@ $app->bootPlugin('debug', 'system)->logger();
 - File: /build/stubGenerator.php
 - Folder: /build/psr12
 - Description: The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces. The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style. If you still need the stub generator or the psr12 converter, use it from an older joomla version.
+
+
+## Removed Methods form Models
+- PR: https://github.com/joomla/joomla-cms/pull/47501
+- File: /components/com_content/src/Model/ArchiveModel.php
+- Description: Method to get the archived article list `getData()` is removed. Use `getItems()` instead.
+
+- File: /administrator/components/com_modules/src/Service/HTML/Modules.php
+- Description: Method to get the positions list `positionList()` is removed without replacement
+
+- File: /administrator/components/com_joomlaupdate/src/Model/UpdateModel.php
+- Description: Method `createRestorationFil()` is removed. Use `createUpdateFile()` instead.
