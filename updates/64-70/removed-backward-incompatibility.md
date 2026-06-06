@@ -26,7 +26,7 @@ There should be an explanation of how to mitigate the removals / changes.
 
 ## Removed deprecated static functions from module helpers
 - PR: https://github.com/joomla/joomla-cms/pull/47891
-- Files: 
+- Files:
     - /administrator/modules/mod_feed/src/Helper/FeedHelper.php
     - /administrator/modules/mod_latest/src/Helper/LatestHelper.php
     - /administrator/modules/mod_latestactions/src/Helper/LatestActionsHelper.php
@@ -147,7 +147,7 @@ $this->getDatabase();
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
 ## Removed legacy stubs for component helpers
-- PR's: 
+- PR's:
   - https://github.com/joomla/joomla-cms/pull/45856
   - https://github.com/joomla/joomla-cms/pull/45857
 - Files:
@@ -215,8 +215,8 @@ BannersHelper::function();
 ## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
-- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0. 
-  Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably, 
+- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0.
+  Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
   expect for
   - `Crypt::timingSafeCompare()` use `hash_equals()` instead
   - `Crypt::safeStrlen()` use `mb_strlen()` instead
@@ -249,3 +249,8 @@ $app->bootPlugin('debug', 'system)->logger();
 - File: /build/stubGenerator.php
 - Folder: /build/psr12
 - Description: The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces. The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style. If you still need the stub generator or the psr12 converter, use it from an older joomla version.
+
+## Removed `Joomla.popupWindow` function
+- PR: https://github.com/joomla/joomla-cms/pull/47908
+- File: /media_source/legacy/js/toolbar.es5.js
+- Description: The function `Joomla.popupWindow` is not used and got removed. To create popup windows use browser native call instead.
