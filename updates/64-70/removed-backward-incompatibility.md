@@ -236,3 +236,127 @@ $app->bootPlugin('debug', 'system)->logger();
 - File: /build/stubGenerator.php
 - Folder: /build/psr12
 - Description: The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces. The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style. If you still need the stub generator or the psr12 converter, use it from an older joomla version.
+
+## Removed `Factory::getConfig()` and `getCfg()`
+- PR: https://github.com/joomla/joomla-cms/pull/45870
+- Files:
+  - libraries/src/Factory.php
+  - libraries/src/Application/CMSApplication.php
+- Description: The long-deprecated `Factory::getConfig()` method and the matching `CMSApplication::getCfg()` method have been removed, along with the internal `Factory::createConfig()` helper. The global configuration is part of the application, so read configuration values from the application instead. For example you can use:
+```php
+// Old:
+$config   = \Joomla\CMS\Factory::getConfig();
+$sitename = $config->get('sitename');
+
+// New:
+$sitename = \Joomla\CMS\Factory::getApplication()->get('sitename');
+```
+
+## Removed deprecated code in the application classes
+- PR: https://github.com/joomla/joomla-cms/pull/45866
+- Files:
+  - libraries/src/Application/CMSApplication.php
+  - libraries/src/Application/CMSApplicationInterface.php
+  - libraries/src/Application/AdministratorApplication.php
+  - libraries/src/Application/ApiApplication.php
+  - libraries/src/Application/ConsoleApplication.php
+  - libraries/src/Application/WebApplication.php
+- Description: Several pieces of deprecated code have been removed from the core application classes. The magic `__get()` accessor on the application has been removed, so protected/dynamic properties can no longer be read directly as `$app->somProperty`; use the dedicated getter methods instead. The deprecated `getCfg()` method has been removed (read configuration with `get()`), and the obsolete `loadSession()` method and static `purgeMessages()` method have been removed. For example you can use:
+```php
+// Old:
+$value = $app->getCfg('sitename');
+
+// New:
+$value = $app->get('sitename');
+```
+
+## `AbstractView::$document` made private; use `getDocument()`/`setDocument()`
+- PR: https://github.com/joomla/joomla-cms/pull/45862
+- Files:
+  - libraries/src/MVC/View/AbstractView.php
+  - libraries/src/MVC/Controller/BaseController.php
+  - and the controllers/views of com_banners, com_categories, com_installer, com_joomlaupdate, com_privacy, com_users and com_config
+- Description: The `AbstractView::$document` property is now `private` and can no longer be accessed directly. This is an intentional backward-compatibility break so that the document is always reached through `getDocument()` and `setDocument()`, which implement `DocumentAwareInterface`. Update any view or template override that reads `$this->document` directly. For example you can use:
+```php
+// Old:
+$this->document->setTitle('My title');
+$doc = $this->document;
+
+// New:
+$this->getDocument()->setTitle('My title');
+$doc = $this->getDocument();
+```
+
+## Removed deprecated methods from component models
+- PR: https://github.com/joomla/joomla-cms/pull/47501
+- Files:
+  - administrator/components/com_joomlaupdate/src/Model/UpdateModel.php
+  - administrator/components/com_modules/src/Service/HTML/Modules.php
+  - components/com_content/src/Model/ArchiveModel.php
+- Description: Several deprecated, unused methods have been removed from component models and HTML services:
+  - `Joomla\Component\Joomlaupdate\Administrator\Model\UpdateModel::createRestorationFile()`
+  - `Joomla\Component\Modules\Administrator\Service\HTML\Modules::positionList()`
+  - `Joomla\Component\Content\Site\Model\ArchiveModel::getData()`
+
+  These methods were already deprecated and are not used in core. If your extension calls them, remove the call or replace it with the current API for the respective component.
+
+## Removed further deprecated component code
+- PR: https://github.com/joomla/joomla-cms/pull/45858
+- Files:
+  - administrator/components/com_templates/src/Service/HTML/Templates.php
+  - administrator/components/com_users/src/Helper/UsersHelper.php
+  - administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
+  - components/com_tags/src/Helper/RouteHelper.php
+- Description: A further batch of deprecated component code has been removed. (The `UpdateModel::createRestorationFile()` and `Modules::positionList()` removals that also appear in this change are documented under PR #47501 above.) The following methods have been removed:
+  - `Joomla\Component\Templates\Administrator\Service\HTML\Templates::thumb()` and `::thumbModal()`
+  - `Joomla\Component\Users\Administrator\Helper\UsersHelper::getTwoFactorMethods()`, `::getContexts()` and `::validateSection()`
+  - `Joomla\Component\Tags\Site\Helper\RouteHelper::getTagRoute()` and `::getTagsRoute()`
+
+  These were deprecated helpers. Use the current component services instead: build tag routes through the component router rather than `RouteHelper::getTagRoute()`, and obtain multi-factor methods through the MFA plugins rather than `UsersHelper::getTwoFactorMethods()`.
+
+## `PrivacyPlugin` `$app` and `$db` properties removed
+- PR: https://github.com/joomla/joomla-cms/pull/47500
+- File: administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
+- Description: The deprecated `$app` and `$db` properties have been removed from `PrivacyPlugin`, completing the same change already applied to `ActionLogPlugin` and `FieldsPlugin` (documented above). Inject the database and application in the plugin's `provider.php`. If injection is not possible, set them in the constructor with `$this->app = Factory::getApplication();` and `$this->db = Factory::getContainer()->get(DatabaseInterface::class);`. For example you can use:
+```php
+// Old:
+$this->app;
+$this->db;
+
+// New:
+$this->getApplication();
+$this->getDatabase();
+```
+
+## Removed `ReshapeArgumentsAware` trait and legacy event setters
+- PR: https://github.com/joomla/joomla-cms/pull/47459
+- Files: the event classes throughout libraries/src/Event/* (Cache, Checkin, Contact, Content, CustomFields, Extension, Finder, Installer, Mail, Menu, Model and more)
+- Description: The deprecated `ReshapeArgumentsAware` trait (and its `reshapeArguments()` method) has been removed from the core event classes, together with the legacy per-argument setter methods (the `setX()` and `onSetX()` methods such as `setQuery()`, `setResult()`, `setState()`, `setSubject()` and so on). Several setters that were previously `public` are now `protected`. Construct events by passing the named arguments array to the constructor and read values with the documented getters; do not call the removed setters or rely on the old positional-argument reshaping. If you dispatch core events from your extension, build the event with its named arguments rather than setting them after construction.
+
+## Installer package now throws exceptions instead of setting errors
+- PR: https://github.com/joomla/joomla-cms/pull/47504
+- Files: libraries/src/Installer/* (Installer, InstallerAdapter, InstallerScript, InstallerScriptTrait and all of the Adapter classes), administrator/components/com_installer/src/Model/InstallModel.php
+- Description: The installer package has been converted away from the legacy error-handling trait (the `setError()`/`getError()` pattern) to throw proper exceptions on failure. If you extend an installer adapter, or call installer methods directly, handle the thrown exception rather than checking a boolean return value or reading `getError()`. For example you can use:
+```php
+// Old:
+if (!$installer->install($path)) {
+    Factory::getApplication()->enqueueMessage($installer->getError(), 'error');
+}
+
+// New:
+try {
+    $installer->install($path);
+} catch (\RuntimeException $e) {
+    Factory::getApplication()->enqueueMessage($e->getMessage(), 'error');
+}
+```
+
+## Removed legacy user-authentication password hashes
+- PR: https://github.com/joomla/joomla-cms/pull/44237
+- Files:
+  - libraries/phpass/PasswordHash.php
+  - libraries/src/Authentication/Password/PHPassHandler.php
+  - libraries/src/Service/Provider/Authentication.php
+  - libraries/src/User/UserHelper.php
+  - libraries/import.legacy.php
+- Description: Support for the obsolete PHPass (`$P$`) password-hash format has been removed: the `phpass` `PasswordHash` class and the `PHPassHandler` are gone, along with the legacy hashing constants on `UserHelper` (`HASH_PHPASS`, `HASH_BCRYPT_BC`, `HASH_ARGON2I_BC` and `HASH_ARGON2ID_BC`). Joomla switched to bcrypt in 3.2.1 and rehashes passwords to the current algorithm on login, so these have been unused for over a decade. The only accounts affected are ones that have not logged in since before Joomla 3.2.1; such a user must use the "forgotten password" reset to log in again. Remove any reference to the removed constants or to `PHPassHandler` from your code.
