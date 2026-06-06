@@ -261,3 +261,19 @@ window.Calendar.setup();
 // New:
 JoomlaCalendar.init();
 ```
+
+## Removed Methods from models
+- PR: https://github.com/joomla/joomla-cms/pull/47501
+- Files:
+  - /administrator/components/com_joomlaupdate/src/Model/UpdateModel.php
+  - /administrator/components/com_modules/src/Service/HTML/Modules.php
+  - /components/com_content/src/Model/ArchiveModel.php
+- Description: The method to get the archived article list `getData()` is removed, use `getItems()` instead. The method to get the positions list `positionList()` is removed without replacement. The method `createRestorationFil()` is removed, use `createUpdateFile()` instead.
+// Old:
+$updateModel->createRestorationFile();
+$archiveModel->getData();
+
+// New:
+$updateModel->createUpdateFile();
+$archiveModel->getItems();
+```
