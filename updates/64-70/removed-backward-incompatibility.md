@@ -231,7 +231,7 @@ BannersHelper::function();
 - Description: Removes the `logger()` function in the `\Joomla\Plugin\System\Debug\Extension\Debug::class` in the debug system plugin.
 ```php
 // Old:
-$app->bootPlugin('debug', 'system)->logger();
+$app->bootPlugin('debug', 'system')->logger();
 
 // New:
 \Joomla\CMS\Log\Log::add();
@@ -249,3 +249,15 @@ $app->bootPlugin('debug', 'system)->logger();
 - File: /build/stubGenerator.php
 - Folder: /build/psr12
 - Description: The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces. The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style. If you still need the stub generator or the psr12 converter, use it from an older joomla version.
+
+## Removed the window.Calendar instance in calendar.js
+- PR: https://github.com/joomla/joomla-cms/pull/47907
+- File: /media_source/system/js/fields/calendar.es5.js
+- Description: In Javascript should the `JoomlaCalendar` instance be used and not anymore `window.calendar`.
+```php
+// Old:
+window.Calendar.setup();
+
+// New:
+JoomlaCalendar.init();
+```
