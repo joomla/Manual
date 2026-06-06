@@ -21,16 +21,42 @@ There should be an explanation of how to mitigate the removals / changes.
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
 
-## Removed deprecated getList() method from module helpers
+## Removed deprecated static functions from module helpers
 - PR: https://github.com/joomla/joomla-cms/pull/47891
 - Files: 
+    - /administrator/modules/mod_feed/src/Helper/FeedHelper.php
+    - /administrator/modules/mod_latest/src/Helper/LatestHelper.php
+    - /administrator/modules/mod_latestactions/src/Helper/LatestActionsHelper.php
+    - /administrator/modules/mod_logged/src/Helper/LoggedHelper.php
+    - /administrator/modules/mod_login/src/Helper/LoginHelper.php
+    - /administrator/modules/mod_privacy_dashboard/src/Helper/PrivacyDashboardHelper.php
+    - /administrator/modules/mod_privacy_status/src/Helper/PrivacyStatusHelper.php
+    - /administrator/modules/mod_sampledata/src/Helper/SampledataHelper.php
+    - /administrator/modules/mod_stats_admin/src/Helper/StatsAdminHelper.php
+    - /administrator/modules/mod_version/src/Helper/VersionHelper.php
     - /modules/mod_articles_archive/src/Helper/ArticlesArchiveHelper.php
     - /modules/mod_articles_categories/src/Helper/ArticlesCategoriesHelper.php
     - /modules/mod_articles_category/src/Helper/ArticlesCategoryHelper.php
     - /modules/mod_articles_latest/src/Helper/ArticlesLatestHelper.php
     - /modules/mod_articles_news/src/Helper/ArticlesNewsHelper.php
     - /modules/mod_articles_popular/src/Helper/ArticlesPopularHelper.php
-- Description: Since 4.3 we use the non-static method for getting there respective Model in Helper Classes. These Methods are now removed and extensions use for example:
+    - /modules/mod_banners/src/Helper/BannersHelper.php
+    - /modules/mod_breadcrumbs/src/Helper/BreadcrumbsHelper.php
+    - /modules/mod_feed/src/Helper/FeedHelper.php
+    - /modules/mod_finder/src/Helper/FinderHelper.php
+    - /modules/mod_languages/src/Helper/LanguagesHelper.php
+    - /modules/mod_login/src/Helper/LoginHelper.php
+    - /modules/mod_menu/src/Helper/MenuHelper.php
+    - /modules/mod_random_image/src/Helper/RandomImageHelper.php
+    - /modules/mod_related_items/src/Helper/RelatedItemsHelper.php
+    - /modules/mod_stats/src/Helper/StatsHelper.php
+    - /modules/mod_syndicate/src/Helper/SyndicateHelper.php
+    - /modules/mod_tags_popular/src/Helper/TagsPopularHelper.php
+    - /modules/mod_tags_similar/src/Helper/TagsSimilarHelper.php
+    - /modules/mod_users_latest/src/Helper/UsersLatestHelper.php
+    - /modules/mod_whosonline/src/Helper/WhosonlineHelper.php
+    - /modules/mod_wrapper/src/Helper/WrapperHelper.php
+- Description: Modules traditionally were written with a static helper class to retrieve data from the system. This isn't desirable from a dependency injection perspective and thus the modules were rewritten to use instantiated helper objects instead with dependency injection. Instantiate the helper object and call the non-static version of the respective method instead. For example you can use:
 ```php
 // Old:
 ArticlesNewsHelper::getArticles($params);
