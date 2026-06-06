@@ -54,3 +54,22 @@ $this->getDatabase();
 ## The CSS custom property `--cassiopeia-link-color` removal
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
+
+## Remove legacy helper stubs for administrator components
+- PR: https://github.com/joomla/joomla-cms/pull/45857
+- Description: When the site helper files were namespaced, we left a small wrapper class to improve backwards compatibility. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+
+```
+// Find
+NewsfeedsHelperRoute
+
+// Replace
+\Joomla\Component\Newsfeeds\Site\Helper\RouteHelper
+```
+
+The following files were removed:
+- components/com_contact/helpers/route.php
+- components/com_content/helpers/icon.php
+- components/com_finder/helpers/route.php
+- components/com_newsfeeds/helpers/route.php
+- components/com_tags/helpers/route.php
