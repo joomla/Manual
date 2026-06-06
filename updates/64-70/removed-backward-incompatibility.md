@@ -54,3 +54,16 @@ $this->getDatabase();
 ## The CSS custom property `--cassiopeia-link-color` removal
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
+
+## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
+
+- PR: https://github.com/joomla/joomla-cms/pull/47899
+- Folder: libraries/src/Crypt
+- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0. 
+  Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably, 
+  expect for
+  - `Crypt::timingSafeCompare()` use `hash_equals()` instead
+  - `Crypt::safeStrlen()` use `mb_strlen()` instead
+  - `Crypt::safeSubstr()` use `mb_substr()` instead
+  - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
+  - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
