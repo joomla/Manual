@@ -54,3 +54,27 @@ $this->getDatabase();
 ## The CSS custom property `--cassiopeia-link-color` removal
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
+
+## Removed legacy stubs for admin component helpers
+
+- PR: https://github.com/joomla/joomla-cms/pull/45856
+- Description: The non-namespaced helper classes in the `helpers/` folder of several administrator components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. The following classes were removed:
+  - `BannersHelper` — use `\Joomla\Component\Banners\Administrator\Helper\BannersHelper` instead
+  - `CategoriesHelper` — use `\Joomla\Component\Categories\Administrator\Helper\CategoriesHelper` instead
+  - `ContactHelper` — use `\Joomla\Component\Contact\Administrator\Helper\ContactHelper` instead
+  - `ContentHelper` — use `\Joomla\Component\Content\Administrator\Helper\ContentHelper` instead
+  - `ContenthistoryHelper` — use `\Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper` instead
+  - `FieldsHelper` — use `\Joomla\Component\Fields\Administrator\Helper\FieldsHelper` instead
+  - `FinderHelperLanguage` — use `\Joomla\Component\Finder\Administrator\Helper\LanguageHelper` instead
+  - `InstallerHelper` — use `\Joomla\Component\Installer\Administrator\Helper\InstallerHelper` instead
+  - `MenusHelper` — use `\Joomla\Component\Menus\Administrator\Helper\MenusHelper` instead
+  - `ModulesHelper` — use `\Joomla\Component\Modules\Administrator\Helper\ModulesHelper` instead
+  - `NewsfeedsHelper` — use `\Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper` instead
+  - `PluginsHelper` — use `\Joomla\Component\Plugins\Administrator\Helper\PluginsHelper` instead
+  - `RedirectHelper` — use `\Joomla\Component\Redirect\Administrator\Helper\RedirectHelper` instead
+  - `TemplateHelper` — use `\Joomla\Component\Templates\Administrator\Helper\TemplateHelper` instead
+  - `TemplatesHelper` — use `\Joomla\Component\Templates\Administrator\Helper\TemplatesHelper` instead
+  - `UsersHelperDebug` — use `\Joomla\Component\Users\Administrator\Helper\DebugHelper` instead
+  - `UsersHelper` — use `\Joomla\Component\Users\Administrator\Helper\UsersHelper` instead
+
+  Note that two classes were also renamed when they moved, so update the class name as well as the namespace: `FinderHelperLanguage` became `LanguageHelper`, and `UsersHelperDebug` became `DebugHelper`.
