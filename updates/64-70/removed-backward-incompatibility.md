@@ -69,7 +69,7 @@ Factory::getApplication()->bootModule('mod_articles_news', 'site')
 
 ## `ActionLogPlugin` db and app properties removed
 - PR: https://github.com/joomla/joomla-cms/pull/47880
-- File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
+- File: /administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
 - Description: The `$app` and `$db` properties in the `ActionLogPlugin` got removed. Inject the database and application in the provider.php. For example you can use:
 ```php
 // Old:
@@ -83,7 +83,7 @@ $this->getDatabase();
 
 ## `LogcreatorField` class removed
 - PR: https://github.com/joomla/joomla-cms/pull/47874
-- File: administrator/components/com_actionlogs/src/Field/LogcreatorField.php
+- File: /administrator/components/com_actionlogs/src/Field/LogcreatorField.php
 - Description: The `LogcreatorField` got removed as it is better to use the user field instead. For example you can use:
 ```xml
 // Old in form XML file:
@@ -101,10 +101,57 @@ $this->getDatabase();
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
+## Removed legacy stubs for admin component helpers
+- PR: https://github.com/joomla/joomla-cms/pull/45856
+- Files:
+  - \Joomla\Component\Banners\Administrator\Helper\BannersHelper
+  - \Joomla\Component\Categories\Administrator\Helper\CategoriesHelper
+  - \Joomla\Component\Contact\Administrator\Helper\ContactHelper
+  - \Joomla\Component\Content\Administrator\Helper\ContentHelper
+  - \Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper
+  - \Joomla\Component\Fields\Administrator\Helper\FieldsHelper
+  - \Joomla\Component\Finder\Administrator\Helper\LanguageHelper
+  - \Joomla\Component\Installer\Administrator\Helper\InstallerHelper
+  - \Joomla\Component\Menus\Administrator\Helper\MenusHelper
+  - \Joomla\Component\Modules\Administrator\Helper\ModulesHelper
+  - \Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper
+  - \Joomla\Component\Plugins\Administrator\Helper\PluginsHelper
+  - \Joomla\Component\Redirect\Administrator\Helper\RedirectHelper
+  - \Joomla\Component\Templates\Administrator\Helper\TemplateHelper
+  - \Joomla\Component\Templates\Administrator\Helper\TemplatesHelper
+  - \Joomla\Component\Users\Administrator\Helper\DebugHelper
+  - \Joomla\Component\Users\Administrator\Helper\UsersHelper
+- Description: The non-namespaced helper classes in the `helpers/` folder of several administrator components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+- Class list mapping:
+  - `BannersHelper` — use `\Joomla\Component\Banners\Administrator\Helper\BannersHelper` instead
+  - `CategoriesHelper` — use `\Joomla\Component\Categories\Administrator\Helper\CategoriesHelper` instead
+  - `ContactHelper` — use `\Joomla\Component\Contact\Administrator\Helper\ContactHelper` instead
+  - `ContentHelper` — use `\Joomla\Component\Content\Administrator\Helper\ContentHelper` instead
+  - `ContenthistoryHelper` — use `\Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper` instead
+  - `FieldsHelper` — use `\Joomla\Component\Fields\Administrator\Helper\FieldsHelper` instead
+  - `FinderHelperLanguage` — use `\Joomla\Component\Finder\Administrator\Helper\LanguageHelper` instead
+  - `InstallerHelper` — use `\Joomla\Component\Installer\Administrator\Helper\InstallerHelper` instead
+  - `MenusHelper` — use `\Joomla\Component\Menus\Administrator\Helper\MenusHelper` instead
+  - `ModulesHelper` — use `\Joomla\Component\Modules\Administrator\Helper\ModulesHelper` instead
+  - `NewsfeedsHelper` — use `\Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper` instead
+  - `PluginsHelper` — use `\Joomla\Component\Plugins\Administrator\Helper\PluginsHelper` instead
+  - `RedirectHelper` — use `\Joomla\Component\Redirect\Administrator\Helper\RedirectHelper` instead
+  - `TemplateHelper` — use `\Joomla\Component\Templates\Administrator\Helper\TemplateHelper` instead
+  - `TemplatesHelper` — use `\Joomla\Component\Templates\Administrator\Helper\TemplatesHelper` instead
+  - `UsersHelperDebug` — use `\Joomla\Component\Users\Administrator\Helper\DebugHelper` instead
+  - `UsersHelper` — use `\Joomla\Component\Users\Administrator\Helper\UsersHelper` instead
+```php
+// Old:
+BannersHelper::function();
+
+// New
+\Joomla\Component\Banners\Administrator\Helper\BannersHelper::function();
+```
+
 ## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
 
 - PR: https://github.com/joomla/joomla-cms/pull/47899
-- Folder: libraries/src/Crypt
+- Folder: /libraries/src/Crypt
 - Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0. 
   Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably, 
   expect for
