@@ -197,3 +197,10 @@ $app->bootPlugin('debug', 'system)->logger();
 // New:
 \Joomla\CMS\Log\Log::add();
 ```
+
+## Removed deprecated layout files
+- PR: https://github.com/joomla/joomla-cms/pull/47884
+- Files:
+- /layouts/joomla/content/icons/create.php
+- /layouts/joomla/html/batch/user.php
+- Description: Removed unused layout files, there is no replacement for them.
