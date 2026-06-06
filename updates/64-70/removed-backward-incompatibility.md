@@ -54,3 +54,34 @@ $this->getDatabase();
 ## The CSS custom property `--cassiopeia-link-color` removal
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
+
+## Remove legacy helper stubs for administrator components
+- PR: https://github.com/joomla/joomla-cms/pull/45856
+- Description: When the backend helper files were namespaced, we left a small wrapper class to improve backwards compatibility. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+
+```
+// Find
+BannersHelper
+
+// Replace
+\Joomla\Component\Banners\Administrator\Helper\BannersHelper
+```
+
+The following files were removed:
+- administrator/components/com_banners/helpers/banners.php
+- administrator/components/com_categories/helpers/categories.php
+- administrator/components/com_contact/helpers/contact.php
+- administrator/components/com_content/helpers/content.php
+- administrator/components/com_contenthistory/helpers/contenthistory.php
+- administrator/components/com_fields/helpers/fields.php
+- administrator/components/com_finder/helpers/language.php
+- administrator/components/com_installer/helpers/installer.php
+- administrator/components/com_menus/helpers/menus.php
+- administrator/components/com_modules/helpers/modules.php
+- administrator/components/com_newsfeeds/helpers/newsfeeds.php
+- administrator/components/com_plugins/helpers/plugins.php
+- administrator/components/com_redirect/helpers/redirect.php
+- administrator/components/com_templates/helpers/template.php
+- administrator/components/com_templates/helpers/templates.php
+- administrator/components/com_users/helpers/debug.php
+- administrator/components/com_users/helpers/users.php
