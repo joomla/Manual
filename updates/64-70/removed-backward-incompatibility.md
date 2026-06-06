@@ -21,3 +21,8 @@ There should be an explanation of how to mitigate the removals / changes.
   - `UserModel::isValidOtep()`
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
+
+The CSS custom property `--cassiopeia-link-color` removal
+============
+- PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
+- Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
