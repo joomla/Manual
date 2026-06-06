@@ -201,6 +201,12 @@ $app->bootPlugin('debug', 'system)->logger();
 ## Removed deprecated layout files
 - PR: https://github.com/joomla/joomla-cms/pull/47884
 - Files:
-- /layouts/joomla/content/icons/create.php
-- /layouts/joomla/html/batch/user.php
+  - /layouts/joomla/content/icons/create.php
+  - /layouts/joomla/html/batch/user.php
 - Description: Removed unused layout files, there is no replacement for them.
+
+## Removed stub generator and PSR12 converter
+- PR: https://github.com/joomla/joomla-cms/pull/47897
+- File: /build/stubGenerator.php
+- Folder: /build/psr12
+- Description: The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces. The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style. If you still need the stub generator or the psr12 converter, use it from an older joomla version.
