@@ -101,28 +101,47 @@ $this->getDatabase();
 - PR: [https://github.com/joomla/joomla-cms/pull/47457](https://github.com/joomla/joomla-cms/pull/47883)
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
-## Removed legacy stubs for admin component helpers
-- PR: https://github.com/joomla/joomla-cms/pull/45856
+## Removed legacy stubs for component helpers
+- PR's: 
+  - https://github.com/joomla/joomla-cms/pull/45856
+  - https://github.com/joomla/joomla-cms/pull/45857
 - Files:
-  - \Joomla\Component\Banners\Administrator\Helper\BannersHelper
-  - \Joomla\Component\Categories\Administrator\Helper\CategoriesHelper
-  - \Joomla\Component\Contact\Administrator\Helper\ContactHelper
-  - \Joomla\Component\Content\Administrator\Helper\ContentHelper
-  - \Joomla\Component\Contenthistory\Administrator\Helper\ContenthistoryHelper
-  - \Joomla\Component\Fields\Administrator\Helper\FieldsHelper
-  - \Joomla\Component\Finder\Administrator\Helper\LanguageHelper
-  - \Joomla\Component\Installer\Administrator\Helper\InstallerHelper
-  - \Joomla\Component\Menus\Administrator\Helper\MenusHelper
-  - \Joomla\Component\Modules\Administrator\Helper\ModulesHelper
-  - \Joomla\Component\Newsfeeds\Administrator\Helper\NewsfeedsHelper
-  - \Joomla\Component\Plugins\Administrator\Helper\PluginsHelper
-  - \Joomla\Component\Redirect\Administrator\Helper\RedirectHelper
-  - \Joomla\Component\Templates\Administrator\Helper\TemplateHelper
-  - \Joomla\Component\Templates\Administrator\Helper\TemplatesHelper
-  - \Joomla\Component\Users\Administrator\Helper\DebugHelper
-  - \Joomla\Component\Users\Administrator\Helper\UsersHelper
-- Description: The non-namespaced helper classes in the `helpers/` folder of several administrator components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+  - /components/com_contact/helpers/route.php
+  - /components/com_content/helpers/icon.php
+  - /components/com_finder/helpers/route.php
+  - /components/com_newsfeeds/helpers/route.php
+  - /components/com_tags/helpers/route.php
+  - /administrator/components/com_banners/helpers/banners.php
+  - /administrator/components/com_categories/helpers/categories.php
+  - /administrator/components/com_contact/helpers/contact.php
+  - /administrator/components/com_content/helpers/content.php
+  - /administrator/components/com_content/src/Model/FeaturedModel.php
+  - /administrator/components/com_content/src/View/Featured/HtmlView.php
+  - /administrator/components/com_contenthistory/helpers/contenthistory.php
+  - /administrator/components/com_fields/helpers/fields.php
+  - /administrator/components/com_fields/src/Plugin/FieldsPlugin.php
+  - /administrator/components/com_finder/helpers/language.php
+  - /administrator/components/com_installer/helpers/installer.php
+  - /administrator/components/com_joomlaupdate/src/Model/UpdateModel.php
+  - /administrator/components/com_menus/helpers/menus.php
+  - /administrator/components/com_modules/helpers/modules.php
+  - /administrator/components/com_modules/src/Service/HTML/Modules.php
+  - /administrator/components/com_newsfeeds/helpers/newsfeeds.php
+  - /administrator/components/com_plugins/helpers/plugins.php
+  - /administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
+  - /administrator/components/com_redirect/helpers/redirect.php
+  - /administrator/components/com_templates/helpers/template.php
+  - /administrator/components/com_templates/helpers/templates.php
+  - /administrator/components/com_templates/src/Service/HTML/Templates.php
+  - /administrator/components/com_users/helpers/debug.php
+  - /administrator/components/com_users/helpers/users.php
+- Description: The non-namespaced helper classes in the `helpers/` folder of several components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
 - Class list mapping:
+  - `ContactHelperRoute` — use `\Joomla\Component\Contact\Site\Helper\RouteHelper\ContactHelperRoute` instead
+  - `JHtmlIcon` — use `\Joomla\Component\Content\Administrator\Service\HTML\Icon` instead
+  - `FinderHelperRoute` — use `\Joomla\Component\Finder\Site\Helper\RouteHelper\FinderHelperRoute` instead
+  - `NewsfeedsHelperRoute` — use `\Joomla\Component\Newsfeeds\Site\Helper\RouteHelper\NewsfeedsHelperRoute` instead
+  - `TagsHelperRoute` — use `\Joomla\Component\Tags\Site\Helper\RouteHelper\TagsHelperRoute` instead
   - `BannersHelper` — use `\Joomla\Component\Banners\Administrator\Helper\BannersHelper` instead
   - `CategoriesHelper` — use `\Joomla\Component\Categories\Administrator\Helper\CategoriesHelper` instead
   - `ContactHelper` — use `\Joomla\Component\Contact\Administrator\Helper\ContactHelper` instead
@@ -149,7 +168,6 @@ BannersHelper::function();
 ```
 
 ## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
-
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
 - Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0. 
