@@ -21,6 +21,20 @@ There should be an explanation of how to mitigate the removals / changes.
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
 
+## `ActionLogPlugin` db and app properties removed
+- PR: https://github.com/joomla/joomla-cms/pull/47880
+- File: administrator/components/com_actionlogs/src/Plugin/ActionLogPlugin.php
+- Description: The `$app` and `$db` properties in the `ActionLogPlugin` got removed. Inject the database and application in the provider.php. For example you can use:
+```php
+// Old:
+$this->app;
+$this->db;
+
+// New:
+$this->getApplication();
+$this->getDatabase();
+```
+
 ## `LogcreatorField` class removed
 - PR: https://github.com/joomla/joomla-cms/pull/47874
 - File: administrator/components/com_actionlogs/src/Field/LogcreatorField.php
