@@ -160,3 +160,8 @@ BannersHelper::function();
   - `Crypt::safeSubstr()` use `mb_substr()` instead
   - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
   - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
+
+
+## Removed local log entry functionality in debug plugin
+- PR: https://github.com/joomla/joomla-cms/pull/47900
+- Description: Remove the `logger()` in `\Joomla\Plugin\System\Debug\Extension\Debug::class` use `\Joomla\CMS\Log\Log::add()` instead 
