@@ -84,6 +84,18 @@ $this->getApplication();
 $this->getDatabase();
 ```
 
+## `FieldsPlugin` app property removed
+- PR: https://github.com/joomla/joomla-cms/pull/47904
+- File: /administrator/components/com_fields/src/Plugin/FieldsPlugin.php
+- Description: The `$app` property in the `FieldsPlugin` got removed. Inject the application in the provider.php. For example you can use:
+```php
+// Old:
+$this->app;
+
+// New:
+$this->getApplication();
+```
+
 ## `LogcreatorField` class removed
 - PR: https://github.com/joomla/joomla-cms/pull/47874
 - File: /administrator/components/com_actionlogs/src/Field/LogcreatorField.php
