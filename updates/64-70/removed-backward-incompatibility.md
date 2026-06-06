@@ -21,3 +21,18 @@ There should be an explanation of how to mitigate the removals / changes.
   - `UserModel::isValidOtep()`
   - `ProfileModel::getTwofactorform()`
   - `ProfileModel::getOtpConfig()`
+
+## Removed stub generator and PSR12 converter
+
+- PR: https://github.com/joomla/joomla-cms/pull/47897
+- Description: 
+  - The stub generator was only for transition to make it easier to translate from Jx namespace to real php namespaces
+  - The PSR12 converter was a onetime shot to get the Joomla code base to PSR12 / PER Coding Style
+- Migration:
+  - Not needed, if you still need the stub generator or the psr12 converter, use it from an older joomla version
+
+
+Removed files:
+
+- `/build/stubGenerator.php`
+- `/build/psr12`
