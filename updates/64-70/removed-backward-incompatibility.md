@@ -305,3 +305,17 @@ $archiveModel->getData();
 $updateModel->createUpdateFile();
 $archiveModel->getItems();
 ```
+
+## Removed tinymce uploaddirs field
+- PR: https://github.com/joomla/joomla-cms/pull/47913
+- File: /plugins/editors/tinymce/src/Field/UploaddirsField.php
+- Description: The field is not used by core anymore instead `Joomla\CMS\Form\Field\FolderlistField` is used.
+```xml
+// Old:
+<field type="Uploaddirs" />
+
+// New:
+<field type="Folderlist" />
+```
+
+
