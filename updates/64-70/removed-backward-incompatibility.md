@@ -296,6 +296,7 @@ JoomlaCalendar.init();
   - /administrator/components/com_modules/src/Service/HTML/Modules.php
   - /components/com_content/src/Model/ArchiveModel.php
 - Description: The method to get the archived article list `getData()` is removed, use `getItems()` instead. The method to get the positions list `positionList()` is removed without replacement. The method `createRestorationFil()` is removed, use `createUpdateFile()` instead.
+```php
 // Old:
 $updateModel->createRestorationFile();
 $archiveModel->getData();
