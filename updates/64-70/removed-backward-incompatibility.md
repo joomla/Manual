@@ -318,4 +318,14 @@ $archiveModel->getItems();
 <field type="Folderlist" />
 ```
 
+## Removed Joomla.JText proxy
+- PR: https://github.com/joomla/joomla-cms/pull/47928
+- File: /media_source/system/js/core.es6.js
+- Description: Removes the deprecated global `Joomla.JText` Javascript property. Use `Joomla.Text` instead.
+```javascript
+// Old:
+Joomla.jText._('COM_FOO');
 
+// New:
+Joomla.Text._('COM_FOO');
+```
