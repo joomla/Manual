@@ -331,3 +331,15 @@ HTMLHelper::_('templates.thumbModal', $item->name);
 HTMLHelper::_('templates.thumb', $item);
 HTMLHelper::_('templates.thumbModal', $item);
 ```
+
+## Url layout file is not escaping the url
+- PR: https://github.com/joomla/joomla-cms/pull/47929
+- File: /layouts/joomla/form/field/url.php
+- Description: The url layout file is not escaping the url anymore, the logic is moved to the `UrlField` class. If the layout file /layouts/joomla/form/field/url.php is used in an extension, then the encoding must be done by again.
+```php
+// Old:
+LayoutHelper::render('joomla.form.field.url', ['value' => 'https://www.joomla.org']);
+
+// New:
+LayoutHelper::render('joomla.form.field.url', ['value' => htmlspecialchars(PunycodeHelper::urlToUTF8('https://www.joomla.org'), ENT_QUOTES, 'UTF-8')]);
+```
