@@ -318,4 +318,16 @@ $archiveModel->getItems();
 <field type="Folderlist" />
 ```
 
+## Removed support for string parameters to generate template thumbnails
+- PR: https://github.com/joomla/joomla-cms/pull/47924
+- File: /administrator/components/com_templates/src/Service/HTML/Templates.php
+- Description: The method to get the thumbnails accept only a template object and not anymore a string.
+```php
+// Old:
+HTMLHelper::_('templates.thumb', $item->name);
+HTMLHelper::_('templates.thumbModal', $item->name);
 
+// New:
+HTMLHelper::_('templates.thumb', $item);
+HTMLHelper::_('templates.thumbModal', $item);
+```
