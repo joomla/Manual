@@ -343,3 +343,15 @@ LayoutHelper::render('joomla.form.field.url', ['value' => 'https://www.joomla.or
 // New:
 LayoutHelper::render('joomla.form.field.url', ['value' => htmlspecialchars(PunycodeHelper::urlToUTF8('https://www.joomla.org'), ENT_QUOTES, 'UTF-8')]);
 ```
+
+## BannerHelper class got removed
+- PR: https://github.com/joomla/joomla-cms/pull/47937
+- File: /components/com_banners/src/Helper/BannerHelper.php
+- Description: The `BannerHelper` got removed as it contains only an image test function. When testing the image file, use `\Joomla\CMS\Helper\MediaHelper::isImage($url)` for pixel-based image files in combination with `\Joomla\CMS\Helper\MediaHelper::getMimeType($url) === 'image/svg+xml'` for vector based image files. Be aware that the image url should first be sanitized with the helper function.
+```php
+// Old:
+BannerHelper::isImage($url);
+
+// New:
+MediaHelper::isImage(HTMLHelper::cleanImageURL($url));
+```
