@@ -355,3 +355,32 @@ BannerHelper::isImage($url);
 // New:
 MediaHelper::isImage(HTMLHelper::cleanImageURL($url));
 ```
+
+## Removed deprecated code in the application classes
+- PR: https://github.com/joomla/joomla-cms/pull/45866
+- Files:
+  - libraries/src/Application/CMSApplication.php
+  - libraries/src/Application/CMSApplicationInterface.php
+  - libraries/src/Application/AdministratorApplication.php
+  - libraries/src/Application/ApiApplication.php
+  - libraries/src/Application/ConsoleApplication.php
+  - libraries/src/Application/WebApplication.php
+- Description: Several pieces of deprecated code have been removed from the core application classes. 
+  - The obsolete `loadSession()` method and static `purgeMessages()` method have been removed. For example you can use:
+  - The magic `__get()` accessor on the console application has been removed, so protected/dynamic properties can no longer be read directly as `$app->somProperty` use the dedicated getter methods instead. 
+  - The deprecated `getCfg()` method has been removed (read configuration with `get()`).
+  - The API application doesn't have anymore the `getApiRouter` function.
+```php
+// Old:
+$value = $app->getCfg('sitename');
+AdministratorApplication:purgeMessages();
+ApiApplication::getApiRouter();
+$value = $app->input;
+
+// New:
+$value = $app->get('sitename');
+Factory::getApplication()->bootComponent('messages')->getMVCFactory()
+            ->createModel('Messages', 'Administrator')->purge(Factory::getApplication()->getIdentity()->id);
+Factory::getContainer()->get(ApiRouter::class);
+$value = $app->getInput();
+```
