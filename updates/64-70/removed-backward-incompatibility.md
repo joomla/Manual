@@ -332,6 +332,20 @@ HTMLHelper::_('templates.thumb', $item);
 HTMLHelper::_('templates.thumbModal', $item);
 ```
 
+## The radiobasic form field is moved to the compatibility plugin
+- PR: https://github.com/joomla/joomla-cms/pull/47930
+- Files: 
+  - /libraries/src/Form/Field/RadiobasicField.php
+  - /layouts/joomla/form/field/radiobasic.php
+- Description: The form field `radiobasic` is obsolete and the normal radio form field should be used with the layout `joomla.form.field.radio.switcher`.
+```xml
+// Old:
+<field type="radiobasic" />
+
+// New:
+<field type="radio" layout="joomla.form.field.radio.switcher"/>
+```
+
 ## Url layout file is not escaping the url
 - PR: https://github.com/joomla/joomla-cms/pull/47929
 - File: /layouts/joomla/form/field/url.php
