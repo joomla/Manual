@@ -6,9 +6,9 @@ title: Step 1 Basic Component
 ## Introduction
 
 The aim of this step is for you to build and install a basic Joomla component called com_example.
-When more fully developed this component will support a database of products,
+When more fully developed this component will support a database of famous world landmarks,
 with back-end functionality to allow administrators to manage the data,
-and front-end functionality to display the product data to users.
+and front-end functionality to display the landmarks to users.
 
 However, in this first step com_example will simply output
 
@@ -59,10 +59,10 @@ com_example
  │           │     ├─── Controller
  │           │     │     └─── DisplayController.php
  │           │     └─── View
- │           │           └─── Product
+ │           │           └─── Landmark
  │           │                 └─── HtmlView.php
  │           └─── tmpl
- │                 └─── product
+ │                 └─── landmark
  │                       └─── default.php
  └─── example.xml
 ```
@@ -177,7 +177,6 @@ Sometimes an easy mistake to make is to forget to include files or folders withi
 
 ```php title="administrator/components/com_example/services/provider.php"
 <?php
-
 \defined('_JEXEC') or die;
 
 use Joomla\CMS\Dispatcher\ComponentDispatcherFactoryInterface;
@@ -204,7 +203,6 @@ return new class implements ServiceProviderInterface {
             }
         );
     }
-};
 };
 ```
 
@@ -285,7 +283,7 @@ so we just need to supply administrator language files. You can choose your own 
 
 ```php title="administrator/components/com_example/language/en-GB/com_example.sys.ini"
 COM_EXAMPLE_TITLE="Joomla Component Tutorial"
-COM_EXAMPLE_DESCRIPTION="Builds an example application for managing products"
+COM_EXAMPLE_DESCRIPTION="Builds an example application for managing famous landmarks"
 ```
 
 ```php title="administrator/components/com_example/language/en-GB/com_example.ini"
@@ -315,7 +313,7 @@ class DisplayController extends BaseController {
 
     public function display($cachable = false, $urlparams = array())
     {
-        $view = $this->getView('product', 'html');
+        $view = $this->getView('landmark', 'html');
         $view->display();
     }
 }
@@ -377,11 +375,11 @@ and our DisplayController code will use this when it seeks to instantiate the as
 ### Controller display function
 
 ```php
-$view = $this->getView('product', 'html');
+$view = $this->getView('landmark', 'html');
 ```
 
 The getView Controller method is the way to create and return a view,
-in this case (based on the parameters) a View/Product/HtmlView instance. 
+in this case (based on the parameters) a View/Landmark/HtmlView instance. 
 The BaseController will access the stored MVCFactory instance passed in the constructor,
 and will use it to request the MVCFactory to create the view instance. 
 
@@ -393,9 +391,13 @@ The view display method is what is called to generate the component output.
 
 ## Site View
 
-```php
+When we get beyond outputting a Hello World message, 
+this view will output a famous landmark from somewhere in the world.
+So we define its name as "Landmark". 
+
+```php title="components/com_example/src/View/Landmark/HtmlView.php"
 <?php
-namespace My\Component\Example\Site\View\Product;
+namespace My\Component\Example\Site\View\Landmark;
  
 \defined('_JEXEC') or die;
 
@@ -441,13 +443,17 @@ namely the ability to override the tmpl using a template override.
 
 This file simply outputs the HTML element.
 
-```php
+```php title="components/com_example/src/tmpl/landmark/default.php"
 <?php
 \defined('_JEXEC') or die;
 
 ?>
 <h4>Hello World!</h4>
 ```
+
+Note that the tmpl file path mirrors the View file path,
+but with small letters being used rather than capitals.
+In Joomla capitals are reserved for files containing PHP classes. 
 
 ## Installing the Component
 
