@@ -10,10 +10,10 @@ When more fully developed this component will support a database of famous world
 with back-end functionality to allow administrators to manage the data,
 and front-end functionality to display the landmarks to users.
 
-However, in this first step com_example will simply output
+In this first step com_example will simply output our first landmark:
 
 ```html
-<h4>Hello World!</h4>
+<h4>The Eiffel Tower</h4>
 ```
 
 Unfortunately this first step is very long, as there is a lot of explaining to do.
@@ -391,9 +391,8 @@ The view display method is what is called to generate the component output.
 
 ## Site View
 
-When we get beyond outputting a Hello World message, 
-this view will output a famous landmark from somewhere in the world.
-So we define its name as "Landmark". 
+As this view will output a famous landmark from somewhere in the world,
+we define its name as "Landmark". 
 
 ```php title="components/com_example/src/View/Landmark/HtmlView.php"
 <?php
@@ -448,7 +447,7 @@ This file simply outputs the HTML element.
 \defined('_JEXEC') or die;
 
 ?>
-<h4>Hello World!</h4>
+<h4>The Eiffel Tower</h4>
 ```
 
 Note that the tmpl file path mirrors the View file path,
@@ -470,7 +469,7 @@ To install from a folder:
 
 You should get the confirmation that installation of the component was successful.
 
-To display the hello world message navigate to:
+To display the first landmark navigate to:
 
 ```
 <your joomla instance>index.php?option=com_example
@@ -536,7 +535,7 @@ then you can seek help via the [Joomla Community](../../../get-started/index.md#
 Sometimes the answer is given in the subsequent step of the tutorial.
 
 The challenge for this first step is as follows.
-In outputting the Hello World message we've hard-coded the text in the tmpl file.
+In outputting the first landmark we've hard-coded the text in the tmpl file.
 Can you change the code so that you use a language constant instead?
 
 To provide some guidance, this is what you will need to do:
