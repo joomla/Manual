@@ -16,8 +16,7 @@ This page lists all the new deprecations you should be aware of and what you sho
 PR: [47677](https://github.com/joomla/joomla-cms/pull/47677)
 Files: 
 - `libraries/src/Mail/MailTemplate.php`
-Description:
-The injected `mailer` property can be a `MailerInterface` to not enforce a `Mail` instance. Not injecting a mailer instance is deprecated and will be not supported anymore in 8.0.
+Description: The injected `mailer` property can be a `MailerInterface` to not enforce a `Mail` instance. Not injecting a mailer instance is deprecated and will be not supported anymore in 8.0.
 
 ```php
 // Old code
