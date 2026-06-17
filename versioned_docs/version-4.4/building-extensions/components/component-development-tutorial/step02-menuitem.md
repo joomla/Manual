@@ -9,7 +9,7 @@ In the first step, in order to show the site Landmark page we had to enter a com
 
 In this step we create a menuitem, so that when it's clicked the Landmark page is shown.
 
-The code is available at [com_example step 2](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step02_define_menuitem).
+The code is available at [com_example step 2](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step02_menuitem).
 
 ## Learning Points
 
