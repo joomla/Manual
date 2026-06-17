@@ -23,6 +23,4 @@ this type to ensure it loads before any other plugin, as this is critical for ba
 
 ### Detailed documentation
 
-:::warning[Reader Note]
-  Please read the [Compatibility Plugin 7.0](../64-70/compat-plugin.md) section
-:::
+The compatibility plugin does contain some deprecated code which is only loaded when the plugin is enabled. In the [removed backward incompatibility](removed-backward-incompatibility.md) guide is documented in detail, what is moved to the plugin.

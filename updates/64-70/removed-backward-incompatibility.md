@@ -8,6 +8,49 @@ Removed and Backward Incompatibility
 All the deprecated features that have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
+## Compat plugin
+The following list of changes belong to the compatibility plugin and work when enabled, but are mentioned here, so developers can prepare for upcoming changes in the next major release:
+
+## Functions that throw an error
+- PR: https://github.com/joomla/joomla-cms/pull/47911
+- Files: 
+  - /libraries/src/Factory.php
+  - /libraries/src/User/User.php
+- Description: The compatibility plugin defines the constant `COMPAT_JOOMLA_7` when loaded. The constant is used in functions to check if compatibility mode is enabled. If the constant doesn't exist, an exception is thrown in the respective function. Like that get extension developers and site admins, with old overrides, an idea what might not work anymore in the next major version. In the deprecation message and The following list of functions will throw an error when the compatibility plugin is not enabled:
+  - `\Joomla\CMS\Factory::getConfig()`  
+  Get the config from the application.
+  - `\Joomla\CMS\Factory::getSession()`  
+  Get the session from the application.
+  - `\Joomla\CMS\Factory::getMailer()`  
+  Create a mailer from the injected factory or global container.
+  - `\Joomla\CMS\User\User::get()`  
+  Access directly the property from the user object.
+
+### CMS Crypt package
+- PR: https://github.com/joomla/joomla-cms/pull/47899
+- Folder: /libraries/src/Crypt
+- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
+  expect for
+  - `Crypt::timingSafeCompare()` use `hash_equals()` instead
+  - `Crypt::safeStrlen()` use `mb_strlen()` instead
+  - `Crypt::safeSubstr()` use `mb_substr()` instead
+  - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
+  - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
+  
+### Radiobasic form field
+- PR: https://github.com/joomla/joomla-cms/pull/47930
+- Files: 
+  - /libraries/src/Form/Field/RadiobasicField.php
+  - /layouts/joomla/form/field/radiobasic.php
+- Description: The form field `radiobasic` is obsolete and the normal radio form field should be used with the layout `joomla.form.field.radio.switcher`.
+```xml
+// Old:
+<field type="radiobasic" />
+
+// New:
+<field type="radio" layout="joomla.form.field.radio.switcher"/>
+```
+
 ## Removed legacy OTP code from `UserModel` and `ProfileModel`
 - PR: https://github.com/joomla/joomla-cms/pull/47457
 - Files:
@@ -108,8 +151,8 @@ $this->app;
 
 // New:
 $this->getApplication();
-
 ```
+
 ## `PrivacyPlugin` db property removed
 - PR: https://github.com/joomla/joomla-cms/pull/47880
 - File: /administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
@@ -189,7 +232,7 @@ $this->getDatabase();
   - /administrator/components/com_templates/src/Service/HTML/Templates.php
   - /administrator/components/com_users/helpers/debug.php
   - /administrator/components/com_users/helpers/users.php
-- Description: The non-namespaced helper classes in the `helpers/` folder of several components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+- Description: The non-namespaced helper classes in the `helpers/` folder of several components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat7` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
 - Class list mapping:
   - `ContactHelperRoute` — use `\Joomla\Component\Contact\Site\Helper\RouteHelper\ContactHelperRoute` instead
   - `JHtmlIcon` — use `\Joomla\Component\Content\Administrator\Service\HTML\Icon` instead
@@ -220,19 +263,6 @@ BannersHelper::function();
 // New
 \Joomla\Component\Banners\Administrator\Helper\BannersHelper::function();
 ```
-
-## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
-- PR: https://github.com/joomla/joomla-cms/pull/47899
-- Folder: /libraries/src/Crypt
-- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0.
-  Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
-  expect for
-  - `Crypt::timingSafeCompare()` use `hash_equals()` instead
-  - `Crypt::safeStrlen()` use `mb_strlen()` instead
-  - `Crypt::safeSubstr()` use `mb_substr()` instead
-  - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
-  - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
-
 
 ## Removed local log entry functionality in debug plugin
 - PR: https://github.com/joomla/joomla-cms/pull/47900
@@ -330,20 +360,6 @@ HTMLHelper::_('templates.thumbModal', $item->name);
 // New:
 HTMLHelper::_('templates.thumb', $item);
 HTMLHelper::_('templates.thumbModal', $item);
-```
-
-## The radiobasic form field is moved to the compatibility plugin
-- PR: https://github.com/joomla/joomla-cms/pull/47930
-- Files: 
-  - /libraries/src/Form/Field/RadiobasicField.php
-  - /layouts/joomla/form/field/radiobasic.php
-- Description: The form field `radiobasic` is obsolete and the normal radio form field should be used with the layout `joomla.form.field.radio.switcher`.
-```xml
-// Old:
-<field type="radiobasic" />
-
-// New:
-<field type="radio" layout="joomla.form.field.radio.switcher"/>
 ```
 
 ## Url layout file is not escaping the url
