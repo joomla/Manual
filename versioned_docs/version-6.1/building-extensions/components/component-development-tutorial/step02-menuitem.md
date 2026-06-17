@@ -40,12 +40,6 @@ To do this we set a file within the same directory as the associated tmpl file:
 </metadata>
 ```
 
-At first sight it seems strange to be creating a file on the site side,
-in order to provide administrator functionality.
-However, if you think about it, a menuitem points to a web page,
-and the web page HTML is output by the tmpl file,
-so it makes sense to store the HTML file and the configuration to point to it in the same location.
-
 The XML file contains 2 language strings which we need to define.
 The com_menus component displays the data for several components 
 in the modal window which appears when Select is pressed,
