@@ -11,7 +11,7 @@ There should be an explanation of how to mitigate the removals / changes.
 ## Compat plugin
 The following list of changes belong to the compatibility plugin and work when enabled, but are mentioned here, so developers can prepare for upcoming changes in the next major release:
 
-## Functions that throw an error
+### Functions that throw an error
 - PR: https://github.com/joomla/joomla-cms/pull/47911
 - Files: 
   - /libraries/src/Factory.php
