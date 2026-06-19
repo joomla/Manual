@@ -8,6 +8,49 @@ Removed and Backward Incompatibility
 All the deprecated features that have now been removed and any backward incompatibilities.
 There should be an explanation of how to mitigate the removals / changes.
 
+## Compat plugin
+The following list of changes belong to the compatibility plugin and work when enabled, but are mentioned here, so developers can prepare for upcoming changes in the next major release:
+
+### Functions that throw an error
+- PR: https://github.com/joomla/joomla-cms/pull/47911
+- Files: 
+  - /libraries/src/Factory.php
+  - /libraries/src/User/User.php
+- Description: The compatibility plugin defines the constant `COMPAT_JOOMLA_7` when loaded. The constant is used in functions to check if compatibility mode is enabled. If the constant doesn't exist, an exception is thrown in the respective function. Like that get extension developers and site admins, with old overrides, an idea what might not work anymore in the next major version. In the deprecation message and The following list of functions will throw an error when the compatibility plugin is not enabled:
+  - `\Joomla\CMS\Factory::getConfig()`  
+  Get the config from the application.
+  - `\Joomla\CMS\Factory::getSession()`  
+  Get the session from the application.
+  - `\Joomla\CMS\Factory::getMailer()`  
+  Create a mailer from the injected factory or global container.
+  - `\Joomla\CMS\User\User::get()`  
+  Access directly the property from the user object.
+
+### CMS Crypt package
+- PR: https://github.com/joomla/joomla-cms/pull/47899
+- Folder: /libraries/src/Crypt
+- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
+  expect for
+  - `Crypt::timingSafeCompare()` use `hash_equals()` instead
+  - `Crypt::safeStrlen()` use `mb_strlen()` instead
+  - `Crypt::safeSubstr()` use `mb_substr()` instead
+  - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
+  - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
+  
+### Radiobasic form field
+- PR: https://github.com/joomla/joomla-cms/pull/47930
+- Files: 
+  - /libraries/src/Form/Field/RadiobasicField.php
+  - /layouts/joomla/form/field/radiobasic.php
+- Description: The form field `radiobasic` is obsolete and the normal radio form field should be used with the layout `joomla.form.field.radio.switcher`.
+```xml
+// Old:
+<field type="radiobasic" />
+
+// New:
+<field type="radio" layout="joomla.form.field.radio.switcher"/>
+```
+
 ## Removed legacy OTP code from `UserModel` and `ProfileModel`
 - PR: https://github.com/joomla/joomla-cms/pull/47457
 - Files:
@@ -108,8 +151,8 @@ $this->app;
 
 // New:
 $this->getApplication();
-
 ```
+
 ## `PrivacyPlugin` db property removed
 - PR: https://github.com/joomla/joomla-cms/pull/47880
 - File: /administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
@@ -189,7 +232,7 @@ $this->getDatabase();
   - /administrator/components/com_templates/src/Service/HTML/Templates.php
   - /administrator/components/com_users/helpers/debug.php
   - /administrator/components/com_users/helpers/users.php
-- Description: The non-namespaced helper classes in the `helpers/` folder of several components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat6` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
+- Description: The non-namespaced helper classes in the `helpers/` folder of several components were deprecated in 4.3 and only forwarded to their namespaced replacements. They have now been removed entirely. They are **not** registered in the `behaviour/compat7` plugin classmap, so referencing the old global class name results in a "class not found" fatal error. Replace any use of the old class with the namespaced class below (add the matching `use` statement); all public method signatures are unchanged. To fix any errors, make a search and replace to use the namespaced versions now, e.g.
 - Class list mapping:
   - `ContactHelperRoute` — use `\Joomla\Component\Contact\Site\Helper\RouteHelper\ContactHelperRoute` instead
   - `JHtmlIcon` — use `\Joomla\Component\Content\Administrator\Service\HTML\Icon` instead
@@ -220,19 +263,6 @@ BannersHelper::function();
 // New
 \Joomla\Component\Banners\Administrator\Helper\BannersHelper::function();
 ```
-
-## CMS Crypt Package Moved to the 'Behaviour - Backward Compatibility 7' Plugin
-- PR: https://github.com/joomla/joomla-cms/pull/47899
-- Folder: /libraries/src/Crypt
-- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. For Joomla 7.0 it has been moved to the compat plugin and will finally be completely removed in 8.0.
-  Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
-  expect for
-  - `Crypt::timingSafeCompare()` use `hash_equals()` instead
-  - `Crypt::safeStrlen()` use `mb_strlen()` instead
-  - `Crypt::safeSubstr()` use `mb_substr()` instead
-  - `Cipher\SodiumCipher::class` use `\Joomla\Crypt\Cipher\Sodium::class` instead
-  - `Cipher\CryptoCipher::class` use `\Joomla\Crypt\Cipher\Crypto::class` instead
-
 
 ## Removed local log entry functionality in debug plugin
 - PR: https://github.com/joomla/joomla-cms/pull/47900
@@ -328,4 +358,71 @@ Joomla.jText._('COM_FOO');
 
 // New:
 Joomla.Text._('COM_FOO');
+```
+
+## Removed support for string parameters to generate template thumbnails
+- PR: https://github.com/joomla/joomla-cms/pull/47924
+- File: /administrator/components/com_templates/src/Service/HTML/Templates.php
+- Description: The method to get the thumbnails accept only a template object and not anymore a string.
+```php
+// Old:
+HTMLHelper::_('templates.thumb', $item->name);
+HTMLHelper::_('templates.thumbModal', $item->name);
+
+// New:
+HTMLHelper::_('templates.thumb', $item);
+HTMLHelper::_('templates.thumbModal', $item);
+```
+
+## Url layout file is not escaping the url
+- PR: https://github.com/joomla/joomla-cms/pull/47929
+- File: /layouts/joomla/form/field/url.php
+- Description: The url layout file is not escaping the url anymore, the logic is moved to the `UrlField` class. If the layout file /layouts/joomla/form/field/url.php is used in an extension, then the encoding must be done by again.
+```php
+// Old:
+LayoutHelper::render('joomla.form.field.url', ['value' => 'https://www.joomla.org']);
+
+// New:
+LayoutHelper::render('joomla.form.field.url', ['value' => htmlspecialchars(PunycodeHelper::urlToUTF8('https://www.joomla.org'), ENT_QUOTES, 'UTF-8')]);
+```
+
+## BannerHelper class got removed
+- PR: https://github.com/joomla/joomla-cms/pull/47937
+- File: /components/com_banners/src/Helper/BannerHelper.php
+- Description: The `BannerHelper` got removed as it contains only an image test function. When testing the image file, use `\Joomla\CMS\Helper\MediaHelper::isImage($url)` for pixel-based image files in combination with `\Joomla\CMS\Helper\MediaHelper::getMimeType($url) === 'image/svg+xml'` for vector based image files. Be aware that the image url should first be sanitized with the helper function.
+```php
+// Old:
+BannerHelper::isImage($url);
+
+// New:
+MediaHelper::isImage(HTMLHelper::cleanImageURL($url));
+```
+
+## Removed deprecated code in the application classes
+- PR: https://github.com/joomla/joomla-cms/pull/45866
+- Files:
+  - libraries/src/Application/CMSApplication.php
+  - libraries/src/Application/CMSApplicationInterface.php
+  - libraries/src/Application/AdministratorApplication.php
+  - libraries/src/Application/ApiApplication.php
+  - libraries/src/Application/ConsoleApplication.php
+  - libraries/src/Application/WebApplication.php
+- Description: Several pieces of deprecated code have been removed from the core application classes. 
+  - The obsolete `loadSession()` method and static `purgeMessages()` method have been removed. For example you can use:
+  - The magic `__get()` accessor on the console application has been removed, so protected/dynamic properties can no longer be read directly as `$app->somProperty` use the dedicated getter methods instead. 
+  - The deprecated `getCfg()` method has been removed (read configuration with `get()`).
+  - The API application doesn't have anymore the `getApiRouter` function.
+```php
+// Old:
+$value = $app->getCfg('sitename');
+AdministratorApplication:purgeMessages();
+ApiApplication::getApiRouter();
+$value = $app->input;
+
+// New:
+$value = $app->get('sitename');
+Factory::getApplication()->bootComponent('messages')->getMVCFactory()
+            ->createModel('Messages', 'Administrator')->purge(Factory::getApplication()->getIdentity()->id);
+Factory::getContainer()->get(ApiRouter::class);
+$value = $app->getInput();
 ```
