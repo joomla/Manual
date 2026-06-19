@@ -354,7 +354,7 @@ $archiveModel->getItems();
 - Description: Removes the deprecated global `Joomla.JText` Javascript property. Use `Joomla.Text` instead.
 ```javascript
 // Old:
-Joomla.jText._('COM_FOO');
+Joomla.JText._('COM_FOO');
 
 // New:
 Joomla.Text._('COM_FOO');
