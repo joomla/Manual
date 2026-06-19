@@ -348,6 +348,18 @@ $archiveModel->getItems();
 <field type="Folderlist" />
 ```
 
+## Removed Joomla.JText proxy
+- PR: https://github.com/joomla/joomla-cms/pull/47928
+- File: /media_source/system/js/core.es6.js
+- Description: Removes the deprecated global `Joomla.JText` Javascript property. Use `Joomla.Text` instead.
+```javascript
+// Old:
+Joomla.JText._('COM_FOO');
+
+// New:
+Joomla.Text._('COM_FOO');
+```
+
 ## Removed support for string parameters to generate template thumbnails
 - PR: https://github.com/joomla/joomla-cms/pull/47924
 - File: /administrator/components/com_templates/src/Service/HTML/Templates.php
