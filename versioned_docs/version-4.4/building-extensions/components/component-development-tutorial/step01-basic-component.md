@@ -561,7 +561,7 @@ Should the language file be called com_example.ini or com_example.sys.ini?
 3. Change the tmpl default.php file so that it outputs the text for the language constant,
 instead of the hard-coded text. 
 You use the `Joomla\CMS\Language\Text::_()` method to translate the language string,
-as described in [Using Text::_](../../../general-concepts/multilingual/using-text-class.md#using-text_).
+as described in [Using Text::_](../../../general-concepts/multilingual.md#using-the-text-class).
 
 4. Update the manifest file example.xml to add the `<folder>language</folder>` 
 within the site `<files>`.
