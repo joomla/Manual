@@ -95,8 +95,11 @@ It tells Joomla the type and name of the extension, where the source files are, 
     <administration>
         <files folder="administrator/components/com_example">
             <folder>services</folder>
-            <folder>language</folder>
         </files>
+        <languages folder="administrator/components/com_example/language">
+            <language tag="en-GB">en-GB/com_example.ini</language>
+            <language tag="en-GB">en-GB/com_example.sys.ini</language>
+        </languages>
     </administration>
 
 </extension>
@@ -159,8 +162,11 @@ into the components/com_example directory within the Joomla instance.
 <administration>
     <files folder="administrator/components/com_example">
         <folder>services</folder>
-        <folder>language</folder>
     </files>
+    <languages folder="administrator/components/com_example/language">
+        <language tag="en-GB">en-GB/com_example.ini</language>
+        <language tag="en-GB">en-GB/com_example.sys.ini</language>
+    </languages>
 </administration>
 ```
 
@@ -172,6 +178,12 @@ into the administrator/components/com_example directory within the Joomla instan
 If you have other files and folders within your com_example directory
 then they will be ignored. 
 Sometimes an easy mistake to make is to forget to include files or folders within a `<files>` element!
+
+The `<administration>` `<languages>` element tells the Joomla installer where to find the files 
+associated with the back-end administrator functionality of the component. 
+As described in [Manifest Files / Languages](../../install-update/installation/manifest.md#languages),
+there are 2 ways to handle languages, 
+and in this tutorial we use the method which copies them to the administrator/languages folder. 
 
 ## services/provider.php file
 
@@ -549,7 +561,7 @@ Should the language file be called com_example.ini or com_example.sys.ini?
 3. Change the tmpl default.php file so that it outputs the text for the language constant,
 instead of the hard-coded text. 
 You use the `Joomla\CMS\Language\Text::_()` method to translate the language string,
-as described in [Using Text::_](../../../general-concepts/multilingual.md#using-the-text-class).
+as described in [Using Text::_](../../../general-concepts/multilingual/using-text-class.md#using-text_).
 
 4. Update the manifest file example.xml to add the `<folder>language</folder>` 
 within the site `<files>`.
