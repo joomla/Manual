@@ -132,7 +132,6 @@ The display function of the View class changes to:
         $this->data = $this->getModel()->getItem();
         parent::display($tpl);
     }
-}
 ```
 
 The View code calls its `getModel()` method to return the default Model,
@@ -249,6 +248,11 @@ Install the new version after updating the version number in the manifest file:
 
 You can then explore the functionality of configuring the menuitems with the administrator back-end,
 and seeing them appear on the site pages.
+
+## Challenge
+
+Can you add another landmark to provide a third choice for the menuitem? 
+You obviously have to be able to click on the menuitem to display it as well.
 
 ## Footnote
 
