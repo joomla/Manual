@@ -29,8 +29,7 @@ The following list of changes belong to the compatibility plugin and work when e
 ### CMS Crypt package
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
-- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably,
-  expect for
+- Description: The Crypt package of the CMS (`\Joomla\CMS\Crypt`) has been deprecated for a long time. Please use the [framework `Crypt`](https://github.com/joomla-framework/crypt) package (`\Joomla\Crypt`). The packages can be used nearly interchangeably, expect for:
   - `Crypt::timingSafeCompare()` use `hash_equals()` instead
   - `Crypt::safeStrlen()` use `mb_strlen()` instead
   - `Crypt::safeSubstr()` use `mb_substr()` instead
@@ -50,6 +49,29 @@ The following list of changes belong to the compatibility plugin and work when e
 // New:
 <field type="radio" layout="joomla.form.field.radio.switcher"/>
 ```
+
+### HTML helpers
+- PR: https://github.com/joomla/joomla-cms/pull/47974
+- Files: 
+  - /libraries/src/HTML/Helpers/Bootstrap.php
+  - /libraries/src/HTML/Helpers/Tag.php
+  - /libraries/src/HTML/Helpers/Behavior.php
+  - /libraries/src/HTML/Helpers/FormBehavior.php
+  - /libraries/src/HTML/Helpers/Jquery.php
+  - /libraries/src/HTML/Helpers/SortableList.php
+- Description: HTML helpers are mostly migrated to web asset manager, whenever possible use that one. The following list of HTML helpers should not be used anymore, instead of, use the replacement in the web asset manager:
+  - `HTMLHelper::_('behavior.core')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('core')` instead
+  - `HTMLHelper::_('behavior.formvalidator')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('form.validate')` instead
+  - `HTMLHelper::_('behavior.combobox')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->usePreset('awesomplete')` instead
+  - `HTMLHelper::_('behavior.multiselect')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('multiselect')` instead
+  - `HTMLHelper::_('behavior.keepalive')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('keepalive')` instead
+  - `HTMLHelper::_('behavior.highlighter')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('highlighter')` instead
+  - `HTMLHelper::_('formbehavior.chosen')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->enableAsset('choicesjs')` instead
+  - `HTMLHelper::_('formbehavior.ajaxchosen')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->enableAsset('choicesjs')` instead
+  - `HTMLHelper::_('jquery.framework')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('jquery')` instead
+  - `HTMLHelper::_('sortablelist.sortable')` use `HTMLHelper::_('draggablelist.draggable', $tableId, $formId, $sortDir, $saveOrderingUrl, $proceedSaveOrderButton, $nestedList)` instead
+  - `HTMLHelper::_('bootstrap.framework')` use `Factory::getApplication()->getDocument()->getWebAssetManager()->useScript('bootstrap.x')` instead, where x is the component to load, like alert or button
+  - `HTMLHelper::_('tag.ajaxfield')` has no replacement
 
 ## Removed legacy OTP code from `UserModel` and `ProfileModel`
 - PR: https://github.com/joomla/joomla-cms/pull/47457
