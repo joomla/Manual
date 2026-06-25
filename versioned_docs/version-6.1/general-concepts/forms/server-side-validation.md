@@ -185,7 +185,7 @@ As the field attributes are included in the XML element which is passed to the v
 ```php
 <?php
 namespace Mycompany\Component\SampleForm2\Site\Rule;
-defined('_JEXEC') or die('Restricted access');
+\defined('_JEXEC') or die('Restricted access');
 
 use Joomla\CMS\Form\FormRule;
 use Joomla\Registry\Registry;
@@ -195,7 +195,7 @@ class TelephoneRule extends FormRule
 {
 	protected $regex = '^[0-9\#\*]+$';  // just numbers plus * plus #
     
-    public function test(\SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null)
+    public function test(\SimpleXMLElement $element, $value, $group = null, ?Registry $input = null, ?Form $form = null)
     {
         if (preg_match(\chr(1) . $this->regex . \chr(1) . $this->modifiers, $value)) {
             return true;
