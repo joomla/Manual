@@ -396,6 +396,8 @@ so that the id field is displayed as well as the title field?
 
 ## Footnote
 
+### Database Type
+
 The code above is designed for MySQL database,
 but you can easily adapt it to run on another database such as MariaDB.
 
@@ -408,3 +410,24 @@ Recommended values would be:
 - DEFAULT CHARSET = utf8mb4 
 
 - DEFAULT COLLATE = utf8mb4_unicode_ci
+
+### Capitalisation 
+
+In this step we've used:
+
+```php
+$table = $this->getTable('Landmark', 'Administrator');
+```
+
+whereas in similar calls to get other MVC classes we've used:
+
+```php
+$view = $this->getView('landmark', 'html');
+$model = $this->getModel('landmark');
+```
+
+In these calls, it doesn't matter whether you capitalise the first character or not.
+The MVCFactory calls `ucfirst` on the parameters passed in 
+when it forms the FQN of the class to find. 
+And then the class is found using the rules described in 
+[Finding Class Files with PSR4](../../../general-concepts//namespaces/finding-classes-with-psr4.md).
