@@ -59,15 +59,15 @@ to their usual places in a Joomla instance, before the SQL processing is perform
 In our SQL file we create our table and insert 2 elements into it:
 
 ```php title="com_example/administrator/components/com_example/sql/install.mysql.sql"
-DROP TABLE IF EXISTS `#__landmark`;
+DROP TABLE IF EXISTS `#__landmarks`;
 
-CREATE TABLE `#__landmark` (
+CREATE TABLE `#__landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
     `title`     VARCHAR(25) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `#__landmark` (`title`) VALUES
+INSERT INTO `#__landmarks` (`title`) VALUES
 ('The Eiffel Tower'),
 ('The Giant\'s Causeway');
 ```
@@ -85,7 +85,7 @@ In our table we have 2 columns:
 
 - id - which auto-increments, and gives us a primary key for the table, and,
 
-- title - which is the name of the landmark. 
+- title - which is the name of the landmark.
 
 Joomla has several standard names which it gives to columns which serve a similar purpose.
 You can find these standard names at [Reserved Column Names and Aliases](../../../general-concepts/table/advanced-table.md#reserved-column-names-and-aliases).
@@ -107,7 +107,7 @@ The actions to perform are specified in the manifest file:
 and in the component uninstall SQL file:
 
 ```php title="com_example/administrator/components/com_example/sql/uninstall.mysql.sql"
-DROP TABLE IF EXISTS `#__landmark`;
+DROP TABLE IF EXISTS `#__landmarks`;
 ```
 
 ### Component Upgrade
@@ -131,15 +131,15 @@ We want the same database operations as in the new install case to be performed,
 so we specify them in a file:
 
 ```php title="com_example/administrator/components/com_example/sql/updates/mysql/0.4.0.sql"
-DROP TABLE IF EXISTS `#__landmark`;
+DROP TABLE IF EXISTS `#__landmarks`;
 
-CREATE TABLE `#__landmark` (
+CREATE TABLE `#__landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
     `title`     VARCHAR(25) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `#__landmark` (`title`) VALUES
+INSERT INTO `#__landmarks` (`title`) VALUES
 ('The Eiffel Tower'),
 ('The Giant\'s Causeway');
 ```
@@ -166,7 +166,7 @@ and we use this in place of the hard-coded list field.
         type="sql"
         label="COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE"
         description="COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC"
-        query="SELECT id, title FROM #__landmark"
+        query="SELECT id, title FROM #__landmarks"
         key_field="id"
         value_field="title"
         >
@@ -210,7 +210,7 @@ class LandmarkTable extends Table
 {
     public function __construct(DatabaseInterface $db)
     {
-        parent::__construct('#__landmark', 'id', $db);
+        parent::__construct('#__landmarks', 'id', $db);
     }
 }
 ```
@@ -364,7 +364,7 @@ You should install the new version and confirm that it works similar to before.
 
 ### Landmark Table
 
-You should now see the `#__landmark` table in the database, with its 2 entries.
+You should now see the `#__landmarks` table in the database, with its 2 entries.
 
 Try adding an extra row and confirm that the functionality works as expected.
 
@@ -394,7 +394,7 @@ This cache file is refreshed any time that an extension is installed.
 Can you change your site Model, View and tmpl source files
 so that the id field is displayed as well as the title field?
 
-## Footnote
+## Footnotes
 
 ### Database Type
 
