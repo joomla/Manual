@@ -23,7 +23,7 @@ Step-by-step list to setup a development environment for an existing extension
        - Now add the namespace to your extensions manifest file by adding `<namespace path="src">Your\Base\Namespace\Component\Componentname</namespace>` to it.
        - You are now still missing the `services/provider.php` in your components administrator folder. This you have to create manually.
 13. Commit the changes to your repository and push them to your Github or Gitlab. Run `vendor/bin/php-cs-fixer fix` once more for good measure to ensure the changes by rector did not introduce new codestyle issues.
-14. If your folder structure of your old extension does not follow the structure when installed in a Joomla installation, you should now move the admin part to `administrator/components/<your component>`, your site part to `components/<your component>` etc. Remember to commit that change. 
+14. If your folder structure of your old extension does not follow the structure when installed in a Joomla installation, you should now move the admin part to `src/administrator/components/<your component>`, your site part to `src/components/<your component>` etc. Remember to commit that change. 
 15. Now would be the time that you really should open your project in PHPStorm if you haven't done so already.
 16. Create a test installation of Joomla somewhere to test your extension.
 17. Copy the content of your `/src` folder over the test installation to have all current project files in the right locations at this point. 
