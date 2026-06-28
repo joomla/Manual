@@ -32,7 +32,7 @@ Step-by-step list to setup a development environment for an existing extension
 20. Discover your extension and test it in your test installation, fix all bugs you notice, commit after each bug, repeat until you are happy with the current state.
 21. Run `vendor/bin/robo headers` to update all your copyright headers to the right structure you can defined in your `jorobo.dist.ini`. Pay attention that you are only changing the headers of your own code and not from third parties! Commit!
 22. Modify your manifest file and replace the relevant parts with the placeholders from JoRobo defined in the documentation here.
-23. Set the version in your manifest and wherever you else you need to set it, create a new tag and then run `vendor/bin/robo build`. You now have your installable extension package in your projects `/dist` folder.
+23. Set the version in your manifest and wherever else you need to set it, create a new tag and then run `vendor/bin/robo build`. You now have your installable extension package in your projects `/dist` folder.
 
 Congratulations, you now updated your Joomla 3 or later extension to the latest Joomla version, applied the standard codestyle for PHP projects, updated your code to PHP 8.1, don't have any deprecated code and now have a professional development environment including a CI system for each commit. 
 
