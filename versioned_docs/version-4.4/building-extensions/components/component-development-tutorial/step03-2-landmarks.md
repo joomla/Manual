@@ -32,7 +32,7 @@ Error handling
 
 The default.xml file, which defines the menuitem, needs to change to:
 
-```xml title="components/com_example/src/tmpl/landmark/default.xml"
+```xml title="components/com_example/tmpl/landmark/default.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
     <layout title="COM_EXAMPLE_LANDMARK_MENUITEM_TITLE">

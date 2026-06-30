@@ -454,7 +454,7 @@ namely the ability to override the tmpl using a template override.
 
 This file simply outputs the HTML element.
 
-```php title="components/com_example/src/tmpl/landmark/default.php"
+```php title="components/com_example/tmpl/landmark/default.php"
 <?php
 \defined('_JEXEC') or die;
 

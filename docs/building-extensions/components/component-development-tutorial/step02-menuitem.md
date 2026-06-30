@@ -31,7 +31,7 @@ as shown in the screenshot below.
 
 To do this we set a file within the same directory as the associated tmpl file:
 
-```xml title="components/com_example/src/tmpl/landmark/default.xml"
+```xml title="components/com_example/tmpl/landmark/default.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
     <layout title="COM_EXAMPLE_LANDMARK_MENUITEM_TITLE">
