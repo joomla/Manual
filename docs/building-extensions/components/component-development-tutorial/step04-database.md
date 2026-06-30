@@ -59,15 +59,13 @@ to their usual places in a Joomla instance, before the SQL processing is perform
 In our SQL file we create our table and insert 2 elements into it:
 
 ```php title="com_example/administrator/components/com_example/sql/install.mysql.sql"
-DROP TABLE IF EXISTS `#__landmarks`;
-
-CREATE TABLE `#__landmarks` (
+CREATE TABLE IF NOT EXISTS `#__example_landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
     `title`     VARCHAR(25) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `#__landmarks` (`title`) VALUES
+INSERT INTO `#__example_landmarks` (`title`) VALUES
 ('The Eiffel Tower'),
 ('The Giant\'s Causeway');
 ```
@@ -80,6 +78,10 @@ In your code, if you prefix a table name with `#__`
 then Joomla will substitute this with the site database prefix 
 (found in the Global Configuration / configuration.php)
 to produce the actual database table name. 
+
+We've called our table "#__example_landmarks" with the name of our component com_example included at the start.
+Obviously tables in a database must have unique names, 
+so including the component name in this way significantly reduces the risk of a clash with another Joomla extension. 
 
 In our table we have 2 columns:
 
@@ -107,7 +109,7 @@ The actions to perform are specified in the manifest file:
 and in the component uninstall SQL file:
 
 ```php title="com_example/administrator/components/com_example/sql/uninstall.mysql.sql"
-DROP TABLE IF EXISTS `#__landmarks`;
+DROP TABLE IF EXISTS `#__example_landmarks`;
 ```
 
 ### Component Upgrade
@@ -131,15 +133,13 @@ We want the same database operations as in the new install case to be performed,
 so we specify them in a file:
 
 ```php title="com_example/administrator/components/com_example/sql/updates/mysql/0.4.0.sql"
-DROP TABLE IF EXISTS `#__landmarks`;
-
-CREATE TABLE `#__landmarks` (
+CREATE TABLE IF NOT EXISTS `#__example_landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
     `title`     VARCHAR(25) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `#__landmarks` (`title`) VALUES
+INSERT INTO `#__example_landmarks` (`title`) VALUES
 ('The Eiffel Tower'),
 ('The Giant\'s Causeway');
 ```
@@ -160,13 +160,13 @@ Joomla provides a [sql standard form field](../../../general-concepts/forms-fiel
 which allows us to select entries from a database table,
 and we use this in place of the hard-coded list field. 
 
-```xml title="components/com_example/src/tmpl/landmark/default.xml"
+```xml title="components/com_example/tmpl/landmark/default.xml"
     <field
         name="id"
         type="sql"
         label="COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE"
         description="COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC"
-        query="SELECT id, title FROM #__landmarks"
+        query="SELECT id, title FROM #__example_landmarks"
         key_field="id"
         value_field="title"
         >
@@ -210,7 +210,7 @@ class LandmarkTable extends Table
 {
     public function __construct(DatabaseInterface $db)
     {
-        parent::__construct('#__landmarks', 'id', $db);
+        parent::__construct('#__example_landmarks', 'id', $db);
     }
 }
 ```
@@ -238,7 +238,7 @@ is different from the constructor of its parent Table class).
 
 We use our LandmarkTable in the Model, where the getItem method now needs to be:
 
-```php title=""
+```php title="components/com_example/src/Model/LandmarkModel.php"
 function getItem($pk = null)
 {
     $app = Factory::getApplication();
@@ -300,7 +300,7 @@ which will display the exception on the error page, as it did for our Unexpected
 
 There have been a number of changes to the manifest file in this step, so here's the updated file:
 
-```xml title="com_example/example/xml"
+```xml title="com_example/example.xml"
 <?xml version="1.0" encoding="UTF-8"?>
 <extension type="component" method="upgrade">
 
@@ -364,7 +364,7 @@ You should install the new version and confirm that it works similar to before.
 
 ### Landmark Table
 
-You should now see the `#__landmarks` table in the database, with its 2 entries.
+You should now see the `#__example_landmarks` table in the database, with its 2 entries.
 
 Try adding an extra row and confirm that the functionality works as expected.
 
@@ -399,7 +399,9 @@ so that the id field is displayed as well as the title field?
 ### Database Type
 
 The code above is designed for MySQL database,
-but you can easily adapt it to run on another database such as MariaDB.
+but you can easily adapt it to run on another database such as PostgreSQL.
+
+Joomla also runs on MariaDB, which (at time of writing) has identical statements to those of MySQL above.
 
 Also the CREATE TABLE statement above doesn't specify the Engine, character set or collation,
 so these will be picked up from your database defaults. 
