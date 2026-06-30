@@ -54,6 +54,7 @@ The updated display method of the View is:
     {
         $this->data = $this->getModel()->getItem();
         parent::display($tpl);
+
       // highlight-start
         $document = $this->getDocument();
         $document->setTitle($this->data);
@@ -62,7 +63,7 @@ The updated display method of the View is:
 ```
 
 The line `parent::display($tpl)` creates content for the HTML `<body>` section,
-but comes before the `$document->setTitle($this->data)` which sets data to be output in the HTML `<head>`.
+but comes before the line `$document->setTitle($this->data)` which sets data to be output in the HTML `<head>`.
 However, this isn't a problem because the content is buffered within the Document object,
 until the Document object is used to generate the HTML output.
 
@@ -81,5 +82,5 @@ When you navigate to a page displaying a landmark, then you should see the landm
 If you look at the methods of the base HtmlView class you can see [setDocumentTitle](cms-api://classes/Joomla-CMS-MVC-View-HtmlView.html#method_setDocumentTitle).
 Change the View code to use this method instead. 
 
-This method takes account of the setting in Global Configuration / Site tab, Site Name in Page Titles (in SEO section).
+This method takes account of the setting in Global Configuration / Site tab, "Site Name in Page Titles" (in the SEO section).
 Change this setting, and verify that the browser title displayed matches the Global Config setting.
