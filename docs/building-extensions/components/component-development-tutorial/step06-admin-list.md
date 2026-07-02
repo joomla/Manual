@@ -1,14 +1,14 @@
 ---
-sidebar_position: 5
-title: Step 5 Administrator List
+sidebar_position: 6
+title: Step 6 Administrator List
 ---
 
 ## Introduction
 
-We now begin the development which allows administators to manage the landmarks.
+We now begin the development which allows administrators to manage the landmarks.
 In this step we provide a list of landmarks to the administrator. 
 
-The code is available at [com_example step 5](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step05_admin_list).
+The code is available at [com_example step 6](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step06_admin_list).
 
 ## Learning Points
 
@@ -28,32 +28,36 @@ In this step we develop the 2 items highlighted in the screenshot above:
 
 ## Defining the administrator menu
 
-The administrator menu is defined in the manifest XML file, so we add a couple of items to the `<administration>` section:
+The administrator menu is defined in the manifest XML file, so we add a couple of items to the `<administration>` section.
+(The tmpl folder which we'll also need has been added too).
 
-```php title="com_example/example.xml"
+Note that ampersands must be encoded as `&amp;` in manifest XML files.
+
+```xml title="com_example/example.xml"
     <administration>
         <files folder="administrator/components/com_example">
             <folder>services</folder>
             <folder>sql</folder>
             <folder>src</folder>
+          <!-- highlight-next-line -->
             <folder>tmpl</folder>
         </files>
         <languages folder="administrator/components/com_example/language">
             <language tag="en-GB">en-GB/com_example.ini</language>
             <language tag="en-GB">en-GB/com_example.sys.ini</language>
         </languages>
-      <--! highlight-start -->
+      <!-- highlight-start -->
         <menu link="option=com_example">COM_EXAMPLE_MENU</menu>
         <submenu>
             <menu link="option=com_example&amp;view=landmarks">COM_EXAMPLE_MENU</menu>
         </submenu>
-      <--! highlight-end -->
+      <!-- highlight-end -->
     </administration>
 ```
 
 Here both menu items are given the same text: COM_EXAMPLE_MENU, but you can obviously make them different if you wish.
 
-As these are shown on a page with display from multiple comments, the language string must go into the .sys.ini file:
+As these are shown on a page with display from multiple components, the language string must go into the .sys.ini file:
 
 ```php title="administrator/components/com_example/language/en-GB/com_example.sys.ini"
 COM_EXAMPLE_TITLE="Joomla Component Tutorial"
@@ -72,7 +76,7 @@ COM_EXAMPLE_MENU="Landmarks"
 As in the display of a landmark on a site page, we use an MVC approach, 
 so we define a Controller, View, Model and tmpl file.
 
-Note that the URL which we have to handle is defined in the `<submenu>` element above, 
+Note that the URL which we have to handle is defined in the `<submenu>` element in the manifest file above, 
 namely with the HTTP GET parameters option=com_example and view=landmarks.
 
 How we handle this in the administrator code is similar to how the site front-end handled it. 
@@ -153,6 +157,7 @@ ListModel has a method called getItems which makes a call getListQuery back into
 in order to obtain a query to apply to the database to select the required records.
 
 The way to write a Joomla database query is described in [Select Data from the Database](../../../general-concepts/database/select-data.md).
+Models have access to the Database object via `$this->getDatabase()`.
 
 ```php title="administrator/components/com_example/src/Model/LandmarksModel.php"
 <?php
@@ -181,6 +186,9 @@ class LandmarksModel extends ListModel
 ### landmarks tmpl file
 
 This file just outputs an HTML table with the data from the database.
+
+Here we reuse 2 language constants from the administrator joomla.ini file for the table headers. 
+This ini file always gets loaded by Joomla. 
 
 ```php title="administrator/components/com_example/tmpl/landmarks/default.php"
 <?php
@@ -231,7 +239,7 @@ Because this file is in a new folder we need to include this folder in the manif
 
 ## Installation
 
-Do the usual update of the version number in the manifest XML file and install the updated component.
+Increment the version number in the manifest XML file as usual, and install the updated component.
 
 In the administrator back-end click on Components in the left hand panel, and then on the Landmarks submenuitem.
 
