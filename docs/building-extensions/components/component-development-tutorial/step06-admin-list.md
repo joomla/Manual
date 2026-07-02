@@ -18,7 +18,7 @@ List Model
 
 ## Approach
 
-![Admin display](./_assets/step05-admin-display.jpg)
+![Admin display](./_assets/step06-admin-display.jpg)
 
 In this step we develop the 2 items highlighted in the screenshot above:
 
@@ -72,9 +72,24 @@ COM_EXAMPLE_MENU="Landmarks"
 As in the display of a landmark on a site page, we use an MVC approach, 
 so we define a Controller, View, Model and tmpl file.
 
+Note that the URL which we have to handle is defined in the `<submenu>` element above, 
+namely with the HTTP GET parameters option=com_example and view=landmarks.
+
+How we handle this in the administrator code is similar to how the site front-end handled it. 
+We write the following files:
+
+- DisplayController - with a display() method
+
+- a "Landmarks" Model - which returns the landmarks found in the database
+
+- a "Landmarks" View - with a display() method
+
+- a "landmarks" tmpl file, which outputs the HTML
+
 ### Controller
 
-As we're displaying data in response to an HTTP GET request, this will be called DisplayController.
+As we're displaying data in response to an HTTP GET request, the Dispatcher will call the display method of a DisplayController.
+Note that the code includes the Administrator namespace.
 
 ```php title="administrator/components/com_example/src/Controller/DisplayController.php"
 <?php
@@ -91,5 +106,142 @@ class DisplayController extends BaseController {
         return parent::display($cachable, $urlparams);
     }
 }
-``` 
+```
 
+Here the code just calls the `parent::display` which is the display method in BaseController.
+The code there (including subsidiary functions) is similar to how we coded the site DisplayController:
+
+```php title="libraries/src/MVC/Controller/BaseController.php"
+...
+$viewName = $this->input->get('view', $this->default_view);  // will return "landmarks"
+...
+$view = $this->getView($viewName, ...)  // will return Landmarks\HtmlView class
+...
+$model = $this->getModel($viewName,...)  // will return LandmarksModel class
+$view->setModel($model, true);    // allows us to use $view->getModel() to get this Model
+...
+$view->display()
+```
+
+### View
+
+```php title="administrator/components/com_example/src/View/Landmarks/HtmlView.php"
+?php
+
+namespace My\Component\Example\Administrator\View\Landmarks;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+
+class HtmlView extends BaseHtmlView {
+
+    function display($tpl = null) {
+
+        $model = $this->getModel();
+        $this->items = $model->getItems();
+
+        parent::display($tpl);
+    }
+}
+```
+
+### Model
+
+When returning a list of items then the base model to use is ListModel in libraries/src/MVC/Model/Listmodel.php.
+ListModel has a method called getItems which makes a call getListQuery back into our Model class,
+in order to obtain a query to apply to the database to select the required records.
+
+The way to write a Joomla database query is described in [Select Data from the Database](../../../general-concepts/database/select-data.md).
+
+```php title="administrator/components/com_example/src/Model/LandmarksModel.php"
+<?php
+
+namespace My\Component\Example\Administrator\Model;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Model\ListModel;
+
+class LandmarksModel extends ListModel
+{
+    protected function getListQuery()
+    {
+        $db = $this->getDatabase();
+        $query = $db->getQuery(true);
+
+        $query->select('id, title')
+            ->from($db->quoteName('#__example_landmarks'));
+
+        return $query;
+    }
+}
+```
+
+### landmarks tmpl file
+
+This file just outputs an HTML table with the data from the database.
+
+```php title="administrator/components/com_example/tmpl/landmarks/default.php"
+<?php
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
+?>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <?php echo Text::_('JGLOBAL_TITLE'); ?>
+            </th>
+            <th>
+                <?php echo Text::_('JGRID_HEADING_ID'); ?>
+            </th>
+        </tr>
+    </thead>
+    <tbody><?php foreach ($this->items as $i => $item) :?>
+                <tr>
+                    <td>
+                        <?php echo $item->title; ?>
+                    </td>
+                    <td>
+                        <?php echo $item->id; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+    </tbody>
+</table>
+```
+
+Because this file is in a new folder we need to include this folder in the manifest XML file:
+
+```xml title="com_example/example.xml"
+    <administration>
+        <files folder="administrator/components/com_example">
+            <folder>services</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+          <!-- highlight-next-line -->
+            <folder>tmpl</folder>
+        </files>
+    ...
+```
+
+## Installation
+
+Do the usual update of the version number in the manifest XML file and install the updated component.
+
+In the administrator back-end click on Components in the left hand panel, and then on the Landmarks submenuitem.
+
+You should see the database records displayed as shown in the screenshot above.
+
+## Challenge
+
+In the administrator DisplayController we didn't write any custom code, 
+and instead relied on the BaseController display method to set up the View and Model.
+Does the same work for the site DisplayController?
+
+Try removing completely the display() method from the site DisplayController, and then reinstall the component.
+How does this affect the front-end functionality? Can you explain it satisfactorily?
