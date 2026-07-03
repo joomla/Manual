@@ -119,7 +119,7 @@ The code there (including subsidiary functions) is similar to how we coded the s
 ...
 $viewName = $this->input->get('view', $this->default_view);  // will return "landmarks"
 ...
-$view = $this->getView($viewName, ...)  // will return Landmarks\HtmlView class
+$view = $this->getView($viewName, ...)  // will return Landmarks\HtmlView class instance
 ...
 $model = $this->getModel($viewName,...)  // will return LandmarksModel class
 $view->setModel($model, true);    // allows us to use $view->getModel() to get this Model
@@ -130,7 +130,7 @@ $view->display()
 ### View
 
 ```php title="administrator/components/com_example/src/View/Landmarks/HtmlView.php"
-?php
+<?php
 
 namespace My\Component\Example\Administrator\View\Landmarks;
 
@@ -183,12 +183,12 @@ class LandmarksModel extends ListModel
 }
 ```
 
+The ListModel code uses this query to select the records from the database,
+and then returns them to the View as the return value of `getItems()`.
+
 ### landmarks tmpl file
 
 This file just outputs an HTML table with the data from the database.
-
-Here we reuse 2 language constants from the administrator joomla.ini file for the table headers. 
-This ini file always gets loaded by Joomla. 
 
 ```php title="administrator/components/com_example/tmpl/landmarks/default.php"
 <?php
@@ -199,23 +199,26 @@ use Joomla\CMS\Language\Text;
 
 ?>
 <table class="table">
+    <caption class="visually-hidden">
+        <?php echo Text::_('COM_EXAMPLE_LANDMARKS_CAPTION'); ?>
+    </caption>
     <thead>
         <tr>
-            <th>
+            <th scope="col">
                 <?php echo Text::_('JGLOBAL_TITLE'); ?>
             </th>
-            <th>
+            <th scope="col">
                 <?php echo Text::_('JGRID_HEADING_ID'); ?>
             </th>
         </tr>
     </thead>
     <tbody><?php foreach ($this->items as $i => $item) :?>
                 <tr>
+                    <th scope="row">
+                        <?php echo $this->escape($item->title); ?>
+                    </th>
                     <td>
-                        <?php echo $item->title; ?>
-                    </td>
-                    <td>
-                        <?php echo $item->id; ?>
+                        <?php echo (int) $item->id; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -223,7 +226,31 @@ use Joomla\CMS\Language\Text;
 </table>
 ```
 
-Because this file is in a new folder we need to include this folder in the manifest XML file:
+This table has a number of features to improve accessibility,
+as described in the [Web Accessibility Initiative Table Tutorial](https://www.w3.org/WAI/tutorials/tables/) and
+in the [Joomla Magazine Accessible Tables article](https://magazine.joomla.org/issues/2025/november-2025/accessible-tables).
+
+1. The `<caption>` class="visually-hidden" means that it will not appear in the webpage display,
+but can be used by screen readers for people with reduced visibility.
+The text is a language constant which must be included in the administrator language .ini file:
+
+```php title="administrator/components/com_example/language/en-GB/com_example.ini"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE="Landmark"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
+// highlight-start
+; Admin landmarks view
+COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
+// highlight-end
+```
+
+2. The table has column headers describing the fields, 
+and row headers which are the landmark titles (which will become more apparent as we add to the number of fields).
+So these are identified with `<th>` tags, and include the scope="col" or scope="row" attribute as appropriate.
+
+We also reuse 2 language constants from the administrator joomla.ini file for the table column headers. 
+This ini file always gets loaded by Joomla. 
+
+Because this tmpl file is in a new folder we need to include this folder in the manifest XML file:
 
 ```xml title="com_example/example.xml"
     <administration>
