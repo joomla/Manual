@@ -264,6 +264,10 @@ Because this tmpl file is in a new folder we need to include this folder in the 
     ...
 ```
 
+In the line `$this->escape($item->title);`, the `escape` function results in a call to [PHP htmlspecialchars](https://www.php.net/manual/en/function.htmlspecialchars.php)
+which filters out HTML which could cause a script to be executed in the administrator back-end. 
+Similarly, casting the `$item->id` to an int ensures no dangerous HTML will be output.
+
 ## Installation
 
 Increment the version number in the manifest XML file as usual, and install the updated component.
