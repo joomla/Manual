@@ -1,0 +1,286 @@
+---
+sidebar_position: 6
+title: Step 6 Administrator List
+---
+
+## Introduction
+
+We now begin the development which allows administrators to manage the landmarks.
+In this step we provide a list of landmarks to the administrator. 
+
+The code is available at [com_example step 6](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step06_admin_list).
+
+## Learning Points
+
+Defining the administrator menu
+
+List Model
+
+## Approach
+
+![Admin display](./_assets/step06-admin-display.jpg)
+
+In this step we develop the 2 items highlighted in the screenshot above:
+
+- in the red rectangle, we'll add our menuitems into the Administrator / Components menu
+
+- in the green rectangle, we'll output the landmarks in an HTML table.
+
+## Defining the administrator menu
+
+The administrator menu is defined in the manifest XML file, so we add a couple of items to the `<administration>` section.
+(The tmpl folder which we'll also need has been added too).
+
+Note that ampersands must be encoded as `&amp;` in manifest XML files.
+
+```xml title="com_example/example.xml"
+    <administration>
+        <files folder="administrator/components/com_example">
+            <folder>services</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+          <!-- highlight-next-line -->
+            <folder>tmpl</folder>
+        </files>
+        <languages folder="administrator/components/com_example/language">
+            <language tag="en-GB">en-GB/com_example.ini</language>
+            <language tag="en-GB">en-GB/com_example.sys.ini</language>
+        </languages>
+      <!-- highlight-start -->
+        <menu link="option=com_example">COM_EXAMPLE_MENU</menu>
+        <submenu>
+            <menu link="option=com_example&amp;view=landmarks">COM_EXAMPLE_MENU</menu>
+        </submenu>
+      <!-- highlight-end -->
+    </administration>
+```
+
+Here both menu items are given the same text: COM_EXAMPLE_MENU, but you can obviously make them different if you wish.
+
+As these are shown on a page with display from multiple components, the language string must go into the .sys.ini file:
+
+```php title="administrator/components/com_example/language/en-GB/com_example.sys.ini"
+COM_EXAMPLE_TITLE="Joomla Component Tutorial"
+COM_EXAMPLE_DESCRIPTION="Builds an example application for managing famous landmarks"
+; Menu items
+COM_EXAMPLE_LANDMARK_MENUITEM_TITLE="Landmark"
+COM_EXAMPLE_LANDMARK_MENUITEM_DESCRIPTION="Displays a famous landmark"
+// highlight-start
+; Admin menu
+COM_EXAMPLE_MENU="Landmarks"
+// highlight-end
+```
+
+## Displaying the HTML Table
+
+As in the display of a landmark on a site page, we use an MVC approach, 
+so we define a Controller, View, Model and tmpl file.
+
+Note that the URL which we have to handle is defined in the `<submenu>` element in the manifest file above, 
+namely with the HTTP GET parameters option=com_example and view=landmarks.
+
+How we handle this in the administrator code is similar to how the site front-end handled it. 
+We write the following files:
+
+- DisplayController - with a display() method
+
+- a "Landmarks" Model - which returns the landmarks found in the database
+
+- a "Landmarks" View - with a display() method
+
+- a "landmarks" tmpl file, which outputs the HTML
+
+### Controller
+
+As we're displaying data in response to an HTTP GET request, the Dispatcher will call the display method of a DisplayController.
+Note that the code includes the Administrator namespace.
+
+```php title="administrator/components/com_example/src/Controller/DisplayController.php"
+<?php
+
+namespace My\Component\Example\Administrator\Controller;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Controller\BaseController;
+
+class DisplayController extends BaseController {
+
+    public function display($cachable = false, $urlparams = array()) {
+        return parent::display($cachable, $urlparams);
+    }
+}
+```
+
+Here the code just calls the `parent::display` which is the display method in BaseController.
+The code there (including subsidiary functions) is similar to how we coded the site DisplayController:
+
+```php title="libraries/src/MVC/Controller/BaseController.php"
+...
+$viewName = $this->input->get('view', $this->default_view);  // will return "landmarks"
+...
+$view = $this->getView($viewName, ...)  // will return Landmarks\HtmlView class instance
+...
+$model = $this->getModel($viewName,...)  // will return LandmarksModel class
+$view->setModel($model, true);    // allows us to use $view->getModel() to get this Model
+...
+$view->display()
+```
+
+### View
+
+```php title="administrator/components/com_example/src/View/Landmarks/HtmlView.php"
+<?php
+
+namespace My\Component\Example\Administrator\View\Landmarks;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
+
+class HtmlView extends BaseHtmlView {
+
+    function display($tpl = null) {
+
+        $model = $this->getModel();
+        $this->items = $model->getItems();
+
+        parent::display($tpl);
+    }
+}
+```
+
+### Model
+
+When returning a list of items then the base model to use is ListModel in libraries/src/MVC/Model/Listmodel.php.
+ListModel has a method called getItems which makes a call getListQuery back into our Model class,
+in order to obtain a query to apply to the database to select the required records.
+
+The way to write a Joomla database query is described in [Select Data from the Database](../../../general-concepts/database/select-data.md).
+Models have access to the Database object via `$this->getDatabase()`.
+
+```php title="administrator/components/com_example/src/Model/LandmarksModel.php"
+<?php
+
+namespace My\Component\Example\Administrator\Model;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\MVC\Model\ListModel;
+
+class LandmarksModel extends ListModel
+{
+    protected function getListQuery()
+    {
+        $db = $this->getDatabase();
+        $query = $db->getQuery(true);
+
+        $query->select('id, title')
+            ->from($db->quoteName('#__example_landmarks'));
+
+        return $query;
+    }
+}
+```
+
+The ListModel code uses this query to select the records from the database,
+and then returns them to the View as the return value of `getItems()`.
+
+### landmarks tmpl file
+
+This file just outputs an HTML table with the data from the database.
+
+```php title="administrator/components/com_example/tmpl/landmarks/default.php"
+<?php
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Language\Text;
+
+?>
+<table class="table">
+    <caption class="visually-hidden">
+        <?php echo Text::_('COM_EXAMPLE_LANDMARKS_CAPTION'); ?>
+    </caption>
+    <thead>
+        <tr>
+            <th scope="col">
+                <?php echo Text::_('JGLOBAL_TITLE'); ?>
+            </th>
+            <th scope="col">
+                <?php echo Text::_('JGRID_HEADING_ID'); ?>
+            </th>
+        </tr>
+    </thead>
+    <tbody><?php foreach ($this->items as $i => $item) :?>
+                <tr>
+                    <th scope="row">
+                        <?php echo $this->escape($item->title); ?>
+                    </th>
+                    <td>
+                        <?php echo (int) $item->id; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+    </tbody>
+</table>
+```
+
+This table has a number of features to improve accessibility,
+as described in the [Web Accessibility Initiative Table Tutorial](https://www.w3.org/WAI/tutorials/tables/) and
+in the [Joomla Magazine Accessible Tables article](https://magazine.joomla.org/issues/2025/november-2025/accessible-tables).
+
+1. The `<caption>` class="visually-hidden" means that it will not appear in the webpage display,
+but can be used by screen readers for people with reduced visibility.
+The text is a language constant which must be included in the administrator language .ini file:
+
+```php title="administrator/components/com_example/language/en-GB/com_example.ini"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE="Landmark"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
+// highlight-start
+; Admin landmarks view
+COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
+// highlight-end
+```
+
+2. The table has column headers describing the fields, 
+and row headers which are the landmark titles (which will become more apparent as we add to the number of fields).
+So these are identified with `<th>` tags, and include the scope="col" or scope="row" attribute as appropriate.
+
+We also reuse 2 language constants from the administrator joomla.ini file for the table column headers. 
+This ini file always gets loaded by Joomla. 
+
+Because this tmpl file is in a new folder we need to include this folder in the manifest XML file:
+
+```xml title="com_example/example.xml"
+    <administration>
+        <files folder="administrator/components/com_example">
+            <folder>services</folder>
+            <folder>sql</folder>
+            <folder>src</folder>
+          <!-- highlight-next-line -->
+            <folder>tmpl</folder>
+        </files>
+    ...
+```
+
+In the line `$this->escape($item->title);`, the `escape` function results in a call to [PHP htmlspecialchars](https://www.php.net/manual/en/function.htmlspecialchars.php)
+which filters out HTML which could cause a script to be executed in the administrator back-end. 
+Similarly, casting the `$item->id` to an int ensures no dangerous HTML will be output.
+
+## Installation
+
+Increment the version number in the manifest XML file as usual, and install the updated component.
+
+In the administrator back-end click on Components in the left hand panel, and then on the Landmarks submenuitem.
+
+You should see the database records displayed as shown in the screenshot above.
+
+## Challenge
+
+In the administrator DisplayController we didn't write any custom code, 
+and instead relied on the BaseController display method to set up the View and Model.
+Does the same work for the site DisplayController?
+
+Try removing completely the display() method from the site DisplayController, and then reinstall the component.
+How does this affect the front-end functionality? Can you explain it satisfactorily?
