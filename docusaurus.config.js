@@ -223,7 +223,7 @@ const config = {
             position: 'right',
           },
           {
-            href: 'https://docs.joomla.org',
+            href: 'https://guide.joomla.org',
             label: 'Using the CMS',
             position: 'right',
           },
