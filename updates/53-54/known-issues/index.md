@@ -10,3 +10,4 @@ This section documents important known issues in Joomla 5.4 and provides availab
 
 * [Joomla 5.4.2 Known Issues](5.4.2.md)
 * [Joomla 5.4.3 Known Issues](5.4.3.md)
+* [Joomla 5.4.7 Known Issues](5.4.7.md)
