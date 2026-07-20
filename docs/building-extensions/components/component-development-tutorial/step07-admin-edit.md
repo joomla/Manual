@@ -20,6 +20,8 @@ Joomla MVC Post-Request-Get pattern
 
 Joomla Forms, including the form session token, and storing user state
 
+Filtering data, both on input and output
+
 ToolbarHelper
 
 Updating records using Table
@@ -51,7 +53,7 @@ In the landmarks tmpl file we change the landmark title to be a link which will 
 
 We need to code the edit form, allowing the administrator to change the fields and submit the changes.
 
-We need to code a new Controller and Model to handle the editing of records.
+We need to code a new Controller, View and Model to handle the editing of records.
 
 ## Database
 
@@ -128,10 +130,23 @@ and in the tmpl file:
 
 ?>
 // highlight-start
-<h4><?php echo $this->data->title;?></h4>
+<h4><?php echo $this->escape($this->data->title);?></h4>
 <p><?php echo $this->data->description;?></p>
 // highlight-end
 ```
+
+Here we've escaped the title but not the description. 
+The `escape` function replaces `<` with `&lt;` and `>` with `&gt;` 
+which means that they appear as angle brackets in the client browser, but aren't treated as HTML tags by it.
+
+However, the description field includes text formatting based on HTML,
+and if you used `escape` on it then it would display the HTML `<h2>` etc tags in the text,
+rather than performing the formatting.
+So you shouldn't use `escape` on an editor field like this.
+
+Although the title is escaped, the fact that the code is in a tmpl file
+means that administrators who want to allow titles to include HTML formatting
+can always define a template override without the `escape`.
 
 ## Back-end
 
@@ -297,8 +312,9 @@ class HtmlView extends BaseHtmlView {
 ```
 
 The ToolbarHelper apply, save and cancel calls create the Save, Save & Close and Cancel buttons.
-Each of these will result in an HTTP POST request sent to the server, 
-and the first parameter of these function calls is what the `task` parameter will be set to in this POST request.
+When one of these buttons is pressed then the form will be submitted,
+and the data of the form fields will be sent as parameters of an HTTP POST request sent to the server.
+The first parameter of these ToolbarHelper function calls is what the `task` parameter will be set to in this POST request.
 
 #### Model and Form
 
@@ -395,7 +411,6 @@ The call to `loadForm` (located in the FormBehaviorTrait.php file) results in
                 type="text"
                 label="COM_EXAMPLE_LANDMARK_TITLE_LABEL"
                 description="COM_EXAMPLE_LANDMARK_TITLE_DESC"
-                size="40"
                 required="true"
                 default=""
                 />
@@ -411,7 +426,7 @@ The call to `loadForm` (located in the FormBehaviorTrait.php file) results in
 
 These fields are all types of Joomla [Standard Form Fields](../../../general-concepts/forms-fields/standard-fields/index.md).
 Some attributes are specific to the type of the form field,
-while common ones are described in [Standard Form Field Attributes]((../../../general-concepts/forms-fields/standard-form-field-attributes.md).
+while common ones are described in [Standard Form Field Attributes](../../../general-concepts/forms-fields/standard-form-field-attributes.md).
 
 The Form object makes a callback into `loadFormData` to get the prefill data for the form fields,
 and it then binds this data to the form
@@ -444,7 +459,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 The form fields are output using `renderField`,
 (step 3 in [How Forms Work](../../../general-concepts/forms/how-forms-work.md)).
 
-The form action attribute (which specifies the URL for the HTTP POST) 
+The `<form action= ...>` attribute (which specifies the URL for the HTTP POST) 
 has the same URL as was set in the Redirect in Action 3 above.
 
 The form name should be set to "adminForm".
@@ -452,7 +467,11 @@ The form name should be set to "adminForm".
 Note that the tmpl file doesn't need to output the Toolbar buttons,
 as this is handled by the Administrator Toolbar module.
 The JavaScript behind the buttons sets the task parameter to the parameter that was set in the View ToolbarHelper calls
-(ie 'landmark.apply' etc), but the tmpl file does need to output the task hidden input element.
+(ie 'landmark.apply' etc), but the tmpl file does need to output the task hidden input element:
+
+```php
+    <input type="hidden" name="task" value="" />
+```
 
 The line `HTMLHelper::_('form.token')` creates a token to reduce the risk of CSRF attacks,
 as described in [Security Token](../../../general-concepts/forms/mvc-etc.md#security-token)
@@ -469,7 +488,7 @@ COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
 // highlight-start
 ; Admin landmark edit form
 COM_EXAMPLE_LANDMARK_EDIT="Landmarks: Edit"
-COM_EXAMPLE_LANDMARK_TITLE_LABEL="Title"
+COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 COM_EXAMPLE_LANDMARK_TITLE_DESC="Name of the landmark"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_LABEL="Description"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_DESC="A summary description of the landmark"
@@ -552,13 +571,18 @@ use Joomla\CMS\Language\Text;
         // get the submitted data which was sent in the HTTP POST 
         // It's in an array called jform - because of 'control' => 'jform' in the previous loadForm call
         $data    = $this->input->post->get('jform', [], 'array');
-        $id = $data['id'];
+        
+        // The above line doesn't perform any filtering of the input data
+        // so you MUST filter the data subsequently (eg using the cast to int below).
+        // Even though the id field in the form is readonly and can't be changed there,
+        // hackers can easily manufacture (eg using curl) an HTTP POST with id set to anything.
+        $id = (int)$data['id'];
         
         // the filtering and validation is based on information in the form
         // so to do that we need to load the form again
         $form = $model->getForm();
         
-        // perform filtering on the data to remove risky HTML tags
+        // perform filtering on the data to remove risky HTML tags, inappropriate data, etc
         // This will result in a $form->filter($data) call in the Model
         $data = $model->filter($form, $data);
         
@@ -685,7 +709,7 @@ public function apply($key = null, $urlVar = null)
         $model = $this->getModel();
         $table = $model->getTable();
         $data = $this->input->post->get('jform', [], 'array');
-        $id = $data['id'];
+        $id = (int)$data['id'];
  
         $form = $model->getForm();
         
