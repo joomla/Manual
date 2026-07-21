@@ -61,7 +61,7 @@ In our SQL file we create our table and insert 2 elements into it:
 ```php title="com_example/administrator/components/com_example/sql/install.mysql.sql"
 CREATE TABLE IF NOT EXISTS `#__example_landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
-    `title`     VARCHAR(25) NOT NULL,
+    `title`     VARCHAR(40) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
@@ -135,7 +135,7 @@ so we specify them in a file:
 ```php title="com_example/administrator/components/com_example/sql/updates/mysql/0.4.0.sql"
 CREATE TABLE IF NOT EXISTS `#__example_landmarks` (
     `id`        INT(11)     NOT NULL AUTO_INCREMENT,
-    `title`     VARCHAR(25) NOT NULL,
+    `title`     VARCHAR(40) NOT NULL,
     PRIMARY KEY (`id`)
 );
 
