@@ -222,6 +222,12 @@ The following section describes the elements of a single update entity.
 - **php_minimum** – a minimum supported PHP version can be supplied in the update stream. If the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements.
 - **supported_databases** – a minimum supported databases + version check can be supplied in the update stream. When the server does not meet the minimum, a message is displayed to the user advising that an update is available but cannot be installed due to unsupported requirements. For example:  `<supported_databases mysql="5.5.3" mariadb="10.1" postgresql="9.2" mssql="10.50.1600.1" />`
 - **sha256**, **sha384**, **sha512** – Optional. The checksum of the downloadable extension file, in these various hash formats. The update will stop if a provided checksum doesn't match. You can find online utilities for generating these checksums.
+- **security** – Optional. A security level of the update. Can be an integer between 0 and 4 to define the severity:
+  - 0: None
+  - 1: Low
+  - 2: Medium
+  - 3: High
+  - 4: Critical
 
 The values of **element**, **type** and **folder** should match those in the table `#_extensions`, and the client_id there should match the **client** (0 for site, 1 for administrator).
 
