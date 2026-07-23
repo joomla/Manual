@@ -426,3 +426,24 @@ Factory::getApplication()->bootComponent('messages')->getMVCFactory()
 Factory::getContainer()->get(ApiRouter::class);
 $value = $app->getInput();
 ```
+
+## Database is required in extension classes
+- PR: https://github.com/joomla/joomla-cms/pull/47945
+- Files: 
+  - /administrator/components/com_fields/src/Model/FieldModel.php
+  - /administrator/components/com_finder/src/Indexer/Indexer.php
+  - /administrator/components/com_finder/src/Indexer/Query.php
+  - /administrator/modules/mod_menu/src/Menu/CssMenu.php
+- Description: The classes in the file list require a database injected or set when used. When used in the MVC context, then they are already correctly injected, custom instantiation in extensions need to be aware about.
+```php
+// Old:
+$indexer = new Indexer();
+
+// New:
+$indexer = new Indexer($this->getDatabase());
+```
+
+## Stringables in ajax calls are rendered directly
+- PR: https://github.com/joomla/joomla-cms/pull/47945
+- File: /components/com_ajax/ajax.php
+- Description: When an extension returns a `Stringable` object for an ajax call, then it will be printed directly and not anymore wrapped in a `JsonResponse` object.
