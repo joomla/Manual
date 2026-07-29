@@ -1,5 +1,5 @@
 ---
-sidebar_position: 78
+sidebar_position: 8
 title: Step 8 Using Higher-level MVC Classes
 ---
 
