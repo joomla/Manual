@@ -30,10 +30,10 @@ System Messages
 
 ## Functionality
 
-In the front-end instead of displaying just the landmark title, we'll now display the landmark title and description.
+In the front-end instead of displaying just the landmark name (aka landmark title), we'll now display the landmark name and description.
 
-In the back-end we'll change the list of landmarks so that the title is a link
-which will take the administrator to a form where the title and description can be viewed and changed.
+In the back-end we'll change the list of landmarks so that the name is a link
+which will take the administrator to a form where the name and description can be viewed and changed.
 
 ## Approach
 
@@ -49,7 +49,7 @@ to handle a structure (with the title and description) rather than passing the t
 
 ### Back-end
 
-In the landmarks tmpl file we change the landmark title to be a link which will take us to a form where the record can be edited.
+In the landmarks tmpl file we change the landmark name to be a link which will take us to a form where the record can be edited.
 
 We need to code the edit form, allowing the administrator to change the fields and submit the changes.
 
@@ -157,7 +157,7 @@ and we split the description of the source code changes to match the actions in 
 
 ### Action 1
 
-In the tmpl file displaying a list of landmarks, we change the Landmark Title field to be a link to a form where that record can be edited.
+In the tmpl file displaying a list of landmarks, we change the Landmark Name field to be a link to a form where that record can be edited.
 
 In the sequence diagram, when you click on an article 
 it generates an HTTP GET with task=article.edit and id=(id of the article to edit).
@@ -485,10 +485,10 @@ COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE="Landmark"
 COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
 ; Admin landmarks view
 COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
+COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 // highlight-start
 ; Admin landmark edit form
 COM_EXAMPLE_LANDMARK_EDIT="Landmarks: Edit"
-COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 COM_EXAMPLE_LANDMARK_TITLE_DESC="Name of the landmark"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_LABEL="Description"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_DESC="A summary description of the landmark"
