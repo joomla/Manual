@@ -205,7 +205,7 @@ use Joomla\CMS\Language\Text;
     <thead>
         <tr>
             <th scope="col">
-                <?php echo Text::_('JGLOBAL_TITLE'); ?>
+                <?php echo Text::_('COM_EXAMPLE_LANDMARK_TITLE_LABEL'); ?>
             </th>
             <th scope="col">
                 <?php echo Text::_('JGRID_HEADING_ID'); ?>
@@ -232,7 +232,8 @@ in the [Joomla Magazine Accessible Tables article](https://magazine.joomla.org/i
 
 1. The `<caption>` class="visually-hidden" means that it will not appear in the webpage display,
 but can be used by screen readers for people with reduced visibility.
-The text is a language constant which must be included in the administrator language .ini file:
+The text is a language constant which must be included in the administrator language .ini file
+(together with the language constant for the column header for the landmark name column):
 
 ```php title="administrator/components/com_example/language/en-GB/com_example.ini"
 COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE="Landmark"
@@ -240,14 +241,15 @@ COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
 // highlight-start
 ; Admin landmarks view
 COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
+COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 // highlight-end
 ```
 
 2. The table has column headers describing the fields, 
-and row headers which are the landmark titles (which will become more apparent as we add to the number of fields).
+and row headers which are the landmark names (which will become more apparent as we add to the number of fields).
 So these are identified with `<th>` tags, and include the scope="col" or scope="row" attribute as appropriate.
 
-We also reuse 2 language constants from the administrator joomla.ini file for the table column headers. 
+We also reuse the JGRID_HEADING_ID constant from the administrator joomla.ini file for the table column headers. 
 This ini file always gets loaded by Joomla. 
 
 Because this tmpl file is in a new folder we need to include this folder in the manifest XML file:
