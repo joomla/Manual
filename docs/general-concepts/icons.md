@@ -31,7 +31,7 @@ Add attribute ```aria-hidden="true"``` for hiding the icon from screen readers a
 The Prefix part is ```fa``` which is short for ```fas``` which is short for ```fa-solid``` which can be used instead.
 
 The icon name part begins with ```fa-``` and the name. Example: 
-```html
+```php
 <i class="fa fa-envelope"></i>
 <i class="fa-solid fa-save" aria-hidden="true"></i> <?php echo Text::_('JSAVE') ?> 
 ```
