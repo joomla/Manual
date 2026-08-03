@@ -54,7 +54,7 @@ For this set of icons icon names from J3! (icomoon) were replaced (partly) by fo
 
 The class gets prefix "icon-" (e.g., "icon-calendar", "icon-file", etc.)
 
-Form: ```<i class="icon-name"></i>```. The name has to be exchanged for icon name. 
+Form: ```<i class="icon-name"></i>```. The "name" part has to be replaced by the icon name. 
 Add attribute aria-hidden="true" for hiding the icon from screen readers and improves accessibility. 
 
 Example: 
