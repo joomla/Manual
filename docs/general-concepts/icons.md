@@ -41,7 +41,7 @@ The icon name part begins with ```fa-``` and the name. Example:
 The prefix part is ```fab``` which is short for ```fa-brands``` which can be used instead
 
 Example: 
-```html
+```php
 <i class="fab fa-joomla"></i>
 <i class="fa-brands fa-facebook" aria-hidden="true"></i> <?php echo 'Facebook' ?> 
 ```
