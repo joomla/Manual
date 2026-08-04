@@ -60,7 +60,7 @@ Add attribute aria-hidden="true" for hiding the icon from screen readers and imp
 Example: 
 ```html
 <i class="icon-joomla" style="font-size: 48px;" ></i>
-<i class="icon-joomla"  aria-hidden="true" style="font-size: 48px;" ></i>
+<i class="icon-joomla" aria-hidden="true" style="font-size: 48px;" ></i>
 ```
 
 ### Parameter in J! functions
@@ -80,6 +80,80 @@ ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 With 'none' given internally a 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
 Attention: This could affect subsequent button icons whose CSS formatting is then redefined.
 :::
+
+## Icons and accessibility
+
+Spport accessibility depending on the situation. Imagine the user is blind or sees symbols only in a blur. Yet, they still want to know what it is about.
+
+We have two situations:
+1) The icon stands alone without further text
+2) The icon has a explaning name on the side 
+
+Blind or visually impaired persons must get the whole information, every icon needs a textual representation. This can be a plain text, a title, a tooltip or also a text which is hidden from sighted users.
+
+If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden= true, the screenreader reads the text - good. 
+It there is only an icon-envelope but no text - then a blind user sees nothing and the screenreader probably reads nothing.
+
+Then you must add an alt-text to the icon like alt-text="contact me per e-mail"
+or aria-hidden = "true" to the icon and add an invisible text "contact me per e-mail".
+
+### Handling isolated symbols without further support
+
+```php
+<i class="fa fa-envelope" alt="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i> 
+<i class="fa fa-envelope" aria-hidden="true" ></i><span hidden><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
+```
+
+### Handling icons with associated text
+
+If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden= true, the screenreader reads the text - good.
+
+```php
+<i class="fa fa-envelope" aria-hidden="true"></i><span><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
+```
+
+### Using 'alt-text' versus 'invisible text' 
+
+There are different discussions what is better - alt-text of invisible text. Both variants are a11y.  
+In **Joomla CMS** we use the variant with **invisible** text.
+
+### **Real Joomla! examples**
+
+![Joomla Menu view](./_assets/j!_real_icon-example.png "Joomla Menu view with three notes of icon use")
+
+**Icon with text only**
+```php
+<span class="menu-dashboard">
+    <a href="/Joomla5x/administrator/index.php?option=com_cpanel&amp;view=cpanel&amp;dashboard=components" title="Components Dashboard">
+        <span>
+            <img loading="eager" decoding="async" aria-hidden="true" class="atum-dashboard" height="18" src="/Joomla5x/media/templates/administrator/atum/images/icons/dashboard.svg" alt="">
+        </span>
+        <span class="visually-hidden">Components Dashboard</span>
+        </a>
+    </span>
+```
+Attention: Used title above will create a tooltip 
+
+**Icon with visible text**
+
+```php
+<joomla-toolbar-button id="status-group-children-default" task="items.setDefault" list-selection="">
+    <button class="button-default  dropdown-item" type="button">
+        <span class="icon-default" aria-hidden="true"></span>
+    Home
+    </button>
+</joomla-toolbar-button>
+```
+
+*Icon with tooltip**
+```php
+<td class="text-center">
+    <a href="#" class="js-grid-item-action tbody-icon active" data-item-id="cb1" data-item-task="items.unpublish" data-item-form-id="" aria-labelledby="cbunpublish1-desc">
+        <span class="icon-publish" aria-hidden="true"></span>
+    </a>
+    <div role="tooltip" id="cbunpublish1-desc">Unpublish Item</div>                                                                    
+</td>
+```
 
 ## Using other icon sets
 
