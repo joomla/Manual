@@ -119,7 +119,7 @@ In **Joomla CMS** we use the variant with **invisible** text.
 
 ### **Real Joomla! examples**
 
-![Joomla Menu view](./_assets/j!_real_icon-example.png "Joomla Menu view with three notes of icon use")
+![Joomla Menu view](./_assets/j_real_icon-example.png "Joomla Menu view with three notes of icon use")
 
 **Icon with text only**
 ```php
