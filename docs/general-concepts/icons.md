@@ -145,7 +145,7 @@ Attention: Used title above will create a tooltip
 </joomla-toolbar-button>
 ```
 
-*Icon with tooltip**
+**Icon with tooltip**
 ```php
 <td class="text-center">
     <a href="#" class="js-grid-item-action tbody-icon active" data-item-id="cb1" data-item-task="items.unpublish" data-item-form-id="" aria-labelledby="cbunpublish1-desc">

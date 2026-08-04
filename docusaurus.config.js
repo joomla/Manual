@@ -313,7 +313,6 @@ const config = {
         },
       },
     ],
-/*
     [
       require.resolve("@cmfcmf/docusaurus-search-local"),
       {
@@ -321,7 +320,6 @@ const config = {
         language: "en",
       },
     ],
-*/
     [
       'content-docs',
       /** @type {import('@docusaurus/plugin-content-docs').Options} */
