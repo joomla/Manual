@@ -564,5 +564,3 @@ However, define reasonable boundaries around:
 * Automated scanning of third-party infrastructure
 * Persistence
 * Data exfiltration
-
----
