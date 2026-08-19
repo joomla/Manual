@@ -298,7 +298,7 @@ class HtmlView extends BaseHtmlView {
         parent::display($tpl);
     }
     
-    protected function addToolBar() {
+    private function addToolBar() {
 
         // Hide Joomla Administrator Main menu
         Factory::getApplication()->getInput()->set('hidemainmenu', true);
