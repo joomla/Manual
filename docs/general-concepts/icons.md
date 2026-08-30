@@ -114,7 +114,7 @@ If there is the icon-envelope, followed by the text "email me" then you can hide
 
 ### Using 'alt-text' versus 'invisible text' 
 
-There are different discussions what is better - alt-text of invisible text. Both variants are a11y.  
+There are different opinions about which is better - alt text or invisible text. Both variants are a11y compliant.  
 In **Joomla CMS** we use the variant with **invisible** text.
 
 ### **Real Joomla! examples**
