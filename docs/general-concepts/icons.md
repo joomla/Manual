@@ -21,7 +21,7 @@ Fontawesome icons can be used for HTML in following forms:
 <span class="fa fa-!name! "></span>
 ```
 
-The actual icon name fa-!name! class is accompanied by a prefix class like "fa ..". More below or see [FontAwesome 'classic' styles](https://docs.fontawesome.com/web/dig-deeper/styles)  
+The actual icon name fa-!name! class is accompanied by a prefix class like "fa ...". More below or see [FontAwesome 'classic' styles](https://docs.fontawesome.com/web/dig-deeper/styles)  
 The \<span\> element can also do the job but the preferred way is to use classes inside the \<i\> element.
 
 Add attribute ```aria-hidden="true"``` for hiding the icon from screen readers and improves accessibility. Use attribute ```style="font-size: 2rem;"``` or ```style="font-size: 48px;"``` for the size of the icon font.
@@ -48,9 +48,9 @@ Example:
 
 ## Icomoon replacement form / 'icon' parameter in code function calls
 
-For this set of icons, icon names from J3! (icomoon) were replaced (partly) by fontawesome icons. The icon itself is one of the fontawesome icons but the name may differ. Also this is a smaller subset with fewer icons. It is kept for compatibility with J!3 icomoon replacements. In joomla code there are functions which accept the icon name as parameter.
+For this set of icons, icon names from J3! (icomoon) were replaced (partly) by fontawesome icons. The icon itself is one of the fontawesome icons but the name may differ. Also, this is a smaller subset with fewer icons. It is kept for compatibility with J!3 icomoon replacements. In joomla code there are functions which accept the icon name as parameter.
 
-### Direct Html use
+### Direct HTML use
 
 The class gets prefix "icon-" (e.g., "icon-calendar", "icon-file", etc.)
 
@@ -65,7 +65,7 @@ Example:
 
 ### Parameter in J! functions
 
-For example in HtmlView.php of a component the ToolBarHelper:: functions accept a icon name from this icon set.
+For example in HtmlView.php of a component the ToolBarHelper:: functions accept an icon name from this icon set.
 
 Example: 
 ```html
@@ -77,7 +77,7 @@ Instead of using an 'icon' name of the icon class (see above) a fontawesome icon
 ```html
 ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 ```
-With 'none' given internally a 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
+With 'none' given internally an 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
 Attention: This could affect subsequent button icons whose CSS formatting is then redefined.
 :::
 
@@ -101,12 +101,16 @@ You add invisible text by adding the "visually-hidden" attribute to an HTML elem
 
 ### Handling isolated symbols without further text
 
-In this case you should add alt text or text which is visually hidden from sighted users.
-
+In this case you should support invisible text for screen readers.    
+The first one is used in Joomla together with bootstrap.
 
 ```php
+<i class="fa fa-envelope" aria-hidden="true" ></i>
+    <span visual-hidden><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
+<i class="fa fa-envelope" aria-hidden="true"></i>
+    <span class="sr-only"><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span>
+<i class="fa fa-envelope" aria-label="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i>
 <i class="fa fa-envelope" alt="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i> 
-<i class="fa fa-envelope" aria-hidden="true" ></i><span hidden><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
 ```
 
 ### Handling icons with associated text
