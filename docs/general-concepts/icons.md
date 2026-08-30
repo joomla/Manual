@@ -91,13 +91,18 @@ We have two situations:
 
 Blind or visually impaired persons must get the whole information, every icon needs a textual representation. This can be a plain text, a title, a tooltip or also a text which is hidden from sighted users.
 
-If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden= true, the screenreader reads the text - good. 
+For example, if there is an icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screenreader just reads the text - this is good practice. 
+
 It there is only an icon-envelope but no text - then a blind user sees nothing and the screenreader probably reads nothing.
 
-Then you must add an alt-text to the icon like alt-text="contact me per e-mail"
-or aria-hidden = "true" to the icon and add an invisible text "contact me per e-mail".
+Then you must add an alt text to the icon like alt="contact me by e-mail"
+or aria-hidden = "true" to the icon and add an invisible text "contact me by e-mail". 
+You add invisible text by adding the "visually-hidden" attribute to an HTML element displaying text. This attribute means that the text can be read by screen readers, but will not be displayed on the web page. 
 
-### Handling isolated symbols without further support
+### Handling isolated symbols without further text
+
+In this case you should add alt text or text which is visually hidden from sighted users.
+
 
 ```php
 <i class="fa fa-envelope" alt="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i> 
@@ -106,7 +111,7 @@ or aria-hidden = "true" to the icon and add an invisible text "contact me per e-
 
 ### Handling icons with associated text
 
-If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden= true, the screenreader reads the text - good.
+If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screenreader just reads the text - good.
 
 ```php
 <i class="fa fa-envelope" aria-hidden="true"></i><span><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
@@ -132,7 +137,7 @@ In **Joomla CMS** we use the variant with **invisible** text.
         </a>
     </span>
 ```
-Attention: Used title above will create a tooltip 
+Attention: The use of the title attribute in the link above will create a tooltip 
 
 **Icon with visible text**
 
