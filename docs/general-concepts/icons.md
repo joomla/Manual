@@ -87,7 +87,7 @@ Support accessibility depending on the situation. Imagine the user is blind or s
 
 We have two situations:
 1) The icon stands alone without further text
-2) The icon has a explaning name on the side 
+2) The icon has explanatory text beside it
 
 Blind or visually impaired persons must get the whole information, every icon needs a textual representation. This can be a plain text, a title, a tooltip or also a text which is hidden from sighted users.
 
