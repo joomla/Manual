@@ -83,7 +83,7 @@ Attention: This could affect subsequent button icons whose CSS formatting is the
 
 ## Icons and accessibility
 
-Spport accessibility depending on the situation. Imagine the user is blind or sees symbols only in a blur. Yet, they still want to know what it is about.
+Support accessibility depending on the situation. Imagine the user is blind or sees symbols only in a blur. Yet, they still want to know what it is about.
 
 We have two situations:
 1) The icon stands alone without further text
