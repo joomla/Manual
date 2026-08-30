@@ -153,7 +153,7 @@ Attention: The use of the title attribute in the link above will create a toolti
 **Icon with tooltip**
 ```php
 <td class="text-center">
-    <a href="#" class="js-grid-item-action tbody-icon active" data-item-id="cb1" data-item-task="items.unpublish" data-item-form-id="" aria-labelledby="cbunpublish1-desc">
+    <a href="#" class="js-grid-item-action tbody-icon active" data-item-id="cb1" data-item-task="items.unpublish" data-item-form-id="" aria-describedby="cbunpublish1-desc">
         <span class="icon-publish" aria-hidden="true"></span>
     </a>
     <div role="tooltip" id="cbunpublish1-desc">Unpublish Item</div>                                                                    
