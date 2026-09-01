@@ -214,89 +214,141 @@ However, if the user has, for example, created articles or is associated with a 
 
 Below is the code for a simple Joomla module that you can install and run to demonstrate use of the Joomla User API functionality. You can also download the code from [download mod_sample_user zip file](./_assets/mod_sample_user.zip).
 
-In a folder mod_sample_user create the following two files: 
+In a folder mod_sample_user create the following 3 files: 
 
-```php title="mod_sample_user/mod_sample_user.xml"
+```
+mod_sample_user
+ ├─── services
+ │     └─── provider.php
+ ├─── src
+ │     └─── Dispatcher
+ │           └─── Dispatcher.php
+ └─── mod_sample_user.xml
+```
+
+```xml title="mod_sample_user/mod_sample_user.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>User demo</name>
     <version>1.0.1</version>
     <description>Code demonstrating use of Joomla User class</description>
+    <namespace path="src">My\Module\SampleUser</namespace>
     <files>
-        <filename module="mod_sample_user">mod_sample_user.php</filename>
+        <folder module="mod_sample_user">services</folder>
+        <folder>src</folder>
     </files>
 </extension>
 ```
 
-```php title="mod_sample_user/mod_sample_user.php"
+```php title="mod_sample_user/src/Dispatcher/Dispatcher.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
 
+namespace My\Module\SampleUser\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Application\CMSApplicationInterface;
+use Joomla\Input\Input;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\User\UserFactoryInterface;
 
-$input = Factory::getApplication()->input;
+class Dispatcher implements DispatcherInterface
+{
+    protected $app;
+    
+    protected $input; 
 
-// find the user - either from username=xxx parameter or current user
-if ($input->exists('username'))
-{
-    $username = $input->get('username', "", "STRING");
-    echo "Getting details for {$username}<br>";
-    $user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserByUsername($username);
-}
-else
-{
-    $user = Factory::getApplication()->getIdentity();
-}
-if ($user->id == 0)
-{
-    echo "Please logon or provide a valid username as URL parameter";
-    return;
-}
-
-// output the user's email address and Frontend language
-$language = $user->getParam('language', 'the default');
-echo "Email address of {$user->name} is {$user->email}, Frontend language is {$language}<br>";
-
-// Set new Frontend language of this user if userlanguage=xxx parameter set
-// This will fail if you try to change the language of a Super User, and you're not logged on as a Super User
-if ($new_language = $input->get('userlanguage', "", "STRING"))
-{
-    if (array_key_exists($new_language, LanguageHelper::getContentLanguages()))
+    public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
     {
-        $user->setParam('language', $new_language);
-        if ($user->save())
+        $this->app = $app;
+        $this->input = $input;
+    }
+    
+    public function dispatch()
+    {
+        // find the user - either from username=xxx parameter or current user
+        if ($this->input->exists('username'))
         {
-            echo "Language successfully set to {$new_language}<br>";
+            $username = $this->input->get('username', "", "STRING");
+            echo "Getting details for {$username}<br>";
+            $user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserByUsername($username);
         }
         else
         {
-            echo "Setting language to {$new_language} failed<br>{$user->getError()}<br>";
+            $user = $this->app->getIdentity();
+        }
+        if ($user->id == 0)
+        {
+            echo "Please logon or provide a valid username as URL parameter";
+            return;
+        }
+
+        // output the user's email address and Frontend language
+        $language = $user->getParam('language', 'the default');
+        echo "Email address of {$user->name} is {$user->email}, Frontend language is {$language}<br>";
+
+        // Set new Frontend language of this user if userlanguage=xxx parameter set
+        // This will fail if you try to change the language of a Super User, and you're not logged on as a Super User
+        if ($new_language = $this->input->get('userlanguage', "", "STRING"))
+        {
+            if (array_key_exists($new_language, LanguageHelper::getContentLanguages()))
+            {
+                $user->setParam('language', $new_language);
+                if ($user->save())
+                {
+                    echo "Language successfully set to {$new_language}<br>";
+                }
+                else
+                {
+                    echo "Setting language to {$new_language} failed<br>{$user->getError()}<br>";
+                }
+            }
+            else
+            {
+                echo "Setting language to {$new_language} failed - language doesn't exist<br>";
+            }
+        }
+
+        // if we're on a single article page, then check if the user can edit the article
+        $option = $this->input->get('option', "", "cmd");
+        $view = $this->input->get('view', "", "string");
+        $id = $this->input->get('id', 0, "int");
+
+        if ($option == "com_content" && $view == "article")
+        {
+            if ($user->authorise('core.edit', "com_content.article.{$id}"))
+            {
+                echo "{$user->name} may edit this article<br>";
+            }
+            else
+            {
+                echo "{$user->name} may not edit this article<br>";
+            }
         }
     }
-    else
-    {
-        echo "Setting language to {$new_language} failed - language doesn't exist<br>";
-    }
 }
+```
 
-// if we're on a single article page, then check if the user can edit the article
-$option = $input->get('option', "", "cmd");
-$view = $input->get('view', "", "string");
-$id = $input->get('id', 0, "int");
+```php title="mod_sample_user/services/provider.php
+<?php
 
-if ($option == "com_content" && $view == "article")
-{
-    if ($user->authorise('core.edit', "com_content.article.{$id}"))
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
+use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+
+return new class () implements ServiceProviderInterface {
+
+    public function register(Container $container): void
     {
-        echo "{$user->name} may edit this article<br>";
+        $container->registerServiceProvider(new ModuleDispatcherFactoryServiceProvider('\\My\\Module\\SampleUser'));
+        $container->registerServiceProvider(new ModuleServiceProvider());
     }
-    else
-    {
-        echo "{$user->name} may not edit this article<br>";
-    }
-}
+};
 ```
 
 Zip up the `mod_sample_user` directory to create `mod_sample_user.zip`.

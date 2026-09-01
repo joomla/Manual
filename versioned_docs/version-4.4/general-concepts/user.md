@@ -18,8 +18,7 @@ Setting some of the user attributes impacts the user's ability to log on – e.g
 To get the User object for the currently logged-on user:
 
 ```php
-use Joomla\CMS\Factory;
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 ```
 
 If no user is logged on then `Factory::getApplication()->getIdentity()` returns a "blank" user object, with the `id` field set to 0 (zero).
@@ -27,23 +26,23 @@ If no user is logged on then `Factory::getApplication()->getIdentity()` returns 
 To get information about any other registered user you can use functions of the [UserFactory](cms-api://classes/Joomla-CMS-User-UserFactory.html) class (which you get from the Dependency Injection Container)
 
 ```
-use Joomla\CMS\User\UserFactoryInterface;
-...
 // Get the UserFactory 
-$userFactory = Factory::getContainer()->get(UserFactoryInterface::class);
+$userFactory = Factory::getContainer()->get(\Joomla\CMS\User\UserFactoryInterface::class);
 // to get User object for user with id = 99
 $user = $userFactory->loadUserById(99);
 // to get User object for user with username = "joomuser"
 $user = $userFactory->loadUserByUsername("joomuser");
 ```
 
+:::note[Developer Note]
+  Do not instance the object directly, use the factory from the container for future prove code.
+:::
+
 Another way commonly used within the Joomla code to get a User object is by instantiating it directly. If you pass the id of a user then it will load that User object:
 
 ```php
-use Joomla\CMS\User\User;
-...
 $id = 99;
-$user = new User($id);
+$user = new \Joomla\CMS\User\User($id);
 ```
 
 However instantiating classes like this (rather than via factory methods obtained from the Dependency Injection Container) does make it harder for you to mock classes for unit testing. 
@@ -91,8 +90,7 @@ The user attributes that are stored in the `params` field in the database, and t
 For example, to get the user's preferred front-end language call the `getParam()` member function of the `User` object, passing in the name of the parameter you want (i.e. 'language') along with a default value in case it is blank.
 
 ```php
-use Joomla\CMS\Factory;
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 $language = $user->getParam('language', 'the default');
 
 echo "<p>Your Frontend language is set to {$language}.</p>";
@@ -103,7 +101,7 @@ echo "<p>Your Frontend language is set to {$language}.</p>";
 Frequently, you will just want to make sure the user is logged in before continuing. The `guest` property will be set to '1' when the current user is not logged in. When the user is authenticated, `guest` will be set to '0'.
 
 ```php
-$user = JFactory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 if ($user->guest) {
 	echo "<p>You must login to see this content.</p>";
 } else {
@@ -124,7 +122,7 @@ There are 4 method calls in the User API relating to privileges
 The `authorise()` member function can be used to determine if the current user has permission to do a certain task. The first parameter is used to identify which task we wish to check being allowed. The second represents the component we wish to retrieve the ACL information from.
 
 ```php
-$user = Factory::getApplication()->getIdentity();
+$user = \Joomla\CMS\Factory::getApplication()->getIdentity();
 
 if ($user->authorise('core.edit', 'com_content'))
 {
@@ -205,7 +203,7 @@ You can similarly use the above mechanism to insert new user records, the only d
 To delete a user record you first load it from the database then use the `delete()` method, eg:
 
 ```php
-$user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById(99);
+$user = \Joomla\CMS\Factory::getContainer()->get(UserFactoryInterface::class)->loadUserById(99);
 $user->delete();
 ```
 
@@ -216,89 +214,141 @@ However, if the user has, for example, created articles or is associated with a 
 
 Below is the code for a simple Joomla module that you can install and run to demonstrate use of the Joomla User API functionality. You can also download the code from [download mod_sample_user zip file](./_assets/mod_sample_user.zip).
 
-In a folder mod_sample_user create the following two files: 
+In a folder mod_sample_user create the following 3 files: 
 
-```php title="mod_sample_user/mod_sample_user.xml"
+```
+mod_sample_user
+ ├─── services
+ │     └─── provider.php
+ ├─── src
+ │     └─── Dispatcher
+ │           └─── Dispatcher.php
+ └─── mod_sample_user.xml
+```
+
+```xml title="mod_sample_user/mod_sample_user.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="4.4" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>User demo</name>
     <version>1.0.1</version>
     <description>Code demonstrating use of Joomla User class</description>
+    <namespace path="src">My\Module\SampleUser</namespace>
     <files>
-        <filename module="mod_sample_user">mod_sample_user.php</filename>
+        <folder module="mod_sample_user">services</folder>
+        <folder>src</folder>
     </files>
 </extension>
 ```
 
-```php title="mod_sample_user/mod_sample_user.php"
+```php title="mod_sample_user/src/Dispatcher/Dispatcher.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
 
+namespace My\Module\SampleUser\Site\Dispatcher;
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Dispatcher\DispatcherInterface;
 use Joomla\CMS\Factory;
+use Joomla\CMS\Application\CMSApplicationInterface;
+use Joomla\Input\Input;
 use Joomla\CMS\Language\LanguageHelper;
 use Joomla\CMS\User\UserFactoryInterface;
 
-$input = Factory::getApplication()->input;
+class Dispatcher implements DispatcherInterface
+{
+    protected $app;
+    
+    protected $input; 
 
-// find the user - either from username=xxx parameter or current user
-if ($input->exists('username'))
-{
-    $username = $input->get('username', "", "STRING");
-    echo "Getting details for {$username}<br>";
-    $user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserByUsername($username);
-}
-else
-{
-    $user = Factory::getApplication()->getIdentity();
-}
-if ($user->id == 0)
-{
-    echo "Please logon or provide a valid username as URL parameter";
-    return;
-}
-
-// output the user's email address and Frontend language
-$language = $user->getParam('language', 'the default');
-echo "Email address of {$user->name} is {$user->email}, Frontend language is {$language}<br>";
-
-// Set new Frontend language of this user if userlanguage=xxx parameter set
-// This will fail if you try to change the language of a Super User, and you're not logged on as a Super User
-if ($new_language = $input->get('userlanguage', "", "STRING"))
-{
-    if (array_key_exists($new_language, LanguageHelper::getContentLanguages()))
+    public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
     {
-        $user->setParam('language', $new_language);
-        if ($user->save())
+        $this->app = $app;
+        $this->input = $input;
+    }
+    
+    public function dispatch()
+    {
+        // find the user - either from username=xxx parameter or current user
+        if ($this->input->exists('username'))
         {
-            echo "Language successfully set to {$new_language}<br>";
+            $username = $this->input->get('username', "", "STRING");
+            echo "Getting details for {$username}<br>";
+            $user = Factory::getContainer()->get(UserFactoryInterface::class)->loadUserByUsername($username);
         }
         else
         {
-            echo "Setting language to {$new_language} failed<br>{$user->getError()}<br>";
+            $user = $this->app->getIdentity();
+        }
+        if ($user->id == 0)
+        {
+            echo "Please logon or provide a valid username as URL parameter";
+            return;
+        }
+
+        // output the user's email address and Frontend language
+        $language = $user->getParam('language', 'the default');
+        echo "Email address of {$user->name} is {$user->email}, Frontend language is {$language}<br>";
+
+        // Set new Frontend language of this user if userlanguage=xxx parameter set
+        // This will fail if you try to change the language of a Super User, and you're not logged on as a Super User
+        if ($new_language = $this->input->get('userlanguage', "", "STRING"))
+        {
+            if (array_key_exists($new_language, LanguageHelper::getContentLanguages()))
+            {
+                $user->setParam('language', $new_language);
+                if ($user->save())
+                {
+                    echo "Language successfully set to {$new_language}<br>";
+                }
+                else
+                {
+                    echo "Setting language to {$new_language} failed<br>{$user->getError()}<br>";
+                }
+            }
+            else
+            {
+                echo "Setting language to {$new_language} failed - language doesn't exist<br>";
+            }
+        }
+
+        // if we're on a single article page, then check if the user can edit the article
+        $option = $this->input->get('option', "", "cmd");
+        $view = $this->input->get('view', "", "string");
+        $id = $this->input->get('id', 0, "int");
+
+        if ($option == "com_content" && $view == "article")
+        {
+            if ($user->authorise('core.edit', "com_content.article.{$id}"))
+            {
+                echo "{$user->name} may edit this article<br>";
+            }
+            else
+            {
+                echo "{$user->name} may not edit this article<br>";
+            }
         }
     }
-    else
-    {
-        echo "Setting language to {$new_language} failed - language doesn't exist<br>";
-    }
 }
+```
 
-// if we're on a single article page, then check if the user can edit the article
-$option = $input->get('option', "", "cmd");
-$view = $input->get('view', "", "string");
-$id = $input->get('id', 0, "int");
+```php title="mod_sample_user/services/provider.php
+<?php
 
-if ($option == "com_content" && $view == "article")
-{
-    if ($user->authorise('core.edit', "com_content.article.{$id}"))
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
+use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+
+return new class () implements ServiceProviderInterface {
+
+    public function register(Container $container): void
     {
-        echo "{$user->name} may edit this article<br>";
+        $container->registerServiceProvider(new ModuleDispatcherFactoryServiceProvider('\\My\\Module\\SampleUser'));
+        $container->registerServiceProvider(new ModuleServiceProvider());
     }
-    else
-    {
-        echo "{$user->name} may not edit this article<br>";
-    }
-}
+};
 ```
 
 Zip up the `mod_sample_user` directory to create `mod_sample_user.zip`.

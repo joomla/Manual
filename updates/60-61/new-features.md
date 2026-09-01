@@ -1,0 +1,45 @@
+---
+sidebar_position: 1
+---
+
+New Features
+============
+
+:::tip[Developer Note]
+  Since this version of Joomla has not been released yet, this page can change anytime.
+:::
+
+All the new features that have been added to this version.
+Any changes in best practice.
+
+## Add new `nocache` string for joomla.asset.json version field
+- **PR**: [#46379](https://github.com/joomla/joomla-cms/pull/46379) by **hleithner**
+- **What changed**: Developers can now use `nocache` in joomla.asset.json version field to prevent caching during development.
+- **Usage**:
+  ```json
+    {
+      "version": "nocache"
+    }
+  ```  
+- **Impact**: Assets can now be loaded with a cache-busting string during development to ensure the latest version is always loaded.
+
+---
+
+## New grid layout for `subform` field
+A new layout `joomla.form.field.subform.repeatable-grid` that renders subform fields in a grid (partially mimicking the table look), making it more responsive compared to the table layout.
+
+- PR: https://github.com/joomla/joomla-cms/pull/42347
+
+## Support Plugin lazy loading for PHP >= 8.4
+
+Added a possibility to load plugin class on demand (lazy loading) when the event dispatched. 
+For servers with PHP version >= 8.4. This helps to improve overall CMS performance.
+
+- PR https://github.com/joomla/joomla-cms/pull/45062
+- PR https://github.com/joomla/joomla-cms/pull/46862
+
+## New event for `subform` field
+Added `subform-order-changed` event when order is changed in subform field.
+
+- PR: https://github.com/joomla/joomla-cms/pull/46093
+

@@ -344,43 +344,92 @@ creates a parameter `p2` and sets its value to the string "someval", but only if
 
 Below is the code for a simple Joomla module which you can install and run to demonstrate retrieval of parameter values. 
 
-In a folder `mod_input` create the following 2 files: 
+In a folder mod_input create the following 3 files: 
 
+```
+mod_input
+ ├─── services
+ │     └─── provider.php
+ ├─── src
+ │     └─── Dispatcher
+ │           └─── Dispatcher.php
+ └─── mod_input.xml
+```
 
 ```xml title="mod_input.xml"
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="3.1" client="site" method="upgrade">
+<extension type="module" client="site" method="upgrade">
     <name>Input demo</name>
     <version>1.0.1</version>
     <description>Code demonstrating use of Joomla Input class to obtain HTTP parameters</description>
+    <namespace path="src">My\Module\SampleInput</namespace>
     <files>
-        <filename module="mod_input">mod_input.php</filename>
+        <folder module="mod_input">services</folder>
+        <folder>src</folder>
     </files>
 </extension>
 ```
 
-```php title="mod_input.php"
+```php title="mod_input/src/Dispatcher/Dispatcher.php"
 <?php
-defined('_JEXEC') or die('Restricted Access');
 
-use Joomla\CMS\Factory;
+namespace My\Module\SampleInput\Site\Dispatcher;
 
-$app = Factory::getApplication();   // equivalent of $app = JFactory::getApplication();
-$input = $app->getInput();
+\defined('_JEXEC') or die;
 
-if ($input->exists('p1'))
+use Joomla\CMS\Dispatcher\DispatcherInterface;
+use Joomla\CMS\Application\CMSApplicationInterface;
+use Joomla\Input\Input;
+
+class Dispatcher implements DispatcherInterface
 {
-	$v1 = $input->get('p1', 0, "INT");  // rhs equivalent to $input->getInt('p1', 0);
-	echo "<p>Int value of p1 is $v1</p>";
-	$v1 = $input->get('p1', 0, "UINT"); // uint
-	echo "<p>Uint value of p1 is $v1</p>";
-	$v1 = $input->get('p1', 0, "string"); 
-	echo "<p>String Value of p1 is $v1</p>";
+    protected $app;
+    
+    protected $input; 
+
+    public function __construct(\stdClass $module, CMSApplicationInterface $app, Input $input)
+    {
+        $this->app = $app;
+        $this->input = $input;
+    }
+    
+    public function dispatch()
+    {
+        if ($this->input->exists('p1'))
+        {
+            $v1 = $this->input->get('p1', 0, "INT");  // rhs equivalent to $input->getInt('p1', 0);
+            echo "<p>Int value of p1 is $v1</p>";
+            $v1 = $this->input->get('p1', 0, "UINT"); // uint
+            echo "<p>Uint value of p1 is $v1</p>";
+            $v1 = $this->input->get('p1', 0, "string"); 
+            echo "<p>String Value of p1 is $v1</p>";
+        }
+        else
+        {
+            echo "<p>Parameter p1 not specified</p>";
+        }
+    }
 }
-else
-{
-	echo "<p>Parameter p1 not specified</p>";
-}
+```
+
+```php title="mod_input/services/provider.php"
+<?php
+
+\defined('_JEXEC') or die;
+
+use Joomla\CMS\Extension\Service\Provider\Module as ModuleServiceProvider;
+use Joomla\CMS\Extension\Service\Provider\ModuleDispatcherFactory as ModuleDispatcherFactoryServiceProvider;
+use Joomla\DI\Container;
+use Joomla\DI\ServiceProviderInterface;
+
+return new class () implements ServiceProviderInterface {
+
+    public function register(Container $container): void
+    {
+        $container->registerServiceProvider(new ModuleDispatcherFactoryServiceProvider('\\My\\Module\\SampleInput'));
+        $container->registerServiceProvider(new ModuleServiceProvider());
+    }
+};
 ```
 
 Zip up the mod_input directory to create `mod_input.zip`.

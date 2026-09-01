@@ -147,6 +147,15 @@ If you have javascript validation set in fields of your subform (set by the clas
 
 This is also true for custom fields which extend SubformField. 
 
+### Events
+
+- `subform-row-add` Event dispatched after new row has been added. Target: subform element. CustomEvent detail property contain affected row: `detail.row`.
+- `joomla:updated` Event dispatched after new row has been added. Target: affected row element.
+- `subform-row-remove` Event dispatched before removing the row. Target: subform element. CustomEvent detail property contain affected row: `detail.row`.
+- `joomla:removed` Event dispatched before removing the row. Target: affected row element.
+
+All events bubble up in DOM.
+
 ## Server-side validation and filters
 
 Server-side validation and filters are applied to the fields of the subform as normal, in the same way as when those fields are not part of a subform.

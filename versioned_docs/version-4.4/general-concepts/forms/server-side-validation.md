@@ -12,8 +12,11 @@ Server-side validation is performed in PHP on the server, when the form fields a
 Of these, server-side validation is the more important, as hackers can use utilities such as curl to send HTTP POST requests directly to your web server, bypassing both your HTML form and its client-side verification. 
 
 This section outlines server-side validation in Joomla: the following describes client-side validation.
+
 ## Server-side Validation
+
 This is triggered by specifying a `validate=...` attribute in your form definition. In the sample form used in the previous sections there is validation on the telephone number field
+
 ```php
 <field name="telephone"
     type="telephone"
@@ -23,9 +26,94 @@ This is triggered by specifying a `validate=...` attribute in your form definiti
     class="inputbox"
     validate="tel" />
 ```
+
 The `validate="tel"` line triggers the validation on this field, and it will use the `test` function in TelRule in libraries/src/Form/Rule to check if the field value is valid. 
 
-You can see the list of validation rules that Joomla provides by looking at the class files in the libraries/src/Form/Rule directory, and choose what validation routine you want to run against the fields in your form. For example, to use the EmailRule you would include `validate="email"` against the email field in your form definition. 
+### List of available validation rules
+
+You can see the list of validation rules that Joomla provides by looking at the class files in the `libraries/src/Form/Rule` directory. 
+Following is a list of all those rules. 
+The title of the entry is the string you have to use in the `validate` attribute.
+
+#### boolean
+Checks the value to be either `1`, `0`, `true` or `false`.
+
+#### calendar
+Checks the value to be either `now` or a value which the PHP DateTime object accepts.
+
+#### captcha
+Validates the value against a captcha solution. This rule has the optional attributes `plugin` and `namespace` to force a specific captcha plugin. If not set, the globally set captcha will be used.
+
+#### color
+Checks if the string is 3 or 6 characters long and consists of hexadecimal characters.
+
+#### cssidentifier
+Checks if the string is a valid CSS identifier.
+
+#### cssidentifiersubstring
+Checks if the string is a series of valid CSS identifiers.
+
+#### email
+Check if the string is a valid e-mail address.
+If the attribute `tld` is set to `tld` or `required`, a TLD with at least 2 characters is required. 
+If the attribute `validDomains` is set to a component name and field name, it tries to load a list of valid domains from the component configuration of said component. The default value is `com_users.domains`. The field supports validating multiple e-mail addresses when the attribute `multiple` is set.
+By setting the attribute `unique`, it checks if the address is already in use in the `#__users` table.
+
+#### equals
+Compares the value to another field of the form given by the `field` attribute, testing for equality.
+
+#### exists
+Checks if the value is present in a database table. The table to check is controlled by `exists_table` and the column by `exists_column`. If the column is not given, it defaults to `id`.
+
+#### filepath
+Checks if the value is a valid file path. This does NOT check if the file exists, just that the path is inside of the Joomla folder. You can define a list of folders (separated by the pipe symbol (`|`)) to exclude by setting the `exclude` attribute.
+
+#### folderpathexists
+Checks if the given path is a valid folder from the root of the Joomla installation and if that folder exists.
+
+#### modulelayout
+This checks if the string is valid as a module layout name
+
+#### notequals
+Compares the value to another field of the form given by the `field` attribute, testing for inequality.
+
+#### number
+Checks if a number is in a certain range between a `min` and `max` value. These attributes are optional and the comparison is done with float values.
+
+#### options
+Checks if the value is from the given options of the field.
+
+#### password
+Ensures the given string meets the password requirements set in Joomla.
+
+#### regex
+Allows to validate against a regular expression, which is given by `validate_regex`,
+and permits regex modifiers specified in `validate_modifier`.
+
+#### rules
+Ensures that all actions posted are valid for this field.
+
+#### showon
+Ensures the given string is in valid `showon` format.
+
+#### subform
+Enables validation of subforms field by field.
+
+#### tel
+Validate an input as a telephone number. You can influence this by using the attribute `plan`, which allows for the values `northamerica`, `us`, `International`, `int`, `missdn` or `IETF`.
+
+#### time
+Validate the input as a valid time. You can limit the valid values by setting the attributes `min`, `max` and `step`.
+
+#### url
+Validates the input as a URL and checks for XSS attacks. You can disabled the XSS checks by setting the attribute `disableXssCheck`. You can limit valid values further by setting the attributes `schemes` and `relative`.
+
+#### userid
+Checks if the input is a valid user ID.
+
+#### username
+Checks if the username is unique in the `#__users` table.
+
 ### Custom Server-side Validation
 You can define your own validation for a field by writing a custom validation rule. 
 
@@ -82,7 +170,7 @@ If your validation can't be expressed as a regular expression then you will have
  * @param   Registry           $input    An optional Registry object with the entire data set to validate against the entire form.
  * @param   Form               $form     The form object for which the field is being tested.
  */
-public function test(\SimpleXMLElement $element, $value, $group = null, Registry $input = null, Form $form = null) { … }
+public function test(\SimpleXMLElement $element, $value, $group = null, ?Registry $input = null, ?Form $form = null) { … }
 ```
 As you can see from the comments, you are passed in a lot of information, just in case your validation routine needs access to it! For example the Joomla NumberRule tests if the value is between the "min" and "max" attributes set in the field definition in the XML form, and it obtains these limits from the `$element` parameter. In the same way you can specify your own attributes in the field definition, extract them from the `$element` parameter, and use them in your validation of the value entered by the user. You just need to return `true` or `false` from your `test` function.
 ### Additional Validation

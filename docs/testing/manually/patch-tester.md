@@ -36,7 +36,9 @@ It is worth spending some time on examination of the list. For example the first
 - The coloured labels contain information about the pull request, such as *bug* or *Feature* and whether a test has an *NPM Resource Changed*. A list of labels can be found in the [Labels page](https://github.com/joomla/joomla-cms/labels) of the `joomla-cms` GitHub repository.
 - The **Branch** shows which Joomla branch the pull request was created for. You will see all pull requests for all branches in the list. Some pull requests may require testing against a specific branch but this is not always so.
 - The **Apply Patch** button applies the patch created in the pull request to your test installation. This button is initially absent for patches that involve an *NPM Resource Change*, *Composer Dependency Change* or are *RTC*.
-    - Advanced users: to enable the missing *Apply Patch* buttons set **Advanced Mode** to **Yes** in the *Options* and then use the command line to run `npm ci` or `npm run build:css` if the change only affects CSS files or `npm run build:js` if the change only affects JavaScript files. 
+    - Advanced users: to enable the missing *Apply Patch* buttons set **Advanced Mode** to **Yes** in the *Options* and then use the command line to run `npm ci` after applying the patch or if the change only affects CSS or JavaScript source files (no new packages):
+        - **Joomla 6.2+**: `npm run build -- -n <extension>` to rebuild a specific extension (run `npm run builders-list` to find the extension name), or `npm run build -- --all` to rebuild everything
+        - **Joomla up to 6.1**: `npm run build:css` (CSS only) or `npm run build:js` (JS only)
 - Follow the Test Instructions in the Issue Tracker to test the patch. When finished, *Revert* the patch.
     - Advanced users: rerun `npm ci` if the patch involved an NPM Resource Change.
 
@@ -73,7 +75,7 @@ When you have looked through the list of issues and seen something that you thin
 - Read the Summary of Changes, Testing Instructions and any Comments.
     - It may be that the the pull request does what the author intended but more experienced developers see that it uses the wrong approach or will cause future problems. They may ask for changes or reject it completely. Defer testing until any comments have been satisfied!
 - Have a look at the Diff to see how many files are changed and how extensive the changes are.
-- In the Patch Tester apply the patch and see whether it does what it is supposed to do according to the Testing Instructions. Remember the `npm ci` command if the patch changes CSS or JavaScript.
+- In the Patch Tester apply the patch and see whether it does what it is supposed to do according to the Testing Instructions. Remember to run `npm ci` if the patch involves an NPM Resource Change, or the appropriate build command if only CSS/JavaScript source files changed (see the note above for the correct command for your Joomla version).
 - If you are satisfied that the pull request does what it is supposed to do and does not appear to have side effects go back to the Joomla Issue Tracker page.
     - Select the **Test This** button. A form opens for you to enter your test result.
 

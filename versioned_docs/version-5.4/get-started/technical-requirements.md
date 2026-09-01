@@ -23,29 +23,9 @@ In the following tables the *Recommended* versions of supporting software are kn
 | Microsoft IIS      | 10              | 10          |
 
 **Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
+**Recommended PHP Memory Limit:** at least 256MB  
 **Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
 **Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
-
-### Requirements for Joomla! 4.x
-
-| Software           | Recommended     | Minimum     |
-|--------------------|-----------------|-------------|
-| PHP                | 8.2             | 7.2.5       |
-| **Databases**      |                 |             |
-| MySQL              | 8.0             | 5.6         |
-| PostgreSQL         | 11.0            | 11.0        |
-| **Web Servers**    |                 |             |
-| Apache             | 2.4             | 2.4         |
-| Nginx              | 1.18            | 1.10        |
-| Microsoft IIS      | 10              | 8           |
-
-**Required PHP Modules:** json, simplexml, dom, zlib, gd, mysqlnd or pdo_mysql or pdo_pgsql  
-**Optional Apache Modules:** _mod_rewrite_ extension to use SEO URLs  
-**Optional Microsoft IIS Modules:** [URL Rewrite Module](https://learn.iis.net/page.aspx/460/using-url-rewrite-module/) to use SEO URLs
-
-### Requirements for older Versions
-
-If you need the requirements for older Joomla versions please use the Current Releases version switcher in the top right corner to select the [4.4 (Security)](/versioned_docs/version-4.4/get-started/technical-requirements.md) version.
 
 ## Additional Information
 

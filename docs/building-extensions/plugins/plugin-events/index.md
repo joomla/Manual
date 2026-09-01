@@ -50,4 +50,27 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onRenderModule](./module.md#onrendermodule) | After getting the raw module output | System (Module)     |  before 4.0  |
 | [onAfterRenderModule](./module.md#onafterrendermodule) | After the module style has been applied to the module raw output | System (Module)     |  before 4.0  |
 | [onAfterRenderModules](./module.md#onafterrendermodules) | After rendering of all modules for a template position  | System (Module)     |  before 4.0  |
+| [onUserAuthenticate](./user-auth.md#onuserauthenticate) | To authenticate a user  | System (Authentication)     |  before 4.0  |
+| [onUserLoginFailure](./user-auth.md#onuserloginfailure) | The user fails authentication  | User |  before 4.0  |
+| [onUserAuthorisation](./user-auth.md#onuserauthorisation) | To perform user authorisation  | User |  before 4.0  |
+| [onUserAuthorisationFailure](./user-auth.md#onuserauthorisationfailure) | User authorisation fails | User |  before 4.0  |
+| [onUserLogin](./user-auth.md#onuserlogin) | User has successfully passed authentication and authorisation | User |  before 4.0  |
+| [onUserAfterLogin](./user-auth.md#onuserafterlogin) | User has successfully logged on | User |  before 4.0  |
+| [onUserLogout](./user-auth.md#onuserlogout) | User is logging out | User |  before 4.0  |
+| [onUserAfterLogout](./user-auth.md#onuserafterlogout) | User has successfully logged out | User |  before 4.0  |
+| [onUserLogoutFailure](./user-auth.md#onuserlogoutfailure) | A problem with a user logout has arisen | User |  before 4.0  |
+| [onUserBeforeSave](./user-auth.md#onuserbeforesave) | Before saving a Users record | User |  before 4.0  |
+| [onUserAfterSave](./user-auth.md#onuseraftersave) | After saving a Users record | User |  before 4.0  |
+| [onUserBeforeDelete](./user-auth.md#onuserbeforedelete) | Before deleting a Users record | User |  before 4.0  |
+| [onUserAfterDelete](./user-auth.md#onuserafterdelete) | After deleting a Users record | User |  before 4.0  |
+| [onUserBeforeSaveGroup](./user-auth.md#onuserbeforesavegroup) | Before saving a Usergroups record | User |  before 4.0  |
+| [onUserAfterSaveGroup](./user-auth.md#onuseraftersavegroup) | After saving a Usergroups record | User |  before 4.0  |
+| [onUserBeforeDeleteGroup](./user-auth.md#onuserbeforedeletegroup) | Before deleting a Usergroups record | User |  before 4.0  |
+| [onUserAfterDeleteGroup](./user-auth.md#onuserafterdeletegroup) | After deleting a Usergroups record | User |  before 4.0  |
+| [onUserAfterRemind](./user-auth.md#onuserafterremind) | After emailing a username reminder | User |  before 4.0  |
+| [onUserBeforeResetRequest](./user-auth.md#onuserbeforeresetrequest) | Before sending an email to reset a password | User |  4.2  |
+| [onUserAfterResetRequest](./user-auth.md#onuserafterresetrequest) | After sending an email to reset a password | User |  4.2  |
+| [onUserBeforeResetComplete](./user-auth.md#onuserbeforeresetcomplete) | Before updating a forgotten password which has been reset | User |  4.2  |
+| [onUserAfterResetComplete](./user-auth.md#onuserafterresetcomplete) | After updating a forgotten password which has been reset | User |  4.2  |
+| [onUserLoginButtons](./user-auth.md#onuserloginbuttons) | To allow buttons to be added to the logon form | User |  4.0  |
 
