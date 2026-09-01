@@ -5,7 +5,6 @@
 .DS_Store
 .idea
 .vscode
-.git-tools
 node_modules/
 
 # OSX
