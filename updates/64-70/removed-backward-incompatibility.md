@@ -426,3 +426,16 @@ Factory::getApplication()->bootComponent('messages')->getMVCFactory()
 Factory::getContainer()->get(ApiRouter::class);
 $value = $app->getInput();
 ```
+
+## ReshapeArgumentsAware trait got removed
+- PR: https://github.com/joomla/joomla-cms/pull/47459
+- File: /libraries/src/Event/ReshapeArgumentsAware.php
+- Description: The `ReshapeArgumentsAware` trait got removed as it's intention was to make the bridge to named arguments. So named arguments should always be used instead of the argument list as the order can't be guaranteed anymore:
+```php
+// Old:
+[$foo, $bar] = array_values($event->getArbuements());
+
+// New:
+$foo = $event->getArgument('foo');
+$bar = $event->getArgument('bar');
+```
