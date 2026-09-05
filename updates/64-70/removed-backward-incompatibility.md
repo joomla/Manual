@@ -433,7 +433,7 @@ $value = $app->getInput();
 - Description: The `ReshapeArgumentsAware` trait got removed as it's intention was to make the bridge to named arguments. So named arguments should always be used instead of the argument list as the order can't be guaranteed anymore:
 ```php
 // Old:
-[$foo, $bar] = array_values($event->getArbuements());
+[$foo, $bar] = array_values($event->getArguments());
 
 // New:
 $foo = $event->getArgument('foo');
