@@ -438,3 +438,61 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+
+## Positional and by-reference arguments removed from seven core events
+- PR: https://github.com/joomla/joomla-cms/pull/XXXXX
+- Files:
+  - /administrator/components/com_finder/src/Indexer/Adapter.php
+  - /administrator/components/com_finder/src/Indexer/DebugAdapter.php
+  - /administrator/components/com_finder/src/Indexer/Indexer.php
+  - /administrator/components/com_finder/src/Model/IndexModel.php
+  - /administrator/components/com_mails/src/Helper/MailsHelper.php
+  - /administrator/modules/mod_stats_admin/src/Helper/StatsAdminHelper.php
+  - /components/com_finder/src/Model/SearchModel.php
+  - /modules/mod_stats/src/Helper/StatsHelper.php
+  - /plugins/task/updatenotification/src/Extension/UpdateNotification.php
+- Description: The events `onFinderIndexAfterIndex`, `onFinderIndexAfterDelete`, `onFinderIndexAfterPurge`, `onFinderSortOrderFields`, `onMailBeforeTagsRendering`, `onGetStats` and `onBuildAdministratorLoginURL` are no longer dispatched with a positional argument array. Each now uses a concrete event class with named arguments, described under [New Features](new-features.md). Plugins using `CMSPlugin` legacy listeners are not affected, because the arguments are declared in the order the positional arrays used. Plugins implementing `SubscriberInterface` have to change in three ways.
+
+  Numeric argument access no longer resolves:
+```php
+// Old:
+public function onGetStats(Event $event): void
+{
+    $context = $event->getArgument(0);
+}
+
+// New:
+public function onGetStats(GetStatsEvent $event): void
+{
+    $context = $event->getContext();
+}
+```
+  Three of the events passed an argument by reference. They no longer do, and a listener which changes
+  the value has to hand it back to the event with `updateSortOrderFields()`, `updateMail()` or
+  `updateUri()`. Modifying an object in place still works, because the event holds the same instance:
+```php
+// Old:
+public function onFinderSortOrderFields(Event $event): void
+{
+    $fields   = $event->getArgument(0);
+    $fields[] = $myField;
+
+    $event->setArgument(0, $fields);
+}
+
+// New:
+public function onFinderSortOrderFields(SortOrderFieldsEvent $event): void
+{
+    $fields   = $event->getSortOrderFields();
+    $fields[] = $myField;
+
+    $event->updateSortOrderFields($fields);
+}
+```
+  `onGetStats` results are now type checked. A listener must return an array of rows, or add one with
+  `addResult()`. Returning anything else previously produced a PHP warning and the value was skipped,
+  and now throws an `InvalidArgumentException`.
+
+  `onFinderIndexAfterIndex` type checks its `subject` argument against
+  `Joomla\Component\Finder\Administrator\Indexer\Result`. An indexer adapter which passed a plain
+  `stdClass` to `Indexer::index()` now causes a `TypeError`.
