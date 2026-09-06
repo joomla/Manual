@@ -14,7 +14,7 @@ Any changes in best practice.
 
 
 ## Concrete event classes for seven core events
-- PR: https://github.com/joomla/joomla-cms/pull/XXXXX
+- PR: https://github.com/joomla/joomla-cms/pull/48382
 - Files:
   - /libraries/src/Event/Application/BuildAdministratorLoginUrlEvent.php
   - /libraries/src/Event/Finder/IndexAfterDeleteEvent.php
@@ -60,7 +60,7 @@ $id = $event->getLinkId() ?? $event->getItemId();
 ```
 
 ## Plugins declaring `DispatcherAwareInterface` receive the dispatcher
-- PR: https://github.com/joomla/joomla-cms/pull/XXXXX
+- PR: https://github.com/joomla/joomla-cms/pull/48382
 - Files:
   - /libraries/src/Plugin/PluginHelper.php
 - Description: `CMSPlugin::getDispatcher()` and `CMSPlugin::setDispatcher()` are deprecated, and the notice asks plugins that need a dispatcher to implement `DispatcherAwareInterface` themselves. Until now that did not work for plugins implementing `SubscriberInterface`: `PluginHelper::import()` registered them with `$dispatcher->addSubscriber($plugin)` and never called `setDispatcher()`, so `$this->getDispatcher()` threw an `UnexpectedValueException`.
