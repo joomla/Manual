@@ -501,7 +501,8 @@ To load your .ini language file you must pass the base path for your extension (
 Factory::getApplication()->getLanguage()->load('mod_example', JPATH_BASE . '/modules/mod_example');
 ```
 
-The advantage of this second approach is that the language files continue to be closely associated with your extension.
+The advantage of this second approach is that the language files continue to be closely associated with your extension,
+and this is the approach which is recommended by the Joomla development team. 
 
 If an administrator uninstalls a language then
 - for option 1 your extension's language files will be deleted

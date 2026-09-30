@@ -426,3 +426,15 @@ Factory::getApplication()->bootComponent('messages')->getMVCFactory()
 Factory::getContainer()->get(ApiRouter::class);
 $value = $app->getInput();
 ```
+
+## Removed User Authentication hashes
+- PR: https://github.com/joomla/joomla-cms/pull/44237
+- Files:
+  - libraries/phpass/PasswordHash.php
+  - libraries/src/Authentication/Password/PHPassHandler.php
+- Description: The `PHPassHandler` got removed as it doesn't work anymore in Joomla. The resource `'password.handler.phpass'` is not available anymore in the DI container, therefor the `PasswordHash` class alias doesn't exist as well. 
+
+:::info
+  Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
+:::
+
