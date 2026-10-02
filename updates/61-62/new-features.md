@@ -118,3 +118,24 @@ To apply the changes, the `vendor` builder must be run once to copy the new file
 ```bash
 npm run build -- -n vendor
 ```
+
+---
+
+## Media manager and link selection in TinyMCE
+
+The image, media and link dialogs of TinyMCE are now connected to Joomla: the image and media dialogs open
+the Joomla Media Manager, and the link dialog offers a "Browse links" picker where articles, contacts, menu
+items and media files can be selected as link target.
+
+- **PR**: [#48043](https://github.com/joomla/joomla-cms/pull/48043) (media manager in the image/media dialogs)
+- **PR**: [#48138](https://github.com/joomla/joomla-cms/pull/48138) (link picker in the link dialog)
+- **What changed**: The Joomla TinyMCE integration wires TinyMCE's file picker to pickers registered on the
+new JavaScript registry `Joomla.editorFilePickers`. Core registers the Media Manager (image/media) and a
+link picker (link dialog) through it. Two extension points are available for third parties:
+  - register an own picker on `Joomla.editorFilePickers` (globally or per editor), for example to open an
+  own media manager from the editor dialogs;
+  - register the extension's content as a source of the core link picker via the `editor-link-providers`
+  script options — a single `addScriptOptions()` call in an editors-xtd plugin.
+- **Documentation**: [Editor File and Link Pickers](/docs/building-extensions/plugins/plugin-examples/editors-xtd-plugin/file-and-link-pickers)
+- **Impact**: No changes are required for existing extensions. Extensions that already ship an own
+TinyMCE `file_picker_callback` keep working — a developer-supplied callback always wins over the registry.

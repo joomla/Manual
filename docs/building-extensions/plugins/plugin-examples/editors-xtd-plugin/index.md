@@ -80,7 +80,7 @@ final class Example extends CMSPlugin implements SubscriberInterface
 
         if (!\in_array('example-beer', $disabled)) {
             $button1 = new Button('example-beer', [
-                'text' => 'Insert 🍺'
+                'text' => 'Insert 🍺',
                 'icon' => 'file-add',
                 'action' => 'insert', // Action already provided by Joomla.EditorButton
             ], [
@@ -102,7 +102,7 @@ final class Example extends CMSPlugin implements SubscriberInterface
                 );
             
             $button2 = new Button('example-cat', [
-                'text'   => 'Insert 🐈'
+                'text'   => 'Insert 🐈',
                 'icon'   => 'file-add',
                 'action' => 'insert-cat', // Custom action, will code it later
             ]);
@@ -128,3 +128,10 @@ JoomlaEditorButton.registerAction('insert-cat', (editor, options) => {
 
 And all done 🎉 
 After plugin installation and enabling, the buttons should be available and do its job.
+
+## Editor file and link pickers
+
+Besides toolbar buttons, an editors-xtd plugin is also the place to integrate with the editor picker system:
+registering a file picker (for example your own media manager) for the editor's image, media and link dialogs,
+or adding your extension's content as a source to the core link picker.
+This is described in [Editor File and Link Pickers](file-and-link-pickers.md).
