@@ -26,7 +26,7 @@ Implemented by: libraries/src/Form/Field/MediaField.php
 ```xml
 <field
   name="myimage"
-  type="accessiblemedia"
+  type="media"
   directory="stories"
 />
 ```
