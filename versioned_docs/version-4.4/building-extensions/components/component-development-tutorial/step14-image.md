@@ -304,7 +304,6 @@ COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
 ; Admin landmarks view
 COM_EXAMPLE_LANDMARKS_VIEW_TITLE="Landmarks"
 COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
-COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 ; Admin landmarks view - confirmations
 COM_EXAMPLE_N_ITEMS_DELETED_1="Landmark deleted."
 COM_EXAMPLE_N_ITEMS_DELETED="%d Landmarks deleted."
@@ -316,6 +315,7 @@ COM_EXAMPLE_N_ITEMS_TRASHED_1="Landmark moved to trash."
 COM_EXAMPLE_N_ITEMS_TRASHED="%d Landmarks moved to trash."
 ; Admin landmark edit form
 COM_EXAMPLE_LANDMARK_EDIT="Landmarks: Edit"
+COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
 COM_EXAMPLE_LANDMARK_TITLE_DESC="Name of the landmark"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_LABEL="Description"
 COM_EXAMPLE_LANDMARK_DESCRIPTION_DESC="A summary description of the landmark"
