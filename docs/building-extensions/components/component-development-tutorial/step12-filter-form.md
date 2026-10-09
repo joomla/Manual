@@ -76,8 +76,8 @@ The key new source file in this step is the filter form definition:
             validate="options"
             >
             <option value="">JGLOBAL_SORT_BY</option>
-            <option value="title ASC">JGLOBAL_TITLE_ASC</option>
-            <option value="title DESC">JGLOBAL_TITLE_DESC</option>
+            <option value="title ASC">COM_EXAMPLE_LANDMARK_TITLE_ASCENDING</option>
+            <option value="title DESC">COM_EXAMPLE_LANDMARK_TITLE_DESCENDING</option>
             <option value="id ASC">JGRID_HEADING_ID_ASC</option>
             <option value="id DESC">JGRID_HEADING_ID_DESC</option>
         </field>
@@ -383,7 +383,7 @@ $listDirn  = $this->escape($this->state->get('list.direction'));
                 </td>
                 <th scope="col">
               // highlight-next-line
-                    <?php echo HTMLHelper::_('searchtools.sort', 'JGLOBAL_TITLE', 'title', $listDirn, $listOrder); ?>
+                    <?php echo HTMLHelper::_('searchtools.sort', 'COM_EXAMPLE_LANDMARK_TITLE_LABEL', 'title', $listDirn, $listOrder); ?>
                 </th>
                 <th scope="col" class="w-1 text-center">
                     <?php echo Text::_('JSTATUS'); ?>
@@ -522,6 +522,35 @@ Using a layout to display the filter form, and including the pagination footer h
 On the column headers we use an HTMLHelper function (`sort()` in libraries/src/HTML/Helper/SearchTools.php) to make the column headers into HTML links.
 The current ordering column and direction are passed in,
 and the `sort()` function displays slightly differently the column header which is currently being used for ordering.
+
+## Updated Language Strings
+
+```php title="administrator/components/com_example/language/en-GB/com_example.ini"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_TITLE="Landmark"
+COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
+; Admin landmarks view
+COM_EXAMPLE_LANDMARKS_VIEW_TITLE="Landmarks"
+COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
+COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
+// highlight-start
+; Admin landmarks view - filter fields
+COM_EXAMPLE_LANDMARK_TITLE_ASCENDING="Name ascending"
+COM_EXAMPLE_LANDMARK_TITLE_DESCENDING="Name descending"
+// highlight-end
+; Admin landmarks view - confirmations
+COM_EXAMPLE_N_ITEMS_DELETED_1="Landmark deleted."
+COM_EXAMPLE_N_ITEMS_DELETED="%d Landmarks deleted."
+COM_EXAMPLE_N_ITEMS_PUBLISHED_1="Landmark published."
+COM_EXAMPLE_N_ITEMS_PUBLISHED="%d Landmarks published."
+COM_EXAMPLE_N_ITEMS_UNPUBLISHED_1="Landmark unpublished."
+COM_EXAMPLE_N_ITEMS_UNPUBLISHED="%d Landmarks unpublished."
+; Admin landmark edit form
+COM_EXAMPLE_LANDMARK_EDIT="Landmarks: Edit"
+COM_EXAMPLE_LANDMARK_TITLE_DESC="Name of the landmark"
+COM_EXAMPLE_LANDMARK_DESCRIPTION_LABEL="Description"
+COM_EXAMPLE_LANDMARK_DESCRIPTION_DESC="A summary description of the landmark"
+COM_EXAMPLE_SAVE_SUCCESS="Landmark successfully saved"
+```
 
 ## Installation
 

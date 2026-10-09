@@ -34,9 +34,20 @@ It will allow the user to select a media item and to specify the associated Alt 
 
 ![Screenshot of accessible media field with alt input field](_assets/accessiblemedia/accessiblemedia.jpg)
 
-The one the right is an Accessible Media Field.
-
 Note that if you are using this field on the frontend then permissions restrictions are likely to be in force. If the user is not authorized to view or add media they will see an error page in the modal popup ("403 You are not authorized to view this resource."). 
+
+## Handling the HTTP POST
+
+When the form with an accessiblemedia field is submitted then the HTTP POST parameter for this field will be an array, eg:
+
+```
+jform[myimage][imagefile]
+jform[myimage][alt_text]
+```
+
+If you are storing both in a single database column then you will probably want to JSON-encode the pair of values first.
+
+A worked example can be found in the Component Tutorial [Step 14 Image](../../../building-extensions/components/component-development-tutorial/step14-image.md).  
 
 ## See Also
 

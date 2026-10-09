@@ -286,8 +286,8 @@ We have to allow a published status of -2 (trashed) in both the landmark edit fo
             validate="options"
             >
             <option value="">JGLOBAL_SORT_BY</option>
-            <option value="title ASC">JGLOBAL_TITLE_ASC</option>
-            <option value="title DESC">JGLOBAL_TITLE_DESC</option>
+            <option value="title ASC">COM_EXAMPLE_LANDMARK_TITLE_ASCENDING</option>
+            <option value="title DESC">COM_EXAMPLE_LANDMARK_TITLE_DESCENDING</option>
             <option value="id ASC">JGRID_HEADING_ID_ASC</option>
             <option value="id DESC">JGRID_HEADING_ID_DESC</option>
         </field>
@@ -311,6 +311,9 @@ COM_EXAMPLE_LANDMARK_FIELD_SELECT_DESC="Select a landmark"
 COM_EXAMPLE_LANDMARKS_VIEW_TITLE="Landmarks"
 COM_EXAMPLE_LANDMARKS_CAPTION="Table of Landmarks"
 COM_EXAMPLE_LANDMARK_TITLE_LABEL="Name"
+; Admin landmarks view - filter fields
+COM_EXAMPLE_LANDMARK_TITLE_ASCENDING="Name ascending"
+COM_EXAMPLE_LANDMARK_TITLE_DESCENDING="Name descending"
 ; Admin landmarks view - confirmations
 COM_EXAMPLE_N_ITEMS_DELETED_1="Landmark deleted."
 COM_EXAMPLE_N_ITEMS_DELETED="%d Landmarks deleted."
