@@ -154,7 +154,7 @@ $this->getApplication();
 ```
 
 ## `PrivacyPlugin` db property removed
-- PR: https://github.com/joomla/joomla-cms/pull/47880
+- PR: https://github.com/joomla/joomla-cms/pull/47905
 - File: /administrator/components/com_privacy/src/Plugin/PrivacyPlugin.php
 - Description: The `$db` property in the `abstract class PrivacyPlugin extends CMSPlugin
 ` got removed. Inject the database in the provider.php. For example you can use:
@@ -190,7 +190,7 @@ $this->getDatabase();
 - Description: The CSS custom property `--cassiopeia-link-color` is not used and got removed.
 
 ## Removed unused methods from localise 
-- PR: https://github.com/joomla/joomla-cms/pull/47897
+- PR: https://github.com/joomla/joomla-cms/pull/47898
 - File: /administrator/language/en-GB/localise.php
 - Description: Unused filters removed: 
 `--getIgnoredSearchWords`
