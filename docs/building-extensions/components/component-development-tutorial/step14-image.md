@@ -276,6 +276,7 @@ It doesn't generate a json_decode when the data is read from the database.
 ## Front-end Changes
 
 In the tmpl file for displaying a landmark we need to display the image and its alt text.
+(The code should really check if an image has been defined before it outputs the `<img>` tag).
 
 ```php title="components/com_example/tmpl/landmark/default.php"
 <?php
