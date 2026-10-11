@@ -792,6 +792,9 @@ Once you have install the updated version you can use your browser's devtools to
 - the form of the location parameters sent in the HTTP POST when the landmark edit form is submitted
 
 - the form of the `<script>` and CSS `<link>` elements in the HTML head.
+Note that the URLs of our js and css files have got the asset version number included as a parameter (ie after the question mark).
+This means that when you modify your code and update the version number then the URL overall will be changed.
+This forces the browser to request the new file rather than using a cached copy. 
 
 - the `<script>` element of type application/json which includes the language constant and PHP variables passed
 
@@ -815,6 +818,10 @@ If you get it right then you should be able to do in map.js:
 ```php title="com_example/media/com_example/js/map.js"
 import {LeafletMap, TileLayer, Marker} from "leaflet";
 ```
+
+(If you're changing the map.js code but not the version, 
+then be sure to force the browser to load the new version rather than using a cached copy,
+eg on a PC by pressing the Shift key as you click the reload button).
 
 You may find it helpful to view the [Joomla PR for importmap](https://github.com/joomla/joomla-cms/pull/40714).
 
