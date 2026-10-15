@@ -438,7 +438,6 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
-
 ## Contact events no longer pass the form data by reference
 - PR: https://github.com/joomla/joomla-cms/pull/48624
 - Files:
