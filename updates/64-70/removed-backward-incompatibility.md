@@ -438,3 +438,35 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+## Core no longer passes event arguments by reference
+- PR: https://github.com/joomla/joomla-cms/pull/48624
+- Description: Core dispatch sites passed some event arguments by reference so that legacy listeners could change them in place. Together with the removal of the reference handling in the event constructors (https://github.com/joomla/joomla-cms/pull/47459) this no longer works. A listener that changes one of these arguments has to hand the new value back with the `update*()` method of the event; the core caller reads it back from the event after dispatch. Affected events and the method to use:
+  - `onSubmitContact`: `data`, `updateData()`. `onValidateContact` is validation only and never allowed changes.
+  - `onInstallerBeforeInstallation`, `onInstallerBeforeInstaller`: `package`, `updatePackage()`
+  - `onInstallerAfterInstaller`: `package`, `installerResult`, `message`, `updatePackage()`, `updateInstallerResult()`, `updateMessage()`
+  - `onInstallerBeforePackageDownload`: `url`, `headers`, `updateUrl()`, `updateHeaders()`
+  - `onRenderModule`: `attributes`, `updateAttributes()`
+  - `onPrepareModuleList`, `onAfterModuleList`, `onAfterCleanModuleList`: `modules`, `updateModules()`
+  - `onAfterRenderModules`: `content`, `updateContent()`
+  - `onPreprocessMenuItems`: `subject`, `updateItems()`
+  - `onAfterGetMenuTypeOptions`: `items`, `updateItems()`
+  - `onContentPrepareData`: `data`, `updateData()`
+  - `onContentBeforeValidateData`, `onUserBeforeDataValidation`: `data`, `updateData()`
+  - `onCustomFieldsAfterPrepareField`: `value`, `updateValue()`
+  - `onPrivacyCheckPrivacyPolicyPublished`: `subject`, `updatePolicyInfo()`
+```php
+// Old:
+public function onSubmitContact($contact, &$data)
+{
+    $data['contact_message'] .= "\n\nSent via " . $contact->name;
+}
+
+// New:
+public function onSubmitContact(SubmitContactEvent $event): void
+{
+    $data = $event->getData();
+    $data['contact_message'] .= "\n\nSent via " . $event->getContact()->name;
+
+    $event->updateData($data);
+}
+```
