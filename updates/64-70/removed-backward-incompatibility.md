@@ -439,7 +439,7 @@ $value = $app->getInput();
 :::
 
 ## `$resultIsFalseable` removed from the result type traits
-- PR: https://github.com/joomla/joomla-cms/pull/XXXXX
+- PR: https://github.com/joomla/joomla-cms/pull/48636
 - Files:
   - /libraries/src/Event/Result/ResultTypeArrayAware.php
   - /libraries/src/Event/Result/ResultTypeFloatAware.php
