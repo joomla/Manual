@@ -520,3 +520,22 @@ $table->title = 'New title';
 ### `User`
 The unused import of the trait has been removed from the `\Joomla\CMS\User\User` class. Read the properties of the user object directly, for example `$user->name` instead of `$user->get('name')`. See also the [compat plugin section](#functions-that-throw-an-error) above for `User::get()`.
 
+## `FieldsFormServiceInterface` merged into `FieldsServiceInterface`
+- PR: https://github.com/joomla/joomla-cms/pull/48641
+- Files:
+  - /libraries/src/Fields/FieldsFormServiceInterface.php (removed)
+  - /libraries/src/Fields/FieldsServiceInterface.php
+- Description: `prepareForm()` is now part of `FieldsServiceInterface` and the `FieldsFormServiceInterface` sub-interface has been removed. A component extension class that implemented `FieldsFormServiceInterface` implements `FieldsServiceInterface` instead. A component that implements `FieldsServiceInterface` without `prepareForm()` has to provide it; `FieldsServiceTrait` supplies the empty default:
+```php
+// Old:
+class ExampleComponent extends MVCComponent implements FieldsFormServiceInterface
+{
+    use FieldsServiceTrait;
+}
+
+// New:
+class ExampleComponent extends MVCComponent implements FieldsServiceInterface
+{
+    use FieldsServiceTrait;
+}
+```
