@@ -438,3 +438,33 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+## `$resultIsFalseable` removed from the result type traits
+- PR: https://github.com/joomla/joomla-cms/pull/48636
+- Files:
+  - /libraries/src/Event/Result/ResultTypeArrayAware.php
+  - /libraries/src/Event/Result/ResultTypeFloatAware.php
+  - /libraries/src/Event/Result/ResultTypeIntegerAware.php
+  - /libraries/src/Event/Result/ResultTypeNumericAware.php
+  - /libraries/src/Event/Result/ResultTypeObjectAware.php
+  - /libraries/src/Event/Result/ResultTypeStringAware.php
+- Description: The `$resultIsFalseable` flag, which let an event class accept boolean `false` as a result of its declared type, has been removed from the `ResultType*Aware` traits together with the check that honoured it. An event class that set it to `true` now gets an `InvalidArgumentException` for a `false` result. Use `null` and `$resultIsNullable` for "no result", or throw an exception for a failure:
+```php
+// Old:
+class GetItemsEvent extends AbstractEvent implements ResultAwareInterface
+{
+    use ResultAware;
+    use ResultTypeArrayAware;
+
+    protected $resultIsFalseable = true;
+}
+
+// New:
+class GetItemsEvent extends AbstractEvent implements ResultAwareInterface
+{
+    use ResultAware;
+    use ResultTypeArrayAware;
+
+    protected $resultIsNullable = true;
+}
+```
+Listeners that returned `false` return `null` instead.
