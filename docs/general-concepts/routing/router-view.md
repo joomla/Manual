@@ -71,3 +71,5 @@ The third aspect of RouterView configurations enables the router to convert betw
 - `get<Viewname>Id` - passes a segment and asks you to return the associated id
 
 In addition you're passed a `$query` parameter representing the current state of the request being built or parsed.
+
+Since Joomla 6.2 you can also set these callbacks explicitly for each view with `setBuildCallback()` and `setParseCallback()` on the `RouterViewConfiguration`. Any PHP callable can be used. If no callback is set, the router falls back to the `get<Viewname>Segment` and `get<Viewname>Id` methods. For the `category` and `categories` views, you can use the `getCategorySegment()` and `getCategoryId()` methods from `Joomla\CMS\Component\Router\CategoryCallbackTrait`.
