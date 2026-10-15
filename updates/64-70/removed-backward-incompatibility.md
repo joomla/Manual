@@ -438,3 +438,26 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+
+## Contact events no longer pass the form data by reference
+- PR: https://github.com/joomla/joomla-cms/pull/48624
+- Files:
+  - /components/com_contact/src/Controller/ContactController.php
+  - /api/components/com_contact/src/Controller/ContactController.php
+- Description: The `data` argument of the `onValidateContact` and `onSubmitContact` events is no longer passed by reference. A plugin that changes the submitted form data in `onSubmitContact` has to hand it back to the event with `updateData()`. `onValidateContact` is for validation only; it never allowed changing the data and has no setter. Reject a submission by adding an `\Exception` to the event result instead.
+```php
+// Old:
+public function onSubmitContact($contact, &$data)
+{
+    $data['contact_message'] .= "\n\nSent via " . $contact->name;
+}
+
+// New:
+public function onSubmitContact(SubmitContactEvent $event): void
+{
+    $data = $event->getData();
+    $data['contact_message'] .= "\n\nSent via " . $event->getContact()->name;
+
+    $event->updateData($data);
+}
+```
