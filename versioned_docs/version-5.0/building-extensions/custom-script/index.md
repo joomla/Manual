@@ -34,7 +34,7 @@ https://example.com/myscript.php
 
 :::danger[Developer Notice]
  
-This will not work with advanced security option [public folder](../../../../migrations/44-50/new-features#added-the-option-to-serve-joomla-from-a-public-folder) introduced in Joomla 5.0.
+This will not work with advanced security option [public folder](../../../../updates/44-50/new-features#added-the-option-to-serve-joomla-from-a-public-folder) introduced in Joomla 5.0.
 
 :::
 
