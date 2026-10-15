@@ -438,3 +438,24 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+## Deprecated static `getInstance()` methods removed
+- PR: https://github.com/joomla/joomla-cms/pull/48632
+- Files:
+  - /libraries/src/Cache/Cache.php
+  - /libraries/src/Cache/CacheController.php
+  - /libraries/src/Pathway/Pathway.php
+  - /libraries/src/Session/Session.php
+- Description: The static singleton accessors that were superseded by the dependency injection container have been removed, together with `CacheController::addIncludePath()` and the lookup of `JCacheController*` classes through include paths. Get the objects from the application or the container instead:
+```php
+// Old:
+$pathway    = Pathway::getInstance('site');
+$session    = Session::getInstance();
+$cache      = Cache::getInstance('output', $options);
+$controller = CacheController::getInstance('callback', $options);
+
+// New:
+$pathway    = Factory::getApplication()->getPathway();
+$session    = Factory::getApplication()->getSession();
+$cache      = Factory::getContainer()->get(CacheControllerFactoryInterface::class)->createCacheController('output', $options);
+$controller = Factory::getContainer()->get(CacheControllerFactoryInterface::class)->createCacheController('callback', $options);
+```
