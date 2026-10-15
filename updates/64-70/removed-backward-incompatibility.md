@@ -520,3 +520,35 @@ $table->title = 'New title';
 ### `User`
 The unused import of the trait has been removed from the `\Joomla\CMS\User\User` class. Read the properties of the user object directly, for example `$user->name` instead of `$user->get('name')`. See also the [compat plugin section](#functions-that-throw-an-error) above for `User::get()`.
 
+## Legacy `onBeforeDelete` and `onAfterDelete` events of the nested table removed
+- PR: https://github.com/joomla/joomla-cms/pull/48637
+- File: /libraries/src/Table/Nested.php
+- Description: `Nested::delete()` no longer dispatches the generic `onBeforeDelete` and `onAfterDelete` events, which carried only the primary key. Listen to the typed table events instead, which every table dispatches, with the table as `subject` and the same `pk`:
+```php
+// Old:
+public static function getSubscribedEvents(): array
+{
+    return ['onBeforeDelete' => 'onBeforeDelete'];
+}
+
+public function onBeforeDelete(Event $event): void
+{
+    $pk = $event->getArgument('pk');
+}
+
+// New:
+public static function getSubscribedEvents(): array
+{
+    return ['onTableBeforeDelete' => 'onTableBeforeDelete'];
+}
+
+public function onTableBeforeDelete(BeforeDeleteEvent $event): void
+{
+    if (!$event->getArgument('subject') instanceof Nested) {
+        return;
+    }
+
+    $pk = $event->getArgument('pk');
+}
+```
+The typed event fires for every table, so check the table in `getArgument('subject')` when only nested tables matter. The table events have no typed getters.
