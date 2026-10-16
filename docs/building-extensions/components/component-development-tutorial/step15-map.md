@@ -59,8 +59,8 @@ CREATE TABLE IF NOT EXISTS `#__example_landmarks` (
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO `#__example_landmarks` (`title`, `description`, `published`, `picture`) VALUES
 /* highlight-start */
+INSERT INTO `#__example_landmarks` (`title`, `description`, `published`, `picture`, `location`) VALUES
 ('The Eiffel Tower', '', 1, '', '{"lat":"48.858222","long":"2.2945"}'),
 ('The Giant\'s Causeway', '', 1, '', '{"lat":"55.240833","long":"-6.511667"}');
 /* highlight-end */
@@ -215,7 +215,7 @@ For the location data we need to perform a json_decode within the loadFormData f
         {
             $data = $this->getItem();
       // highlight-next-line
-            $data->location = json_decode($data->location);  // will be set to null if location not yet set
+            $data->location = $data->location ? json_decode($data->location) : null;  
         }
 
         return $data;
@@ -487,6 +487,7 @@ The Controller, View and Model classes are all unaffected, and the changes are c
 ```php title="components/com_example/tmpl/landmark/default.php
 <?php
 \defined('_JEXEC') or die;
+use Joomla\CMS\HTML\HTMLHelper;
 // highlight-start
 use Joomla\CMS\Language\Text;
 
@@ -513,9 +514,14 @@ $this->document->addScriptOptions('com_example.mapParams', $mapParams);
 <h4><?php echo $this->escape($this->data->title);?></h4>
 <?php 
     $picture = json_decode($this->data->picture);
-    $src = $picture->imagefile;
-    $altText = $this->escape($picture->alt_text);
-    echo "<img src={$src} alt='{$altText}'>";
+    if ($picture) {
+        $src = $picture->imagefile ?? "";
+        if (strlen($src) > 0) {
+            $clean = HTMLHelper::_('cleanImageURL', $src);
+            $altText = $picture->alt_text ? $this->escape($picture->alt_text) : "";
+            echo "<img src=\"{$clean->url}\" alt='{$altText}'>";
+        }
+    }
 ?>
 <p><?php echo $this->data->description;?></p>
 // highlight-next-line
@@ -775,7 +781,7 @@ As well as updating the version number we need to include the media and front-en
     </update>
     
   <!-- highlight-start -->
-    <media folder="media/com_example">
+    <media destination="com_example" folder="media/com_example">
         <filename>joomla.asset.json</filename>
         <folder>css</folder>
         <folder>js</folder>
