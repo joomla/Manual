@@ -26,6 +26,30 @@ The following list of changes belong to the compatibility plugin and work when e
   - `\Joomla\CMS\User\User::get()`  
   Access directly the property from the user object.
 
+### Application `getRouter()` restricted to compatibility mode
+
+- PR: https://github.com/joomla/joomla-cms/pull/48634
+- Files:
+  - /libraries/src/Application/CMSWebApplicationInterface.php
+  - /libraries/src/Application/CMSApplication.php
+  - /libraries/src/Application/SiteApplication.php
+  - /libraries/src/Application/AdministratorApplication.php
+  - /libraries/src/Application/ConsoleApplication.php
+  - /libraries/src/Router/Route.php
+
+The deprecated static `getRouter()` method has been removed from
+`Joomla\CMS\Application\CMSWebApplicationInterface`.
+
+The concrete application implementations remain available when **Behaviour - Backward Compatibility 7** is enabled
+and loaded. Without compatibility mode, calling these methods throws `BadMethodCallException`.
+With compatibility mode enabled, the methods emit an `E_USER_DEPRECATED` notice and preserve their existing router selection.
+These methods are scheduled for removal in Joomla 8.0.
+
+The compatibility plugin is disabled on fresh Joomla 7 installations. Extensions and template overrides should
+inject the required router or retrieve its shared service from the dependency injection container.
+
+The separate `Joomla\CMS\Event\Application\BeforeApiRouteEvent::getRouter()` method is unaffected.
+
 ### CMS Crypt package
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
