@@ -205,7 +205,7 @@ so it will get rendered when the fieldset is output in the tmpl file:
 However, we need a small change to the LandmarkModel related to prefilling the form data with data from the database.
 For the location data we need to perform a json_decode within the loadFormData function to get it into the right format for display:
 
-```php title="administrator/components/com_example/src/Model/LandmarksModel.php::loadFormData"
+```php title="administrator/components/com_example/src/Model/LandmarkModel.php::loadFormData"
     protected function loadFormData()  // the callback function which is called if $loadData was true
     {
         // Check the session for previously entered form data.
