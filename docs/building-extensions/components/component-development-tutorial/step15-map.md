@@ -561,7 +561,7 @@ We've also included a `<div>` which is where the map will be loaded (or where th
 Within our js code we retrieve the values passed from our PHP code 
 and follow the [leaflet example](https://leafletjs.com/) to create a basic map.
 
-```php title="com_example/media/com_example/js/map.js"
+```js title="com_example/media/com_example/js/map.js"
 import {LeafletMap, TileLayer, Marker} from "https://cdn.jsdelivr.net/npm/leaflet@2.0.0-alpha.1/dist/leaflet.js";
 
 const params = Joomla.getOptions('com_example.mapParams');
@@ -587,7 +587,7 @@ Note the functions which are used to retrieve the data and language constant sen
 
 We also create a basic CSS file:
 
-```php title="com_example/media/com_example/css/map.css"
+```css title="com_example/media/com_example/css/map.css"
 #map {
   height: 400px;
 }
