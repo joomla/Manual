@@ -229,11 +229,11 @@ To get the location displayed on the administrator landmarks form we need to do 
 - we create a new column in the HTML `<table>` for the location. 
 This will mean a new header (which we'll make a sortable header), and data output in the rows in the form `[lat, long]`
 
-- to make the location header sortable, we add the 'location' field into the config as a permitted field for sorting
+- to make the location header sortable, we add the 'location' field into the Model constructor config as a permitted field for sorting
+
+- we change the Model database query to include the location information
 
 - we also need to change the filter fields XML definition to allow sorting by the location column
-
-- we change the database query to include the location information
 
 Here's the updated tmpl file:
 

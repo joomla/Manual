@@ -12,8 +12,7 @@ and using JavaScript we display this location on a map.
 
 The code is available at [com_example step 15](https://github.com/joomla/manual-examples/tree/main/component-tutorial/step15_map).
 
-As described in the [Maps Module](../../modules/module-examples/map-module.md#background)
-you can use a variety of solutions for the map tiles and the JavaScript library code.
+You can use a variety of solutions for the map tiles and the JavaScript library code.
 In this step we use [leaflet](https://leafletjs.com/), which is a popular open source JavaScript library for drawing maps,
 and use the map tiles from [OpenStreetMap](https://www.openstreetmap.org/).
 
@@ -229,11 +228,11 @@ To get the location displayed on the administrator landmarks form we need to do 
 - we create a new column in the HTML `<table>` for the location. 
 This will mean a new header (which we'll make a sortable header), and data output in the rows in the form `[lat, long]`
 
-- to make the location header sortable, we add the 'location' field into the config as a permitted field for sorting
+- to make the location header sortable, we add the 'location' field into the Model constructor config as a permitted field for sorting
+
+- we change the Model database query to include the location information
 
 - we also need to change the filter fields XML definition to allow sorting by the location column
-
-- we change the database query to include the location information
 
 Here's the updated tmpl file:
 
@@ -809,7 +808,7 @@ This forces the browser to request the new file rather than using a cached copy.
 ### importmap
 
 This requires you to be running a version of Joomla at least 5.0,
-(and the [documentation for importmap](../../../general-concepts/web-asset-manager.md#working-with-esm-importmap) in this manual is only in version 5.0 and above).
+(and the documentation for importmap in this manual is only in version 5.0 and above).
 
 The [Leaflet Quick Start Guide](https://leafletjs.com/examples/quick-start/) suggests using an importmap.
 
