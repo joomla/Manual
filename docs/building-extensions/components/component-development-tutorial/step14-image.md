@@ -280,19 +280,33 @@ In the tmpl file for displaying a landmark we need to display the image and its 
 ```php title="components/com_example/tmpl/landmark/default.php"
 <?php
 \defined('_JEXEC') or die;
+// highlight-next-line
+use Joomla\CMS\HTML\HTMLHelper;
 
 ?>
 <h4><?php echo $this->escape($this->data->title);?></h4>
 // highlight-start
 <?php 
     $picture = json_decode($this->data->picture);
-    $src = $picture->imagefile;
-    $altText = $this->escape($picture->alt_text);
-    echo "<img src={$src} alt='{$altText}'>";
+    if ($picture) {
+        $src = $picture->imagefile ?? "";
+        if (strlen($src) > 0) {
+            $clean = HTMLHelper::_('cleanImageURL', $src);
+            $altText = $picture->alt_text ? $this->escape($picture->alt_text) : "";
+            echo "<img src=\"{$clean->url}\" alt='{$altText}'>";
+        }
+    }
 ?>
 // highlight-end
 <p><?php echo $this->data->description;?></p>
 ```
+
+When you select an image using the admin landmark edit form, and then save the landmark,
+what gets written to the database in the picture imagefile field contains additional information,
+including the image height and width in pixels.
+
+To extract just the image filename (or, alternatively, get the height and width) 
+you can use the HTMLHelper::cleanImageURL static function. 
 
 ## Language Strings
 
@@ -359,3 +373,29 @@ However, this isn't implemented in the same way as for pagination, column orderi
 as described in [step 12](./step12-filter-form.md).
 Instead Joomla uses the browser's sessionStorage, 
 and you can see it if you examine your browser's session storage within its devtools. 
+
+## Footnote
+
+When outputting `<img>` elements using relative filenames 
+it's important to put the value of the `src` attribute in double quotes:
+
+```php
+<img src="images/pic.jpg">
+```
+
+Or as described in the [Uri documentation](../../../general-concepts/url.md#root-and-base) 
+you can get an absolute filename using:
+
+```php
+use Joomla\CMS\Uri\Uri;
+...
+$url = Uri::root(true) . '/' . $imageFilename;
+```
+
+and then use it instead in the `<img>` element.
+
+The reason is that when SEF URLs are switched on, 
+the SEF plugin converts all relative filenames within the HTML document into absolute filenames,
+but it performs this by searching for src attributes with double quotes only.
+If single quotes are used then the filename isn't converted, 
+and the browser will most likely request the image file from an invalid URL.
