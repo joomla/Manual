@@ -59,7 +59,7 @@ Here's what we will do to implement component configuration for com_example:
 This is the file which com_config reads to determine what fields to display for each component.
 The filename and the path name are important, to enable com_config to find it.
 
-```php title="administrator/components/com_example/config.xml"
+```xml title="administrator/components/com_example/config.xml"
 <?xml version="1.0" encoding="utf-8"?>
 <config>
     <fieldset
@@ -157,7 +157,8 @@ COM_EXAMPLE_CONFIG_DEFAULT_ZOOM_DESC="Default zoom level for map"
 // highlight-end
 ```
 
-The file includes the 2 new language constants for the zoom override as well.
+The file includes the 2 new language constants (COM_EXAMPLE_LANDMARK_ZOOM_LABEL and COM_EXAMPLE_LANDMARK_ZOOM_DESC)
+for the zoom override as well, which will be set in our admin edit form.
 
 ### Preferences Button
 
@@ -195,7 +196,8 @@ We add a button on the Landmarks view which will give an administrator a short c
 
 ### Install Script
 
-We need to update the `params` column of the com_example record in the `#__extensions` table to contain the default zoom value.
+We need to update the `params` column of the com_example record in the `#__extensions` table to contain the default zoom value,
+which we'll set at 10.
 We could do this by a SQL update statement in a SQL update file, 
 but this becomes more complicated if we add another configuration parameter in a future version,
 because we'd need to take account of where an administrator had changed our default zoom parameter to a value other than 10.
@@ -351,7 +353,7 @@ If you use this second approach then you need to ensure that your component para
 
 To implement an override of the zoom level at the individual landmark record level we do the following:
 
-- add a 'params' field to the `#__example_landmarks` table and populate with an empty JSON string
+- add a 'params' field to the `#__example_landmarks` table and populate initially with an empty JSON string
 
 - provide administrator functionality to manage the zoom level within the params
 
@@ -397,7 +399,7 @@ We include it within an existing fieldset which is already output in the tmpl fi
 
 - include the `params` field within the list of arrays to be JSON-encoded before writing to the database
 
-The 2 additional language constants were included above.
+The 2 additional language constants (for the zoom field) were included above.
 
 ```xml title="administrator/components/com_example/forms/landmark.xml"
 <?xml version="1.0" encoding="utf-8"?>
@@ -553,6 +555,9 @@ class LandmarkModel extends ItemModel
 The Registry object has a [merge function](../../../general-concepts/registry.md#merging)
 which overwrites its values with those of another Registry passed as a parameter. 
 However, we don't want to pollute the original object, so we take a clone first.
+Here it's important that the name of the zoom field in the component config 
+is the same as in the individual landmark override,
+so that the override value from the individual record overwrites the component config value.
 
 In the tmpl file we use the merged parameters and pass the zoom down to the JS.
 
@@ -754,8 +759,7 @@ By switching on your browser's devtools and selecting the Network tab,
 you should be able to see that the z component (for zoom) matches your configuration.
 
 Also, navigate to the admin landmarks view, which displays the list of landmarks in the database,
-and press the Options button, top right.
-
+and press the Options button, top right. 
 This should take you to the configuration page for setting the default zoom level.
 If you look in the URL you'll see a URL parameter which is something like:
 
