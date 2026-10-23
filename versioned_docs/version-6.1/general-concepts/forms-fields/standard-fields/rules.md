@@ -26,7 +26,6 @@ This field is often used in config.xml files for a custom extension.
         <field name="rules" 
                type="rules" 
                component="com_mycomponent" 
-               class="inputbox" 
                filter="rules" 
                validate="rules" 
                label="JCONFIG_PERMISSIONS_LABEL" 

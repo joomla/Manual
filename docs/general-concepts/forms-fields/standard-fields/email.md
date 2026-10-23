@@ -26,7 +26,6 @@ Implemented by: libraries/src/Form/Field/EmailField.php
         description="COM_ADMIN_USER_FIELD_EMAIL_DESC"
         required="true"
         size="30"
-        class="inputbox"
         validate="email"
 />
 ```

@@ -10,7 +10,7 @@ The **groupedlist** form field type provides a drop down list or a list box of c
 - **label** (mandatory) (translatable) is the field html label.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default value, but doesn't mean much for a file.
-- **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
+- **class** (optional) is a CSS class name for the HTML form field.
 - **multiple** (optional) is whether multiple items can be selected at the same time (true or false).
 
 Implemented by: libraries/src/Form/GroupedlistField.php

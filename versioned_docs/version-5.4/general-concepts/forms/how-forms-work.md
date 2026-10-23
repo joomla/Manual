@@ -122,20 +122,18 @@ For simplicity this component uses the Joomla 3 way of defining a component, and
 		type="text"
 		label="Enter message"
 		size="40"
-		class="inputbox"
 		required="true" />
 	<field name="email"
 		type="email"
 		label="Enter email"
 		required="true"
 		size="40"
-		class="inputbox" />
+		/>
 	<field name="telephone"
 		type="telephone"
 		label="Enter telephone number"
 		required="true"
 		size="40"
-		class="inputbox"
 		validate="tel" />
 </form>
 ```

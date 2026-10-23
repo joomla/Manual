@@ -11,7 +11,7 @@ The **checkbox** form field type provides a single checkbox. If the parameter ha
 - **value** (optional) is the value of the parameter if this checkbox is set (usually 1).
 - **checked** (optional) should be set to 1 to check the checkbox by default or 0 if not.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
-- **class** (optional) allows you set a css class for display. If omitted this will default to 'inputbox'
+- **class** (optional) allows you set a css class for display.
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 
 Implemented by: libraries/src/Form/Field/CheckboxField.php
