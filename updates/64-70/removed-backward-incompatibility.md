@@ -438,3 +438,117 @@ $value = $app->getInput();
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
 :::
 
+## Removed `LegacyPropertyManagementTrait` from several classes
+- PR's:
+  - https://github.com/joomla/joomla-cms/pull/44897
+  - https://github.com/joomla/joomla-cms/pull/44904
+  - https://github.com/joomla/joomla-cms/pull/44906
+  - https://github.com/joomla/joomla-cms/pull/44907
+  - https://github.com/joomla/joomla-cms/pull/44909
+- Files:
+  - /libraries/src/Categories/CategoryNode.php
+  - /libraries/src/Changelog/Changelog.php
+  - /libraries/src/MVC/Model/BaseModel.php
+  - /libraries/src/MVC/View/AbstractView.php
+  - /libraries/src/Table/Table.php
+  - /libraries/src/User/User.php
+- Description: The `\Joomla\CMS\Object\LegacyPropertyManagementTrait` has been deprecated since Joomla 4.3 (the code itself goes back to the old `JObject` class, which has been deprecated since Joomla 3.4). The trait circumvents the visibility of class properties and allows reading and writing any property, even protected ones, through generic methods. It has been removed from the classes below (for `Table` only the usage in core has been removed so far), which means the following methods are not available anymore on these classes:
+  - `def()`
+  - `get()`
+  - `getProperties()`
+  - `set()`
+  - `setProperties()`
+
+  Access public properties directly, use the dedicated getter and setter methods of the class or use `\Joomla\Utilities\ArrayHelper::fromObject($object, false)` to get all public properties as an array.
+
+### `CategoryNode`
+The `\Joomla\CMS\Categories\CategoryNode` class doesn't use the trait anymore. Access the public properties directly or use the existing getter methods like `getParent()`, `getChildren()`, `getParams()`, `getMetadata()`, `getPath()` and `getAuthor()`.
+```php
+// Old:
+$title = $category->get('title');
+$category->set('title', 'New title');
+
+// New:
+$title = $category->title;
+$category->title = 'New title';
+```
+
+### `Changelog`
+The `\Joomla\CMS\Changelog\Changelog` class doesn't use the trait anymore. To keep the data accessible, the properties `$element`, `$type`, `$version`, `$security`, `$fix`, `$language`, `$addition`, `$change`, `$remove`, `$note`, `$currentChangelog`, `$latest` and `$folder` have been changed from `protected` to `public`.
+```php
+// Old:
+$field = $changelog->get('security');
+
+// New:
+$field = $changelog->security ?? null;
+```
+
+### `BaseModel` and `AbstractView`
+The `\Joomla\CMS\MVC\Model\BaseModel` and `\Joomla\CMS\MVC\View\AbstractView` classes, and with that all models and views extending them, don't use the trait anymore. The `get()` method of the view, which calls the `get<Name>()` method of the model (e.g. `$this->get('Items')`), still exists and works as before, but it doesn't fall back to reading a property of the view anymore. The `set()`, `def()`, `getProperties()` and `setProperties()` methods are not available anymore on models and views.
+```php
+// Old:
+$view->set('component_name', $value);
+$value = $view->get('component_name');
+$model->set('option', 'com_example');
+
+// New:
+$view->component_name = $value;
+$value = $view->component_name;
+$model->option = 'com_example';
+```
+
+:::tip
+To set the state of a model use `$model->setState('name', $value)` and `$model->getState('name')` as before.
+:::
+
+### `Table`
+The core code doesn't use the methods of the trait on `\Joomla\CMS\Table\Table` objects anymore. Use `ArrayHelper::fromObject()` instead of `getProperties()` and access the properties directly instead of using `get()` and `set()`.
+```php
+// Old:
+$properties = $table->getProperties(1);
+$title      = $table->get('title');
+$table->set('title', 'New title');
+
+// New:
+use Joomla\Utilities\ArrayHelper;
+
+$properties   = ArrayHelper::fromObject($table, false);
+$title        = $table->title;
+$table->title = 'New title';
+```
+
+### `User`
+The unused import of the trait has been removed from the `\Joomla\CMS\User\User` class. Read the properties of the user object directly, for example `$user->name` instead of `$user->get('name')`. See also the [compat plugin section](#functions-that-throw-an-error) above for `User::get()`.
+
+## Legacy `onBeforeDelete` and `onAfterDelete` events of the nested table removed
+- PR: https://github.com/joomla/joomla-cms/pull/48637
+- File: /libraries/src/Table/Nested.php
+- Description: `Nested::delete()` no longer dispatches the generic `onBeforeDelete` and `onAfterDelete` events, which carried only the primary key. Listen to the typed table events instead, which every table dispatches, with the table as `subject` and the same `pk`:
+```php
+// Old:
+public static function getSubscribedEvents(): array
+{
+    return ['onBeforeDelete' => 'onBeforeDelete'];
+}
+
+public function onBeforeDelete(Event $event): void
+{
+    $pk = $event->getArgument('pk');
+}
+
+// New:
+public static function getSubscribedEvents(): array
+{
+    return ['onTableBeforeDelete' => 'onTableBeforeDelete'];
+}
+
+public function onTableBeforeDelete(BeforeDeleteEvent $event): void
+{
+    if (!$event->getArgument('subject') instanceof Nested) {
+        return;
+    }
+
+    $pk = $event->getArgument('pk');
+}
+```
+The typed event fires for every table, so check the table in `getArgument('subject')` when only nested tables matter. The table events have no typed getters.
