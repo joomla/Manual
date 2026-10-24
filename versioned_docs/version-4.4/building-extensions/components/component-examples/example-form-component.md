@@ -92,7 +92,7 @@ filter="lettersonly"
 
 Definition of a [custom client-side validation rule](../../../general-concepts/forms/client-side-validation.md):
 ```xml
-class="inputbox validate-noUppercase"
+class="validate-noUppercase"
 data-validation-text="Error: No uppercase letters are allowed"
 ```
 

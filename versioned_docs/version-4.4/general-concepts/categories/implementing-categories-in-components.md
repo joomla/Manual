@@ -16,7 +16,6 @@ Where you allow users to add new records or edit existing records you'll want to
     name="catid"
     type="category"
     extension="com_yourcomponent"
-    class="inputbox"
     default=""
     label="JCATEGORY"
     required="true"

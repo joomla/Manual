@@ -9,7 +9,7 @@ The **limitbox** form field type provides a list of item count limits.
 - **name** (mandatory) is the unique name of the field.
 - **label** (mandatory) (translatable) is the field html label.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
-- **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
+- **class** (optional) is a CSS class name for the HTML form field.
 - **multiple** (optional) if set to true allows multiple items to be selected at the same time. Set to false to allow single selection.
 - **limits** (optional) a comma-separated string containing limits, i.e. 5,25,50,150.
 - **append** (optional) a comma-separated string containing limits to be appended to the default limits.

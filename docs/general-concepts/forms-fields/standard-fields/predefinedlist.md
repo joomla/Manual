@@ -12,7 +12,7 @@ Largely the configuration options are the same as that of the list field however
 - **label** (mandatory) (translatable) is the field html label.
 - **description** (optional) (translatable) is the [field description](../standard-form-field-attributes.md#description).
 - **default** (optional) (not translatable) is the default list item value.
-- **class** (optional) is a CSS class name for the HTML form field. If omitted this will default to 'inputbox'.
+- **class** (optional) is a CSS class name for the HTML form field.
 - **multiple** (optional) is whether multiple items can be selected at the same time (true or false).
 - **required** (optional) if set to true, the first field option should be empty, see last example.
 - **useglobal** (optional) if set to true, it will show the value that is set in the global configuration if found in the database.

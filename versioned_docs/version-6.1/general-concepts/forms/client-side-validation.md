@@ -35,7 +35,7 @@ This line will result in the file media/system/js/fields/validate.js being sent 
 <field 
     name="telephone"
     type="telephone"
-    class="inputbox validate-numeric"
+    class="validate-numeric"
     …
 />
 ```
@@ -147,7 +147,7 @@ You can define a custom error message by specifying the data-validation-text att
 <field 
     name="message"
     type="text"
-    class="inputbox validate-noUppercase"
+    class="validate-noUppercase"
     data-validation-text="Error: No uppercase letters are allowed"
     ... />
 ```
