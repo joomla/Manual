@@ -35,3 +35,17 @@ $plugin = new Foo(
 	$container->get(DatabaseInterface::class)
 );
 $plugin->setApplication(Factory::getApplication());
+```
+
+## Installer getInstance is deprecated
+- PR: https://github.com/joomla/joomla-cms/pull/47980
+- File: /libraries/src/Installer/Installer.php
+- Description: The `getInstance` function of the installer class is now deprecated due some caching issues when installing multiple instances at once. Please instantiate always a new installer:
+```php
+// Old:
+$installer = Installer::getInstance();
+
+// New:
+$installer = new Installer();
+$installer->setDatabase($this->getDatabase());
+```
