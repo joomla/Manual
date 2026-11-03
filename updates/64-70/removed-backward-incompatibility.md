@@ -432,10 +432,22 @@ $value = $app->getInput();
 - Files:
   - libraries/phpass/PasswordHash.php
   - libraries/src/Authentication/Password/PHPassHandler.php
-- Description: The `PHPassHandler` got removed as it doesn't work anymore in Joomla. The resource `'password.handler.phpass'` is not available anymore in the DI container, therefor the `PasswordHash` class alias doesn't exist as well. 
+- Description: The `PHPassHandler` got removed as it doesn't work anymore in Joomla. The resource `'password.handler.phpass'` is not available anymore in the DI container, therefor the `PasswordHash` class alias doesn't exist as well.
 
 :::info
   Users which hasn't logged in since Joomla! 3.2.1 will need to use the password reset method since the password can not longer be validated.
+:::
+
+## Removed MD5 Password Authentication
+- PR: https://github.com/joomla/joomla-cms/pull/48633
+- Files:
+  - libraries/src/Authentication/Password/MD5Handler.php
+  - libraries/src/Service/Provider/Authentication.php
+  - libraries/src/User/UserHelper.php
+- Description: The deprecated `MD5Handler` class has been removed in Joomla 7.0, along with the `UserHelper::HASH_MD5` constant and the `'password.handler.md5'` service from the DI container.
+
+:::info
+  Legacy MD5 password hashes are no longer supported. Users with existing MD5 password hashes must reset their passwords before they can log in. Other supported password hashing algorithms remain unaffected.
 :::
 
 ## Removed `LegacyPropertyManagementTrait` from several classes
