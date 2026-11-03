@@ -64,7 +64,7 @@ Joomla selects additional parameter fields according to the extension, client or
 | `title` | string | Required when creating a group. |
 | `com_fields on owner` | object | Values keyed by machine name, not definition ID. |
 
-The route fixes the context: article, category, contact, contact-mail and user fields have separate collections. Do not reuse a definition ID in another context. The field plugin determines value shape and `fieldparams`. A text field takes a string; a subform has rows whose complete structure must be preserved. A partial recursive merge of subform rows is not guaranteed. The contracts include parameter forms for core field plugins.
+The route selects the context for reading: article, category, contact, contact-mail and user fields have separate collections. When creating a field or field group, also send `context` with the context of the route, for example `com_content.article`: the route's context is not applied when saving. Without it the record is saved without a context, and the request returns 404. `description` and a non-empty `params` object are also needed when creating a field (`description` when creating a group), and a field name must be unique over all contexts. Do not reuse a definition ID in another context. The field plugin determines value shape and `fieldparams`. A text field takes a string; a subform has rows whose complete structure must be preserved. A partial recursive merge of subform rows is not guaranteed. The contracts include parameter forms for core field plugins.
 
 Write a flat JSON object with these form fields. Do not wrap it in JSON:API `data.attributes`. Read-only response attributes are not a write template.
 

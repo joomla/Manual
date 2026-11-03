@@ -46,7 +46,7 @@ Joomla selects additional parameter fields according to the extension, client or
 | `assignment, assigned` | integer or numeric string, array | Assignment mode and menu IDs. |
 | `params` | object | Parameter schema selected by module type and client. |
 
-Site routes set `client_id=0`; administrator routes set `client_id=1`. `/modules/types/{client}` lists types, not instances. Select the parameter schema by type and client rather than instance ID alone. An empty assignment set does not automatically mean all pages: specify the assignment mode. Third-party module forms can add parameters.
+Site routes set `client_id=0`; administrator routes set `client_id=1` for reading. When creating an administrator module, also send `client_id: 1`: without it, `POST /modules/administrator` creates a site module and returns 404. A new module also needs `language` and a non-empty `params` object. `/modules/types/{client}` lists types, not instances. Select the parameter schema by type and client rather than instance ID alone. An empty assignment set does not automatically mean all pages: specify the assignment mode. Third-party module forms can add parameters.
 
 Module instance lists use standard pagination, while the module-type endpoints return the retrieved type list without generic page slicing.
 

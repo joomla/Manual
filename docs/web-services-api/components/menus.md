@@ -49,7 +49,7 @@ Joomla selects additional parameter fields according to the extension, client or
 | `published, home, browserNav` | integer or numeric string | Publication, default-page status and browser behaviour. |
 | `access, template_style_id` | integer or numeric string | Viewing access level and template style. |
 
-`/menus/site` and `/menus/administrator` hold containers; their `/items` collections hold links. Discover item types with `/menus/{client}/items/types`, whose response has its own shape. A component item loads the target view parameter form. Public SEF URLs depend on ancestry, language and the component router, rather than alias alone.
+`/menus/site` and `/menus/administrator` hold containers; their `/items` collections hold links. When creating an administrator menu, send `client_id: 1`: without it, `POST /menus/administrator` returns 200 but creates a site menu. Discover item types with `/menus/{client}/items/types`, whose response has its own shape. A component item loads the target view parameter form. Public SEF URLs depend on ancestry, language and the component router, rather than alias alone.
 
 Write a flat JSON object with these form fields. Do not wrap it in JSON:API `data.attributes`. Read-only response attributes are not a write template.
 

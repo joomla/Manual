@@ -1055,8 +1055,9 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "name": "Example",
-                    "contact": "Example"
+                    "name": "Example client",
+                    "contact": "Contact person",
+                    "extrainfo": ""
                   }
                 },
                 "joomlaSite": {
@@ -3937,8 +3938,9 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "name": "Example",
-                    "catid": 1
+                    "name": "Example contact",
+                    "catid": 4,
+                    "language": "*"
                   }
                 },
                 "joomlaSite": {
@@ -5818,8 +5820,13 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "type": "Example"
+                    "title": "Example field com_contact.contact",
+                    "type": "text",
+                    "context": "com_contact.contact",
+                    "description": "",
+                    "params": {
+                      "display": "2"
+                    }
                   }
                 },
                 "joomlaSite1": {
@@ -6301,8 +6308,13 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_contacts_mailRequest"
               },
               "example": {
-                "title": "Example",
-                "type": "Example"
+                "title": "Example field com_contact.mail",
+                "type": "text",
+                "context": "com_contact.mail",
+                "description": "",
+                "params": {
+                  "display": "2"
+                }
               }
             }
           }
@@ -6742,8 +6754,13 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "type": "Example"
+                    "title": "Example field com_contact.categories",
+                    "type": "text",
+                    "context": "com_contact.categories",
+                    "description": "",
+                    "params": {
+                      "display": "2"
+                    }
                   }
                 },
                 "joomlaSite": {
@@ -7181,7 +7198,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_contacts_contactRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_contact.contact",
+                "description": ""
               }
             }
           }
@@ -7551,7 +7570,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_contacts_mailRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_contact.mail",
+                "description": ""
               }
             }
           }
@@ -7892,7 +7913,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_contacts_categoriesRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_contact.categories",
+                "description": ""
               }
             }
           }
@@ -8338,8 +8361,13 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "type": "Example"
+                    "title": "Example field com_content.article",
+                    "type": "text",
+                    "context": "com_content.article",
+                    "description": "",
+                    "params": {
+                      "display": "2"
+                    }
                   }
                 },
                 "joomlaSite": {
@@ -8889,8 +8917,13 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "type": "Example"
+                    "title": "Example field com_content.categories",
+                    "type": "text",
+                    "context": "com_content.categories",
+                    "description": "",
+                    "params": {
+                      "display": "2"
+                    }
                   }
                 },
                 "joomlaSite": {
@@ -9335,7 +9368,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_content_articlesRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_content.article",
+                "description": ""
               }
             }
           }
@@ -9689,7 +9724,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_content_categoriesRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_content.categories",
+                "description": ""
               }
             }
           }
@@ -10135,8 +10172,13 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "type": "Example"
+                    "title": "Example field com_users.user",
+                    "type": "text",
+                    "context": "com_users.user",
+                    "description": "",
+                    "params": {
+                      "display": "2"
+                    }
                   }
                 },
                 "joomlaSite": {
@@ -10581,7 +10623,9 @@
                 "$ref": "#/components/schemas/com_fields_post_v1_fields_groups_usersRequest"
               },
               "example": {
-                "title": "Example"
+                "title": "Example group",
+                "context": "com_users.user",
+                "description": ""
               }
             }
           }
@@ -14133,8 +14177,10 @@
                 "$ref": "#/components/schemas/com_menus_post_v1_menus_administratorRequest"
               },
               "example": {
-                "menutype": "Example",
-                "title": "Example"
+                "title": "Example admin menu",
+                "menutype": "example-admin",
+                "description": "",
+                "client_id": 1
               }
             }
           }
@@ -14506,9 +14552,11 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example",
-                    "menutype": "Example",
-                    "type": "Example"
+                    "title": "Example item",
+                    "alias": "example-item",
+                    "menutype": "mainmenu",
+                    "type": "url",
+                    "link": "https://example.org"
                   }
                 },
                 "joomlaSite": {
@@ -17985,9 +18033,12 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "API example",
+                    "title": "Example module",
                     "module": "mod_custom",
-                    "params": {}
+                    "language": "*",
+                    "params": {
+                      "style": "0"
+                    }
                   }
                 },
                 "joomlaSite": {
@@ -18623,9 +18674,13 @@
                 "$ref": "#/components/schemas/com_modules_post_v1_modules_administratorRequest"
               },
               "example": {
-                "title": "API example",
+                "title": "Example module",
                 "module": "mod_custom",
-                "params": {}
+                "language": "*",
+                "params": {
+                  "style": "0"
+                },
+                "client_id": 1
               }
             }
           }
@@ -19058,9 +19113,20 @@
                 "$ref": "#/components/schemas/com_newsfeeds_post_v1_newsfeeds_feedsRequest"
               },
               "example": {
-                "name": "Example",
-                "catid": 1,
-                "link": "Example"
+                "name": "Example feed",
+                "link": "https://example.org/feed",
+                "catid": 5,
+                "description": "",
+                "metadesc": "",
+                "images": {
+                  "image_first": ""
+                },
+                "metadata": {
+                  "robots": ""
+                },
+                "params": {
+                  "show_feed_image": "1"
+                }
               }
             }
           }
@@ -20956,8 +21022,11 @@
                 "$ref": "#/components/schemas/com_templates_post_v1_templates_styles_siteRequest"
               },
               "example": {
-                "title": "API example",
-                "template": "cassiopeia"
+                "template": "cassiopeia",
+                "title": "Example style",
+                "params": {
+                  "brand": "1"
+                }
               }
             }
           }
@@ -21614,8 +21683,11 @@
                 "$ref": "#/components/schemas/com_templates_post_v1_templates_styles_administratorRequest"
               },
               "example": {
-                "title": "API example",
-                "template": "atum"
+                "template": "atum",
+                "title": "Example style",
+                "params": {
+                  "hue": "hsl(214, 63%, 20%)"
+                }
               }
             }
           }
@@ -22354,9 +22426,12 @@
                 "$ref": "#/components/schemas/com_users_post_v1_usersRequest"
               },
               "example": {
-                "name": "Example",
-                "username": "Example",
-                "email": "example@example.invalid"
+                "name": "Example user",
+                "username": "example",
+                "email": "user@example.org",
+                "groups": [
+                  2
+                ]
               }
             }
           }
@@ -22774,7 +22849,8 @@
                 "minimal": {
                   "summary": "Minimal request",
                   "value": {
-                    "title": "Example"
+                    "title": "Example group",
+                    "parent_id": 1
                   }
                 },
                 "joomlaSite": {
@@ -29904,7 +29980,8 @@
         "additionalProperties": false,
         "required": [
           "name",
-          "contact"
+          "contact",
+          "extrainfo"
         ]
       },
       "com_banners_post_v1_banners_clientsResponse": {
@@ -61680,7 +61757,8 @@
         "additionalProperties": false,
         "required": [
           "name",
-          "catid"
+          "catid",
+          "language"
         ]
       },
       "com_contact_post_v1_contactsResponse": {
@@ -77878,7 +77956,10 @@
         "additionalProperties": false,
         "required": [
           "title",
-          "type"
+          "type",
+          "context",
+          "description",
+          "params"
         ],
         "allOf": [
           {
@@ -81164,11 +81245,17 @@
               }
             },
             "additionalProperties": false
+          },
+          "context": {
+            "type": "string",
+            "description": "The context of the route, for example com_content.article. Must be sent when creating: the context of the route is not applied when saving."
           }
         },
         "additionalProperties": false,
         "required": [
-          "title"
+          "title",
+          "context",
+          "description"
         ],
         "allOf": [
           {
@@ -115781,7 +115868,8 @@
         "additionalProperties": false,
         "required": [
           "menutype",
-          "title"
+          "title",
+          "client_id"
         ]
       },
       "com_menus_post_v1_menus_administratorResponse": {
@@ -116102,8 +116190,9 @@
                       "anyOf": [
                         {
                           "type": "object",
-                          "properties": {},
-                          "additionalProperties": false
+                          "additionalProperties": {
+                            "$ref": "#/components/schemas/JsonValue"
+                          }
                         },
                         {
                           "type": "array",
@@ -116616,8 +116705,9 @@
                     "anyOf": [
                       {
                         "type": "object",
-                        "properties": {},
-                        "additionalProperties": false
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/JsonValue"
+                        }
                       },
                       {
                         "type": "array",
@@ -117253,7 +117343,9 @@
         "required": [
           "title",
           "menutype",
-          "type"
+          "type",
+          "alias",
+          "link"
         ]
       },
       "com_menus_post_v1_menus_site_itemsResponse": {
@@ -117975,8 +118067,9 @@
                     "anyOf": [
                       {
                         "type": "object",
-                        "properties": {},
-                        "additionalProperties": false
+                        "additionalProperties": {
+                          "$ref": "#/components/schemas/JsonValue"
+                        }
                       },
                       {
                         "type": "array",
@@ -118348,8 +118441,9 @@
                       "anyOf": [
                         {
                           "type": "object",
-                          "properties": {},
-                          "additionalProperties": false
+                          "additionalProperties": {
+                            "$ref": "#/components/schemas/JsonValue"
+                          }
                         },
                         {
                           "type": "array",
@@ -138078,7 +138172,9 @@
         "additionalProperties": false,
         "required": [
           "title",
-          "module"
+          "module",
+          "language",
+          "params"
         ],
         "allOf": [
           {
@@ -139993,7 +140089,10 @@
         "additionalProperties": false,
         "required": [
           "title",
-          "module"
+          "module",
+          "language",
+          "params",
+          "client_id"
         ],
         "allOf": [
           {
@@ -144035,7 +144134,12 @@
         "required": [
           "name",
           "catid",
-          "link"
+          "link",
+          "description",
+          "images",
+          "metadata",
+          "metadesc",
+          "params"
         ]
       },
       "com_newsfeeds_post_v1_newsfeeds_feedsResponse": {
@@ -162547,6 +162651,11 @@
                         },
                         {
                           "type": "null"
+                        },
+                        {
+                          "type": "integer",
+                          "minimum": 0,
+                          "description": "In lists: the number of menu items this style is assigned to."
                         }
                       ],
                       "x-type-origin": "relation/model; see notes"
@@ -162828,7 +162937,8 @@
         "additionalProperties": false,
         "required": [
           "title",
-          "template"
+          "template",
+          "params"
         ],
         "allOf": [
           {
@@ -163262,7 +163372,8 @@
         "additionalProperties": false,
         "required": [
           "title",
-          "template"
+          "template",
+          "params"
         ],
         "allOf": [
           {
@@ -166392,7 +166503,8 @@
         "required": [
           "name",
           "username",
-          "email"
+          "email",
+          "groups"
         ]
       },
       "com_users_post_v1_usersResponse": {
@@ -167173,7 +167285,8 @@
         },
         "additionalProperties": false,
         "required": [
-          "title"
+          "title",
+          "parent_id"
         ]
       },
       "com_users_post_v1_users_groupsResponse": {
