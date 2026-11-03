@@ -175,7 +175,7 @@ class ReferenceRule extends FormRule
 {
     public function test(\SimpleXMLElement $element, $value, $group = null, ?Registry $input = null, ?Form $form = null)
     {
-        if ($value === '') {   // reference is optional
+        if ($value === '' || $value === null) {   // reference is optional
             return true;
         }
         
