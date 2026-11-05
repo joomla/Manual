@@ -44,7 +44,7 @@ Implemented by: libraries/src/Form/Field/TagField.php
         label="JTAG" 
         description="JTAG_DESC" 
         mode="ajax" 
-        class="inputbox span12 small" 
+        class="span12 small" 
         multiple="true"
 />
 ```
@@ -58,7 +58,7 @@ Implemented by: libraries/src/Form/Field/TagField.php
         label="JTAG" 
         description="JTAG_DESC" 
         mode="nested" 
-        class="inputbox span12 small" 
+        class="span12 small" 
         multiple="true"
 />
 ```

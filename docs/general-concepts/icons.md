@@ -106,7 +106,7 @@ The first one is used in Joomla together with bootstrap.
 
 ```php
 <i class="fa fa-envelope" aria-hidden="true" ></i>
-    <span visual-hidden><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
+    <span class="visually-hidden"><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
 <i class="fa fa-envelope" aria-hidden="true"></i>
     <span class="sr-only"><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span>
 <i class="fa fa-envelope" aria-label="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i>

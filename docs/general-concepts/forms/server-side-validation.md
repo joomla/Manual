@@ -23,7 +23,6 @@ This is triggered by specifying a `validate=...` attribute in your form definiti
     label="Enter telephone number"
     required="true"
     size="40"
-    class="inputbox"
     validate="tel" />
 ```
 
@@ -137,7 +136,6 @@ and you decide to store your rule within the administrator area in src/Rule/Cust
     label="Enter telephone number"
     required="true"
     size="40"
-    class="inputbox"
     validate="custom"
     message="The telephone number field is wrong" />
 ```

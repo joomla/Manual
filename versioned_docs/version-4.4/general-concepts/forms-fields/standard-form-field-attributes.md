@@ -51,12 +51,12 @@ $toolbar->inlinehelp();
 This defines the filter which is applied to the field data entered by the user. 
 It is important to filter data received from the internet to prevent injection attacks.
 
-By default data from text-related fields are filtered using the \Joomla\Filter\InputFilter class in libraries/vendor/joomla/filter/src/InputFilter.php, which removes, for example, certain HTML tags and attributes.
-These tags and attributes are hardcoded, not configurable via Global Configuration / Text Filters.
+The filters that you can apply are the same as the [Input Filters](../input.md#available-filters).
+There are also filters, related to form fields only, which are in libraries/src/Form/Filter.
+These are described below.
 
-The alternative filters supplied by Joomla are in libraries/src/Form/Filter and are described below.
-If you specify a filter to be used then the default filter is not applied.
-Note that these are different from the filters applied to URL parameters (described in [Input Filters](../input.md#available-filters)).
+If you don't specify a filter to be used on a form field then Joomla applies a default filter
+which is cleanString() in the \Joomla\Filter\InputFilter class in libraries/vendor/joomla/filter/src/InputFilter.php
 
 **intarray** - filters the text using PHP [intval](https://www.php.net/manual/en/function.intval.php). Other text characters are discarded. (The data item passed can be a string, it doesn't have to be an array).
 

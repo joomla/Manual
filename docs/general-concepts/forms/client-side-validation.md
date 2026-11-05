@@ -35,7 +35,7 @@ This line will result in the file media/system/js/fields/validate.js being sent 
 <field 
     name="telephone"
     type="telephone"
-    class="inputbox validate-numeric"
+    class="validate-numeric"
     …
 />
 ```
@@ -147,9 +147,14 @@ You can define a custom error message by specifying the data-validation-text att
 <field 
     name="message"
     type="text"
-    class="inputbox validate-noUppercase"
+    class="validate-noUppercase"
     data-validation-text="Error: No uppercase letters are allowed"
     ... />
 ```
+
+Note that there is an issue with specifying a language constant for the data-validation-text;
+see [data-validation-text fix](https://github.com/joomla/joomla-cms/pull/48417).
+This pull request proposes using an attribute `validationtext=` (which can be set to a language constant),
+and then `data-validation-text` will be set to the translation of this language constant.
 
 **This applies to the client-side validation only! It has no effect on the server-side validation!**
