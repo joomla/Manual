@@ -136,6 +136,6 @@ link picker (link dialog) through it. Two extension points are available for thi
   own media manager from the editor dialogs;
   - register the extension's content as a source of the core link picker via the `editor-link-providers`
   script options — a single `addScriptOptions()` call in an editors-xtd plugin.
-- **Documentation**: [Editor File and Link Pickers](/docs/building-extensions/plugins/plugin-examples/editors-xtd-plugin/file-and-link-pickers)
+- **Documentation**: [Editor File and Link Pickers](https://manual.joomla.org/docs/building-extensions/plugins/plugin-examples/editors-xtd-plugin/file-and-link-pickers)
 - **Impact**: No changes are required for existing extensions. Extensions that already ship an own
 TinyMCE `file_picker_callback` keep working — a developer-supplied callback always wins over the registry.
