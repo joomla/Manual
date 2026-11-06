@@ -109,8 +109,10 @@ COM_EXAMPLE_CONFIG_DISPLAY_SETTINGS_LABEL="Display"
 COM_EXAMPLE_CONFIG_DISPLAY_SETTINGS_DESC="Display options"
 COM_EXAMPLE_CONFIG_DEFAULT_ZOOM_LABEL="Zoom"
 COM_EXAMPLE_CONFIG_DEFAULT_ZOOM_DESC="Default zoom level for map"
+// highlight-start
 COM_EXAMPLE_CONFIG_REF_ORGS_LABEL="Reference Organisations"
 COM_EXAMPLE_CONFIG_REF_ORGS_DESC="Comma-separated list of Landmark Reference Organisations"
+// highlight-end
 ; Validation errors
 COM_EXAMPLE_INVALID_TITLE="Name must be between 2 and 40 characters"
 COM_EXAMPLE_INVALID_LATITUDE="Invalid latitude - please enter a value between -90.0 and 90.0"
