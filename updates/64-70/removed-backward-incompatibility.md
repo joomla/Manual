@@ -26,6 +26,63 @@ The following list of changes belong to the compatibility plugin and work when e
   - `\Joomla\CMS\User\User::get()`  
   Access directly the property from the user object.
 
+### Application `getRouter()` restricted to compatibility mode
+
+- PR: https://github.com/joomla/joomla-cms/pull/48634
+- Files:
+  - /libraries/src/Application/CMSWebApplicationInterface.php
+  - /libraries/src/Application/CMSApplication.php
+  - /libraries/src/Application/SiteApplication.php
+  - /libraries/src/Application/AdministratorApplication.php
+  - /libraries/src/Application/ConsoleApplication.php
+  - /libraries/src/Router/Route.php
+
+The deprecated static `getRouter()` method has been removed from
+`Joomla\CMS\Application\CMSWebApplicationInterface`.
+
+The concrete application implementations remain available when **Behaviour - Backward Compatibility 7** is enabled
+and loaded. Without compatibility mode, calling these methods throws `BadMethodCallException`.
+With compatibility mode enabled, the methods emit an `E_USER_DEPRECATED` notice and preserve their existing router selection.
+These methods are scheduled for removal in Joomla 8.0.
+
+The compatibility plugin is disabled on fresh Joomla 7 installations. Extensions and template overrides should
+inject the required router or retrieve its shared service from the dependency injection container.
+
+The separate `Joomla\CMS\Event\Application\BeforeApiRouteEvent::getRouter()` method is unaffected.
+
+#### Migrating router access
+
+For frontend routing:
+
+```php
+use Joomla\CMS\Factory;
+use Joomla\CMS\Router\SiteRouter;
+
+// Old:
+$router = Factory::getApplication()->getRouter();
+
+// New:
+$router = Factory::getContainer()->get(SiteRouter::class);
+```
+
+Select the router for the intended context. Import the appropriate class from the `Joomla\CMS\Router` namespace:
+
+| Context | Container service |
+| --- | --- |
+| Frontend | `SiteRouter::class` |
+| Administrator | `AdministratorRouter::class` |
+| Web services | `ApiRouter::class` |
+
+Console code must explicitly select the required router service. Plain client names such as `site` are not
+the router service identifiers.
+
+#### Custom client routing
+
+`Route::link()` uses registered router services and only permits its legacy application-router fallback
+when compatibility mode is enabled. Without compatibility mode, custom clients must register a service or alias
+matching `ucfirst($client) . 'Router'`. For example, the `custom` client requires `CustomRouter`.
+If no valid router service is available, `Route::link()` throws `RuntimeException` with code `500`.
+
 ### CMS Crypt package
 - PR: https://github.com/joomla/joomla-cms/pull/47899
 - Folder: /libraries/src/Crypt
