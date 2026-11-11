@@ -44,7 +44,7 @@ Write a flat JSON object with these form fields. Do not wrap it in JSON:API `dat
 
 ## Backend server-side requests
 
-This creates an unpublished tag using the form default parent. Use a unique alias and verify the resulting hierarchy.
+This creates an unpublished tag at the top level (`parent_id` 1, the root). The API does not apply the form defaults: a new tag needs `parent_id`, `description` (may be empty) and `language`. Use a unique alias and verify the resulting hierarchy.
 
 ### Joomla HTTPFactory
 
@@ -68,6 +68,8 @@ $headers = [
 $payload = [
     'title' => 'API tag',
     'alias' => 'api-tag',
+    'parent_id' => 1,
+    'description' => '',
     'published' => 0,
     'language' => '*',
 ];
@@ -119,6 +121,8 @@ curl --silent --show-error --fail-with-body --include --globoff \
 {
   "title": "API tag",
   "alias": "api-tag",
+  "parent_id": 1,
+  "description": "",
   "published": 0,
   "language": "*"
 }
