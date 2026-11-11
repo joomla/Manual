@@ -22,12 +22,16 @@ The **file** form field type provides an input field for files.
 - **validate** (optional) Whether to Joomla validate the field according to rules.
 - **showon** (optional) Allows you to hide the field based on the value(s) of another field; for Joomla 3.2.4+
 - **multiple** (optional) Allows you to upload multiple files at once when set to multiple="true"
+- **maxsize** (optional) Allows you to set a maximum filesize that can be uploaded.
 
 Implemented by: libraries/src/Form/Field/FileField.php
 
 **Note 1:** When using the file input type you should always add the attribute enctype="multipart/form-data" to your form tag. Otherwise, the uploaded files will not be attached correctly. 
 
-**Note 2:** You can put a soft limit file size by adding a hidden field with name="MAX_FILE_SIZE" and value the maximum allowed bytes which is handled by php, but you must also handle it in your code with or without it.
+**Note 2:** When setting a maxsize for a field the value is the lowest of:
+ - The maxsize value specified by the field, when present.
+ - PHP post_max_size.
+ - PHP upload_max_filesize.
 
 ## Example XML parameter definition
 
