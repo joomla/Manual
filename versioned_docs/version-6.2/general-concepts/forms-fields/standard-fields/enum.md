@@ -55,7 +55,9 @@ The examples below use this enum, stored in `administrator/components/com_exampl
 
 namespace Joomla\Component\Example\Administrator\Enum;
 
+// phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
 enum StateType: int
 {

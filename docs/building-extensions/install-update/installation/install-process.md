@@ -72,7 +72,9 @@ use Joomla\DI\ServiceProviderInterface;
 use Joomla\Filesystem\File;
 use Joomla\Filesystem\Exception\FilesystemException;
 
+// phpcs:disable PSR1.Files.SideEffects
 \defined('_JEXEC') or die;
+// phpcs:enable PSR1.Files.SideEffects
 
 return new class () implements ServiceProviderInterface {
   public function register(Container $container)
