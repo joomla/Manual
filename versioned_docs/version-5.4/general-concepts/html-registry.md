@@ -100,6 +100,9 @@ it's easiest to follow the example of where they're called in the Joomla extensi
 backed up with examining the code in these Helper functions.
 You'll see, for example, that `sort` has a number of other parameters which aren't supplied in the above.
 
+The functions of the Bootstrap helper (`bootstrap.renderModal`, `bootstrap.startTabSet`, etc.)
+are described in the [Bootstrap](./bootstrap/index.md) section.
+
 ## Defining your own HTML Registry entries
 
 To define your own function you
