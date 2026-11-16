@@ -276,7 +276,7 @@ If you do return `false` then by default the error displayed to the user will th
 As there probably isn't an error associated with the Table object, you may wish to enqueue your own message to explain to the user why the save was rejected. 
 
 onContentBeforeSave is triggered for most types of data (for example, content, contacts). However some Models dispatch their own type of event instead:
-- onExtensionBeforeSave is triggered for Extensions
+- [onExtensionBeforeSave](./extension.md#onextensionbeforesave) is triggered for Extensions
 - onUserBeforeSave is triggered for Users
 
 ### Event Arguments
@@ -308,7 +308,7 @@ This event is triggered at the Model level after a call to save new or updated d
 You can use this event to initiate storing related information in the database or files.
 
 onContentAfterSave is triggered for most types of data (for example, content, contacts). However some Models dispatch their own type of event instead:
-- onExtensionAfterSave is triggered for Extensions
+- [onExtensionAfterSave](./extension.md#onextensionaftersave) is triggered for Extensions
 - onUserAfterSave is triggered for Users
 
 ### Event Arguments
@@ -343,7 +343,7 @@ The item is deleted when you select an item and choose "Empty Trash".
 If you select multiple items in this Empty Trash action then this event is fired for each record selected for deletion.
 
 onContentBeforeDelete is triggered for most types of data (for example, content, contacts). However some Models dispatch their own type of event instead:
-- onExtensionBeforeDelete is triggered for Extensions
+- [onExtensionBeforeDelete](./extension.md#onextensionbeforedelete) is triggered for Extensions
 - onUserBeforeDelete is triggered for Users
 
 ### Event Arguments
@@ -370,7 +370,7 @@ You can use this event to initiate the deletion of related information, for exam
 If you are deleting multiple records at once then this event is fired for each record.
 
 onContentAfterDelete is triggered for most types of data (for example, content, contacts). However some Models dispatch their own type of event instead:
-- onExtensionAfterDelete is triggered for Extensions
+- [onExtensionAfterDelete](./extension.md#onextensionafterdelete) is triggered for Extensions
 - onUserAfterDelete is triggered for Users
 
 ### Event Arguments

@@ -38,6 +38,20 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentBeforeChangeState](./content.md#oncontentbeforechangestate) | In Model, before a set of records changes state | Content      |  4.0  |
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
+| [onExtensionBeforeInstall](./extension.md#onextensionbeforeinstall) | Before an extension is installed | Extension |  before 4.0  |
+| [onExtensionAfterInstall](./extension.md#onextensionafterinstall) | After an extension is installed | Extension |  before 4.0  |
+| [onExtensionBeforeUpdate](./extension.md#onextensionbeforeupdate) | Before an extension is updated | Extension |  before 4.0  |
+| [onExtensionAfterUpdate](./extension.md#onextensionafterupdate) | After an extension is updated | Extension |  before 4.0  |
+| [onExtensionBeforeUninstall](./extension.md#onextensionbeforeuninstall) | Before an extension is uninstalled | Extension |  before 4.0  |
+| [onExtensionAfterUninstall](./extension.md#onextensionafteruninstall) | After an extension is uninstalled | Extension |  before 4.0  |
+| [onExtensionBeforeSave](./extension.md#onextensionbeforesave) | In Model, before a plugin, module, template style, content language or component options are saved | Extension |  before 4.0  |
+| [onExtensionAfterSave](./extension.md#onextensionaftersave) | In Model, after a plugin, module, template style, content language or component options are saved | Extension |  before 4.0  |
+| [onExtensionBeforeDelete](./extension.md#onextensionbeforedelete) | In Model, before a module or template style is deleted | Extension |  before 4.0  |
+| [onExtensionAfterDelete](./extension.md#onextensionafterdelete) | In Model, after a module or template style is deleted | Extension |  before 4.0  |
+| [onExtensionChangeState](./extension.md#onextensionchangestate) | Before extensions are enabled or disabled | Extension |  before 4.0  |
+| [onJoomlaBeforeUpdate](./extension.md#onjoomlabeforeupdate) | Before Joomla is updated | Installer |  4.0  |
+| [onJoomlaAfterUpdate](./extension.md#onjoomlaafterupdate) | After Joomla has been updated | Installer |  before 4.0  |
+| [onBeforeJoomlaAutoupdate](./extension.md#onbeforejoomlaautoupdate) | Before an automated update of Joomla | Installer |  5.4  |
 | [onInstallerAddInstallationTab](./installer.md#oninstalleraddinstallationtab) | In com_installer, in building the Install / Extensions form | Installer     |  before 4.0  |
 | [onInstallerBeforePackageDownload](./installer.md#oninstallerbeforepackagedownload) | In Installer, before a package is downloaded | Installer     |  before 4.0  |
 | [onInstallerBeforeUpdateSiteDownload](./installer.md#oninstallerbeforeupdatesitedownload) | In Installer, before an update site is downloaded | Installer     |  5.3  |
