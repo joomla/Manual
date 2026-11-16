@@ -38,6 +38,11 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentBeforeChangeState](./content.md#oncontentbeforechangestate) | In Model, before a set of records changes state | Content      |  4.0  |
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
+| [onCustomFieldsGetTypes](./custom-fields.md#oncustomfieldsgettypes) | Getting the types of custom field which the plugins provide | Fields |  before 4.0  |
+| [onCustomFieldsPrepareDom](./custom-fields.md#oncustomfieldspreparedom) | Adding a custom field to a form | Fields |  before 4.0  |
+| [onCustomFieldsBeforePrepareField](./custom-fields.md#oncustomfieldsbeforepreparefield) | Before the value of a custom field is prepared for display | Fields |  before 4.0  |
+| [onCustomFieldsPrepareField](./custom-fields.md#oncustomfieldspreparefield) | Preparing the value of a custom field for display | Fields |  before 4.0  |
+| [onCustomFieldsAfterPrepareField](./custom-fields.md#oncustomfieldsafterpreparefield) | After the value of a custom field has been prepared for display | Fields |  before 4.0  |
 | [onInstallerAddInstallationTab](./installer.md#oninstalleraddinstallationtab) | In com_installer, in building the Install / Extensions form | Installer     |  before 4.0  |
 | [onInstallerBeforePackageDownload](./installer.md#oninstallerbeforepackagedownload) | In Installer, before a package is downloaded | Installer     |  before 4.0  |
 | [onInstallerBeforeUpdateSiteDownload](./installer.md#oninstallerbeforeupdatesitedownload) | In Installer, before an update site is downloaded | Installer     |  5.3  |
