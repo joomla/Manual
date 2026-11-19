@@ -38,6 +38,17 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentBeforeChangeState](./content.md#oncontentbeforechangestate) | In Model, before a set of records changes state | Content      |  4.0  |
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
+| [onStartIndex](./finder.md#onstartindex) | Smart Search is starting to build the index | Finder     |  before 4.0  |
+| [onBeforeIndex](./finder.md#onbeforeindex) | Before Smart Search indexes a batch of items | Finder     |  before 4.0  |
+| [onBuildIndex](./finder.md#onbuildindex) | Smart Search is indexing a batch of items | Finder     |  before 4.0  |
+| [onPrepareFinderContent](./finder.md#onpreparefindercontent) | Before an item is stored in the Smart Search index | Finder     |  before 4.0  |
+| [onFinderGarbageCollection](./finder.md#onfindergarbagecollection) | Removing items which no longer exist from the Smart Search index | Finder     |  4.2  |
+| [onFinderBeforeSave](./finder.md#onfinderbeforesave) | Before a record is saved, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
+| [onFinderAfterSave](./finder.md#onfinderaftersave) | After a record is saved, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
+| [onFinderAfterDelete](./finder.md#onfinderafterdelete) | After a record is deleted, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
+| [onFinderChangeState](./finder.md#onfinderchangestate) | After a set of records changes state, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
+| [onFinderCategoryChangeState](./finder.md#onfindercategorychangestate) | After a set of category records changes state, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
+| [onFinderResult](./finder.md#onfinderresult) | Before a Smart Search result is displayed | Finder / Content     |  4.0  |
 | [onInstallerAddInstallationTab](./installer.md#oninstalleraddinstallationtab) | In com_installer, in building the Install / Extensions form | Installer     |  before 4.0  |
 | [onInstallerBeforePackageDownload](./installer.md#oninstallerbeforepackagedownload) | In Installer, before a package is downloaded | Installer     |  before 4.0  |
 | [onInstallerBeforeUpdateSiteDownload](./installer.md#oninstallerbeforeupdatesitedownload) | In Installer, before an update site is downloaded | Installer     |  5.3  |

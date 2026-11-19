@@ -111,6 +111,8 @@ it remains in the index until an administrator selects Maintenance / Optimise in
 which triggers `onFinderGarbageCollection`. The `Adapter` handles this event
 by removing the entries in the index for which there's no longer a record in your database table.
 
+All the Smart Search events are described in [Smart Search Events](../plugin-events/finder.md).
+
 ### Categories and access levels
 
 Many Joomla components store their items within categories, and their items have an access level and a language.
