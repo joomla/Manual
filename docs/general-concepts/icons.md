@@ -6,12 +6,27 @@ Standard Joomla! Icons
 =====
 
 ## Overview
-Joomla uses the free [FontAwesome](https://fontawesome.com/search) icons,
-which are implemented as [CSS pseudo-elements](https://docs.fontawesome.com/web/add-icons/pseudo-elements)
+Joomla uses the free [FontAwesome](https://fontawesome.com/search) icons and
+implements the Icomoon icon subset through them.
 
-Joomla implemented the free standard icons, brand icons and supports a subset "icon-..." to be compatible with J!3x and following versions
+The FontAwesome icons are implemented as [CSS pseudo-elements](https://docs.fontawesome.com/web/add-icons/pseudo-elements). 
+This leads to three sub sets 
+1) FontAwesome standard icons
+2) FontAwesome brand icons
+3) 'icon-' / subset to be compatible with J!3x and following versions
 
 The source list of available icons can be found in joomla file `media/templates/administrator/atum/css/vendor/fontawesome-free.css`. For a visible representation of all icons with additional information see our [guide.joomla.org](https://guide.joomla.org/user-manual/templates/standard-icons)
+
+### J!7
+While in J!4-J!6 the FontAwesome icons provides most of the icons in the future J!7 will provide a more independent approach 
+where `ìcon-...` defined ones will be used and hide the implementation with Font awesome or other font icon creators which will be exchangeable.
+
+Joomla implemented the free standard icons, brand icons and supports a subset "icon-..." to be compatible with J!3x and following versions.
+
+### class aria-hidden="true"
+
+This class should be used when the icon is decorative next to visible text or inside a button with text. Hiding them means users of assistive tech hear only the meaningful content.
+Leave the class out when the icon is meaningful on its own. A warning, success or error symbol that conveys status, with no text beside it. Better give it a text.
 
 ## Fontawesome icons
 Fontawesome icons can be used for HTML in following forms:
@@ -77,7 +92,7 @@ Instead of using an 'icon' name of the icon class (see above) a fontawesome icon
 ```html
 ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 ```
-With 'none' given internally an 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
+With 'none' given internally an 'icon-none' will be written into the HTML class and 'fa fa-camera-retro' will follow. 
 Attention: This could affect subsequent button icons whose CSS formatting is then redefined.
 :::
 
@@ -104,9 +119,9 @@ We have two situations:
 
 Blind or visually impaired persons must get the whole information, every icon needs a textual representation. This can be a plain text, a title, a tooltip or also a text which is hidden from sighted users.
 
-For example, if there is an icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screenreader just reads the text - this is good practice. 
+For example, if there is an icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screen reader just reads the text - this is good practice. 
 
-It there is only an icon-envelope but no text - then a blind user sees nothing and the screenreader probably reads nothing.
+It there is only an icon-envelope but no text - then a blind user sees nothing and the screen reader probably reads nothing.
 
 Then you must add an alt text to the icon like alt="contact me by e-mail"
 or aria-hidden = "true" to the icon and add an invisible text "contact me by e-mail". 
@@ -128,7 +143,7 @@ The first one is used in Joomla together with bootstrap.
 
 ### Handling icons with associated text
 
-If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screenreader just reads the text - good.
+If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screen reader just reads the text - good.
 
 ```php
 <span class="fa fa-envelope" aria-hidden="true"></span><span><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
