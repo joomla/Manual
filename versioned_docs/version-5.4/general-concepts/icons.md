@@ -17,12 +17,12 @@ The source list of available icons can be found in joomla file `media/templates/
 Fontawesome icons can be used for HTML in following forms:
 
 ```html
-<i style="font-size: 2rem;" class="fa fa-!name!"></i>
 <span class="fa fa-!name! "></span>
+<span style="font-size: 2rem;" class="fa fa-!name!"></span>
+<i style="font-size: 2rem;" class="fa fa-!name!"></i>
 ```
 
 The actual icon name fa-!name! class is accompanied by a prefix class like "fa ...". More below or see [FontAwesome 'classic' styles](https://docs.fontawesome.com/web/dig-deeper/styles)  
-The \<span\> element can also do the job but the preferred way is to use classes inside the \<i\> element.
 
 Add attribute ```aria-hidden="true"``` for hiding the icon from screen readers and improves accessibility. Use attribute ```style="font-size: 2rem;"``` or ```style="font-size: 48px;"``` for the size of the icon font.
 
@@ -32,8 +32,8 @@ The Prefix part is ```fa``` which is short for ```fas``` which is short for ```f
 
 The icon name part begins with ```fa-``` and the name. Example: 
 ```php
-<i class="fa fa-envelope"></i>
-<i class="fa-solid fa-save" aria-hidden="true"></i> <?php echo Text::_('JSAVE') ?> 
+<span class="fa fa-envelope"></span>
+<span class="fa-solid fa-save" aria-hidden="true"></span> <?php echo Text::_('JSAVE') ?> 
 ```
 
 ### Brand icons
@@ -42,8 +42,8 @@ The prefix part is ```fab``` which is short for ```fa-brands``` which can be use
 
 Example: 
 ```php
-<i class="fab fa-joomla"></i>
-<i class="fa-brands fa-facebook" aria-hidden="true"></i> <?php echo 'Facebook' ?> 
+<span class="fab fa-joomla"></span>
+<span class="fa-brands fa-facebook" aria-hidden="true"></span> <?php echo 'Facebook' ?> 
 ```
 
 ## Icomoon replacement form / 'icon' parameter in code function calls
@@ -54,13 +54,13 @@ For this set of icons, icon names from J3! (icomoon) were replaced (partly) by f
 
 The class gets prefix "icon-" (e.g., "icon-calendar", "icon-file", etc.)
 
-Form: ```<i class="icon-name"></i>```. The "name" part has to be replaced by the icon name. 
+Form: ```<span class="icon-name"></span>```. The "name" part has to be replaced by the icon name. 
 Add attribute aria-hidden="true" for hiding the icon from screen readers and improves accessibility. 
 
 Example: 
 ```html
-<i class="icon-joomla" style="font-size: 48px;" ></i>
-<i class="icon-joomla" aria-hidden="true" style="font-size: 48px;" ></i>
+<span class="icon-joomla" style="font-size: 48px;" ></span>
+<span class="icon-joomla" aria-hidden="true" style="font-size: 48px;" ></span>
 ```
 
 ### Parameter in J! functions
@@ -80,6 +80,19 @@ ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 With 'none' given internally an 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
 Attention: This could affect subsequent button icons whose CSS formatting is then redefined.
 :::
+
+## Why \<span> should be used instead of often used \<i> to render an icon in HTML
+
+For all icon definitions (using the `class="fa fa-!name!"` or `class="icon-name"` style), either a `<span>` or an `<i>` HTML element can be used. Both options are accepted by all browsers.
+
+**\<i>** carries semantic meaning: It marks text in an alternate voice or mood, such as idiomatic phrases or technical terms.   
+**\<span>** is a generic inline container that carries no specific semantic meaning.
+
+The **\<i>** element for icons is recommended by icon libraries (such as Font Awesome) and Bootstrap 5. However,
+there is ongoing discussion and controversy on the web regarding the use of the shorter **\<i>** element.
+
+While both work technically and are widely supported, using a **\<span>** is the more standards-compliant, semantic, and future-proof choice.
+
 
 ## Icons and accessibility
 
@@ -105,12 +118,12 @@ In this case you should support invisible text for screen readers.
 The first one is used in Joomla together with bootstrap.
 
 ```php
-<i class="fa fa-envelope" aria-hidden="true" ></i>
+<span class="fa fa-envelope" aria-hidden="true" ></span>
     <span class="visually-hidden"><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
-<i class="fa fa-envelope" aria-hidden="true"></i>
+<span class="fa fa-envelope" aria-hidden="true"></span>
     <span class="sr-only"><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span>
-<i class="fa fa-envelope" aria-label="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i>
-<i class="fa fa-envelope" alt="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></i> 
+<span class="fa fa-envelope" aria-label="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></span>
+<span class="fa fa-envelope" alt="<?php echo Text::_('CONTACT_ME_PER_EMAIL') ?>"></span> 
 ```
 
 ### Handling icons with associated text
@@ -118,7 +131,7 @@ The first one is used in Joomla together with bootstrap.
 If there is the icon-envelope, followed by the text "email me" then you can hide the icon with aria-hidden="true", and then the screenreader just reads the text - good.
 
 ```php
-<i class="fa fa-envelope" aria-hidden="true"></i><span><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
+<span class="fa fa-envelope" aria-hidden="true"></span><span><?php echo Text::_('CONTACT_ME_PER_EMAIL') ?></span> 
 ```
 
 ### Using 'alt-text' versus 'invisible text' 
