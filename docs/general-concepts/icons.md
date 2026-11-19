@@ -26,18 +26,6 @@ The actual icon name fa-!name! class is accompanied by a prefix class like "fa .
 
 Add attribute ```aria-hidden="true"``` for hiding the icon from screen readers and improves accessibility. Use attribute ```style="font-size: 2rem;"``` or ```style="font-size: 48px;"``` for the size of the icon font.
 
-### Why \<span> should be used instead of often used \<i> to render an icon in HTML
-
-For all icon definitions (using the `class="fa fa-!name!"` or `class="icon-name"` style), either a `<span>` or an `<i>` HTML element can be used. Both options are accepted by all browsers.  
-
-**\<i>** carries semantic meaning: It marks text in an alternate voice or mood, such as idiomatic phrases or technical terms.   
-**\<span>** is a generic inline container that carries no specific semantic meaning.
-
-The **\<i>** element for icons is recommended by icon libraries (such as Font Awesome) and Bootstrap 5. However, 
-there is ongoing discussion and controversy on the web regarding the use of the shorter **\<i>** element.
-
-While both work technically and are widely supported, using a **\<span>** is the more standards-compliant, semantic, and future-proof choice.
-
 ### Standard icons
 
 The Prefix part is ```fa``` which is short for ```fas``` which is short for ```fa-solid``` which can be used instead.
@@ -92,6 +80,19 @@ ToolBarHelper::title(Text::_('COM_EXAMPLE_TITLE'), 'none fa fa-camera-retro');
 With 'none' given internally an 'icon-none' will be written into the HTML class and ' fa fa-camera-retro' will follow. 
 Attention: This could affect subsequent button icons whose CSS formatting is then redefined.
 :::
+
+## Why \<span> should be used instead of often used \<i> to render an icon in HTML
+
+For all icon definitions (using the `class="fa fa-!name!"` or `class="icon-name"` style), either a `<span>` or an `<i>` HTML element can be used. Both options are accepted by all browsers.
+
+**\<i>** carries semantic meaning: It marks text in an alternate voice or mood, such as idiomatic phrases or technical terms.   
+**\<span>** is a generic inline container that carries no specific semantic meaning.
+
+The **\<i>** element for icons is recommended by icon libraries (such as Font Awesome) and Bootstrap 5. However,
+there is ongoing discussion and controversy on the web regarding the use of the shorter **\<i>** element.
+
+While both work technically and are widely supported, using a **\<span>** is the more standards-compliant, semantic, and future-proof choice.
+
 
 ## Icons and accessibility
 
