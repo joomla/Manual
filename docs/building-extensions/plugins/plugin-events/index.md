@@ -38,7 +38,6 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentBeforeChangeState](./content.md#oncontentbeforechangestate) | In Model, before a set of records changes state | Content      |  4.0  |
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
-<<<<<<< HEAD
 | [onExtensionBeforeInstall](./extension.md#onextensionbeforeinstall) | Before an extension is installed | Extension |  before 4.0  |
 | [onExtensionAfterInstall](./extension.md#onextensionafterinstall) | After an extension is installed | Extension |  before 4.0  |
 | [onExtensionBeforeUpdate](./extension.md#onextensionbeforeupdate) | Before an extension is updated | Extension |  before 4.0  |
@@ -53,8 +52,6 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onJoomlaBeforeUpdate](./extension.md#onjoomlabeforeupdate) | Before Joomla is updated | Installer |  4.0  |
 | [onJoomlaAfterUpdate](./extension.md#onjoomlaafterupdate) | After Joomla has been updated | Installer |  before 4.0  |
 | [onBeforeJoomlaAutoupdate](./extension.md#onbeforejoomlaautoupdate) | Before an automated update of Joomla | Installer |  5.4  |
-||||||| 6c089e1
-=======
 | [onStartIndex](./finder.md#onstartindex) | Smart Search is starting to build the index | Finder     |  before 4.0  |
 | [onBeforeIndex](./finder.md#onbeforeindex) | Before Smart Search indexes a batch of items | Finder     |  before 4.0  |
 | [onBuildIndex](./finder.md#onbuildindex) | Smart Search is indexing a batch of items | Finder     |  before 4.0  |
@@ -66,7 +63,6 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onFinderChangeState](./finder.md#onfinderchangestate) | After a set of records changes state, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
 | [onFinderCategoryChangeState](./finder.md#onfindercategorychangestate) | After a set of category records changes state, triggered by the "Content - Smart Search" plugin | Finder     |  before 4.0  |
 | [onFinderResult](./finder.md#onfinderresult) | Before a Smart Search result is displayed | Finder / Content     |  4.0  |
->>>>>>> origin/main
 | [onInstallerAddInstallationTab](./installer.md#oninstalleraddinstallationtab) | In com_installer, in building the Install / Extensions form | Installer     |  before 4.0  |
 | [onInstallerBeforePackageDownload](./installer.md#oninstallerbeforepackagedownload) | In Installer, before a package is downloaded | Installer     |  before 4.0  |
 | [onInstallerBeforeUpdateSiteDownload](./installer.md#oninstallerbeforeupdatesitedownload) | In Installer, before an update site is downloaded | Installer     |  5.3  |
