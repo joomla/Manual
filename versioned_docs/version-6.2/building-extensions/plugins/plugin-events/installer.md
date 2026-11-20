@@ -11,7 +11,7 @@ Installer Events
 Installer plugin events are triggered when some routines are performed during the install process of extensions or when their update sites are downloaded.
 
 For an overview of how a number of these events fit into the installation process see [Install Process](../../install-update/installation/install-process.md).
-(Note that the onExtensionBeforeInstall and onExtensionAfterInstall events aren't covered here).
+(The onExtensionBeforeInstall and onExtensionAfterInstall events are covered in [Extension Events](./extension.md)).
 
 For background on obtaining arguments and returning results see [Plugin Methods and Arguments](../methods-and-arguments.md).
 
