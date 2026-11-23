@@ -35,3 +35,19 @@ $plugin = new Foo(
 	$container->get(DatabaseInterface::class)
 );
 $plugin->setApplication(Factory::getApplication());
+```
+
+## The captcha form field uses the captcha registry
+- PR: https://github.com/joomla/joomla-cms/pull/47906
+- Files: 
+  - /libraries/src/Captcha/Captcha.php
+  - /libraries/src/Form/Field/CaptchaField.php
+  - /libraries/src/Form/Rule/CaptchaRule.php
+- Description: The `Captcha` class got deprecated as the captcha registry should be used:
+```php
+// Old:
+Captcha::getInstance($plugin, ['namespace' => $namespace]);
+
+// New:
+Factory::getContainer()->get(CaptchaRegistry::class)->get($plugin);
+```
