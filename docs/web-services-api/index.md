@@ -28,15 +28,26 @@ For your own routes, see the existing [JSON response tutorial](./json-response-f
 5. Obtain the user's API token from the Joomla API Token section of their profile and use HTTPS.
 
 A token authenticates a user; it does not bypass ACL, validation, content filtering or workflows.
-The base API edit check requires `core.manage` for the component and either `core.edit` for the record
-or `core.edit.own` with a matching owner. Components can override this check and require other permissions.
-For example, managing user groups and viewing access levels requires `core.admin` on `com_users`, and
-the Privacy read/export controllers require `core.admin` on `com_privacy`.
+The global `core.login.api` permission allows a user to authenticate to the API; it does not grant access to every endpoint.
+Since Joomla 6.2.1, the default `ApiDispatcher` also requires the component's `core.api` permission for non-public Web Services endpoints.
+This is separate from `core.manage`, which continues to govern administrator component access.
+Operation-specific permissions such as `core.create`, `core.edit` and `core.delete` still apply, along with any record-level or other endpoint-specific checks.
+Routes explicitly marked public skip the component-level `core.api` check; only mark a route public when unauthenticated access is intended.
 
-The global ACL login permission and the token plugin's allowed groups are separate checks: membership in an
-allowed token group alone does not grant API login. An inherited explicit Denied permission cannot be overcome
-by granting Allowed in a child group. If the token section is missing in the profile, check the user plugin and
-its group settings; if a request is refused, also check Global Configuration permissions and component ACL.
+Third-party components exposing Web Services should declare `core.api` in their `access.xml`:
+
+```xml
+<action name="core.api" title="JACTION_API" />
+```
+
+A custom API dispatcher must extend `Joomla\CMS\Dispatcher\ApiDispatcher` and preserve its access check if it overrides `checkAccess()` or `dispatch()`.
+The global ACL login permission and the token plugin's allowed groups are separate checks: membership in an allowed token group alone does not grant API login.
+An inherited explicit Denied permission cannot be overcome by granting Allowed in a child group.
+If the token section is missing in the profile, check the user plugin and its group settings; if a request is refused, check the global login permission, component `core.api`, and operation-specific permissions.
+
+Joomla 6.2.1 copies existing explicitly stored `core.manage` rules to `core.api` where available; review the resulting ACL if API access should differ from administrator access.
+See the [6.1 to 6.2 backward incompatibility notes](/updates/61-62/removed-backward-incompatibility/#web-services-use-coreapi-in-joomla-621) for migration details.
+For Joomla 5.4.11, see the [5.3 to 5.4 Web Services migration notes](/updates/53-54/removed-backward-incompatibility/#web-services-use-coreapi-in-joomla-5411); that release does not include the 6.2.1-specific DELETE response change.
 
 **API Authentication - Web Services Basic Auth** is disabled by default. Username/password authentication only works when
 this plugin is explicitly enabled. The token examples below use the token plugins and do not require Basic Auth.
