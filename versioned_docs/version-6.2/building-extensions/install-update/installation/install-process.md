@@ -27,7 +27,7 @@ When you go to install extensions and select a zip file of an extension to insta
 - imports the "installer" type plugins, and triggers the 'onInstallerBeforeInstallation' event
 - the zip file is stored in the Joomla /tmp folder, and then unzipped into a subfolder of /tmp
 - triggers the 'onInstallerBeforeInstaller' event
-- triggers the 'onExtensionBeforeInstall' event
+- triggers the '[onExtensionBeforeInstall](../../plugins/plugin-events/extension.md#onextensionbeforeinstall)' event
 - loads the .sys.ini language file from the new install files (or failing that, from the existing extension directory)
 - reads basic information about the extension from the manifest file, for example, the type of the extension
 - performs a `require_once` of the installer script file
@@ -41,7 +41,7 @@ When you go to install extensions and select a zip file of an extension to insta
     - If there's a record in the `#__updates` table saying that there's a new version available for this extension then it deletes it. 
     - It copies the manifest file into the target extension directory (for components this will be the component directory under /administrator)
 - calls the script file `postflight` function
-- triggers the 'onExtensionAfterInstall' event
+- triggers the '[onExtensionAfterInstall](../../plugins/plugin-events/extension.md#onextensionafterinstall)' event
 - triggers the 'onInstallerAfterInstaller' event
 - performs some further tidy-up, eg deleting the temporary installation files
 
