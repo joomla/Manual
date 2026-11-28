@@ -7,7 +7,7 @@ New Deprecations
 
 New deprecations to be aware of — and the recommended alternatives.
 For previously existing deprecations where the Joomla version in which they take effect has changed,
-see the [Changed Deprecations](../changed-deprecations) page.
+see the [Changed Deprecations](changed-deprecations.md) page.
 
 ## New Class Deprecations
 
@@ -81,3 +81,19 @@ New language string deprecations, planned for removal in Joomla! 6.0, are the fo
     * ✅ Use `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURED` instead.
   * ❌ Avoid using the `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURATED_ADMIN` language key.
     * ✅ Use `PLG_SYSTEM_SCHEMAORG_FIELD_SCHEMA_DESCRIPTION_NOT_CONFIGURED_ADMIN` instead.
+
+## Joomla 5.4.11 API compatibility notices
+
+### Developer heads-up: `ApiController::allowDelete()` in Joomla 8.0
+
+Joomla 5.4.11 passes the current record data and primary-key field name to `ApiController::allowDelete()` when checking records for deletion. The base method still declares no parameters in Joomla 5.4.11, but is planned to accept them in Joomla 8.0. Third-party overrides can prepare now by accepting optional `$data` and `$key` arguments:
+
+```php
+protected function allowDelete($data = [], $key = 'id'): bool
+```
+
+This is a forward-compatibility notice, not a change to the base method signature in Joomla 5.4.11. See the [migration example](../61-62/removed-backward-incompatibility.md#prepare-allowdelete-overrides-for-joomla-80).
+
+### Deprecated `ApiController` API access fallback
+
+The temporary `core.api` checks in `ApiController` for create, edit, and delete operations are deprecated and intended for removal in Joomla 8.0. They provide compatibility for extensions that do not yet use `ApiDispatcher`; they do not replace extending `Joomla\CMS\Dispatcher\ApiDispatcher`, particularly for read requests and custom controller actions. See the [Web Services migration notes](removed-backward-incompatibility.md#backward-compatibility).

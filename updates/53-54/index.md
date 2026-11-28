@@ -12,6 +12,8 @@ An explanation of the code changes from Joomla version 5.3 to Joomla version 5.4
   enabling Joomla to keep itself up to date without any user intervention. See the [New features](new-features) section.
 * Several methods, properties, classes and language strings have been set as new deprecations.
   The details can be found in the [New deprecations](new-deprecations) section.
+* Joomla 5.4.11 introduces Web Services API permission checks and record-aware DELETE authorization.
+  See [Removed and Backward Incompatibility](removed-backward-incompatibility) for the required permission updates and migration details.
 * Some methods deprecated for Joomla 6 have been extended until Joomla 7.
   Details can be found in the [Changed deprecations](changed-deprecations) section.
 * New in Joomla 5.4 is the '*Behaviour - Backward Compatibility 6*' plugin.
