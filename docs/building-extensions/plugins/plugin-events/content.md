@@ -75,7 +75,7 @@ However, it is often set to 0 or null, so you probably shouldn't rely on it.
 String of HTML. This will get displayed after the item title.
 
 :::info
-  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event (see [Custom Fields Events](./custom-fields.md#when-the-events-are-triggered)). 
   This plugin returns the HTML for those custom fields which have the Automatic Display option set to After Title.
   So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
   If you implement a component which supports custom fields then you will need to dispatch this event.
@@ -113,7 +113,7 @@ String of HTML. This will get displayed before the text of the item.
 None.
 
 :::info
-  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event (see [Custom Fields Events](./custom-fields.md#when-the-events-are-triggered)). 
 This plugin returns the HTML for those custom fields which have the Automatic Display option set to Before Display Content.
 So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
 If you implement a component which supports custom fields then you will need to dispatch this event.
@@ -147,7 +147,7 @@ However, it is often set to 0 or null, so you probably shouldn't rely on it.
 String of HTML. This will get displayed immediately after the text of the item.
 
 :::info
-  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event. 
+  The Joomla Custom Fields (com_fields) functionality has an associated plugin which is triggered by this event (see [Custom Fields Events](./custom-fields.md#when-the-events-are-triggered)). 
 This plugin returns the HTML for those custom fields which have the Automatic Display option set to After Display Content.
 So this event is triggered within the view which displays an item such as an article (com_content Article View), contact (com_contact Contact View), etc.
 If you implement a component which supports custom fields then you will need to dispatch this event.

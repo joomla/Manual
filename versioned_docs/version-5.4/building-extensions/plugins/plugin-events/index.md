@@ -38,6 +38,11 @@ The event Group refers to the group of plugins which Joomla ensures are imported
 | [onContentBeforeChangeState](./content.md#oncontentbeforechangestate) | In Model, before a set of records changes state | Content      |  4.0  |
 | [onContentChangeState](./content.md#oncontentchangestate) | In Model, after a set of records changes state | Content          |  before 4.0  |
 | [onCategoryChangeState](./content.md#oncategorychangestate) | In Model, before a set of category records changes state | Content     |  before 4.0  |
+| [onCustomFieldsGetTypes](./custom-fields.md#oncustomfieldsgettypes) | Getting the types of custom field which the plugins provide | Fields |  before 4.0  |
+| [onCustomFieldsPrepareDom](./custom-fields.md#oncustomfieldspreparedom) | Adding a custom field to a form | Fields |  before 4.0  |
+| [onCustomFieldsBeforePrepareField](./custom-fields.md#oncustomfieldsbeforepreparefield) | Before the value of a custom field is prepared for display | Fields |  before 4.0  |
+| [onCustomFieldsPrepareField](./custom-fields.md#oncustomfieldspreparefield) | Preparing the value of a custom field for display | Fields |  before 4.0  |
+| [onCustomFieldsAfterPrepareField](./custom-fields.md#oncustomfieldsafterpreparefield) | After the value of a custom field has been prepared for display | Fields |  before 4.0  |
 | [onStartIndex](./finder.md#onstartindex) | Smart Search is starting to build the index | Finder     |  before 4.0  |
 | [onBeforeIndex](./finder.md#onbeforeindex) | Before Smart Search indexes a batch of items | Finder     |  before 4.0  |
 | [onBuildIndex](./finder.md#onbuildindex) | Smart Search is indexing a batch of items | Finder     |  before 4.0  |
