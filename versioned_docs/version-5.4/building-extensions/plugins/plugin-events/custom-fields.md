@@ -163,8 +163,10 @@ This event is triggered for each custom field when Joomla is adding the custom f
 The plugin which provides the type of the custom field should add a `<field>` element to the fieldset,
 in the same format as fields in a [form XML definition file](../../../general-concepts/forms/index.md).
 
-It is also triggered when a custom field is saved in the custom field edit form,
+It is also triggered when a custom field definition is saved,
 so that Joomla can find the validation rule (if any) to check the field's default value.
+This only happens when the default value is not blank (a value of `0` counts as not blank)
+and the field type is one of those returned by [onCustomFieldsGetTypes](#oncustomfieldsgettypes).
 In this case the `fieldset` argument is the `<form>` element of a new XML document,
 and the `form` argument is a new empty `Form`.
 
